@@ -1,0 +1,1051 @@
+---
+title: "Data Visualization"
+format: html
+---
+
+### Learning Objectives of the Chapter {.unnumbered}
+
+::: {style="text-align: justify"}
+
+At the End of the Chapter, Students should be Able to - 
+
+* Learn about the Meaning of Visualization 
+
+* Understand the Importance of Visualization
+
+* Learn about Different R and Python Packages for Visualization 
+
+* Gain Knowledge about Different Types of Visualization
+
+* Learn Knowledge on Interactive Visualization
+
+:::
+
+## What is Visualization?
+
+::: {style="text-align: justify"}
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To learn more about different kinds of visualization in `R`, you should visit - <https://r-graph-gallery.com/> and <https://www.kaggle.com/code/ruchiraperera/seaborn-vs-plotly-express>.
+
+:::
+
+## Importance of Visualization 
+
+
+## Visualization Packages in R and Python 
+
+
+::: {.panel-tabset}
+
+## R 
+
+::: {style="text-align: justify"}
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`ggplot2` is a powerful package for visualization in `R`. In addition, some other packages enhance the functionalities of `ggplot2`. These packages include - `gganimate`, `ggthemes`, `ggpubr`, `ggridges`, `ggmap`, `ggrepel`, `ggextra`, `ggpattern`, `ggcorrplot` and so on. 
+
+:::
+
+```{r}
+#| warning: false
+# Loading tidyverse package
+library(tidyverse)
+# Loading dataset 
+tips = read_csv(
+    'https://raw.githubusercontent.com/mwaskom/seaborn-data/master/tips.csv'
+)
+```
+
+## Python
+
+::: {style="text-align: justify"}
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In `Python`, `matplotlib` and `seaborn` are two of the powerful packages for visualization. Additionally, `plotly`, `plotnine`, `altair`, and `bokeh` are some other python packages that enhances visualization in python.  
+
+:::
+
+```{r}
+#| include: false
+library(reticulate)
+Sys.setenv('RETICULATE_PYTHON' = 'C:\\Users\\mshar\\AppData\\Local\\Programs\\Python\\Python311\\python.exe')
+
+#Sys.setenv('RETICULATE_PYTHON' = '~/.venv/quarto_book_python/Scripts/python.exe')
+```
+
+
+```{python}
+# Loading Necessary Python Packages 
+import seaborn as sns
+import matplotlib.pyplot as plt
+import pandas as pd
+import numpy as np
+```
+
+
+```{python}
+# ggplot style 
+plt.style.use('ggplot')
+# Loading dataset
+tips = sns.load_dataset('tips')
+```
+
+::: 
+
+
+## ggplot - Grammar of Graphics 
+
+::: {style="text-align: justify"}
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In `ggplot`, a plot consists of at least four elements - 
+
+1. Data - the data frame 
+
+2. Aesthetic Mappings - aesthetic mappings map variable from the data frame to different kinds of aesthetics such as x coordinate, y coordinate, color, shape, size and so on. 
+
+3. Coordinate System - the positioning of points 
+
+4. Geom - geoms are geometirc objects such as points or lines. 
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;You can also use [cheatsheet](https://posit.co/resources/cheatsheets/) of ggplot to know more about the ggplot. Another good source to learn more about visualization in `R` is [The R Graph Library](https://r-graph-gallery.com/). Similarly, for `Python`, you can use [The Python Graph Library](https://python-graph-gallery.com/). 
+
+::: 
+
+
+
+##  Types of Visualization 
+
+### Bar Diagram (Bar Plot)
+
+#### One Categorical Variable
+
+
+::: {.panel-tabset}
+
+## R
+
+
+```{r}
+#| fig-width: 8
+#| fig-height: 6
+#| out-width: "90%"
+#| fig-cap: "Bar Plot of Gender (geom_bar)"
+tips |> 
+    count (sex) |>
+    ggplot(mapping = aes(x = sex, y = n))+
+    geom_bar(stat = 'identity', width = 0.5, fill = "orangered3") + 
+    labs(x = 'Sex', y = 'Total Observations')
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Either of the the following code will also produce the same visualization. 
+
+```{r}
+#| eval: false 
+#| fig-width: 8
+#| fig-height: 6
+#| out-width: "90%"
+
+tips |> 
+    ggplot(mapping = aes(x = sex))+
+    geom_bar(width = 0.5, fill = "maroon") + 
+    labs(x = 'Sex', y = 'Total Observations')
+```
+
+
+```{r}
+#| eval: false 
+#| fig-width: 8
+#| fig-height: 6
+#| out-width: "90%"
+
+tips |> 
+    ggplot(mapping = aes(x = sex))+
+    stat_count(width = 0.5, fill = "maroon") + 
+    labs(x = 'Sex', y = 'Total Observations')
+```
+
+
+## Python 
+
+```{python}
+#| warning: false
+#| fig-cap: "Bar Plot of Gender (sns.countplot)"
+#| fig-width: 8
+#| fig-height: 6
+#| out-width: "90%"
+
+sns.countplot(data = tips, x = "sex", width=0.5)
+plt.xlabel('Sex')
+plt.ylabel('Total Observations')
+```
+
+::: 
+
+#### One Categorical Variable and One Continuous Variable
+
+::: {style="text-align: justify"}
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Barplot can also be used for two variables - both discrete (categorical) variables or one discrete (categorical) and one continuous variable. Below is bar plot for one discrete (categorical) and one continuous variable.  
+
+:::
+
+
+::: {.panel-tabset}
+
+## R
+
+```{r}
+#| fig-width: 8
+#| fig-height: 6
+#| out-width: "90%"
+tips |> 
+    group_by(sex) |>
+    summarize(total_bill = mean(total_bill)) |>
+    ggplot(aes(x = sex, y = total_bill)) + 
+    geom_col(width =0.6, fill = "pink") + 
+    labs(x = "Sex", y = "Total Bill") + 
+    geom_text(aes(label = round(total_bill,2)), vjust = -0.2)
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The following code will produce the same results. 
+```{r}
+#| fig-width: 8
+#| fig-height: 6
+#| out-width: "90%"
+tips |> 
+    ggplot(mapping = aes(x = sex, y = total_bill))+
+    geom_bar(stat = 'summary', fun = "mean", position = "dodge",
+    width = 0.60, fill = "pink") + 
+    labs(x = "Sex", y = "Total Bill")
+```
+
+
+
+## Python
+
+```{python}
+#| fig-cap: "Bar Plot of Gender (sns.barplot)"
+#| fig-width: 8
+#| fig-height: 6
+#| out-width: "90%"
+sns.barplot(data = tips, x = "sex", y = "total_bill",
+            width= 0.5, 
+            errorbar= None)
+plt.xlabel('Sex')
+plt.ylabel('Total Bill')
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The following code will add text value on the bars in barplot. 
+
+```{python}
+#| eval: false
+#| fig-width: 8
+#| fig-height: 6
+#| out-width: "90%"
+ax = sns.barplot(data = tips, x = "sex", y = "total_bill",
+            width= 0.5, 
+            errorbar= None)
+
+for i in ax.containers:
+    ax.bar_label(i,)
+
+plt.xlabel('Sex')
+plt.ylabel('Total Bill')
+```
+
+
+:::
+
+#### Two Categorical Variables
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Below is a bar plot for both discrete (categorical) variables. 
+
+
+::: {.panel-tabset}
+
+## R
+
+```{r}
+#| fig-width: 8
+#| fig-height: 6
+#| out-width: "90%"
+#| fig-cap: "Bar Plot of Gender (geom_bar - unstacking bar)"
+tips |> 
+    count (sex, day) |>
+    ggplot(mapping = aes(x = sex, y = n, fill = day))+
+    geom_bar(stat = 'identity', position = "dodge") + 
+    labs(x = "Sex", y = "Total Observations")
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The following code will also produce the same visualization. 
+
+```{r}
+#| fig-width: 8
+#| fig-height: 6
+#| out-width: "90%"
+tips |> 
+    #count (sex, day) |>
+    ggplot(mapping = aes(x = sex, fill = day))+
+    geom_bar(stat = 'count', position = "dodge") + 
+    labs(x = "Sex", y = "Total Observations"
+         ,fill = "Day"
+    )
+```
+
+
+```{r}
+#| fig-width: 8
+#| fig-height: 6
+#| out-width: "90%"
+tips |> 
+    count (sex, day) |>
+    ggplot(mapping = aes(x = sex, y = n, fill = day))+
+    geom_bar(stat = 'identity', position = "stack") + # position = "fill"
+    labs(x = "Sex", y = "Total Observations")
+```
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The following code will also produce the same visualization. 
+
+```{r}
+#| fig-width: 8
+#| fig-height: 6
+#| out-width: "90%"
+tips |> 
+    #count (sex, day) |>
+    ggplot(mapping = aes(x = sex, fill = day))+
+    geom_bar(stat = 'count', position = "stack") + # position = "fill"
+    labs(x = "Sex", y = "Total Observations"
+         ,fill = "Day"
+    )
+```
+
+
+## Python 
+
+```{python}
+#| fig-cap: "Bar Plot of Gender (sns.countplot - unstacking bar)"
+#| fig-width: 8
+#| fig-height: 6
+#| out-width: "90%"
+sns.countplot(data = tips, x = "sex", hue = "day")
+plt.xlabel('Sex')
+plt.ylabel('Total Observations')
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Stacked barchart cannot be created using `seaborn`. So, we use alternatives - 
+```{python}
+#| warning: false
+#| fig-width: 8
+#| fig-height: 6
+#| out-width: "90%"
+tips[['sex', 'day']].value_counts().reset_index() \
+    .pivot(index = "sex", columns = "day", values = 'count') \
+    .plot(kind = "bar", stacked = True)
+plt.xticks(rotation = 360)
+plt.xlabel("Sex")
+plt.ylabel("Total Observations")
+plt.legend(loc = "upper right")
+```
+
+
+::: 
+
+
+### Histogram 
+
+#### One Continuous Variable 
+
+::: {.panel-tabset}
+
+## R 
+
+```{r}
+#| warning: false
+#| fig-width: 8
+#| fig-height: 6
+#| out-width: "90%"
+tips |>
+    ggplot(aes(x = total_bill))+
+    geom_histogram(binwidth = 2.25, fill = "orangered3") + 
+    labs(x = "Total Bill", y = "Count") 
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The following code will generate the same results with a little modification -
+
+```{r}
+#| eval: false 
+#| warning: false
+#| fig-width: 8
+#| fig-height: 6
+#| out-width: "90%"
+tips |>
+    ggplot(aes(x = total_bill))+
+    geom_histogram(binwidth = 2.25, fill = "orangered3", col = "white") + 
+    labs(x = "Total Bill", y = "Count")
+```
+
+
+## Python 
+
+```{python}
+#| warning: false
+#| fig-width: 8
+#| fig-height: 6
+#| out-width: "90%"
+sns.histplot(data = tips, x = "total_bill", binwidth=2.25)
+plt.xlabel("Total Bill")
+plt.ylabel("Count")
+```
+
+:::
+
+#### One Continuous and One Categorical Variable 
+
+::: {.panel-tabset}
+
+## R
+
+```{r}
+#| warning: false
+#| fig-width: 8
+#| fig-height: 6
+#| out-width: "90%"
+tips |>
+    ggplot(aes(x = total_bill, fill = sex))+
+    geom_histogram(binwidth = 2.25)+
+    labs(x = "Total Bill")
+
+```
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The following code will generate the same results - 
+
+
+```{r}
+#| eval: false
+#| fig-width: 8
+#| fig-height: 6
+#| out-width: "90%"
+
+tips |>
+    ggplot(aes(x = total_bill, color = sex))+
+    geom_histogram(binwidth = 2.25)
+```
+
+
+## Python 
+
+```{python}
+#| warning: false
+#| fig-width: 8
+#| fig-height: 6
+#| out-width: "90%"
+sns.histplot(data = tips, x = "total_bill", hue = "sex", binwidth=2.25)
+plt.xlabel("Total Bill")
+plt.ylabel("Count")
+```
+
+
+```{python}
+#| warning: false
+#| eval: false
+#| fig-width: 8
+#| fig-height: 6
+#| out-width: "90%"
+sns.FacetGrid(data=tips, col="sex") \
+    .map(sns.histplot, "total_bill", binwidth = 2.25)
+```
+
+
+::: 
+
+
+
+### Density Plot
+
+#### One Continuous Variable 
+
+
+::: {.panel-tabset}
+
+## R 
+
+```{r}
+#| warning: false
+#| fig-width: 8
+#| fig-height: 6
+#| out-width: "90%"
+
+tips |>
+    ggplot(aes(x = total_bill))+
+    geom_density( size = 1, color = "orangered3"
+        #adjust = 0.2
+    ) + 
+    labs(x = "Total Bill", y = "Density")
+
+
+```
+
+
+## Python 
+
+```{python}
+#| warning: false
+#| fig-width: 8
+#| fig-height: 6
+#| out-width: "90%"
+
+sns.kdeplot(data = tips, x = "total_bill"
+            #,bw_adjust = 0.20
+            )
+plt.xlabel("Total Bill")
+```
+
+
+
+:::
+
+#### Two Continuous Variables 
+
+::: {.panel-tabset}
+
+## R
+
+```{r}
+#| warning: false
+#| fig-width: 8
+#| fig-height: 6
+#| out-width: "90%"
+tips |>
+    select(1:2) |>
+    pivot_longer(cols = everything(), names_to = "types", values_to = "values") |>
+    ggplot(aes(x = values, col = types))+
+    geom_density(size = 1)
+```
+
+## Python 
+
+```{python}
+#| warning: false
+#| fig-width: 8
+#| fig-height: 6
+#| out-width: "90%"
+sns.kdeplot(data = tips[['total_bill', 'tip']])
+plt.xlabel("Total Bill")
+```
+
+::: 
+
+#### One Continuous Variable and One Categorical Variable 
+
+::: {.panel-tabset}
+
+## R
+
+```{r}
+#| warning: false
+#| fig-width: 8
+#| fig-height: 6
+#| out-width: "90%"
+tips |>
+    ggplot(aes(x = total_bill, fill = sex))+
+    geom_density(
+        #adjust = 0.2
+    )+ 
+    labs(x = "Total Bill", y = "Density")
+```
+
+```{r}
+#| warning: false
+#| fig-width: 8
+#| fig-height: 6
+#| out-width: "90%"
+tips |>
+    ggplot(aes(x = total_bill, color = sex))+
+    geom_density(size = 1
+        #adjust = 0.2
+    )+ 
+    labs(x = "Total Bill", y = "Density")
+
+```
+
+
+
+## Python 
+
+```{python}
+#| warning: false
+#| fig-width: 8
+#| fig-height: 6
+#| out-width: "90%"
+sns.kdeplot(data = tips, x = "total_bill", hue = "sex")
+plt.xlabel("Total Bill")
+```
+
+
+```{python}
+#| warning: false
+#| fig-width: 8
+#| fig-height: 6
+#| out-width: "90%"
+sns.kdeplot(data = tips, x = "total_bill", hue = "sex", multiple = "stack")
+plt.xlabel("Total Bill")
+```
+
+
+::: 
+
+
+
+
+### Point Plot 
+
+#### One Categorical and One Continuous Variable 
+
+::: {.panel-tabset}
+
+## R
+
+```{r}
+#| warning: false
+#| fig-width: 8
+#| fig-height: 6
+#| out-width: "90%"
+#| fig-cap: "Line Plot of Gender (geom_line - mean)"
+tips |> 
+    ggplot(aes(x = sex, y = total_bill, group = 1)) + 
+    stat_summary(aes(sex, total_bill), geom = "point", fun.y = mean, size = 2, col = "red")+
+    stat_summary(aes(sex, total_bill), geom = "line", fun.y = mean, size = 1.5, col = "red",size = 2.1) + 
+    labs(x = "Sex", y = "Total Bill")
+```
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The following code will also produce the same visualization. 
+
+```{r}
+#| fig-width: 8
+#| fig-height: 6
+#| out-width: "90%"
+tips |> 
+    group_by(sex) |>
+    summarize(total_bill = mean(total_bill)) |>
+    ggplot(aes(x = sex, y = total_bill, group = 1)) + 
+    geom_point(col = "red", size = 2)+
+    geom_line(col = "red", size = 2.1) + 
+    labs(x = "Sex", y = "Total Bill")
+```
+
+## Python 
+
+```{python}
+#| warning: false
+#| fig-width: 8
+#| fig-height: 6
+#| out-width: "90%"
+sns.pointplot(data = tips, x = "sex", y = "total_bill", errorbar=None)
+plt.xlabel('Sex')
+plt.ylabel("Total Bill")
+```
+
+:::
+
+
+
+#### Two Categorical Variables and One Continuous Variable 
+
+::: {.panel-tabset}
+
+## R
+
+```{r}
+#| warning: false
+#| fig-width: 8
+#| fig-height: 6
+#| out-width: "90%"
+
+tips |>
+    ggplot(aes(x = sex, y = total_bill, group = smoker, color = smoker)) + 
+    stat_summary(aes(x = sex, y = total_bill), geom = "point", fun.y = mean) + 
+    stat_summary(aes(x = sex, y = total_bill), geom = "line", fun.y = mean, size = 1.1) + 
+    labs(x = "Sex", y = "Total Bill" #, color = "Smoker"
+    )
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The following code will also produce the same visualization. 
+
+```{r}
+#| warning: false
+#| fig-width: 8
+#| fig-height: 6
+#| out-width: "90%"
+tips |>
+    group_by(sex, smoker) |>
+    summarize( total_bill = mean(total_bill)) |>
+    ggplot(aes(x = sex, y = total_bill, group = smoker , color = smoker)) + 
+    geom_point()+
+    geom_line(size = 1.1)+
+    labs(x = "Sex", y = "Total Bill")
+```
+
+## Python 
+
+```{python}
+#| warning: false
+#| fig-width: 8
+#| fig-height: 6
+#| out-width: "90%"
+sns.pointplot(data = tips, x = "sex", y = "total_bill", 
+              hue = "smoker", errorbar= None)
+plt.xlabel("Sex")
+plt.ylabel("Total Bill")
+```
+
+
+:::
+
+
+
+### Box Plot 
+
+::: {.panel-tabset}
+
+## R
+
+```{r}
+#| warning: false
+#| fig-width: 8
+#| fig-height: 6
+#| out-width: "90%"
+tips |>
+    ggplot(aes(x = sex, y = total_bill))+
+    geom_boxplot(fill = "pink") + 
+    labs (x = "Sex", y = "Total Bill")
+```
+
+```{r}
+#| warning: false
+#| fig-width: 8
+#| fig-height: 6
+#| out-width: "90%"
+tips |>
+    ggplot(aes(x = sex, y = total_bill))+
+    geom_boxplot(fill = "pink") + 
+    labs (x = "Sex", y = "Total Bill") + 
+    facet_wrap(~smoker)
+
+tips |>
+    ggplot(aes(x = sex, y = total_bill))+
+    geom_boxplot(fill = "pink") + 
+    labs (x = "Sex", y = "Total Bill") + 
+    facet_grid(time~smoker)
+
+
+```
+
+
+## Python 
+
+```{python}
+#| warning: false
+#| fig-width: 8
+#| fig-height: 6
+#| out-width: "90%"
+sns.boxplot(data = tips, x = "sex", y = "total_bill", color = "pink")
+plt.xlabel("Sex")
+plt.ylabel("Total Bill")
+```
+
+
+```{python}
+#| warning: false
+#| fig-width: 8
+#| fig-height: 6
+#| out-width: "90%"
+sns.catplot(data = tips, x = "sex", y = "total_bill", 
+            color = "pink", kind = "box", row = "smoker"
+           )
+```
+
+
+```{python}
+#| warning: false
+#| fig-width: 8
+#| fig-height: 6
+#| out-width: "90%"
+sns.catplot(data = tips, x = "sex", y = "total_bill", 
+            color = "pink", kind = "box", row = "smoker"
+            ,col = "time"
+           )
+```
+
+
+:::
+
+
+
+
+### Scatter Plot 
+
+::: {.panel-tabset}
+
+## R
+
+```{r}
+#| fig-width: 8
+#| fig-height: 6
+#| out-width: "90%"
+tips |>
+    ggplot(aes(x = total_bill, y = tip))+
+    geom_point(col = "blue")+
+    labs(x = "Total Bill", y = "Tip")
+
+```
+
+
+## Python 
+
+```{python}
+#| fig-width: 8
+#| fig-height: 6
+#| out-width: "90%"
+sns.scatterplot(data = tips, x = "total_bill", y = "tip")
+plt.xlabel("Total Bill")
+plt.ylabel("Tip")
+```
+
+::: 
+
+
+### Regression Plot 
+
+::: {.panel-tabset}
+
+## R
+
+```{r}
+#| warning: false 
+#| fig-width: 8
+#| fig-height: 6
+#| out-width: "90%"
+tips |>
+    ggplot(aes(x = total_bill, y = tip))+
+    geom_point(col = "blue")+
+    geom_smooth(method = "lm", col = "orange") + 
+    labs(x = "Total Bill", y = "Tip")
+
+```
+
+
+```{r}
+#| warning: false
+#| fig-width: 10
+#| fig-height: 8
+#| out-width: "90%"
+tips |>
+    ggplot(aes(x = total_bill, y = tip, col = sex))+
+    geom_point(col = "blue")+
+    geom_smooth(method = "lm") + 
+    labs(x = "Total Bill", y = "Tip")
+```
+
+
+## Python 
+
+```{python}
+#| warning: false
+#| fig-width: 10
+#| fig-height: 8
+#| out-width: "90%"
+sns.lmplot(data = tips, x = "total_bill", y = "tip")
+plt.xlabel("Total Bill")
+plt.ylabel("Tip")
+```
+
+
+```{python}
+#| fig-width: 8
+#| fig-height: 6
+#| out-width: "90%"
+sns.regplot(data = tips, x = "total_bill", y = "tip")
+plt.xlabel("Total Bill")
+plt.ylabel("Tip")
+```
+
+
+```{python}
+#| fig-width: 8
+#| fig-height: 6
+#| out-width: "90%"
+sns.lmplot(data = tips, x = "total_bill", y = "tip", hue = "sex")
+plt.xlabel("Total Bill")
+plt.ylabel("Tip")
+```
+
+:::
+
+
+
+
+
+::: {style="text-align: justify"}
+
+## Exercises # 01 
+
+1. Download student data from the [url](https://raw.githubusercontent.com/ShapeLab/ZooidsCompositePhysicalizations/refs/heads/master/Zooid_Vis/bin/data/student-dataset.csv)  and create a pointplot (lineplot) of students average math score (`math.grade`) of gender (`gender`). Please note that the variable `gender` includes a label called `other` in addition to `M` and `F`; you should filter out obsevations of the label `other` before you create visualization.  
+
+2. From the dataset in above (question 1), compare, using pointplot (lineplot), the average math (`math.grade`) and science score (`sciences.grade`) of different students based on gender (`gender`). You might need to use `pivot_longer` function to reshape the data frame before visualizing the relation. 
+
+:::
+
+::: {style="text-align: justify"}
+
+
+
+## Interactive Visualization 
+
+::: {style="text-align: justify"}
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Interactive Visualization involves graphical presentation of data that permits users to engage with the visual elements directly. Unlike static visulization, interactive visualization allows users to manipulate data, explore different aspects, and customize the visualization in real time. The primary objective of interactive visualization is to make data exploration more intuititve and dynamic. The benefits of interactive visualzation include - enhaned engagement, deeper insights, customization, and exploration and discovery. 
+
+:::
+
+::: {.panel-tabset}
+
+## R
+
+```{r}
+#| warning: false
+library(plotly)
+```
+
+```{r}
+#| fig-width: 6
+#| fig-height: 4
+#| out-width: "90%"
+
+p = ggplot(data = tips, aes(x = sex)) + 
+    geom_bar(width = 0.5, fill = "orangered3") + 
+    labs(x = "Gender", y = "Total Observations")
+
+ggplotly(p)
+```
+
+```{r}
+#| fig-width: 6
+#| fig-height: 4
+#| out-width: "90%"
+
+p2 = tips |>
+    ggplot(aes(x = time, y = total_bill, group = smoker, color = smoker))+
+    stat_summary(aes(x = time, y = total_bill), geom = "point", fun.y = mean) + 
+    stat_summary(aes(x = time, y = total_bill), geom = "line", fun.y = mean, size = 1.1) + 
+    labs (x = "Time", y = "Total Bill")
+
+ggplotly(p2)
+```
+
+## Python 
+
+```{python}
+#| warning: false
+import plotly.express as px
+```
+
+```{python}
+#| warning: false
+#| fig-width: 6
+#| fig-height: 4
+#| out-width: "90%"
+
+fig = px.histogram(tips, x = "sex") \
+    .update_traces(marker_color = "orangered") \
+    .update_xaxes(title = "Sex") \
+    .update_yaxes(title = "Count")
+fig.show()
+```
+
+
+```{python}
+#| warning: false
+#| fig-width: 6
+#| fig-height: 4
+#| out-width: "90%"
+px.histogram(tips, x = "sex", y = "total_bill",histfunc='avg') \
+    .update_traces(marker_color = "orangered") \
+    .update_xaxes(title = "Sex") \
+    .update_yaxes(title = "Average Total Bill") \
+    .show()
+```
+
+```{python}
+#| warning: false
+#| fig-width: 6
+#| fig-height: 4
+#| out-width: "90%"
+px.histogram(tips, x="total_bill",histnorm='probability density',
+             width=600, height=400) \
+                .update_xaxes(title = "Total Bill") \
+                .update_yaxes(title ="Density")
+```
+
+## Plotnine
+
+```{python}
+#| warning: false
+#import plotnine as p9
+from plotnine import *
+import plotly.tools as tls
+
+df = tips.groupby(["sex"])["total_bill"].agg('mean').reset_index()
+```
+
+
+```{python}
+#| warning: false
+#| fig-width: 6
+#| fig-height: 4
+#| out-width: "90%"
+(
+    ggplot(df, aes(x = "sex", y = "total_bill", group = 1)) + 
+    geom_point(color = "blue")+
+    geom_line(color = "orange", size = 1.1) + 
+    labs(x = "Sex", y = "Average Total Bill")
+)
+
+plotly_fig = (
+    ggplot(df, aes(x = "sex", y = "total_bill", group = 1)) + 
+    geom_point(color = "blue")+
+    geom_line(color = "orange", size = 1.1)
+)
+tls.mpl_to_plotly(plotly_fig.draw()).show()
+```
+
+
+```{python}
+#| warning: false
+#| fig-width: 6
+#| fig-height: 4
+#| out-width: "90%"
+df2 = tips.groupby(["sex", "smoker"])["total_bill"] \
+    .agg('mean') \
+    .round(2) \
+    .reset_index()
+
+(
+    ggplot(df2, aes(x = "sex", y = "total_bill",  group = "smoker", color = "smoker")) + 
+    geom_point()+
+    geom_line(size = 1.1) + 
+    labs(x = "Sex", y = "Average Total Bill")
+)
+
+```
+
+:::
+
+:::
+
+
+::: {style="text-align: justify"}
+
+## Exercises # 02 
+
+::: 

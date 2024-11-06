@@ -1,0 +1,81 @@
+project:
+  type: book
+
+jupyter: python3
+engine: knitr
+book:
+  title: "Analytics for Accounting Data"
+  reader-mode: true
+  date: today
+  date-format: long 
+  author: 
+  - name: "Sharif Islam, DBA, CPA, CMA"
+    email: mdshariful.islam@siu.edu 
+    affiliations: 
+      - name: "Assistant Professor <br> 
+      School of Accountancy <br> 
+      Southern Illinois University Carbondale"
+        
+  page-footer:
+    left: |
+      Copyright©Sharif Islam
+    right: |
+      This book was built with <a href="https://quarto.org/">Quarto</a>.
+  chapters:
+    - index.qmd
+    - part: "Introduction to Accounting Analytics"
+      chapters:
+        - overview.qmd
+        - foundations.qmd
+    - part: "Data Exploration and Management"
+      chapters:
+        - eda.qmd 
+        - visualization.qmd 
+        - dashboard.qmd
+        - data_management.qmd
+    - part: "Predictive and Prescriptive Analytics"
+      chapters: 
+        - predictive.qmd
+        - prescriptive.qmd 
+    - part: "Advanced Techniques and Applications"
+      chapters:
+        - advanced_analytics.qmd 
+        - fraud.qmd
+        - performance_measurement.qmd
+    - part: "Practical Considerations and Future Directions"
+      chapters: 
+        - ethics.qmd
+        - future.qmd
+    - references.qmd
+  appendices: 
+    - chapter1_solution.qmd
+    - chapter2_solution.qmd
+    
+    
+number-depth: 5  
+site-url: https://github.com/msharifbd
+repo-url: https://github.com/msharifbd
+repo-branch: main
+sharing: [twitter, facebook, linkedin]
+downloads: [pdf, epub]
+bibliography: references.bib
+
+
+format:
+  html:
+    theme: cosmo
+    mainfont: Georgia, serif 
+    code-link: true
+    callout-appearance: simple 
+
+  pdf:
+    documentclass: scrreprt
+    output-file: pdf-book
+    pdf-engine: xelatex
+    mainfont: "Times New Roman"
+    sansfont: "Arial"
+    monofont: "Courier New"
+    colorlinks: true
+    
+
+editor: visual

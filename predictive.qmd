@@ -1,0 +1,868 @@
+---
+title: "Predictive Modeling - Linear Regression"
+format: html 
+---
+### Learning Objectives of the Chapter {.unnumbered}
+
+::: {style="text-align: justify"}
+
+At the End of the Chapter, Students should be Able to - 
+
+* Learn about Linear Regression 
+
+* Identify Linear Relation between Variables 
+
+* Build Linear Regression Model between Variables 
+
+* Learn about How to Evaluate the Fitness of Linear Models
+
+* Evaluate the Assumptions of Linear Regressions
+
+* Build Multiple Regression Models and Evaluate them
+
+
+:::
+
+::: {style="text-align: justify"}
+## Introduction 
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Discussion on predictive analytics.  
+:::
+
+::: {style="text-align: justify"}
+
+## Regression Analysis 
+
+### Simple Linear Regression
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Regression analysis is one of very useful predictive modeling techniques that identify the relationship between two or more variables. The objective of linear regression is to identify a linear line of best fit that can predict the outcome variable (target variable/dependent variable/response variable) for one or more independent variables(predictors). For example, we can draw a scatter diagram to see the relation between horsepower and miles per gallon (MPG). @fig-r-hrspower-mpg and @fig-py-hrspower-mpg show the relationship between horsepower and MPG in R and Python respectively. It is clear that there exists a negative relationship between horsepower and MPG and it makes sense because more power means higher fuel consumption. Similarly, there is negative relationship between vehicle weight and MPG because heavier vehicles need more energy to move (@fig-r-weight-mpg and @fig-py-weight-mpg). The equation of a simple linear regression is - $$y= mX + C$$ 
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;where $y$ = Target variable (Dependent variable); $m$ = slope or rate of change; $X$ = predictor or independent variable; and $C$ = intercept or constant. 
+
+
+
+:::
+
+::: {.panel-tabset}
+
+## R
+```{r}
+#| warning: false
+# loading necessary packages 
+library(tidyverse)
+```
+
+
+```{r}
+#| warning: false
+# loading the dataset 
+r_df = read_csv('http://web.pdx.edu/~gerbing/data/cars.csv')
+glimpse (r_df)
+```
+
+
+## Python 
+
+```{r}
+#| include: false
+library(reticulate)
+Sys.setenv('RETICULATE_PYTHON' = 'C:\\Users\\mshar\\AppData\\Local\\Programs\\Python\\Python311\\python.exe')
+
+#Sys.setenv('RETICULATE_PYTHON' = '~/.venv/quarto_book_python/Scripts/python.exe')
+```
+
+
+
+```{python}
+# loading necessary modules 
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt 
+```
+
+
+```{python}
+# loading the dataset 
+py_df = pd.read_csv("http://web.pdx.edu/~gerbing/data/cars.csv")
+py_df.info()
+```
+
+
+:::
+
+::: {.panel-tabset}
+
+## R 
+
+```{r}
+#| fig-cap: "Relationship between Horsepower and MPG"
+#| label: fig-r-hrspower-mpg
+ggplot(r_df, aes(x = Horsepower, y = MPG))+
+    geom_point()
+    
+
+```
+
+
+## Python 
+
+```{r}
+#| include: false
+library(reticulate)
+#Sys.setenv('RETICULATE_PYTHON' = 'C:\\Users\\mshar\\AppData\\Local\\Programs\\Python\\Python311\\python.exe')
+```
+
+
+```{python}
+#| fig-cap: "Relationship between Horsepower and MPG"
+#| label: fig-py-hrspower-mpg
+sns.set_theme(style="darkgrid")
+sns.scatterplot(x = "Horsepower", y = "MPG", data = py_df)
+
+```
+
+
+
+:::
+
+
+
+
+::: {.panel-tabset}
+
+## R 
+
+```{r}
+#| fig-cap: "Relationship between Weight and MPG"
+#| label: fig-r-weight-mpg
+ggplot(r_df, aes(x = Weight, y = MPG))+
+    geom_point()
+    
+
+```
+
+
+## Python 
+
+```{r}
+#| include: false
+library(reticulate)
+#Sys.setenv('RETICULATE_PYTHON' = 'C:\\Users\\mshar\\AppData\\Local\\Programs\\Python\\Python311\\python.exe')
+```
+
+
+```{python}
+#| fig-cap: "Relationship between Weight and MPG"
+#| label: fig-py-weight-mpg
+sns.set_theme(style="darkgrid")
+sns.scatterplot(x = "Weight", y = "MPG", data = py_df)
+
+```
+
+:::
+
+
+
+
+
+::: {style="text-align: justify"}
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Now we can quantify these relationships using linear regression in which we will try to draw a line that will help us to idenfity the relation between the variables. For example, in @fig-r-reg-equation, we can see the linear line that shows the relation between horsepower and MPG. The regression equation we find is `y = 40-0.16x`, where $y$ is MPG, $x$ is Horsepower, $40$ is intercept, and $1.6$ is slope, which means one unit change of Horsepower results in 1.6 units reduction of MPG and the value of MPG is 40 when horsepower is 0.  @fig-py-reg-equation shows the same results. 
+
+
+::: {.panel-tabset}
+
+## R
+
+```{r}
+#| warning: false
+#| fig-cap: Regression of Horsepower and MPG
+#| label: fig-r-reg-equation
+library(ggpubr)
+ggplot(r_df, aes (x = Horsepower, y = MPG))+
+    geom_point()+
+    geom_smooth(method = "lm")+
+    stat_regline_equation(label.x = 125, label.y = 40)  # to add reg equation
+
+```
+
+
+## Python 
+
+```{r}
+#| include: false
+library(reticulate)
+#Sys.setenv('RETICULATE_PYTHON' = 'C:\\Users\\mshar\\AppData\\Local\\Programs\\Python\\Python311\\python.exe')
+```
+
+
+```{python}
+#| label: fig-py-reg-equation
+#| fig-cap: Regression of Horsepower and MPG
+#| warning: false
+
+import plotnine as p9
+from scipy import stats
+#calculate best fit line
+slope, intercept, r_value, p_value, std_err = stats.linregress(py_df['Horsepower'],py_df['MPG'])
+py_df['fit']=py_df.Horsepower*slope+intercept
+#format text 
+txt= 'y = {:.4f} x + {:.4f}'.format(round(slope,2), round(intercept,2))
+#create plot.
+plot=(p9.ggplot(data=py_df, mapping= p9.aes('Horsepower','MPG'))
+    + p9.geom_point(p9.aes())
+    + p9.xlab('Horsepower')+ p9.ylab(r'MPG')
+    + p9.geom_line(p9.aes(x='Horsepower', y='fit'), color='blue')
+    + p9.annotate('text', x= 150, y = 40, label = txt))
+# print the plot
+print(plot)
+```
+
+:::
+
+:::
+
+
+
+#### Relationship between Stock Returns and a Market Index
+
+
+::: {style="text-align: justify"}
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Now we will try to build a simple linear model between the return of a stock and a market index. Using `tidyquant` package from `R` or `yfinance` module from `python`, we will get share prices of different stocks and a market index. For example, we will get the share price data of Coca-Cola (NYSE:KO) and its competitor PepsiCO (NYSE:PEP). Moreover, we will collect data on US Dollar index (ICE:DX) and SPDR S&P500 ETF (NYSERCA:SPY). 
+
+::: {.panel-tabset}
+
+## R
+
+```{r}
+#| label: fig-r-relation-KO-SPY
+#| fig-cap: Linear Model between SPY and KO
+#| warning: false
+library(tidyquant)
+
+tickers = c("KO", "SPY", "PEP","DX-Y.NYB")
+prices <- tq_get(tickers,
+                 from = "2019-01-01",
+                 to = "2023-12-31"
+                 #,get = "stock.prices"
+                 )
+
+df_stockR = prices |>
+    select(symbol, date, adjusted) |>
+    drop_na(adjusted) |>
+    pivot_wider(id_cols = date,names_from = symbol, 
+    values_from = adjusted)
+
+
+df_stockR = as_tibble(na.omit(CalculateReturns(df_stockR, method = "log")))
+
+# Linear Regression 
+library(fixest)
+# feols(KO ~ SPY, data = df_stockR)
+summary(lm(KO ~ SPY, data = df_stockR))
+
+model = lm(KO ~ SPY, data = df_stockR)
+# adding fitted value to the dataset 
+df_stockR$fitted = fitted(model)
+# adding residual to the dataset 
+df_stockR$residual = resid(model)
+
+# We can use broom package to simplify all of these processes 
+library(broom)
+df_stockR2 = df_stockR  |>
+    select(KO:DX.Y.NYB)
+
+model2 = lm(KO ~ SPY, data = df_stockR2) 
+
+tidy(model2) # summary of model components 
+glance(model2) # information about model fitness 
+augment(model2, data = df_stockR2) # adds info to the dataset 
+
+# Visualization 
+library(ggpubr)
+ggplot(df_stockR, aes (x = SPY, y = KO))+
+    geom_point()+
+    geom_smooth(method = "lm")+
+    labs(x = "SPY Returns", y = "KO Returns") + 
+    stat_regline_equation(label.x = -0.05, label.y = 0.05)  # to add reg equation
+
+
+```
+
+
+## Python 
+
+```{r}
+#| include: false
+library(reticulate)
+#Sys.setenv('RETICULATE_PYTHON' = 'C:\\Users\\mshar\\AppData\\Local\\Programs\\Python\\Python311\\python.exe')
+
+```
+
+
+```{python}
+#| label: fig-py-relation-KO-SPY
+#| fig-cap: Linear Model between SPY and KO
+import yfinance as yf
+import datetime
+import numpy as np
+
+import plotnine as p9
+from scipy import stats
+## To use statsmodels for linear regression
+import statsmodels.api as sm 
+import statsmodels.formula.api as smf
+## To use sklearn for linear regression
+from sklearn.linear_model import LinearRegression
+
+#########################################################
+# Importing stock data 
+## 5-year daily data for Coca-Cola, SPY, Pepsi, and USD index
+#########################################################
+end = datetime.date(2023, 12, 31)
+start = end - pd.Timedelta(days = 365 * 5) 
+# Getting the data 
+ko_df = yf.download("KO", start = start, end = end, progress = False) # CocaCola 
+spy_df = yf.download("SPY", start = start, end = end, progress = False) # SPDR S&P 500
+pep_df = yf.download("PEP", start = start, end = end, progress = False) # PepsiCo
+usdx_df = yf.download("DX-Y.NYB", start = start, end = end, progress = False) # US Dollar Index
+
+## Calculate log returns for the period based on Adj Close prices
+
+ko_df['ko'] = np.log(ko_df['Adj Close'] / ko_df['Adj Close'].shift(1))
+spy_df['spy'] = np.log(spy_df['Adj Close'] / spy_df['Adj Close'].shift(1))
+pep_df['pep'] = np.log(pep_df['Adj Close'] / pep_df['Adj Close'].shift(1))
+usdx_df['usdx'] = np.log(usdx_df['Adj Close'] / usdx_df['Adj Close'].shift(1))
+
+## Create a dataframe with X's (spy, pep, usdx) and Y (ko)
+
+df_stock = pd.concat([spy_df['spy'], ko_df['ko'], 
+                pep_df['pep'], usdx_df['usdx']], axis = 1).dropna()
+
+####################################################
+## 2a. Fit a simple linear regression model to the data using statsmodels 
+
+### Create an instance of the class OLS
+slr_sm_model = smf.ols('ko ~ spy', data=df_stock)
+
+### Fit the model (statsmodels calculates beta_0 and beta_1 here)
+slr_sm_model_ko = slr_sm_model.fit()
+
+### Summarize the model
+
+print(slr_sm_model_ko.summary()) 
+
+## Adding the fitted values to the dataframe 
+df_stock['fitted'] = slr_sm_model_ko.fittedvalues
+
+## Adding the residuals to the dataframe 
+df_stock['residual'] = slr_sm_model_ko.resid
+
+
+param_slr = slr_sm_model_ko.params
+
+## Linear regression plot of X (spy) and Y (ko)
+plt.figure(figsize = (10, 6))
+plt.rcParams.update({'font.size': 14})
+plt.xlabel("SPY Returns")
+plt.ylabel("KO Returns")
+#plt.title("Simple linear regression model")
+plt.scatter(df_stock['spy'],df_stock['ko'])
+plt.plot(df_stock['spy'], param_slr.Intercept+param_slr.spy * df_stock['spy'],
+         label='Y={:.4f}+{:.4f}X'.format(param_slr.Intercept, param_slr.spy), 
+         color='red')
+plt.legend()
+plt.show()
+
+```
+
+:::
+
+:::
+
+
+
+
+### Evaluating Linear Regression Models - Assessing the Fitness
+
+::: {style="text-align: justify"}
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;When we build a linear regression model, we need to check the accuracy of the model by evaluating different parameters of the model. Some of the parameters that need to be evaluated are discussed below -  
+
+#### F-statistic and Overall P-value
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The F-statistic of the model tests whether the linear model provides a better fit of the data than the model that contains no independent variables. The null hypothesis is that the model as a whole does not explain a significant amount of variance of the data. 
+
+#### Coefficient of Determination ($R^2$) and Adjusted $R^2$
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Coefficient of determination is a statistical metric that measures the proportion of the variance of the target variable explained by the independent variables. The coefficient of determination is represented by $R^2$. The value of $R^2$ ranges between $0$ and $1$, where $0$ indicates poor fit and $1$ indicates perfect fit. There is a problem with $R^2$; it increases as the number of independent variable increases. Therefore, when we compare models with different numbers of independent variables, adjuted $R^2$ is used to evaluate the model because it penalizes models with a large number of predictors. 
+
+#### P-value of Parameter Estimates 
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In addition to overall p-value associated with the model, linear regression models generate p-value for each predicators (parameter estimates). This p-value tests the null hypothesis that the coefficient is zero (or it does not have any effect on outcome variable). A low p-value (<0.05) indicates that we can reject the null hypothesis, meaning that a predictor with a low p-value should be included in the model because it has statistically significant effect on the target variable.  
+
+#### Residual Standard Error (RSE)
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Residual Standard Error (RSE) measures how far away an observation is from the prediction (regression line). In another words, it is mean (average) distance between the actual outcome and regression line. For example, @fig-r-relation-KO-SPY regression equation's RSE is 0.01034, which means the regression model predicts CocaCola's return with an avearagr error 0.01034. 
+
+:::
+
+::: {style="text-align: justify"}
+
+### Assumptions of Linear Regression
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Linear regression follows some assumptions. After fitting a regression model, we should check the assumptions of the model. 
+
+1. **Linearity (Linear Relationship)**: 
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;There must be a linear relationship between the outcome variable (y) and predictors (x). @fig-assump1 shows what we want to see and @fig-r-assump1 and @fig-py-assump1 show what we see from one of our models.  
+
+![Assumption 1- What We Want to See](images/Linear_Reg_Assump1.webp){fig-align="center" #fig-assump1}
+
+::: {.panel-tabset}
+
+## R
+
+```{r}
+#| label: fig-r-assump1
+#| fig-cap: Testing Assumption 1
+plot(lm(KO ~ SPY, data = df_stockR), 1)
+```
+
+
+## Python
+
+```{r}
+#| include: false
+library(reticulate)
+#Sys.setenv('RETICULATE_PYTHON' = 'C:\\Users\\mshar\\AppData\\Local\\Programs\\Python\\Python311\\python.exe')
+
+```
+
+```{python}
+#| label: fig-py-assump1
+#| fig-cap: Testing Assumption 1
+sns.residplot(x = 'fitted', y = 'ko', data=df_stock, 
+lowess=True,
+line_kws={'color': 'red', 'lw': 1, 'alpha': 0.8})
+plt.xlabel('Fitted values')
+plt.ylabel('Residuals')
+
+# Diagnostic Plots in Python similar to R - 
+# https://towardsdatascience.com/going-from-r-to-python-linear-regression-diagnostic-plots-144d1c4aa5a
+# https://robert-alvarez.github.io/2018-06-04-diagnostic_plots/
+# https://www.kirenz.com/blog/posts/2021-11-14-linear-regression-diagnostics-in-python/
+```
+
+:::
+
+
+
+2. **Independence**: 
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Indpendence means that each observation (data point) is independent of the others, meaning that the error terms in the model are not correlated with each other and the occurrence of one observation does not influence the probability of another observation occurring; essentially, each data point should be considered a separate, unrelated event from the others. We can check this assumption by Durbin-Watson test. The null hypothesis (H~0~) is there is no correlation among the residuals. Basically, the test detects autocorrelation in the residuals of a linear regression model. The test statistic is a value between 0 and 4, with the following interpretations: 2: No autocorrelation; < 2: Positive autocorrelation; > 2: Negative autocorrelation. To solve the independence issue, it is suggested that for positive serial correlation, consider adding lags of the dependent and/or independent variable to the model. For negative serial correlation, check to make sure that none of your variables are overdifferenced, and For seasonal correlation, consider adding seasonal dummy variables to the model. However, as a rule of thumb, test statistic values between the range of 1.5 and 2.5 are considered normal. One limitation of the DW test is that it can only test for first-order serial correlation.  
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Alternatively, we can can visually examine a scatterplot of the residuals (errors) against the fitted values (@fig-r-assump1 and @fig-py-assump1); if there is no clear pattern, it suggests that the independence assumption is likely satisfied. Independence assmption is important because violating it can lead to unreliable hypothesis tests and confidence intervals.  
+
+::: {.panel-tabset}
+
+## R
+
+```{r}
+#| warning: false 
+library(car)
+durbinWatsonTest(lm(KO ~ SPY, data = df_stockR))
+```
+
+
+## Python
+
+```{r}
+#| include: false
+library(reticulate)
+#Sys.setenv('RETICULATE_PYTHON' = 'C:\\Users\\mshar\\AppData\\Local\\Programs\\Python\\Python311\\python.exe')
+
+```
+
+```{python}
+from statsmodels.stats.stattools import durbin_watson
+durbin_watson(slr_sm_model_ko.resid)
+```
+
+:::
+
+3. **Residual Error**: 
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The errors have a mean (expected) value zero ($0$), constant varianace (Homoscedasticity), and are independent from each other (otherwise auto-correlation problem) and predictor variables. We can check the assumption - expected value of errors are equal to 0 - by looking at @fig-r-assump1 and @fig-py-assump1. If there is a pattern in the plot, the assumption is violated. 
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The assumption homoscedasticity is tested using the Scale-Location plot, in which fitted values are compared with square root of standardized residuals. Theoretically, we want to see @fig-assump3. @fig-r-assump3 and @fig-py-assump3  show Scale-Location plot (also called spread-location plot) of our model. From @fig-r-assump3 and @fig-py-assump3, it is clear that residual plots have a trend (are not all equally spread out). Thus, the assumption is violated. One solution to the problem is that using log or square root transformation of outcome variable. Moreover, we can use Non-Constant Error Variance (NVC) test to test the assumption. If p-value of the test is less than 0.05, then null hypothesis is rejected, meaning that homoscedasticity is violated. Moreover, Breusch-Pagan test or White test can also be used to test homoscedasticity.  
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Finally, testing the assumption - errors are independent from each other and predictors - requires the knowledge of study design and data collection to establish the validity of this assumption. Violation of this assumption is also called endogeneity problem of the model, which is the same as assumption 6 - No Endogeneity below.      
+
+![Assumption 3- What We Want to See](images/Linear_Reg_Assump3.webp){fig-align="center" #fig-assump3}
+
+::: {.panel-tabset}
+
+## R
+
+```{r}
+#| warning: false 
+#| label: fig-r-assump3
+#| fig-cap: Testing Assumption 3 
+# Scale-Location Plot 
+plot(lm(KO ~ SPY, data = df_stockR),3)
+# Non-Constant Error Variance Test 
+ncvTest (lm(KO ~ SPY, data = df_stockR))
+```
+
+
+## Python
+
+```{r}
+#| include: false
+library(reticulate)
+#Sys.setenv('RETICULATE_PYTHON' = 'C:\\Users\\mshar\\AppData\\Local\\Programs\\Python\\Python311\\python.exe')
+
+```
+
+```{python}
+#| warning: false 
+#| label: fig-py-assump3
+#| fig-cap: Testing Assumption 3 
+
+# Scale-Location Plot 
+sns.regplot(
+    x = slr_sm_model_ko.fittedvalues, 
+    y = np.sqrt(np.abs(slr_sm_model_ko.get_influence().resid_studentized_internal)),
+    scatter=True, 
+    ci= False, 
+    lowess=True,
+    line_kws={'color': 'blue', 'lw': 1, 'alpha': 0.8} 
+)
+plt.title('Scale-Location', fontsize=10)
+plt.xlabel('Fitted Values', fontsize=15)
+plt.ylabel('$\sqrt{|Standardized Residuals|}$', fontsize=15)
+
+# Non-Constant Error Variance Test 
+import statsmodels.stats.api as sms
+## Breusch-Pagan test 
+bp_test = sms.het_white(slr_sm_model_ko.resid, slr_sm_model_ko.model.exog)
+labels = ['LM Statistic', 'LM-Test p-value', 'F-Statistic', 'F-Test p-value']
+for stat, value in zip(labels,bp_test):
+    print('{}: {:.3f}'.format(stat, value))
+
+## White Test 
+white_test = sms.het_white(slr_sm_model_ko.resid, slr_sm_model_ko.model.exog)
+for stat, value in zip(labels,white_test):
+    print('{}: {:.3f}'.format(stat, value))
+```
+
+:::
+
+
+
+4. **Normality**: 
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The residuals are normally distributed. We can test this assumption by Q-Q plots (also called Quantile-Quantile plot) of the residuals. @fig-r-qqplot and @fig-py-qqplot show a QQ plot. The dots do not lie perfectly along the straight line.  Moreover, Kolmogorov-Smirnov (KS) test can be used to check the normality assumption. KS tests whether a sample comes from a certain distribution. From the KS result below, we can see test statistic is 0.484 and p-value is 2.2e-16, thus rejecting null hypothesis and indicating that sample data does not come from a normal distribution.  
+
+::: {.panel-tabset}
+
+## R
+
+```{r}
+#| warning: false 
+#| label: fig-r-qqplot
+#| fig-cap: Testing Assumption 4
+
+#######################################
+# Drawing QQ Plot
+########################################
+## qqnorm () function 
+#qqnorm((df_stockR$residual))
+## qqline () function 
+#qqline(df_stockR$residual)
+# qqPlot () function from car package 
+qqPlot(df_stockR$residual) 
+
+#########################################
+# Kolmogorov-Smirnov (KS) test
+##########################################
+library(stats)
+ks.test(df_stockR$residual, "pnorm")
+```
+
+
+## Python
+
+```{r}
+#| include: false
+library(reticulate)
+#Sys.setenv('RETICULATE_PYTHON' = 'C:\\Users\\mshar\\AppData\\Local\\Programs\\Python\\Python311\\python.exe')
+
+```
+
+```{python}
+#| warning: false
+#| label: fig-py-qqplot
+#| fig-cap: Testing Assumption 4
+#######################################
+# Drawing QQ Plot
+########################################
+sm.qqplot(slr_sm_model_ko.resid, fit=True, line="45")
+
+#########################################
+# Kolmogorov-Smirnov (KS) test
+##########################################
+from scipy.stats import kstest
+ks_test = kstest(slr_sm_model_ko.resid, "norm")
+label_ks = ["KS Statistic", "P-value"]
+
+for stat, value in zip(label_ks, ks_test[:2]):
+    print('{}: {:.5f}'.format(stat, value))
+```
+
+:::
+
+5. **Multicollinearity**: 
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;There is little or no correlation between the predictor variables. It makes difficult to interpret the coefficients of the model. Variance Inflation Factor (VIF) can be used to test the multicollinearity. A value equal to or greater than 10 of VIF indicates multicollinearity in the data. We see the VIF of SPY and PEP is 1.84 and 1.84 respectively. Moreover, correlation matrix can also be used to identify the predictors that are highly correlated. @fig-r-corplot and @fig-py-corplot show a correlation plot of our stock returns data.     
+
+::: {.panel-tabset}
+
+## R
+
+```{r}
+#| warning: false
+#| label: fig-r-corplot
+#| fig-cap: Correlation Plot 
+
+## Variance Inflation Factor (VIF)
+library(car)
+vif(lm(KO ~ SPY+PEP, data = df_stockR))
+
+## Correlation Matrix and Correlation Plot 
+# to get the function 
+source("http://www.sthda.com/upload/rquery_cormat.r")
+rquery.cormat(df_stockR |> select(KO:DX.Y.NYB), type = c("lower"), graph = TRUE)$r
+```
+
+
+## Python
+
+```{r}
+#| include: false
+library(reticulate)
+#Sys.setenv('RETICULATE_PYTHON' = 'C:\\Users\\mshar\\AppData\\Local\\Programs\\Python\\Python311\\python.exe')
+
+```
+
+```{python}
+#| warning: false
+#| label: fig-py-corplot
+#| fig-cap: Correlation Plot 
+
+## Correlation Matrix and Correlation Plot 
+### Correlation Matrix
+pd.DataFrame(np.tril(df_stock[['usdx', 'spy', 'ko','pep']].corr()),
+columns = ['usdx', 'spy', 'ko','pep'], index = ['usdx', 'spy', 'ko','pep']).replace(0,'')
+### Correlation Plot
+mask = np.triu(np.ones_like(df_stock[['usdx', 'spy', 'ko','pep']].corr()))
+sns.heatmap(df_stock[['usdx', 'spy', 'ko','pep']].corr(), 
+annot=True, cmap="YlGnBu", 
+mask=mask)
+
+## Variance Inflation Factor (VIF)
+#orrelaiton_coeff = np.corrcoef(df_stock[['ko','spy']], rowvar=False)
+#VIF = np.linalg.inv(correlaiton_coeff)
+#VIF.diagonal()
+
+from statsmodels.stats.outliers_influence import variance_inflation_factor
+from statsmodels.tools.tools import add_constant
+X = add_constant(df_stock[['ko','spy']])
+
+pd.Series([variance_inflation_factor(X.values, i) 
+               for i in range(1,X.shape[1])], 
+              index=X.columns[1:])
+
+```
+
+:::
+
+6. **No Endogeneity**: 
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;There is no relation between the errors and the independent variables.   
+
+:::
+
+
+
+::: {style="text-align: justify"}
+
+### Multiple Linear Regression 
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Multiple regression analysis estimates the relationship between an outcome variable and two or more independent variables. More specifically, multiple regression analysis helps to understand how the value of the dependent variable changes when one of the independent variables varies, while the other independent variables remain constant.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;We use Grunfeld dataset for multiple regressions. The dataset contains investment data for 11 US firms. The variables include - `invest`, which is Gross investment in 1947 dollars; `value`, which is market value as of Dec 31 in 1947 dollars; `capital`, which is stock of plant and equipment in 1947 dollars; `firm`, which include 11 US firms (General Motors, US Steel, General Electric, Chrysler, Atlantic Refining, IBM, Union Oil, Westinghouse, Goodyear, Diamond Match, American Steel); and `year`, which is 1935-1954. Our multiple regeression model is @eq-multiple - 
+
+$$
+invest_{it} = \beta_{0} + \beta_{1}value_{i} + \beta_{3}capital_{it} + \alpha_{it} + \delta_{t} + \epsilon_{it}
+$$ {#eq-multiple}
+
+Where 
+
+$invest_{it}$ is the gross investment of firm $i$ in year $t$
+
+$value_{it}$ is the market value of assets of firm $i$ in year $t$
+
+$capital_{it}$ is the stock value of plant and equipment of firm $i$ in year $t$
+
+$alpha_{i}$ is the fixed effect for firm $i$ (capturing unobserved firm-specific factors that don’t vary over time)
+
+$delta_{t}$ is the fixed effect for year $t$ (capturing unobserved year-specific factors that are common to all firms in that year)
+
+$epsilon_{it}$ is the error term, which includes all other unobserved factors that affect investment but are not accounted for by the independent variables or the fixed effects.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In @tbl-r-multiple and @tbl-py-multiple, we generate some multiple regression models.  
+
+::: {.panel-tabset}
+
+## R
+
+```{r}
+#| warning: false
+#| label: tbl-r-multiple
+#| tbl-cap: Regression of Investment on Market Value and PPE
+
+#############################################################
+## Grunfeld Data from AER Package
+#############################################################
+# Grunfeld data contains investment data for 11 US firms. The variables 
+# include - invest = 
+library(AER)
+library(modelsummary)
+library(kableExtra)
+library(fixest)
+data("Grunfeld", package = "AER")
+
+models_r = list()
+
+# Model (1)
+models_r [['OLS_FYfe']] = feols(invest ~ value + capital | firm + year, data = Grunfeld)
+
+# Model (2)
+models_r [['OLS_FYfeC']] = feols(invest ~ value + capital | firm + year,
+cluster = ~firm,  
+data = Grunfeld)
+
+# Model (3)
+models_r [['OLS_FYfeCtwo']] = feols(invest ~ value + capital | firm + year,
+cluster = ~firm+year,  
+data = Grunfeld)
+
+rows = tribble(
+    ~term, ~'OLS_FYfe',~'OLS_FYfeC', ~'OLS_FYfeCtwo',
+    'Firm Fixed Effects', "YES", "YES", "YES",
+    "Year Fixed Effects", "YES", "YES", "YES"
+)
+attr(rows, 'position') = c (5,6)
+
+
+
+modelsummary(models_r, fmt = 2,
+estimate = "{estimate}{stars}",
+statistic = 'statistic'
+#,vcov = "robust" # robust clustering 
+#,vcov = ~firm # clusting by firm
+#,vcov = vcovHAC
+,stars = c ("*" = 0.10, "**" = 0.05, "***" =  0.01)
+,coef_rename = c(
+    "value" = "VALUE",
+    "capital" = "CAPITAL"
+)
+#,gof_omit = 'DF|Deviance|AIC|BIC'
+,gof_map = c("nobs", "r.squared", "adj.r.squared")
+,add_rows = rows
+#,notes = list(
+#'Note: In all models both firm and year fixed effects are controlled and in models 2 and 3 starndard errors', 
+#'are clustered by firm (one-way cluster) and firm and year (two-way cluster) respectively. The numbers in parentheses indicate t values.')
+#,title = "Title of the Table"
+,output = "kableExtra"
+) |>
+# The line below is for styling the table, not necessary for regression table
+#kableExtra::kbl() |>
+kable_styling(full_width = TRUE) |>
+row_spec(c(6,9), extra_css = "border-bottom: 1.25px solid") |>
+footnote('In all models both firm and year fixed effects are controlled and in models 2 and 3 starndard errors are clustered by firm (one-way cluster) and firm and year (two-way cluster) respectively. The numbers in parentheses indicate t values.')
+
+
+
+```
+
+
+## Python 
+
+
+```{r}
+#| include: false
+library(reticulate)
+#Sys.setenv('RETICULATE_PYTHON' = 'C:\\Users\\mshar\\AppData\\Local\\Programs\\Python\\Python311\\python.exe')
+
+
+```
+
+```{python}
+#| warning: false
+#| label: tbl-py-multiple
+#| tbl-cap: Regression of Investment on Market Value and PPE
+
+import pandas as pd
+import numpy as np
+from statsmodels.datasets import grunfeld
+data = grunfeld.load_pandas().data
+data.year = data.year.astype(np.int64)
+
+# Link for pyfixest - 
+# https://py-econometrics.github.io/pyfixest/quickstart.html
+import pyfixest as pf
+from pyfixest.estimation import feols
+
+# Model (1)
+fe_model1 = feols(
+  "invest ~ value + capital | firm + year", 
+  data = data)
+#fe_model1.summary()
+#pf.etable(fe_model1)
+#fe_model1.tidy()
+#fe_model1.coefplot()
+
+
+# Model (2)
+fe_model2 = feols(
+  "invest ~ value + capital | firm + year",
+  vcov= {"CRV1": "firm"}, 
+  data = data)
+
+# Model (3)
+fe_model3 = feols(
+  "invest ~ value + capital | firm + year",
+  vcov= {"CRV1": "firm+year"}, 
+  data = data)
+
+pf.etable([fe_model1, fe_model2, fe_model3]
+#, type = "gt"
+,coef_fmt= 'b \n (t)'
+,signif_code= [0.01,0.05,0.10]
+)
+```
+
+:::
+
+:::
+
+## Time Series Analysis 
+
+## Exercises  
+
+01. Calculate a linear model between PepsiCo stock returns and S&P 500 Market index (the Ticker of S&P 500 Index is `^GSPC`)

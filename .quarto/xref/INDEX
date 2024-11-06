@@ -1,0 +1,53 @@
+{
+  "index.qmd": {
+    "index.html": "582452a9"
+  },
+  "overview.qmd": {
+    "overview.html": "33755ecc"
+  },
+  "foundations.qmd": {
+    "foundations.html": "a4ad4cd5"
+  },
+  "eda.qmd": {
+    "eda.html": "da031cfd"
+  },
+  "visualization.qmd": {
+    "visualization.html": "f27b3429"
+  },
+  "dashboard.qmd": {
+    "dashboard.html": "4e27d824"
+  },
+  "data_management.qmd": {
+    "data_management.html": "b9a4c45d"
+  },
+  "predictive.qmd": {
+    "predictive.html": "bf6cd3e2"
+  },
+  "prescriptive.qmd": {
+    "prescriptive.html": "adbf8868"
+  },
+  "advanced_analytics.qmd": {
+    "advanced_analytics.html": "f0a551d8"
+  },
+  "fraud.qmd": {
+    "fraud.html": "4319c05f"
+  },
+  "performance_measurement.qmd": {
+    "performance_measurement.html": "0fe48865"
+  },
+  "ethics.qmd": {
+    "ethics.html": "5c5d9b51"
+  },
+  "future.qmd": {
+    "future.html": "a9b2f16b"
+  },
+  "references.qmd": {
+    "references.html": "1d65163b"
+  },
+  "chapter1_solution.qmd": {
+    "chapter1_solution.html": "44ca7137"
+  },
+  "chapter2_solution.qmd": {
+    "chapter2_solution.html": "22c205d2"
+  }
+}

@@ -1,0 +1,341 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Analytics for Accounting Data",
+    "section": "",
+    "text": "Welcome to the online home of Analytics for Accounting Data, which is slated to be published future. It will be available for purchase in both paperback and hardback, with pre-ordering available now on both Amazon and online.\n\n\nPreface\nThis is a Quarto book.\nTo learn more about Quarto books visit https://quarto.org/docs/books.\n\n1 + 1\n\n[1] 2\n\n\n\n# To get more idea about how to develop a book in Quarto\n# Please see the following links -\n# https://bradcongelio.com/nfl-analytics-with-r-book/\n# https://github.com/bcongelio/nfl-analytics-with-r-book\n# https://github.com/hadley/r4ds/\n# https://r4ds.hadley.nz/\n\n\n\nAbout the Book\nThe book is written for the students in undergraduate and graduate programs.\n\n\nAbout the Author\n\n\n\n\nSharif Islam, DBA, CPA, CMA is an Assistant professor in School of Accountancy in Southern Illinois University Carbondale (SIUC). He is a licensed CPA in Illinois and a Certified Management Accountant (CMA). He teaches Machine Learning, Analytics for Accounting Data, Auditing, and Accounting Information Systems. He did his doctorate from Louisiana Tech University in Computer Information Systems and Accounting. He published research in Accounting Horizons, Journal of Accounting and Public Policy, Journal of Emerging Technologies in Accounting, Issues in Accounting Education, Advances in Accounting and Managerial Auditing Journal. His research interests lie at the intersection of Accounting and Data Science.\n\n\n\nHow to Read the Book\n\n\nAcknowledgment",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "advanced_analytics.html",
+    "href": "advanced_analytics.html",
+    "title": "9  Web Scraping and Textual Analytics",
+    "section": "",
+    "text": "Learning Objectives of the Chapter",
+    "crumbs": [
+      "Advanced Techniques and Applications",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Web Scraping and Textual Analytics</span>"
+    ]
+  },
+  {
+    "objectID": "advanced_analytics.html#what-is-web-scraping",
+    "href": "advanced_analytics.html#what-is-web-scraping",
+    "title": "9  Web Scraping and Textual Analytics",
+    "section": "9.1 What is Web Scraping?",
+    "text": "9.1 What is Web Scraping?\n\n     Web scraping refers to the techniques of accessing websites and collecting information from them. Having web scraping knowledge is important nowadays because a vast amount of data is available on websites and in many occasions we need to access, collect, and analyze those data. Web scraping is also called “web harvesting” or “web data extraction”.\n     Web scraping is employed in different kinds of practical applications. For example, companies scrape websites of their competitors to keep track of their pricing, which can help companies to form a competitive pricing strategy. Moreover, marketers and analysts scrape different social media platforms to analyze public sentiment about their products, brands, or events, which help them to gauge public opinions and ultimately tailor their products or services to meet or exceed customers’ expectations.",
+    "crumbs": [
+      "Advanced Techniques and Applications",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Web Scraping and Textual Analytics</span>"
+    ]
+  },
+  {
+    "objectID": "advanced_analytics.html#legal-and-ethical-consideration-of-web-scraping",
+    "href": "advanced_analytics.html#legal-and-ethical-consideration-of-web-scraping",
+    "title": "9  Web Scraping and Textual Analytics",
+    "section": "9.2 Legal and Ethical Consideration of Web Scraping",
+    "text": "9.2 Legal and Ethical Consideration of Web Scraping\n\n     As good citizens on the internet, it is incumbent on us to respect the policies of the websites we plan to scrape. Therefore, before we decide to scrape a website, we must take into consideration the legal and ethical aspects of scraping.\n\n\n9.2.1 Legal Framework of Web Scraping\n\n     Before scraping a website, we must evaluate the following legal considerations -\n\nTerms of Service: Please check the terms of service of the website because some sites explicitly prohibit scraping and violating terms of service might result in legal action.\nCopyright Law: In most cases, data published online is protected by copyright. As such, it is important to know beforehand what you can legally collect from the website by scraping and how you can use the scraped data.\nComputer Fraud and Abuse Act (CFAA): In the US, the Computer Fraud and Abuse Act (CFAA) was enacted in 1986. The CFAA prohibits intentionally accessing a computer without authorization or in excess of authorization. You might violate CFAA if a website has taken steps to block scraping and you circumvent those measures.\nData Protection Law: Beacause of different kinds of data protection law such as General Data Protection Regulation (GDPR) in Europe or similar law in other jurisdictions, it has become very critical to deal with personal data. If you scrape personal data, you must comply with such laws, which typically include requirements for consent, data minimization, and secure handling of the data.\n\n\n\n\n9.2.2 Ethical Considerations of Web Scraping\n\n     In addition to legal considerations, you should also behave ethically when you try to scrape a website. Ethical considerations though aligns with legal considerations, they extend to the idea of good citizenship on the web. Some important ethical considerations during webscraping include -\n\nWeb scraping might be equivalent to Distriubted of Denial of Service (DDOS) attack if too many requests are sent to the targeted websites, thus disrupting the regular functioning of the website. Therefore, while web scraping, we should scrape in such a way so that it does not disrupt the usage of the website by other legitimate users. Further, you should not try to scrape a website if it prohibits web scraping. Some websites have robots.txt file, which defines what can be scraped from the website. So please invesitage a website well before you decide to scrape it.\nHow the scraped data will be used is an important considerations even if the data are publicly available. Using the web scraped data in a way that is detrimental to individual or businesses is unethical. Further, you should also consider the ramifications of publishing or sharing the scraped data.",
+    "crumbs": [
+      "Advanced Techniques and Applications",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Web Scraping and Textual Analytics</span>"
+    ]
+  },
+  {
+    "objectID": "advanced_analytics.html#understanding-html-and-css-selectors",
+    "href": "advanced_analytics.html#understanding-html-and-css-selectors",
+    "title": "9  Web Scraping and Textual Analytics",
+    "section": "9.3 Understanding HTML and CSS Selectors",
+    "text": "9.3 Understanding HTML and CSS Selectors\n\n     Websites are usually created by using HTML - HyperText Markup Language, which describes the structure of a web page and includes cues for the apperance of a website. Therefore, having some knowledge on HTML will help you to scrape a website. HTML document uses different kinds of tags to identify or refer to different elements. A typical HTML document has following elements -\n&lt;!DOCTYPE&gt; : Defines the document type\n&lt;html&gt; : Defines the HTML document\n&lt;head&gt; : Contains metadata or information for the document\n&lt;body&gt; : Defines the document body such as text, images, and other media\n     More about HTML tags can be found here. Here is an example of a basic HTML structure -\n\n&lt;html&gt;&lt;head&gt;&lt;title&gt;The Dormouse's story&lt;/title&gt;&lt;/head&gt;\n&lt;body&gt;\n&lt;p class=\"title\"&gt;&lt;b&gt;The Dormouse's story&lt;/b&gt;&lt;/p&gt;\n&lt;p class=\"story\"&gt;Once upon a time there were three little sisters; and their names were\n&lt;a href=\"http://example.com/elsie\" class=\"sister\" id=\"link1\"&gt;Elsie&lt;/a&gt;,\n&lt;a href=\"http://example.com/lacie\" class=\"sister\" id=\"link2\"&gt;Lacie&lt;/a&gt; and\n&lt;a href=\"http://example.com/tillie\" class=\"sister\" id=\"link3\"&gt;Tillie&lt;/a&gt;;\nand they lived at the bottom of a well.&lt;/p&gt;\n&lt;/body&gt;&lt;/html&gt;\n\n     In addition to HTML tags, CSS (Cascading Style Sheets) selectors are used to style different elements in the website. In web scraping, we use CSS selectors to identify the data we want to extract. There are different types of CSS selectors:\n\nElement Selector: Selects all elements of a specific type. For example, p selects all &lt;p&gt; elements.\nID Selector: Selects a single element with a specific id. The ID selector is defined with a hash (#). For example, #navbar selects the element with id=\"navbar\".\nClass Selector: Selects all elements with a specific class. The class selector is defined with a dot (.). For example, .menu-item selects all elements with class=\"menu-item\".\nAttribute Selector: Selects elements with a specific attribute or attribute value. For example, [href] selects all elements with an href attribute.\n\n     Below is an example of CSS selectors -\n\n&lt;!DOCTYPE html&gt;\n&lt;html&gt;\n&lt;head&gt;\n    &lt;style&gt;\n        #header {\n            background-color: #f2f2f2;\n        }\n        .highlight {\n            font-weight: bold;\n        }\n        a[href^=\"https\"] {\n            color: green;\n        }\n    &lt;/style&gt;\n&lt;/head&gt;\n&lt;body&gt;\n    &lt;div id=\"header\"&gt;This is the header&lt;/div&gt;\n    &lt;p class=\"highlight\"&gt;This paragraph is highlighted.&lt;/p&gt;\n    &lt;a href=\"https://example.com\"&gt;This link is green because it uses HTTPS.&lt;/a&gt;\n&lt;/body&gt;\n&lt;/html&gt;\n\n     In the above code, #header selects the &lt;div&gt; with the ID of “header,” .highlight selects any element with the “highlight” class, and a[href^=\"https\"] selects anchor tags (&lt;a&gt;) whose href attribute value begins with “https”. Understanding how to use these CSS selectors are very important while web scraping websites.",
+    "crumbs": [
+      "Advanced Techniques and Applications",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Web Scraping and Textual Analytics</span>"
+    ]
+  },
+  {
+    "objectID": "advanced_analytics.html#an-overview-of-beautiful-soup",
+    "href": "advanced_analytics.html#an-overview-of-beautiful-soup",
+    "title": "9  Web Scraping and Textual Analytics",
+    "section": "9.4 An Overview of Beautiful Soup",
+    "text": "9.4 An Overview of Beautiful Soup\n\n     Beautifulsoup is a python module that is widely used to scrape and parse websites. Beautifulsoup has many useful functions that can be easily used to extract data from HTML. Figure 9.1 shows the basic work process Beautifulsoup uses. It is clear from Figure 9.1 that using Beautifulsoup, we can extract data by finding HTML tag names, by CSS class names, and so on.\n\n\n\n\n\n\nFigure 9.1: Beautiful Soup Process\n\n\n\n     The following python code can be run to install and import Beautifulsoup module.\n\n# installing beautifulsoup \npip install beautifulsoup4\n\n# importing beautifulsoup\nfrom bs4 import BeautifulSoup\n\n     When we use BeautifulSoup to scrape a website, one of the most critical tasks is to identify the tags or CSS selectors from which we want to extract text or data. These targets are called Document Object Model (DOM). The DOM is a programming interface for web documents. Visualize HTML code of a webpage as an upside-down tree. Each HTML element - headings, paragraphs, and links - is a node in the tree. Figure 9.2 shows a basic tree structure of an HTML page.\n\n\n\n\n\n\nFigure 9.2: Tree Structure of HTML Page\n\n\n\n\n\n9.4.1 An Example of Web Scraping\n\n     Below we provide a small example of webscraping. We create a webpage called html, which includes different tags and CSS selectors.\n\n# an HTML file data \n\nhtml = \"\"\"\n&lt;html&gt;&lt;head&gt;&lt;title&gt;The Dormouse's story&lt;/title&gt;&lt;/head&gt;\n&lt;body&gt;\n&lt;p class=\"title\"&gt;&lt;b&gt;The Dormouse's story&lt;/b&gt;&lt;/p&gt;\n&lt;p class=\"story\"&gt;Once upon a time there were three little sisters; and their names were\n&lt;a href=\"http://example.com/elsie\" class=\"sister\" id=\"link1\"&gt;Elsie&lt;/a&gt;,\n&lt;a href=\"http://example.com/lacie\" class=\"sister\" id=\"link2\"&gt;Lacie&lt;/a&gt; and\n&lt;a href=\"http://example.com/tillie\" class=\"sister\" id=\"link3\"&gt;Tillie&lt;/a&gt;;\nand they lived at the bottom of a well.&lt;/p&gt;\n&lt;/body&gt;&lt;/html&gt;\"\"\"\n\n     Then we import BeautifulSoup from beautifulsoup.\n\n# importing beautiful soup \nfrom bs4 import BeautifulSoup\n\n     Next, we convert the html into beautifulsoup object and name it soup. In BeautifulSoup ()function, we use the built-in parser called html.parser. We can also use other parsers such as lxml or html5lib. Each of these parsers has their own pros and cons. For example, lxml is the fastest and html.parser does not need extra dependencies.\n\n# Converting HTML data into Beautiful Soup Object \nsoup = BeautifulSoup(html, \"html.parser\")\n\n     The prettify() function will turn a soup object into a nicely formatted Unicode string, witha a separate line for each tag and each string.\n\nsoup.prettify()\n\n'&lt;html&gt;\\n &lt;head&gt;\\n  &lt;title&gt;\\n   The Dormouse\\'s story\\n  &lt;/title&gt;\\n &lt;/head&gt;\\n &lt;body&gt;\\n  &lt;p class=\"title\"&gt;\\n   &lt;b&gt;\\n    The Dormouse\\'s story\\n   &lt;/b&gt;\\n  &lt;/p&gt;\\n  &lt;p class=\"story\"&gt;\\n   Once upon a time there were three little sisters; and their names were\\n   &lt;a class=\"sister\" href=\"http://example.com/elsie\" id=\"link1\"&gt;\\n    Elsie\\n   &lt;/a&gt;\\n   ,\\n   &lt;a class=\"sister\" href=\"http://example.com/lacie\" id=\"link2\"&gt;\\n    Lacie\\n   &lt;/a&gt;\\n   and\\n   &lt;a class=\"sister\" href=\"http://example.com/tillie\" id=\"link3\"&gt;\\n    Tillie\\n   &lt;/a&gt;\\n   ;\\nand they lived at the bottom of a well.\\n  &lt;/p&gt;\\n &lt;/body&gt;\\n&lt;/html&gt;\\n'\n\n\n     We can use get_text() function to see the text element of the tags. text is a property (attribute) of soup object, which calls get_text function.\n\nsoup.get_text()\n\n\"\\nThe Dormouse's story\\n\\nThe Dormouse's story\\nOnce upon a time there were three little sisters; and their names were\\nElsie,\\nLacie and\\nTillie;\\nand they lived at the bottom of a well.\\n\"\n\n\n\nsoup.text\n\n\"\\nThe Dormouse's story\\n\\nThe Dormouse's story\\nOnce upon a time there were three little sisters; and their names were\\nElsie,\\nLacie and\\nTillie;\\nand they lived at the bottom of a well.\\n\"\n\n\n\nprint(soup.text)\n\n\nThe Dormouse's story\n\nThe Dormouse's story\nOnce upon a time there were three little sisters; and their names were\nElsie,\nLacie and\nTillie;\nand they lived at the bottom of a well.\n\n\n\n     To see the title of the document, we run the following codes -\n\n# Navigating to Specific Tags \nsoup.head.title\n\n&lt;title&gt;The Dormouse's story&lt;/title&gt;\n\n\n\n# Getting Text from a Specific Tag\nsoup.head.title.text\n\n\"The Dormouse's story\"\n\n\n     To see the text, from a tag, we run the following code -\n\nsoup.body.a.text\n\n'Elsie'\n\n\n     To see the text, from p tag, we run the following code -\n\nsoup.body.p.text\n\n\"The Dormouse's story\"",
+    "crumbs": [
+      "Advanced Techniques and Applications",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Web Scraping and Textual Analytics</span>"
+    ]
+  },
+  {
+    "objectID": "advanced_analytics.html#searching-the-elements-of-tags",
+    "href": "advanced_analytics.html#searching-the-elements-of-tags",
+    "title": "9  Web Scraping and Textual Analytics",
+    "section": "9.5 Searching the Elements of Tags",
+    "text": "9.5 Searching the Elements of Tags\n\n     The find_all() function from beautifulsoup takes an HTML tag as an string argument and returns the list of elements that match the tag. For example, if we want to have all a tags in html data above, we will run the following code. Please note that there is another similar function called find(), which will return the first tag element.\n\nsoup.find_all('a')\n\n[&lt;a class=\"sister\" href=\"http://example.com/elsie\" id=\"link1\"&gt;Elsie&lt;/a&gt;,\n &lt;a class=\"sister\" href=\"http://example.com/lacie\" id=\"link2\"&gt;Lacie&lt;/a&gt;,\n &lt;a class=\"sister\" href=\"http://example.com/tillie\" id=\"link3\"&gt;Tillie&lt;/a&gt;]\n\n\n\nsoup.find('a')\n\n&lt;a class=\"sister\" href=\"http://example.com/elsie\" id=\"link1\"&gt;Elsie&lt;/a&gt;\n\n\n     We can also search for tags of a specific class as well by providing class_ argument. Beasutiful soup uses class_ because class is a reserved keyword in python. For example, let’s search for p tags that have element story.\n\nsoup.find_all(\"p\", class_ = \"title\")\n\n[&lt;p class=\"title\"&gt;&lt;b&gt;The Dormouse's story&lt;/b&gt;&lt;/p&gt;]\n\n\n\nsoup.find(\"p\", class_=\"story\")\n\n&lt;p class=\"story\"&gt;Once upon a time there were three little sisters; and their names were\n&lt;a class=\"sister\" href=\"http://example.com/elsie\" id=\"link1\"&gt;Elsie&lt;/a&gt;,\n&lt;a class=\"sister\" href=\"http://example.com/lacie\" id=\"link2\"&gt;Lacie&lt;/a&gt; and\n&lt;a class=\"sister\" href=\"http://example.com/tillie\" id=\"link3\"&gt;Tillie&lt;/a&gt;;\nand they lived at the bottom of a well.&lt;/p&gt;\n\n\n\nsoup.find(\"p\", class_=\"story\").get_text()\n\n'Once upon a time there were three little sisters; and their names were\\nElsie,\\nLacie and\\nTillie;\\nand they lived at the bottom of a well.'",
+    "crumbs": [
+      "Advanced Techniques and Applications",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Web Scraping and Textual Analytics</span>"
+    ]
+  },
+  {
+    "objectID": "advanced_analytics.html#sec-usebeautifulsoup",
+    "href": "advanced_analytics.html#sec-usebeautifulsoup",
+    "title": "9  Web Scraping and Textual Analytics",
+    "section": "9.6 Scrape a Website Using BeautifulSoup",
+    "text": "9.6 Scrape a Website Using BeautifulSoup\n\n     We have mastered some basic knowledge of Beautifulsoup. Therefore, it is now time to put our knowledge into practice. We are going to parse a website, which includes information about books. We would like to extract some data from the website. The data include - book url, title of the book, ratings of the book, price, and availability of the book. Before we start scraping the website, we need to identify the tags or CSS selectors that are relevant for our targeted data. Figure 9.3 shows how we can identify the tags or selectors relevant for our search. We should hover our cursor over the information that we plan to extract and then click right button of the mouse (on Windows) and click \"inspect\". Then we can see all tags and CSS selectors and other tags of the website. Figure 9.3 visualizes the whole process.\n\n\n\n\n\n\nFigure 9.3: How to Find the HTML tags and CSS Class\n\n\n\n     First, we need to import necessary python modules. We use requests module to get the website information.\n\n# importing requests \nimport requests\n# importing beautifulsoup\nfrom bs4 import BeautifulSoup\n# importing pandas \nimport pandas as pd\n\n     Then, we convert the data into soup object.\n\n# Fetch the website page \nurl = 'https://books.toscrape.com/catalogue/page-1.html'\nhtml = requests.get(url)\npage = html.text\n# Converting it into Soup Object \nsoup = BeautifulSoup(page, \"html.parser\")\n\n     After inspecting the tags and CSS selectors, we identify that article tag and product_pod class contains the information that we would like to extract. We use the find function from beautifulsuop to see our expected data. As noted before, find function identifies the first instance of the elements whereas find_all identifies all elements of the parsed HTML.\n\nsoup.find(\"article\", class_=\"product_pod\")\n\n&lt;article class=\"product_pod\"&gt;\n&lt;div class=\"image_container\"&gt;\n&lt;a href=\"a-light-in-the-attic_1000/index.html\"&gt;&lt;img alt=\"A Light in the Attic\" class=\"thumbnail\" src=\"../media/cache/2c/da/2cdad67c44b002e7ead0cc35693c0e8b.jpg\"/&gt;&lt;/a&gt;\n&lt;/div&gt;\n&lt;p class=\"star-rating Three\"&gt;\n&lt;i class=\"icon-star\"&gt;&lt;/i&gt;\n&lt;i class=\"icon-star\"&gt;&lt;/i&gt;\n&lt;i class=\"icon-star\"&gt;&lt;/i&gt;\n&lt;i class=\"icon-star\"&gt;&lt;/i&gt;\n&lt;i class=\"icon-star\"&gt;&lt;/i&gt;\n&lt;/p&gt;\n&lt;h3&gt;&lt;a href=\"a-light-in-the-attic_1000/index.html\" title=\"A Light in the Attic\"&gt;A Light in the ...&lt;/a&gt;&lt;/h3&gt;\n&lt;div class=\"product_price\"&gt;\n&lt;p class=\"price_color\"&gt;Â£51.77&lt;/p&gt;\n&lt;p class=\"instock availability\"&gt;\n&lt;i class=\"icon-ok\"&gt;&lt;/i&gt;\n    \n        In stock\n    \n&lt;/p&gt;\n&lt;form&gt;\n&lt;button class=\"btn btn-primary btn-block\" data-loading-text=\"Adding...\" type=\"submit\"&gt;Add to basket&lt;/button&gt;\n&lt;/form&gt;\n&lt;/div&gt;\n&lt;/article&gt;\n\n\n\nsoup.find_all(\"article\", class_=\"product_pod\")\n\n     Next, we check the url of each book. The a tag defines a hyperlink and the href is an attribute of a tag. Below, we use a tag to identify the link of each book.\n\nbooks = soup.find_all(\"article\", class_=\"product_pod\")\n\n\nsource_url = \"https://books.toscrape.com/catalogue\"\n\n\n# Book url \nfor h in soup.find_all(\"article\", class_=\"product_pod\"):\n    print(source_url+\"/\"+h.find('a')['href'])\n\nhttps://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html\nhttps://books.toscrape.com/catalogue/tipping-the-velvet_999/index.html\nhttps://books.toscrape.com/catalogue/soumission_998/index.html\nhttps://books.toscrape.com/catalogue/sharp-objects_997/index.html\nhttps://books.toscrape.com/catalogue/sapiens-a-brief-history-of-humankind_996/index.html\nhttps://books.toscrape.com/catalogue/the-requiem-red_995/index.html\nhttps://books.toscrape.com/catalogue/the-dirty-little-secrets-of-getting-your-dream-job_994/index.html\nhttps://books.toscrape.com/catalogue/the-coming-woman-a-novel-based-on-the-life-of-the-infamous-feminist-victoria-woodhull_993/index.html\nhttps://books.toscrape.com/catalogue/the-boys-in-the-boat-nine-americans-and-their-epic-quest-for-gold-at-the-1936-berlin-olympics_992/index.html\nhttps://books.toscrape.com/catalogue/the-black-maria_991/index.html\nhttps://books.toscrape.com/catalogue/starving-hearts-triangular-trade-trilogy-1_990/index.html\nhttps://books.toscrape.com/catalogue/shakespeares-sonnets_989/index.html\nhttps://books.toscrape.com/catalogue/set-me-free_988/index.html\nhttps://books.toscrape.com/catalogue/scott-pilgrims-precious-little-life-scott-pilgrim-1_987/index.html\nhttps://books.toscrape.com/catalogue/rip-it-up-and-start-again_986/index.html\nhttps://books.toscrape.com/catalogue/our-band-could-be-your-life-scenes-from-the-american-indie-underground-1981-1991_985/index.html\nhttps://books.toscrape.com/catalogue/olio_984/index.html\nhttps://books.toscrape.com/catalogue/mesaerion-the-best-science-fiction-stories-1800-1849_983/index.html\nhttps://books.toscrape.com/catalogue/libertarianism-for-beginners_982/index.html\nhttps://books.toscrape.com/catalogue/its-only-the-himalayas_981/index.html\n\n\n\n# Book url (Alternative) \nfor h in soup.find_all(\"article\", class_=\"product_pod\"):\n    print(h.h3.find('a')['href'])\n\na-light-in-the-attic_1000/index.html\ntipping-the-velvet_999/index.html\nsoumission_998/index.html\nsharp-objects_997/index.html\nsapiens-a-brief-history-of-humankind_996/index.html\nthe-requiem-red_995/index.html\nthe-dirty-little-secrets-of-getting-your-dream-job_994/index.html\nthe-coming-woman-a-novel-based-on-the-life-of-the-infamous-feminist-victoria-woodhull_993/index.html\nthe-boys-in-the-boat-nine-americans-and-their-epic-quest-for-gold-at-the-1936-berlin-olympics_992/index.html\nthe-black-maria_991/index.html\nstarving-hearts-triangular-trade-trilogy-1_990/index.html\nshakespeares-sonnets_989/index.html\nset-me-free_988/index.html\nscott-pilgrims-precious-little-life-scott-pilgrim-1_987/index.html\nrip-it-up-and-start-again_986/index.html\nour-band-could-be-your-life-scenes-from-the-american-indie-underground-1981-1991_985/index.html\nolio_984/index.html\nmesaerion-the-best-science-fiction-stories-1800-1849_983/index.html\nlibertarianism-for-beginners_982/index.html\nits-only-the-himalayas_981/index.html\n\n\n\n# Book Title \nfor h in soup.find_all(\"article\", class_=\"product_pod\"):\n    print(h.h3.find('a')['title'])\n\nA Light in the Attic\nTipping the Velvet\nSoumission\nSharp Objects\nSapiens: A Brief History of Humankind\nThe Requiem Red\nThe Dirty Little Secrets of Getting Your Dream Job\nThe Coming Woman: A Novel Based on the Life of the Infamous Feminist, Victoria Woodhull\nThe Boys in the Boat: Nine Americans and Their Epic Quest for Gold at the 1936 Berlin Olympics\nThe Black Maria\nStarving Hearts (Triangular Trade Trilogy, #1)\nShakespeare's Sonnets\nSet Me Free\nScott Pilgrim's Precious Little Life (Scott Pilgrim #1)\nRip it Up and Start Again\nOur Band Could Be Your Life: Scenes from the American Indie Underground, 1981-1991\nOlio\nMesaerion: The Best Science Fiction Stories 1800-1849\nLibertarianism for Beginners\nIt's Only the Himalayas\n\n\n\n# ratings \nsoup.find('p', class_='star-rating')['class'][1]\n\n'Three'\n\n\n\n# price \nsoup.find('p', class_='price_color').get_text().replace(\"Â\",'')\n\n'£51.77'\n\n\n\n# availability \nsoup.find('p', class_='instock availability').get_text().replace('\\n','').strip()\n\n'In stock'\n\n\n\n9.6.1 Putting All of the Above Actions Together\n     In Section 9.6, we identify and extract individual tags and data that we want to extract. Now, we will put all of them together and create a data frame. For this purpose, we will use for loop.\n\n# Fetch the Page \nurl = 'https://books.toscrape.com/catalogue/page-1.html'\nhtml = requests.get(url)\npage = html.text\n# Parse HTML Content\nsoup = BeautifulSoup(page, \"html.parser\")\n\n# Information We need \n\nbook_url = []\ntitle = []\nratings = []\nprice = []\navailability = []\n\n# Extract listings from the page\nbooks = soup.find_all(\"article\", class_=\"product_pod\")\nsource_url = \"https://books.toscrape.com/catalogue\"\n\nfor book in books:\n    # extract book url \n    book_url_text = source_url+\"/\"+book.find('a')['href']\n    book_url.append(book_url_text)\n\n    # extract title \n    title_text = book.h3.find('a')['title']\n    title.append(title_text)\n\n    # extract ratings \n    ratings_text = book.find('p', class_='star-rating')['class'][1]\n    ratings.append(ratings_text)\n\n    # extract price \n    price_text = book.find('p', class_='price_color').get_text().replace(\"Â\",'')\n    price.append(price_text)\n\n    # extract availability \n    availability_text = book.find('p', class_='instock availability').get_text().replace('\\n','').strip()\n    availability.append(availability_text)\n\n# Creating the Data Frame \n\npd.DataFrame({\n    'book_url':book_url,\n    'title':title,\n    'ratings':ratings,\n    'price':price,\n    'availability':availability\n})\n\n\n\n\n\n\n\n\n\nbook_url\ntitle\nratings\nprice\navailability\n\n\n\n\n0\nhttps://books.toscrape.com/catalogue/a-light-i...\nA Light in the Attic\nThree\n£51.77\nIn stock\n\n\n1\nhttps://books.toscrape.com/catalogue/tipping-t...\nTipping the Velvet\nOne\n£53.74\nIn stock\n\n\n2\nhttps://books.toscrape.com/catalogue/soumissio...\nSoumission\nOne\n£50.10\nIn stock\n\n\n3\nhttps://books.toscrape.com/catalogue/sharp-obj...\nSharp Objects\nFour\n£47.82\nIn stock\n\n\n4\nhttps://books.toscrape.com/catalogue/sapiens-a...\nSapiens: A Brief History of Humankind\nFive\n£54.23\nIn stock\n\n\n5\nhttps://books.toscrape.com/catalogue/the-requi...\nThe Requiem Red\nOne\n£22.65\nIn stock\n\n\n6\nhttps://books.toscrape.com/catalogue/the-dirty...\nThe Dirty Little Secrets of Getting Your Dream...\nFour\n£33.34\nIn stock\n\n\n7\nhttps://books.toscrape.com/catalogue/the-comin...\nThe Coming Woman: A Novel Based on the Life of...\nThree\n£17.93\nIn stock\n\n\n8\nhttps://books.toscrape.com/catalogue/the-boys-...\nThe Boys in the Boat: Nine Americans and Their...\nFour\n£22.60\nIn stock\n\n\n9\nhttps://books.toscrape.com/catalogue/the-black...\nThe Black Maria\nOne\n£52.15\nIn stock\n\n\n10\nhttps://books.toscrape.com/catalogue/starving-...\nStarving Hearts (Triangular Trade Trilogy, #1)\nTwo\n£13.99\nIn stock\n\n\n11\nhttps://books.toscrape.com/catalogue/shakespea...\nShakespeare's Sonnets\nFour\n£20.66\nIn stock\n\n\n12\nhttps://books.toscrape.com/catalogue/set-me-fr...\nSet Me Free\nFive\n£17.46\nIn stock\n\n\n13\nhttps://books.toscrape.com/catalogue/scott-pil...\nScott Pilgrim's Precious Little Life (Scott Pi...\nFive\n£52.29\nIn stock\n\n\n14\nhttps://books.toscrape.com/catalogue/rip-it-up...\nRip it Up and Start Again\nFive\n£35.02\nIn stock\n\n\n15\nhttps://books.toscrape.com/catalogue/our-band-...\nOur Band Could Be Your Life: Scenes from the A...\nThree\n£57.25\nIn stock\n\n\n16\nhttps://books.toscrape.com/catalogue/olio_984/...\nOlio\nOne\n£23.88\nIn stock\n\n\n17\nhttps://books.toscrape.com/catalogue/mesaerion...\nMesaerion: The Best Science Fiction Stories 18...\nOne\n£37.59\nIn stock\n\n\n18\nhttps://books.toscrape.com/catalogue/libertari...\nLibertarianism for Beginners\nTwo\n£51.33\nIn stock\n\n\n19\nhttps://books.toscrape.com/catalogue/its-only-...\nIt's Only the Himalayas\nTwo\n£45.17\nIn stock\n\n\n\n\n\n\n\n\n\n\n9.6.2 Doing the Same Things for All Pages\n     In Section 9.6.1, we scrape the first page of the website, but now we would like to scrape all pages of the website.\n\nurl1 = 'https://books.toscrape.com/catalogue/page-'\npages = range(51)\nurl2 = '.html'\n\n# Information We need \nbook_url = []\ntitle = []\nratings = []\nprice = []\navailability = []\n# Some other Information \nsource_url = \"https://books.toscrape.com/catalogue\"\n\nfor page in pages:\n    url = url1+str(page)+url2\n    r = requests.get(url)\n    soup = BeautifulSoup(r.text, 'html.parser')\n    books = soup.find_all(\"article\", class_=\"product_pod\")\n\n    for book in books:\n        # extract book url \n        book_url_text = source_url+\"/\"+book.find('a')['href']\n        book_url.append(book_url_text)\n\n        # extract title \n        title_text = book.h3.find('a')['title']\n        title.append(title_text)\n\n        # extract ratings \n        ratings_text = book.find('p', class_='star-rating')['class'][1]\n        ratings.append(ratings_text)\n\n        # extract price \n        price_text = book.find('p', class_='price_color').get_text().replace(\"Â\",'')\n        price.append(price_text)\n\n        # extract availability \n        availability_text = book.find('p', class_='instock availability').get_text().replace('\\n','').strip()\n        availability.append(availability_text)\n    \n\n\n\n# Creating the Data Frame \npd.DataFrame({\n    'book_url':book_url,\n    'title':title,\n    'ratings':ratings,\n    'price':price,\n    'availability':availability\n})\n\n\n\n\n\n\n\n\n\nbook_url\ntitle\nratings\nprice\navailability\n\n\n\n\n0\nhttps://books.toscrape.com/catalogue/a-light-i...\nA Light in the Attic\nThree\n£51.77\nIn stock\n\n\n1\nhttps://books.toscrape.com/catalogue/tipping-t...\nTipping the Velvet\nOne\n£53.74\nIn stock\n\n\n2\nhttps://books.toscrape.com/catalogue/soumissio...\nSoumission\nOne\n£50.10\nIn stock\n\n\n3\nhttps://books.toscrape.com/catalogue/sharp-obj...\nSharp Objects\nFour\n£47.82\nIn stock\n\n\n4\nhttps://books.toscrape.com/catalogue/sapiens-a...\nSapiens: A Brief History of Humankind\nFive\n£54.23\nIn stock\n\n\n...\n...\n...\n...\n...\n...\n\n\n995\nhttps://books.toscrape.com/catalogue/alice-in-...\nAlice in Wonderland (Alice's Adventures in Won...\nOne\n£55.53\nIn stock\n\n\n996\nhttps://books.toscrape.com/catalogue/ajin-demi...\nAjin: Demi-Human, Volume 1 (Ajin: Demi-Human #1)\nFour\n£57.06\nIn stock\n\n\n997\nhttps://books.toscrape.com/catalogue/a-spys-de...\nA Spy's Devotion (The Regency Spies of London #1)\nFive\n£16.97\nIn stock\n\n\n998\nhttps://books.toscrape.com/catalogue/1st-to-di...\n1st to Die (Women's Murder Club #1)\nOne\n£53.98\nIn stock\n\n\n999\nhttps://books.toscrape.com/catalogue/1000-plac...\n1,000 Places to See Before You Die\nFive\n£26.08\nIn stock\n\n\n\n\n1000 rows × 5 columns\n\n\n\n\n\n\n9.7 Conclusion",
+    "crumbs": [
+      "Advanced Techniques and Applications",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Web Scraping and Textual Analytics</span>"
+    ]
+  },
+  {
+    "objectID": "advanced_analytics.html#conclusion",
+    "href": "advanced_analytics.html#conclusion",
+    "title": "9  Web Scraping and Textual Analytics",
+    "section": "9.7 Conclusion",
+    "text": "9.7 Conclusion",
+    "crumbs": [
+      "Advanced Techniques and Applications",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Web Scraping and Textual Analytics</span>"
+    ]
+  },
+  {
+    "objectID": "fraud.html",
+    "href": "fraud.html",
+    "title": "10  Fraud Detection and Risk Management",
+    "section": "",
+    "text": "10.1 Techniques for Fraud Detection",
+    "crumbs": [
+      "Advanced Techniques and Applications",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Fraud Detection and Risk Management</span>"
+    ]
+  },
+  {
+    "objectID": "fraud.html#risk-assessment-models",
+    "href": "fraud.html#risk-assessment-models",
+    "title": "10  Fraud Detection and Risk Management",
+    "section": "10.2 Risk Assessment Models",
+    "text": "10.2 Risk Assessment Models",
+    "crumbs": [
+      "Advanced Techniques and Applications",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Fraud Detection and Risk Management</span>"
+    ]
+  },
+  {
+    "objectID": "fraud.html#case-studies-in-fraud-detection",
+    "href": "fraud.html#case-studies-in-fraud-detection",
+    "title": "10  Fraud Detection and Risk Management",
+    "section": "10.3 Case Studies in Fraud Detection",
+    "text": "10.3 Case Studies in Fraud Detection",
+    "crumbs": [
+      "Advanced Techniques and Applications",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Fraud Detection and Risk Management</span>"
+    ]
+  },
+  {
+    "objectID": "performance_measurement.html",
+    "href": "performance_measurement.html",
+    "title": "11  Performance Measurement and Management",
+    "section": "",
+    "text": "11.1 Key Performance Indicators (KPIs)",
+    "crumbs": [
+      "Advanced Techniques and Applications",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Performance Measurement and Management</span>"
+    ]
+  },
+  {
+    "objectID": "performance_measurement.html#balanced-scorecard",
+    "href": "performance_measurement.html#balanced-scorecard",
+    "title": "11  Performance Measurement and Management",
+    "section": "11.2 Balanced Scorecard",
+    "text": "11.2 Balanced Scorecard",
+    "crumbs": [
+      "Advanced Techniques and Applications",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Performance Measurement and Management</span>"
+    ]
+  },
+  {
+    "objectID": "performance_measurement.html#financial-ratio-analysis",
+    "href": "performance_measurement.html#financial-ratio-analysis",
+    "title": "11  Performance Measurement and Management",
+    "section": "11.3 Financial Ratio Analysis",
+    "text": "11.3 Financial Ratio Analysis",
+    "crumbs": [
+      "Advanced Techniques and Applications",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Performance Measurement and Management</span>"
+    ]
+  },
+  {
+    "objectID": "ethics.html",
+    "href": "ethics.html",
+    "title": "12  Regulatory and Ethical Considerations",
+    "section": "",
+    "text": "12.1 Compliance and Regulatory Requirements",
+    "crumbs": [
+      "Practical Considerations and Future Directions",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Regulatory and Ethical Considerations</span>"
+    ]
+  },
+  {
+    "objectID": "ethics.html#ethichal-use-of-data",
+    "href": "ethics.html#ethichal-use-of-data",
+    "title": "12  Regulatory and Ethical Considerations",
+    "section": "12.2 Ethichal Use of Data",
+    "text": "12.2 Ethichal Use of Data",
+    "crumbs": [
+      "Practical Considerations and Future Directions",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Regulatory and Ethical Considerations</span>"
+    ]
+  },
+  {
+    "objectID": "ethics.html#data-privacy-security",
+    "href": "ethics.html#data-privacy-security",
+    "title": "12  Regulatory and Ethical Considerations",
+    "section": "12.3 Data Privacy & Security",
+    "text": "12.3 Data Privacy & Security",
+    "crumbs": [
+      "Practical Considerations and Future Directions",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Regulatory and Ethical Considerations</span>"
+    ]
+  },
+  {
+    "objectID": "future.html",
+    "href": "future.html",
+    "title": "13  Future Directions in Accounting Analytics",
+    "section": "",
+    "text": "13.1 Emerging Technologies",
+    "crumbs": [
+      "Practical Considerations and Future Directions",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Future Directions in Accounting Analytics</span>"
+    ]
+  },
+  {
+    "objectID": "future.html#trends-predictions",
+    "href": "future.html#trends-predictions",
+    "title": "13  Future Directions in Accounting Analytics",
+    "section": "13.2 Trends & Predictions",
+    "text": "13.2 Trends & Predictions",
+    "crumbs": [
+      "Practical Considerations and Future Directions",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Future Directions in Accounting Analytics</span>"
+    ]
+  },
+  {
+    "objectID": "future.html#preparing-for-the-future-accounting-analytics",
+    "href": "future.html#preparing-for-the-future-accounting-analytics",
+    "title": "13  Future Directions in Accounting Analytics",
+    "section": "13.3 Preparing for the Future Accounting Analytics",
+    "text": "13.3 Preparing for the Future Accounting Analytics",
+    "crumbs": [
+      "Practical Considerations and Future Directions",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Future Directions in Accounting Analytics</span>"
+    ]
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "References",
+    "section": "",
+    "text": "Alles, Michael G. 2015. “Drivers of the Use and Facilitators and\nObstacles of the Evolution of Big Data by the Audit Profession.”\nAccounting Horizons 29 (2): 439–49. https://publications.aaahq.org/accounting-horizons/article-abstract/29/2/439/2188.\n\n\nAlles, Michael, and Glen L. Gray. 2016. “Incorporating Big Data in\nAudits: Identifying Inhibitors and a Research Agenda to\nAddress Those Inhibitors.” International Journal of\nAccounting Information Systems 22: 44–59. https://www.sciencedirect.com/science/article/pii/S1467089516300811.\n\n\nAmerican Institute of Certified Public Accountants (AICPA). 2015.\n“Audit Analytics and Continuous\nAudit: Looking Toward the\nFuture.”\n\n\n———. 2017. “Description Criteria for\nManagement’s Description of the\nEntity’s Cybersecurity Risk\nManagement Program.”\n\n\nAppelbaum, Deniz. 2016. “Securing Big Data Provenance for\nAuditors: The Big Data Provenance Black Box as Reliable\nEvidence.” Journal of Emerging Technologies in\nAccounting 13 (1): 17–36. https://publications.aaahq.org/jeta/article-abstract/13/1/17/9219.\n\n\nAppelbaum, Deniz, Alexander Kogan, and Miklos A. Vasarhelyi. 2017.\n“Big Data and Analytics in the Modern Audit\nEngagement: Research Needs.” Auditing: A Journal\nof Practice & Theory 36 (4): 1–27. https://publications.aaahq.org/ajpt/article-abstract/36/4/1/6016.\n\n\nBarr-Pulliam, Dereck, Helen L. Brown-Liburd, and Amanda G. Carlson.\n2023. “Do Audit Data\nAnalytics Influence Juror\nPerceptions of Audit Quality and\nAuditor Negligence?” Current Issues\nin Auditing 17 (2): P1–10. https://publications.aaahq.org/cia/article/17/2/P1/10096.\n\n\nBarton, Dominic, and David Court. 2012. “Making Advanced Analytics\nWork for You.” Harvard Business Review 90 (10): 78–83.\nhttp://www.buyukverienstitusu.com/s/1870/i/Making_Advanced_Analytics_Work_For_You.pdf.\n\n\nBollen, Johan, Huina Mao, and Xiaojun Zeng. 2011. “Twitter Mood\nPredicts the Stock Market.” Journal of Computational\nScience 2 (1): 1–8. https://www.sciencedirect.com/science/article/pii/S187775031100007X.\n\n\nCao, Min, Roman Chychyla, and Trevor Stewart. 2015. “Big Data\nAnalytics in Financial Statement Audits.” Accounting\nHorizons 29 (2): 423–29. https://publications.aaahq.org/accounting-horizons/article-abstract/29/2/423/2177.\n\n\nColumbus. 2017. “53% Of Companies\nAre Adopting Big\nData Analytics.” Forbes. https://www.forbes.com/sites/louiscolumbus/2017/12/24/53-of-companies-are-adopting-big-data-analytics/?sh=6c98f39939a1.\n\n\nCrawley, Michael, and James Wahlen. 2014. “Analytics in\nEmpirical/Archival Financial Accounting Research.” Business\nHorizons 57 (5): 583–93. https://www.sciencedirect.com/science/article/pii/S0007681314000792.\n\n\nDai, Jun, and Miklos A. Vasarhelyi. 2016. “Imagineering\nAudit 4.0.” Journal of Emerging Technologies in\nAccounting 13 (1): 1–15. https://publications.aaahq.org/jeta/article-abstract/13/1/1/9242.\n\n\nDavis, Angela K., Jeremy M. Piger, and Lisa M. Sedor. 2012.\n“Beyond the Numbers: Measuring the\nInformation Content of Earnings\nPress Release Language.”\nContemporary Accounting Research 29 (3): 845–68. https://doi.org/10.1111/j.1911-3846.2011.01130.x.\n\n\nDeloitte. 2016. “Tax Data Analytics\nA New Era for Tax\nPlanning and Compliance.” https://www2.deloitte.com/content/dam/Deloitte/us/Documents/Tax/us-tax-data-analytics-a-new-era-for-tax-planning-and-compliance.pdf.\n\n\nFeldman, Ronen, Suresh Govindaraj, Joshua Livnat, and Benjamin Segal.\n2010. “Management’s Tone Change, Post Earnings Announcement Drift\nand Accruals.” Review of Accounting Studies 15 (4):\n915–53. https://doi.org/10.1007/s11142-009-9111-x.\n\n\nKrahel, John Peter, and William R. Titera. 2015. “Consequences of\nBig Data and Formalization on Accounting and Auditing Standards.”\nAccounting Horizons 29 (2): 409–22. https://publications.aaahq.org/accounting-horizons/article/29/2/409/2149.\n\n\nLehavy, Reuven, Feng Li, and Kenneth Merkley. 2011. “The Effect of\nAnnual Report Readability on Analyst Following and the Properties of\nTheir Earnings Forecasts.” The Accounting Review 86 (3):\n1087–1115. https://publications.aaahq.org/accounting-review/article-abstract/86/3/1087/3300.\n\n\nLi, Feng. 2008. “Annual Report Readability, Current Earnings, and\nEarnings Persistence.” Journal of Accounting and\nEconomics 45 (2-3): 221–47. https://www.sciencedirect.com/science/article/pii/S0165410108000141.\n\n\n———. 2010. “The Information Content of\nForward‐Looking Statements in\nCorporate Filings—A\nNaïve Bayesian Machine\nLearning Approach.” Journal of\nAccounting Research 48 (5): 1049–1102. https://doi.org/10.1111/j.1475-679X.2010.00382.x.\n\n\nLi, Feng, Russell Lundholm, and Michael Minnis. 2013. “A\nMeasure of Competition Based on\n10‐K Filings.” Journal of\nAccounting Research 51 (2): 399–436. https://doi.org/10.1111/j.1475-679X.2012.00472.x.\n\n\nProtiviti. 2017. “Embracing Analytics in\nAuditing.” https://www.protiviti.com/sites/default/files/2022-06/2017-internal-audit-capabilities-and-needs-survey-protiviti.pdf.\n\n\nProvost, Foster, and Tom Fawcett. 2013. “Data Science\nand Its Relationship to Big Data\nand Data-Driven Decision\nMaking.” Big Data 1 (1): 51–59. https://doi.org/10.1089/big.2013.1508.\n\n\nRichins, Greg, Andrea Stapleton, Theophanis C. Stratopoulos, and\nChristopher Wong. 2017. “Big Data Analytics: Opportunity or Threat\nfor the Accounting Profession?” Journal of Information\nSystems 31 (3): 63–79. https://publications.aaahq.org/jis/article-abstract/31/3/63/1114.\n\n\nRose, Anna M., Jacob M. Rose, Kerri-Ann Sanderson, and Jay C. Thibodeau.\n2017. “When Should Audit Firms Introduce Analyses of Big Data into\nthe Audit Process?” Journal of Information Systems 31\n(3): 81–99. https://publications.aaahq.org/jis/article-abstract/31/3/81/1123.\n\n\nSchneider, Gary P., Jun Dai, Diane J. Janvrin, Kemi Ajayi, and Robyn L.\nRaschke. 2015. “Infer, Predict, and Assure:\nAccounting Opportunities in Data Analytics.”\nAccounting Horizons 29 (3): 719–42. https://publications.aaahq.org/accounting-horizons/article-abstract/29/3/719/2262.\n\n\nSivarajah, Uthayasankar, Muhammad Mustafa Kamal, Zahir Irani, and\nVishanth Weerakkody. 2017. “Critical Analysis of Big\nData Challenges and Analytical Methods.” Journal\nof Business Research 70: 263–86. https://www.sciencedirect.com/science/article/pii/S014829631630488X.\n\n\nThe Economist. 2017. “The World’s Most Valuable Resource Is No\nLonger Oil, but Data.” https://www.economist.com/leaders/2017/05/06/the-worlds-most-valuable-resource-is-no-longer-oil-but-data.\n\n\nVasarhelyi, Miklos A., Alexander Kogan, and Brad M. Tuttle. 2015.\n“Big Data in Accounting: An Overview.”\nAccounting Horizons 29 (2): 381–96. https://publications.aaahq.org/accounting-horizons/article-abstract/29/2/381/2184.\n\n\nVerver, John. 2015. “Six Audit Analytics\nSuccess Factors.” Internal\nAuditor 72 (3).\n\n\nWarren, J. Donald, Kevin C. Moffitt, and Paul Byrnes. 2015. “How\nBig Data Will Change Accounting.” Accounting Horizons 29\n(2): 397–407. https://publications.aaahq.org/accounting-horizons/article/29/2/397/2168.\n\n\nYoon, Kyunghee, Lucas Hoogduin, and Li Zhang. 2015. “Big Data as\nComplementary Audit Evidence.” Accounting Horizons 29\n(2): 431–38. https://publications.aaahq.org/accounting-horizons/article/29/2/431/2215.\n\n\nZhang, Juan, Xiongsheng Yang, and Deniz Appelbaum. 2015. “Toward\nEffective Big Data Analysis in Continuous Auditing.”\nAccounting Horizons 29 (2): 469–76. https://publications.aaahq.org/accounting-horizons/article/29/2/469/2160.",
+    "crumbs": [
+      "References"
+    ]
+  },
+  {
+    "objectID": "dashboard.html",
+    "href": "dashboard.html",
+    "title": "5  Dashboard for Visualization",
+    "section": "",
+    "text": "Learning Objectives of the Chapter",
+    "crumbs": [
+      "Data Exploration and Management",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Dashboard for Visualization</span>"
+    ]
+  },
+  {
+    "objectID": "dashboard.html#what-is-dashboard",
+    "href": "dashboard.html#what-is-dashboard",
+    "title": "5  Dashboard for Visualization",
+    "section": "5.1 What is Dashboard?",
+    "text": "5.1 What is Dashboard?\n\n     A dashboard for visualization is a user interface that displays a collection of visual data representations, such as charts, graphs, tables, and metrics, to provide users with an interactive and comprehensive overview of key information. Dashboards are commonly used in business, data science, finance, healthcare, and other fields to monitor performance, track metrics, and explore data trends in real time.\n     The main goal of a dashboard is to present complex data in an easy-to-understand format, enabling users to quickly grasp insights and make data-driven decisions. Dashboards often combine multiple visual elements into a single screen or page, allowing users to view different aspects of the data simultaneously. They typically include interactive features like filters, drill-downs, and tooltips, which allow users to interact with the data and explore deeper insights without needing to understand the underlying data structures. Some benefits of dashboards are -\n\nData Aggregation: Dashboards bring together data from various sources, providing a unified view of different datasets.\nVisualization Elements: They use visual elements such as bar charts, line graphs, pie charts, heatmaps, and more to represent data in a visually appealing and informative way.\nInteractivity: Users can interact with the visual elements, applying filters, adjusting time frames, or drilling down into specific data points to gain more detailed insights.\nReal-Time Data: Dashboards can display real-time data, updating visualizations dynamically to reflect the latest information, which is especially useful for monitoring live systems or business performance.\nCustomization: Dashboards are highly customizable, allowing users to tailor the layout, visualizations, and data to meet their specific needs.\n\n     Dashboards for visualization are widely used for performance monitoring (e.g., tracking KPIs), data exploration (e.g., identifying trends), and decision-making (e.g., comparing metrics). They make data analysis more accessible to a wider audience by simplifying the complexity of raw data into clear and actionable insights.",
+    "crumbs": [
+      "Data Exploration and Management",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Dashboard for Visualization</span>"
+    ]
+  },
+  {
+    "objectID": "dashboard.html#importance-of-dashboard",
+    "href": "dashboard.html#importance-of-dashboard",
+    "title": "5  Dashboard for Visualization",
+    "section": "5.2 Importance of Dashboard",
+    "text": "5.2 Importance of Dashboard",
+    "crumbs": [
+      "Data Exploration and Management",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Dashboard for Visualization</span>"
+    ]
+  },
+  {
+    "objectID": "dashboard.html#interactive-dashboard",
+    "href": "dashboard.html#interactive-dashboard",
+    "title": "5  Dashboard for Visualization",
+    "section": "5.3 Interactive Dashboard",
+    "text": "5.3 Interactive Dashboard\n     For interactive visualization, see Figure 5.3.",
+    "crumbs": [
+      "Data Exploration and Management",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Dashboard for Visualization</span>"
+    ]
+  },
+  {
+    "objectID": "dashboard.html#quarto---r-and-python-dashboard",
+    "href": "dashboard.html#quarto---r-and-python-dashboard",
+    "title": "5  Dashboard for Visualization",
+    "section": "5.4 Quarto - R and Python Dashboard",
+    "text": "5.4 Quarto - R and Python Dashboard\n\n     Quarto Dashboard is a powerful and flexible open-source tool to create interactive dashboard in R or Python. Quarto dashboards are easy to create and support a wide variety of visualization and interactive components1. More about quarto dashboard can be learned from Quarto Dashboard Website. To learn more about interactivity on quarto dashboard using Shiny, please visit webpages for R and Python. However, it is recommended to use Python for quarto dashboard if you want to include interactive applications on your dashboard.\n     There are several components of quarto dashboard:\n\nNavigation Bar - Top page bar with icon, title of the dashboard, name of author and links to sub-pages\nPages, Rows, Columns, and Tabsets - Using markdown headings (#) - pages, rows and columns are defined. Tabsets are used to further divide the content within a row or column\nCards, Sidebar, and Toolbars - Cards are containers for text, images, charts, and interactive elements and useful for organizing information into distinct sections within a dashboard. Typically, the contents of cards map to cells in the dashboard. Sidebar is another layout component of quarto dashboard, which contain navigation menus, filters, and controls that allow users to adjust or explore the data presented in the main content. Toolbars ….\n\n     The first step to create a quarto dashboard is to structure YAML in .qmd file. A quarto dashboard YAML look like -\n\n\n\n\n\n\nFigure 5.1: Quarto Dashboard YAML\n\n\n\n     In quarto dashboard, each level 1 header (#) introduces a new page, each level 2 header (##) introduces a new row within the given page, and each code chunk within a given row introduces a new column.\n\n\n\n\n\n\nFigure 5.2: Quarto Dashboard Structure\n\n\n\n     Some other attributes (Table 5.1) that can be added to the quarto dashboard’s rows or columns include -\n\n\n\nTable 5.1: Some Additional Attributes\n\n\n\n\n\n\n\n\n\nAttribute\nExplanation\n\n\n\n\n{width=} and {height=}\nSet the size of columns, rows, and boxes\n\n\n{orientation=}\nsets the dashboard layout to either rows or columns. This is a global option set in the YAML. However, if your dashboard has multiple pages and you want to specify the orientation for each page, remove orientation: from the YAML and use this attribute instead\n\n\n{.tabset}\ndivide columns, rows, or charts into tabs\n\n\n{.sidebar}\ntypically creates a sidebar on the page\n\n\n{.hidden}\nexcludes a specific page from the navigation bar",
+    "crumbs": [
+      "Data Exploration and Management",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Dashboard for Visualization</span>"
+    ]
+  },
+  {
+    "objectID": "dashboard.html#vizro---python-dashboard",
+    "href": "dashboard.html#vizro---python-dashboard",
+    "title": "5  Dashboard for Visualization",
+    "section": "5.5 Vizro - Python Dashboard",
+    "text": "5.5 Vizro - Python Dashboard\n\n     Built on top of Dash and Plottly, Vizro is a powerful python module to create a dashboard. A vizro dashboard consists of several objects. The first object is Page. Each page contains several other sub-objects such as Comonents, which can include Graphs and Tables, Filters, which can be sliders, dropdown boxes and other buttons, and optional Actions. To learn more about Vizro, we can explore Vizro document website and developer website. The key benefits of Vizro include:\n\nLow-code and Configuration - Vizro only needs a few lines of code code, thus replacing thousand lines of codes and saving valuable time\nIn-built Best Practices - Vizro already incorporates standards for visual design and software development.\nSelf-service Visualization - Vizro readily assemble dashboards without advanced design or coding experience\nOptional High-code Extensions - Vizro enables limitless customization for advanced users with complex needs\nModularity - Vizro leverage components that are simple to swap, reuse, maintain, share and scale\nFlexibilit and Scalability - Vizro enables data science ready and to develop python based data visualization applications\n\n\n\n# Dashboard Creation \nfrom vizro import Vizro\nimport vizro.models as vm\nimport vizro.plotly.express as px\n\n# Data Visualization \nimport seaborn as sns\nimport matplotlib.pyplot as plt\nimport pandas as pd\nimport numpy as np\n\n\n# loading dataset \nimport palmerpenguins\ndf = palmerpenguins.load_penguins()\n\n\n5.5.1 Standalone Page on Vizro Dashboard (Example # 01)\n\nVizro._reset()\n\nfirst_page = vm.Page(\n    title= \" \", \n    components= [\n        vm.Graph(\n            id = 'boxplot', \n            figure = px.box (df, x = 'species', y = 'bill_length_mm', \n            color = 'species', \n            labels={'species':'Species', 'bill_length_mm':'Bill Length (mm)'})\n        ),\n    ],\n)\n\ndashboard = vm.Dashboard(pages=[first_page])\nVizro().build(dashboard).run()\n\n\n\n\n        \n        \n\n\nFigure 5.3: A Sample of Vizro Dashboard\n\n\n\n\n\n\n5.5.2 Standalone Page on Vizro Dashboard (Example # 02)\n\n# loading dataset \ndf = px.data.gapminder()\ngapminder_data = (\n        df.groupby(by=[\"continent\", \"year\"]).\n            agg({\"lifeExp\": \"mean\", \"pop\": \"sum\", \"gdpPercap\": \"mean\"}).reset_index()\n    )\n\n\nVizro._reset()\nsecond_page = vm.Page(\n    title=\"First Page\",\n    components=[\n        vm.Card(\n            text=\"\"\"\n                # First dashboard page\n                This pages shows the inclusion of markdown text in a page and how components\n                can be structured using Layout.\n            \"\"\",\n        ),\n        vm.Graph(\n            figure=px.box(gapminder_data, x=\"continent\", y=\"lifeExp\", color=\"continent\",\n                            labels={\"lifeExp\": \"Life Expectancy\", \"continent\": \"Continent\"}),\n        ),\n        vm.Graph(\n            figure=px.line(gapminder_data, x=\"year\", y=\"gdpPercap\", color=\"continent\",\n                            labels={\"year\": \"Year\", \"continent\": \"Continent\",\n                            \"gdpPercap\":\"GDP Per Cap\"}, title=''),\n        ),\n\n    ],\n)\n\ndashboard2 = vm.Dashboard(pages=[second_page])\nVizro().build(dashboard2).run()\n\n\n\n5.5.3 Multiple Pages on Vizro Dashboard\n\nVizro._reset()\n\nthird_page = vm.Page(\n    title=\"First Page\",\n    layout=vm.Layout(grid=[[0, 0], [1, 2], [1, 2], [1, 2]]),\n    components=[\n        vm.Card(\n            text=\"\"\"\n                # First dashboard page\n                This pages shows the inclusion of markdown text in a page and how components\n                can be structured using Layout.\n            \"\"\",\n        ),\n        vm.Graph(\n            figure=px.box(gapminder_data, x=\"continent\", y=\"lifeExp\", color=\"continent\",\n                            labels={\"lifeExp\": \"Life Expectancy\", \"continent\": \"Continent\"}),\n        ),\n        vm.Graph(\n            figure=px.line(gapminder_data, x=\"year\", y=\"gdpPercap\", color=\"continent\",\n                            labels={\"year\": \"Year\", \"continent\": \"Continent\",\n                            \"gdpPercap\":\"GDP Per Cap\"}),\n            ),\n    ],\n)\n\ndashboard3 = vm.Dashboard(pages=[third_page])\nVizro().build(dashboard3).run()\n\n\nVizro._reset()\n\nsecond_page = vm.Page(\n    title=\"Second Page\",\n    components=[\n        vm.Card(\n            text=\"\"\"\n                # First dashboard page\n                This pages shows the inclusion of markdown text in a page and how components\n                can be structured using Layout.\n            \"\"\",\n        ),\n        vm.Graph(\n            figure=px.box(gapminder_data, x=\"continent\", y=\"lifeExp\", color=\"continent\",\n                            labels={\"lifeExp\": \"Life Expectancy\", \"continent\": \"Continent\"}),\n        ),\n        vm.Graph(\n            figure=px.line(gapminder_data, x=\"year\", y=\"gdpPercap\", color=\"continent\",\n                            labels={\"year\": \"Year\", \"continent\": \"Continent\",\n                            \"gdpPercap\":\"GDP Per Cap\"}, title=''),\n        ),\n\n    ],\n)\n\nthird_page = vm.Page(\n    title=\"Third Page\",\n    layout=vm.Layout(grid=[[0, 0], [1, 2], [1, 2], [1, 2]]),\n    components=[\n        vm.Card(\n            text=\"\"\"\n                # First dashboard page\n                This pages shows the inclusion of markdown text in a page and how components\n                can be structured using Layout.\n            \"\"\",\n        ),\n        vm.Graph(\n            figure=px.box(gapminder_data, x=\"continent\", y=\"lifeExp\", color=\"continent\",\n                            labels={\"lifeExp\": \"Life Expectancy\", \"continent\": \"Continent\"}),\n        ),\n        vm.Graph(\n            figure=px.line(gapminder_data, x=\"year\", y=\"gdpPercap\", color=\"continent\",\n                            labels={\"year\": \"Year\", \"continent\": \"Continent\",\n                            \"gdpPercap\":\"GDP Per Cap\"}),\n            ),\n    ],\n)\n\ndashboard4 = vm.Dashboard(pages=[second_page, third_page])\nVizro().build(dashboard4).run()",
+    "crumbs": [
+      "Data Exploration and Management",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Dashboard for Visualization</span>"
+    ]
+  },
+  {
+    "objectID": "dashboard.html#conclusions",
+    "href": "dashboard.html#conclusions",
+    "title": "5  Dashboard for Visualization",
+    "section": "5.6 Conclusions",
+    "text": "5.6 Conclusions",
+    "crumbs": [
+      "Data Exploration and Management",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Dashboard for Visualization</span>"
+    ]
+  },
+  {
+    "objectID": "dashboard.html#exercises",
+    "href": "dashboard.html#exercises",
+    "title": "5  Dashboard for Visualization",
+    "section": "5.7 Exercises",
+    "text": "5.7 Exercises\n\nCreate a dashboard from Adidas (Ticker:ADR) sales data (Adidas US Sales Datasets.csv).",
+    "crumbs": [
+      "Data Exploration and Management",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Dashboard for Visualization</span>"
+    ]
+  },
+  {
+    "objectID": "dashboard.html#footnotes",
+    "href": "dashboard.html#footnotes",
+    "title": "5  Dashboard for Visualization",
+    "section": "",
+    "text": "Shiny widgets and functionality can be incorporated in the quarto dashboard. Therefore, quarto dashboard is a powerful tool for creating interactive visualization.↩︎",
+    "crumbs": [
+      "Data Exploration and Management",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Dashboard for Visualization</span>"
+    ]
+  }
+]

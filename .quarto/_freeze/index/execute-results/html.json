@@ -1,0 +1,15 @@
+{
+  "hash": "cdb1711a4cbb19554cacf3dc3d075138",
+  "result": {
+    "engine": "knitr",
+    "markdown": "::: {.cell}\n<style type=\"text/css\">\n.justify {\n  text-align: justify !important\n}\n</style>\n:::\n\n\n![](images/titlepage_1_alt.webp){fig-align=\"right\"}\n\n\n:::{.justify}\nWelcome to the online home of *__Analytics for Accounting Data__*, which is slated to be published future. It will be available for purchase in both paperback and hardback, with pre-ordering available now on both Amazon and online.\n:::\n\n\n# Preface {.unnumbered}\n\nThis is a Quarto book.\n\nTo learn more about Quarto books visit <https://quarto.org/docs/books>.\n\n\n::: {.cell}\n\n```{.r .cell-code}\n1 + 1\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n[1] 2\n```\n\n\n:::\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\n# To get more idea about how to develop a book in Quarto\n# Please see the following links -\n# https://bradcongelio.com/nfl-analytics-with-r-book/\n# https://github.com/bcongelio/nfl-analytics-with-r-book\n# https://github.com/hadley/r4ds/\n# https://r4ds.hadley.nz/\n```\n:::\n\n\n# About the Book {.unnumbered}\n\nThe book is written for the students in undergraduate and graduate programs. \n\n# About the Author {.unnumbered}\n\n\n::: {.cell}\n<style type=\"text/css\">\n.justify {\n  text-align: justify !important\n}\n</style>\n:::\n\n\n:::{.justify}\nSharif Islam, DBA, CPA, CMA is an Assistant professor in School of Accountancy in Southern Illinois University Carbondale (SIUC). He is a licensed CPA in Illinois and a Certified Management Accountant (CMA). He teaches Machine Learning, Analytics for Accounting Data, Auditing, and Accounting Information Systems. He did his doctorate from Louisiana Tech University in Computer Information Systems and Accounting. He published research in  *Accounting Horizons*, *Journal of Accounting and Public Policy*, *Journal of Emerging Technologies in Accounting*, *Issues in Accounting Education*, *Advances in Accounting*  and *Managerial Auditing Journal*. His research interests lie at the intersection of Accounting and Data Science. \n:::\n\n\n# How to Read the Book {.unnumbered}\n\n# Acknowledgment {.unnumbered}\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

@@ -1,0 +1,519 @@
+---
+title: "Web Scraping and Textual Analytics"
+format: html
+---
+
+### Learning Objectives of the Chapter {.unnumbered}
+
+::: {style="text-align: justify"}
+
+At the End of the Chapter, Students should be Able to - 
+
+* Gain an understanding about web scraping and its importance 
+
+* Understand the website structures for web scraping
+
+* Use Python modules to scrape websites 
+
+* Scrape `EDGAR` website to extract quantitative and qualitative data of different companies  
+
+* Perform textual analytics on different text data scraped from website 
+
+:::
+
+## What is Web Scraping?
+
+::: {style="text-align: justify"}
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Web scraping refers to the techniques of accessing websites and collecting information from them. Having web scraping knowledge is important nowadays because a vast amount of data is available on websites and in many occasions we need to access, collect, and analyze those data. Web scraping is also called "web harvesting" or "web data extraction". 
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Web scraping is employed in different kinds of practical applications. For example, companies scrape websites of their competitors to keep track of their pricing, which can help companies to form a competitive pricing strategy. Moreover, marketers and analysts scrape different social media platforms to analyze public sentiment about their products, brands, or events, which help them to gauge public opinions and ultimately tailor their products or services to meet or exceed customers' expectations.  
+
+:::
+
+## Legal and Ethical Consideration of Web Scraping 
+
+::: {style="text-align: justify"}
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;As good citizens on the internet, it is incumbent on us to respect the policies of the websites we plan to scrape. Therefore, before we decide to scrape a website, we must take into consideration the legal and ethical aspects of scraping.  
+
+:::
+
+### Legal Framework of Web Scraping 
+
+::: {style="text-align: justify"}
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Before scraping a website, we must evaluate the following legal considerations - 
+
+
+1. **Terms of Service**: Please check the terms of service of the website because some sites explicitly prohibit scraping and violating terms of service might result in legal action. 
+
+2. **Copyright Law**: In most cases, data published online is protected by copyright. As such, it is important to know beforehand what you can legally collect from the website by scraping  and how you can use the scraped data. 
+
+3. **Computer Fraud and Abuse Act (CFAA)**: In the US, the Computer Fraud and Abuse Act (CFAA) was enacted in 1986. The CFAA prohibits intentionally accessing a computer without authorization or in excess of authorization. You might violate CFAA if a website has taken steps to block scraping and you circumvent those measures. 
+
+4. **Data Protection Law**: Beacause of different kinds of data protection law such as General Data Protection Regulation (GDPR) in Europe or similar law in other jurisdictions, it has become very critical to deal with personal data. If you scrape personal data, you must comply with such laws, which typically include requirements for consent, data minimization, and secure handling of the data.   
+
+:::
+
+
+
+### Ethical Considerations of Web Scraping 
+
+::: {style="text-align: justify"}
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In addition to legal considerations, you should also behave ethically when you try to scrape a website. Ethical considerations though aligns with legal considerations, they extend to the idea of good citizenship on the web. Some important ethical considerations during webscraping include - 
+
+1. Web scraping might be equivalent to Distriubted of Denial of Service (DDOS) attack if too many requests are sent to the targeted websites, thus disrupting the regular functioning of the website. Therefore, while web scraping, we should scrape in such a way so that it does not disrupt the usage of the website by other legitimate users. Further, you should not try to scrape a website if it prohibits web scraping. Some websites have `robots.txt` file, which defines what can be scraped from the website. So please invesitage a website well before you decide to scrape it. 
+
+2. How the scraped data will be used is an important considerations even if the data are publicly available. Using the web scraped data in a way that is detrimental to individual or businesses is unethical. Further, you should also consider the ramifications of publishing or sharing the scraped data.   
+
+:::
+
+## Understanding HTML and CSS Selectors 
+
+::: {style="text-align: justify"}
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Websites are usually created by using HTML - HyperText Markup Language, which describes the structure of a web page and includes cues for the apperance of a website. Therefore, having some knowledge on HTML will help you to scrape a website. HTML document uses different kinds of tags to identify or refer to different elements. A typical HTML document has following elements - 
+
+`<!DOCTYPE>` : Defines the document type 
+
+`<html>`     : Defines the HTML document 
+
+`<head>`     : Contains metadata or information for the document
+
+`<body>`     : Defines the document body such as text, images, and other media
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;More about HTML tags can be found [here](https://www.w3schools.com/tags/ref_byfunc.asp). Here is an example of a basic HTML structure - 
+
+```{python}
+#| eval: false
+
+<html><head><title>The Dormouse's story</title></head>
+<body>
+<p class="title"><b>The Dormouse's story</b></p>
+<p class="story">Once upon a time there were three little sisters; and their names were
+<a href="http://example.com/elsie" class="sister" id="link1">Elsie</a>,
+<a href="http://example.com/lacie" class="sister" id="link2">Lacie</a> and
+<a href="http://example.com/tillie" class="sister" id="link3">Tillie</a>;
+and they lived at the bottom of a well.</p>
+</body></html>
+
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In addition to HTML tags, CSS (Cascading Style Sheets) selectors are used to style different elements in the website. In web scraping, we use CSS selectors to identify the data we want to extract. There are different types of CSS selectors: 
+
+1.  **Element Selector**: Selects all elements of a specific type. For example, `p` selects all `<p>` elements. 
+
+2. **ID Selector**: Selects a single element with a specific id. The ID selector is defined with a hash (`#`). For example, `#navbar` selects the element with `id="navbar"`. 
+
+3. **Class Selector**: Selects all elements with a specific class. The class selector is defined with a dot (`.`). For example, `.menu-item` selects all elements with `class="menu-item"`.
+
+4. **Attribute Selector**: Selects elements with a specific attribute or attribute value. For example, `[href]` selects all elements with an `href` attribute. 
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Below is an example of CSS selectors - 
+
+```{python}
+#| eval: false
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #header {
+            background-color: #f2f2f2;
+        }
+        .highlight {
+            font-weight: bold;
+        }
+        a[href^="https"] {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div id="header">This is the header</div>
+    <p class="highlight">This paragraph is highlighted.</p>
+    <a href="https://example.com">This link is green because it uses HTTPS.</a>
+</body>
+</html>
+
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In the above code, `#header` selects the `<div>` with the ID of "header," `.highlight` selects any element with the "highlight" class, and `a[href^="https"]` selects anchor tags (`<a>`) whose `href` attribute value begins with "https". Understanding how to use these CSS selectors are very important while web scraping websites. 
+
+:::
+
+## An Overview of Beautiful Soup 
+
+::: {style="text-align: justify"}
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`Beautifulsoup` is a python module that is widely used to scrape and parse websites. `Beautifulsoup` has many useful functions that can be easily used to extract data from HTML. @fig-beautifulsoupprocess shows the basic work process `Beautifulsoup` uses. It is clear from @fig-beautifulsoupprocess that using `Beautifulsoup`, we can extract data by finding HTML tag names, by CSS class names, and so on.   
+
+![Beautiful Soup Process](images/beautiful_soup_process.jpg){#fig-beautifulsoupprocess}
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The following python code can be run to install and import `Beautifulsoup` module. 
+
+```{python}
+#| eval: false
+
+# installing beautifulsoup 
+pip install beautifulsoup4
+
+# importing beautifulsoup
+from bs4 import BeautifulSoup
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;When we use `BeautifulSoup` to scrape a website, one of the most critical tasks is to identify the tags or CSS selectors from which we want to extract text or data. These targets are called Document Object Model (DOM). The DOM is a programming interface for web documents. Visualize HTML code of a webpage as an upside-down tree. Each HTML element - headings, paragraphs, and links - is a node in the tree. @fig-dom shows a basic tree structure of an HTML page.    
+
+![Tree Structure of HTML Page](images/dom.png){#fig-dom}
+
+
+::: 
+
+
+### An Example of Web Scraping 
+
+::: {style="text-align: justify"}
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Below we provide a small example of webscraping. We create a webpage called `html`, which includes different tags and CSS selectors.   
+
+
+```{python}
+# an HTML file data 
+
+html = """
+<html><head><title>The Dormouse's story</title></head>
+<body>
+<p class="title"><b>The Dormouse's story</b></p>
+<p class="story">Once upon a time there were three little sisters; and their names were
+<a href="http://example.com/elsie" class="sister" id="link1">Elsie</a>,
+<a href="http://example.com/lacie" class="sister" id="link2">Lacie</a> and
+<a href="http://example.com/tillie" class="sister" id="link3">Tillie</a>;
+and they lived at the bottom of a well.</p>
+</body></html>"""
+
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Then we import `BeautifulSoup` from beautifulsoup. 
+
+```{python}
+# importing beautiful soup 
+from bs4 import BeautifulSoup
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Next, we convert the `html` into beautifulsoup object and name it `soup`. In `BeautifulSoup ()`function, we use the built-in parser called `html.parser`. We can also use other parsers such as `lxml` or `html5lib`. Each of these parsers has their own pros and cons. For example, `lxml` is the fastest and `html.parser` does not need extra dependencies. 
+
+
+
+```{python}
+# Converting HTML data into Beautiful Soup Object 
+soup = BeautifulSoup(html, "html.parser")
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The `prettify()` function will turn a soup object into a nicely formatted Unicode string, witha a separate line for each tag and each string. 
+
+```{python}
+soup.prettify()
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;We can use `get_text()` function to see the text element of the tags. `text` is a property (attribute) of soup object, which calls `get_text` function. 
+
+
+```{python}
+soup.get_text()
+```
+
+
+```{python}
+soup.text
+```
+
+
+```{python}
+print(soup.text)
+```
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To see the title of the document, we run the following codes - 
+```{python}
+# Navigating to Specific Tags 
+soup.head.title
+```
+
+```{python}
+# Getting Text from a Specific Tag
+soup.head.title.text
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To see the text, from `a` tag, we run the following code - 
+
+```{python}
+soup.body.a.text
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To see the text, from `p` tag, we run the following code - 
+
+```{python}
+soup.body.p.text
+```
+
+:::
+
+
+## Searching the Elements of Tags 
+
+::: {style="text-align: justify"}
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The `find_all()` function from beautifulsoup takes an HTML tag as an string argument and returns the list of elements that match the tag. For example, if we want to have all `a` tags in `html` data above, we will run the following code. Please note that there is another similar function called `find()`, which will return the first tag element.  
+
+```{python}
+soup.find_all('a')
+```
+
+```{python}
+soup.find('a')
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;We can also search for tags of a specific class as well by providing `class_` argument. Beasutiful soup uses `class_` because `class` is a reserved keyword in python. For example, let's search for `p` tags that have element `story`. 
+
+```{python}
+soup.find_all("p", class_ = "title")
+```
+
+```{python}
+soup.find("p", class_="story")
+```
+
+
+```{python}
+soup.find("p", class_="story").get_text()
+```
+
+:::
+
+
+## Scrape a Website Using BeautifulSoup{#sec-usebeautifulsoup}
+
+::: {style="text-align: justify"}
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;We have mastered some basic knowledge of Beautifulsoup. Therefore, it is now time to put our knowledge into practice. We are going to parse a [website](https://books.toscrape.com/catalogue/page-1.html), which includes information about books. We would like to extract some data from the website. The data include - book url, title of the book, ratings of the book, price, and availability of the book. Before we start scraping the website, we need to identify the tags or CSS selectors that are relevant for our targeted data. @fig-webscrapeExample shows how we can identify the tags or selectors relevant for our search. We should hover our cursor  over the information that we plan to extract and then click right button of the mouse (on Windows) and click `"inspect"`. Then we can see all tags and CSS selectors and other tags of the website. @fig-webscrapeExample visualizes the whole process. 
+
+
+![How to Find the HTML tags and CSS Class](images/first_webscraping2.gif){#fig-webscrapeExample}
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;First, we need to import necessary python modules. We use `requests` module to get the website information. 
+
+```{python}
+# importing requests 
+import requests
+# importing beautifulsoup
+from bs4 import BeautifulSoup
+# importing pandas 
+import pandas as pd
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Then, we convert the data into `soup` object. 
+
+```{python}
+# Fetch the website page 
+url = 'https://books.toscrape.com/catalogue/page-1.html'
+html = requests.get(url)
+page = html.text
+# Converting it into Soup Object 
+soup = BeautifulSoup(page, "html.parser")
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;After inspecting the tags and CSS selectors, we identify that `article` tag and `product_pod` class contains the information that we would like to extract. We use the `find` function from `beautifulsuop` to see our expected data. As noted before, `find` function identifies the first instance of the elements whereas `find_all` identifies all elements of the parsed HTML. 
+
+
+```{python}
+soup.find("article", class_="product_pod")
+```
+
+
+```{python}
+#| eval: false
+soup.find_all("article", class_="product_pod")
+```
+
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Next, we check the url of each book. The `a` tag defines a hyperlink and the `href` is an attribute of `a` tag. Below, we use `a` tag to identify the link of each book.  
+
+
+```{python}
+books = soup.find_all("article", class_="product_pod")
+```
+
+
+```{python}
+source_url = "https://books.toscrape.com/catalogue"
+```
+
+
+```{python}
+# Book url 
+for h in soup.find_all("article", class_="product_pod"):
+    print(source_url+"/"+h.find('a')['href'])
+
+```
+
+```{python}
+# Book url (Alternative) 
+for h in soup.find_all("article", class_="product_pod"):
+    print(h.h3.find('a')['href'])
+
+```
+
+```{python}
+# Book Title 
+for h in soup.find_all("article", class_="product_pod"):
+    print(h.h3.find('a')['title'])
+
+```
+
+
+
+```{python}
+# ratings 
+soup.find('p', class_='star-rating')['class'][1]
+
+```
+
+```{python}
+# price 
+soup.find('p', class_='price_color').get_text().replace("Â",'')
+
+```
+
+```{python}
+# availability 
+soup.find('p', class_='instock availability').get_text().replace('\n','').strip()
+
+```
+
+
+### Putting All of the Above Actions Together {#sec-onepage}
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In @sec-usebeautifulsoup, we identify and extract individual tags and data that we want to extract. Now, we will put all of them together and create a data frame. For this purpose, we will use `for loop`. 
+
+```{python}
+# Fetch the Page 
+url = 'https://books.toscrape.com/catalogue/page-1.html'
+html = requests.get(url)
+page = html.text
+# Parse HTML Content
+soup = BeautifulSoup(page, "html.parser")
+
+# Information We need 
+
+book_url = []
+title = []
+ratings = []
+price = []
+availability = []
+
+# Extract listings from the page
+books = soup.find_all("article", class_="product_pod")
+source_url = "https://books.toscrape.com/catalogue"
+
+for book in books:
+    # extract book url 
+    book_url_text = source_url+"/"+book.find('a')['href']
+    book_url.append(book_url_text)
+
+    # extract title 
+    title_text = book.h3.find('a')['title']
+    title.append(title_text)
+
+    # extract ratings 
+    ratings_text = book.find('p', class_='star-rating')['class'][1]
+    ratings.append(ratings_text)
+
+    # extract price 
+    price_text = book.find('p', class_='price_color').get_text().replace("Â",'')
+    price.append(price_text)
+
+    # extract availability 
+    availability_text = book.find('p', class_='instock availability').get_text().replace('\n','').strip()
+    availability.append(availability_text)
+
+# Creating the Data Frame 
+
+pd.DataFrame({
+    'book_url':book_url,
+    'title':title,
+    'ratings':ratings,
+    'price':price,
+    'availability':availability
+})
+
+
+```
+
+
+
+### Doing the Same Things for All Pages 
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In @sec-onepage, we scrape the first page of the website, but now we would like to scrape all pages of the website. 
+
+```{python}
+url1 = 'https://books.toscrape.com/catalogue/page-'
+pages = range(51)
+url2 = '.html'
+
+# Information We need 
+book_url = []
+title = []
+ratings = []
+price = []
+availability = []
+# Some other Information 
+source_url = "https://books.toscrape.com/catalogue"
+
+for page in pages:
+    url = url1+str(page)+url2
+    r = requests.get(url)
+    soup = BeautifulSoup(r.text, 'html.parser')
+    books = soup.find_all("article", class_="product_pod")
+
+    for book in books:
+        # extract book url 
+        book_url_text = source_url+"/"+book.find('a')['href']
+        book_url.append(book_url_text)
+
+        # extract title 
+        title_text = book.h3.find('a')['title']
+        title.append(title_text)
+
+        # extract ratings 
+        ratings_text = book.find('p', class_='star-rating')['class'][1]
+        ratings.append(ratings_text)
+
+        # extract price 
+        price_text = book.find('p', class_='price_color').get_text().replace("Â",'')
+        price.append(price_text)
+
+        # extract availability 
+        availability_text = book.find('p', class_='instock availability').get_text().replace('\n','').strip()
+        availability.append(availability_text)
+    
+
+
+
+# Creating the Data Frame 
+pd.DataFrame({
+    'book_url':book_url,
+    'title':title,
+    'ratings':ratings,
+    'price':price,
+    'availability':availability
+})
+
+```
+
+## Conclusion 
+
+
+:::

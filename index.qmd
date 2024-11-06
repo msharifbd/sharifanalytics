@@ -1,0 +1,56 @@
+
+
+```{css, echo = FALSE}
+.justify {
+  text-align: justify !important
+}
+```
+
+![](images/titlepage_1_alt.webp){fig-align="right"}
+
+
+:::{.justify}
+Welcome to the online home of *__Analytics for Accounting Data__*, which is slated to be published future. It will be available for purchase in both paperback and hardback, with pre-ordering available now on both Amazon and online.
+:::
+
+
+# Preface {.unnumbered}
+
+This is a Quarto book.
+
+To learn more about Quarto books visit <https://quarto.org/docs/books>.
+
+```{r}
+1 + 1
+```
+
+```{r}
+# To get more idea about how to develop a book in Quarto
+# Please see the following links -
+# https://bradcongelio.com/nfl-analytics-with-r-book/
+# https://github.com/bcongelio/nfl-analytics-with-r-book
+# https://github.com/hadley/r4ds/
+# https://r4ds.hadley.nz/
+```
+
+# About the Book {.unnumbered}
+
+The book is written for the students in undergraduate and graduate programs. 
+
+# About the Author {.unnumbered}
+
+```{css, echo = FALSE}
+.justify {
+  text-align: justify !important
+}
+```
+
+:::{.justify}
+Sharif Islam, DBA, CPA, CMA is an Assistant professor in School of Accountancy in Southern Illinois University Carbondale (SIUC). He is a licensed CPA in Illinois and a Certified Management Accountant (CMA). He teaches Machine Learning, Analytics for Accounting Data, Auditing, and Accounting Information Systems. He did his doctorate from Louisiana Tech University in Computer Information Systems and Accounting. He published research in  *Accounting Horizons*, *Journal of Accounting and Public Policy*, *Journal of Emerging Technologies in Accounting*, *Issues in Accounting Education*, *Advances in Accounting*  and *Managerial Auditing Journal*. His research interests lie at the intersection of Accounting and Data Science. 
+:::
+
+
+# How to Read the Book {.unnumbered}
+
+# Acknowledgment {.unnumbered}
+

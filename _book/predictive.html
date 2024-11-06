@@ -1,0 +1,2080 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.551">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Analytics for Accounting Data - 7&nbsp; Predictive Modeling - Linear Regression</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./prescriptive.html" rel="next">
+<link href="./data_management.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./predictive.html">Predictive and Prescriptive Analytics</a></li><li class="breadcrumb-item"><a href="./predictive.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Predictive Modeling - Linear Regression</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Analytics for Accounting Data</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Introduction to Accounting Analytics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Overview of Accounting Analytics</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./foundations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Foundations of Accounting Data</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Data Exploration and Management</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./eda.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./visualization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data Visualization</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./dashboard.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Dashboard for Visualization</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data_management.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Data Management in Accounting</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Predictive and Prescriptive Analytics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./predictive.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Predictive Modeling - Linear Regression</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./prescriptive.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Prescriptive Analytics in Accounting</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Advanced Techniques and Applications</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./advanced_analytics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Web Scraping and Textual Analytics</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./fraud.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Fraud Detection and Risk Management</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./performance_measurement.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Performance Measurement and Management</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text">Practical Considerations and Future Directions</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ethics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Regulatory and Ethical Considerations</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./future.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Future Directions in Accounting Analytics</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter1_solution.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Chapter 1 Solution</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter2_solution.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Chapter 2 Solution</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#learning-objectives-of-the-chapter" id="toc-learning-objectives-of-the-chapter" class="nav-link active" data-scroll-target="#learning-objectives-of-the-chapter">Learning Objectives of the Chapter</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction"><span class="header-section-number">7.1</span> Introduction</a></li>
+  <li><a href="#regression-analysis" id="toc-regression-analysis" class="nav-link" data-scroll-target="#regression-analysis"><span class="header-section-number">7.2</span> Regression Analysis</a>
+  <ul class="collapse">
+  <li><a href="#simple-linear-regression" id="toc-simple-linear-regression" class="nav-link" data-scroll-target="#simple-linear-regression"><span class="header-section-number">7.2.1</span> Simple Linear Regression</a></li>
+  </ul></li>
+  <li><a href="#evaluating-linear-regression-models---assessing-the-fitness" id="toc-evaluating-linear-regression-models---assessing-the-fitness" class="nav-link" data-scroll-target="#evaluating-linear-regression-models---assessing-the-fitness"><span class="header-section-number">7.2.2</span> Evaluating Linear Regression Models - Assessing the Fitness</a></li>
+  <li><a href="#assumptions-of-linear-regression" id="toc-assumptions-of-linear-regression" class="nav-link" data-scroll-target="#assumptions-of-linear-regression"><span class="header-section-number">7.2.3</span> Assumptions of Linear Regression</a></li>
+  <li><a href="#multiple-linear-regression" id="toc-multiple-linear-regression" class="nav-link" data-scroll-target="#multiple-linear-regression"><span class="header-section-number">7.2.4</span> Multiple Linear Regression</a></li>
+  <li><a href="#time-series-analysis" id="toc-time-series-analysis" class="nav-link" data-scroll-target="#time-series-analysis"><span class="header-section-number">7.3</span> Time Series Analysis</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">7.4</span> Exercises</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./predictive.html">Predictive and Prescriptive Analytics</a></li><li class="breadcrumb-item"><a href="./predictive.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Predictive Modeling - Linear Regression</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Predictive Modeling - Linear Regression</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="learning-objectives-of-the-chapter" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="learning-objectives-of-the-chapter">Learning Objectives of the Chapter</h3>
+<div style="text-align: justify">
+<p>At the End of the Chapter, Students should be Able to -</p>
+<ul>
+<li><p>Learn about Linear Regression</p></li>
+<li><p>Identify Linear Relation between Variables</p></li>
+<li><p>Build Linear Regression Model between Variables</p></li>
+<li><p>Learn about How to Evaluate the Fitness of Linear Models</p></li>
+<li><p>Evaluate the Assumptions of Linear Regressions</p></li>
+<li><p>Build Multiple Regression Models and Evaluate them</p></li>
+</ul>
+</div>
+</section>
+<section id="introduction" class="level2" style="text-align: justify" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">7.1</span> Introduction</h2>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Discussion on predictive analytics.</p>
+</section>
+<section id="regression-analysis" class="level2" style="text-align: justify" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="regression-analysis"><span class="header-section-number">7.2</span> Regression Analysis</h2>
+<section id="simple-linear-regression" class="level3" data-number="7.2.1">
+<h3 data-number="7.2.1" class="anchored" data-anchor-id="simple-linear-regression"><span class="header-section-number">7.2.1</span> Simple Linear Regression</h3>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Regression analysis is one of very useful predictive modeling techniques that identify the relationship between two or more variables. The objective of linear regression is to identify a linear line of best fit that can predict the outcome variable (target variable/dependent variable/response variable) for one or more independent variables(predictors). For example, we can draw a scatter diagram to see the relation between horsepower and miles per gallon (MPG). <a href="#fig-r-hrspower-mpg" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-r-hrspower-mpg</span></a> and <a href="#fig-py-hrspower-mpg" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-py-hrspower-mpg</span></a> show the relationship between horsepower and MPG in R and Python respectively. It is clear that there exists a negative relationship between horsepower and MPG and it makes sense because more power means higher fuel consumption. Similarly, there is negative relationship between vehicle weight and MPG because heavier vehicles need more energy to move (<a href="#fig-r-weight-mpg" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-r-weight-mpg</span></a> and <a href="#fig-py-weight-mpg" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-py-weight-mpg</span></a>). The equation of a simple linear regression is - <span class="math display">\[y= mX + C\]</span></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;where <span class="math inline">\(y\)</span> = Target variable (Dependent variable); <span class="math inline">\(m\)</span> = slope or rate of change; <span class="math inline">\(X\)</span> = predictor or independent variable; and <span class="math inline">\(C\)</span> = intercept or constant.</p>
+</section>
+</section>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Python</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># loading necessary packages </span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># loading the dataset </span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>r_df <span class="ot">=</span> <span class="fu">read_csv</span>(<span class="st">'http://web.pdx.edu/~gerbing/data/cars.csv'</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span> (r_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 392
+Columns: 9
+$ Model         &lt;chr&gt; "amc ambassador dpl", "amc gremlin", "amc hornet", "amc …
+$ MPG           &lt;dbl&gt; 15, 21, 18, 16, 14, 15, 18, 14, 15, 10, 15, 11, 10, 15, …
+$ Cylinders     &lt;dbl&gt; 8, 6, 6, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 6, 8, 8, 8, 6,…
+$ `Engine Disp` &lt;dbl&gt; 390, 199, 199, 304, 455, 350, 307, 454, 400, 307, 383, 3…
+$ Horsepower    &lt;dbl&gt; 190, 90, 97, 150, 225, 165, 130, 220, 150, 200, 170, 210…
+$ Weight        &lt;dbl&gt; 3850, 2648, 2774, 3433, 3086, 3693, 3504, 4354, 3761, 43…
+$ Accelerate    &lt;dbl&gt; 8.5, 15.0, 15.5, 12.0, 10.0, 11.5, 12.0, 9.0, 9.5, 15.0,…
+$ Year          &lt;dbl&gt; 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, …
+$ Origin        &lt;chr&gt; "American", "American", "American", "American", "America…</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># loading necessary modules </span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># loading the dataset </span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>py_df <span class="op">=</span> pd.read_csv(<span class="st">"http://web.pdx.edu/~gerbing/data/cars.csv"</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>py_df.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 392 entries, 0 to 391
+Data columns (total 9 columns):
+ #   Column       Non-Null Count  Dtype  
+---  ------       --------------  -----  
+ 0   Model        392 non-null    object 
+ 1   MPG          392 non-null    float64
+ 2   Cylinders    392 non-null    int64  
+ 3   Engine Disp  392 non-null    float64
+ 4   Horsepower   392 non-null    int64  
+ 5   Weight       392 non-null    int64  
+ 6   Accelerate   392 non-null    float64
+ 7   Year         392 non-null    int64  
+ 8   Origin       392 non-null    object 
+dtypes: float64(3), int64(4), object(2)
+memory usage: 27.7+ KB</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Python</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(r_df, <span class="fu">aes</span>(<span class="at">x =</span> Horsepower, <span class="at">y =</span> MPG))<span class="sc">+</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-r-hrspower-mpg" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-r-hrspower-mpg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="predictive_files/figure-html/fig-r-hrspower-mpg-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-r-hrspower-mpg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.1: Relationship between Horsepower and MPG
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>sns.set_theme(style<span class="op">=</span><span class="st">"darkgrid"</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(x <span class="op">=</span> <span class="st">"Horsepower"</span>, y <span class="op">=</span> <span class="st">"MPG"</span>, data <span class="op">=</span> py_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-py-hrspower-mpg" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-py-hrspower-mpg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="predictive_files/figure-html/fig-py-hrspower-mpg-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-py-hrspower-mpg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.2: Relationship between Horsepower and MPG
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Python</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(r_df, <span class="fu">aes</span>(<span class="at">x =</span> Weight, <span class="at">y =</span> MPG))<span class="sc">+</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-r-weight-mpg" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-r-weight-mpg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="predictive_files/figure-html/fig-r-weight-mpg-3.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-r-weight-mpg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.3: Relationship between Weight and MPG
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>sns.set_theme(style<span class="op">=</span><span class="st">"darkgrid"</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(x <span class="op">=</span> <span class="st">"Weight"</span>, y <span class="op">=</span> <span class="st">"MPG"</span>, data <span class="op">=</span> py_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-py-weight-mpg" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-py-weight-mpg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="predictive_files/figure-html/fig-py-weight-mpg-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-py-weight-mpg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.4: Relationship between Weight and MPG
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div style="text-align: justify">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Now we can quantify these relationships using linear regression in which we will try to draw a line that will help us to idenfity the relation between the variables. For example, in <a href="#fig-r-reg-equation" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-r-reg-equation</span></a>, we can see the linear line that shows the relation between horsepower and MPG. The regression equation we find is <code>y = 40-0.16x</code>, where <span class="math inline">\(y\)</span> is MPG, <span class="math inline">\(x\)</span> is Horsepower, <span class="math inline">\(40\)</span> is intercept, and <span class="math inline">\(1.6\)</span> is slope, which means one unit change of Horsepower results in 1.6 units reduction of MPG and the value of MPG is 40 when horsepower is 0. <a href="#fig-py-reg-equation" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-py-reg-equation</span></a> shows the same results.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">Python</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(r_df, <span class="fu">aes</span> (<span class="at">x =</span> Horsepower, <span class="at">y =</span> MPG))<span class="sc">+</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)<span class="sc">+</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_regline_equation</span>(<span class="at">label.x =</span> <span class="dv">125</span>, <span class="at">label.y =</span> <span class="dv">40</span>)  <span class="co"># to add reg equation</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-r-reg-equation" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-r-reg-equation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="predictive_files/figure-html/fig-r-reg-equation-3.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-r-reg-equation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.5: Regression of Horsepower and MPG
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotnine <span class="im">as</span> p9</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co">#calculate best fit line</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>slope, intercept, r_value, p_value, std_err <span class="op">=</span> stats.linregress(py_df[<span class="st">'Horsepower'</span>],py_df[<span class="st">'MPG'</span>])</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>py_df[<span class="st">'fit'</span>]<span class="op">=</span>py_df.Horsepower<span class="op">*</span>slope<span class="op">+</span>intercept</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co">#format text </span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>txt<span class="op">=</span> <span class="st">'y = </span><span class="sc">{:.4f}</span><span class="st"> x + </span><span class="sc">{:.4f}</span><span class="st">'</span>.<span class="bu">format</span>(<span class="bu">round</span>(slope,<span class="dv">2</span>), <span class="bu">round</span>(intercept,<span class="dv">2</span>))</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co">#create plot.</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>plot<span class="op">=</span>(p9.ggplot(data<span class="op">=</span>py_df, mapping<span class="op">=</span> p9.aes(<span class="st">'Horsepower'</span>,<span class="st">'MPG'</span>))</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> p9.geom_point(p9.aes())</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> p9.xlab(<span class="st">'Horsepower'</span>)<span class="op">+</span> p9.ylab(<span class="vs">r'MPG'</span>)</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> p9.geom_line(p9.aes(x<span class="op">=</span><span class="st">'Horsepower'</span>, y<span class="op">=</span><span class="st">'fit'</span>), color<span class="op">=</span><span class="st">'blue'</span>)</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> p9.annotate(<span class="st">'text'</span>, x<span class="op">=</span> <span class="dv">150</span>, y <span class="op">=</span> <span class="dv">40</span>, label <span class="op">=</span> txt))</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="co"># print the plot</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(plot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-py-reg-equation" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-py-reg-equation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="predictive_files/figure-html/fig-py-reg-equation-1.png" class="img-fluid figure-img" width="614">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-py-reg-equation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.6: Regression of Horsepower and MPG
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<section id="relationship-between-stock-returns-and-a-market-index" class="level4" data-number="7.2.1.1">
+<h4 data-number="7.2.1.1" class="anchored" data-anchor-id="relationship-between-stock-returns-and-a-market-index"><span class="header-section-number">7.2.1.1</span> Relationship between Stock Returns and a Market Index</h4>
+<div style="text-align: justify">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Now we will try to build a simple linear model between the return of a stock and a market index. Using <code>tidyquant</code> package from <code>R</code> or <code>yfinance</code> module from <code>python</code>, we will get share prices of different stocks and a market index. For example, we will get the share price data of Coca-Cola (NYSE:KO) and its competitor PepsiCO (NYSE:PEP). Moreover, we will collect data on US Dollar index (ICE:DX) and SPDR S&amp;P500 ETF (NYSERCA:SPY).</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false">Python</a></li></ul>
+<div class="tab-content">
+<div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyquant)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>tickers <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"KO"</span>, <span class="st">"SPY"</span>, <span class="st">"PEP"</span>,<span class="st">"DX-Y.NYB"</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>prices <span class="ot">&lt;-</span> <span class="fu">tq_get</span>(tickers,</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">from =</span> <span class="st">"2019-01-01"</span>,</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">to =</span> <span class="st">"2023-12-31"</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>                 <span class="co">#,get = "stock.prices"</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>                 )</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>df_stockR <span class="ot">=</span> prices <span class="sc">|&gt;</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(symbol, date, adjusted) <span class="sc">|&gt;</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">drop_na</span>(adjusted) <span class="sc">|&gt;</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_wider</span>(<span class="at">id_cols =</span> date,<span class="at">names_from =</span> symbol, </span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_from =</span> adjusted)</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>df_stockR <span class="ot">=</span> <span class="fu">as_tibble</span>(<span class="fu">na.omit</span>(<span class="fu">CalculateReturns</span>(df_stockR, <span class="at">method =</span> <span class="st">"log"</span>)))</span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Linear Regression </span></span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(fixest)</span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a><span class="co"># feols(KO ~ SPY, data = df_stockR)</span></span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(KO <span class="sc">~</span> SPY, <span class="at">data =</span> df_stockR))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = KO ~ SPY, data = df_stockR)
+
+Residuals:
+      Min        1Q    Median        3Q       Max 
+-0.086587 -0.005092  0.000230  0.005503  0.054322 
+
+Coefficients:
+              Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) -7.427e-05  2.920e-04  -0.254    0.799    
+SPY          6.595e-01  2.198e-02  30.009   &lt;2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.01034 on 1255 degrees of freedom
+Multiple R-squared:  0.4178,    Adjusted R-squared:  0.4173 
+F-statistic: 900.5 on 1 and 1255 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">=</span> <span class="fu">lm</span>(KO <span class="sc">~</span> SPY, <span class="at">data =</span> df_stockR)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># adding fitted value to the dataset </span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>df_stockR<span class="sc">$</span>fitted <span class="ot">=</span> <span class="fu">fitted</span>(model)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># adding residual to the dataset </span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>df_stockR<span class="sc">$</span>residual <span class="ot">=</span> <span class="fu">resid</span>(model)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co"># We can use broom package to simplify all of these processes </span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>df_stockR2 <span class="ot">=</span> df_stockR  <span class="sc">|&gt;</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(KO<span class="sc">:</span>DX.Y.NYB)</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>model2 <span class="ot">=</span> <span class="fu">lm</span>(KO <span class="sc">~</span> SPY, <span class="at">data =</span> df_stockR2) </span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(model2) <span class="co"># summary of model components </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 5
+  term          estimate std.error statistic   p.value
+  &lt;chr&gt;            &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
+1 (Intercept) -0.0000743  0.000292    -0.254 7.99e-  1
+2 SPY          0.660      0.0220      30.0   1.36e-149</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(model2) <span class="co"># information about model fitness </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 12
+  r.squared adj.r.squared  sigma statistic   p.value    df logLik    AIC    BIC
+      &lt;dbl&gt;         &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+1     0.418         0.417 0.0103      901. 1.36e-149     1  3964. -7921. -7906.
+# ℹ 3 more variables: deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">augment</span>(model2, <span class="at">data =</span> df_stockR2) <span class="co"># adds info to the dataset </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,257 × 10
+         KO       SPY      PEP DX.Y.NYB  .fitted   .resid    .hat .sigma .cooksd
+      &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
+ 1 -0.00620 -0.0242   -9.38e-3 -5.28e-3 -1.60e-2  9.80e-3 3.56e-3 0.0103 1.61e-3
+ 2  0.0197   0.0329    2.03e-2 -1.25e-3  2.17e-2 -1.91e-3 5.53e-3 0.0103 9.54e-5
+ 3 -0.0131   0.00785  -8.64e-3 -5.00e-3  5.11e-3 -1.82e-2 1.03e-3 0.0103 1.61e-3
+ 4  0.0112   0.00935   9.54e-3  1.98e-3  6.09e-3  5.13e-3 1.14e-3 0.0103 1.41e-4
+ 5 -0.0194   0.00466  -2.83e-2 -7.12e-3  3.00e-3 -2.24e-2 8.71e-4 0.0103 2.04e-3
+ 6  0.0107   0.00352   6.12e-3  3.36e-3  2.25e-3  8.43e-3 8.35e-4 0.0103 2.78e-4
+ 7  0.00572  0.000386  9.24e-5  1.36e-3  1.80e-4  5.54e-3 7.96e-4 0.0103 1.14e-4
+ 8 -0.00402 -0.00612  -7.80e-3 -8.37e-4 -4.11e-3  8.87e-5 9.98e-4 0.0103 3.67e-8
+ 9  0.00887  0.0114    1.54e-2  3.97e-3  7.44e-3  1.43e-3 1.32e-3 0.0103 1.26e-5
+10 -0.0138   0.00242  -5.98e-3  9.37e-4  1.52e-3 -1.53e-2 8.11e-4 0.0103 8.86e-4
+# ℹ 1,247 more rows
+# ℹ 1 more variable: .std.resid &lt;dbl&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualization </span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_stockR, <span class="fu">aes</span> (<span class="at">x =</span> SPY, <span class="at">y =</span> KO))<span class="sc">+</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)<span class="sc">+</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"SPY Returns"</span>, <span class="at">y =</span> <span class="st">"KO Returns"</span>) <span class="sc">+</span> </span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_regline_equation</span>(<span class="at">label.x =</span> <span class="sc">-</span><span class="fl">0.05</span>, <span class="at">label.y =</span> <span class="fl">0.05</span>)  <span class="co"># to add reg equation</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-r-relation-KO-SPY" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-r-relation-KO-SPY-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="predictive_files/figure-html/fig-r-relation-KO-SPY-3.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-r-relation-KO-SPY-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.7: Linear Model between SPY and KO
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> yfinance <span class="im">as</span> yf</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> datetime</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotnine <span class="im">as</span> p9</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="co">## To use statsmodels for linear regression</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm </span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> smf</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="co">## To use sklearn for linear regression</span></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a><span class="co">#########################################################</span></span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing stock data </span></span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a><span class="co">## 5-year daily data for Coca-Cola, SPY, Pepsi, and USD index</span></span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a><span class="co">#########################################################</span></span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>end <span class="op">=</span> datetime.date(<span class="dv">2023</span>, <span class="dv">12</span>, <span class="dv">31</span>)</span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>start <span class="op">=</span> end <span class="op">-</span> pd.Timedelta(days <span class="op">=</span> <span class="dv">365</span> <span class="op">*</span> <span class="dv">5</span>) </span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting the data </span></span>
+<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a>ko_df <span class="op">=</span> yf.download(<span class="st">"KO"</span>, start <span class="op">=</span> start, end <span class="op">=</span> end, progress <span class="op">=</span> <span class="va">False</span>) <span class="co"># CocaCola </span></span>
+<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a>spy_df <span class="op">=</span> yf.download(<span class="st">"SPY"</span>, start <span class="op">=</span> start, end <span class="op">=</span> end, progress <span class="op">=</span> <span class="va">False</span>) <span class="co"># SPDR S&amp;P 500</span></span>
+<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a>pep_df <span class="op">=</span> yf.download(<span class="st">"PEP"</span>, start <span class="op">=</span> start, end <span class="op">=</span> end, progress <span class="op">=</span> <span class="va">False</span>) <span class="co"># PepsiCo</span></span>
+<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a>usdx_df <span class="op">=</span> yf.download(<span class="st">"DX-Y.NYB"</span>, start <span class="op">=</span> start, end <span class="op">=</span> end, progress <span class="op">=</span> <span class="va">False</span>) <span class="co"># US Dollar Index</span></span>
+<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a><span class="co">## Calculate log returns for the period based on Adj Close prices</span></span>
+<span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a>ko_df[<span class="st">'ko'</span>] <span class="op">=</span> np.log(ko_df[<span class="st">'Adj Close'</span>] <span class="op">/</span> ko_df[<span class="st">'Adj Close'</span>].shift(<span class="dv">1</span>))</span>
+<span id="cb22-28"><a href="#cb22-28" aria-hidden="true" tabindex="-1"></a>spy_df[<span class="st">'spy'</span>] <span class="op">=</span> np.log(spy_df[<span class="st">'Adj Close'</span>] <span class="op">/</span> spy_df[<span class="st">'Adj Close'</span>].shift(<span class="dv">1</span>))</span>
+<span id="cb22-29"><a href="#cb22-29" aria-hidden="true" tabindex="-1"></a>pep_df[<span class="st">'pep'</span>] <span class="op">=</span> np.log(pep_df[<span class="st">'Adj Close'</span>] <span class="op">/</span> pep_df[<span class="st">'Adj Close'</span>].shift(<span class="dv">1</span>))</span>
+<span id="cb22-30"><a href="#cb22-30" aria-hidden="true" tabindex="-1"></a>usdx_df[<span class="st">'usdx'</span>] <span class="op">=</span> np.log(usdx_df[<span class="st">'Adj Close'</span>] <span class="op">/</span> usdx_df[<span class="st">'Adj Close'</span>].shift(<span class="dv">1</span>))</span>
+<span id="cb22-31"><a href="#cb22-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-32"><a href="#cb22-32" aria-hidden="true" tabindex="-1"></a><span class="co">## Create a dataframe with X's (spy, pep, usdx) and Y (ko)</span></span>
+<span id="cb22-33"><a href="#cb22-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-34"><a href="#cb22-34" aria-hidden="true" tabindex="-1"></a>df_stock <span class="op">=</span> pd.concat([spy_df[<span class="st">'spy'</span>], ko_df[<span class="st">'ko'</span>], </span>
+<span id="cb22-35"><a href="#cb22-35" aria-hidden="true" tabindex="-1"></a>                pep_df[<span class="st">'pep'</span>], usdx_df[<span class="st">'usdx'</span>]], axis <span class="op">=</span> <span class="dv">1</span>).dropna()</span>
+<span id="cb22-36"><a href="#cb22-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-37"><a href="#cb22-37" aria-hidden="true" tabindex="-1"></a><span class="co">####################################################</span></span>
+<span id="cb22-38"><a href="#cb22-38" aria-hidden="true" tabindex="-1"></a><span class="co">## 2a. Fit a simple linear regression model to the data using statsmodels </span></span>
+<span id="cb22-39"><a href="#cb22-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-40"><a href="#cb22-40" aria-hidden="true" tabindex="-1"></a><span class="co">### Create an instance of the class OLS</span></span>
+<span id="cb22-41"><a href="#cb22-41" aria-hidden="true" tabindex="-1"></a>slr_sm_model <span class="op">=</span> smf.ols(<span class="st">'ko ~ spy'</span>, data<span class="op">=</span>df_stock)</span>
+<span id="cb22-42"><a href="#cb22-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-43"><a href="#cb22-43" aria-hidden="true" tabindex="-1"></a><span class="co">### Fit the model (statsmodels calculates beta_0 and beta_1 here)</span></span>
+<span id="cb22-44"><a href="#cb22-44" aria-hidden="true" tabindex="-1"></a>slr_sm_model_ko <span class="op">=</span> slr_sm_model.fit()</span>
+<span id="cb22-45"><a href="#cb22-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-46"><a href="#cb22-46" aria-hidden="true" tabindex="-1"></a><span class="co">### Summarize the model</span></span>
+<span id="cb22-47"><a href="#cb22-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-48"><a href="#cb22-48" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(slr_sm_model_ko.summary()) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                     ko   R-squared:                       0.418
+Model:                            OLS   Adj. R-squared:                  0.417
+Method:                 Least Squares   F-statistic:                     900.5
+Date:                Tue, 05 Nov 2024   Prob (F-statistic):          1.36e-149
+Time:                        21:49:51   Log-Likelihood:                 3963.5
+No. Observations:                1257   AIC:                            -7923.
+Df Residuals:                    1255   BIC:                            -7913.
+Df Model:                           1                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P&gt;|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept  -7.427e-05      0.000     -0.254      0.799      -0.001       0.000
+spy            0.6595      0.022     30.009      0.000       0.616       0.703
+==============================================================================
+Omnibus:                      301.182   Durbin-Watson:                   1.871
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):             3723.042
+Skew:                          -0.743   Prob(JB):                         0.00
+Kurtosis:                      11.299   Cond. No.                         75.3
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Adding the fitted values to the dataframe </span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>df_stock[<span class="st">'fitted'</span>] <span class="op">=</span> slr_sm_model_ko.fittedvalues</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="co">## Adding the residuals to the dataframe </span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>df_stock[<span class="st">'residual'</span>] <span class="op">=</span> slr_sm_model_ko.resid</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>param_slr <span class="op">=</span> slr_sm_model_ko.params</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="co">## Linear regression plot of X (spy) and Y (ko)</span></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>plt.rcParams.update({<span class="st">'font.size'</span>: <span class="dv">14</span>})</span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"SPY Returns"</span>)</span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"KO Returns"</span>)</span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.title("Simple linear regression model")</span></span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>plt.scatter(df_stock[<span class="st">'spy'</span>],df_stock[<span class="st">'ko'</span>])</span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>plt.plot(df_stock[<span class="st">'spy'</span>], param_slr.Intercept<span class="op">+</span>param_slr.spy <span class="op">*</span> df_stock[<span class="st">'spy'</span>],</span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>         label<span class="op">=</span><span class="st">'Y=</span><span class="sc">{:.4f}</span><span class="st">+</span><span class="sc">{:.4f}</span><span class="st">X'</span>.<span class="bu">format</span>(param_slr.Intercept, param_slr.spy), </span>
+<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>         color<span class="op">=</span><span class="st">'red'</span>)</span>
+<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-py-relation-KO-SPY" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-py-relation-KO-SPY-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="predictive_files/figure-html/fig-py-relation-KO-SPY-1.png" class="img-fluid figure-img" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-py-relation-KO-SPY-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.8: Linear Model between SPY and KO
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="evaluating-linear-regression-models---assessing-the-fitness" class="level3" data-number="7.2.2">
+<h3 data-number="7.2.2" class="anchored" data-anchor-id="evaluating-linear-regression-models---assessing-the-fitness"><span class="header-section-number">7.2.2</span> Evaluating Linear Regression Models - Assessing the Fitness</h3>
+<div style="text-align: justify">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;When we build a linear regression model, we need to check the accuracy of the model by evaluating different parameters of the model. Some of the parameters that need to be evaluated are discussed below -</p>
+<section id="f-statistic-and-overall-p-value" class="level4" data-number="7.2.2.1">
+<h4 data-number="7.2.2.1" class="anchored" data-anchor-id="f-statistic-and-overall-p-value"><span class="header-section-number">7.2.2.1</span> F-statistic and Overall P-value</h4>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The F-statistic of the model tests whether the linear model provides a better fit of the data than the model that contains no independent variables. The null hypothesis is that the model as a whole does not explain a significant amount of variance of the data.</p>
+</section>
+<section id="coefficient-of-determination-r2-and-adjusted-r2" class="level4" data-number="7.2.2.2">
+<h4 data-number="7.2.2.2" class="anchored" data-anchor-id="coefficient-of-determination-r2-and-adjusted-r2"><span class="header-section-number">7.2.2.2</span> Coefficient of Determination (<span class="math inline">\(R^2\)</span>) and Adjusted <span class="math inline">\(R^2\)</span></h4>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Coefficient of determination is a statistical metric that measures the proportion of the variance of the target variable explained by the independent variables. The coefficient of determination is represented by <span class="math inline">\(R^2\)</span>. The value of <span class="math inline">\(R^2\)</span> ranges between <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span>, where <span class="math inline">\(0\)</span> indicates poor fit and <span class="math inline">\(1\)</span> indicates perfect fit. There is a problem with <span class="math inline">\(R^2\)</span>; it increases as the number of independent variable increases. Therefore, when we compare models with different numbers of independent variables, adjuted <span class="math inline">\(R^2\)</span> is used to evaluate the model because it penalizes models with a large number of predictors.</p>
+</section>
+<section id="p-value-of-parameter-estimates" class="level4" data-number="7.2.2.3">
+<h4 data-number="7.2.2.3" class="anchored" data-anchor-id="p-value-of-parameter-estimates"><span class="header-section-number">7.2.2.3</span> P-value of Parameter Estimates</h4>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In addition to overall p-value associated with the model, linear regression models generate p-value for each predicators (parameter estimates). This p-value tests the null hypothesis that the coefficient is zero (or it does not have any effect on outcome variable). A low p-value (&lt;0.05) indicates that we can reject the null hypothesis, meaning that a predictor with a low p-value should be included in the model because it has statistically significant effect on the target variable.</p>
+</section>
+<section id="residual-standard-error-rse" class="level4" data-number="7.2.2.4">
+<h4 data-number="7.2.2.4" class="anchored" data-anchor-id="residual-standard-error-rse"><span class="header-section-number">7.2.2.4</span> Residual Standard Error (RSE)</h4>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Residual Standard Error (RSE) measures how far away an observation is from the prediction (regression line). In another words, it is mean (average) distance between the actual outcome and regression line. For example, <a href="#fig-r-relation-KO-SPY" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-r-relation-KO-SPY</span></a> regression equation’s RSE is 0.01034, which means the regression model predicts CocaCola’s return with an avearagr error 0.01034.</p>
+</section>
+</div>
+</section>
+<section id="assumptions-of-linear-regression" class="level3" style="text-align: justify" data-number="7.2.3">
+<h3 data-number="7.2.3" class="anchored" data-anchor-id="assumptions-of-linear-regression"><span class="header-section-number">7.2.3</span> Assumptions of Linear Regression</h3>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Linear regression follows some assumptions. After fitting a regression model, we should check the assumptions of the model.</p>
+<ol type="1">
+<li><strong>Linearity (Linear Relationship)</strong>:</li>
+</ol>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;There must be a linear relationship between the outcome variable (y) and predictors (x). <a href="#fig-assump1" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-assump1</span></a> shows what we want to see and <a href="#fig-r-assump1" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-r-assump1</span></a> and <a href="#fig-py-assump1" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-py-assump1</span></a> show what we see from one of our models.</p>
+<div id="fig-assump1" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-assump1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/Linear_Reg_Assump1.webp" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-assump1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.9: Assumption 1- What We Want to See
+</figcaption>
+</figure>
+</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false">Python</a></li></ul>
+<div class="tab-content">
+<div id="tabset-6-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-6-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">lm</span>(KO <span class="sc">~</span> SPY, <span class="at">data =</span> df_stockR), <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-r-assump1" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-r-assump1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="predictive_files/figure-html/fig-r-assump1-3.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-r-assump1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.10: Testing Assumption 1
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-6-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-2-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>sns.residplot(x <span class="op">=</span> <span class="st">'fitted'</span>, y <span class="op">=</span> <span class="st">'ko'</span>, data<span class="op">=</span>df_stock, </span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>lowess<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>line_kws<span class="op">=</span>{<span class="st">'color'</span>: <span class="st">'red'</span>, <span class="st">'lw'</span>: <span class="dv">1</span>, <span class="st">'alpha'</span>: <span class="fl">0.8</span>})</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Fitted values'</span>)</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Residuals'</span>)</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagnostic Plots in Python similar to R - </span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="co"># https://towardsdatascience.com/going-from-r-to-python-linear-regression-diagnostic-plots-144d1c4aa5a</span></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a><span class="co"># https://robert-alvarez.github.io/2018-06-04-diagnostic_plots/</span></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a><span class="co"># https://www.kirenz.com/blog/posts/2021-11-14-linear-regression-diagnostics-in-python/</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-py-assump1" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-py-assump1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="predictive_files/figure-html/fig-py-assump1-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-py-assump1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.11: Testing Assumption 1
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ol start="2" type="1">
+<li><strong>Independence</strong>:</li>
+</ol>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Indpendence means that each observation (data point) is independent of the others, meaning that the error terms in the model are not correlated with each other and the occurrence of one observation does not influence the probability of another observation occurring; essentially, each data point should be considered a separate, unrelated event from the others. We can check this assumption by Durbin-Watson test. The null hypothesis (H<sub>0</sub>) is there is no correlation among the residuals. Basically, the test detects autocorrelation in the residuals of a linear regression model. The test statistic is a value between 0 and 4, with the following interpretations: 2: No autocorrelation; &lt; 2: Positive autocorrelation; &gt; 2: Negative autocorrelation. To solve the independence issue, it is suggested that for positive serial correlation, consider adding lags of the dependent and/or independent variable to the model. For negative serial correlation, check to make sure that none of your variables are overdifferenced, and For seasonal correlation, consider adding seasonal dummy variables to the model. However, as a rule of thumb, test statistic values between the range of 1.5 and 2.5 are considered normal. One limitation of the DW test is that it can only test for first-order serial correlation.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Alternatively, we can can visually examine a scatterplot of the residuals (errors) against the fitted values (<a href="#fig-r-assump1" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-r-assump1</span></a> and <a href="#fig-py-assump1" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-py-assump1</span></a>); if there is no clear pattern, it suggests that the independence assumption is likely satisfied. Independence assmption is important because violating it can lead to unreliable hypothesis tests and confidence intervals.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false">Python</a></li></ul>
+<div class="tab-content">
+<div id="tabset-7-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-7-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">durbinWatsonTest</span>(<span class="fu">lm</span>(KO <span class="sc">~</span> SPY, <span class="at">data =</span> df_stockR))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> lag Autocorrelation D-W Statistic p-value
+   1      0.06395626      1.871182   0.022
+ Alternative hypothesis: rho != 0</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-7-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-2-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.stats.stattools <span class="im">import</span> durbin_watson</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>durbin_watson(slr_sm_model_ko.resid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>1.871180893661824</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ol start="3" type="1">
+<li><strong>Residual Error</strong>:</li>
+</ol>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The errors have a mean (expected) value zero (<span class="math inline">\(0\)</span>), constant varianace (Homoscedasticity), and are independent from each other (otherwise auto-correlation problem) and predictor variables. We can check the assumption - expected value of errors are equal to 0 - by looking at <a href="#fig-r-assump1" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-r-assump1</span></a> and <a href="#fig-py-assump1" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-py-assump1</span></a>. If there is a pattern in the plot, the assumption is violated.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The assumption homoscedasticity is tested using the Scale-Location plot, in which fitted values are compared with square root of standardized residuals. Theoretically, we want to see <a href="#fig-assump3" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-assump3</span></a>. <a href="#fig-r-assump3" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-r-assump3</span></a> and <a href="#fig-py-assump3" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-py-assump3</span></a> show Scale-Location plot (also called spread-location plot) of our model. From <a href="#fig-r-assump3" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-r-assump3</span></a> and <a href="#fig-py-assump3" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-py-assump3</span></a>, it is clear that residual plots have a trend (are not all equally spread out). Thus, the assumption is violated. One solution to the problem is that using log or square root transformation of outcome variable. Moreover, we can use Non-Constant Error Variance (NVC) test to test the assumption. If p-value of the test is less than 0.05, then null hypothesis is rejected, meaning that homoscedasticity is violated. Moreover, Breusch-Pagan test or White test can also be used to test homoscedasticity.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Finally, testing the assumption - errors are independent from each other and predictors - requires the knowledge of study design and data collection to establish the validity of this assumption. Violation of this assumption is also called endogeneity problem of the model, which is the same as assumption 6 - No Endogeneity below.</p>
+<div id="fig-assump3" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-assump3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/Linear_Reg_Assump3.webp" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-assump3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.12: Assumption 3- What We Want to See
+</figcaption>
+</figure>
+</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-8-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-1" role="tab" aria-controls="tabset-8-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-2" role="tab" aria-controls="tabset-8-2" aria-selected="false">Python</a></li></ul>
+<div class="tab-content">
+<div id="tabset-8-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-8-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Scale-Location Plot </span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">lm</span>(KO <span class="sc">~</span> SPY, <span class="at">data =</span> df_stockR),<span class="dv">3</span>)</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Non-Constant Error Variance Test </span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ncvTest</span> (<span class="fu">lm</span>(KO <span class="sc">~</span> SPY, <span class="at">data =</span> df_stockR))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Non-constant Variance Score Test 
+Variance formula: ~ fitted.values 
+Chisquare = 19.17696, Df = 1, p = 1.1914e-05</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="fig-r-assump3" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-r-assump3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="predictive_files/figure-html/fig-r-assump3-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-r-assump3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.13: Testing Assumption 3
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-8-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-2-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Scale-Location Plot </span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>sns.regplot(</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> slr_sm_model_ko.fittedvalues, </span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> np.sqrt(np.<span class="bu">abs</span>(slr_sm_model_ko.get_influence().resid_studentized_internal)),</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>    scatter<span class="op">=</span><span class="va">True</span>, </span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>    ci<span class="op">=</span> <span class="va">False</span>, </span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>    lowess<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>    line_kws<span class="op">=</span>{<span class="st">'color'</span>: <span class="st">'blue'</span>, <span class="st">'lw'</span>: <span class="dv">1</span>, <span class="st">'alpha'</span>: <span class="fl">0.8</span>} </span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Scale-Location'</span>, fontsize<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Fitted Values'</span>, fontsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'$\sqrt{|Standardized Residuals|}$'</span>, fontsize<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Non-Constant Error Variance Test </span></span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.stats.api <span class="im">as</span> sms</span>
+<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a><span class="co">## Breusch-Pagan test </span></span>
+<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a>bp_test <span class="op">=</span> sms.het_white(slr_sm_model_ko.resid, slr_sm_model_ko.model.exog)</span>
+<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a>labels <span class="op">=</span> [<span class="st">'LM Statistic'</span>, <span class="st">'LM-Test p-value'</span>, <span class="st">'F-Statistic'</span>, <span class="st">'F-Test p-value'</span>]</span>
+<span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> stat, value <span class="kw">in</span> <span class="bu">zip</span>(labels,bp_test):</span>
+<span id="cb33-20"><a href="#cb33-20" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'</span><span class="sc">{}</span><span class="st">: </span><span class="sc">{:.3f}</span><span class="st">'</span>.<span class="bu">format</span>(stat, value))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>LM Statistic: 15.904
+LM-Test p-value: 0.000
+F-Statistic: 8.035
+F-Test p-value: 0.000</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co">## White Test </span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>white_test <span class="op">=</span> sms.het_white(slr_sm_model_ko.resid, slr_sm_model_ko.model.exog)</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> stat, value <span class="kw">in</span> <span class="bu">zip</span>(labels,white_test):</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'</span><span class="sc">{}</span><span class="st">: </span><span class="sc">{:.3f}</span><span class="st">'</span>.<span class="bu">format</span>(stat, value))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>LM Statistic: 15.904
+LM-Test p-value: 0.000
+F-Statistic: 8.035
+F-Test p-value: 0.000</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="fig-py-assump3" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-py-assump3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="predictive_files/figure-html/fig-py-assump3-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-py-assump3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.14: Testing Assumption 3
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ol start="4" type="1">
+<li><strong>Normality</strong>:</li>
+</ol>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The residuals are normally distributed. We can test this assumption by Q-Q plots (also called Quantile-Quantile plot) of the residuals. <a href="#fig-r-qqplot" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-r-qqplot</span></a> and <a href="#fig-py-qqplot" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-py-qqplot</span></a> show a QQ plot. The dots do not lie perfectly along the straight line. Moreover, Kolmogorov-Smirnov (KS) test can be used to check the normality assumption. KS tests whether a sample comes from a certain distribution. From the KS result below, we can see test statistic is 0.484 and p-value is 2.2e-16, thus rejecting null hypothesis and indicating that sample data does not come from a normal distribution.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-9-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-1" role="tab" aria-controls="tabset-9-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-2" role="tab" aria-controls="tabset-9-2" aria-selected="false">Python</a></li></ul>
+<div class="tab-content">
+<div id="tabset-9-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-9-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="do">#######################################</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Drawing QQ Plot</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="do">########################################</span></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="do">## qqnorm () function </span></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="co">#qqnorm((df_stockR$residual))</span></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="do">## qqline () function </span></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="co">#qqline(df_stockR$residual)</span></span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a><span class="co"># qqPlot () function from car package </span></span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a><span class="fu">qqPlot</span>(df_stockR<span class="sc">$</span>residual) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  30 305</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="do">#########################################</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Kolmogorov-Smirnov (KS) test</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="do">##########################################</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stats)</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ks.test</span>(df_stockR<span class="sc">$</span>residual, <span class="st">"pnorm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Asymptotic one-sample Kolmogorov-Smirnov test
+
+data:  df_stockR$residual
+D = 0.48409, p-value &lt; 2.2e-16
+alternative hypothesis: two-sided</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="fig-r-qqplot" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-r-qqplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="predictive_files/figure-html/fig-r-qqplot-3.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-r-qqplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.15: Testing Assumption 4
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-9-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-9-2-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co">#######################################</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Drawing QQ Plot</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="co">########################################</span></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>sm.qqplot(slr_sm_model_ko.resid, fit<span class="op">=</span><span class="va">True</span>, line<span class="op">=</span><span class="st">"45"</span>)</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a><span class="co">#########################################</span></span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Kolmogorov-Smirnov (KS) test</span></span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a><span class="co">##########################################</span></span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> kstest</span>
+<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a>ks_test <span class="op">=</span> kstest(slr_sm_model_ko.resid, <span class="st">"norm"</span>)</span>
+<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a>label_ks <span class="op">=</span> [<span class="st">"KS Statistic"</span>, <span class="st">"P-value"</span>]</span>
+<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-13"><a href="#cb41-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> stat, value <span class="kw">in</span> <span class="bu">zip</span>(label_ks, ks_test[:<span class="dv">2</span>]):</span>
+<span id="cb41-14"><a href="#cb41-14" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'</span><span class="sc">{}</span><span class="st">: </span><span class="sc">{:.5f}</span><span class="st">'</span>.<span class="bu">format</span>(stat, value))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>KS Statistic: 0.48409
+P-value: 0.00000</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="fig-py-qqplot" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-py-qqplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="predictive_files/figure-html/fig-py-qqplot-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-py-qqplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.16: Testing Assumption 4
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ol start="5" type="1">
+<li><strong>Multicollinearity</strong>:</li>
+</ol>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;There is little or no correlation between the predictor variables. It makes difficult to interpret the coefficients of the model. Variance Inflation Factor (VIF) can be used to test the multicollinearity. A value equal to or greater than 10 of VIF indicates multicollinearity in the data. We see the VIF of SPY and PEP is 1.84 and 1.84 respectively. Moreover, correlation matrix can also be used to identify the predictors that are highly correlated. <a href="#fig-r-corplot" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-r-corplot</span></a> and <a href="#fig-py-corplot" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-py-corplot</span></a> show a correlation plot of our stock returns data.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-10-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-1" role="tab" aria-controls="tabset-10-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-10-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-2" role="tab" aria-controls="tabset-10-2" aria-selected="false">Python</a></li></ul>
+<div class="tab-content">
+<div id="tabset-10-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-10-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Variance Inflation Factor (VIF)</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="fu">vif</span>(<span class="fu">lm</span>(KO <span class="sc">~</span> SPY<span class="sc">+</span>PEP, <span class="at">data =</span> df_stockR))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     SPY      PEP 
+1.841296 1.841296 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Correlation Matrix and Correlation Plot </span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="co"># to get the function </span></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"http://www.sthda.com/upload/rquery_cormat.r"</span>)</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rquery.cormat</span>(df_stockR <span class="sc">|&gt;</span> <span class="fu">select</span>(KO<span class="sc">:</span>DX.Y.NYB), <span class="at">type =</span> <span class="fu">c</span>(<span class="st">"lower"</span>), <span class="at">graph =</span> <span class="cn">TRUE</span>)<span class="sc">$</span>r</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>         DX.Y.NYB  SPY   KO PEP
+DX.Y.NYB        1              
+SPY         -0.21    1         
+KO          -0.16 0.65    1    
+PEP        -0.081 0.68 0.76   1</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="fig-r-corplot" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-r-corplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="predictive_files/figure-html/fig-r-corplot-3.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-r-corplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.17: Correlation Plot
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-10-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-10-2-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Correlation Matrix and Correlation Plot </span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="co">### Correlation Matrix</span></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>pd.DataFrame(np.tril(df_stock[[<span class="st">'usdx'</span>, <span class="st">'spy'</span>, <span class="st">'ko'</span>,<span class="st">'pep'</span>]].corr()),</span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>columns <span class="op">=</span> [<span class="st">'usdx'</span>, <span class="st">'spy'</span>, <span class="st">'ko'</span>,<span class="st">'pep'</span>], index <span class="op">=</span> [<span class="st">'usdx'</span>, <span class="st">'spy'</span>, <span class="st">'ko'</span>,<span class="st">'pep'</span>]).replace(<span class="dv">0</span>,<span class="st">''</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          usdx       spy        ko  pep
+usdx  1.000000                         
+spy  -0.212245       1.0               
+ko   -0.159651  0.646359       1.0     
+pep  -0.081498  0.675947  0.759876  1.0</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co">### Correlation Plot</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>mask <span class="op">=</span> np.triu(np.ones_like(df_stock[[<span class="st">'usdx'</span>, <span class="st">'spy'</span>, <span class="st">'ko'</span>,<span class="st">'pep'</span>]].corr()))</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>sns.heatmap(df_stock[[<span class="st">'usdx'</span>, <span class="st">'spy'</span>, <span class="st">'ko'</span>,<span class="st">'pep'</span>]].corr(), </span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>annot<span class="op">=</span><span class="va">True</span>, cmap<span class="op">=</span><span class="st">"YlGnBu"</span>, </span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>mask<span class="op">=</span>mask)</span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a><span class="co">## Variance Inflation Factor (VIF)</span></span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a><span class="co">#orrelaiton_coeff = np.corrcoef(df_stock[['ko','spy']], rowvar=False)</span></span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a><span class="co">#VIF = np.linalg.inv(correlaiton_coeff)</span></span>
+<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a><span class="co">#VIF.diagonal()</span></span>
+<span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-12"><a href="#cb49-12" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.stats.outliers_influence <span class="im">import</span> variance_inflation_factor</span>
+<span id="cb49-13"><a href="#cb49-13" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.tools.tools <span class="im">import</span> add_constant</span>
+<span id="cb49-14"><a href="#cb49-14" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> add_constant(df_stock[[<span class="st">'ko'</span>,<span class="st">'spy'</span>]])</span>
+<span id="cb49-15"><a href="#cb49-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-16"><a href="#cb49-16" aria-hidden="true" tabindex="-1"></a>pd.Series([variance_inflation_factor(X.values, i) </span>
+<span id="cb49-17"><a href="#cb49-17" aria-hidden="true" tabindex="-1"></a>               <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,X.shape[<span class="dv">1</span>])], </span>
+<span id="cb49-18"><a href="#cb49-18" aria-hidden="true" tabindex="-1"></a>              index<span class="op">=</span>X.columns[<span class="dv">1</span>:])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>ko     1.717564
+spy    1.717564
+dtype: float64</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="fig-py-corplot" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-py-corplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="predictive_files/figure-html/fig-py-corplot-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-py-corplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.18: Correlation Plot
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ol start="6" type="1">
+<li><strong>No Endogeneity</strong>:</li>
+</ol>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;There is no relation between the errors and the independent variables.</p>
+</section>
+<section id="multiple-linear-regression" class="level3" style="text-align: justify" data-number="7.2.4">
+<h3 data-number="7.2.4" class="anchored" data-anchor-id="multiple-linear-regression"><span class="header-section-number">7.2.4</span> Multiple Linear Regression</h3>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Multiple regression analysis estimates the relationship between an outcome variable and two or more independent variables. More specifically, multiple regression analysis helps to understand how the value of the dependent variable changes when one of the independent variables varies, while the other independent variables remain constant.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;We use Grunfeld dataset for multiple regressions. The dataset contains investment data for 11 US firms. The variables include - <code>invest</code>, which is Gross investment in 1947 dollars; <code>value</code>, which is market value as of Dec 31 in 1947 dollars; <code>capital</code>, which is stock of plant and equipment in 1947 dollars; <code>firm</code>, which include 11 US firms (General Motors, US Steel, General Electric, Chrysler, Atlantic Refining, IBM, Union Oil, Westinghouse, Goodyear, Diamond Match, American Steel); and <code>year</code>, which is 1935-1954. Our multiple regeression model is <a href="#eq-multiple" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-multiple</span></a> -</p>
+<p><span id="eq-multiple"><span class="math display">\[
+invest_{it} = \beta_{0} + \beta_{1}value_{i} + \beta_{3}capital_{it} + \alpha_{it} + \delta_{t} + \epsilon_{it}
+\tag{7.1}\]</span></span></p>
+<p>Where</p>
+<p><span class="math inline">\(invest_{it}\)</span> is the gross investment of firm <span class="math inline">\(i\)</span> in year <span class="math inline">\(t\)</span></p>
+<p><span class="math inline">\(value_{it}\)</span> is the market value of assets of firm <span class="math inline">\(i\)</span> in year <span class="math inline">\(t\)</span></p>
+<p><span class="math inline">\(capital_{it}\)</span> is the stock value of plant and equipment of firm <span class="math inline">\(i\)</span> in year <span class="math inline">\(t\)</span></p>
+<p><span class="math inline">\(alpha_{i}\)</span> is the fixed effect for firm <span class="math inline">\(i\)</span> (capturing unobserved firm-specific factors that don’t vary over time)</p>
+<p><span class="math inline">\(delta_{t}\)</span> is the fixed effect for year <span class="math inline">\(t\)</span> (capturing unobserved year-specific factors that are common to all firms in that year)</p>
+<p><span class="math inline">\(epsilon_{it}\)</span> is the error term, which includes all other unobserved factors that affect investment but are not accounted for by the independent variables or the fixed effects.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In <a href="#tbl-r-multiple" class="quarto-xref">Table&nbsp;<span class="quarto-unresolved-ref">tbl-r-multiple</span></a> and <a href="#tbl-py-multiple" class="quarto-xref">Table&nbsp;<span class="quarto-unresolved-ref">tbl-py-multiple</span></a>, we generate some multiple regression models.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-11-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-1" role="tab" aria-controls="tabset-11-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-11-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-2" role="tab" aria-controls="tabset-11-2" aria-selected="false">Python</a></li></ul>
+<div class="tab-content">
+<div id="tabset-11-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-11-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="do">#############################################################</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Grunfeld Data from AER Package</span></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="do">#############################################################</span></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Grunfeld data contains investment data for 11 US firms. The variables </span></span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a><span class="co"># include - invest = </span></span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(AER)</span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(modelsummary)</span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(fixest)</span>
+<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"Grunfeld"</span>, <span class="at">package =</span> <span class="st">"AER"</span>)</span>
+<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a>models_r <span class="ot">=</span> <span class="fu">list</span>()</span>
+<span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-14"><a href="#cb51-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Model (1)</span></span>
+<span id="cb51-15"><a href="#cb51-15" aria-hidden="true" tabindex="-1"></a>models_r [[<span class="st">'OLS_FYfe'</span>]] <span class="ot">=</span> <span class="fu">feols</span>(invest <span class="sc">~</span> value <span class="sc">+</span> capital <span class="sc">|</span> firm <span class="sc">+</span> year, <span class="at">data =</span> Grunfeld)</span>
+<span id="cb51-16"><a href="#cb51-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-17"><a href="#cb51-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Model (2)</span></span>
+<span id="cb51-18"><a href="#cb51-18" aria-hidden="true" tabindex="-1"></a>models_r [[<span class="st">'OLS_FYfeC'</span>]] <span class="ot">=</span> <span class="fu">feols</span>(invest <span class="sc">~</span> value <span class="sc">+</span> capital <span class="sc">|</span> firm <span class="sc">+</span> year,</span>
+<span id="cb51-19"><a href="#cb51-19" aria-hidden="true" tabindex="-1"></a><span class="at">cluster =</span> <span class="sc">~</span>firm,  </span>
+<span id="cb51-20"><a href="#cb51-20" aria-hidden="true" tabindex="-1"></a><span class="at">data =</span> Grunfeld)</span>
+<span id="cb51-21"><a href="#cb51-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-22"><a href="#cb51-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Model (3)</span></span>
+<span id="cb51-23"><a href="#cb51-23" aria-hidden="true" tabindex="-1"></a>models_r [[<span class="st">'OLS_FYfeCtwo'</span>]] <span class="ot">=</span> <span class="fu">feols</span>(invest <span class="sc">~</span> value <span class="sc">+</span> capital <span class="sc">|</span> firm <span class="sc">+</span> year,</span>
+<span id="cb51-24"><a href="#cb51-24" aria-hidden="true" tabindex="-1"></a><span class="at">cluster =</span> <span class="sc">~</span>firm<span class="sc">+</span>year,  </span>
+<span id="cb51-25"><a href="#cb51-25" aria-hidden="true" tabindex="-1"></a><span class="at">data =</span> Grunfeld)</span>
+<span id="cb51-26"><a href="#cb51-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-27"><a href="#cb51-27" aria-hidden="true" tabindex="-1"></a>rows <span class="ot">=</span> <span class="fu">tribble</span>(</span>
+<span id="cb51-28"><a href="#cb51-28" aria-hidden="true" tabindex="-1"></a>    <span class="sc">~</span>term, <span class="sc">~</span><span class="st">'OLS_FYfe'</span>,<span class="sc">~</span><span class="st">'OLS_FYfeC'</span>, <span class="sc">~</span><span class="st">'OLS_FYfeCtwo'</span>,</span>
+<span id="cb51-29"><a href="#cb51-29" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Firm Fixed Effects'</span>, <span class="st">"YES"</span>, <span class="st">"YES"</span>, <span class="st">"YES"</span>,</span>
+<span id="cb51-30"><a href="#cb51-30" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Year Fixed Effects"</span>, <span class="st">"YES"</span>, <span class="st">"YES"</span>, <span class="st">"YES"</span></span>
+<span id="cb51-31"><a href="#cb51-31" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb51-32"><a href="#cb51-32" aria-hidden="true" tabindex="-1"></a><span class="fu">attr</span>(rows, <span class="st">'position'</span>) <span class="ot">=</span> <span class="fu">c</span> (<span class="dv">5</span>,<span class="dv">6</span>)</span>
+<span id="cb51-33"><a href="#cb51-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-34"><a href="#cb51-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-35"><a href="#cb51-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-36"><a href="#cb51-36" aria-hidden="true" tabindex="-1"></a><span class="fu">modelsummary</span>(models_r, <span class="at">fmt =</span> <span class="dv">2</span>,</span>
+<span id="cb51-37"><a href="#cb51-37" aria-hidden="true" tabindex="-1"></a><span class="at">estimate =</span> <span class="st">"{estimate}{stars}"</span>,</span>
+<span id="cb51-38"><a href="#cb51-38" aria-hidden="true" tabindex="-1"></a><span class="at">statistic =</span> <span class="st">'statistic'</span></span>
+<span id="cb51-39"><a href="#cb51-39" aria-hidden="true" tabindex="-1"></a><span class="co">#,vcov = "robust" # robust clustering </span></span>
+<span id="cb51-40"><a href="#cb51-40" aria-hidden="true" tabindex="-1"></a><span class="co">#,vcov = ~firm # clusting by firm</span></span>
+<span id="cb51-41"><a href="#cb51-41" aria-hidden="true" tabindex="-1"></a><span class="co">#,vcov = vcovHAC</span></span>
+<span id="cb51-42"><a href="#cb51-42" aria-hidden="true" tabindex="-1"></a>,<span class="at">stars =</span> <span class="fu">c</span> (<span class="st">"*"</span> <span class="ot">=</span> <span class="fl">0.10</span>, <span class="st">"**"</span> <span class="ot">=</span> <span class="fl">0.05</span>, <span class="st">"***"</span> <span class="ot">=</span>  <span class="fl">0.01</span>)</span>
+<span id="cb51-43"><a href="#cb51-43" aria-hidden="true" tabindex="-1"></a>,<span class="at">coef_rename =</span> <span class="fu">c</span>(</span>
+<span id="cb51-44"><a href="#cb51-44" aria-hidden="true" tabindex="-1"></a>    <span class="st">"value"</span> <span class="ot">=</span> <span class="st">"VALUE"</span>,</span>
+<span id="cb51-45"><a href="#cb51-45" aria-hidden="true" tabindex="-1"></a>    <span class="st">"capital"</span> <span class="ot">=</span> <span class="st">"CAPITAL"</span></span>
+<span id="cb51-46"><a href="#cb51-46" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb51-47"><a href="#cb51-47" aria-hidden="true" tabindex="-1"></a><span class="co">#,gof_omit = 'DF|Deviance|AIC|BIC'</span></span>
+<span id="cb51-48"><a href="#cb51-48" aria-hidden="true" tabindex="-1"></a>,<span class="at">gof_map =</span> <span class="fu">c</span>(<span class="st">"nobs"</span>, <span class="st">"r.squared"</span>, <span class="st">"adj.r.squared"</span>)</span>
+<span id="cb51-49"><a href="#cb51-49" aria-hidden="true" tabindex="-1"></a>,<span class="at">add_rows =</span> rows</span>
+<span id="cb51-50"><a href="#cb51-50" aria-hidden="true" tabindex="-1"></a><span class="co">#,notes = list(</span></span>
+<span id="cb51-51"><a href="#cb51-51" aria-hidden="true" tabindex="-1"></a><span class="co">#'Note: In all models both firm and year fixed effects are controlled and in models 2 and 3 starndard errors', </span></span>
+<span id="cb51-52"><a href="#cb51-52" aria-hidden="true" tabindex="-1"></a><span class="co">#'are clustered by firm (one-way cluster) and firm and year (two-way cluster) respectively. The numbers in parentheses indicate t values.')</span></span>
+<span id="cb51-53"><a href="#cb51-53" aria-hidden="true" tabindex="-1"></a><span class="co">#,title = "Title of the Table"</span></span>
+<span id="cb51-54"><a href="#cb51-54" aria-hidden="true" tabindex="-1"></a>,<span class="at">output =</span> <span class="st">"kableExtra"</span></span>
+<span id="cb51-55"><a href="#cb51-55" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb51-56"><a href="#cb51-56" aria-hidden="true" tabindex="-1"></a><span class="co"># The line below is for styling the table, not necessary for regression table</span></span>
+<span id="cb51-57"><a href="#cb51-57" aria-hidden="true" tabindex="-1"></a><span class="co">#kableExtra::kbl() |&gt;</span></span>
+<span id="cb51-58"><a href="#cb51-58" aria-hidden="true" tabindex="-1"></a><span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb51-59"><a href="#cb51-59" aria-hidden="true" tabindex="-1"></a><span class="fu">row_spec</span>(<span class="fu">c</span>(<span class="dv">6</span>,<span class="dv">9</span>), <span class="at">extra_css =</span> <span class="st">"border-bottom: 1.25px solid"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb51-60"><a href="#cb51-60" aria-hidden="true" tabindex="-1"></a><span class="fu">footnote</span>(<span class="st">'In all models both firm and year fixed effects are controlled and in models 2 and 3 starndard errors are clustered by firm (one-way cluster) and firm and year (two-way cluster) respectively. The numbers in parentheses indicate t values.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-r-multiple" class="cell quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-r-multiple-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;7.1: Regression of Investment on Market Value and PPE
+</figcaption>
+<div aria-describedby="tbl-r-multiple-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<div>
+<table class="table do-not-create-environment cell table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">OLS_FYfe</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">OLS_FYfeC</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">OLS_FYfeCtwo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">VALUE</td>
+<td style="text-align: center;">0.12***</td>
+<td style="text-align: center;">0.12***</td>
+<td style="text-align: center;">0.12***</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">(10.17)</td>
+<td style="text-align: center;">(10.17)</td>
+<td style="text-align: center;">(10.28)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CAPITAL</td>
+<td style="text-align: center;">0.35***</td>
+<td style="text-align: center;">0.35***</td>
+<td style="text-align: center;">0.35***</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; box-shadow: 0px 1.5px;"></td>
+<td style="text-align: center; box-shadow: 0px 1.5px;">(7.34)</td>
+<td style="text-align: center; box-shadow: 0px 1.5px;">(7.34)</td>
+<td style="text-align: center; box-shadow: 0px 1.5px;">(8.07)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Firm Fixed Effects</td>
+<td style="text-align: center;">YES</td>
+<td style="text-align: center;">YES</td>
+<td style="text-align: center;">YES</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; border-bottom: 1.25px solid;">Year Fixed Effects</td>
+<td style="text-align: center; border-bottom: 1.25px solid;">YES</td>
+<td style="text-align: center; border-bottom: 1.25px solid;">YES</td>
+<td style="text-align: center; border-bottom: 1.25px solid;">YES</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Num.Obs.</td>
+<td style="text-align: center;">220</td>
+<td style="text-align: center;">220</td>
+<td style="text-align: center;">220</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">R2</td>
+<td style="text-align: center;">0.953</td>
+<td style="text-align: center;">0.953</td>
+<td style="text-align: center;">0.953</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; border-bottom: 1.25px solid;">R2 Adj.</td>
+<td style="text-align: center; border-bottom: 1.25px solid;">0.945</td>
+<td style="text-align: center; border-bottom: 1.25px solid;">0.945</td>
+<td style="text-align: center; border-bottom: 1.25px solid;">0.945</td>
+</tr>
+</tbody><tfoot>
+<tr class="even">
+<td style="text-align: left; padding: 0;"><span style="font-style: italic;">Note: </span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0;"><sup></sup> In all models both firm and year fixed effects are controlled and in models 2 and 3 starndard errors are clustered by firm (one-way cluster) and firm and year (two-way cluster) respectively. The numbers in parentheses indicate t values.</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tfoot>
+
+</table>
+
+
+</div>
+</div>
+</div>
+</figure>
+</div>
+</div>
+</div>
+<div id="tabset-11-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-11-2-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.datasets <span class="im">import</span> grunfeld</span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> grunfeld.load_pandas().data</span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>data.year <span class="op">=</span> data.year.astype(np.int64)</span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Link for pyfixest - </span></span>
+<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a><span class="co"># https://py-econometrics.github.io/pyfixest/quickstart.html</span></span>
+<span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyfixest <span class="im">as</span> pf</span>
+<span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyfixest.estimation <span class="im">import</span> feols</span>
+<span id="cb52-11"><a href="#cb52-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-12"><a href="#cb52-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Model (1)</span></span>
+<span id="cb52-13"><a href="#cb52-13" aria-hidden="true" tabindex="-1"></a>fe_model1 <span class="op">=</span> feols(</span>
+<span id="cb52-14"><a href="#cb52-14" aria-hidden="true" tabindex="-1"></a>  <span class="st">"invest ~ value + capital | firm + year"</span>, </span>
+<span id="cb52-15"><a href="#cb52-15" aria-hidden="true" tabindex="-1"></a>  data <span class="op">=</span> data)</span>
+<span id="cb52-16"><a href="#cb52-16" aria-hidden="true" tabindex="-1"></a><span class="co">#fe_model1.summary()</span></span>
+<span id="cb52-17"><a href="#cb52-17" aria-hidden="true" tabindex="-1"></a><span class="co">#pf.etable(fe_model1)</span></span>
+<span id="cb52-18"><a href="#cb52-18" aria-hidden="true" tabindex="-1"></a><span class="co">#fe_model1.tidy()</span></span>
+<span id="cb52-19"><a href="#cb52-19" aria-hidden="true" tabindex="-1"></a><span class="co">#fe_model1.coefplot()</span></span>
+<span id="cb52-20"><a href="#cb52-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-21"><a href="#cb52-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-22"><a href="#cb52-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Model (2)</span></span>
+<span id="cb52-23"><a href="#cb52-23" aria-hidden="true" tabindex="-1"></a>fe_model2 <span class="op">=</span> feols(</span>
+<span id="cb52-24"><a href="#cb52-24" aria-hidden="true" tabindex="-1"></a>  <span class="st">"invest ~ value + capital | firm + year"</span>,</span>
+<span id="cb52-25"><a href="#cb52-25" aria-hidden="true" tabindex="-1"></a>  vcov<span class="op">=</span> {<span class="st">"CRV1"</span>: <span class="st">"firm"</span>}, </span>
+<span id="cb52-26"><a href="#cb52-26" aria-hidden="true" tabindex="-1"></a>  data <span class="op">=</span> data)</span>
+<span id="cb52-27"><a href="#cb52-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-28"><a href="#cb52-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Model (3)</span></span>
+<span id="cb52-29"><a href="#cb52-29" aria-hidden="true" tabindex="-1"></a>fe_model3 <span class="op">=</span> feols(</span>
+<span id="cb52-30"><a href="#cb52-30" aria-hidden="true" tabindex="-1"></a>  <span class="st">"invest ~ value + capital | firm + year"</span>,</span>
+<span id="cb52-31"><a href="#cb52-31" aria-hidden="true" tabindex="-1"></a>  vcov<span class="op">=</span> {<span class="st">"CRV1"</span>: <span class="st">"firm+year"</span>}, </span>
+<span id="cb52-32"><a href="#cb52-32" aria-hidden="true" tabindex="-1"></a>  data <span class="op">=</span> data)</span>
+<span id="cb52-33"><a href="#cb52-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-34"><a href="#cb52-34" aria-hidden="true" tabindex="-1"></a>pf.etable([fe_model1, fe_model2, fe_model3]</span>
+<span id="cb52-35"><a href="#cb52-35" aria-hidden="true" tabindex="-1"></a><span class="co">#, type = "gt"</span></span>
+<span id="cb52-36"><a href="#cb52-36" aria-hidden="true" tabindex="-1"></a>,coef_fmt<span class="op">=</span> <span class="st">'b </span><span class="ch">\n</span><span class="st"> (t)'</span></span>
+<span id="cb52-37"><a href="#cb52-37" aria-hidden="true" tabindex="-1"></a>,signif_code<span class="op">=</span> [<span class="fl">0.01</span>,<span class="fl">0.05</span>,<span class="fl">0.10</span>]</span>
+<span id="cb52-38"><a href="#cb52-38" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-py-multiple" class="cell quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-py-multiple-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;7.2: Regression of Investment on Market Value and PPE
+</figcaption>
+<div aria-describedby="tbl-py-multiple-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<div>
+<div id="sdomxryppt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>
+#sdomxryppt table {
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+        }
+
+#sdomxryppt thead, tbody, tfoot, tr, td, th { border-style: none; }
+ tr { background-color: transparent; }
+#sdomxryppt p { margin: 0; padding: 0; }
+ #sdomxryppt .gt_table { display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: hidden; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; }
+ #sdomxryppt .gt_caption { padding-top: 4px; padding-bottom: 4px; }
+ #sdomxryppt .gt_title { color: #333333; font-size: 125%; font-weight: initial; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; border-bottom-color: #FFFFFF; border-bottom-width: 0; }
+ #sdomxryppt .gt_subtitle { color: #333333; font-size: 85%; font-weight: initial; padding-top: 3px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; border-top-color: #FFFFFF; border-top-width: 0; }
+ #sdomxryppt .gt_heading { background-color: #FFFFFF; text-align: center; border-bottom-color: #FFFFFF; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
+ #sdomxryppt .gt_bottom_border { border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; }
+ #sdomxryppt .gt_col_headings { border-top-style: solid; border-top-width: 2px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
+ #sdomxryppt .gt_col_heading { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; border-left-style: hidden; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: hidden; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: bottom; padding-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; overflow-x: hidden; }
+ #sdomxryppt .gt_column_spanner_outer { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; padding-top: 0; padding-bottom: 0; padding-left: 4px; padding-right: 4px; }
+ #sdomxryppt .gt_column_spanner_outer:first-child { padding-left: 0; }
+ #sdomxryppt .gt_column_spanner_outer:last-child { padding-right: 0; }
+ #sdomxryppt .gt_column_spanner { border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; vertical-align: bottom; padding-top: 5px; padding-bottom: 5px; overflow-x: hidden; display: inline-block; width: 100%; }
+ #sdomxryppt .gt_spanner_row { border-bottom-style: hidden; }
+ #sdomxryppt .gt_group_heading { padding-top: 0px; padding-bottom: 0px; padding-left: 5px; padding-right: 5px; color: #333333; background-color: #FFFFFF; font-size: 0px; font-weight: initial; text-transform: inherit; border-top-style: hidden; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; text-align: left; }
+ #sdomxryppt .gt_empty_group_heading { padding: 0.5px; color: #333333; background-color: #FFFFFF; font-size: 0px; font-weight: initial; border-top-style: hidden; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; vertical-align: middle; }
+ #sdomxryppt .gt_from_md> :first-child { margin-top: 0; }
+ #sdomxryppt .gt_from_md> :last-child { margin-bottom: 0; }
+ #sdomxryppt .gt_row { padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: none; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; }
+ #sdomxryppt .gt_stub { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: hidden; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; }
+ #sdomxryppt .gt_stub_row_group { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: solid; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; vertical-align: top; }
+ #sdomxryppt .gt_row_group_first td { border-top-width: 2px; }
+ #sdomxryppt .gt_row_group_first th { border-top-width: 2px; }
+ #sdomxryppt .gt_striped { background-color: rgba(128,128,128,0.05); }
+ #sdomxryppt .gt_table_body { border-top-style: solid; border-top-width: 0.5px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: black; }
+ #sdomxryppt .gt_sourcenotes { color: #333333; background-color: #FFFFFF; border-bottom-style: none; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; }
+ #sdomxryppt .gt_sourcenote { font-size: 90%; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; text-align: left; }
+ #sdomxryppt .gt_left { text-align: left; }
+ #sdomxryppt .gt_center { text-align: center; }
+ #sdomxryppt .gt_right { text-align: right; font-variant-numeric: tabular-nums; }
+ #sdomxryppt .gt_font_normal { font-weight: normal; }
+ #sdomxryppt .gt_font_bold { font-weight: bold; }
+ #sdomxryppt .gt_font_italic { font-style: italic; }
+ #sdomxryppt .gt_super { font-size: 65%; }
+ #sdomxryppt .gt_footnote_marks { font-size: 75%; vertical-align: 0.4em; position: initial; }
+ #sdomxryppt .gt_asterisk { font-size: 100%; vertical-align: 0; }
+ 
+</style>
+
+<table class="gt_table do-not-create-environment cell table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header gt_col_headings gt_spanner_row">
+<th rowspan="2" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"></th>
+<th colspan="3" id="invest" class="gt_center gt_columns_top_border gt_column_spanner_outer" data-quarto-table-cell-role="th" scope="colgroup"><span class="gt_column_spanner">invest</span></th>
+</tr>
+<tr class="odd gt_col_headings">
+<th id="(1)" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">(1)</th>
+<th id="(2)" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">(2)</th>
+<th id="(3)" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">(3)</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd gt_group_heading_row">
+<td colspan="4" class="gt_group_heading" data-quarto-table-cell-role="th">coef</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th">value</td>
+<td class="gt_row gt_center">0.117***<br>
+(10.669)</td>
+<td class="gt_row gt_center">0.117***<br>
+(10.669)</td>
+<td class="gt_row gt_center">0.117***<br>
+(10.306)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th">capital</td>
+<td class="gt_row gt_center">0.351***<br>
+(7.701)</td>
+<td class="gt_row gt_center">0.351***<br>
+(7.701)</td>
+<td class="gt_row gt_center">0.351***<br>
+(8.091)</td>
+</tr>
+<tr class="even gt_group_heading_row">
+<td colspan="4" class="gt_group_heading" data-quarto-table-cell-role="th">fe</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th">firm</td>
+<td class="gt_row gt_center">x</td>
+<td class="gt_row gt_center">x</td>
+<td class="gt_row gt_center">x</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th">year</td>
+<td class="gt_row gt_center">x</td>
+<td class="gt_row gt_center">x</td>
+<td class="gt_row gt_center">x</td>
+</tr>
+<tr class="odd gt_group_heading_row">
+<td colspan="4" class="gt_group_heading" data-quarto-table-cell-role="th">modelstats</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th">Observations</td>
+<td class="gt_row gt_center">220</td>
+<td class="gt_row gt_center">220</td>
+<td class="gt_row gt_center">220</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th">S.E. type</td>
+<td class="gt_row gt_center">by: firm</td>
+<td class="gt_row gt_center">by: firm</td>
+<td class="gt_row gt_center">by: firm+year</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th">R2</td>
+<td class="gt_row gt_center">0.953</td>
+<td class="gt_row gt_center">0.953</td>
+<td class="gt_row gt_center">0.953</td>
+</tr>
+</tbody><tfoot class="gt_sourcenotes">
+<tr class="even">
+<td colspan="4" class="gt_sourcenote">Significance levels: * p &lt; 0.1, ** p &lt; 0.05, *** p &lt; 0.01. Format of coefficient cell: Coefficient (t-stats)</td>
+</tr>
+</tfoot>
+
+</table>
+
+
+</div>
+        
+</div>
+</div>
+</div>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="time-series-analysis" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="time-series-analysis"><span class="header-section-number">7.3</span> Time Series Analysis</h2>
+</section>
+<section id="exercises" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="exercises"><span class="header-section-number">7.4</span> Exercises</h2>
+<ol type="1">
+<li>Calculate a linear model between PepsiCo stock returns and S&amp;P 500 Market index (the Ticker of S&amp;P 500 Index is <code>^GSPC</code>)</li>
+</ol>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./data_management.html" class="pagination-link" aria-label="Data Management in Accounting">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Data Management in Accounting</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./prescriptive.html" class="pagination-link" aria-label="Prescriptive Analytics in Accounting">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Prescriptive Analytics in Accounting</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Copyright©Sharif Islam</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>This book was built with <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

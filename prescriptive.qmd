@@ -1,0 +1,17 @@
+---
+title: "Prescriptive Analytics in Accounting"
+format: html
+---
+
+## Decision Analysis 
+
+
+
+## Optimization Techniques 
+
+
+
+## Scenario Planning 
+
+
+

@@ -1,0 +1,68 @@
+---
+title: "Foundations of Accounting Data"
+format: html
+---
+
+## Types of Accounting Data 
+
+
+
+## Data Sources and Collection Methods 
+
+
+
+## Data Quality & Integrity 
+
+n summary, this book has no content whatsoever.
+
+```{r}
+1 + 1
+```
+
+```{r}
+plot(mtcars[1:3])
+```
+
+See @fig-firstplot for first ggplot graph
+
+```{r}
+#| label: fig-firstplot
+#| fig-cap: Scatter plot and line plot of the relation between `mpg` and `disp`
+#| warning: false
+#| message: false
+library(tidyverse)
+mtcars %>% 
+  as_tibble() %>% 
+  ggplot(mapping = aes(x = mpg, y = disp))+
+  geom_point()+
+  geom_smooth()+
+  labs(x = 'Miles Per Gallon (mpg)',
+       y = 'Displacement in Cubic Inches (disp)')
+
+```
+
+
+```{r}
+#| message: false 
+#| warning: false 
+library(lubridate)
+```
+
+```{r}
+#| include: false
+library(reticulate)
+Sys.setenv('RETICULATE_PYTHON' = 'C:\\Users\\mshar\\AppData\\Local\\Programs\\Python\\Python311\\python.exe')
+```
+
+```{python}
+import os
+import sys
+sys.version
+
+```
+
+```{python}
+for x in os.listdir():
+  print (x)
+```
+

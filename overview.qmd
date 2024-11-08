@@ -264,7 +264,7 @@ Data analytics in Management Accounnting - A. will contribute to the development
 
 ### Ask the Right Questions 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To drive better decisions, one must __ask the right questions__ first and then seek answers in the data. Then one looks to find relevant data and the appropriate data sources to perform the analytics. These analytics will provide the insights and answer the business questions being asked, which then drive the decisions. Throughtout the process, there is a continuous feedback loop that makes the process iterative. An analytics mindset keeps asking questions until the right answers emerge. The right questions are those that lead to the right answers.@fig-analyticsmindset depicts how analytics mindset works.   
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To drive better decisions, one must __ask the right questions__ first and then seek answers in the data. Then one looks to find relevant data and the appropriate data sources to perform the analytics. These analytics will provide the insights and answer the business questions being asked, which then drive the decisions. Throughtout the process, there is a continuous feedback loop that makes the process iterative. An analytics mindset keeps asking questions until the right answers emerge. The right questions are those that lead to the right answers. @fig-analyticsmindset depicts how analytics mindset works.   
 
 ![Analytics Mindset Decision Making](images/analytics_mindset.png){#fig-analyticsmindset}
 

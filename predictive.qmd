@@ -2,57 +2,49 @@
 title: "Predictive Modeling - Linear Regression"
 format: html 
 ---
+
 ### Learning Objectives of the Chapter {.unnumbered}
 
 ::: {style="text-align: justify"}
+At the End of the Chapter, Students should be Able to -
 
-At the End of the Chapter, Students should be Able to - 
+-   Learn about Linear Regression
 
-* Learn about Linear Regression 
+-   Identify Linear Relation between Variables
 
-* Identify Linear Relation between Variables 
+-   Build Linear Regression Model between Variables
 
-* Build Linear Regression Model between Variables 
+-   Learn about How to Evaluate the Fitness of Linear Models
 
-* Learn about How to Evaluate the Fitness of Linear Models
+-   Evaluate the Assumptions of Linear Regressions
 
-* Evaluate the Assumptions of Linear Regressions
-
-* Build Multiple Regression Models and Evaluate them
-
-
+-   Build Multiple Regression Models and Evaluate them
 :::
 
 ::: {style="text-align: justify"}
-## Introduction 
+## Introduction
 
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Discussion on predictive analytics.  
+     Discussion on predictive analytics.
 :::
 
 ::: {style="text-align: justify"}
-
-## Regression Analysis 
+## Regression Analysis
 
 ### Simple Linear Regression
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Regression analysis is one of very useful predictive modeling techniques that identify the relationship between two or more variables. The objective of linear regression is to identify a linear line of best fit that can predict the outcome variable (target variable/dependent variable/response variable) for one or more independent variables(predictors). For example, we can draw a scatter diagram to see the relation between horsepower and miles per gallon (MPG). @fig-r-hrspower-mpg and @fig-py-hrspower-mpg show the relationship between horsepower and MPG in R and Python respectively. It is clear that there exists a negative relationship between horsepower and MPG and it makes sense because more power means higher fuel consumption. Similarly, there is negative relationship between vehicle weight and MPG because heavier vehicles need more energy to move (@fig-r-weight-mpg and @fig-py-weight-mpg). The equation of a simple linear regression is - $$y= mX + C$$ 
+     Regression analysis is one of very useful predictive modeling techniques that identify the relationship between two or more variables. The objective of linear regression is to identify a linear line of best fit that can predict the outcome variable (target variable/dependent variable/response variable) for one or more independent variables(predictors). For example, we can draw a scatter diagram to see the relation between horsepower and miles per gallon (MPG). @fig-r-hrspower-mpg and @fig-py-hrspower-mpg show the relationship between horsepower and MPG in R and Python respectively. It is clear that there exists a negative relationship between horsepower and MPG and it makes sense because more power means higher fuel consumption. Similarly, there is negative relationship between vehicle weight and MPG because heavier vehicles need more energy to move (@fig-r-weight-mpg and @fig-py-weight-mpg). The equation of a simple linear regression is - $$y= mX + C$$
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;where $y$ = Target variable (Dependent variable); $m$ = slope or rate of change; $X$ = predictor or independent variable; and $C$ = intercept or constant. 
-
-
-
+     where $y$ = Target variable (Dependent variable); $m$ = slope or rate of change; $X$ = predictor or independent variable; and $C$ = intercept or constant.
 :::
 
-::: {.panel-tabset}
-
+::: panel-tabset
 ## R
+
 ```{r}
 #| warning: false
 # loading necessary packages 
 library(tidyverse)
 ```
-
 
 ```{r}
 #| warning: false
@@ -61,8 +53,7 @@ r_df = read_csv('http://web.pdx.edu/~gerbing/data/cars.csv')
 glimpse (r_df)
 ```
 
-
-## Python 
+## Python
 
 ```{r}
 #| include: false
@@ -72,8 +63,6 @@ Sys.setenv('RETICULATE_PYTHON' = 'C:\\Users\\mshar\\AppData\\Local\\Programs\\Py
 #Sys.setenv('RETICULATE_PYTHON' = '~/.venv/quarto_book_python/Scripts/python.exe')
 ```
 
-
-
 ```{python}
 # loading necessary modules 
 import pandas as pd
@@ -81,19 +70,15 @@ import seaborn as sns
 import matplotlib.pyplot as plt 
 ```
 
-
 ```{python}
 # loading the dataset 
 py_df = pd.read_csv("http://web.pdx.edu/~gerbing/data/cars.csv")
 py_df.info()
 ```
-
-
 :::
 
-::: {.panel-tabset}
-
-## R 
+::: panel-tabset
+## R
 
 ```{r}
 #| fig-cap: "Relationship between Horsepower and MPG"
@@ -104,15 +89,13 @@ ggplot(r_df, aes(x = Horsepower, y = MPG))+
 
 ```
 
-
-## Python 
+## Python
 
 ```{r}
 #| include: false
 library(reticulate)
 #Sys.setenv('RETICULATE_PYTHON' = 'C:\\Users\\mshar\\AppData\\Local\\Programs\\Python\\Python311\\python.exe')
 ```
-
 
 ```{python}
 #| fig-cap: "Relationship between Horsepower and MPG"
@@ -121,17 +104,10 @@ sns.set_theme(style="darkgrid")
 sns.scatterplot(x = "Horsepower", y = "MPG", data = py_df)
 
 ```
-
-
-
 :::
 
-
-
-
-::: {.panel-tabset}
-
-## R 
+::: panel-tabset
+## R
 
 ```{r}
 #| fig-cap: "Relationship between Weight and MPG"
@@ -142,15 +118,13 @@ ggplot(r_df, aes(x = Weight, y = MPG))+
 
 ```
 
-
-## Python 
+## Python
 
 ```{r}
 #| include: false
 library(reticulate)
 #Sys.setenv('RETICULATE_PYTHON' = 'C:\\Users\\mshar\\AppData\\Local\\Programs\\Python\\Python311\\python.exe')
 ```
-
 
 ```{python}
 #| fig-cap: "Relationship between Weight and MPG"
@@ -159,20 +133,12 @@ sns.set_theme(style="darkgrid")
 sns.scatterplot(x = "Weight", y = "MPG", data = py_df)
 
 ```
-
 :::
 
-
-
-
-
 ::: {style="text-align: justify"}
+     Now we can quantify these relationships using linear regression in which we will try to draw a line that will help us to idenfity the relation between the variables. For example, in @fig-r-reg-equation, we can see the linear line that shows the relation between horsepower and MPG. The regression equation we find is `y = 40-0.16x`, where $y$ is MPG, $x$ is Horsepower, $40$ is intercept, and $1.6$ is slope, which means one unit change of Horsepower results in 1.6 units reduction of MPG and the value of MPG is 40 when horsepower is 0. @fig-py-reg-equation shows the same results.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Now we can quantify these relationships using linear regression in which we will try to draw a line that will help us to idenfity the relation between the variables. For example, in @fig-r-reg-equation, we can see the linear line that shows the relation between horsepower and MPG. The regression equation we find is `y = 40-0.16x`, where $y$ is MPG, $x$ is Horsepower, $40$ is intercept, and $1.6$ is slope, which means one unit change of Horsepower results in 1.6 units reduction of MPG and the value of MPG is 40 when horsepower is 0.  @fig-py-reg-equation shows the same results. 
-
-
-::: {.panel-tabset}
-
+::: panel-tabset
 ## R
 
 ```{r}
@@ -187,15 +153,13 @@ ggplot(r_df, aes (x = Horsepower, y = MPG))+
 
 ```
 
-
-## Python 
+## Python
 
 ```{r}
 #| include: false
 library(reticulate)
 #Sys.setenv('RETICULATE_PYTHON' = 'C:\\Users\\mshar\\AppData\\Local\\Programs\\Python\\Python311\\python.exe')
 ```
-
 
 ```{python}
 #| label: fig-py-reg-equation
@@ -218,22 +182,15 @@ plot=(p9.ggplot(data=py_df, mapping= p9.aes('Horsepower','MPG'))
 # print the plot
 print(plot)
 ```
-
 :::
-
 :::
-
-
 
 #### Relationship between Stock Returns and a Market Index
 
-
 ::: {style="text-align: justify"}
+     Now we will try to build a simple linear model between the return of a stock and a market index. Using `tidyquant` package from `R` or `yfinance` module from `python`, we will get share prices of different stocks and a market index. For example, we will get the share price data of Coca-Cola (NYSE:KO) and its competitor PepsiCO (NYSE:PEP). Moreover, we will collect data on US Dollar index (ICE:DX) and SPDR S&P500 ETF (NYSERCA:SPY).
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Now we will try to build a simple linear model between the return of a stock and a market index. Using `tidyquant` package from `R` or `yfinance` module from `python`, we will get share prices of different stocks and a market index. For example, we will get the share price data of Coca-Cola (NYSE:KO) and its competitor PepsiCO (NYSE:PEP). Moreover, we will collect data on US Dollar index (ICE:DX) and SPDR S&P500 ETF (NYSERCA:SPY). 
-
-::: {.panel-tabset}
-
+::: panel-tabset
 ## R
 
 ```{r}
@@ -291,8 +248,7 @@ ggplot(df_stockR, aes (x = SPY, y = KO))+
 
 ```
 
-
-## Python 
+## Python
 
 ```{r}
 #| include: false
@@ -300,7 +256,6 @@ library(reticulate)
 #Sys.setenv('RETICULATE_PYTHON' = 'C:\\Users\\mshar\\AppData\\Local\\Programs\\Python\\Python311\\python.exe')
 
 ```
-
 
 ```{python}
 #| label: fig-py-relation-KO-SPY
@@ -377,52 +332,43 @@ plt.legend()
 plt.show()
 
 ```
-
 :::
-
 :::
-
-
-
 
 ### Evaluating Linear Regression Models - Assessing the Fitness
 
 ::: {style="text-align: justify"}
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;When we build a linear regression model, we need to check the accuracy of the model by evaluating different parameters of the model. Some of the parameters that need to be evaluated are discussed below -  
+     When we build a linear regression model, we need to check the accuracy of the model by evaluating different parameters of the model. Some of the parameters that need to be evaluated are discussed below -
 
 #### F-statistic and Overall P-value
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The F-statistic of the model tests whether the linear model provides a better fit of the data than the model that contains no independent variables. The null hypothesis is that the model as a whole does not explain a significant amount of variance of the data. 
+     The F-statistic of the model tests whether the linear model provides a better fit of the data than the model that contains no independent variables. The null hypothesis is that the model as a whole does not explain a significant amount of variance of the data.
 
 #### Coefficient of Determination ($R^2$) and Adjusted $R^2$
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Coefficient of determination is a statistical metric that measures the proportion of the variance of the target variable explained by the independent variables. The coefficient of determination is represented by $R^2$. The value of $R^2$ ranges between $0$ and $1$, where $0$ indicates poor fit and $1$ indicates perfect fit. There is a problem with $R^2$; it increases as the number of independent variable increases. Therefore, when we compare models with different numbers of independent variables, adjuted $R^2$ is used to evaluate the model because it penalizes models with a large number of predictors. 
+     Coefficient of determination is a statistical metric that measures the proportion of the variance of the target variable explained by the independent variables. The coefficient of determination is represented by $R^2$. The value of $R^2$ ranges between $0$ and $1$, where $0$ indicates poor fit and $1$ indicates perfect fit. There is a problem with $R^2$; it increases as the number of independent variable increases. Therefore, when we compare models with different numbers of independent variables, adjuted $R^2$ is used to evaluate the model because it penalizes models with a large number of predictors.
 
-#### P-value of Parameter Estimates 
+#### P-value of Parameter Estimates
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In addition to overall p-value associated with the model, linear regression models generate p-value for each predicators (parameter estimates). This p-value tests the null hypothesis that the coefficient is zero (or it does not have any effect on outcome variable). A low p-value (<0.05) indicates that we can reject the null hypothesis, meaning that a predictor with a low p-value should be included in the model because it has statistically significant effect on the target variable.  
+     In addition to overall p-value associated with the model, linear regression models generate p-value for each predicators (parameter estimates). This p-value tests the null hypothesis that the coefficient is zero (or it does not have any effect on outcome variable). A low p-value (\<0.05) indicates that we can reject the null hypothesis, meaning that a predictor with a low p-value should be included in the model because it has statistically significant effect on the target variable.
 
 #### Residual Standard Error (RSE)
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Residual Standard Error (RSE) measures how far away an observation is from the prediction (regression line). In another words, it is mean (average) distance between the actual outcome and regression line. For example, @fig-r-relation-KO-SPY regression equation's RSE is 0.01034, which means the regression model predicts CocaCola's return with an avearagr error 0.01034. 
-
+     Residual Standard Error (RSE) measures how far away an observation is from the prediction (regression line). In another words, it is mean (average) distance between the actual outcome and regression line. For example, @fig-r-relation-KO-SPY regression equation's RSE is 0.01034, which means the regression model predicts CocaCola's return with an avearagr error 0.01034.
 :::
 
 ::: {style="text-align: justify"}
-
 ### Assumptions of Linear Regression
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Linear regression follows some assumptions. After fitting a regression model, we should check the assumptions of the model. 
+     Linear regression follows some assumptions. After fitting a regression model, we should check the assumptions of the model.
 
-1. **Linearity (Linear Relationship)**: 
+1.  **Linearity (Linear Relationship)**:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;There must be a linear relationship between the outcome variable (y) and predictors (x). @fig-assump1 shows what we want to see and @fig-r-assump1 and @fig-py-assump1 show what we see from one of our models.  
+     There must be a linear relationship between the outcome variable (y) and predictors (x). @fig-assump1 shows what we want to see and @fig-r-assump1 and @fig-py-assump1 show what we see from one of our models.
 
-![Assumption 1- What We Want to See](images/Linear_Reg_Assump1.webp){fig-align="center" #fig-assump1}
+![Assumption 1- What We Want to See](images/Linear_Reg_Assump1.webp){#fig-assump1 fig-align="center"}
 
-::: {.panel-tabset}
-
+::: panel-tabset
 ## R
 
 ```{r}
@@ -430,7 +376,6 @@ plt.show()
 #| fig-cap: Testing Assumption 1
 plot(lm(KO ~ SPY, data = df_stockR), 1)
 ```
-
 
 ## Python
 
@@ -455,19 +400,15 @@ plt.ylabel('Residuals')
 # https://robert-alvarez.github.io/2018-06-04-diagnostic_plots/
 # https://www.kirenz.com/blog/posts/2021-11-14-linear-regression-diagnostics-in-python/
 ```
-
 :::
 
+2.  **Independence**:
 
+     Indpendence means that each observation (data point) is independent of the others, meaning that the error terms in the model are not correlated with each other and the occurrence of one observation does not influence the probability of another observation occurring; essentially, each data point should be considered a separate, unrelated event from the others. We can check this assumption by Durbin-Watson test. The null hypothesis (H~0~) is there is no correlation among the residuals. Basically, the test detects autocorrelation in the residuals of a linear regression model. The test statistic is a value between 0 and 4, with the following interpretations: 2: No autocorrelation; \< 2: Positive autocorrelation; \> 2: Negative autocorrelation. To solve the independence issue, it is suggested that for positive serial correlation, consider adding lags of the dependent and/or independent variable to the model. For negative serial correlation, check to make sure that none of your variables are overdifferenced, and For seasonal correlation, consider adding seasonal dummy variables to the model. However, as a rule of thumb, test statistic values between the range of 1.5 and 2.5 are considered normal. One limitation of the DW test is that it can only test for first-order serial correlation.
 
-2. **Independence**: 
+     Alternatively, we can can visually examine a scatterplot of the residuals (errors) against the fitted values (@fig-r-assump1 and @fig-py-assump1); if there is no clear pattern, it suggests that the independence assumption is likely satisfied. Independence assmption is important because violating it can lead to unreliable hypothesis tests and confidence intervals.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Indpendence means that each observation (data point) is independent of the others, meaning that the error terms in the model are not correlated with each other and the occurrence of one observation does not influence the probability of another observation occurring; essentially, each data point should be considered a separate, unrelated event from the others. We can check this assumption by Durbin-Watson test. The null hypothesis (H~0~) is there is no correlation among the residuals. Basically, the test detects autocorrelation in the residuals of a linear regression model. The test statistic is a value between 0 and 4, with the following interpretations: 2: No autocorrelation; < 2: Positive autocorrelation; > 2: Negative autocorrelation. To solve the independence issue, it is suggested that for positive serial correlation, consider adding lags of the dependent and/or independent variable to the model. For negative serial correlation, check to make sure that none of your variables are overdifferenced, and For seasonal correlation, consider adding seasonal dummy variables to the model. However, as a rule of thumb, test statistic values between the range of 1.5 and 2.5 are considered normal. One limitation of the DW test is that it can only test for first-order serial correlation.  
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Alternatively, we can can visually examine a scatterplot of the residuals (errors) against the fitted values (@fig-r-assump1 and @fig-py-assump1); if there is no clear pattern, it suggests that the independence assumption is likely satisfied. Independence assmption is important because violating it can lead to unreliable hypothesis tests and confidence intervals.  
-
-::: {.panel-tabset}
-
+::: panel-tabset
 ## R
 
 ```{r}
@@ -475,7 +416,6 @@ plt.ylabel('Residuals')
 library(car)
 durbinWatsonTest(lm(KO ~ SPY, data = df_stockR))
 ```
-
 
 ## Python
 
@@ -490,21 +430,19 @@ library(reticulate)
 from statsmodels.stats.stattools import durbin_watson
 durbin_watson(slr_sm_model_ko.resid)
 ```
-
 :::
 
-3. **Residual Error**: 
+3.  **Residual Error**:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The errors have a mean (expected) value zero ($0$), constant varianace (Homoscedasticity), and are independent from each other (otherwise auto-correlation problem) and predictor variables. We can check the assumption - expected value of errors are equal to 0 - by looking at @fig-r-assump1 and @fig-py-assump1. If there is a pattern in the plot, the assumption is violated. 
+     The errors have a mean (expected) value zero ($0$), constant varianace (Homoscedasticity), and are independent from each other (otherwise auto-correlation problem) and predictor variables. We can check the assumption - expected value of errors are equal to 0 - by looking at @fig-r-assump1 and @fig-py-assump1. If there is a pattern in the plot, the assumption is violated.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The assumption homoscedasticity is tested using the Scale-Location plot, in which fitted values are compared with square root of standardized residuals. Theoretically, we want to see @fig-assump3. @fig-r-assump3 and @fig-py-assump3  show Scale-Location plot (also called spread-location plot) of our model. From @fig-r-assump3 and @fig-py-assump3, it is clear that residual plots have a trend (are not all equally spread out). Thus, the assumption is violated. One solution to the problem is that using log or square root transformation of outcome variable. Moreover, we can use Non-Constant Error Variance (NVC) test to test the assumption. If p-value of the test is less than 0.05, then null hypothesis is rejected, meaning that homoscedasticity is violated. Moreover, Breusch-Pagan test or White test can also be used to test homoscedasticity.  
+     The assumption homoscedasticity is tested using the Scale-Location plot, in which fitted values are compared with square root of standardized residuals. Theoretically, we want to see @fig-assump3. @fig-r-assump3 and @fig-py-assump3 show Scale-Location plot (also called spread-location plot) of our model. From @fig-r-assump3 and @fig-py-assump3, it is clear that residual plots have a trend (are not all equally spread out). Thus, the assumption is violated. One solution to the problem is that using log or square root transformation of outcome variable. Moreover, we can use Non-Constant Error Variance (NVC) test to test the assumption. If p-value of the test is less than 0.05, then null hypothesis is rejected, meaning that homoscedasticity is violated. Moreover, Breusch-Pagan test or White test can also be used to test homoscedasticity.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Finally, testing the assumption - errors are independent from each other and predictors - requires the knowledge of study design and data collection to establish the validity of this assumption. Violation of this assumption is also called endogeneity problem of the model, which is the same as assumption 6 - No Endogeneity below.      
+     Finally, testing the assumption - errors are independent from each other and predictors - requires the knowledge of study design and data collection to establish the validity of this assumption. Violation of this assumption is also called endogeneity problem of the model, which is the same as assumption 6 - No Endogeneity below.
 
-![Assumption 3- What We Want to See](images/Linear_Reg_Assump3.webp){fig-align="center" #fig-assump3}
+![Assumption 3- What We Want to See](images/Linear_Reg_Assump3.webp){#fig-assump3 fig-align="center"}
 
-::: {.panel-tabset}
-
+::: panel-tabset
 ## R
 
 ```{r}
@@ -516,7 +454,6 @@ plot(lm(KO ~ SPY, data = df_stockR),3)
 # Non-Constant Error Variance Test 
 ncvTest (lm(KO ~ SPY, data = df_stockR))
 ```
-
 
 ## Python
 
@@ -558,17 +495,13 @@ white_test = sms.het_white(slr_sm_model_ko.resid, slr_sm_model_ko.model.exog)
 for stat, value in zip(labels,white_test):
     print('{}: {:.3f}'.format(stat, value))
 ```
-
 :::
 
+4.  **Normality**:
 
+     The residuals are normally distributed. We can test this assumption by Q-Q plots (also called Quantile-Quantile plot) of the residuals. @fig-r-qqplot and @fig-py-qqplot show a QQ plot. The dots do not lie perfectly along the straight line. Moreover, Kolmogorov-Smirnov (KS) test can be used to check the normality assumption. KS tests whether a sample comes from a certain distribution. From the KS result below, we can see test statistic is 0.484 and p-value is 2.2e-16, thus rejecting null hypothesis and indicating that sample data does not come from a normal distribution.
 
-4. **Normality**: 
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The residuals are normally distributed. We can test this assumption by Q-Q plots (also called Quantile-Quantile plot) of the residuals. @fig-r-qqplot and @fig-py-qqplot show a QQ plot. The dots do not lie perfectly along the straight line.  Moreover, Kolmogorov-Smirnov (KS) test can be used to check the normality assumption. KS tests whether a sample comes from a certain distribution. From the KS result below, we can see test statistic is 0.484 and p-value is 2.2e-16, thus rejecting null hypothesis and indicating that sample data does not come from a normal distribution.  
-
-::: {.panel-tabset}
-
+::: panel-tabset
 ## R
 
 ```{r}
@@ -592,7 +525,6 @@ qqPlot(df_stockR$residual)
 library(stats)
 ks.test(df_stockR$residual, "pnorm")
 ```
-
 
 ## Python
 
@@ -622,15 +554,13 @@ label_ks = ["KS Statistic", "P-value"]
 for stat, value in zip(label_ks, ks_test[:2]):
     print('{}: {:.5f}'.format(stat, value))
 ```
-
 :::
 
-5. **Multicollinearity**: 
+5.  **Multicollinearity**:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;There is little or no correlation between the predictor variables. It makes difficult to interpret the coefficients of the model. Variance Inflation Factor (VIF) can be used to test the multicollinearity. A value equal to or greater than 10 of VIF indicates multicollinearity in the data. We see the VIF of SPY and PEP is 1.84 and 1.84 respectively. Moreover, correlation matrix can also be used to identify the predictors that are highly correlated. @fig-r-corplot and @fig-py-corplot show a correlation plot of our stock returns data.     
+     There is little or no correlation between the predictor variables. It makes difficult to interpret the coefficients of the model. Variance Inflation Factor (VIF) can be used to test the multicollinearity. A value equal to or greater than 10 of VIF indicates multicollinearity in the data. We see the VIF of SPY and PEP is 1.84 and 1.84 respectively. Moreover, correlation matrix can also be used to identify the predictors that are highly correlated. @fig-r-corplot and @fig-py-corplot show a correlation plot of our stock returns data.
 
-::: {.panel-tabset}
-
+::: panel-tabset
 ## R
 
 ```{r}
@@ -647,7 +577,6 @@ vif(lm(KO ~ SPY+PEP, data = df_stockR))
 source("http://www.sthda.com/upload/rquery_cormat.r")
 rquery.cormat(df_stockR |> select(KO:DX.Y.NYB), type = c("lower"), graph = TRUE)$r
 ```
-
 
 ## Python
 
@@ -687,30 +616,25 @@ pd.Series([variance_inflation_factor(X.values, i)
               index=X.columns[1:])
 
 ```
-
 :::
 
-6. **No Endogeneity**: 
+6.  **No Endogeneity**:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;There is no relation between the errors and the independent variables.   
-
+     There is no relation between the errors and the independent variables.
 :::
-
-
 
 ::: {style="text-align: justify"}
+### Multiple Linear Regression
 
-### Multiple Linear Regression 
+      Multiple regression analysis estimates the relationship between an outcome variable and two or more independent variables. More specifically, multiple regression analysis helps to understand how the value of the dependent variable changes when one of the independent variables varies, while the other independent variables remain constant.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Multiple regression analysis estimates the relationship between an outcome variable and two or more independent variables. More specifically, multiple regression analysis helps to understand how the value of the dependent variable changes when one of the independent variables varies, while the other independent variables remain constant.
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;We use Grunfeld dataset for multiple regressions. The dataset contains investment data for 11 US firms. The variables include - `invest`, which is Gross investment in 1947 dollars; `value`, which is market value as of Dec 31 in 1947 dollars; `capital`, which is stock of plant and equipment in 1947 dollars; `firm`, which include 11 US firms (General Motors, US Steel, General Electric, Chrysler, Atlantic Refining, IBM, Union Oil, Westinghouse, Goodyear, Diamond Match, American Steel); and `year`, which is 1935-1954. Our multiple regeression model is @eq-multiple - 
+     We use Grunfeld dataset for multiple regressions. The dataset contains investment data for 11 US firms. The variables include - `invest`, which is Gross investment in 1947 dollars; `value`, which is market value as of Dec 31 in 1947 dollars; `capital`, which is stock of plant and equipment in 1947 dollars; `firm`, which include 11 US firms (General Motors, US Steel, General Electric, Chrysler, Atlantic Refining, IBM, Union Oil, Westinghouse, Goodyear, Diamond Match, American Steel); and `year`, which is 1935-1954. Our multiple regeression model is @eq-multiple -
 
 $$
 invest_{it} = \beta_{0} + \beta_{1}value_{i} + \beta_{3}capital_{it} + \alpha_{it} + \delta_{t} + \epsilon_{it}
 $$ {#eq-multiple}
 
-Where 
+Where
 
 $invest_{it}$ is the gross investment of firm $i$ in year $t$
 
@@ -724,10 +648,9 @@ $delta_{t}$ is the fixed effect for year $t$ (capturing unobserved year-specific
 
 $epsilon_{it}$ is the error term, which includes all other unobserved factors that affect investment but are not accounted for by the independent variables or the fixed effects.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In @tbl-r-multiple and @tbl-py-multiple, we generate some multiple regression models.  
+     In @tbl-r-multiple and @tbl-py-multiple, we generate some multiple regression models.
 
-::: {.panel-tabset}
-
+::: panel-tabset
 ## R
 
 ```{r}
@@ -800,9 +723,7 @@ footnote('In all models both firm and year fixed effects are controlled and in m
 
 ```
 
-
-## Python 
-
+## Python
 
 ```{r}
 #| include: false
@@ -856,13 +777,11 @@ pf.etable([fe_model1, fe_model2, fe_model3]
 ,signif_code= [0.01,0.05,0.10]
 )
 ```
-
+:::
 :::
 
-:::
+## Time Series Analysis
 
-## Time Series Analysis 
+## Exercises
 
-## Exercises  
-
-01. Calculate a linear model between PepsiCo stock returns and S&P 500 Market index (the Ticker of S&P 500 Index is `^GSPC`)
+1.  Calculate a linear model between PepsiCo stock returns and S&P 500 Market index (the Ticker of S&P 500 Index is `^GSPC`)

@@ -557,5 +557,60 @@
       "Introduction to Accounting Analytics",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Foundations of Accounting Data</span>"
     ]
+  },
+  {
+    "objectID": "predictive.html",
+    "href": "predictive.html",
+    "title": "7  Predictive Modeling - Linear Regression",
+    "section": "",
+    "text": "Learning Objectives of the Chapter",
+    "crumbs": [
+      "Predictive and Prescriptive Analytics",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Predictive Modeling - Linear Regression</span>"
+    ]
+  },
+  {
+    "objectID": "predictive.html#introduction",
+    "href": "predictive.html#introduction",
+    "title": "7  Predictive Modeling - Linear Regression",
+    "section": "7.1 Introduction",
+    "text": "7.1 Introduction\n     Discussion on predictive analytics.",
+    "crumbs": [
+      "Predictive and Prescriptive Analytics",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Predictive Modeling - Linear Regression</span>"
+    ]
+  },
+  {
+    "objectID": "predictive.html#regression-analysis",
+    "href": "predictive.html#regression-analysis",
+    "title": "7  Predictive Modeling - Linear Regression",
+    "section": "7.2 Regression Analysis",
+    "text": "7.2 Regression Analysis\n\n7.2.1 Simple Linear Regression\n     Regression analysis is one of very useful predictive modeling techniques that identify the relationship between two or more variables. The objective of linear regression is to identify a linear line of best fit that can predict the outcome variable (target variable/dependent variable/response variable) for one or more independent variables(predictors). For example, we can draw a scatter diagram to see the relation between horsepower and miles per gallon (MPG). Figure 7.1 and Figure 7.2 show the relationship between horsepower and MPG in R and Python respectively. It is clear that there exists a negative relationship between horsepower and MPG and it makes sense because more power means higher fuel consumption. Similarly, there is negative relationship between vehicle weight and MPG because heavier vehicles need more energy to move (Figure 7.3 and Figure 7.4). The equation of a simple linear regression is - \\[y= mX + C\\]\n     where \\(y\\) = Target variable (Dependent variable); \\(m\\) = slope or rate of change; \\(X\\) = predictor or independent variable; and \\(C\\) = intercept or constant.",
+    "crumbs": [
+      "Predictive and Prescriptive Analytics",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Predictive Modeling - Linear Regression</span>"
+    ]
+  },
+  {
+    "objectID": "predictive.html#time-series-analysis",
+    "href": "predictive.html#time-series-analysis",
+    "title": "7  Predictive Modeling - Linear Regression",
+    "section": "7.3 Time Series Analysis",
+    "text": "7.3 Time Series Analysis",
+    "crumbs": [
+      "Predictive and Prescriptive Analytics",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Predictive Modeling - Linear Regression</span>"
+    ]
+  },
+  {
+    "objectID": "predictive.html#exercises",
+    "href": "predictive.html#exercises",
+    "title": "7  Predictive Modeling - Linear Regression",
+    "section": "7.4 Exercises",
+    "text": "7.4 Exercises\n\nCalculate a linear model between PepsiCo stock returns and S&P 500 Market index (the Ticker of S&P 500 Index is ^GSPC)",
+    "crumbs": [
+      "Predictive and Prescriptive Analytics",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Predictive Modeling - Linear Regression</span>"
+    ]
   }
 ]

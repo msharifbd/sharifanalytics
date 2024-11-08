@@ -494,7 +494,7 @@ Table&nbsp;5.1: Some Additional Attributes
 <li><p>Flexibilit and Scalability - Vizro enables data science ready and to develop python based data visualization applications</p></li>
 </ul>
 </div>
-<div id="49a61696" class="cell" data-execution_count="1">
+<div id="29dae0fc" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Dashboard Creation </span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> vizro <span class="im">import</span> Vizro</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> vizro.models <span class="im">as</span> vm</span>
@@ -506,7 +506,7 @@ Table&nbsp;5.1: Some Additional Attributes
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="40f4c1cd" class="cell" data-execution_count="2">
+<div id="63b88028" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># loading dataset </span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> palmerpenguins</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> palmerpenguins.load_penguins()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -546,7 +546,7 @@ Figure&nbsp;5.3: A Sample of Vizro Dashboard
 </section>
 <section id="standalone-page-on-vizro-dashboard-example-02" class="level3" data-number="5.5.2">
 <h3 data-number="5.5.2" class="anchored" data-anchor-id="standalone-page-on-vizro-dashboard-example-02"><span class="header-section-number">5.5.2</span> Standalone Page on Vizro Dashboard (Example # 02)</h3>
-<div id="62cccfe2" class="cell" data-execution_count="4">
+<div id="1f0ed42d" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># loading dataset </span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> px.data.gapminder()</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>gapminder_data <span class="op">=</span> (</span>
@@ -554,7 +554,7 @@ Figure&nbsp;5.3: A Sample of Vizro Dashboard
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>            agg({<span class="st">"lifeExp"</span>: <span class="st">"mean"</span>, <span class="st">"pop"</span>: <span class="st">"sum"</span>, <span class="st">"gdpPercap"</span>: <span class="st">"mean"</span>}).reset_index()</span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="62140ded" class="cell" data-execution_count="5">
+<div id="7d3663d9" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>Vizro._reset()</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>second_page <span class="op">=</span> vm.Page(</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">"First Page"</span>,</span>
@@ -585,7 +585,7 @@ Figure&nbsp;5.3: A Sample of Vizro Dashboard
 </section>
 <section id="multiple-pages-on-vizro-dashboard" class="level3" data-number="5.5.3">
 <h3 data-number="5.5.3" class="anchored" data-anchor-id="multiple-pages-on-vizro-dashboard"><span class="header-section-number">5.5.3</span> Multiple Pages on Vizro Dashboard</h3>
-<div id="6cdd5de5" class="cell" data-execution_count="6">
+<div id="0f25b27a" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>Vizro._reset()</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>third_page <span class="op">=</span> vm.Page(</span>
@@ -614,7 +614,7 @@ Figure&nbsp;5.3: A Sample of Vizro Dashboard
 <span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>dashboard3 <span class="op">=</span> vm.Dashboard(pages<span class="op">=</span>[third_page])</span>
 <span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>Vizro().build(dashboard3).run()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cf711415" class="cell" data-execution_count="7">
+<div id="b5c91b21" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>Vizro._reset()</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>second_page <span class="op">=</span> vm.Page(</span>

@@ -416,7 +416,7 @@ window.Quarto = {
 <h2 data-number="7.2" class="anchored" data-anchor-id="regression-analysis"><span class="header-section-number">7.2</span> Regression Analysis</h2>
 <section id="simple-linear-regression" class="level3" data-number="7.2.1">
 <h3 data-number="7.2.1" class="anchored" data-anchor-id="simple-linear-regression"><span class="header-section-number">7.2.1</span> Simple Linear Regression</h3>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Regression analysis is one of very useful predictive modeling techniques that identify the relationship between two or more variables. The objective of linear regression is to identify a linear line of best fit that can predict the outcome variable (target variable/dependent variable/response variable) for one or more independent variables(predictors). For example, we can draw a scatter diagram to see the relation between horsepower and miles per gallon (MPG). <a href="#fig-r-hrspower-mpg" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-r-hrspower-mpg</span></a> and <a href="#fig-py-hrspower-mpg" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-py-hrspower-mpg</span></a> show the relationship between horsepower and MPG in R and Python respectively. It is clear that there exists a negative relationship between horsepower and MPG and it makes sense because more power means higher fuel consumption. Similarly, there is negative relationship between vehicle weight and MPG because heavier vehicles need more energy to move (<a href="#fig-r-weight-mpg" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-r-weight-mpg</span></a> and <a href="#fig-py-weight-mpg" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-py-weight-mpg</span></a>). The equation of a simple linear regression is - <span class="math display">\[y= mX + C\]</span></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Regression analysis is one of very useful predictive modeling techniques that identify the relationship between two or more variables. The objective of linear regression is to identify a linear line of best fit that can predict the outcome variable (target variable/dependent variable/response variable) for one or more independent variables(predictors). For example, we can draw a scatter diagram to see the relation between horsepower and miles per gallon (MPG). <a href="#fig-r-hrspower-mpg" class="quarto-xref">Figure&nbsp;<span>7.1</span></a> and <a href="#fig-py-hrspower-mpg" class="quarto-xref">Figure&nbsp;<span>7.2</span></a> show the relationship between horsepower and MPG in R and Python respectively. It is clear that there exists a negative relationship between horsepower and MPG and it makes sense because more power means higher fuel consumption. Similarly, there is negative relationship between vehicle weight and MPG because heavier vehicles need more energy to move (<a href="#fig-r-weight-mpg" class="quarto-xref">Figure&nbsp;<span>7.3</span></a> and <a href="#fig-py-weight-mpg" class="quarto-xref">Figure&nbsp;<span>7.4</span></a>). The equation of a simple linear regression is - <span class="math display">\[y= mX + C\]</span></p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;where <span class="math inline">\(y\)</span> = Target variable (Dependent variable); <span class="math inline">\(m\)</span> = slope or rate of change; <span class="math inline">\(X\)</span> = predictor or independent variable; and <span class="math inline">\(C\)</span> = intercept or constant.</p>
 </section>
 </section>
@@ -563,7 +563,7 @@ Figure&nbsp;7.4: Relationship between Weight and MPG
 </div>
 </div>
 <div style="text-align: justify">
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Now we can quantify these relationships using linear regression in which we will try to draw a line that will help us to idenfity the relation between the variables. For example, in <a href="#fig-r-reg-equation" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-r-reg-equation</span></a>, we can see the linear line that shows the relation between horsepower and MPG. The regression equation we find is <code>y = 40-0.16x</code>, where <span class="math inline">\(y\)</span> is MPG, <span class="math inline">\(x\)</span> is Horsepower, <span class="math inline">\(40\)</span> is intercept, and <span class="math inline">\(1.6\)</span> is slope, which means one unit change of Horsepower results in 1.6 units reduction of MPG and the value of MPG is 40 when horsepower is 0. <a href="#fig-py-reg-equation" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-py-reg-equation</span></a> shows the same results.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Now we can quantify these relationships using linear regression in which we will try to draw a line that will help us to idenfity the relation between the variables. For example, in <a href="#fig-r-reg-equation" class="quarto-xref">Figure&nbsp;<span>7.5</span></a>, we can see the linear line that shows the relation between horsepower and MPG. The regression equation we find is <code>y = 40-0.16x</code>, where <span class="math inline">\(y\)</span> is MPG, <span class="math inline">\(x\)</span> is Horsepower, <span class="math inline">\(40\)</span> is intercept, and <span class="math inline">\(1.6\)</span> is slope, which means one unit change of Horsepower results in 1.6 units reduction of MPG and the value of MPG is 40 when horsepower is 0. <a href="#fig-py-reg-equation" class="quarto-xref">Figure&nbsp;<span>7.6</span></a> shows the same results.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">Python</a></li></ul>
 <div class="tab-content">
@@ -713,8 +713,8 @@ F-statistic: 900.5 on 1 and 1255 DF,  p-value: &lt; 2.2e-16</code></pre>
  4  0.0112   0.00935   9.54e-3  1.98e-3  6.09e-3  5.13e-3 1.14e-3 0.0103 1.41e-4
  5 -0.0194   0.00466  -2.83e-2 -7.12e-3  3.00e-3 -2.24e-2 8.71e-4 0.0103 2.04e-3
  6  0.0107   0.00352   6.12e-3  3.36e-3  2.25e-3  8.43e-3 8.35e-4 0.0103 2.78e-4
- 7  0.00572  0.000386  9.24e-5  1.36e-3  1.80e-4  5.54e-3 7.96e-4 0.0103 1.14e-4
- 8 -0.00402 -0.00612  -7.80e-3 -8.37e-4 -4.11e-3  8.87e-5 9.98e-4 0.0103 3.67e-8
+ 7  0.00572  0.000386  9.26e-5  1.36e-3  1.80e-4  5.54e-3 7.96e-4 0.0103 1.14e-4
+ 8 -0.00402 -0.00612  -7.80e-3 -8.37e-4 -4.11e-3  8.85e-5 9.98e-4 0.0103 3.66e-8
  9  0.00887  0.0114    1.54e-2  3.97e-3  7.44e-3  1.43e-3 1.32e-3 0.0103 1.26e-5
 10 -0.0138   0.00242  -5.98e-3  9.37e-4  1.52e-3 -1.53e-2 8.11e-4 0.0103 8.86e-4
 # ℹ 1,247 more rows
@@ -797,8 +797,8 @@ Figure&nbsp;7.7: Linear Model between SPY and KO
 Dep. Variable:                     ko   R-squared:                       0.418
 Model:                            OLS   Adj. R-squared:                  0.417
 Method:                 Least Squares   F-statistic:                     900.5
-Date:                Tue, 05 Nov 2024   Prob (F-statistic):          1.36e-149
-Time:                        21:49:51   Log-Likelihood:                 3963.5
+Date:                Fri, 08 Nov 2024   Prob (F-statistic):          1.36e-149
+Time:                        10:01:43   Log-Likelihood:                 3963.5
 No. Observations:                1257   AIC:                            -7923.
 Df Residuals:                    1255   BIC:                            -7913.
 Df Model:                           1                                         
@@ -806,11 +806,11 @@ Covariance Type:            nonrobust
 ==============================================================================
                  coef    std err          t      P&gt;|t|      [0.025      0.975]
 ------------------------------------------------------------------------------
-Intercept  -7.427e-05      0.000     -0.254      0.799      -0.001       0.000
+Intercept  -7.426e-05      0.000     -0.254      0.799      -0.001       0.000
 spy            0.6595      0.022     30.009      0.000       0.616       0.703
 ==============================================================================
-Omnibus:                      301.182   Durbin-Watson:                   1.871
-Prob(Omnibus):                  0.000   Jarque-Bera (JB):             3723.042
+Omnibus:                      301.181   Durbin-Watson:                   1.871
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):             3723.045
 Skew:                          -0.743   Prob(JB):                         0.00
 Kurtosis:                      11.299   Cond. No.                         75.3
 ==============================================================================
@@ -875,7 +875,7 @@ Figure&nbsp;7.8: Linear Model between SPY and KO
 </section>
 <section id="residual-standard-error-rse" class="level4" data-number="7.2.2.4">
 <h4 data-number="7.2.2.4" class="anchored" data-anchor-id="residual-standard-error-rse"><span class="header-section-number">7.2.2.4</span> Residual Standard Error (RSE)</h4>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Residual Standard Error (RSE) measures how far away an observation is from the prediction (regression line). In another words, it is mean (average) distance between the actual outcome and regression line. For example, <a href="#fig-r-relation-KO-SPY" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-r-relation-KO-SPY</span></a> regression equation’s RSE is 0.01034, which means the regression model predicts CocaCola’s return with an avearagr error 0.01034.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Residual Standard Error (RSE) measures how far away an observation is from the prediction (regression line). In another words, it is mean (average) distance between the actual outcome and regression line. For example, <a href="#fig-r-relation-KO-SPY" class="quarto-xref">Figure&nbsp;<span>7.7</span></a> regression equation’s RSE is 0.01034, which means the regression model predicts CocaCola’s return with an avearagr error 0.01034.</p>
 </section>
 </div>
 </section>
@@ -885,7 +885,7 @@ Figure&nbsp;7.8: Linear Model between SPY and KO
 <ol type="1">
 <li><strong>Linearity (Linear Relationship)</strong>:</li>
 </ol>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;There must be a linear relationship between the outcome variable (y) and predictors (x). <a href="#fig-assump1" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-assump1</span></a> shows what we want to see and <a href="#fig-r-assump1" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-r-assump1</span></a> and <a href="#fig-py-assump1" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-py-assump1</span></a> show what we see from one of our models.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;There must be a linear relationship between the outcome variable (y) and predictors (x). <a href="#fig-assump1" class="quarto-xref">Figure&nbsp;<span>7.9</span></a> shows what we want to see and <a href="#fig-r-assump1" class="quarto-xref">Figure&nbsp;<span>7.10</span></a> and <a href="#fig-py-assump1" class="quarto-xref">Figure&nbsp;<span>7.11</span></a> show what we see from one of our models.</p>
 <div id="fig-assump1" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-assump1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -948,7 +948,7 @@ Figure&nbsp;7.11: Testing Assumption 1
 <li><strong>Independence</strong>:</li>
 </ol>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Indpendence means that each observation (data point) is independent of the others, meaning that the error terms in the model are not correlated with each other and the occurrence of one observation does not influence the probability of another observation occurring; essentially, each data point should be considered a separate, unrelated event from the others. We can check this assumption by Durbin-Watson test. The null hypothesis (H<sub>0</sub>) is there is no correlation among the residuals. Basically, the test detects autocorrelation in the residuals of a linear regression model. The test statistic is a value between 0 and 4, with the following interpretations: 2: No autocorrelation; &lt; 2: Positive autocorrelation; &gt; 2: Negative autocorrelation. To solve the independence issue, it is suggested that for positive serial correlation, consider adding lags of the dependent and/or independent variable to the model. For negative serial correlation, check to make sure that none of your variables are overdifferenced, and For seasonal correlation, consider adding seasonal dummy variables to the model. However, as a rule of thumb, test statistic values between the range of 1.5 and 2.5 are considered normal. One limitation of the DW test is that it can only test for first-order serial correlation.</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Alternatively, we can can visually examine a scatterplot of the residuals (errors) against the fitted values (<a href="#fig-r-assump1" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-r-assump1</span></a> and <a href="#fig-py-assump1" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-py-assump1</span></a>); if there is no clear pattern, it suggests that the independence assumption is likely satisfied. Independence assmption is important because violating it can lead to unreliable hypothesis tests and confidence intervals.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Alternatively, we can can visually examine a scatterplot of the residuals (errors) against the fitted values (<a href="#fig-r-assump1" class="quarto-xref">Figure&nbsp;<span>7.10</span></a> and <a href="#fig-py-assump1" class="quarto-xref">Figure&nbsp;<span>7.11</span></a>); if there is no clear pattern, it suggests that the independence assumption is likely satisfied. Independence assmption is important because violating it can lead to unreliable hypothesis tests and confidence intervals.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false">Python</a></li></ul>
 <div class="tab-content">
@@ -958,7 +958,7 @@ Figure&nbsp;7.11: Testing Assumption 1
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">durbinWatsonTest</span>(<span class="fu">lm</span>(KO <span class="sc">~</span> SPY, <span class="at">data =</span> df_stockR))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> lag Autocorrelation D-W Statistic p-value
-   1      0.06395626      1.871182   0.022
+   1      0.06395563      1.871183   0.038
  Alternative hypothesis: rho != 0</code></pre>
 </div>
 </div>
@@ -968,7 +968,7 @@ Figure&nbsp;7.11: Testing Assumption 1
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.stats.stattools <span class="im">import</span> durbin_watson</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>durbin_watson(slr_sm_model_ko.resid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>1.871180893661824</code></pre>
+<pre><code>1.8711821772568396</code></pre>
 </div>
 </div>
 </div>
@@ -977,8 +977,8 @@ Figure&nbsp;7.11: Testing Assumption 1
 <ol start="3" type="1">
 <li><strong>Residual Error</strong>:</li>
 </ol>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The errors have a mean (expected) value zero (<span class="math inline">\(0\)</span>), constant varianace (Homoscedasticity), and are independent from each other (otherwise auto-correlation problem) and predictor variables. We can check the assumption - expected value of errors are equal to 0 - by looking at <a href="#fig-r-assump1" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-r-assump1</span></a> and <a href="#fig-py-assump1" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-py-assump1</span></a>. If there is a pattern in the plot, the assumption is violated.</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The assumption homoscedasticity is tested using the Scale-Location plot, in which fitted values are compared with square root of standardized residuals. Theoretically, we want to see <a href="#fig-assump3" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-assump3</span></a>. <a href="#fig-r-assump3" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-r-assump3</span></a> and <a href="#fig-py-assump3" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-py-assump3</span></a> show Scale-Location plot (also called spread-location plot) of our model. From <a href="#fig-r-assump3" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-r-assump3</span></a> and <a href="#fig-py-assump3" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-py-assump3</span></a>, it is clear that residual plots have a trend (are not all equally spread out). Thus, the assumption is violated. One solution to the problem is that using log or square root transformation of outcome variable. Moreover, we can use Non-Constant Error Variance (NVC) test to test the assumption. If p-value of the test is less than 0.05, then null hypothesis is rejected, meaning that homoscedasticity is violated. Moreover, Breusch-Pagan test or White test can also be used to test homoscedasticity.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The errors have a mean (expected) value zero (<span class="math inline">\(0\)</span>), constant varianace (Homoscedasticity), and are independent from each other (otherwise auto-correlation problem) and predictor variables. We can check the assumption - expected value of errors are equal to 0 - by looking at <a href="#fig-r-assump1" class="quarto-xref">Figure&nbsp;<span>7.10</span></a> and <a href="#fig-py-assump1" class="quarto-xref">Figure&nbsp;<span>7.11</span></a>. If there is a pattern in the plot, the assumption is violated.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The assumption homoscedasticity is tested using the Scale-Location plot, in which fitted values are compared with square root of standardized residuals. Theoretically, we want to see <a href="#fig-assump3" class="quarto-xref">Figure&nbsp;<span>7.12</span></a>. <a href="#fig-r-assump3" class="quarto-xref">Figure&nbsp;<span>7.13</span></a> and <a href="#fig-py-assump3" class="quarto-xref">Figure&nbsp;<span>7.14</span></a> show Scale-Location plot (also called spread-location plot) of our model. From <a href="#fig-r-assump3" class="quarto-xref">Figure&nbsp;<span>7.13</span></a> and <a href="#fig-py-assump3" class="quarto-xref">Figure&nbsp;<span>7.14</span></a>, it is clear that residual plots have a trend (are not all equally spread out). Thus, the assumption is violated. One solution to the problem is that using log or square root transformation of outcome variable. Moreover, we can use Non-Constant Error Variance (NVC) test to test the assumption. If p-value of the test is less than 0.05, then null hypothesis is rejected, meaning that homoscedasticity is violated. Moreover, Breusch-Pagan test or White test can also be used to test homoscedasticity.</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Finally, testing the assumption - errors are independent from each other and predictors - requires the knowledge of study design and data collection to establish the validity of this assumption. Violation of this assumption is also called endogeneity problem of the model, which is the same as assumption 6 - No Endogeneity below.</p>
 <div id="fig-assump3" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1002,7 +1002,7 @@ Figure&nbsp;7.12: Assumption 3- What We Want to See
 <div class="cell-output cell-output-stdout">
 <pre><code>Non-constant Variance Score Test 
 Variance formula: ~ fitted.values 
-Chisquare = 19.17696, Df = 1, p = 1.1914e-05</code></pre>
+Chisquare = 19.17625, Df = 1, p = 1.1919e-05</code></pre>
 </div>
 <div class="cell-output-display">
 <div id="fig-r-assump3" class="quarto-figure quarto-figure-center quarto-float anchored">
@@ -1075,7 +1075,7 @@ Figure&nbsp;7.14: Testing Assumption 3
 <ol start="4" type="1">
 <li><strong>Normality</strong>:</li>
 </ol>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The residuals are normally distributed. We can test this assumption by Q-Q plots (also called Quantile-Quantile plot) of the residuals. <a href="#fig-r-qqplot" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-r-qqplot</span></a> and <a href="#fig-py-qqplot" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-py-qqplot</span></a> show a QQ plot. The dots do not lie perfectly along the straight line. Moreover, Kolmogorov-Smirnov (KS) test can be used to check the normality assumption. KS tests whether a sample comes from a certain distribution. From the KS result below, we can see test statistic is 0.484 and p-value is 2.2e-16, thus rejecting null hypothesis and indicating that sample data does not come from a normal distribution.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The residuals are normally distributed. We can test this assumption by Q-Q plots (also called Quantile-Quantile plot) of the residuals. <a href="#fig-r-qqplot" class="quarto-xref">Figure&nbsp;<span>7.15</span></a> and <a href="#fig-py-qqplot" class="quarto-xref">Figure&nbsp;<span>7.16</span></a> show a QQ plot. The dots do not lie perfectly along the straight line. Moreover, Kolmogorov-Smirnov (KS) test can be used to check the normality assumption. KS tests whether a sample comes from a certain distribution. From the KS result below, we can see test statistic is 0.484 and p-value is 2.2e-16, thus rejecting null hypothesis and indicating that sample data does not come from a normal distribution.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-9-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-1" role="tab" aria-controls="tabset-9-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-2" role="tab" aria-controls="tabset-9-2" aria-selected="false">Python</a></li></ul>
 <div class="tab-content">
@@ -1159,7 +1159,7 @@ Figure&nbsp;7.16: Testing Assumption 4
 <ol start="5" type="1">
 <li><strong>Multicollinearity</strong>:</li>
 </ol>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;There is little or no correlation between the predictor variables. It makes difficult to interpret the coefficients of the model. Variance Inflation Factor (VIF) can be used to test the multicollinearity. A value equal to or greater than 10 of VIF indicates multicollinearity in the data. We see the VIF of SPY and PEP is 1.84 and 1.84 respectively. Moreover, correlation matrix can also be used to identify the predictors that are highly correlated. <a href="#fig-r-corplot" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-r-corplot</span></a> and <a href="#fig-py-corplot" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-py-corplot</span></a> show a correlation plot of our stock returns data.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;There is little or no correlation between the predictor variables. It makes difficult to interpret the coefficients of the model. Variance Inflation Factor (VIF) can be used to test the multicollinearity. A value equal to or greater than 10 of VIF indicates multicollinearity in the data. We see the VIF of SPY and PEP is 1.84 and 1.84 respectively. Moreover, correlation matrix can also be used to identify the predictors that are highly correlated. <a href="#fig-r-corplot" class="quarto-xref">Figure&nbsp;<span>7.17</span></a> and <a href="#fig-py-corplot" class="quarto-xref">Figure&nbsp;<span>7.18</span></a> show a correlation plot of our stock returns data.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-10-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-1" role="tab" aria-controls="tabset-10-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-10-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-2" role="tab" aria-controls="tabset-10-2" aria-selected="false">Python</a></li></ul>
 <div class="tab-content">
@@ -1170,7 +1170,7 @@ Figure&nbsp;7.16: Testing Assumption 4
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="fu">vif</span>(<span class="fu">lm</span>(KO <span class="sc">~</span> SPY<span class="sc">+</span>PEP, <span class="at">data =</span> df_stockR))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     SPY      PEP 
-1.841296 1.841296 </code></pre>
+1.841298 1.841298 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Correlation Matrix and Correlation Plot </span></span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="co"># to get the function </span></span>
@@ -1207,8 +1207,8 @@ Figure&nbsp;7.17: Correlation Plot
 <pre><code>          usdx       spy        ko  pep
 usdx  1.000000                         
 spy  -0.212245       1.0               
-ko   -0.159651  0.646359       1.0     
-pep  -0.081498  0.675947  0.759876  1.0</code></pre>
+ko   -0.159650  0.646358       1.0     
+pep  -0.081497  0.675946  0.759875  1.0</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co">### Correlation Plot</span></span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>mask <span class="op">=</span> np.triu(np.ones_like(df_stock[[<span class="st">'usdx'</span>, <span class="st">'spy'</span>, <span class="st">'ko'</span>,<span class="st">'pep'</span>]].corr()))</span>
@@ -1229,8 +1229,8 @@ pep  -0.081498  0.675947  0.759876  1.0</code></pre>
 <span id="cb49-17"><a href="#cb49-17" aria-hidden="true" tabindex="-1"></a>               <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,X.shape[<span class="dv">1</span>])], </span>
 <span id="cb49-18"><a href="#cb49-18" aria-hidden="true" tabindex="-1"></a>              index<span class="op">=</span>X.columns[<span class="dv">1</span>:])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>ko     1.717564
-spy    1.717564
+<pre><code>ko     1.717561
+spy    1.717561
 dtype: float64</code></pre>
 </div>
 <div class="cell-output-display">
@@ -1257,7 +1257,7 @@ Figure&nbsp;7.18: Correlation Plot
 <section id="multiple-linear-regression" class="level3" style="text-align: justify" data-number="7.2.4">
 <h3 data-number="7.2.4" class="anchored" data-anchor-id="multiple-linear-regression"><span class="header-section-number">7.2.4</span> Multiple Linear Regression</h3>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Multiple regression analysis estimates the relationship between an outcome variable and two or more independent variables. More specifically, multiple regression analysis helps to understand how the value of the dependent variable changes when one of the independent variables varies, while the other independent variables remain constant.</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;We use Grunfeld dataset for multiple regressions. The dataset contains investment data for 11 US firms. The variables include - <code>invest</code>, which is Gross investment in 1947 dollars; <code>value</code>, which is market value as of Dec 31 in 1947 dollars; <code>capital</code>, which is stock of plant and equipment in 1947 dollars; <code>firm</code>, which include 11 US firms (General Motors, US Steel, General Electric, Chrysler, Atlantic Refining, IBM, Union Oil, Westinghouse, Goodyear, Diamond Match, American Steel); and <code>year</code>, which is 1935-1954. Our multiple regeression model is <a href="#eq-multiple" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-multiple</span></a> -</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;We use Grunfeld dataset for multiple regressions. The dataset contains investment data for 11 US firms. The variables include - <code>invest</code>, which is Gross investment in 1947 dollars; <code>value</code>, which is market value as of Dec 31 in 1947 dollars; <code>capital</code>, which is stock of plant and equipment in 1947 dollars; <code>firm</code>, which include 11 US firms (General Motors, US Steel, General Electric, Chrysler, Atlantic Refining, IBM, Union Oil, Westinghouse, Goodyear, Diamond Match, American Steel); and <code>year</code>, which is 1935-1954. Our multiple regeression model is <a href="#eq-multiple" class="quarto-xref">Equation&nbsp;<span>7.1</span></a> -</p>
 <p><span id="eq-multiple"><span class="math display">\[
 invest_{it} = \beta_{0} + \beta_{1}value_{i} + \beta_{3}capital_{it} + \alpha_{it} + \delta_{t} + \epsilon_{it}
 \tag{7.1}\]</span></span></p>
@@ -1268,7 +1268,7 @@ invest_{it} = \beta_{0} + \beta_{1}value_{i} + \beta_{3}capital_{it} + \alpha_{i
 <p><span class="math inline">\(alpha_{i}\)</span> is the fixed effect for firm <span class="math inline">\(i\)</span> (capturing unobserved firm-specific factors that don’t vary over time)</p>
 <p><span class="math inline">\(delta_{t}\)</span> is the fixed effect for year <span class="math inline">\(t\)</span> (capturing unobserved year-specific factors that are common to all firms in that year)</p>
 <p><span class="math inline">\(epsilon_{it}\)</span> is the error term, which includes all other unobserved factors that affect investment but are not accounted for by the independent variables or the fixed effects.</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In <a href="#tbl-r-multiple" class="quarto-xref">Table&nbsp;<span class="quarto-unresolved-ref">tbl-r-multiple</span></a> and <a href="#tbl-py-multiple" class="quarto-xref">Table&nbsp;<span class="quarto-unresolved-ref">tbl-py-multiple</span></a>, we generate some multiple regression models.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In <a href="#tbl-r-multiple" class="quarto-xref">Table&nbsp;<span>7.1</span></a> and <a href="#tbl-py-multiple" class="quarto-xref">Table&nbsp;<span>7.2</span></a>, we generate some multiple regression models.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-11-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-1" role="tab" aria-controls="tabset-11-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-11-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-2" role="tab" aria-controls="tabset-11-2" aria-selected="false">Python</a></li></ul>
 <div class="tab-content">
@@ -1479,52 +1479,52 @@ Table&nbsp;7.2: Regression of Investment on Market Value and PPE
 <div aria-describedby="tbl-py-multiple-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <div>
-<div id="sdomxryppt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="neofbjxjfl" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>
-#sdomxryppt table {
+#neofbjxjfl table {
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
           -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale;
         }
 
-#sdomxryppt thead, tbody, tfoot, tr, td, th { border-style: none; }
+#neofbjxjfl thead, tbody, tfoot, tr, td, th { border-style: none; }
  tr { background-color: transparent; }
-#sdomxryppt p { margin: 0; padding: 0; }
- #sdomxryppt .gt_table { display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: hidden; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; }
- #sdomxryppt .gt_caption { padding-top: 4px; padding-bottom: 4px; }
- #sdomxryppt .gt_title { color: #333333; font-size: 125%; font-weight: initial; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; border-bottom-color: #FFFFFF; border-bottom-width: 0; }
- #sdomxryppt .gt_subtitle { color: #333333; font-size: 85%; font-weight: initial; padding-top: 3px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; border-top-color: #FFFFFF; border-top-width: 0; }
- #sdomxryppt .gt_heading { background-color: #FFFFFF; text-align: center; border-bottom-color: #FFFFFF; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
- #sdomxryppt .gt_bottom_border { border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; }
- #sdomxryppt .gt_col_headings { border-top-style: solid; border-top-width: 2px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
- #sdomxryppt .gt_col_heading { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; border-left-style: hidden; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: hidden; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: bottom; padding-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; overflow-x: hidden; }
- #sdomxryppt .gt_column_spanner_outer { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; padding-top: 0; padding-bottom: 0; padding-left: 4px; padding-right: 4px; }
- #sdomxryppt .gt_column_spanner_outer:first-child { padding-left: 0; }
- #sdomxryppt .gt_column_spanner_outer:last-child { padding-right: 0; }
- #sdomxryppt .gt_column_spanner { border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; vertical-align: bottom; padding-top: 5px; padding-bottom: 5px; overflow-x: hidden; display: inline-block; width: 100%; }
- #sdomxryppt .gt_spanner_row { border-bottom-style: hidden; }
- #sdomxryppt .gt_group_heading { padding-top: 0px; padding-bottom: 0px; padding-left: 5px; padding-right: 5px; color: #333333; background-color: #FFFFFF; font-size: 0px; font-weight: initial; text-transform: inherit; border-top-style: hidden; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; text-align: left; }
- #sdomxryppt .gt_empty_group_heading { padding: 0.5px; color: #333333; background-color: #FFFFFF; font-size: 0px; font-weight: initial; border-top-style: hidden; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; vertical-align: middle; }
- #sdomxryppt .gt_from_md> :first-child { margin-top: 0; }
- #sdomxryppt .gt_from_md> :last-child { margin-bottom: 0; }
- #sdomxryppt .gt_row { padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: none; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; }
- #sdomxryppt .gt_stub { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: hidden; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; }
- #sdomxryppt .gt_stub_row_group { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: solid; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; vertical-align: top; }
- #sdomxryppt .gt_row_group_first td { border-top-width: 2px; }
- #sdomxryppt .gt_row_group_first th { border-top-width: 2px; }
- #sdomxryppt .gt_striped { background-color: rgba(128,128,128,0.05); }
- #sdomxryppt .gt_table_body { border-top-style: solid; border-top-width: 0.5px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: black; }
- #sdomxryppt .gt_sourcenotes { color: #333333; background-color: #FFFFFF; border-bottom-style: none; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; }
- #sdomxryppt .gt_sourcenote { font-size: 90%; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; text-align: left; }
- #sdomxryppt .gt_left { text-align: left; }
- #sdomxryppt .gt_center { text-align: center; }
- #sdomxryppt .gt_right { text-align: right; font-variant-numeric: tabular-nums; }
- #sdomxryppt .gt_font_normal { font-weight: normal; }
- #sdomxryppt .gt_font_bold { font-weight: bold; }
- #sdomxryppt .gt_font_italic { font-style: italic; }
- #sdomxryppt .gt_super { font-size: 65%; }
- #sdomxryppt .gt_footnote_marks { font-size: 75%; vertical-align: 0.4em; position: initial; }
- #sdomxryppt .gt_asterisk { font-size: 100%; vertical-align: 0; }
+#neofbjxjfl p { margin: 0; padding: 0; }
+ #neofbjxjfl .gt_table { display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: hidden; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; }
+ #neofbjxjfl .gt_caption { padding-top: 4px; padding-bottom: 4px; }
+ #neofbjxjfl .gt_title { color: #333333; font-size: 125%; font-weight: initial; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; border-bottom-color: #FFFFFF; border-bottom-width: 0; }
+ #neofbjxjfl .gt_subtitle { color: #333333; font-size: 85%; font-weight: initial; padding-top: 3px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; border-top-color: #FFFFFF; border-top-width: 0; }
+ #neofbjxjfl .gt_heading { background-color: #FFFFFF; text-align: center; border-bottom-color: #FFFFFF; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
+ #neofbjxjfl .gt_bottom_border { border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; }
+ #neofbjxjfl .gt_col_headings { border-top-style: solid; border-top-width: 2px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
+ #neofbjxjfl .gt_col_heading { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; border-left-style: hidden; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: hidden; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: bottom; padding-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; overflow-x: hidden; }
+ #neofbjxjfl .gt_column_spanner_outer { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; padding-top: 0; padding-bottom: 0; padding-left: 4px; padding-right: 4px; }
+ #neofbjxjfl .gt_column_spanner_outer:first-child { padding-left: 0; }
+ #neofbjxjfl .gt_column_spanner_outer:last-child { padding-right: 0; }
+ #neofbjxjfl .gt_column_spanner { border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; vertical-align: bottom; padding-top: 5px; padding-bottom: 5px; overflow-x: hidden; display: inline-block; width: 100%; }
+ #neofbjxjfl .gt_spanner_row { border-bottom-style: hidden; }
+ #neofbjxjfl .gt_group_heading { padding-top: 0px; padding-bottom: 0px; padding-left: 5px; padding-right: 5px; color: #333333; background-color: #FFFFFF; font-size: 0px; font-weight: initial; text-transform: inherit; border-top-style: hidden; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; text-align: left; }
+ #neofbjxjfl .gt_empty_group_heading { padding: 0.5px; color: #333333; background-color: #FFFFFF; font-size: 0px; font-weight: initial; border-top-style: hidden; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; vertical-align: middle; }
+ #neofbjxjfl .gt_from_md> :first-child { margin-top: 0; }
+ #neofbjxjfl .gt_from_md> :last-child { margin-bottom: 0; }
+ #neofbjxjfl .gt_row { padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: none; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; }
+ #neofbjxjfl .gt_stub { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: hidden; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; }
+ #neofbjxjfl .gt_stub_row_group { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: solid; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; vertical-align: top; }
+ #neofbjxjfl .gt_row_group_first td { border-top-width: 2px; }
+ #neofbjxjfl .gt_row_group_first th { border-top-width: 2px; }
+ #neofbjxjfl .gt_striped { background-color: rgba(128,128,128,0.05); }
+ #neofbjxjfl .gt_table_body { border-top-style: solid; border-top-width: 0.5px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: black; }
+ #neofbjxjfl .gt_sourcenotes { color: #333333; background-color: #FFFFFF; border-bottom-style: none; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; }
+ #neofbjxjfl .gt_sourcenote { font-size: 90%; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; text-align: left; }
+ #neofbjxjfl .gt_left { text-align: left; }
+ #neofbjxjfl .gt_center { text-align: center; }
+ #neofbjxjfl .gt_right { text-align: right; font-variant-numeric: tabular-nums; }
+ #neofbjxjfl .gt_font_normal { font-weight: normal; }
+ #neofbjxjfl .gt_font_bold { font-weight: bold; }
+ #neofbjxjfl .gt_font_italic { font-style: italic; }
+ #neofbjxjfl .gt_super { font-size: 65%; }
+ #neofbjxjfl .gt_footnote_marks { font-size: 75%; vertical-align: 0.4em; position: initial; }
+ #neofbjxjfl .gt_asterisk { font-size: 100%; vertical-align: 0; }
  
 </style>
 
@@ -1572,13 +1572,13 @@ Table&nbsp;7.2: Regression of Investment on Market Value and PPE
 <td colspan="4" class="gt_group_heading" data-quarto-table-cell-role="th">fe</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th">firm</td>
+<td class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th">year</td>
 <td class="gt_row gt_center">x</td>
 <td class="gt_row gt_center">x</td>
 <td class="gt_row gt_center">x</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th">year</td>
+<td class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th">firm</td>
 <td class="gt_row gt_center">x</td>
 <td class="gt_row gt_center">x</td>
 <td class="gt_row gt_center">x</td>

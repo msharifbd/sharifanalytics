@@ -3,17 +3,13 @@ title: "Foundations of Accounting Data"
 format: html
 ---
 
-## Types of Accounting Data 
+## Types of Accounting Data
 
+## Data Sources and Collection Methods
 
+## Data Quality & Integrity
 
-## Data Sources and Collection Methods 
-
-
-
-## Data Quality & Integrity 
-
-n summary, this book has no content whatsoever.
+summary, this book has no content whatsoever.
 
 ```{r}
 1 + 1
@@ -41,7 +37,6 @@ mtcars %>%
 
 ```
 
-
 ```{r}
 #| message: false 
 #| warning: false 
@@ -65,4 +60,3 @@ sys.version
 for x in os.listdir():
   print (x)
 ```
-

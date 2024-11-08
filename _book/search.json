@@ -513,5 +513,49 @@
       "Data Exploration and Management",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Data Visualization</span>"
     ]
+  },
+  {
+    "objectID": "foundations.html",
+    "href": "foundations.html",
+    "title": "2  Foundations of Accounting Data",
+    "section": "",
+    "text": "2.1 Types of Accounting Data",
+    "crumbs": [
+      "Introduction to Accounting Analytics",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Foundations of Accounting Data</span>"
+    ]
+  },
+  {
+    "objectID": "foundations.html#data-sources-and-collection-methods",
+    "href": "foundations.html#data-sources-and-collection-methods",
+    "title": "2  Foundations of Accounting Data",
+    "section": "2.2 Data Sources and Collection Methods",
+    "text": "2.2 Data Sources and Collection Methods",
+    "crumbs": [
+      "Introduction to Accounting Analytics",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Foundations of Accounting Data</span>"
+    ]
+  },
+  {
+    "objectID": "foundations.html#data-quality-integrity",
+    "href": "foundations.html#data-quality-integrity",
+    "title": "2  Foundations of Accounting Data",
+    "section": "2.3 Data Quality & Integrity",
+    "text": "2.3 Data Quality & Integrity\nsummary, this book has no content whatsoever.\n\n1 + 1\n\n[1] 2\n\n\n\nplot(mtcars[1:3])\n\n\n\n\n\n\n\n\nSee Figure 2.1 for first ggplot graph\n\nlibrary(tidyverse)\nmtcars %&gt;% \n  as_tibble() %&gt;% \n  ggplot(mapping = aes(x = mpg, y = disp))+\n  geom_point()+\n  geom_smooth()+\n  labs(x = 'Miles Per Gallon (mpg)',\n       y = 'Displacement in Cubic Inches (disp)')\n\n\n\n\n\n\n\nFigure 2.1: Scatter plot and line plot of the relation between mpg and disp\n\n\n\n\n\n\nlibrary(lubridate)\n\n\nimport os\nimport sys\nsys.version\n\n'3.11.1 (tags/v3.11.1:a7a450f, Dec  6 2022, 19:58:39) [MSC v.1934 64 bit (AMD64)]'\n\n\n\nfor x in os.listdir():\n  print (x)\n\n.git\n.gitattributes\n.gitignore\n.quarto\n.README.md.swp\n.README_BASE_1260.md.swp\n.README_LOCAL_1260.md.swp\n.README_REMOTE_1260.md.swp\naccounting_analytics_book\nadvanced_analytics.qmd\nchapter1_solution.qmd\nchapter2_solution.qmd\ncover.png\ndashboard.qmd\ndata_management.qmd\neda.qmd\nethics.qmd\nfoundations.qmd\nfoundations.rmarkdown\nfoundations_files\nfraud.qmd\nfuture.qmd\nimages\nindex.qmd\nintro.qmd\noverview.qmd\nperformance_measurement.qmd\npredictive.qmd\nprescriptive.qmd\nREADME.html\nREADME.md\nREADME_files\nreferences.bib\nreferences.qmd\nvisualization.qmd\n_book\n_quarto.yml",
+    "crumbs": [
+      "Introduction to Accounting Analytics",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Foundations of Accounting Data</span>"
+    ]
+  },
+  {
+    "objectID": "foundations.html#data-sources-and-collecfig-firstplottion-methods",
+    "href": "foundations.html#data-sources-and-collecfig-firstplottion-methods",
+    "title": "2  Foundations of Accounting Data",
+    "section": "2.2 Data Sources and Collecfig-firstplottion Methods",
+    "text": "2.2 Data Sources and Collecfig-firstplottion Methods",
+    "crumbs": [
+      "Introduction to Accounting Analytics",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Foundations of Accounting Data</span>"
+    ]
   }
 ]

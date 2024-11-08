@@ -54,3 +54,6 @@ Sharif Islam, DBA, CPA, CMA is an Assistant professor in School of Accountancy i
 
 # Acknowledgment {.unnumbered}
 
+:::{.justify}
+To prepare the book, I took help from many sources on the internet and published materials. Many of them are cited in the book. I acknowledge the contribution of all of those resources that help me to prepare the books for the students. 
+:::

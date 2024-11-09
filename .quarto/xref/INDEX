@@ -49,5 +49,11 @@
   },
   "chapter2_solution.qmd": {
     "chapter2_solution.html": "22c205d2"
+  },
+  "python_basics.qmd": {
+    "python_basics.html": "e0b6c51a"
+  },
+  "r_basics.qmd": {
+    "r_basics.html": "bed07baf"
   }
 }

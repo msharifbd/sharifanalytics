@@ -48,6 +48,8 @@ book:
         - future.qmd
     - references.qmd
   appendices: 
+    - python_basics.qmd
+    - r_basics.qmd
     - chapter1_solution.qmd
     - chapter2_solution.qmd
     

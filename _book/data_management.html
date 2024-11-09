@@ -303,14 +303,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./python_basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">A Primer on Python</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./r_basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">A Primer on R</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./chapter1_solution.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Chapter 1 Solution</span></span></a>
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Chapter 1 Solution</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chapter2_solution.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Chapter 2 Solution</span></span></a>
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Chapter 2 Solution</span></span></a>
   </div>
 </li>
       </ul>
@@ -517,7 +529,7 @@ Tip
 <section id="connecting-to-the-relational-database" class="level2" data-number="6.5">
 <h2 data-number="6.5" class="anchored" data-anchor-id="connecting-to-the-relational-database"><span class="header-section-number">6.5</span> Connecting to the Relational Database</h2>
 <div style="text-align: justify">
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In <a href="#sec-installPostgreSQL" class="quarto-xref"><span class="quarto-unresolved-ref">sec-installPostgreSQL</span></a>, we described the steps of installing PostgreSQL database; now, we will try to connect to that database. There are several ways to connect the database we created. These ways include -</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In <a href="#sec-installPostgreSQL" class="quarto-xref"><span>Section 6.4.1</span></a>, we described the steps of installing PostgreSQL database; now, we will try to connect to that database. There are several ways to connect the database we created. These ways include -</p>
 <ul>
 <li>SQL Shell (psql)</li>
 <li>Command Shell (cmd)</li>
@@ -817,7 +829,7 @@ Tip
 <section id="saving-a-database-from-postgresql" class="level3" data-number="6.6.3">
 <h3 data-number="6.6.3" class="anchored" data-anchor-id="saving-a-database-from-postgresql"><span class="header-section-number">6.6.3</span> Saving a Database from PostgreSQL</h3>
 <div style="text-align: justify">
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In order to share a database with stakeholders, we need to save the a particular database. Therefore, knowing how to save the database is very important. We must use the Command Prompt (<code>cmd</code>) to save a database. First, we need to open a command prompt following step # 01 in <a href="#sec-cmdconnection" class="quarto-xref"><span class="quarto-unresolved-ref">sec-cmdconnection</span></a>. Then we need to write the following codes on command prompt -</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In order to share a database with stakeholders, we need to save the a particular database. Therefore, knowing how to save the database is very important. We must use the Command Prompt (<code>cmd</code>) to save a database. First, we need to open a command prompt following step # 01 in <a href="#sec-cmdconnection" class="quarto-xref"><span>Section 6.5.2</span></a>. Then we need to write the following codes on command prompt -</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First line of code and then hit enter on the Keyboard</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>cd ..</span>
@@ -851,7 +863,7 @@ Tip
 <section id="uploading-a-database-to-postgresql" class="level3" data-number="6.6.4">
 <h3 data-number="6.6.4" class="anchored" data-anchor-id="uploading-a-database-to-postgresql"><span class="header-section-number">6.6.4</span> Uploading a Database to PostgreSQL</h3>
 <div style="text-align: justify">
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sometimes, you might need to upload a database to PostgreSQL. Therefore, you should know how you can upload the database to PostgreSQL. First, you should create a database following the process as described in <a href="#sec-creatingdatabase" class="quarto-xref"><span class="quarto-unresolved-ref">sec-creatingdatabase</span></a>. For example, we create a database called <code>my_database</code> in PostgreSQL. Assume that the database that we want to upload to PostgreSQL is in the path - <code>K:\</code> and the name of the database is <code>my_database_upload</code>. Therefore, the complete path of the database to be uploaded is - “<code>K:\my_database_upload.tar</code>”. Then, you should open a command prompt as described in <a href="#sec-cmdconnection" class="quarto-xref"><span class="quarto-unresolved-ref">sec-cmdconnection</span></a>. Then run the following code -</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sometimes, you might need to upload a database to PostgreSQL. Therefore, you should know how you can upload the database to PostgreSQL. First, you should create a database following the process as described in <a href="#sec-creatingdatabase" class="quarto-xref"><span>Section 6.6.1</span></a>. For example, we create a database called <code>my_database</code> in PostgreSQL. Assume that the database that we want to upload to PostgreSQL is in the path - <code>K:\</code> and the name of the database is <code>my_database_upload</code>. Therefore, the complete path of the database to be uploaded is - “<code>K:\my_database_upload.tar</code>”. Then, you should open a command prompt as described in <a href="#sec-cmdconnection" class="quarto-xref"><span>Section 6.5.2</span></a>. Then run the following code -</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First line of code and then hit enter on the Keyboard</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>cd ..</span>
@@ -864,7 +876,7 @@ Tip
 <span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Fifth Line of code - provide your password</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In the fourth line of code above - <code>pg_restore -h localhost -p 5433 -d my_database -U postgres -v "K:\my_database_upload.tar"</code>- “<code>my_database</code>” is the name of the database that you created on the PostgreSQL and “<code>K:\my_database_upload.tar</code>” is the path of the database to be uploaded.</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Once you upload the database to the PostgreSQL , you can check whether the database is uploaded by following <a href="#sec-dealdatabase" class="quarto-xref"><span class="quarto-unresolved-ref">sec-dealdatabase</span></a>.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Once you upload the database to the PostgreSQL , you can check whether the database is uploaded by following <a href="#sec-dealdatabase" class="quarto-xref"><span>Section 6.6</span></a>.</p>
 </div>
 </section>
 </section>

@@ -1,0 +1,331 @@
+---
+title: "A Primer on Python"
+format: html
+---
+
+## Learning Objectives of the Appendix {-} 
+
+At the End of the Appendix, Students should be Able to -
+
+* Gain an understanding about the Python
+
+* Gain an understanding about the Data Types and Data Structures in Python
+
+
+## What is Python?
+
+::: {style="text-align: justify"}
+
+     According to [www.python.org](www.python.org) "Python is an interpreted, object-oriented, high-level programming language with dynamic semantics. Its high-level built in data structures, combined with dynamic typing and dynamic binding, make it very attractive for Rapid Application Development, as well as for use as a scripting or glue language to connect existing components together." It further explains - "Python's simple, easy to learn syntax emphasizes readability and therefore reduces the cost of program maintenance. Python supports modules and packages, which encourages program modularity and code reuse." 
+:::
+
+## Data Types in Python 
+
+::: {style="text-align: justify"}
+
+     Data has different types. When dealing with data, we need to know the types of the data because different data types can do different things. There are six basic data types in python. They include - `int`, `float`, `complex`, `bool`, `str`, and `bytes`. We use `type ()` function to know the types of the data. However, most commmonly used data types are `int`, `float`, `str`, and `bool`.   
+:::
+
+```{python}
+x = "hello world"
+type(x)
+```
+
+```{python}
+x = 25
+type(x)
+```
+
+```{python}
+x = 25.34
+type(x)
+```
+
+```{python}
+x = True
+type(x)
+```
+
+```{python}
+x =7j
+type(x)
+```
+
+```{python}
+x = b"Hello World"
+type(x)
+```
+
+## Data Structures in Python 
+
+::: {style="text-align: justify"}
+
+     Data structures are the collection of data on which different processes can be done efficiently. It enables quick and easier access, and efficient modifications. Data Structures allows to organize data in such a way that enables to store collections of data, relate them and perform operations on them. Data structures in python can broadly be classified into two groups - Built-in data structures and User-defined data structures. @fig-datastructure Shows the data structure in python. Built-in data structure is important because they are widely used. Therefore, we will elaborate on built-in data structure. 
+:::
+
+![Data Structure in Python](images/data-structure-python.png){fig-align="center" #fig-datastructure} 
+
+
+## Built-in Data Structure
+
+### List 
+
+::: {style="text-align: justify"}
+
+     List is used to store collection of ordered^[When we say that lists are ordered, it means that the items have a defined order, and that order will not change. If you add new items to a list, the new items will be placed at the end of the list.]data items. Lists are created using square brackets (`[]`). We can also create a list using `list ()` function. Lists can hold different types of data, including integers (`int`), floats (`float`), strings (`str`), and even other lists. We can use `len ()` function to know the number to elements in the list. Moreover, lists are **mutable**, meaning that their contents can be changed after the list has been created.
+::: 
+
+```{python}
+colors = ['red', 'blue', 'green']
+print(colors)
+```
+
+```{python}
+len(colors)
+```
+
+```{python}
+a = [1, 'apple', 3.14, [5, 6]]
+print(a)
+```
+
+```{python}
+b = list((1, 'apple', 3.14, [5, 6]))
+print(b)
+```
+
+#### Creating a List with Repeated Elements
+
+A list with repeated elements can be created using the multiplication operator.
+
+```{python}
+x = [2] * 5
+y = [0] * 7
+
+print(x)
+print(y)
+```
+
+#### Accessing List Elements 
+
+::: {style="text-align: justify"}
+
+     Indexing can be used to access the elements in the list. Python indexes start at `0`. Therefore, `a[0]` will access the first element in the list a. @fig-listindex shows the index of the list - colors. 
+::: 
+
+![Index of List Elements](images/list-index.png){fig-align="center" #fig-listindex}
+
+```{python}
+colors[0]
+```
+
+```{python}
+colors[-1]
+```
+
+#### Adding Elements to the List 
+
+We can add elements to the list using three methods - `append ()`, `insert ()`, and `extend ()`. 
+
+```{python}
+# Initialize an empty list
+m = []
+
+# Adding 10 to end of list
+m.append(50)  
+print("After append(150):", m)  
+
+# Inserting 40 at index 0
+m.insert(0, 40)
+print("After insert(0, 40):", m) 
+
+# Adding multiple elements  [60,70,80] at the end
+m.extend([60, 70, 80])  
+print("After extend([60,70,80]):", m) 
+
+```
+
+#### Updating Elements to the List 
+
+We can change the value of an element by accessing it using its index.
+
+```{python}
+p = [10, 20, 30, 40, 50]
+# Change the second element
+p[1] = 25 
+
+print(p)  
+```
+
+#### Removing Elements from the List 
+
+We can remove elements from the list using three methods - `remove ()`, `pop ()`, and `del ()`. 
+
+```{python}
+a = [10, 20, 30, 40, 50]
+
+# Removes the first occurrence of 30
+a.remove(30)  
+print("After remove(30):", a)
+
+# Removes the element at index 1 (20)
+popped_val = a.pop(1)  
+print("Popped element:", popped_val)
+print("After pop(1):", a) 
+
+# Deletes the first element (10)
+del a[0]  
+print("After del a[0]:", a)
+```
+
+### Dictionary 
+
+::: {style="text-align: justify"}
+
+     Dictionary data structure in python is used to store data in __key__:__value__ format. Unlike list - which uses square brackets (`[]`) - dictionary uses curly brackets (`{}`). Like lists, dictionary is mutable. Dictionary items can be referred by using key name. We can use `len ()` function to know the total number of element of a dictionary and `type ()` to know the type. 
+::: 
+
+```{python}
+my_car = {
+  "brand": "Ford",
+  "model": "Escape",
+  "year": 2017
+}
+print(my_car)
+```
+
+```{python}
+print(my_car['model'])
+```
+
+The values in dictionary items can be of any data type 
+
+```{python}
+car_features = {
+  "brand": "Ford", # string 
+  "electric": False, # boolean 
+  "year": 1964, # integer
+  "colors": ["red", "white", "blue"] # list of string
+}
+```
+
+The function `dict ()` can also be used to construct dictionary. 
+
+```{python}
+my_friends = dict(
+    name = ["John", "Smith", "Mark"], 
+    age = [36, 45, 49], 
+    country = ["Norway", "Sweden", "Finland"]
+)
+print(my_friends)
+```
+
+Some built-in dictionary methods^[In python, functions are called methods.] are - 
+
+* `dict.clear()` - removes all the elements from the dictionary 
+
+```{python}
+employee = {
+    'name': ["John", "Jessica", "Zack"], 
+    'age': [18, 19, 20]
+}
+print(employee)
+```
+
+```{python}
+employee.clear()
+print(employee)
+```
+
+* `dict.copy()` - returns a copy of the dictionary 
+
+* `dict.get(key, default = “None”)` - returns the value of specified key 
+
+* `dict.items()` - returns the value of specified key
+
+* `dict.keys()` - returns a list containing dictionary's key
+
+* `dict.values()` - returns a list of all the values of the dictionary. 
+
+
+
+### Tuple 
+
+::: {style="text-align: justify"}
+
+     In python, tuple is very similar to list, except one difference. List is mutable, but tuple is not. Once a tuple is created, its elements cannot be changed. Unlike lists, we cannot add, remove, or change elelment in tuple. Tuple is created by using parenthese (`()`). Also, the function `tuple ()` can also be used to create tuple. We can access the elements of tuple by indexing as we did for lists.
+:::  
+
+```{python}
+my_tuple = ('10', '20', '30', 'hello', 'world')
+my_tuple
+```
+
+```{python}
+my_tuple[3]
+```
+
+::: {style="text-align: justify"}
+
+There are different operations that can be performed on the tuple. Some of them include - 
+
+* Concatenation - To concatenate, plus operator (`+`) is used. 
+
+* Nesting - Nested tuple means a tuple is inside the another tuple
+
+* Repetition - creating a tuple of several times 
+::: 
+
+
+```{python}
+second_tuple = ('10', '20' 'SIU', "SOA", "Carbondale")
+second_tuple*3
+```
+
+* Slicing - Dividing a given tuple into small tuples using indexing is slicing. 
+
+```{python}
+second_tuple[1:]
+second_tuple[2:4]
+second_tuple[::-1]
+```
+
+::: {style="text-align: justify"}
+
+* Finding the Length - using `len ()` function, we can figure out the total number of elements in the tuple. 
+
+* Different data types in tuples - Tuple can include heterogenous data. 
+
+* Lists to tuples - Using `tuple ()` functions, we can convert a list into tuple. 
+::: 
+
+
+### Set 
+
+::: {style="text-align: justify"}
+     A set in python is a collection of *unordered*, *unchangeable*, and *unindexed* items. Set items are unchangeable, but new items can be added to the set and old items can be deleted from the set. Another important characteristics of set is that it has no duplicate elements. Curly bracket (`{}`) is used to create a set. The function `difference ()` or minus operator (`-`) is used to calculate difference between two sets. 
+::: 
+
+```{python}
+new_set = {'Hello', 'World', "World"}
+new_set 
+```
+
+```{python}
+type(new_set)
+```
+
+
+```{python}
+#| eval: false
+new_set[0] = "Hi"
+```
+
+
+## Functions in Python 
+
+::: {style="text-align: justify"}
+     Functions in python 
+
+
+::: 

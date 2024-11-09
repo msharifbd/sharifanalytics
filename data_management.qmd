@@ -6,215 +6,185 @@ format: html
 ### Learning Objectives of the Chapter {.unnumbered}
 
 ::: {style="text-align: justify"}
+At the End of the Chapter, Students should be Able to -
 
-At the End of the Chapter, Students should be Able to - 
+-   Gain an understanding about data management and its importance
 
-* Gain an understanding about data management and its importance 
+-   Understand the Concepts of Relational Database
 
-* Understand the Concepts of Relational Database
+-   Develop a database using a Database Management System (DBMS)
 
-* Develop a database using a Database Management System (DBMS) 
+-   Connect Analytics Platforms Such as R or Python to the database and retrieve data
 
-* Connect Analytics Platforms Such as R or Python to the database and retrieve data
+-   Gain an understanding about Online Analytical Processing (OLAP) DBMS
 
-* Gain an understanding about Online Analytical Processing (OLAP) DBMS 
-
-* Create and Use OLAP DBMS
-
-
+-   Create and Use OLAP DBMS
 :::
-
 
 ## Data Management
 
 ::: {style="text-align: justify"}
+     Data management is the practice of collecting, keeping, and using data securely, efficiently, and cost-effectively. Data management is important for a variety of data-driven use cases including end-to-end business process execution, regulatory compliance, accurate analytics and AI, data migration, and digital transformation.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Data management is the practice of collecting, keeping, and using data securely, efficiently, and cost-effectively. Data management is important for a variety of data-driven use cases including end-to-end business process execution, regulatory compliance, accurate analytics and AI, data migration, and digital transformation.
+     Managing digital data in an organization involves a broad range of tasks, policies, procedures, and practices. The work of data management has a wide scope, covering factors such as how to:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Managing digital data in an organization involves a broad range of tasks, policies, procedures, and practices. The work of data management has a wide scope, covering factors such as how to:
+-   Create, access, and update data across a diverse data tier
+-   Store data across multiple clouds and on premises
+-   Provide high availability and disaster recovery
+-   Use data in a growing variety of apps, analytics, and algorithms
+-   Ensure data privacy and security
+-   Archive and destroy data in accordance with retention schedules and compliance requirements
 
-  * Create, access, and update data across a diverse data tier
-  * Store data across multiple clouds and on premises
-  * Provide high availability and disaster recovery
-  * Use data in a growing variety of apps, analytics, and algorithms
-  * Ensure data privacy and security
-  * Archive and destroy data in accordance with retention schedules and compliance requirements
-
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Data management systems are built on data management platforms and can include databases, data lakes and data warehouses, big data management systems, data analytics, and more.
-
+     Data management systems are built on data management platforms and can include databases, data lakes and data warehouses, big data management systems, data analytics, and more.
 :::
 
-
-## Relational Database 
+## Relational Database
 
 ::: {style="text-align: justify"}
+     Relational databases organize data into rows and columns, which form a table and different tables are connected to each other usign either **primary key** or **foreign key**. Here’s a simple example of two tables a small business might use to process orders for its products. The first table is a *customer info table*, so each record includes a customer’s name, address, shipping and billing information, phone number, and other contact information. Each bit of information (each attribute) is in its own column, and the database assigns a unique ID (a key) to each row. In the second table—a *customer order* table—each record includes the ID of the customer that placed the order, the product ordered, the quantity, the selected size and color, and so on—but not the customer’s name or contact information.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Relational databases organize data into rows and columns, which form a table and different tables are connected to each other usign either **primary key** or **foreign key**. Here’s a simple example of two tables a small business might use to process orders for its products. The first table is a *customer info table*, so each record includes a customer’s name, address, shipping and billing information, phone number, and other contact information. Each bit of information (each attribute) is in its own column, and the database assigns a unique ID (a key) to each row. In the second table—a *customer order* table—each record includes the ID of the customer that placed the order, the product ordered, the quantity, the selected size and color, and so on—but not the customer’s name or contact information. 
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;These two tables have only one thing in common: the ID column (the key). But because of that common column, the relational database can create a relationship between the two tables. Then, when the company’s order processing application submits an order to the database, the database can go to the customer order table, pull the correct information about the product order, and use the customer ID from that table to look up the customer’s billing and shipping information in the customer info table. The warehouse can then pull the correct product, the customer can receive timely delivery of the order, and the company can get paid.
-
+     These two tables have only one thing in common: the ID column (the key). But because of that common column, the relational database can create a relationship between the two tables. Then, when the company’s order processing application submits an order to the database, the database can go to the customer order table, pull the correct information about the product order, and use the customer ID from that table to look up the customer’s billing and shipping information in the customer info table. The warehouse can then pull the correct product, the customer can receive timely delivery of the order, and the company can get paid.
 :::
 
 ## Relational Database Management Systems (RDBMS)
 
 ::: {style="text-align: justify"}
+     While a relational database organizes data based off a relational data model, a relational database management system (RDBMS) is a more specific reference to the underlying database software that enables users to maintain it. These programs allow users to create, update, insert, or delete data in the system, and they provide:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;While a relational database organizes data based off a relational data model, a relational database management system (RDBMS) is a more specific reference to the underlying database software that enables users to maintain it. These programs allow users to create, update, insert, or delete data in the system, and they provide:
+-   Data structure
+-   Multi-user access
+-   Privilege control
+-   Network access
 
-  - Data structure
-  - Multi-user access
-  - Privilege control
-  - Network access
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Examples of popular RDBMS systems include MySQL, PostgreSQL, and IBM DB2. Additionally, a relational database system differs from a basic database management system (DBMS) in that it stores data in tables while a DBMS stores information as files.
-
+     Examples of popular RDBMS systems include MySQL, PostgreSQL, and IBM DB2. Additionally, a relational database system differs from a basic database management system (DBMS) in that it stores data in tables while a DBMS stores information as files.
 :::
 
-## Creating a Relational Database Using `PostgreSQL` 
+## Creating a Relational Database Using `PostgreSQL`
 
 ::: {style="text-align: justify"}
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PostgreSQL is a widely used open-source Relational Database Management System (RDBMS). Since its release in 1996, PostgreSQL has carved a niche as one of the most robust and reliable database systems in the Tech industry. PostgreSQL is known for its rich feature set, reliability, scalability, and strong community support network.
-
-
+     PostgreSQL is a widely used open-source Relational Database Management System (RDBMS). Since its release in 1996, PostgreSQL has carved a niche as one of the most robust and reliable database systems in the Tech industry. PostgreSQL is known for its rich feature set, reliability, scalability, and strong community support network.
 :::
 
 ### Installing PostgreSQL {#sec-installPostgreSQL}
 
 ::: {style="text-align: justify"}
+     To install PostgreSQL locally on your computer, visit the [installer by EDB](https://www.w3schools.com/postgresql/postgresql_install.php), and download the newest version compatible with your operating system. To install PostgreSQL on Windows, you need to have administrator privileges. Below, we delineate the steps to install the PostgreSQL in windows.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To install PostgreSQL locally on your computer, visit the [installer by EDB](https://www.w3schools.com/postgresql/postgresql_install.php), and download the newest version compatible with your operating system. To install PostgreSQL on Windows, you need to have administrator privileges. Below, we delineate the steps to install the PostgreSQL in windows. 
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Step 01**: When the downloading is complete, double click the downloaded file and an installation wizard will appear and guide you through multiple steps. Click "Next" to specify directory. 
+     **Step 01**: When the downloading is complete, double click the downloaded file and an installation wizard will appear and guide you through multiple steps. Click "Next" to specify directory.
 
 ![Installation Wizard](images/postgresql_install_image1.png)
 
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Step 02**: You can specify the location of PostgreSQL, or go with the default choice
+     **Step 02**: You can specify the location of PostgreSQL, or go with the default choice
 
 ![Installation Directory](images/postgresql_install_image2.png)
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Step 03**: To use PostgreSQL, you need to install PostgreSQL server. For our installation and uses purposes, we select the following servers - PostgreSQL Server, pgAdmin4, and Command Line Tools. 
+     **Step 03**: To use PostgreSQL, you need to install PostgreSQL server. For our installation and uses purposes, we select the following servers - PostgreSQL Server, pgAdmin4, and Command Line Tools.
 
 ![Server Selection](images/postgresql_install_image3.png)
 
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Step 04**: Then, we need to choose the storage directory. Alternatively, we can go with the default directory. 
+     **Step 04**: Then, we need to choose the storage directory. Alternatively, we can go with the default directory.
 
 ![Storage Directory](images/postgresql_install_image4.png)
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Step 05**: At this point, you need to choose your passowrd. It is important to note that the password will be used to connect to the database. Therefore, you must remember your password. 
+     **Step 05**: At this point, you need to choose your passowrd. It is important to note that the password will be used to connect to the database. Therefore, you must remember your password.
 
 ![Password Selection](images/postgresql_install_image5.png)
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Step 06**: Next you need to select the port. The default port number is 5432. If you change the port, you also need to remember the port number because like passowrd, you need to use the port number to connect to the database. 
+     **Step 06**: Next you need to select the port. The default port number is 5432. If you change the port, you also need to remember the port number because like passowrd, you need to use the port number to connect to the database.
 
 ![Port Selection](images/postgresql_install_image6.png)
 
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Step 07**: We also need to select the geographical location of the database server. We can go with the default choice.
+     **Step 07**: We also need to select the geographical location of the database server. We can go with the default choice.
 
 ![Locale Selection](images/postgresql_install_image7.png)
 
-Then if everything looks ok, you can move forward by clicking 'Next'. However, it is recommended that you copy and save the information from the "Pre Installation Summary" in some safe place so that you can access them in future, if necessary. 
+Then if everything looks ok, you can move forward by clicking 'Next'. However, it is recommended that you copy and save the information from the "Pre Installation Summary" in some safe place so that you can access them in future, if necessary.
 
 ![Pre Installation Summary](images/postgresql_install_image8.png)
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Step 08**: Then you can click "Next" in 'Ready to Install' windows and the installation process will start and it will take a while to finish the installation. Once the installing is done, please click 'Finish' button on 'Complete the PostgreSQL Setup Wizard' window. 
+     **Step 08**: Then you can click "Next" in 'Ready to Install' windows and the installation process will start and it will take a while to finish the installation. Once the installing is done, please click 'Finish' button on 'Complete the PostgreSQL Setup Wizard' window.
 
-![Ready to Install](images/postgresql_install_image8.png)
-![Installing](images/postgresql_install_image8.png)
-![Complete the PostgreSQL Setup Wizard](images/postgresql_install_image8.png)
-
-::: 
+![Ready to Install](images/postgresql_install_image8.png) ![Installing](images/postgresql_install_image8.png) ![Complete the PostgreSQL Setup Wizard](images/postgresql_install_image8.png)
+:::
 
 ::: {.callout-tip collapse="true"}
 ## Tip
+
 Some good sources to learn more about PostgreSQL -
 
-1. [W3 Schools](https://www.w3schools.com/postgresql/index.php)
+1.  [W3 Schools](https://www.w3schools.com/postgresql/index.php)
 
-2. [PostgreSQL Tutorial](https://www.postgresqltutorial.com/postgresql-getting-started/install-postgresql/)
-
+2.  [PostgreSQL Tutorial](https://www.postgresqltutorial.com/postgresql-getting-started/install-postgresql/)
 :::
 
-
-## Connecting to the Relational Database 
+## Connecting to the Relational Database
 
 ::: {style="text-align: justify"}
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In @sec-installPostgreSQL, we described the steps of installing PostgreSQL database; now, we will try to connect to that database. There are several ways to connect the database we created. These ways include - 
+     In @sec-installPostgreSQL, we described the steps of installing PostgreSQL database; now, we will try to connect to that database. There are several ways to connect the database we created. These ways include -
 
-  * SQL Shell (psql)
-  * Command Shell (cmd)
-  * pgAdmin 4 
-
+-   SQL Shell (psql)
+-   Command Shell (cmd)
+-   pgAdmin 4
 :::
 
 ::: {.callout-tip collapse="true"}
 ## Tip
+
 To connect to PostgreSQL Database using pgAdmin 4, pleae use the following link -
 
-1. [Connecting using pgAdmin 4](https://www.w3schools.com/postgresql/postgresql_pgadmin4.php)
+1.  [Connecting using pgAdmin 4](https://www.w3schools.com/postgresql/postgresql_pgadmin4.php)
 :::
 
 ### Connection using SQL Shell (`psql`)
 
 ::: {style="text-align: justify"}
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; First, we will discuss SQL Shell (psql) method. Basically, SQL Shell (psql) is a terminal based program where you can write and execute SQL syntax in the command-line terminal. You will find the SQL Shell (psql) in the start menu under PostgreSQL. If you do not find it please search "psql" on windows search box.  
+      First, we will discuss SQL Shell (psql) method. Basically, SQL Shell (psql) is a terminal based program where you can write and execute SQL syntax in the command-line terminal. You will find the SQL Shell (psql) in the start menu under PostgreSQL. If you do not find it please search "psql" on windows search box.
 
 ![SQL Shell on Start Menu](images/postgresql_connect_image1.png)
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Once the program is open, you should be able to see a window like below. Usually, the name of the server is localhost as shown below; however, if you choose a different server while installing the PostgreSQL, you must mention your server name. Then, click "enter" on your keyboard. 
+     Once the program is open, you should be able to see a window like below. Usually, the name of the server is localhost as shown below; however, if you choose a different server while installing the PostgreSQL, you must mention your server name. Then, click "enter" on your keyboard.
 
 ![Server](images/postgresql_connect_image2.png)
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The default name of your database is `postgres` as shown below. If you choose a different name, please enter that name. Then, click "enter" on your keyboard. 
+     The default name of your database is `postgres` as shown below. If you choose a different name, please enter that name. Then, click "enter" on your keyboard.
 
 ![Database](images/postgresql_connect_image3.png)
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The default port number is `5432`. If you use the default port number, then please click "enter" on your keyboard. Otherwise, use the port number that you used while installing PostgreSQL and click "enter" on your keyboard.  
+     The default port number is `5432`. If you use the default port number, then please click "enter" on your keyboard. Otherwise, use the port number that you used while installing PostgreSQL and click "enter" on your keyboard.
 
 ![Port](images/postgresql_connect_image4.png)
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Similarly, the default user name is `postgres`. Please click "enter" on your keyboard if your default name is the same.
+     Similarly, the default user name is `postgres`. Please click "enter" on your keyboard if your default name is the same.
 
 ![Username](images/postgresql_connect_image5.png)
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Next, you need to provide password that you set while installing the database. 
+     Next, you need to provide password that you set while installing the database.
 
 ![Password](images/postgresql_connect_image6.png)
-::: 
-
+:::
 
 ### Connection using Command Shell (`cmd`) {#sec-cmdconnection}
 
 ::: {style="text-align: justify"}
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To use the command prompt (`cmd`) to connect to PostgreSQL database, you need to use the following steps - 
+     To use the command prompt (`cmd`) to connect to PostgreSQL database, you need to use the following steps -
 
-* Step # 01 - Open command prompt by writing `cmd` in windows search bar as shown below. Then command prompt will open. 
+-   Step \# 01 - Open command prompt by writing `cmd` in windows search bar as shown below. Then command prompt will open.
 
 ![Search Bar on Windows](images/cmd_1.jpg)
 
-* Step # 02 - type  `cd C:\Program Files\PostgreSQL\16\bin` on the command prompt and hit enter on the keyboard
+-   Step \# 02 - type `cd C:\Program Files\PostgreSQL\16\bin` on the command prompt and hit enter on the keyboard
 
+-   Step \# 03 - type `psql -h localhost -p 5432 -d postgres -U postgres`
 
-* Step # 03 - type `psql -h localhost -p 5432 -d postgres -U postgres`  
-
-* Step # 04 - Now provide the password that you set while installing PostgreSQL
+-   Step \# 04 - Now provide the password that you set while installing PostgreSQL
 
 These steps should ensure that you are connected to the database.
-
-
-
-::: 
-
+:::
 
 ## Dealing with the Database {#sec-dealdatabase}
 
-
 ::: {style="text-align: justify"}
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Once the database is created, new tables can be created. Also, different kinds of data manipulation can be performed. For example, after being connected to the database, one should check the database available by running the following code -  
+     Once the database is created, new tables can be created. Also, different kinds of data manipulation can be performed. For example, after being connected to the database, one should check the database available by running the following code -
 
 ```{r}
 #| eval: false
@@ -225,8 +195,7 @@ These steps should ensure that you are connected to the database.
 \list
 ```
 
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To connect to a database, one should run the following code - 
+     To connect to a database, one should run the following code -
 
 ```{r}
 #| eval: false
@@ -234,28 +203,26 @@ These steps should ensure that you are connected to the database.
 \c name_of_the_database;
 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To see all tables in a database, one should run the following code - 
+     To see all tables in a database, one should run the following code -
 
 ```{r}
 #| eval: false
 
 \dt;
 ```
-
 :::
 
-### Creating a Database and Tables inside the Database {#sec-creatingdatabase} 
-
+### Creating a Database and Tables inside the Database {#sec-creatingdatabase}
 
 ::: {style="text-align: justify"}
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To create a database (e.g., `my_database`), one can run the following code - 
+     To create a database (e.g., `my_database`), one can run the following code -
 
 ```{r}
 #| eval: false
 CREATE DATABASE my_database;
 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To create a table, following code can be run - 
+     To create a table, following code can be run -
 
 ```{r}
 #| eval: false
@@ -274,8 +241,7 @@ CREATE TABLE People (
 
 ```
 
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Similarly, four more tables are created by running the following code  - 
+     Similarly, four more tables are created by running the following code -
 
 ```{r}
 #| eval: false
@@ -322,7 +288,7 @@ CREATE TABLE Orders (
 );
 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Next, we will populate the tables with different kinds of data. 
+     Next, we will populate the tables with different kinds of data.
 
 ```{r}
 #| eval: false
@@ -398,15 +364,12 @@ VALUES
 (1026, '2020-05-01', 008, 005, 'p03', 808, 47282.54)
 ;
 ```
+:::
 
-::: 
-
-
-### Querying the Database 
-
+### Querying the Database
 
 ::: {style="text-align: justify"}
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Once the database is created, we need to retrieve data from the database for which we need to write queries. For example, we want retireve `prodid`, `name`, and `city` from the table *products*. Then, we need to write the following query - 
+     Once the database is created, we need to retrieve data from the database for which we need to write queries. For example, we want retireve `prodid`, `name`, and `city` from the table *products*. Then, we need to write the following query -
 
 ```{r}
 #| eval: false
@@ -430,8 +393,7 @@ SELECT prodid, name, city FROM products;
 (9 rows)
 ```
 
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Similarly, if we want to collect all fields from *products* table for the city *Dallas*, then we can write the following queries - 
+     Similarly, if we want to collect all fields from *products* table for the city *Dallas*, then we can write the following queries -
 
 ```{r}
 #| eval: false
@@ -452,11 +414,10 @@ SELECT * FROM products WHERE city = 'Dallas';
 ```
 :::
 
-
 ### Saving a Database from PostgreSQL
 
 ::: {style="text-align: justify"}
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In order to share a database with stakeholders, we need to save the a particular database. Therefore, knowing how to save the database is very important. We must use the Command Prompt (`cmd`) to save a database. First, we need to open a command prompt following step # 01 in @sec-cmdconnection. Then we need to write the following codes on command prompt -  
+     In order to share a database with stakeholders, we need to save the a particular database. Therefore, knowing how to save the database is very important. We must use the Command Prompt (`cmd`) to save a database. First, we need to open a command prompt following step \# 01 in @sec-cmdconnection. Then we need to write the following codes on command prompt -
 
 ```{r}
 #| eval: false
@@ -472,21 +433,19 @@ pg_dump -h localhost -d name_of_your_database -U postgres -p 5433 -F tar >K:\nam
 
 ```
 
-
 ::: {.callout-tip collapse="true"}
 ## Tip
+
 You can watch the youtube video to learn more about how to save a database from PostgreSQL - <https://www.youtube.com/watch?v=sa5VXDG_aW8>
-::: 
+:::
 
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In the fourth line of code above - `pg_dump -h localhost -d name_of_your_database -U postgres -p 5433 -F tar >K:\name_of_your_database.tar`- the "`name_of_your_database`" is the database name that you want to save to share and "`K:\\`" is the directory (folder) address (path) on which you want to save your database and "`name_of_your_database`" is the name of the database that you would like to assign to the saved database and ".tar" is the file extension. It is important to note that when you run the fourth line of code above, it might show the message - "__Access is denied__". In such situation, you should change the path (address) of the directory in which you would like to save the database. 
+     In the fourth line of code above - `pg_dump -h localhost -d name_of_your_database -U postgres -p 5433 -F tar >K:\name_of_your_database.tar`- the "`name_of_your_database`" is the database name that you want to save to share and "`K:\\`" is the directory (folder) address (path) on which you want to save your database and "`name_of_your_database`" is the name of the database that you would like to assign to the saved database and ".tar" is the file extension. It is important to note that when you run the fourth line of code above, it might show the message - "**Access is denied**". In such situation, you should change the path (address) of the directory in which you would like to save the database.
 :::
 
 ### Uploading a Database to PostgreSQL
 
 ::: {style="text-align: justify"}
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sometimes, you might need to upload a database to PostgreSQL. Therefore, you should know how you can upload the database to PostgreSQL. First, you should create a database following the process as described in @sec-creatingdatabase. For example, we create a database called `my_database` in PostgreSQL. Assume that the database that we want to upload to PostgreSQL is in the path - `K:\` and the name of the database is `my_database_upload`. Therefore, the complete path of the database to be uploaded is - "`K:\my_database_upload.tar`". Then, you should open a command prompt as described in @sec-cmdconnection. Then run the following code -   
-
+     Sometimes, you might need to upload a database to PostgreSQL. Therefore, you should know how you can upload the database to PostgreSQL. First, you should create a database following the process as described in @sec-creatingdatabase. For example, we create a database called `my_database` in PostgreSQL. Assume that the database that we want to upload to PostgreSQL is in the path - `K:\` and the name of the database is `my_database_upload`. Therefore, the complete path of the database to be uploaded is - "`K:\my_database_upload.tar`". Then, you should open a command prompt as described in @sec-cmdconnection. Then run the following code -
 
 ```{r}
 #| eval: false
@@ -503,14 +462,12 @@ pg_restore -h localhost -p 5433 -d my_database -U postgres -v "K:\my_database_up
 
 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In the fourth line of code above - `pg_restore -h localhost -p 5433 -d my_database -U postgres -v "K:\my_database_upload.tar"`- "`my_database`" is the name of the database that you created on the PostgreSQL and "`K:\my_database_upload.tar`" is the path of the database to be uploaded. 
+     In the fourth line of code above - `pg_restore -h localhost -p 5433 -d my_database -U postgres -v "K:\my_database_upload.tar"`- "`my_database`" is the name of the database that you created on the PostgreSQL and "`K:\my_database_upload.tar`" is the path of the database to be uploaded.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Once you upload the database to the PostgreSQL , you can check whether the database is uploaded by following @sec-dealdatabase. 
+     Once you upload the database to the PostgreSQL , you can check whether the database is uploaded by following @sec-dealdatabase.
 :::
 
-
-
-## Querying PostgreSQL Database Using `R` 
+## Querying PostgreSQL Database Using `R`
 
 ```{r}
 #| warning: false 
@@ -532,7 +489,6 @@ con = dbConnect(RPostgres::Postgres()
                  , password="Plethora20046029!")
 ```
 
-
 ```{r}
 #| eval: false
 # Connecting to PostgreSQL Database 
@@ -544,13 +500,10 @@ con = dbConnect(RPostgres::Postgres()
                  , password="YourPassword")
 ```
 
-
 ```{r}
 # Checking all Tables in the Database 
 dbListTables(con)
 ```
-
-
 
 ```{r}
 # To see a table 
@@ -573,14 +526,12 @@ con %>%
 
 ```
 
-
 ```{r}
 # Filtering some rows
 con %>% 
   tbl ('products') %>%
   filter (city == "Dallas")
 ```
-
 
 ```{r}
 # showing the SQL query
@@ -590,20 +541,11 @@ con %>%
   show_query()
 ```
 
-
-
-
-
-
-
-
 ```{r}
 #| eval: false
 # Disconnecting the database 
 con %>% dbDisconnect ()
 ```
-
-
 
 ```{r}
 #| include: false
@@ -611,8 +553,7 @@ library(reticulate)
 Sys.setenv('RETICULATE_PYTHON' = 'C:\\Users\\mshar\\AppData\\Local\\Programs\\Python\\Python311\\python.exe')
 ```
 
-## Querying PostgreSQL Database Using `Python` 
-
+## Querying PostgreSQL Database Using `Python`
 
 ```{python}
 # Importing Necessary Python Packages 
@@ -625,7 +566,6 @@ import ibis
 ibis.options.interactive = True
 ```
 
-
 ```{python}
 # to connect to the database 
 conn = ibis.postgres.connect(
@@ -637,13 +577,10 @@ conn = ibis.postgres.connect(
 )
 ```
 
-
 ```{python}
 # See all tables in a database 
 conn.list_tables()
 ```
-
-
 
 ```{python}
 # To know the total number of rows 
@@ -659,21 +596,16 @@ conn.table('actor').columns # name of the columns
 conn.table('actor').compile()
 ```
 
-
-
 ```{python}
 # Dealing with a table 
 conn.table('country')
 conn.table('country').head(5).execute()
 ```
 
-
-
 ```{python}
 ## describe () or columns () equivalent to glimpse ()
 conn.table('country').describe
 ```
-
 
 ```{python}
 # filtering rows    
@@ -686,14 +618,12 @@ conn.table('country')[conn.table('country')['country']=="Zambia"] \
 conn.table('country')[["country_id", "country"]]
 ```
 
-
 ```{python}
 # Arrange 
 
 conn.table('rental') \
     .order_by(['inventory_id'])
 ```
-
 
 ```{python}
 # Group By
@@ -703,22 +633,15 @@ conn.table('payment')[['payment_id', 'customer_id', 'staff_id', 'amount']] \
     .reset_index() 
 ```
 
-
 ```{python}
 
 ```
-
-
 
 ```{python}
 # To disconnect the database 
 conn.disconnect()
 ```
 
-
 ## Online Analytical Processing (OLAP) Database Management System
 
-
-## Conclusion 
-
-
+## Conclusion

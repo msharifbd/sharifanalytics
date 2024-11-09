@@ -1,0 +1,22 @@
+---
+title: "A Primer on R"
+format: html
+---
+
+## What is R
+
+     R is an object-oriented programming language. 
+
+
+## Packages in R
+
+     Packages enhance the functionalities of R. There are tons of packages for different purposes in R. 
+
+## Data Types
+
+     There are ___ data types in 
+
+## Data Structure
+
+
+## Functions

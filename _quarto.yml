@@ -12,9 +12,7 @@ book:
   - name: "Sharif Islam, DBA, CPA, CMA"
     email: mdshariful.islam@siu.edu 
     affiliations: 
-      - name: "Assistant Professor <br> 
-      School of Accountancy <br> 
-      Southern Illinois University Carbondale"
+      - name: "Southern Illinois University Carbondale"
         
   page-footer:
     left: |

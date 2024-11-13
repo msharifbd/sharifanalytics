@@ -6,43 +6,34 @@ format: html
 ### Learning Objectives of the Chapter {.unnumbered}
 
 ::: {style="text-align: justify"}
+At the End of the Chapter, Students should be Able to -
 
-At the End of the Chapter, Students should be Able to - 
+-   Learn about the Meaning of Visualization
 
-* Learn about the Meaning of Visualization 
+-   Understand the Importance of Visualization
 
-* Understand the Importance of Visualization
+-   Learn about Different R and Python Packages for Visualization
 
-* Learn about Different R and Python Packages for Visualization 
+-   Gain Knowledge about Different Types of Visualization
 
-* Gain Knowledge about Different Types of Visualization
-
-* Learn Knowledge on Interactive Visualization
-
+-   Learn Knowledge on Interactive Visualization
 :::
 
 ## What is Visualization?
 
 ::: {style="text-align: justify"}
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To learn more about different kinds of visualization in `R`, you should visit - <https://r-graph-gallery.com/> and <https://www.kaggle.com/code/ruchiraperera/seaborn-vs-plotly-express>.
-
+     To learn more about different kinds of visualization in `R`, you should visit - <https://r-graph-gallery.com/> and <https://www.kaggle.com/code/ruchiraperera/seaborn-vs-plotly-express>.
 :::
 
-## Importance of Visualization 
+## Importance of Visualization
 
+## Visualization Packages in R and Python
 
-## Visualization Packages in R and Python 
-
-
-::: {.panel-tabset}
-
-## R 
+::: panel-tabset
+## R
 
 ::: {style="text-align: justify"}
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`ggplot2` is a powerful package for visualization in `R`. In addition, some other packages enhance the functionalities of `ggplot2`. These packages include - `gganimate`, `ggthemes`, `ggpubr`, `ggridges`, `ggmap`, `ggrepel`, `ggextra`, `ggpattern`, `ggcorrplot` and so on. 
-
+     `ggplot2` is a powerful package for visualization in `R`. In addition, some other packages enhance the functionalities of `ggplot2`. These packages include - `gganimate`, `ggthemes`, `ggpubr`, `ggridges`, `ggmap`, `ggrepel`, `ggextra`, `ggpattern`, `ggcorrplot` and so on.
 :::
 
 ```{r}
@@ -58,9 +49,7 @@ tips = read_csv(
 ## Python
 
 ::: {style="text-align: justify"}
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In `Python`, `matplotlib` and `seaborn` are two of the powerful packages for visualization. Additionally, `plotly`, `plotnine`, `altair`, and `bokeh` are some other python packages that enhances visualization in python.  
-
+     In `Python`, `matplotlib` and `seaborn` are two of the powerful packages for visualization. Additionally, `plotly`, `plotnine`, `altair`, and `bokeh` are some other python packages that enhances visualization in python.
 :::
 
 ```{r}
@@ -71,7 +60,6 @@ Sys.setenv('RETICULATE_PYTHON' = 'C:\\Users\\mshar\\AppData\\Local\\Programs\\Py
 #Sys.setenv('RETICULATE_PYTHON' = '~/.venv/quarto_book_python/Scripts/python.exe')
 ```
 
-
 ```{python}
 # Loading Necessary Python Packages 
 import seaborn as sns
@@ -80,48 +68,38 @@ import pandas as pd
 import numpy as np
 ```
 
-
 ```{python}
 # ggplot style 
 plt.style.use('ggplot')
 # Loading dataset
 tips = sns.load_dataset('tips')
 ```
+:::
 
-::: 
-
-
-## ggplot - Grammar of Graphics 
+## ggplot - Grammar of Graphics
 
 ::: {style="text-align: justify"}
+     In `ggplot`, a plot consists of at least four elements -
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In `ggplot`, a plot consists of at least four elements - 
+1.  Data - the data frame
 
-1. Data - the data frame 
+2.  Aesthetic Mappings - aesthetic mappings map variable from the data frame to different kinds of aesthetics such as x coordinate, y coordinate, color, shape, size and so on.
 
-2. Aesthetic Mappings - aesthetic mappings map variable from the data frame to different kinds of aesthetics such as x coordinate, y coordinate, color, shape, size and so on. 
+3.  Coordinate System - the positioning of points
 
-3. Coordinate System - the positioning of points 
+4.  Geom - geoms are geometirc objects such as points or lines.
 
-4. Geom - geoms are geometirc objects such as points or lines. 
+     You can also use [cheatsheet](https://posit.co/resources/cheatsheets/) of ggplot to know more about the ggplot. Another good source to learn more about visualization in `R` is [The R Graph Library](https://r-graph-gallery.com/). Similarly, for `Python`, you can use [The Python Graph Library](https://python-graph-gallery.com/).
+:::
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;You can also use [cheatsheet](https://posit.co/resources/cheatsheets/) of ggplot to know more about the ggplot. Another good source to learn more about visualization in `R` is [The R Graph Library](https://r-graph-gallery.com/). Similarly, for `Python`, you can use [The Python Graph Library](https://python-graph-gallery.com/). 
-
-::: 
-
-
-
-##  Types of Visualization 
+## Types of Visualization
 
 ### Bar Diagram (Bar Plot)
 
 #### One Categorical Variable
 
-
-::: {.panel-tabset}
-
+::: panel-tabset
 ## R
-
 
 ```{r}
 #| fig-width: 8
@@ -135,7 +113,7 @@ tips |>
     labs(x = 'Sex', y = 'Total Observations')
 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Either of the the following code will also produce the same visualization. 
+      Either of the the following code will also produce the same visualization.
 
 ```{r}
 #| eval: false 
@@ -149,7 +127,6 @@ tips |>
     labs(x = 'Sex', y = 'Total Observations')
 ```
 
-
 ```{r}
 #| eval: false 
 #| fig-width: 8
@@ -162,8 +139,7 @@ tips |>
     labs(x = 'Sex', y = 'Total Observations')
 ```
 
-
-## Python 
+## Python
 
 ```{python}
 #| warning: false
@@ -176,20 +152,15 @@ sns.countplot(data = tips, x = "sex", width=0.5)
 plt.xlabel('Sex')
 plt.ylabel('Total Observations')
 ```
-
-::: 
+:::
 
 #### One Categorical Variable and One Continuous Variable
 
 ::: {style="text-align: justify"}
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Barplot can also be used for two variables - both discrete (categorical) variables or one discrete (categorical) and one continuous variable. Below is bar plot for one discrete (categorical) and one continuous variable.  
-
+     Barplot can also be used for two variables - both discrete (categorical) variables or one discrete (categorical) and one continuous variable. Below is bar plot for one discrete (categorical) and one continuous variable.
 :::
 
-
-::: {.panel-tabset}
-
+::: panel-tabset
 ## R
 
 ```{r}
@@ -205,7 +176,8 @@ tips |>
     geom_text(aes(label = round(total_bill,2)), vjust = -0.2)
 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The following code will produce the same results. 
+     The following code will produce the same results.
+
 ```{r}
 #| fig-width: 8
 #| fig-height: 6
@@ -216,8 +188,6 @@ tips |>
     width = 0.60, fill = "pink") + 
     labs(x = "Sex", y = "Total Bill")
 ```
-
-
 
 ## Python
 
@@ -233,7 +203,7 @@ plt.xlabel('Sex')
 plt.ylabel('Total Bill')
 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The following code will add text value on the bars in barplot. 
+     The following code will add text value on the bars in barplot.
 
 ```{python}
 #| eval: false
@@ -250,17 +220,13 @@ for i in ax.containers:
 plt.xlabel('Sex')
 plt.ylabel('Total Bill')
 ```
-
-
 :::
 
 #### Two Categorical Variables
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Below is a bar plot for both discrete (categorical) variables. 
+     Below is a bar plot for both discrete (categorical) variables.
 
-
-::: {.panel-tabset}
-
+::: panel-tabset
 ## R
 
 ```{r}
@@ -275,7 +241,7 @@ tips |>
     labs(x = "Sex", y = "Total Observations")
 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The following code will also produce the same visualization. 
+     The following code will also produce the same visualization.
 
 ```{r}
 #| fig-width: 8
@@ -290,7 +256,6 @@ tips |>
     )
 ```
 
-
 ```{r}
 #| fig-width: 8
 #| fig-height: 6
@@ -302,8 +267,7 @@ tips |>
     labs(x = "Sex", y = "Total Observations")
 ```
 
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The following code will also produce the same visualization. 
+     The following code will also produce the same visualization.
 
 ```{r}
 #| fig-width: 8
@@ -318,8 +282,7 @@ tips |>
     )
 ```
 
-
-## Python 
+## Python
 
 ```{python}
 #| fig-cap: "Bar Plot of Gender (sns.countplot - unstacking bar)"
@@ -331,7 +294,8 @@ plt.xlabel('Sex')
 plt.ylabel('Total Observations')
 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Stacked barchart cannot be created using `seaborn`. So, we use alternatives - 
+     Stacked barchart cannot be created using `seaborn`. So, we use alternatives -
+
 ```{python}
 #| warning: false
 #| fig-width: 8
@@ -345,18 +309,14 @@ plt.xlabel("Sex")
 plt.ylabel("Total Observations")
 plt.legend(loc = "upper right")
 ```
+:::
 
+### Histogram
 
-::: 
+#### One Continuous Variable
 
-
-### Histogram 
-
-#### One Continuous Variable 
-
-::: {.panel-tabset}
-
-## R 
+::: panel-tabset
+## R
 
 ```{r}
 #| warning: false
@@ -369,7 +329,7 @@ tips |>
     labs(x = "Total Bill", y = "Count") 
 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The following code will generate the same results with a little modification -
+     The following code will generate the same results with a little modification -
 
 ```{r}
 #| eval: false 
@@ -383,8 +343,7 @@ tips |>
     labs(x = "Total Bill", y = "Count")
 ```
 
-
-## Python 
+## Python
 
 ```{python}
 #| warning: false
@@ -395,13 +354,11 @@ sns.histplot(data = tips, x = "total_bill", binwidth=2.25)
 plt.xlabel("Total Bill")
 plt.ylabel("Count")
 ```
-
 :::
 
-#### One Continuous and One Categorical Variable 
+#### One Continuous and One Categorical Variable
 
-::: {.panel-tabset}
-
+::: panel-tabset
 ## R
 
 ```{r}
@@ -416,9 +373,7 @@ tips |>
 
 ```
 
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The following code will generate the same results - 
-
+     The following code will generate the same results -
 
 ```{r}
 #| eval: false
@@ -431,8 +386,7 @@ tips |>
     geom_histogram(binwidth = 2.25)
 ```
 
-
-## Python 
+## Python
 
 ```{python}
 #| warning: false
@@ -444,7 +398,6 @@ plt.xlabel("Total Bill")
 plt.ylabel("Count")
 ```
 
-
 ```{python}
 #| warning: false
 #| eval: false
@@ -454,20 +407,14 @@ plt.ylabel("Count")
 sns.FacetGrid(data=tips, col="sex") \
     .map(sns.histplot, "total_bill", binwidth = 2.25)
 ```
-
-
-::: 
-
-
+:::
 
 ### Density Plot
 
-#### One Continuous Variable 
+#### One Continuous Variable
 
-
-::: {.panel-tabset}
-
-## R 
+::: panel-tabset
+## R
 
 ```{r}
 #| warning: false
@@ -485,8 +432,7 @@ tips |>
 
 ```
 
-
-## Python 
+## Python
 
 ```{python}
 #| warning: false
@@ -499,15 +445,11 @@ sns.kdeplot(data = tips, x = "total_bill"
             )
 plt.xlabel("Total Bill")
 ```
-
-
-
 :::
 
-#### Two Continuous Variables 
+#### Two Continuous Variables
 
-::: {.panel-tabset}
-
+::: panel-tabset
 ## R
 
 ```{r}
@@ -522,7 +464,7 @@ tips |>
     geom_density(size = 1)
 ```
 
-## Python 
+## Python
 
 ```{python}
 #| warning: false
@@ -532,13 +474,11 @@ tips |>
 sns.kdeplot(data = tips[['total_bill', 'tip']])
 plt.xlabel("Total Bill")
 ```
+:::
 
-::: 
+#### One Continuous Variable and One Categorical Variable
 
-#### One Continuous Variable and One Categorical Variable 
-
-::: {.panel-tabset}
-
+::: panel-tabset
 ## R
 
 ```{r}
@@ -568,9 +508,7 @@ tips |>
 
 ```
 
-
-
-## Python 
+## Python
 
 ```{python}
 #| warning: false
@@ -581,7 +519,6 @@ sns.kdeplot(data = tips, x = "total_bill", hue = "sex")
 plt.xlabel("Total Bill")
 ```
 
-
 ```{python}
 #| warning: false
 #| fig-width: 8
@@ -590,19 +527,13 @@ plt.xlabel("Total Bill")
 sns.kdeplot(data = tips, x = "total_bill", hue = "sex", multiple = "stack")
 plt.xlabel("Total Bill")
 ```
+:::
 
+### Point Plot
 
-::: 
+#### One Categorical and One Continuous Variable
 
-
-
-
-### Point Plot 
-
-#### One Categorical and One Continuous Variable 
-
-::: {.panel-tabset}
-
+::: panel-tabset
 ## R
 
 ```{r}
@@ -618,8 +549,7 @@ tips |>
     labs(x = "Sex", y = "Total Bill")
 ```
 
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The following code will also produce the same visualization. 
+     The following code will also produce the same visualization.
 
 ```{r}
 #| fig-width: 8
@@ -634,7 +564,7 @@ tips |>
     labs(x = "Sex", y = "Total Bill")
 ```
 
-## Python 
+## Python
 
 ```{python}
 #| warning: false
@@ -645,15 +575,11 @@ sns.pointplot(data = tips, x = "sex", y = "total_bill", errorbar=None)
 plt.xlabel('Sex')
 plt.ylabel("Total Bill")
 ```
-
 :::
 
+#### Two Categorical Variables and One Continuous Variable
 
-
-#### Two Categorical Variables and One Continuous Variable 
-
-::: {.panel-tabset}
-
+::: panel-tabset
 ## R
 
 ```{r}
@@ -670,7 +596,7 @@ tips |>
     )
 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The following code will also produce the same visualization. 
+     The following code will also produce the same visualization.
 
 ```{r}
 #| warning: false
@@ -686,7 +612,7 @@ tips |>
     labs(x = "Sex", y = "Total Bill")
 ```
 
-## Python 
+## Python
 
 ```{python}
 #| warning: false
@@ -698,16 +624,11 @@ sns.pointplot(data = tips, x = "sex", y = "total_bill",
 plt.xlabel("Sex")
 plt.ylabel("Total Bill")
 ```
-
-
 :::
 
+### Box Plot
 
-
-### Box Plot 
-
-::: {.panel-tabset}
-
+::: panel-tabset
 ## R
 
 ```{r}
@@ -741,8 +662,7 @@ tips |>
 
 ```
 
-
-## Python 
+## Python
 
 ```{python}
 #| warning: false
@@ -754,7 +674,6 @@ plt.xlabel("Sex")
 plt.ylabel("Total Bill")
 ```
 
-
 ```{python}
 #| warning: false
 #| fig-width: 8
@@ -764,7 +683,6 @@ sns.catplot(data = tips, x = "sex", y = "total_bill",
             color = "pink", kind = "box", row = "smoker"
            )
 ```
-
 
 ```{python}
 #| warning: false
@@ -776,17 +694,11 @@ sns.catplot(data = tips, x = "sex", y = "total_bill",
             ,col = "time"
            )
 ```
-
-
 :::
 
+### Scatter Plot
 
-
-
-### Scatter Plot 
-
-::: {.panel-tabset}
-
+::: panel-tabset
 ## R
 
 ```{r}
@@ -800,8 +712,7 @@ tips |>
 
 ```
 
-
-## Python 
+## Python
 
 ```{python}
 #| fig-width: 8
@@ -811,14 +722,11 @@ sns.scatterplot(data = tips, x = "total_bill", y = "tip")
 plt.xlabel("Total Bill")
 plt.ylabel("Tip")
 ```
+:::
 
-::: 
+### Regression Plot
 
-
-### Regression Plot 
-
-::: {.panel-tabset}
-
+::: panel-tabset
 ## R
 
 ```{r}
@@ -834,7 +742,6 @@ tips |>
 
 ```
 
-
 ```{r}
 #| warning: false
 #| fig-width: 10
@@ -847,8 +754,7 @@ tips |>
     labs(x = "Total Bill", y = "Tip")
 ```
 
-
-## Python 
+## Python
 
 ```{python}
 #| warning: false
@@ -860,7 +766,6 @@ plt.xlabel("Total Bill")
 plt.ylabel("Tip")
 ```
 
-
 ```{python}
 #| fig-width: 8
 #| fig-height: 6
@@ -870,7 +775,6 @@ plt.xlabel("Total Bill")
 plt.ylabel("Tip")
 ```
 
-
 ```{python}
 #| fig-width: 8
 #| fig-height: 6
@@ -879,37 +783,24 @@ sns.lmplot(data = tips, x = "total_bill", y = "tip", hue = "sex")
 plt.xlabel("Total Bill")
 plt.ylabel("Tip")
 ```
-
-:::
-
-
-
-
-
-::: {style="text-align: justify"}
-
-## Exercises # 01 
-
-1. Download student data from the [url](https://raw.githubusercontent.com/ShapeLab/ZooidsCompositePhysicalizations/refs/heads/master/Zooid_Vis/bin/data/student-dataset.csv)  and create a pointplot (lineplot) of students average math score (`math.grade`) of gender (`gender`). Please note that the variable `gender` includes a label called `other` in addition to `M` and `F`; you should filter out obsevations of the label `other` before you create visualization.  
-
-2. From the dataset in above (question 1), compare, using pointplot (lineplot), the average math (`math.grade`) and science score (`sciences.grade`) of different students based on gender (`gender`). You might need to use `pivot_longer` function to reshape the data frame before visualizing the relation. 
-
 :::
 
 ::: {style="text-align: justify"}
+## Exercises \# 01
 
+1.  Download student data from the [url](https://raw.githubusercontent.com/ShapeLab/ZooidsCompositePhysicalizations/refs/heads/master/Zooid_Vis/bin/data/student-dataset.csv) and create a pointplot (lineplot) of students average math score (`math.grade`) of gender (`gender`). Please note that the variable `gender` includes a label called `other` in addition to `M` and `F`; you should filter out obsevations of the label `other` before you create visualization.
 
-
-## Interactive Visualization 
-
-::: {style="text-align: justify"}
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Interactive Visualization involves graphical presentation of data that permits users to engage with the visual elements directly. Unlike static visulization, interactive visualization allows users to manipulate data, explore different aspects, and customize the visualization in real time. The primary objective of interactive visualization is to make data exploration more intuititve and dynamic. The benefits of interactive visualzation include - enhaned engagement, deeper insights, customization, and exploration and discovery. 
-
+2.  From the dataset in above (question 1), compare, using pointplot (lineplot), the average math (`math.grade`) and science score (`sciences.grade`) of different students based on gender (`gender`). You might need to use `pivot_longer` function to reshape the data frame before visualizing the relation.
 :::
 
-::: {.panel-tabset}
+::: {style="text-align: justify"}
+## Interactive Visualization
 
+::: {style="text-align: justify"}
+     Interactive Visualization involves graphical presentation of data that permits users to engage with the visual elements directly. Unlike static visulization, interactive visualization allows users to manipulate data, explore different aspects, and customize the visualization in real time. The primary objective of interactive visualization is to make data exploration more intuititve and dynamic. The benefits of interactive visualzation include - enhaned engagement, deeper insights, customization, and exploration and discovery.
+:::
+
+::: panel-tabset
 ## R
 
 ```{r}
@@ -943,7 +834,7 @@ p2 = tips |>
 ggplotly(p2)
 ```
 
-## Python 
+## Python
 
 ```{python}
 #| warning: false
@@ -962,7 +853,6 @@ fig = px.histogram(tips, x = "sex") \
     .update_yaxes(title = "Count")
 fig.show()
 ```
-
 
 ```{python}
 #| warning: false
@@ -998,7 +888,6 @@ import plotly.tools as tls
 df = tips.groupby(["sex"])["total_bill"].agg('mean').reset_index()
 ```
 
-
 ```{python}
 #| warning: false
 #| fig-width: 6
@@ -1019,7 +908,6 @@ plotly_fig = (
 tls.mpl_to_plotly(plotly_fig.draw()).show()
 ```
 
-
 ```{python}
 #| warning: false
 #| fig-width: 6
@@ -1038,14 +926,9 @@ df2 = tips.groupby(["sex", "smoker"])["total_bill"] \
 )
 
 ```
-
 :::
-
 :::
-
 
 ::: {style="text-align: justify"}
-
-## Exercises # 02 
-
-::: 
+## Exercises \# 02
+:::

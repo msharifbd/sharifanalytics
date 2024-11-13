@@ -104,7 +104,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 
+
+
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
 
 
 </head>
@@ -289,12 +292,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
       </ul>
   </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">References</span></a>
-  </div>
-</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
@@ -326,6 +323,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="./chapter2_solution.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Chapter 2 Solution</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
   </div>
 </li>
       </ul>
@@ -436,7 +439,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><code>&lt;head&gt;</code> : Contains metadata or information for the document</p>
 <p><code>&lt;body&gt;</code> : Defines the document body such as text, images, and other media</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;More about HTML tags can be found <a href="https://www.w3schools.com/tags/ref_byfunc.asp">here</a>. Here is an example of a basic HTML structure -</p>
-<div id="0d2975a7" class="cell" data-execution_count="1">
+<div id="4cb4c283" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>html<span class="op">&gt;&lt;</span>head<span class="op">&gt;&lt;</span>title<span class="op">&gt;</span>The Dormouse<span class="st">'s story&lt;/title&gt;&lt;/head&gt;</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;body&gt;</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>p <span class="kw">class</span><span class="op">=</span><span class="st">"title"</span><span class="op">&gt;&lt;</span>b<span class="op">&gt;</span>The Dormouse<span class="st">'s story&lt;/b&gt;&lt;/p&gt;</span></span>
@@ -455,7 +458,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><strong>Attribute Selector</strong>: Selects elements with a specific attribute or attribute value. For example, <code>[href]</code> selects all elements with an <code>href</code> attribute.</p></li>
 </ol>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Below is an example of CSS selectors -</p>
-<div id="230305e8" class="cell" data-execution_count="2">
+<div id="4d9b2b96" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;!</span>DOCTYPE html<span class="op">&gt;</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>html<span class="op">&gt;</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>head<span class="op">&gt;</span></span>
@@ -496,7 +499,7 @@ Figure&nbsp;9.1: Beautiful Soup Process
 </figure>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The following python code can be run to install and import <code>Beautifulsoup</code> module.</p>
-<div id="2c3369d2" class="cell" data-execution_count="3">
+<div id="cb8ae33e" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># installing beautifulsoup </span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>pip install beautifulsoup4</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -519,7 +522,7 @@ Figure&nbsp;9.2: Tree Structure of HTML Page
 <h3 data-number="9.4.1" class="anchored" data-anchor-id="an-example-of-web-scraping"><span class="header-section-number">9.4.1</span> An Example of Web Scraping</h3>
 <div style="text-align: justify">
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Below we provide a small example of webscraping. We create a webpage called <code>html</code>, which includes different tags and CSS selectors.</p>
-<div id="f2754325" class="cell" data-execution_count="4">
+<div id="38083dda" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># an HTML file data </span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>html <span class="op">=</span> <span class="st">"""</span></span>
@@ -534,36 +537,36 @@ Figure&nbsp;9.2: Tree Structure of HTML Page
 <span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;/body&gt;&lt;/html&gt;"""</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Then we import <code>BeautifulSoup</code> from beautifulsoup.</p>
-<div id="c164c600" class="cell" data-execution_count="5">
+<div id="43c01243" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># importing beautiful soup </span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bs4 <span class="im">import</span> BeautifulSoup</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Next, we convert the <code>html</code> into beautifulsoup object and name it <code>soup</code>. In <code>BeautifulSoup ()</code>function, we use the built-in parser called <code>html.parser</code>. We can also use other parsers such as <code>lxml</code> or <code>html5lib</code>. Each of these parsers has their own pros and cons. For example, <code>lxml</code> is the fastest and <code>html.parser</code> does not need extra dependencies.</p>
-<div id="aeaee20a" class="cell" data-execution_count="6">
+<div id="6d93e313" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Converting HTML data into Beautiful Soup Object </span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>soup <span class="op">=</span> BeautifulSoup(html, <span class="st">"html.parser"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The <code>prettify()</code> function will turn a soup object into a nicely formatted Unicode string, witha a separate line for each tag and each string.</p>
-<div id="6dfdb549" class="cell" data-execution_count="7">
+<div id="373cd280" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>soup.prettify()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>'&lt;html&gt;\n &lt;head&gt;\n  &lt;title&gt;\n   The Dormouse\'s story\n  &lt;/title&gt;\n &lt;/head&gt;\n &lt;body&gt;\n  &lt;p class="title"&gt;\n   &lt;b&gt;\n    The Dormouse\'s story\n   &lt;/b&gt;\n  &lt;/p&gt;\n  &lt;p class="story"&gt;\n   Once upon a time there were three little sisters; and their names were\n   &lt;a class="sister" href="http://example.com/elsie" id="link1"&gt;\n    Elsie\n   &lt;/a&gt;\n   ,\n   &lt;a class="sister" href="http://example.com/lacie" id="link2"&gt;\n    Lacie\n   &lt;/a&gt;\n   and\n   &lt;a class="sister" href="http://example.com/tillie" id="link3"&gt;\n    Tillie\n   &lt;/a&gt;\n   ;\nand they lived at the bottom of a well.\n  &lt;/p&gt;\n &lt;/body&gt;\n&lt;/html&gt;\n'</code></pre>
 </div>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;We can use <code>get_text()</code> function to see the text element of the tags. <code>text</code> is a property (attribute) of soup object, which calls <code>get_text</code> function.</p>
-<div id="6093a343" class="cell" data-execution_count="8">
+<div id="7422b968" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>soup.get_text()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>"\nThe Dormouse's story\n\nThe Dormouse's story\nOnce upon a time there were three little sisters; and their names were\nElsie,\nLacie and\nTillie;\nand they lived at the bottom of a well.\n"</code></pre>
 </div>
 </div>
-<div id="1aa54a9e" class="cell" data-execution_count="9">
+<div id="ffadd11e" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>soup.text</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>"\nThe Dormouse's story\n\nThe Dormouse's story\nOnce upon a time there were three little sisters; and their names were\nElsie,\nLacie and\nTillie;\nand they lived at the bottom of a well.\n"</code></pre>
 </div>
 </div>
-<div id="add14238" class="cell" data-execution_count="10">
+<div id="35e6f653" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(soup.text)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -579,14 +582,14 @@ and they lived at the bottom of a well.
 </div>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To see the title of the document, we run the following codes -</p>
-<div id="21e1c903" class="cell" data-execution_count="11">
+<div id="f5e73c8a" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Navigating to Specific Tags </span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>soup.head.title</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>&lt;title&gt;The Dormouse's story&lt;/title&gt;</code></pre>
 </div>
 </div>
-<div id="c788c0d5" class="cell" data-execution_count="12">
+<div id="065b0b4d" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting Text from a Specific Tag</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>soup.head.title.text</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
@@ -594,14 +597,14 @@ and they lived at the bottom of a well.
 </div>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To see the text, from <code>a</code> tag, we run the following code -</p>
-<div id="7791e45b" class="cell" data-execution_count="13">
+<div id="b6382625" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>soup.body.a.text</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>'Elsie'</code></pre>
 </div>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To see the text, from <code>p</code> tag, we run the following code -</p>
-<div id="4f5f3524" class="cell" data-execution_count="14">
+<div id="33729010" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>soup.body.p.text</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>"The Dormouse's story"</code></pre>
@@ -614,7 +617,7 @@ and they lived at the bottom of a well.
 <h2 data-number="9.5" class="anchored" data-anchor-id="searching-the-elements-of-tags"><span class="header-section-number">9.5</span> Searching the Elements of Tags</h2>
 <div style="text-align: justify">
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The <code>find_all()</code> function from beautifulsoup takes an HTML tag as an string argument and returns the list of elements that match the tag. For example, if we want to have all <code>a</code> tags in <code>html</code> data above, we will run the following code. Please note that there is another similar function called <code>find()</code>, which will return the first tag element.</p>
-<div id="6b58f7cb" class="cell" data-execution_count="15">
+<div id="efe9f307" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>soup.find_all(<span class="st">'a'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>[&lt;a class="sister" href="http://example.com/elsie" id="link1"&gt;Elsie&lt;/a&gt;,
@@ -622,20 +625,20 @@ and they lived at the bottom of a well.
  &lt;a class="sister" href="http://example.com/tillie" id="link3"&gt;Tillie&lt;/a&gt;]</code></pre>
 </div>
 </div>
-<div id="f4e64e49" class="cell" data-execution_count="16">
+<div id="00852f05" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>soup.find(<span class="st">'a'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <pre><code>&lt;a class="sister" href="http://example.com/elsie" id="link1"&gt;Elsie&lt;/a&gt;</code></pre>
 </div>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;We can also search for tags of a specific class as well by providing <code>class_</code> argument. Beasutiful soup uses <code>class_</code> because <code>class</code> is a reserved keyword in python. For example, let’s search for <code>p</code> tags that have element <code>story</code>.</p>
-<div id="69e3de1e" class="cell" data-execution_count="17">
+<div id="af28fb6f" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>soup.find_all(<span class="st">"p"</span>, class_ <span class="op">=</span> <span class="st">"title"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
 <pre><code>[&lt;p class="title"&gt;&lt;b&gt;The Dormouse's story&lt;/b&gt;&lt;/p&gt;]</code></pre>
 </div>
 </div>
-<div id="3746bfd6" class="cell" data-execution_count="18">
+<div id="f81cad80" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>soup.find(<span class="st">"p"</span>, class_<span class="op">=</span><span class="st">"story"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
 <pre><code>&lt;p class="story"&gt;Once upon a time there were three little sisters; and their names were
@@ -645,7 +648,7 @@ and they lived at the bottom of a well.
 and they lived at the bottom of a well.&lt;/p&gt;</code></pre>
 </div>
 </div>
-<div id="8a564e4c" class="cell" data-execution_count="19">
+<div id="abad2f51" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>soup.find(<span class="st">"p"</span>, class_<span class="op">=</span><span class="st">"story"</span>).get_text()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="16">
 <pre><code>'Once upon a time there were three little sisters; and their names were\nElsie,\nLacie and\nTillie;\nand they lived at the bottom of a well.'</code></pre>
@@ -668,7 +671,7 @@ Figure&nbsp;9.3: How to Find the HTML tags and CSS Class
 </figure>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;First, we need to import necessary python modules. We use <code>requests</code> module to get the website information.</p>
-<div id="077357ac" class="cell" data-execution_count="20">
+<div id="91888e98" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># importing requests </span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="co"># importing beautifulsoup</span></span>
@@ -677,7 +680,7 @@ Figure&nbsp;9.3: How to Find the HTML tags and CSS Class
 <span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Then, we convert the data into <code>soup</code> object.</p>
-<div id="d1e4d1fb" class="cell" data-execution_count="21">
+<div id="92282f68" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fetch the website page </span></span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">'https://books.toscrape.com/catalogue/page-1.html'</span></span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>html <span class="op">=</span> requests.get(url)</span>
@@ -686,7 +689,7 @@ Figure&nbsp;9.3: How to Find the HTML tags and CSS Class
 <span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>soup <span class="op">=</span> BeautifulSoup(page, <span class="st">"html.parser"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;After inspecting the tags and CSS selectors, we identify that <code>article</code> tag and <code>product_pod</code> class contains the information that we would like to extract. We use the <code>find</code> function from <code>beautifulsuop</code> to see our expected data. As noted before, <code>find</code> function identifies the first instance of the elements whereas <code>find_all</code> identifies all elements of the parsed HTML.</p>
-<div id="23a31427" class="cell" data-execution_count="22">
+<div id="0e50f528" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>soup.find(<span class="st">"article"</span>, class_<span class="op">=</span><span class="st">"product_pod"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="19">
 <pre><code>&lt;article class="product_pod"&gt;
@@ -716,17 +719,17 @@ Figure&nbsp;9.3: How to Find the HTML tags and CSS Class
 &lt;/article&gt;</code></pre>
 </div>
 </div>
-<div id="54ee63cf" class="cell" data-execution_count="23">
+<div id="9e79d8ab" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>soup.find_all(<span class="st">"article"</span>, class_<span class="op">=</span><span class="st">"product_pod"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Next, we check the url of each book. The <code>a</code> tag defines a hyperlink and the <code>href</code> is an attribute of <code>a</code> tag. Below, we use <code>a</code> tag to identify the link of each book.</p>
-<div id="9c11e875" class="cell" data-execution_count="24">
+<div id="de3c9157" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>books <span class="op">=</span> soup.find_all(<span class="st">"article"</span>, class_<span class="op">=</span><span class="st">"product_pod"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="b845f93a" class="cell" data-execution_count="25">
+<div id="0db6402f" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>source_url <span class="op">=</span> <span class="st">"https://books.toscrape.com/catalogue"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="32419cf1" class="cell" data-execution_count="26">
+<div id="371b5a82" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Book url </span></span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> h <span class="kw">in</span> soup.find_all(<span class="st">"article"</span>, class_<span class="op">=</span><span class="st">"product_pod"</span>):</span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(source_url<span class="op">+</span><span class="st">"/"</span><span class="op">+</span>h.find(<span class="st">'a'</span>)[<span class="st">'href'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -753,7 +756,7 @@ https://books.toscrape.com/catalogue/libertarianism-for-beginners_982/index.html
 https://books.toscrape.com/catalogue/its-only-the-himalayas_981/index.html</code></pre>
 </div>
 </div>
-<div id="9395cb4e" class="cell" data-execution_count="27">
+<div id="299b3dcc" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Book url (Alternative) </span></span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> h <span class="kw">in</span> soup.find_all(<span class="st">"article"</span>, class_<span class="op">=</span><span class="st">"product_pod"</span>):</span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(h.h3.find(<span class="st">'a'</span>)[<span class="st">'href'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -780,7 +783,7 @@ libertarianism-for-beginners_982/index.html
 its-only-the-himalayas_981/index.html</code></pre>
 </div>
 </div>
-<div id="b0c2ddbd" class="cell" data-execution_count="28">
+<div id="512d885d" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Book Title </span></span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> h <span class="kw">in</span> soup.find_all(<span class="st">"article"</span>, class_<span class="op">=</span><span class="st">"product_pod"</span>):</span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(h.h3.find(<span class="st">'a'</span>)[<span class="st">'title'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -807,21 +810,21 @@ Libertarianism for Beginners
 It's Only the Himalayas</code></pre>
 </div>
 </div>
-<div id="775e3e00" class="cell" data-execution_count="29">
+<div id="e76efaf3" class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ratings </span></span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>soup.find(<span class="st">'p'</span>, class_<span class="op">=</span><span class="st">'star-rating'</span>)[<span class="st">'class'</span>][<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="25">
 <pre><code>'Three'</code></pre>
 </div>
 </div>
-<div id="a8bc1ae3" class="cell" data-execution_count="30">
+<div id="2edb6d65" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># price </span></span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>soup.find(<span class="st">'p'</span>, class_<span class="op">=</span><span class="st">'price_color'</span>).get_text().replace(<span class="st">"Â"</span>,<span class="st">''</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="26">
 <pre><code>'£51.77'</code></pre>
 </div>
 </div>
-<div id="2f275c4e" class="cell" data-execution_count="31">
+<div id="3fe6320a" class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># availability </span></span>
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>soup.find(<span class="st">'p'</span>, class_<span class="op">=</span><span class="st">'instock availability'</span>).get_text().replace(<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>,<span class="st">''</span>).strip()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="27">
@@ -831,7 +834,7 @@ It's Only the Himalayas</code></pre>
 <section id="sec-onepage" class="level3" data-number="9.6.1">
 <h3 data-number="9.6.1" class="anchored" data-anchor-id="sec-onepage"><span class="header-section-number">9.6.1</span> Putting All of the Above Actions Together</h3>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In <a href="#sec-usebeautifulsoup" class="quarto-xref"><span>Section 9.6</span></a>, we identify and extract individual tags and data that we want to extract. Now, we will put all of them together and create a data frame. For this purpose, we will use <code>for loop</code>.</p>
-<div id="144e1786" class="cell" data-execution_count="32">
+<div id="30800db2" class="cell" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fetch the Page </span></span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">'https://books.toscrape.com/catalogue/page-1.html'</span></span>
 <span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>html <span class="op">=</span> requests.get(url)</span>
@@ -1069,7 +1072,7 @@ It's Only the Himalayas</code></pre>
 <section id="doing-the-same-things-for-all-pages" class="level3" data-number="9.6.2">
 <h3 data-number="9.6.2" class="anchored" data-anchor-id="doing-the-same-things-for-all-pages"><span class="header-section-number">9.6.2</span> Doing the Same Things for All Pages</h3>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In <a href="#sec-onepage" class="quarto-xref"><span>Section 9.6.1</span></a>, we scrape the first page of the website, but now we would like to scrape all pages of the website.</p>
-<div id="713a50a1" class="cell" data-execution_count="33">
+<div id="4d3ff0c7" class="cell" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>url1 <span class="op">=</span> <span class="st">'https://books.toscrape.com/catalogue/page-'</span></span>
 <span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>pages <span class="op">=</span> <span class="bu">range</span>(<span class="dv">51</span>)</span>
 <span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>url2 <span class="op">=</span> <span class="st">'.html'</span></span>

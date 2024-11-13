@@ -319,12 +319,6 @@ window.Quarto = {
 </li>
       </ul>
   </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">References</span></a>
-  </div>
-</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
@@ -336,14 +330,32 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./python_basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">A Primer on Python</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./r_basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">A Primer on R</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./chapter1_solution.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Chapter 1 Solution</span></span></a>
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Chapter 1 Solution</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chapter2_solution.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Chapter 2 Solution</span></span></a>
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Chapter 2 Solution</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
   </div>
 </li>
       </ul>
@@ -660,7 +672,7 @@ lm(formula = KO ~ SPY, data = df_stockR)
 
 Residuals:
       Min        1Q    Median        3Q       Max 
--0.086587 -0.005092  0.000230  0.005503  0.054322 
+-0.086587 -0.005091  0.000230  0.005502  0.054322 
 
 Coefficients:
               Estimate Std. Error t value Pr(&gt;|t|)    
@@ -707,14 +719,14 @@ F-statistic: 900.5 on 1 and 1255 DF,  p-value: &lt; 2.2e-16</code></pre>
 <pre><code># A tibble: 1,257 × 10
          KO       SPY      PEP DX.Y.NYB  .fitted   .resid    .hat .sigma .cooksd
       &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
- 1 -0.00620 -0.0242   -9.38e-3 -5.28e-3 -1.60e-2  9.80e-3 3.56e-3 0.0103 1.61e-3
+ 1 -0.00620 -0.0242   -9.38e-3 -5.28e-3 -1.60e-2  9.81e-3 3.56e-3 0.0103 1.61e-3
  2  0.0197   0.0329    2.03e-2 -1.25e-3  2.17e-2 -1.91e-3 5.53e-3 0.0103 9.54e-5
  3 -0.0131   0.00785  -8.64e-3 -5.00e-3  5.11e-3 -1.82e-2 1.03e-3 0.0103 1.61e-3
  4  0.0112   0.00935   9.54e-3  1.98e-3  6.09e-3  5.13e-3 1.14e-3 0.0103 1.41e-4
  5 -0.0194   0.00466  -2.83e-2 -7.12e-3  3.00e-3 -2.24e-2 8.71e-4 0.0103 2.04e-3
  6  0.0107   0.00352   6.12e-3  3.36e-3  2.25e-3  8.43e-3 8.35e-4 0.0103 2.78e-4
  7  0.00572  0.000386  9.26e-5  1.36e-3  1.80e-4  5.54e-3 7.96e-4 0.0103 1.14e-4
- 8 -0.00402 -0.00612  -7.80e-3 -8.37e-4 -4.11e-3  8.85e-5 9.98e-4 0.0103 3.66e-8
+ 8 -0.00402 -0.00612  -7.80e-3 -8.37e-4 -4.11e-3  8.86e-5 9.98e-4 0.0103 3.67e-8
  9  0.00887  0.0114    1.54e-2  3.97e-3  7.44e-3  1.43e-3 1.32e-3 0.0103 1.26e-5
 10 -0.0138   0.00242  -5.98e-3  9.37e-4  1.52e-3 -1.53e-2 8.11e-4 0.0103 8.86e-4
 # ℹ 1,247 more rows
@@ -797,8 +809,8 @@ Figure&nbsp;7.7: Linear Model between SPY and KO
 Dep. Variable:                     ko   R-squared:                       0.418
 Model:                            OLS   Adj. R-squared:                  0.417
 Method:                 Least Squares   F-statistic:                     900.5
-Date:                Fri, 08 Nov 2024   Prob (F-statistic):          1.36e-149
-Time:                        10:01:43   Log-Likelihood:                 3963.5
+Date:                Tue, 12 Nov 2024   Prob (F-statistic):          1.36e-149
+Time:                        19:56:14   Log-Likelihood:                 3963.5
 No. Observations:                1257   AIC:                            -7923.
 Df Residuals:                    1255   BIC:                            -7913.
 Df Model:                           1                                         
@@ -806,11 +818,11 @@ Covariance Type:            nonrobust
 ==============================================================================
                  coef    std err          t      P&gt;|t|      [0.025      0.975]
 ------------------------------------------------------------------------------
-Intercept  -7.426e-05      0.000     -0.254      0.799      -0.001       0.000
+Intercept  -7.427e-05      0.000     -0.254      0.799      -0.001       0.000
 spy            0.6595      0.022     30.009      0.000       0.616       0.703
 ==============================================================================
-Omnibus:                      301.181   Durbin-Watson:                   1.871
-Prob(Omnibus):                  0.000   Jarque-Bera (JB):             3723.045
+Omnibus:                      301.182   Durbin-Watson:                   1.871
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):             3723.039
 Skew:                          -0.743   Prob(JB):                         0.00
 Kurtosis:                      11.299   Cond. No.                         75.3
 ==============================================================================
@@ -958,7 +970,7 @@ Figure&nbsp;7.11: Testing Assumption 1
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">durbinWatsonTest</span>(<span class="fu">lm</span>(KO <span class="sc">~</span> SPY, <span class="at">data =</span> df_stockR))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> lag Autocorrelation D-W Statistic p-value
-   1      0.06395563      1.871183   0.038
+   1      0.06395532      1.871184    0.02
  Alternative hypothesis: rho != 0</code></pre>
 </div>
 </div>
@@ -968,7 +980,7 @@ Figure&nbsp;7.11: Testing Assumption 1
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.stats.stattools <span class="im">import</span> durbin_watson</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>durbin_watson(slr_sm_model_ko.resid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>1.8711821772568396</code></pre>
+<pre><code>1.8711798463493121</code></pre>
 </div>
 </div>
 </div>
@@ -1002,7 +1014,7 @@ Figure&nbsp;7.12: Assumption 3- What We Want to See
 <div class="cell-output cell-output-stdout">
 <pre><code>Non-constant Variance Score Test 
 Variance formula: ~ fitted.values 
-Chisquare = 19.17625, Df = 1, p = 1.1919e-05</code></pre>
+Chisquare = 19.17641, Df = 1, p = 1.1918e-05</code></pre>
 </div>
 <div class="cell-output-display">
 <div id="fig-r-assump3" class="quarto-figure quarto-figure-center quarto-float anchored">
@@ -1041,7 +1053,7 @@ Figure&nbsp;7.13: Testing Assumption 3
 <span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> stat, value <span class="kw">in</span> <span class="bu">zip</span>(labels,bp_test):</span>
 <span id="cb33-20"><a href="#cb33-20" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'</span><span class="sc">{}</span><span class="st">: </span><span class="sc">{:.3f}</span><span class="st">'</span>.<span class="bu">format</span>(stat, value))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>LM Statistic: 15.904
+<pre><code>LM Statistic: 15.905
 LM-Test p-value: 0.000
 F-Statistic: 8.035
 F-Test p-value: 0.000</code></pre>
@@ -1051,7 +1063,7 @@ F-Test p-value: 0.000</code></pre>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> stat, value <span class="kw">in</span> <span class="bu">zip</span>(labels,white_test):</span>
 <span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'</span><span class="sc">{}</span><span class="st">: </span><span class="sc">{:.3f}</span><span class="st">'</span>.<span class="bu">format</span>(stat, value))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>LM Statistic: 15.904
+<pre><code>LM Statistic: 15.905
 LM-Test p-value: 0.000
 F-Statistic: 8.035
 F-Test p-value: 0.000</code></pre>
@@ -1170,7 +1182,7 @@ Figure&nbsp;7.16: Testing Assumption 4
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="fu">vif</span>(<span class="fu">lm</span>(KO <span class="sc">~</span> SPY<span class="sc">+</span>PEP, <span class="at">data =</span> df_stockR))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     SPY      PEP 
-1.841298 1.841298 </code></pre>
+1.841296 1.841296 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Correlation Matrix and Correlation Plot </span></span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="co"># to get the function </span></span>
@@ -1207,8 +1219,8 @@ Figure&nbsp;7.17: Correlation Plot
 <pre><code>          usdx       spy        ko  pep
 usdx  1.000000                         
 spy  -0.212245       1.0               
-ko   -0.159650  0.646358       1.0     
-pep  -0.081497  0.675946  0.759875  1.0</code></pre>
+ko   -0.159651  0.646359       1.0     
+pep  -0.081497  0.675947  0.759876  1.0</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co">### Correlation Plot</span></span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>mask <span class="op">=</span> np.triu(np.ones_like(df_stock[[<span class="st">'usdx'</span>, <span class="st">'spy'</span>, <span class="st">'ko'</span>,<span class="st">'pep'</span>]].corr()))</span>
@@ -1229,8 +1241,8 @@ pep  -0.081497  0.675946  0.759875  1.0</code></pre>
 <span id="cb49-17"><a href="#cb49-17" aria-hidden="true" tabindex="-1"></a>               <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,X.shape[<span class="dv">1</span>])], </span>
 <span id="cb49-18"><a href="#cb49-18" aria-hidden="true" tabindex="-1"></a>              index<span class="op">=</span>X.columns[<span class="dv">1</span>:])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>ko     1.717561
-spy    1.717561
+<pre><code>ko     1.717564
+spy    1.717564
 dtype: float64</code></pre>
 </div>
 <div class="cell-output-display">
@@ -1479,52 +1491,52 @@ Table&nbsp;7.2: Regression of Investment on Market Value and PPE
 <div aria-describedby="tbl-py-multiple-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <div>
-<div id="neofbjxjfl" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="litorbhuxw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>
-#neofbjxjfl table {
+#litorbhuxw table {
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
           -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale;
         }
 
-#neofbjxjfl thead, tbody, tfoot, tr, td, th { border-style: none; }
+#litorbhuxw thead, tbody, tfoot, tr, td, th { border-style: none; }
  tr { background-color: transparent; }
-#neofbjxjfl p { margin: 0; padding: 0; }
- #neofbjxjfl .gt_table { display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: hidden; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; }
- #neofbjxjfl .gt_caption { padding-top: 4px; padding-bottom: 4px; }
- #neofbjxjfl .gt_title { color: #333333; font-size: 125%; font-weight: initial; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; border-bottom-color: #FFFFFF; border-bottom-width: 0; }
- #neofbjxjfl .gt_subtitle { color: #333333; font-size: 85%; font-weight: initial; padding-top: 3px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; border-top-color: #FFFFFF; border-top-width: 0; }
- #neofbjxjfl .gt_heading { background-color: #FFFFFF; text-align: center; border-bottom-color: #FFFFFF; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
- #neofbjxjfl .gt_bottom_border { border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; }
- #neofbjxjfl .gt_col_headings { border-top-style: solid; border-top-width: 2px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
- #neofbjxjfl .gt_col_heading { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; border-left-style: hidden; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: hidden; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: bottom; padding-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; overflow-x: hidden; }
- #neofbjxjfl .gt_column_spanner_outer { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; padding-top: 0; padding-bottom: 0; padding-left: 4px; padding-right: 4px; }
- #neofbjxjfl .gt_column_spanner_outer:first-child { padding-left: 0; }
- #neofbjxjfl .gt_column_spanner_outer:last-child { padding-right: 0; }
- #neofbjxjfl .gt_column_spanner { border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; vertical-align: bottom; padding-top: 5px; padding-bottom: 5px; overflow-x: hidden; display: inline-block; width: 100%; }
- #neofbjxjfl .gt_spanner_row { border-bottom-style: hidden; }
- #neofbjxjfl .gt_group_heading { padding-top: 0px; padding-bottom: 0px; padding-left: 5px; padding-right: 5px; color: #333333; background-color: #FFFFFF; font-size: 0px; font-weight: initial; text-transform: inherit; border-top-style: hidden; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; text-align: left; }
- #neofbjxjfl .gt_empty_group_heading { padding: 0.5px; color: #333333; background-color: #FFFFFF; font-size: 0px; font-weight: initial; border-top-style: hidden; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; vertical-align: middle; }
- #neofbjxjfl .gt_from_md> :first-child { margin-top: 0; }
- #neofbjxjfl .gt_from_md> :last-child { margin-bottom: 0; }
- #neofbjxjfl .gt_row { padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: none; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; }
- #neofbjxjfl .gt_stub { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: hidden; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; }
- #neofbjxjfl .gt_stub_row_group { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: solid; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; vertical-align: top; }
- #neofbjxjfl .gt_row_group_first td { border-top-width: 2px; }
- #neofbjxjfl .gt_row_group_first th { border-top-width: 2px; }
- #neofbjxjfl .gt_striped { background-color: rgba(128,128,128,0.05); }
- #neofbjxjfl .gt_table_body { border-top-style: solid; border-top-width: 0.5px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: black; }
- #neofbjxjfl .gt_sourcenotes { color: #333333; background-color: #FFFFFF; border-bottom-style: none; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; }
- #neofbjxjfl .gt_sourcenote { font-size: 90%; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; text-align: left; }
- #neofbjxjfl .gt_left { text-align: left; }
- #neofbjxjfl .gt_center { text-align: center; }
- #neofbjxjfl .gt_right { text-align: right; font-variant-numeric: tabular-nums; }
- #neofbjxjfl .gt_font_normal { font-weight: normal; }
- #neofbjxjfl .gt_font_bold { font-weight: bold; }
- #neofbjxjfl .gt_font_italic { font-style: italic; }
- #neofbjxjfl .gt_super { font-size: 65%; }
- #neofbjxjfl .gt_footnote_marks { font-size: 75%; vertical-align: 0.4em; position: initial; }
- #neofbjxjfl .gt_asterisk { font-size: 100%; vertical-align: 0; }
+#litorbhuxw p { margin: 0; padding: 0; }
+ #litorbhuxw .gt_table { display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: hidden; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; }
+ #litorbhuxw .gt_caption { padding-top: 4px; padding-bottom: 4px; }
+ #litorbhuxw .gt_title { color: #333333; font-size: 125%; font-weight: initial; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; border-bottom-color: #FFFFFF; border-bottom-width: 0; }
+ #litorbhuxw .gt_subtitle { color: #333333; font-size: 85%; font-weight: initial; padding-top: 3px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; border-top-color: #FFFFFF; border-top-width: 0; }
+ #litorbhuxw .gt_heading { background-color: #FFFFFF; text-align: center; border-bottom-color: #FFFFFF; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
+ #litorbhuxw .gt_bottom_border { border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; }
+ #litorbhuxw .gt_col_headings { border-top-style: solid; border-top-width: 2px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
+ #litorbhuxw .gt_col_heading { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; border-left-style: hidden; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: hidden; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: bottom; padding-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; overflow-x: hidden; }
+ #litorbhuxw .gt_column_spanner_outer { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; padding-top: 0; padding-bottom: 0; padding-left: 4px; padding-right: 4px; }
+ #litorbhuxw .gt_column_spanner_outer:first-child { padding-left: 0; }
+ #litorbhuxw .gt_column_spanner_outer:last-child { padding-right: 0; }
+ #litorbhuxw .gt_column_spanner { border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; vertical-align: bottom; padding-top: 5px; padding-bottom: 5px; overflow-x: hidden; display: inline-block; width: 100%; }
+ #litorbhuxw .gt_spanner_row { border-bottom-style: hidden; }
+ #litorbhuxw .gt_group_heading { padding-top: 0px; padding-bottom: 0px; padding-left: 5px; padding-right: 5px; color: #333333; background-color: #FFFFFF; font-size: 0px; font-weight: initial; text-transform: inherit; border-top-style: hidden; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; text-align: left; }
+ #litorbhuxw .gt_empty_group_heading { padding: 0.5px; color: #333333; background-color: #FFFFFF; font-size: 0px; font-weight: initial; border-top-style: hidden; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; vertical-align: middle; }
+ #litorbhuxw .gt_from_md> :first-child { margin-top: 0; }
+ #litorbhuxw .gt_from_md> :last-child { margin-bottom: 0; }
+ #litorbhuxw .gt_row { padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: none; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; }
+ #litorbhuxw .gt_stub { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: hidden; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; }
+ #litorbhuxw .gt_stub_row_group { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: solid; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; vertical-align: top; }
+ #litorbhuxw .gt_row_group_first td { border-top-width: 2px; }
+ #litorbhuxw .gt_row_group_first th { border-top-width: 2px; }
+ #litorbhuxw .gt_striped { background-color: rgba(128,128,128,0.05); }
+ #litorbhuxw .gt_table_body { border-top-style: solid; border-top-width: 0.5px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: black; }
+ #litorbhuxw .gt_sourcenotes { color: #333333; background-color: #FFFFFF; border-bottom-style: none; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; }
+ #litorbhuxw .gt_sourcenote { font-size: 90%; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; text-align: left; }
+ #litorbhuxw .gt_left { text-align: left; }
+ #litorbhuxw .gt_center { text-align: center; }
+ #litorbhuxw .gt_right { text-align: right; font-variant-numeric: tabular-nums; }
+ #litorbhuxw .gt_font_normal { font-weight: normal; }
+ #litorbhuxw .gt_font_bold { font-weight: bold; }
+ #litorbhuxw .gt_font_italic { font-style: italic; }
+ #litorbhuxw .gt_super { font-size: 65%; }
+ #litorbhuxw .gt_footnote_marks { font-size: 75%; vertical-align: 0.4em; position: initial; }
+ #litorbhuxw .gt_asterisk { font-size: 100%; vertical-align: 0; }
  
 </style>
 
@@ -1572,13 +1584,13 @@ Table&nbsp;7.2: Regression of Investment on Market Value and PPE
 <td colspan="4" class="gt_group_heading" data-quarto-table-cell-role="th">fe</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th">year</td>
+<td class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th">firm</td>
 <td class="gt_row gt_center">x</td>
 <td class="gt_row gt_center">x</td>
 <td class="gt_row gt_center">x</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th">firm</td>
+<td class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th">year</td>
 <td class="gt_row gt_center">x</td>
 <td class="gt_row gt_center">x</td>
 <td class="gt_row gt_center">x</td>

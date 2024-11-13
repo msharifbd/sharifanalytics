@@ -1,10 +1,10 @@
 {
-  "hash": "f977aa0cf1e574c0ac0485e97de39edd",
+  "hash": "53a629690c5edf8c6ad4a2cacdd2680b",
   "result": {
     "engine": "jupyter",
-    "markdown": "---\ntitle: \"Exploratory Data Analysis\"\nformat: html\n---\n\n## Descriptive Statistics \n\n::: {style=\"text-align: justify\"}\n\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In descriptive statistics, we summarize the data using different metrics such as mean, median, standard deviation, minimum value, maximum value, and percentile. Descriptive statisics is also called summary statistics. \n:::\n\n\n## Data Visualizations Techniques \n\n\n\n\n## Identifying Patterns and Trends \n\n## Python Package \n\n::: {#1294c1b8 .cell execution_count=1}\n``` {.python .cell-code}\n# for Data Manipulation\nimport pandas as pd\nimport numpy as np \n# for Data Visualization \nimport matplotlib.pyplot as plt \nimport seaborn as sns\n# for Machine Learning \nimport sklearn\n```\n:::\n\n\n",
+    "markdown": "---\ntitle: \"Exploratory Data Analysis\"\nformat: html\n---\n\n## Descriptive Statistics\n\n::: {style=\"text-align: justify\"}\n     In descriptive statistics, we summarize the data using different metrics such as mean, median, standard deviation, minimum value, maximum value, and percentile. Descriptive statisics is also called summary statistics.\n:::\n\n## Data Visualizations Techniques\n\n## Identifying Patterns and Trends\n\n## Python Package\n\n::: {#f243c942 .cell execution_count=1}\n``` {.python .cell-code}\n# for Data Manipulation\nimport pandas as pd\nimport numpy as np \n# for Data Visualization \nimport matplotlib.pyplot as plt \nimport seaborn as sns\n# for Machine Learning \nimport sklearn\n```\n:::\n\n\n",
     "supporting": [
-      "eda_files"
+      "eda_files\\figure-html"
     ],
     "filters": [],
     "includes": {}

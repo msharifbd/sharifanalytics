@@ -542,7 +542,7 @@
     "href": "foundations.html#data-quality-integrity",
     "title": "2  Foundations of Accounting Data",
     "section": "2.3 Data Quality & Integrity",
-    "text": "2.3 Data Quality & Integrity\nsummary, this book has no content whatsoever.\n\n1 + 1\n\n[1] 2\n\n\n\nplot(mtcars[1:3])\n\n\n\n\n\n\n\n\nSee Figure 2.1 for first ggplot graph\n\nlibrary(tidyverse)\nmtcars %&gt;% \n  as_tibble() %&gt;% \n  ggplot(mapping = aes(x = mpg, y = disp))+\n  geom_point()+\n  geom_smooth()+\n  labs(x = 'Miles Per Gallon (mpg)',\n       y = 'Displacement in Cubic Inches (disp)')\n\n\n\n\n\n\n\nFigure 2.1: Scatter plot and line plot of the relation between mpg and disp\n\n\n\n\n\n\nlibrary(lubridate)\n\n\nimport os\nimport sys\nsys.version\n\n'3.11.1 (tags/v3.11.1:a7a450f, Dec  6 2022, 19:58:39) [MSC v.1934 64 bit (AMD64)]'\n\n\n\nfor x in os.listdir():\n  print (x)\n\n.git\n.gitattributes\n.gitignore\n.quarto\n.README.md.swp\n.README_BASE_1260.md.swp\n.README_LOCAL_1260.md.swp\n.README_REMOTE_1260.md.swp\naccounting_analytics_book\nadvanced_analytics.qmd\nchapter1_solution.qmd\nchapter2_solution.qmd\ncover.png\ndashboard.qmd\ndata_management.qmd\neda.qmd\nethics.qmd\nfoundations.qmd\nfoundations.rmarkdown\nfoundations_files\nfraud.qmd\nfuture.qmd\nimages\nindex.qmd\nintro.qmd\noverview.qmd\nperformance_measurement.qmd\npredictive.qmd\nprescriptive.qmd\nREADME.html\nREADME.md\nREADME_files\nreferences.bib\nreferences.qmd\nvisualization.qmd\n_book\n_quarto.yml",
+    "text": "2.3 Data Quality & Integrity\nsummary, this book has no content whatsoever.\n\n1 + 1\n\n[1] 2\n\n\n\nplot(mtcars[1:3])\n\n\n\n\n\n\n\n\nSee Figure 2.1 for first ggplot graph\n\nlibrary(tidyverse)\nmtcars %&gt;% \n  as_tibble() %&gt;% \n  ggplot(mapping = aes(x = mpg, y = disp))+\n  geom_point()+\n  geom_smooth()+\n  labs(x = 'Miles Per Gallon (mpg)',\n       y = 'Displacement in Cubic Inches (disp)')\n\n\n\n\n\n\n\nFigure 2.1: Scatter plot and line plot of the relation between mpg and disp\n\n\n\n\n\n\nlibrary(lubridate)\n\n\nimport os\nimport sys\nsys.version\n\n'3.11.1 (tags/v3.11.1:a7a450f, Dec  6 2022, 19:58:39) [MSC v.1934 64 bit (AMD64)]'\n\n\n\nfor x in os.listdir():\n  print (x)\n\n.git\n.gitattributes\n.gitignore\n.quarto\n.README.md.swp\n.README_BASE_1260.md.swp\n.README_LOCAL_1260.md.swp\n.README_REMOTE_1260.md.swp\naccounting_analytics_book\nadvanced_analytics.qmd\nchapter1_solution.qmd\nchapter2_solution.qmd\ncover.png\ndashboard.qmd\ndata_management.qmd\neda.qmd\nethics.qmd\nfoundations.qmd\nfoundations.rmarkdown\nfoundations_files\nfraud.qmd\nfuture.qmd\nimages\nindex.qmd\nintro.qmd\noverview.qmd\nperformance_measurement.qmd\npredictive.qmd\nprescriptive.qmd\npython_basics.qmd\nREADME.html\nREADME.md\nREADME_files\nreferences.bib\nreferences.qmd\nrequirements.txt\nr_basics.qmd\nvisualization.qmd\n_book\n_quarto.yml",
     "crumbs": [
       "Introduction to Accounting Analytics",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Foundations of Accounting Data</span>"
@@ -876,6 +876,94 @@
     "crumbs": [
       "Appendices",
       "<span class='chapter-number'>B</span>  <span class='chapter-title'>A Primer on R</span>"
+    ]
+  },
+  {
+    "objectID": "prescriptive.html",
+    "href": "prescriptive.html",
+    "title": "8  Prescriptive Analytics in Accounting",
+    "section": "",
+    "text": "8.1 Decision Analysis",
+    "crumbs": [
+      "Predictive and Prescriptive Analytics",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Prescriptive Analytics in Accounting</span>"
+    ]
+  },
+  {
+    "objectID": "prescriptive.html#optimization-techniques",
+    "href": "prescriptive.html#optimization-techniques",
+    "title": "8  Prescriptive Analytics in Accounting",
+    "section": "8.2 Optimization Techniques",
+    "text": "8.2 Optimization Techniques",
+    "crumbs": [
+      "Predictive and Prescriptive Analytics",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Prescriptive Analytics in Accounting</span>"
+    ]
+  },
+  {
+    "objectID": "prescriptive.html#scenario-planning",
+    "href": "prescriptive.html#scenario-planning",
+    "title": "8  Prescriptive Analytics in Accounting",
+    "section": "8.3 Scenario Planning",
+    "text": "8.3 Scenario Planning",
+    "crumbs": [
+      "Predictive and Prescriptive Analytics",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Prescriptive Analytics in Accounting</span>"
+    ]
+  },
+  {
+    "objectID": "eda.html",
+    "href": "eda.html",
+    "title": "3  Exploratory Data Analysis",
+    "section": "",
+    "text": "3.1 Descriptive Statistics",
+    "crumbs": [
+      "Data Exploration and Management",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Exploratory Data Analysis</span>"
+    ]
+  },
+  {
+    "objectID": "eda.html#descriptive-statistics",
+    "href": "eda.html#descriptive-statistics",
+    "title": "3  Exploratory Data Analysis",
+    "section": "",
+    "text": "In descriptive statistics, we summarize the data using different metrics such as mean, median, standard deviation, minimum value, maximum value, and percentile. Descriptive statisics is also called summary statistics.",
+    "crumbs": [
+      "Data Exploration and Management",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Exploratory Data Analysis</span>"
+    ]
+  },
+  {
+    "objectID": "eda.html#data-visualizations-techniques",
+    "href": "eda.html#data-visualizations-techniques",
+    "title": "3  Exploratory Data Analysis",
+    "section": "3.2 Data Visualizations Techniques",
+    "text": "3.2 Data Visualizations Techniques",
+    "crumbs": [
+      "Data Exploration and Management",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Exploratory Data Analysis</span>"
+    ]
+  },
+  {
+    "objectID": "eda.html#identifying-patterns-and-trends",
+    "href": "eda.html#identifying-patterns-and-trends",
+    "title": "3  Exploratory Data Analysis",
+    "section": "3.3 Identifying Patterns and Trends",
+    "text": "3.3 Identifying Patterns and Trends",
+    "crumbs": [
+      "Data Exploration and Management",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Exploratory Data Analysis</span>"
+    ]
+  },
+  {
+    "objectID": "eda.html#python-package",
+    "href": "eda.html#python-package",
+    "title": "3  Exploratory Data Analysis",
+    "section": "3.4 Python Package",
+    "text": "3.4 Python Package\n\n# for Data Manipulation\nimport pandas as pd\nimport numpy as np \n# for Data Visualization \nimport matplotlib.pyplot as plt \nimport seaborn as sns\n# for Machine Learning \nimport sklearn",
+    "crumbs": [
+      "Data Exploration and Management",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Exploratory Data Analysis</span>"
     ]
   }
 ]

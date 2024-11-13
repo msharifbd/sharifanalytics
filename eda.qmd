@@ -3,22 +3,18 @@ title: "Exploratory Data Analysis"
 format: html
 ---
 
-## Descriptive Statistics 
+## Descriptive Statistics
 
 ::: {style="text-align: justify"}
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In descriptive statistics, we summarize the data using different metrics such as mean, median, standard deviation, minimum value, maximum value, and percentile. Descriptive statisics is also called summary statistics. 
+     In descriptive statistics, we summarize the data using different metrics such as mean, median, standard deviation, minimum value, maximum value, and percentile. Descriptive statisics is also called summary statistics.
 :::
 
+## Data Visualizations Techniques
 
-## Data Visualizations Techniques 
+## Identifying Patterns and Trends
 
+## Python Package
 
-
-
-## Identifying Patterns and Trends 
-
-## Python Package 
 ```{python}
 # for Data Manipulation
 import pandas as pd

@@ -3,14 +3,8 @@ title: "Regulatory and Ethical Considerations"
 format: html
 ---
 
-## Compliance and Regulatory Requirements 
+## Compliance and Regulatory Requirements
 
+## Ethichal Use of Data
 
-
-
-
-## Ethichal Use of Data 
-
-
-
-## Data Privacy & Security 
+## Data Privacy & Security

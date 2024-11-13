@@ -6,110 +6,96 @@ format: html
 ### Learning Objectives of the Chapter {.unnumbered}
 
 ::: {style="text-align: justify"}
+At the End of the Chapter, Students should be Able to -
 
-At the End of the Chapter, Students should be Able to - 
+-   Learn about the Meaning of Dashboard for Visualization
 
-* Learn about the Meaning of Dashboard for Visualization 
+-   Understand the Importance of Dashboard Visualization
 
-* Understand the Importance of Dashboard Visualization
+-   Learn about Different R and Python Packages for Dashboard Creation
 
-* Learn about Different R and Python Packages for Dashboard Creation
-
-* Create Dashboard using `Quarto` and `Vizro`
-
-
+-   Create Dashboard using `Quarto` and `Vizro`
 :::
-
-
 
 ## What is Dashboard?
 
 ::: {style="text-align: justify"}
+     A dashboard for visualization is a user interface that displays a collection of visual data representations, such as charts, graphs, tables, and metrics, to provide users with an interactive and comprehensive overview of key information. Dashboards are commonly used in business, data science, finance, healthcare, and other fields to monitor performance, track metrics, and explore data trends in real time.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A dashboard for visualization is a user interface that displays a collection of visual data representations, such as charts, graphs, tables, and metrics, to provide users with an interactive and comprehensive overview of key information. Dashboards are commonly used in business, data science, finance, healthcare, and other fields to monitor performance, track metrics, and explore data trends in real time.
+     The main goal of a dashboard is to present complex data in an easy-to-understand format, enabling users to quickly grasp insights and make data-driven decisions. Dashboards often combine multiple visual elements into a single screen or page, allowing users to view different aspects of the data simultaneously. They typically include interactive features like filters, drill-downs, and tooltips, which allow users to interact with the data and explore deeper insights without needing to understand the underlying data structures. Some benefits of dashboards are -
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The main goal of a dashboard is to present complex data in an easy-to-understand format, enabling users to quickly grasp insights and make data-driven decisions. Dashboards often combine multiple visual elements into a single screen or page, allowing users to view different aspects of the data simultaneously. They typically include interactive features like filters, drill-downs, and tooltips, which allow users to interact with the data and explore deeper insights without needing to understand the underlying data structures. Some benefits of dashboards are - 
+-   **Data Aggregation**: Dashboards bring together data from various sources, providing a unified view of different datasets.
 
-* __Data Aggregation__: Dashboards bring together data from various sources, providing a unified view of different datasets.
+-   **Visualization Elements**: They use visual elements such as bar charts, line graphs, pie charts, heatmaps, and more to represent data in a visually appealing and informative way.
 
-* __Visualization Elements__: They use visual elements such as bar charts, line graphs, pie charts, heatmaps, and more to represent data in a visually appealing and informative way.
+-   **Interactivity**: Users can interact with the visual elements, applying filters, adjusting time frames, or drilling down into specific data points to gain more detailed insights.
 
-* __Interactivity__: Users can interact with the visual elements, applying filters, adjusting time frames, or drilling down into specific data points to gain more detailed insights.
+-   **Real-Time Data**: Dashboards can display real-time data, updating visualizations dynamically to reflect the latest information, which is especially useful for monitoring live systems or business performance.
 
-* __Real-Time Data__: Dashboards can display real-time data, updating visualizations dynamically to reflect the latest information, which is especially useful for monitoring live systems or business performance.
+-   **Customization**: Dashboards are highly customizable, allowing users to tailor the layout, visualizations, and data to meet their specific needs.
 
-* __Customization__: Dashboards are highly customizable, allowing users to tailor the layout, visualizations, and data to meet their specific needs.
-
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dashboards for visualization are widely used for performance monitoring (e.g., tracking KPIs), data exploration (e.g., identifying trends), and decision-making (e.g., comparing metrics). They make data analysis more accessible to a wider audience by simplifying the complexity of raw data into clear and actionable insights.
-
-::: 
+     Dashboards for visualization are widely used for performance monitoring (e.g., tracking KPIs), data exploration (e.g., identifying trends), and decision-making (e.g., comparing metrics). They make data analysis more accessible to a wider audience by simplifying the complexity of raw data into clear and actionable insights.
+:::
 
 ## Importance of Dashboard
 
-
-
 ## Interactive Dashboard
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For interactive visualization, see @fig-vizplot1.
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     For interactive visualization, see @fig-vizplot1.      
 
-## `Quarto` - R and Python Dashboard 
+## `Quarto` - R and Python Dashboard
 
 ::: {style="text-align: justify"}
+     `Quarto` Dashboard is a powerful and flexible open-source tool to create interactive dashboard in R or Python. Quarto dashboards are easy to create and support a wide variety of visualization and interactive components[^dashboard-1]. More about quarto dashboard can be learned from [Quarto Dashboard Website](https://quarto.org/docs/dashboards/). To learn more about interactivity on quarto dashboard using `Shiny`, please visit webpages for [R](https://quarto.org/docs/dashboards/interactivity/shiny-r.html) and [Python](https://quarto.org/docs/dashboards/interactivity/shiny-python/index.html). However, it is recommended to use [Python](https://quarto.org/docs/dashboards/interactivity/shiny-python/index.html) for quarto dashboard if you want to include interactive applications on your dashboard.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`Quarto` Dashboard is a powerful and flexible open-source tool to create interactive dashboard in R or Python. Quarto dashboards are easy to create and support a wide variety of visualization and interactive components^[Shiny widgets and functionality can be incorporated in the quarto dashboard. Therefore, quarto dashboard is a powerful tool for creating interactive visualization.]. More about quarto dashboard can be learned from [Quarto Dashboard Website](https://quarto.org/docs/dashboards/). To learn more about interactivity on quarto dashboard using `Shiny`, please visit webpages for [R](https://quarto.org/docs/dashboards/interactivity/shiny-r.html) and [Python](https://quarto.org/docs/dashboards/interactivity/shiny-python/index.html). However, it is recommended to use [Python](https://quarto.org/docs/dashboards/interactivity/shiny-python/index.html) for quarto dashboard if you want to include interactive applications on your dashboard. 
+     There are several components of quarto dashboard:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;There are several components of quarto dashboard: 
+-   Navigation Bar - Top page bar with icon, title of the dashboard, name of author and links to sub-pages
 
-* Navigation Bar - Top page bar with icon, title of the dashboard, name of author and links to sub-pages 
+-   Pages, Rows, Columns, and Tabsets - Using markdown headings (#) - pages, rows and columns are defined. Tabsets are used to further divide the content within a row or column
 
-* Pages, Rows, Columns, and Tabsets - Using markdown headings (#) - pages, rows and columns are defined. Tabsets are used to further divide the content within a row or column
+-   Cards, Sidebar, and Toolbars - Cards are containers for text, images, charts, and interactive elements and useful for organizing information into distinct sections within a dashboard. Typically, the contents of cards map to cells in the dashboard. Sidebar is another layout component of quarto dashboard, which contain navigation menus, filters, and controls that allow users to adjust or explore the data presented in the main content. Toolbars ....
 
-* Cards, Sidebar, and Toolbars - Cards are containers for text, images, charts, and interactive elements and useful for organizing information into distinct sections within a dashboard. Typically, the contents of cards map to cells in the dashboard. Sidebar is another layout component of quarto dashboard, which contain navigation menus, filters, and controls that allow users to adjust or explore the data presented in the main content. Toolbars ....  
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The first step to create a quarto dashboard is to structure YAML in `.qmd` file. A quarto dashboard YAML look like - 
+     The first step to create a quarto dashboard is to structure YAML in `.qmd` file. A quarto dashboard YAML look like -
 
 ![Quarto Dashboard YAML](images/dashboard-yaml.png){#fig-dashboardyaml}
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In quarto dashboard, each level 1 header (#) introduces a new page, each level 2 header (##) introduces a new row within the given page, and each code chunk within a given row introduces a new column. 
+     In quarto dashboard, each level 1 header (#) introduces a new page, each level 2 header (##) introduces a new row within the given page, and each code chunk within a given row introduces a new column.
 
 ![Quarto Dashboard Structure](images/dashboard-structure.png){#fig-dashboardstructure}
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Some other attributes (@tbl-quartoattr) that can be added to the quarto dashboard's rows or columns include - 
+     Some other attributes (@tbl-quartoattr) that can be added to the quarto dashboard's rows or columns include -
 
-|Attribute|Explanation|
-|-----|---|
-|`{width=}` and `{height=}`|Set the size of columns, rows, and boxes|
-|`{orientation=}`|sets the dashboard layout to either rows or columns. This is a global option set in the `YAML`. However, if your dashboard has multiple pages and you want to specify the orientation for each page, remove `orientation:` from the YAML and use this attribute instead|
-|`{.tabset}`| divide columns, rows, or charts into tabs|
-|`{.sidebar}`| typically creates a sidebar on the page|
-|`{.hidden}`| excludes a specific page from the navigation bar| 
+| Attribute                  | Explanation                                                                                                                                                                                                                                                             |
+|---------------------------------------------|---------------------------|
+| `{width=}` and `{height=}` | Set the size of columns, rows, and boxes                                                                                                                                                                                                                                |
+| `{orientation=}`           | sets the dashboard layout to either rows or columns. This is a global option set in the `YAML`. However, if your dashboard has multiple pages and you want to specify the orientation for each page, remove `orientation:` from the YAML and use this attribute instead |
+| `{.tabset}`                | divide columns, rows, or charts into tabs                                                                                                                                                                                                                               |
+| `{.sidebar}`               | typically creates a sidebar on the page                                                                                                                                                                                                                                 |
+| `{.hidden}`                | excludes a specific page from the navigation bar                                                                                                                                                                                                                        |
 
 : Some Additional Attributes {#tbl-quartoattr}
-
 :::
 
+[^dashboard-1]: Shiny widgets and functionality can be incorporated in the quarto dashboard. Therefore, quarto dashboard is a powerful tool for creating interactive visualization.
 
-## `Vizro` - Python Dashboard 
+## `Vizro` - Python Dashboard
 
 ::: {style="text-align: justify"}
+     Built on top of `Dash` and `Plottly`, `Vizro` is a powerful python module to create a dashboard. A vizro dashboard consists of several objects. The first object is **Page**. Each page contains several other sub-objects such as **Comonents**, which can include *Graphs* and *Tables*, **Filters**, which can be *sliders*, *dropdown* boxes and other buttons, and optional **Actions**. To learn more about Vizro, we can explore `Vizro` [document website](https://vizro.readthedocs.io/en/stable/pages/tutorials/first-dashboard/) and [developer website](https://github.com/mckinsey/vizro). The key benefits of Vizro include:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Built on top of `Dash` and `Plottly`, `Vizro` is a powerful python module to create a dashboard. A vizro dashboard consists of several objects. The first object is **Page**. Each page contains several other sub-objects such as **Comonents**, which can include *Graphs* and *Tables*, **Filters**, which can be *sliders*, *dropdown* boxes and other buttons, and optional **Actions**. To learn more about Vizro, we can explore `Vizro` [document website](https://vizro.readthedocs.io/en/stable/pages/tutorials/first-dashboard/) and [developer website](https://github.com/mckinsey/vizro). The key benefits of Vizro include:  
+-   Low-code and Configuration - Vizro only needs a few lines of code code, thus replacing thousand lines of codes and saving valuable time
 
-* Low-code and Configuration - Vizro only needs a few lines of code code, thus replacing thousand lines of codes and saving valuable time 
+-   In-built Best Practices - Vizro already incorporates standards for visual design and software development.
 
-* In-built Best Practices - Vizro already incorporates standards for visual design and software development. 
+-   Self-service Visualization - Vizro readily assemble dashboards without advanced design or coding experience
 
-* Self-service Visualization - Vizro readily assemble dashboards without advanced design or coding experience 
+-   Optional High-code Extensions - Vizro enables limitless customization for advanced users with complex needs
 
-* Optional High-code Extensions - Vizro enables limitless customization for advanced users with complex needs 
+-   Modularity - Vizro leverage components that are simple to swap, reuse, maintain, share and scale
 
-* Modularity - Vizro leverage components that are simple to swap, reuse, maintain, share and scale 
-
-* Flexibilit and Scalability - Vizro enables data science ready and to develop python based data visualization applications 
-
-::: 
+-   Flexibilit and Scalability - Vizro enables data science ready and to develop python based data visualization applications
+:::
 
 ```{python}
 # Dashboard Creation 
@@ -130,7 +116,7 @@ import palmerpenguins
 df = palmerpenguins.load_penguins()
 ```
 
-### Standalone Page on Vizro Dashboard (Example # 01)
+### Standalone Page on Vizro Dashboard (Example \# 01)
 
 ```{python}
 #| label: fig-vizplot1
@@ -153,7 +139,7 @@ dashboard = vm.Dashboard(pages=[first_page])
 Vizro().build(dashboard).run()
 ```
 
-### Standalone Page on Vizro Dashboard (Example # 02)
+### Standalone Page on Vizro Dashboard (Example \# 02)
 
 ```{python}
 # loading dataset 
@@ -194,7 +180,7 @@ dashboard2 = vm.Dashboard(pages=[second_page])
 Vizro().build(dashboard2).run()
 ```
 
-### Multiple Pages on Vizro Dashboard 
+### Multiple Pages on Vizro Dashboard
 
 ```{python}
 #| eval: false
@@ -226,8 +212,6 @@ third_page = vm.Page(
 dashboard3 = vm.Dashboard(pages=[third_page])
 Vizro().build(dashboard3).run()
 ```
-
-
 
 ```{python}
 #| eval: false 
@@ -283,10 +267,8 @@ dashboard4 = vm.Dashboard(pages=[second_page, third_page])
 Vizro().build(dashboard4).run()
 ```
 
+## Conclusions
 
-## Conclusions 
+## Exercises
 
-
-## Exercises 
-
-01. Create a dashboard from Adidas (Ticker:`ADR`) sales data (`Adidas US Sales Datasets.csv`).
+1.  Create a dashboard from Adidas (Ticker:`ADR`) sales data (`Adidas US Sales Datasets.csv`).

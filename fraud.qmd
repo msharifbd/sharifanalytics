@@ -3,12 +3,8 @@ title: "Fraud Detection and Risk Management"
 format: html
 ---
 
-## Techniques for Fraud Detection 
+## Techniques for Fraud Detection
 
+## Risk Assessment Models
 
-
-## Risk Assessment Models 
-
-
-
-## Case Studies in Fraud Detection 
+## Case Studies in Fraud Detection

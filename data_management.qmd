@@ -497,7 +497,7 @@ con = dbConnect(RPostgres::Postgres()
                  , port='5433'
                  , dbname='my_database',
                  , user='postgres'
-                 , password="YourPassword")
+                 , password="YourPassword") 
 ```
 
 ```{r}
@@ -567,6 +567,7 @@ ibis.options.interactive = True
 ```
 
 ```{python}
+#| include: false
 # to connect to the database 
 conn = ibis.postgres.connect(
     user='postgres', 
@@ -576,6 +577,20 @@ conn = ibis.postgres.connect(
     database = "dvdrental"
 )
 ```
+
+
+```{python}
+#| eval: false
+# to connect to the database 
+conn = ibis.postgres.connect(
+    user='postgres', 
+    password = 'YourPassword',
+    host = "localhost",
+    port = 5433,
+    database = "my_database" # here our database name will be 'dvdrental'
+)
+```
+
 
 ```{python}
 # See all tables in a database 

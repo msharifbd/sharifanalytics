@@ -3,20 +3,251 @@ title: "A Primer on R"
 format: html
 ---
 
-## What is R
+## What is R?
 
-     R is an object-oriented programming language. 
-
+::: {style="text-align: justify"}
+    `R` is an object-oriented programming language. R was first developed by two statisticans - Ross Ihaka and Robert Gentleman^[R got its name from the first letters of its creators. Both of their names start with letter R.] - in early 1990s^[1996 is the year when R was introduced.]. Though it was first designed for statistial purposes, nowadays, it is widely used in statistical analysis, visualization, finance, healthcare industry, and many more. Many companies in the world use R. For example, [The Newyork Times](https://www.nytimes.com/2009/01/07/technology/business-computing/07program.html?pagewanted=1&_r=1) and [Airbnb](https://www.tandfonline.com/doi/full/10.1080/00031305.2017.1392362) use R for their day to day operations. 
+:::
 
 ## Packages in R
 
-     Packages enhance the functionalities of R. There are tons of packages for different purposes in R. 
+::: {style="text-align: justify"}
+     Packages are collections of functions, data and so on. Packages enhance the functionalities of R. There are tons of packages for different purposes in R. The Comprehensive R Archive Network (CRAN) - <https://cran.r-project.org/>- is the primary repository of R packages. Some of the widely used R packages include - `dplyr`, `ggplot`, `lubridate`, and `shiny`. The function - `install.package('packagename')`- is used to install a package in R. Once the package is installed, one needs to load (import) package by running the code - `library (packagename)`^[Please note that in `install.package()`, you need to use quote (either single or double), but in `library()`, you do not need to use quote.]. Please note that you need to install the package only once, but you need to import (load) your package each time you start a new R session. 
+:::
+
+```{r}
+#| eval: false
+# installing tidyverse package 
+install.packages('tidyverse')
+```
+
+```{r}
+#| warning: false
+# Loading tidyverse package 
+library(tidyverse)
+```
+
 
 ## Data Types
 
-     There are ___ data types in 
+::: {style="text-align: justify"}
+      Data^[The word "data" sometimes is considered plural because there is a singular word for "data", which is "datum". In this book, both words are used interchangeably. Therefore, the word "data" is used as both singular and plural.] has different types. When dealing with data, we need to know the types of the data because different data types can do different things. There are five basic data types in `R`. They include - `double`, `integer`, `character`, `logical`, and `complex`. We use `typeof ()` or `class ()` functions to know the types of the data. However, most commmonly used data types are `double`, `integer`, `character`, and `logical`.
+:::
+
 
 ## Data Structure
 
+::: {style="text-align: justify"}
+      There are several types of data structures in R. These structures include - vector, matrix, array, list, data frame, tibble, and facotrs. Of these data structures - vector, list, data frame and tibble are the most common. 
+
+### Vector
+
+      Vector is one of the basic data structures in R. There are several types^[Sometimes vectors are classified into two groups - atomic vectors and lists. Atomic vectors include - numeric, integer, character, and logical vectors.] of vectors - numeric, integer, character, and logical vectors. Most of the times vectors are created by using `c()` function, where "c" means concatenate. 
+
+```{r}
+# An example of a vector
+students = c ("John", "Adam", "Alex", "Emily")
+print(students)
+typeof(students)
+class(students)
+length(students)
+```
+
+```{r}
+# Numeric vector 
+numeric_vector <- c(1.1, 2.2, 3.3) 
+# Integer vector 
+integer_vector <- c(1L, 2L, 3L) 
+# Character vector 
+character_vector <- c("a", "b", "c") 
+# Logical vector 
+logical_vector <- c(TRUE, FALSE, TRUE)
+```
+
+```{r}
+# Some vector operations 
+numeric_vector + 5
+numeric_vector - 5
+
+max(numeric_vector)
+min(integer_vector)
+sum(integer_vector)
+sd(numeric_vector)
+```
+
+```{r}
+# Vectors as sequence of Numbers 
+num_seq = 1:10
+num_seq
+seq(15)
+seq(1,40, by = 2)
+```
+
+### Matrix
+
+      Matrix is a special type of vector with dimensions, meaning that matrix has rows and columns. Matrix is constructed columnwise.  
+
+```{r}
+matrix(seq(1:12), nrow = 4, ncol = 3)
+m = 1:12
+dim (m) = c(4,3) # dimension added to the matrix 
+m
+```
+
+### Arrays 
+
+      Arrays are very similar to matrix, but they have more than two dimensions. 
+
+```{r}
+array(1:27, dim = c(3,3,3))
+```
+
+### Data Frames (tibble)
+
+      Like matrix, data frames are two dimensional, having rows and columns. However, unlike matrix, they can contain different types of data. Data frames are widely used in data analytics. Tibble is an updated or modern type of data frame. It is recommended to use tibble.   
+
+```{r}
+data.frame(
+    id = 1:3,
+    name = c ('A', "B", "C"),
+    age = c (18, 21, 23)
+)
+```
+
+```{r}
+tibble(
+   id = 1:3,
+    name = c ('A', "B", "C"),
+    age = c (18, 21, 23) 
+)
+
+```
+
+### Lists 
+
+      Lists are very versatile in that it can contain different types of data. Unlike atomic vectors, which contain same type of data, lists can contain many types of data. Lists can also contain another list; therefore, it is sometimes called recursive vector. List is created by using function `list()`. 
+
+```{r}
+list_example = list (
+    name = "Jessica",
+    age = c(22),
+    cgpa = c(3.75),
+    student  = TRUE,
+    address = list(
+        street = c("5 W Main St"),
+        city = c("Carbondale"),
+        zip = 62901
+    ),
+    hobbies = c ("Fishing", "Hiking", "Cooking")
+)
+list_example
+print(list_example$name)
+print(list_example$address$city) # nested list element
+list_example[1]
+list_example[[1]]
+list_example[c(1,2)]
+```
+
+## Indexing and Slicing Vectors 
+
+      Using `[]`, one can access elements in a vector. Unlike python^[Python uses 0 based indexing.], R uses 1 based indexing, meaning that first element has an index 1. For slicing, one can specify the range of index using `:`. 
+
+```{r}
+sample_vector = c (10:25)
+sample_vector[5]
+sample_vector[5:6]
+sample_vector[c(5,8)]
+```
+
+      Negative indexing, unlike python, excludes the element from the vector. 
+
+```{r}
+sample_vector[-5]
+sample_vector[-c(5,8)]
+```
+
+      Conditional or logical indexing can be done on the vector as well. 
+
+```{r}
+sample_vector > 13
+sample_vector[sample_vector>13]
+```
+
+      Additionally, different kinds of mathematical operatins can be applied on the vector. 
+
+```{r}
+min(sample_vector)
+max(sample_vector)
+sum(sample_vector)
+sd(sample_vector)
+range(sample_vector)
+mean(sample_vector)
+```
+
+      For data frame or tibble, one can use `[row,column]` for indexing or slicing.
+
+```{r}
+df = data.frame(
+    id = 1:3,
+    name = c ('A', "B", "C"),
+    age = c (18, 21, 23)
+)
+df['age']
+df$age
+df$age[1]
+df['age'][[1]][1]
+df[,]
+df[1,'age']
+df[1:2,'age']
+df[1:2,c('age','id')]
+```
+
+```{r}
+df2 = tibble(
+    id = 1:3,
+    name = c ('A', "B", "C"),
+    age = c (18, 21, 23)
+)
+df2['age']
+df2$age
+df2$age[1]
+df2['age'][[1]][1]
+df2[,]
+df2[1,'age']
+df2[1:2,'age']
+df2[1:2,c('age','id')]
+```
+
+
+## Random Numbers 
+
+      In R, two widely used functions to generate random numbers are - `runif()` and `rnorm()`. `runif()` is used to generate random numbers from uniform distribution. The range of numbers generated using `runif` is 0 to 1.
+
+```{r}
+# vector of 2 elements 
+runif(2)
+# vector of 5 elements from 0 to 100
+runif(5, min = 0, max = 100)
+# sample () function will do the same. 
+sample(0:100,5)
+sample(0:100,5, replace = TRUE)
+```
+
+      `rnorm()` function generates random numbers from normal distribution with mean 0 and standard deviation 1. 
+
+```{r}
+rnorm(5)
+rnorm(5, mean = 5, sd= 2)
+mean(rnorm(500, mean = 5, sd= 2))
+sd(rnorm(500, mean = 5, sd= 2))
+hist(rnorm(500, mean = 5, sd= 2))
+```
+
+::: 
+
 
 ## Functions
+
+::: {style="text-align: justify"}
+
+::: 

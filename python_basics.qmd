@@ -7,9 +7,13 @@ format: html
 
 At the End of the Appendix, Students should be Able to -
 
--   Gain an understanding about the Python
+-   Gain an Understanding about the Python
 
--   Gain an understanding about the Data Types and Data Structures in Python
+-   Gain an Understanding about the Data Types and Data Structures in Python
+
+-   Gain an Understanding about Arrays in `Numpy`, Indexing and Slicing of Arrays, and Operations of Arrays 
+
+-   Gain an Understanding about `for` Loop function, `map` function, and User Defined Function 
 
 ## What is Python?
 
@@ -590,7 +594,7 @@ sqr(5)
 :::
 
 
-## Exercises {-}
+## Exercises {.unnumbered}
 
 ::: {style="text-align: justify"}
 01. Create an array of integers from 10 to 50.

@@ -3,6 +3,19 @@ title: "A Primer on R"
 format: html
 ---
 
+## Learning Objectives of the Appendix {.unnumbered}
+
+At the End of the Appendix, Students should be Able to -
+
+-   Gain an Understanding about R
+
+-   Gain an Understanding about the Data Types and Data Structures in R
+
+-   Gain an Understanding about Indexing and Slicing of vectors and Data Frames, and Mathematical Operations on them
+
+-   Gain an Understanding about `for` Loop function, `map` function, and User Defined Function in R
+
+
 ## What is R?
 
 ::: {style="text-align: justify"}
@@ -31,7 +44,7 @@ library(tidyverse)
 ## Data Types
 
 ::: {style="text-align: justify"}
-      Data^[The word "data" sometimes is considered plural because there is a singular word for "data", which is "datum". In this book, both words are used interchangeably. Therefore, the word "data" is used as both singular and plural.] has different types. When dealing with data, we need to know the types of the data because different data types can do different things. There are five basic data types in `R`. They include - `double`, `integer`, `character`, `logical`, and `complex`. We use `typeof ()` or `class ()` functions to know the types of the data. However, most commmonly used data types are `double`, `integer`, `character`, and `logical`.
+      Data^[The word "data" sometimes is considered plural because there is a singular word for "data", which is "datum". In this book, both words are used interchangeably. Therefore, the word "data" is used as both singular and plural.] has different types. When dealing with data, we need to know the types of the data because different data types can do different things. There are five basic data types in `R`. They include - `double`, `integer`, `character`, `logical`, and `complex`. We use `typeof ()` or `class ()` functions to know the types of the vector and `length()` to know the size of the vector. However, most commmonly used data types are `double`, `integer`, `character`, and `logical`.
 :::
 
 
@@ -42,7 +55,9 @@ library(tidyverse)
 
 ### Vector
 
-      Vector is one of the basic data structures in R. There are several types^[Sometimes vectors are classified into two groups - atomic vectors and lists. Atomic vectors include - numeric, integer, character, and logical vectors.] of vectors - numeric, integer, character, and logical vectors. Most of the times vectors are created by using `c()` function, where "c" means concatenate. 
+      Vector is one of the basic data structures in R. In most cases, vectors are created by using `c()` function, where "c" means concatenate. Sometimes vectors are classified into two groups - atomic vectors and lists. @fig-rvectors shows the classfication of the vectors. Atomic vectors include - double, integer, character, and logical vectors^[The other two atomic vectors include - complex and raw.]. The double and integer vectors are collectively known as *numeric* vectors. Lists include dataframe or tibble. Lists are called recursive vectors because they can include other lists. *NULL*^[As opposed to `NULL`,`NA` refers to the **absence of value**.] is often used to represent the **absence of a vector**. NULL indicates that the vector length is 0.
+
+![Types of Vector](images/vector-atomic-list-tibble.png){#fig-rvectors}
 
 ```{r}
 # An example of a vector
@@ -228,9 +243,6 @@ df2[1:2,c('age','id')]
 runif(2)
 # vector of 5 elements from 0 to 100
 runif(5, min = 0, max = 100)
-# sample () function will do the same. 
-sample(0:100,5)
-sample(0:100,5, replace = TRUE)
 ```
 
       `rnorm()` function generates random numbers from normal distribution with mean 0 and standard deviation 1. 
@@ -243,6 +255,26 @@ sd(rnorm(500, mean = 5, sd= 2))
 hist(rnorm(500, mean = 5, sd= 2))
 ```
 
+      Using `rnorm()`, we can create matrix and convert it into data frame or tibble.
+
+```{r}
+mat = matrix(rnorm(50), ncol = 5)
+colnames(mat) = c("a", "b", "c", "d", "e")
+as_tibble(mat)
+```
+
+      In additon to `runif()` and `rnorm()`, `sample()` function can be used to generate random numbers. 
+
+```{r}
+sample(0:100,5)
+sample(0:100,5, replace = TRUE)
+```
+
+
+```{r}
+matrix(sample(0:50,50), ncol = 5)
+```
+
 ::: 
 
 
@@ -250,4 +282,189 @@ hist(rnorm(500, mean = 5, sd= 2))
 
 ::: {style="text-align: justify"}
 
+     In R, there are some functions that we use very frequently. In this section, we will discuss some of those functions.
+
+### `for` Loop Function 
+     `for` loop function in R is used to iterate over^[Iteration (also called looping) is the process of repeating the same operation on different columns, or on different datasets. There are two important iteration paradigms: `imperative programming` and `functional programming`. On the imperative side, one has tools like `for ()` loops and `while ()` loops, which are a great place to start because they make iteration very explicit, so it is obvious what is happening. However, `for ()` loops are quite verbose, and require quite a bit of bookkeeping code that is duplicated for every for loop. One the other hand `Functional programming (FP)` offers tools to extract out this dupli cated code, so each common `for` loop pattern gets its own function. Once one masters the vocabulary of FP, one can solve many common iteration problems with *less code*, *more ease*, and *fewer errors*. The `apply ()` family functions in base R are equivalent to `for ()` loop. The `apply ()` family functions include the following functions for looping- `apply ()`; `lapply ()`; `sapply ()`, `tapply ()`, `vapply ()`, and `mapply ()`. The `purrr` package in tidyverse offers `map ()` family functions for functional programming, which we will be using for the loop operations.] the elements of a vector, or a list, or a matrix, or a data frame, or a tibble and apply a set of instructions (operations) on each item of the object. `for` loop function is used to avoid unnecessary repeition of code, thus enhancing efficiency and effectiveness of code. The basic syntax of `for` loop function in R - 
+
+```{r}
+#| eval: false
+for (item in object) {
+    Statement
+}
+```
+
+     Some examples of `for` loop function are - 
+
+```{r}
+for (x in seq(1:5)) {
+    print(x^2)
+}
+
+```
+
+```{r}
+for (x in c('Adam', "Joseph", "John")) {
+    print(x)
+}
+
+```
+
+```{r}
+# Vectors for numbers and names
+numbers <- 1:3
+names <- c('Adam', 'Joseph', 'John')
+
+# Loop through the vectors and print the desired output
+for (i in 1:length(numbers)) {
+    print(paste(numbers[i], names[i], sep = ", "))
+}
+
+```
+
+### `map()` Function 
+      In `map()` function, the purpose is to apply a **function** on a **vector or list**, meaning that `map()` functions take a list/vector and a function as arguments. @fig-rmap sows the nature of `map()` function.  The `map()` function then applies the function to each element of the `list/vector` and the result of this process is then combined into a `list`. For example, a list called sample_list is created. The `length()` function can be used to know the elements of the list. However, if you want to the element of each list, then `map()` function can be used. The other variation of map() functions that the package purrr include - `map_int()`, `map_dbl()`, `map_chr()`, and `map_lgl()`^[The output of `map()` function is always list. These variations help to get the desired output. To learn more about map functions, please visit - <https://adv-r.hadley.nz/functionals.html>.]. 
+
+![map() Function Argument](images/map-step-1.png){#fig-rmap}
+
+
+```{r}
+sample_list <- 
+    list(
+        x = 1737.1,
+        y = c(11.3, 6.2),
+        z = c(60.4, 81.4, 156, 174.8, 194, 34.8, 420, 2705.2, 340, 62)
+ )
+sample_list
+length(sample_list)
+```
+
+```{r}
+map(sample_list, length)
+```
+
+#### `map()` Functions with Multiple Inputs
+      The `map2()` functions are very similar to the `map()` functions, but they take two input vectors instead of one. Since the `map2()` functions iterate along the two vectors in parallel, they need to be of the same length. @fig-rmap2 shows a `map2()` function. 
+
+
+![map2() Function](images/map2.png){#fig-rmap2}
+
+```{r}
+x <- c(1, 2, 4)
+y <- c(6, 5, 3)
+map2_dbl(x, y, min)
+```
+
+```{r}
+df <-
+    tibble(
+        a = c(1, 2, 4),
+        b = c(6, 5, 3)
+        )
+
+df %>%
+    mutate(min = map2_dbl(a, b, min))
+```
+
+```{r}
+df %>%
+    mutate(
+        min = min(a,b)
+        )
+```
+
+      By default `mutate()`, uses column-wise operations. `map2_dbl()` produces a column the same length at `a` and `b`. We can accomplish the same calculation using `row-wise` operations.
+
+```{r}
+ df %>%
+    rowwise() %>%
+    mutate(min = min(a, b)) %>%
+    ungroup()
+```
+
+#### `pmap()` Functions
+      There are no `map3()` or `map4()` functions. Instead, you can use a `pmap()` (*p* for *parallel*) function to map over more than two vectors. The `pmap()` functions work slightly differently than the `map()` and `map2()` functions. In `map()` and `map2()` functions, you specify the `vector(s)` to supply to the function. In `pmap()` functions, you specify a single `list` that contains all the vectors (or lists) that you want to supply to your function. @fig-rpmap shows a `pmap()` function. 
+
+![pmap() Function (List)](images/pmap-list.png){#fig-rpmap}
+
+      Flipping the list diagram makes it easier to see that `pmap()` is basically just a generalized version of `map2()` (See @fig-rpmapfilip). 
+
+![pmap() Function (Flipped)](images/pmap-flipped.png){#fig-rpmapfilip}
+
+      The only difference is that `map2()` lets you specify each vector as a separate argument. In `pmap()`, you have to store all your input vectors in a single list. This functionality allows `pmap()` to handle any number of input vectors. 
+
+```{r}
+x <- c(1, 2, 4)
+y <- c(6, 5, 3)
+map2_dbl(x, y, min)
+```
+
+```{r}
+pmap_dbl(list(x, y), min)
+z <- c(100, 15, 1)
+pmap_dbl(list(x, y, z), max)
+```
+
+### User Defined Functions
+      User defined functions are also called named functions because they are assigned a name and expected to be called frequently. The goal of user defined functions is to optimize program, avoid or minimize the reptition of the code, prevent errors, and make the code more readable. In R, to declare a user defined function, we use the keywoard `function()`. The syntax of user defined function is given below. It is clear that there are three components of an R function - **function name**, **function parameters (arguments)**, and **function body (expression)**. We can drop curly braces (`{}`) from the function if the function body contains a single statement. Moreover, the function must be called with the correct number of arguments. 
+
+```{r}
+#| eval: false
+functionname = function (arguments) {
+    function body 
+}
+```
+
+      Below are examples of some user defined functions. 
+
+```{r}
+add_numbers = function (x,y){
+    sum = x + y 
+    return(sum)
+}
+add_numbers(5,-25)
+```
+
+
+```{r}
+greetings = function (name, greeting = "Welcome", sign = "!"){
+    greetingtogether = paste(name, sign, sep = "")
+    print(paste(greeting, greetingtogether))
+}
+greetings("Nicole")
+```
+
+
+
+### Anonymous Functions
+
+      Anonymous functions are functions that are not named, meaning that unlike normal functions, they do not have any name. Anonymous functions are useful when we do not plan to use them again and again. In most cases, we use anonymous function as an argument to other functions. In R, the synax of anonymous function is very much similar to named function. The syntax of anonymous function is - `function (x) expression`.
+
+```{r}
+vec = c (1,5,6)
+sapply(vec, function(x) x^2)
+```
+
+      Sometimes, using `purrr`, we can create anonymous function by one sided formula. In the below example, `~.x**2` works like `function (x) x**2`.
+
+```{r}
+map_int(1:5, ~.x**2)
+```
+
 ::: 
+
+## Conclusions 
+
+::: {style="text-align: justify"}
+
+
+::: 
+
+## Exercises {.unnumbered}
+
+::: {style="text-align: justify"}
+
+
+::: 
+
+

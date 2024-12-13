@@ -7,13 +7,13 @@ format: html
 
 At the End of the Appendix, Students should be Able to -
 
--   Gain an Understanding about the Python
+-   Gain an Understanding about Python
 
 -   Gain an Understanding about the Data Types and Data Structures in Python
 
 -   Gain an Understanding about Arrays in `Numpy`, Indexing and Slicing of Arrays, and Operations of Arrays 
 
--   Gain an Understanding about `for` Loop function, `map` function, and User Defined Function 
+-   Gain an Understanding about `for` Loop function, `map` function, and User Defined Function in Python 
 
 ## What is Python?
 
@@ -409,6 +409,12 @@ np.random.randn(10) # one dimensional
 np.random.randn(3,4) # two dimensional 
 ```
 
+     * `np.random.randint()` allows to generate random integer numbers given an interval of integers. 
+
+```{python}
+np.random.randint(low=0, high=10, size = 5)
+```
+
      * `np.reshape()` allows to chgange the shape (rows and columns) without changing the data in the array. 
 
 ```{python}
@@ -542,9 +548,9 @@ for x in var_log:
 
      `map ()` function is useful for simple calculations; however, for complex transformations, using `for` loop is efficient and effective. 
 
-### User Defined Function 
+### User Defined Function (Named Function) 
 
-     In addition to predifend functions from different python modules, users can define their own functions. The syntax for defining a user defined function in python - 
+     In addition to predifend functions from different python modules, users can define their own functions, which are sometimes called named functions. The syntax for defining a user defined function in python - 
 
 ```{python}
 def deduct_num (a, b):
@@ -581,7 +587,7 @@ welcome("John")
 ```
 
 
-### Anonymous Function 
+### Anonymous (Lambda) Function 
 
      Anonymous function is a function without a name. It is also called lambda function in python. The syntax for lambda function is - `lambda arguments: expression`. Below is an example of lambda function - 
 
@@ -592,6 +598,13 @@ sqr(5)
 
      lambda function can take many arguments (parameters), but accepts only one expression. 
 :::
+
+## Conclusions 
+
+::: {style="text-align: justify"}
+
+
+::: 
 
 
 ## Exercises {.unnumbered}

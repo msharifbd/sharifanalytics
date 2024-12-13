@@ -337,11 +337,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#what-is-r" id="toc-what-is-r" class="nav-link active" data-scroll-target="#what-is-r"><span class="header-section-number">B.1</span> What is R?</a></li>
+  <li><a href="#learning-objectives-of-the-appendix" id="toc-learning-objectives-of-the-appendix" class="nav-link active" data-scroll-target="#learning-objectives-of-the-appendix">Learning Objectives of the Appendix</a></li>
+  <li><a href="#what-is-r" id="toc-what-is-r" class="nav-link" data-scroll-target="#what-is-r"><span class="header-section-number">B.1</span> What is R?</a></li>
   <li><a href="#packages-in-r" id="toc-packages-in-r" class="nav-link" data-scroll-target="#packages-in-r"><span class="header-section-number">B.2</span> Packages in R</a></li>
   <li><a href="#data-types" id="toc-data-types" class="nav-link" data-scroll-target="#data-types"><span class="header-section-number">B.3</span> Data Types</a></li>
   <li><a href="#data-structure" id="toc-data-structure" class="nav-link" data-scroll-target="#data-structure"><span class="header-section-number">B.4</span> Data Structure</a></li>
   <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions"><span class="header-section-number">B.7</span> Functions</a></li>
+  <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions"><span class="header-section-number">B.8</span> Conclusions</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a></li>
   </ul>
 </nav>
     </div>
@@ -367,6 +370,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<section id="learning-objectives-of-the-appendix" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="learning-objectives-of-the-appendix">Learning Objectives of the Appendix</h2>
+<p>At the End of the Appendix, Students should be Able to -</p>
+<ul>
+<li><p>Gain an Understanding about R</p></li>
+<li><p>Gain an Understanding about the Data Types and Data Structures in R</p></li>
+<li><p>Gain an Understanding about Indexing and Slicing of vectors and Data Frames, and Mathematical Operations on them</p></li>
+<li><p>Gain an Understanding about <code>for</code> Loop function, <code>map</code> function, and User Defined Function in R</p></li>
+</ul>
+</section>
 <section id="what-is-r" class="level2" data-number="B.1">
 <h2 data-number="B.1" class="anchored" data-anchor-id="what-is-r"><span class="header-section-number">B.1</span> What is R?</h2>
 <div style="text-align: justify">
@@ -390,7 +403,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="data-types" class="level2" data-number="B.3">
 <h2 data-number="B.3" class="anchored" data-anchor-id="data-types"><span class="header-section-number">B.3</span> Data Types</h2>
 <div style="text-align: justify">
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Data<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> has different types. When dealing with data, we need to know the types of the data because different data types can do different things. There are five basic data types in <code>R</code>. They include - <code>double</code>, <code>integer</code>, <code>character</code>, <code>logical</code>, and <code>complex</code>. We use <code>typeof ()</code> or <code>class ()</code> functions to know the types of the data. However, most commmonly used data types are <code>double</code>, <code>integer</code>, <code>character</code>, and <code>logical</code>.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Data<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> has different types. When dealing with data, we need to know the types of the data because different data types can do different things. There are five basic data types in <code>R</code>. They include - <code>double</code>, <code>integer</code>, <code>character</code>, <code>logical</code>, and <code>complex</code>. We use <code>typeof ()</code> or <code>class ()</code> functions to know the types of the vector and <code>length()</code> to know the size of the vector. However, most commmonly used data types are <code>double</code>, <code>integer</code>, <code>character</code>, and <code>logical</code>.</p>
 </div>
 </section>
 <section id="data-structure" class="level2" data-number="B.4">
@@ -399,7 +412,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;There are several types of data structures in R. These structures include - vector, matrix, array, list, data frame, tibble, and facotrs. Of these data structures - vector, list, data frame and tibble are the most common.</p>
 <section id="vector" class="level3" data-number="B.4.1">
 <h3 data-number="B.4.1" class="anchored" data-anchor-id="vector"><span class="header-section-number">B.4.1</span> Vector</h3>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vector is one of the basic data structures in R. There are several types<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> of vectors - numeric, integer, character, and logical vectors. Most of the times vectors are created by using <code>c()</code> function, where “c” means concatenate.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vector is one of the basic data structures in R. In most cases, vectors are created by using <code>c()</code> function, where “c” means concatenate. Sometimes vectors are classified into two groups - atomic vectors and lists. <a href="#fig-rvectors" class="quarto-xref">Figure&nbsp;<span>B.1</span></a> shows the classfication of the vectors. Atomic vectors include - double, integer, character, and logical vectors<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>. The double and integer vectors are collectively known as <em>numeric</em> vectors. Lists include dataframe or tibble. Lists are called recursive vectors because they can include other lists. <em>NULL</em><a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> is often used to represent the <strong>absence of a vector</strong>. NULL indicates that the vector length is 0.</p>
+<div id="fig-rvectors" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-rvectors-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/vector-atomic-list-tibble.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rvectors-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;B.1: Types of Vector
+</figcaption>
+</figure>
+</div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># An example of a vector</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>students <span class="ot">=</span> <span class="fu">c</span> (<span class="st">"John"</span>, <span class="st">"Adam"</span>, <span class="st">"Alex"</span>, <span class="st">"Emily"</span>)</span>
@@ -632,7 +655,7 @@ $age
 </section>
 <section id="indexing-and-slicing-vectors" class="level2" data-number="B.5">
 <h2 data-number="B.5" class="anchored" data-anchor-id="indexing-and-slicing-vectors"><span class="header-section-number">B.5</span> Indexing and Slicing Vectors</h2>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Using <code>[]</code>, one can access elements in a vector. Unlike python<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>, R uses 1 based indexing, meaning that first element has an index 1. For slicing, one can specify the range of index using <code>:</code>.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Using <code>[]</code>, one can access elements in a vector. Unlike python<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>, R uses 1 based indexing, meaning that first element has an index 1. For slicing, one can specify the range of index using <code>:</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>sample_vector <span class="ot">=</span> <span class="fu">c</span> (<span class="dv">10</span><span class="sc">:</span><span class="dv">25</span>)</span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>sample_vector[<span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -814,42 +837,33 @@ $age
 <div class="sourceCode cell-code" id="cb110"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="co"># vector of 2 elements </span></span>
 <span id="cb110-2"><a href="#cb110-2" aria-hidden="true" tabindex="-1"></a><span class="fu">runif</span>(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.5813309 0.3927599</code></pre>
+<pre><code>[1] 0.001654289 0.480134359</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb112"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="co"># vector of 5 elements from 0 to 100</span></span>
 <span id="cb112-2"><a href="#cb112-2" aria-hidden="true" tabindex="-1"></a><span class="fu">runif</span>(<span class="dv">5</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 28.75624 98.11556 45.67394 45.36090 49.47415</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb114"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sample () function will do the same. </span></span>
-<span id="cb114-2"><a href="#cb114-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">100</span>,<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 93 29 21 56 14</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb116"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">100</span>,<span class="dv">5</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 43 52 18 25  1</code></pre>
+<pre><code>[1] 91.888037 85.541802 44.464972 44.135124  5.719579</code></pre>
 </div>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>rnorm()</code> function generates random numbers from normal distribution with mean 0 and standard deviation 1.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb118"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb114"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -0.11703912 -0.09532998 -1.74890665  1.66774391  0.58864088</code></pre>
+<pre><code>[1] -0.7054502 -0.1203368 -1.0925815 -1.3689312  2.7041721</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb120"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb120-1"><a href="#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">5</span>, <span class="at">mean =</span> <span class="dv">5</span>, <span class="at">sd=</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb116"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">5</span>, <span class="at">mean =</span> <span class="dv">5</span>, <span class="at">sd=</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 4.676374 5.755963 3.930246 5.767297 8.690496</code></pre>
+<pre><code>[1] 6.404331 6.000471 3.991709 4.891435 4.497516</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb122"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb122-1"><a href="#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">rnorm</span>(<span class="dv">500</span>, <span class="at">mean =</span> <span class="dv">5</span>, <span class="at">sd=</span> <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb118"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">rnorm</span>(<span class="dv">500</span>, <span class="at">mean =</span> <span class="dv">5</span>, <span class="at">sd=</span> <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 4.984492</code></pre>
+<pre><code>[1] 4.803692</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb124"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb124-1"><a href="#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(<span class="fu">rnorm</span>(<span class="dv">500</span>, <span class="at">mean =</span> <span class="dv">5</span>, <span class="at">sd=</span> <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb120"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb120-1"><a href="#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(<span class="fu">rnorm</span>(<span class="dv">500</span>, <span class="at">mean =</span> <span class="dv">5</span>, <span class="at">sd=</span> <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2.038825</code></pre>
+<pre><code>[1] 1.915328</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb126"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb126-1"><a href="#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">rnorm</span>(<span class="dv">500</span>, <span class="at">mean =</span> <span class="dv">5</span>, <span class="at">sd=</span> <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb122"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb122-1"><a href="#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">rnorm</span>(<span class="dv">500</span>, <span class="at">mean =</span> <span class="dv">5</span>, <span class="at">sd=</span> <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -858,11 +872,330 @@ $age
 </div>
 </div>
 </div>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Using <code>rnorm()</code>, we can create matrix and convert it into data frame or tibble.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb123"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true" tabindex="-1"></a>mat <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">rnorm</span>(<span class="dv">50</span>), <span class="at">ncol =</span> <span class="dv">5</span>)</span>
+<span id="cb123-2"><a href="#cb123-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(mat) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>, <span class="st">"d"</span>, <span class="st">"e"</span>)</span>
+<span id="cb123-3"><a href="#cb123-3" aria-hidden="true" tabindex="-1"></a><span class="fu">as_tibble</span>(mat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 5
+         a       b       c       d       e
+     &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+ 1  0.780  -0.115  -1.40    0.0706  1.09  
+ 2 -0.622   0.885  -0.420   1.65   -0.0350
+ 3  1.37    1.71   -2.35   -1.78    0.299 
+ 4  0.125  -0.651   0.980  -0.449   0.517 
+ 5 -0.306  -0.679  -0.703  -1.73   -0.609 
+ 6 -0.0332 -2.63    0.0800  0.352  -0.546 
+ 7  1.18   -0.569   1.10    0.702  -1.35  
+ 8 -0.851   0.294  -0.581  -1.22   -0.657 
+ 9  0.632   1.41    0.722   0.463   0.133 
+10  0.797  -0.0822 -1.18    1.38    1.19  </code></pre>
+</div>
+</div>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In additon to <code>runif()</code> and <code>rnorm()</code>, <code>sample()</code> function can be used to generate random numbers.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb125"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">100</span>,<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  83  14 100   9   4</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb127"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb127-1"><a href="#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">100</span>,<span class="dv">5</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 56 46 85 61 59</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb129"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb129-1"><a href="#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="fu">matrix</span>(<span class="fu">sample</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">50</span>,<span class="dv">50</span>), <span class="at">ncol =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      [,1] [,2] [,3] [,4] [,5]
+ [1,]    0   15   10   24   16
+ [2,]   42   36   33    9   26
+ [3,]    6   29   21   25   48
+ [4,]   40   20    3    2   35
+ [5,]   23   13   41   28   49
+ [6,]   46   19   31   14    4
+ [7,]   22   27   37   17   34
+ [8,]    5   32   44    7   50
+ [9,]   39   47   38   18   45
+[10,]    8   43    1   12   30</code></pre>
+</div>
+</div>
 </section>
 </div>
 </section>
 <section id="functions" class="level2" data-number="B.7">
 <h2 data-number="B.7" class="anchored" data-anchor-id="functions"><span class="header-section-number">B.7</span> Functions</h2>
+<div style="text-align: justify">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In R, there are some functions that we use very frequently. In this section, we will discuss some of those functions.</p>
+<section id="for-loop-function" class="level3" data-number="B.7.1">
+<h3 data-number="B.7.1" class="anchored" data-anchor-id="for-loop-function"><span class="header-section-number">B.7.1</span> <code>for</code> Loop Function</h3>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>for</code> loop function in R is used to iterate over<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a> the elements of a vector, or a list, or a matrix, or a data frame, or a tibble and apply a set of instructions (operations) on each item of the object. <code>for</code> loop function is used to avoid unnecessary repeition of code, thus enhancing efficiency and effectiveness of code. The basic syntax of <code>for</code> loop function in R -</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb131"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb131-1"><a href="#cb131-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (item <span class="cf">in</span> object) {</span>
+<span id="cb131-2"><a href="#cb131-2" aria-hidden="true" tabindex="-1"></a>    Statement</span>
+<span id="cb131-3"><a href="#cb131-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Some examples of <code>for</code> loop function are -</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb132"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb132-1"><a href="#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (x <span class="cf">in</span> <span class="fu">seq</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)) {</span>
+<span id="cb132-2"><a href="#cb132-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(x<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb132-3"><a href="#cb132-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1
+[1] 4
+[1] 9
+[1] 16
+[1] 25</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb134"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb134-1"><a href="#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (x <span class="cf">in</span> <span class="fu">c</span>(<span class="st">'Adam'</span>, <span class="st">"Joseph"</span>, <span class="st">"John"</span>)) {</span>
+<span id="cb134-2"><a href="#cb134-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(x)</span>
+<span id="cb134-3"><a href="#cb134-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Adam"
+[1] "Joseph"
+[1] "John"</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb136"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb136-1"><a href="#cb136-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Vectors for numbers and names</span></span>
+<span id="cb136-2"><a href="#cb136-2" aria-hidden="true" tabindex="-1"></a>numbers <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span>
+<span id="cb136-3"><a href="#cb136-3" aria-hidden="true" tabindex="-1"></a>names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'Adam'</span>, <span class="st">'Joseph'</span>, <span class="st">'John'</span>)</span>
+<span id="cb136-4"><a href="#cb136-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb136-5"><a href="#cb136-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop through the vectors and print the desired output</span></span>
+<span id="cb136-6"><a href="#cb136-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(numbers)) {</span>
+<span id="cb136-7"><a href="#cb136-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(numbers[i], names[i], <span class="at">sep =</span> <span class="st">", "</span>))</span>
+<span id="cb136-8"><a href="#cb136-8" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "1, Adam"
+[1] "2, Joseph"
+[1] "3, John"</code></pre>
+</div>
+</div>
+</section>
+<section id="map-function" class="level3" data-number="B.7.2">
+<h3 data-number="B.7.2" class="anchored" data-anchor-id="map-function"><span class="header-section-number">B.7.2</span> <code>map()</code> Function</h3>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; In <code>map()</code> function, the purpose is to apply a <strong>function</strong> on a <strong>vector or list</strong>, meaning that <code>map()</code> functions take a list/vector and a function as arguments. <a href="#fig-rmap" class="quarto-xref">Figure&nbsp;<span>B.2</span></a> sows the nature of <code>map()</code> function. The <code>map()</code> function then applies the function to each element of the <code>list/vector</code> and the result of this process is then combined into a <code>list</code>. For example, a list called sample_list is created. The <code>length()</code> function can be used to know the elements of the list. However, if you want to the element of each list, then <code>map()</code> function can be used. The other variation of map() functions that the package purrr include - <code>map_int()</code>, <code>map_dbl()</code>, <code>map_chr()</code>, and <code>map_lgl()</code><a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a>.</p>
+<div id="fig-rmap" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-rmap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/map-step-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rmap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;B.2: map() Function Argument
+</figcaption>
+</figure>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb138"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb138-1"><a href="#cb138-1" aria-hidden="true" tabindex="-1"></a>sample_list <span class="ot">&lt;-</span> </span>
+<span id="cb138-2"><a href="#cb138-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">list</span>(</span>
+<span id="cb138-3"><a href="#cb138-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">x =</span> <span class="fl">1737.1</span>,</span>
+<span id="cb138-4"><a href="#cb138-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> <span class="fu">c</span>(<span class="fl">11.3</span>, <span class="fl">6.2</span>),</span>
+<span id="cb138-5"><a href="#cb138-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">z =</span> <span class="fu">c</span>(<span class="fl">60.4</span>, <span class="fl">81.4</span>, <span class="dv">156</span>, <span class="fl">174.8</span>, <span class="dv">194</span>, <span class="fl">34.8</span>, <span class="dv">420</span>, <span class="fl">2705.2</span>, <span class="dv">340</span>, <span class="dv">62</span>)</span>
+<span id="cb138-6"><a href="#cb138-6" aria-hidden="true" tabindex="-1"></a> )</span>
+<span id="cb138-7"><a href="#cb138-7" aria-hidden="true" tabindex="-1"></a>sample_list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$x
+[1] 1737.1
+
+$y
+[1] 11.3  6.2
+
+$z
+ [1]   60.4   81.4  156.0  174.8  194.0   34.8  420.0 2705.2  340.0   62.0</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb140"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb140-1"><a href="#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(sample_list)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb142"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb142-1"><a href="#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(sample_list, length)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$x
+[1] 1
+
+$y
+[1] 2
+
+$z
+[1] 10</code></pre>
+</div>
+</div>
+<section id="map-functions-with-multiple-inputs" class="level4" data-number="B.7.2.1">
+<h4 data-number="B.7.2.1" class="anchored" data-anchor-id="map-functions-with-multiple-inputs"><span class="header-section-number">B.7.2.1</span> <code>map()</code> Functions with Multiple Inputs</h4>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The <code>map2()</code> functions are very similar to the <code>map()</code> functions, but they take two input vectors instead of one. Since the <code>map2()</code> functions iterate along the two vectors in parallel, they need to be of the same length. <a href="#fig-rmap2" class="quarto-xref">Figure&nbsp;<span>B.3</span></a> shows a <code>map2()</code> function.</p>
+<div id="fig-rmap2" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-rmap2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/map2.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rmap2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;B.3: map2() Function
+</figcaption>
+</figure>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb144"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb144-1"><a href="#cb144-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>)</span>
+<span id="cb144-2"><a href="#cb144-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">5</span>, <span class="dv">3</span>)</span>
+<span id="cb144-3"><a href="#cb144-3" aria-hidden="true" tabindex="-1"></a><span class="fu">map2_dbl</span>(x, y, min)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1 2 3</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb146"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb146-1"><a href="#cb146-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span></span>
+<span id="cb146-2"><a href="#cb146-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tibble</span>(</span>
+<span id="cb146-3"><a href="#cb146-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">a =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>),</span>
+<span id="cb146-4"><a href="#cb146-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">b =</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">5</span>, <span class="dv">3</span>)</span>
+<span id="cb146-5"><a href="#cb146-5" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb146-6"><a href="#cb146-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb146-7"><a href="#cb146-7" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb146-8"><a href="#cb146-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">min =</span> <span class="fu">map2_dbl</span>(a, b, min))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 3
+      a     b   min
+  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1     1     6     1
+2     2     5     2
+3     4     3     3</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb148"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb148-1"><a href="#cb148-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb148-2"><a href="#cb148-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb148-3"><a href="#cb148-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">min =</span> <span class="fu">min</span>(a,b)</span>
+<span id="cb148-4"><a href="#cb148-4" aria-hidden="true" tabindex="-1"></a>        )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 3
+      a     b   min
+  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1     1     6     1
+2     2     5     1
+3     4     3     1</code></pre>
+</div>
+</div>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; By default <code>mutate()</code>, uses column-wise operations. <code>map2_dbl()</code> produces a column the same length at <code>a</code> and <code>b</code>. We can accomplish the same calculation using <code>row-wise</code> operations.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb150"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb150-1"><a href="#cb150-1" aria-hidden="true" tabindex="-1"></a> df <span class="sc">%&gt;%</span></span>
+<span id="cb150-2"><a href="#cb150-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb150-3"><a href="#cb150-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">min =</span> <span class="fu">min</span>(a, b)) <span class="sc">%&gt;%</span></span>
+<span id="cb150-4"><a href="#cb150-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 3
+      a     b   min
+  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1     1     6     1
+2     2     5     2
+3     4     3     3</code></pre>
+</div>
+</div>
+</section>
+<section id="pmap-functions" class="level4" data-number="B.7.2.2">
+<h4 data-number="B.7.2.2" class="anchored" data-anchor-id="pmap-functions"><span class="header-section-number">B.7.2.2</span> <code>pmap()</code> Functions</h4>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; There are no <code>map3()</code> or <code>map4()</code> functions. Instead, you can use a <code>pmap()</code> (<em>p</em> for <em>parallel</em>) function to map over more than two vectors. The <code>pmap()</code> functions work slightly differently than the <code>map()</code> and <code>map2()</code> functions. In <code>map()</code> and <code>map2()</code> functions, you specify the <code>vector(s)</code> to supply to the function. In <code>pmap()</code> functions, you specify a single <code>list</code> that contains all the vectors (or lists) that you want to supply to your function. <a href="#fig-rpmap" class="quarto-xref">Figure&nbsp;<span>B.4</span></a> shows a <code>pmap()</code> function.</p>
+<div id="fig-rpmap" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-rpmap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/pmap-list.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rpmap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;B.4: pmap() Function (List)
+</figcaption>
+</figure>
+</div>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Flipping the list diagram makes it easier to see that <code>pmap()</code> is basically just a generalized version of <code>map2()</code> (See <a href="#fig-rpmapfilip" class="quarto-xref">Figure&nbsp;<span>B.5</span></a>).</p>
+<div id="fig-rpmapfilip" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-rpmapfilip-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/pmap-flipped.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rpmapfilip-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;B.5: pmap() Function (Flipped)
+</figcaption>
+</figure>
+</div>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The only difference is that <code>map2()</code> lets you specify each vector as a separate argument. In <code>pmap()</code>, you have to store all your input vectors in a single list. This functionality allows <code>pmap()</code> to handle any number of input vectors.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb152"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb152-1"><a href="#cb152-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>)</span>
+<span id="cb152-2"><a href="#cb152-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">5</span>, <span class="dv">3</span>)</span>
+<span id="cb152-3"><a href="#cb152-3" aria-hidden="true" tabindex="-1"></a><span class="fu">map2_dbl</span>(x, y, min)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1 2 3</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb154"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb154-1"><a href="#cb154-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pmap_dbl</span>(<span class="fu">list</span>(x, y), min)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1 2 3</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb156"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb156-1"><a href="#cb156-1" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">15</span>, <span class="dv">1</span>)</span>
+<span id="cb156-2"><a href="#cb156-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pmap_dbl</span>(<span class="fu">list</span>(x, y, z), max)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 100  15   4</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="user-defined-functions" class="level3" data-number="B.7.3">
+<h3 data-number="B.7.3" class="anchored" data-anchor-id="user-defined-functions"><span class="header-section-number">B.7.3</span> User Defined Functions</h3>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; User defined functions are also called named functions because they are assigned a name and expected to be called frequently. The goal of user defined functions is to optimize program, avoid or minimize the reptition of the code, prevent errors, and make the code more readable. In R, to declare a user defined function, we use the keywoard <code>function()</code>. The syntax of user defined function is given below. It is clear that there are three components of an R function - <strong>function name</strong>, <strong>function parameters (arguments)</strong>, and <strong>function body (expression)</strong>. We can drop curly braces (<code>{}</code>) from the function if the function body contains a single statement. Moreover, the function must be called with the correct number of arguments.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb158"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb158-1"><a href="#cb158-1" aria-hidden="true" tabindex="-1"></a>functionname <span class="ot">=</span> <span class="cf">function</span> (arguments) {</span>
+<span id="cb158-2"><a href="#cb158-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">function</span> body </span>
+<span id="cb158-3"><a href="#cb158-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Below are examples of some user defined functions.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb159"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb159-1"><a href="#cb159-1" aria-hidden="true" tabindex="-1"></a>add_numbers <span class="ot">=</span> <span class="cf">function</span> (x,y){</span>
+<span id="cb159-2"><a href="#cb159-2" aria-hidden="true" tabindex="-1"></a>    sum <span class="ot">=</span> x <span class="sc">+</span> y </span>
+<span id="cb159-3"><a href="#cb159-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(sum)</span>
+<span id="cb159-4"><a href="#cb159-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb159-5"><a href="#cb159-5" aria-hidden="true" tabindex="-1"></a><span class="fu">add_numbers</span>(<span class="dv">5</span>,<span class="sc">-</span><span class="dv">25</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -20</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb161"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb161-1"><a href="#cb161-1" aria-hidden="true" tabindex="-1"></a>greetings <span class="ot">=</span> <span class="cf">function</span> (name, <span class="at">greeting =</span> <span class="st">"Welcome"</span>, <span class="at">sign =</span> <span class="st">"!"</span>){</span>
+<span id="cb161-2"><a href="#cb161-2" aria-hidden="true" tabindex="-1"></a>    greetingtogether <span class="ot">=</span> <span class="fu">paste</span>(name, sign, <span class="at">sep =</span> <span class="st">""</span>)</span>
+<span id="cb161-3"><a href="#cb161-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(greeting, greetingtogether))</span>
+<span id="cb161-4"><a href="#cb161-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb161-5"><a href="#cb161-5" aria-hidden="true" tabindex="-1"></a><span class="fu">greetings</span>(<span class="st">"Nicole"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Welcome Nicole!"</code></pre>
+</div>
+</div>
+</section>
+<section id="anonymous-functions" class="level3" data-number="B.7.4">
+<h3 data-number="B.7.4" class="anchored" data-anchor-id="anonymous-functions"><span class="header-section-number">B.7.4</span> Anonymous Functions</h3>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Anonymous functions are functions that are not named, meaning that unlike normal functions, they do not have any name. Anonymous functions are useful when we do not plan to use them again and again. In most cases, we use anonymous function as an argument to other functions. In R, the synax of anonymous function is very much similar to named function. The syntax of anonymous function is - <code>function (x) expression</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb163"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb163-1"><a href="#cb163-1" aria-hidden="true" tabindex="-1"></a>vec <span class="ot">=</span> <span class="fu">c</span> (<span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">6</span>)</span>
+<span id="cb163-2"><a href="#cb163-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(vec, <span class="cf">function</span>(x) x<span class="sc">^</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  1 25 36</code></pre>
+</div>
+</div>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sometimes, using <code>purrr</code>, we can create anonymous function by one sided formula. In the below example, <code>~.x**2</code> works like <code>function (x) x**2</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb165"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb165-1"><a href="#cb165-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map_int</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="sc">~</span>.x<span class="sc">**</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  1  4  9 16 25</code></pre>
+</div>
+</div>
+</section>
+</div>
+</section>
+<section id="conclusions" class="level2" data-number="B.8">
+<h2 data-number="B.8" class="anchored" data-anchor-id="conclusions"><span class="header-section-number">B.8</span> Conclusions</h2>
+<div style="text-align: justify">
+
+</div>
+</section>
+<section id="exercises" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="exercises">Exercises</h2>
 <div style="text-align: justify">
 
 </div>
@@ -876,8 +1209,11 @@ $age
 <li id="fn2"><p>1996 is the year when R was introduced.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn3"><p>Please note that in <code>install.package()</code>, you need to use quote (either single or double), but in <code>library()</code>, you do not need to use quote.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn4"><p>The word “data” sometimes is considered plural because there is a singular word for “data”, which is “datum”. In this book, both words are used interchangeably. Therefore, the word “data” is used as both singular and plural.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5"><p>Sometimes vectors are classified into two groups - atomic vectors and lists. Atomic vectors include - numeric, integer, character, and logical vectors.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn6"><p>Python uses 0 based indexing.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>The other two atomic vectors include - complex and raw.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>As opposed to <code>NULL</code>,<code>NA</code> refers to the <strong>absence of value</strong>.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>Python uses 0 based indexing.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>Iteration (also called looping) is the process of repeating the same operation on different columns, or on different datasets. There are two important iteration paradigms: <code>imperative programming</code> and <code>functional programming</code>. On the imperative side, one has tools like <code>for ()</code> loops and <code>while ()</code> loops, which are a great place to start because they make iteration very explicit, so it is obvious what is happening. However, <code>for ()</code> loops are quite verbose, and require quite a bit of bookkeeping code that is duplicated for every for loop. One the other hand <code>Functional programming (FP)</code> offers tools to extract out this dupli cated code, so each common <code>for</code> loop pattern gets its own function. Once one masters the vocabulary of FP, one can solve many common iteration problems with <em>less code</em>, <em>more ease</em>, and <em>fewer errors</em>. The <code>apply ()</code> family functions in base R are equivalent to <code>for ()</code> loop. The <code>apply ()</code> family functions include the following functions for looping- <code>apply ()</code>; <code>lapply ()</code>; <code>sapply ()</code>, <code>tapply ()</code>, <code>vapply ()</code>, and <code>mapply ()</code>. The <code>purrr</code> package in tidyverse offers <code>map ()</code> family functions for functional programming, which we will be using for the loop operations.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p>The output of <code>map()</code> function is always list. These variations help to get the desired output. To learn more about map functions, please visit - <a href="https://adv-r.hadley.nz/functionals.html" class="uri">https://adv-r.hadley.nz/functionals.html</a>.<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 

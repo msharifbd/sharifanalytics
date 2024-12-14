@@ -8,15 +8,13 @@ format: html
 ::: {style="text-align: justify"}
 At the End of the Chapter, Students should be Able to -
 
--   Gain an understanding about web scraping and its importance
+-   Gain an Understanding about Web Scraping and Its Importance
 
--   Understand the website structures for web scraping
+-   Understand the Website Structures for Web Scraping
 
--   Use Python modules to scrape websites
+-   Use Python Modules to Scrape Websites
 
--   Scrape `EDGAR` website to extract quantitative and qualitative data of different companies
-
--   Perform textual analytics on different text data scraped from website
+-   Scrape `EDGAR` Website to Extract Quantitative and Qualitative Data of Different Companies
 :::
 
 ## What is Web Scraping?

@@ -13,7 +13,7 @@ At the End of the Appendix, Students should be Able to -
 
 -   Gain an Understanding about Indexing and Slicing of vectors and Data Frames, and Mathematical Operations on them
 
--   Gain an Understanding about `for` Loop function, `map` function, and User Defined Function in R
+-   Gain an Understanding about `for` Loop function, `map` function, and User Defined Function, and Anonymous Function in R
 
 
 ## What is R?

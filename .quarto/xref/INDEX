@@ -55,5 +55,11 @@
   },
   "r_basics.qmd": {
     "r_basics.html": "bed07baf"
+  },
+  "nlp.qmd": {
+    "nlp.html": "d2babc33"
+  },
+  "machine_learning.qmd": {
+    "machine_learning.html": "454267c2"
   }
 }

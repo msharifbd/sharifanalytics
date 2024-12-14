@@ -1,0 +1,27 @@
+---
+title: "Machine Learning"
+format: html
+---
+
+### Learning Objectives of the Chapter {.unnumbered}
+
+::: {style="text-align: justify"}
+At the End of the Chapter, Students should be Able to -
+
+-   Learn about the Nature of Machine Learning (ML) 
+
+-   Recognize the Importance of Machine Learning in Modern Business World 
+
+-   Understand Different Types of Machine Learning
+
+-   Learn about Different Kinds of Machine Learning Algorithms
+
+-   Build Some Machine Learning Models and Evaluate their Performance 
+:::
+
+
+## Introduction 
+
+## Importance of Machine Learning 
+
+## Conclusion 

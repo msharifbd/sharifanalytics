@@ -1,0 +1,190 @@
+---
+title: "Natural Language Processing (NLP)"
+format: html
+---
+
+### Learning Objectives of the Chapter {.unnumbered}
+
+::: {style="text-align: justify"}
+At the End of the Chapter, Students should be Able to -
+
+-   Learn about What Natural Language Processing (NLP) is 
+
+-   Understand the Importance and Difference Concepts of NLP
+
+-   Learn about Different R and Python Packages for NLP
+
+-   Perform Some NLP on Text Data 
+:::
+
+
+## Introduction 
+
+## Python Libraries for NLP
+
+## Steps in NLP
+
+
+
+```{python}
+my_text = """
+Accounting is the systematic process of recording, analyzing, and reporting financial \
+transactions. It helps businesses track their income, expenses, and overall financial \
+health. Accountants use various financial statements, such as balance sheets and income \
+statements, to summarize a company's financial position. Double-entry bookkeeping is a \
+fundamental principle in accounting, ensuring that every transaction affects at least two \
+accounts. Financial accounting focuses on providing information to external stakeholders, \
+such as investors and creditors, while managerial accounting provides information to \
+internal stakeholders, like managers, to aid in decision-making. Auditing is an essential \
+aspect of accounting, involving the examination of financial records to ensure accuracy \
+and compliance. Tax accounting deals with preparing tax returns and planning for \
+future tax obligations. Forensic accounting involves investigating financial discrepancies \
+and fraud. Accounting software, like QuickBooks and Xero, has revolutionized the way \
+businesses manage their finances, making the process more efficient and accurate. \
+Overall, accounting plays a crucial role in the financial management and transparency \
+of businesses and organizations.
+"""
+```
+
+### Tokenize
+
+```{python}
+#| warning: false
+import nltk
+nltk.download("punkt_tab")
+from nltk.tokenize import sent_tokenize, word_tokenize
+```
+
+
+```{python}
+# sentence tokenize
+my_text_sent = sent_tokenize(my_text)
+my_text_sent[0:5]
+```
+
+```{python}
+# word tokenize
+my_text_word = word_tokenize(my_text)
+my_text_word[0:5]
+```
+
+### Removing Punctuation
+
+::: {style="text-align: justify"}
+    It is evident that in our word tokens, punctuations like comma (,), full stop (.) are also included, but they are unncessary. Therefore, we need to eliminate them from the token list.
+:::
+```{python}
+import string
+my_text_nopunc = [x for x in my_text_word if x not in string.punctuation]
+my_text_nopunc[:11]
+```
+
+### Filtering Stop Words 
+
+::: {style="text-align: justify"}
+    Stop words are the words that we want to ignore. Words like "in", "an", "the" we want to ignore. Therefore, in this step, we want to filter out these kinds of words. 
+:::
+
+```{python}
+#| warning: false
+nltk.download("stopwords") # to download the stopwords from NLTK repository
+from nltk.corpus import stopwords # imports the module 
+stop_words = set(stopwords.words("english")) # access the stopwords for english 
+# print(stop_words)
+```
+
+```{python}
+my_text_nostopwords = [x for x in my_text_nopunc if x.lower() not in stop_words]
+my_text_nostopwords[0:11]
+```
+
+::: {style="text-align: justify"}
+    Still we can see there are some unnessary words in the list. So, we need to eliminate them. For example, "'s" is in the `my_text_nostopwords`. We need to get rid of it. 
+
+:::
+```{python}
+"'s" in my_text_nostopwords
+my_text_nostopwords = [x for x in my_text_nostopwords if "'s" not in x]
+"'s" in my_text_nostopwords
+```
+
+
+### Stemming 
+
+::: {style="text-align: justify"}
+    Stemming is the process of reducing the words to their base or root form. For example, the token list contains words like recording, reporting, analyzing and so on. The base form of those words are record, report, and analyze respectively. Therefore, we need to reduce those words to base form. Stemming will help to do so. For this purpose, there are several types of stemmers such as Porter stemmer, Lovins stemmer, Dawson stemmer, Krovetz stemmer, and Xerox stemmer.  
+
+:::
+
+```{python}
+from nltk.stem import PorterStemmer,SnowballStemmer, LancasterStemmer
+porter = PorterStemmer()
+snowball = SnowballStemmer("english")
+lancaster = LancasterStemmer()
+[porter.stem(x) for x in my_text_nostopwords]
+[snowball.stem(x) for x in my_text_nostopwords]
+[lancaster.stem(x) for x in my_text_nostopwords][0:11]
+```
+
+### Lemmatization 
+
+::: {style="text-align: justify"}
+    Lemmatization, like stemming, is the process of reducing a word to its base form, but, unlike stemming, it considers the context of the word.
+:::
+
+
+```{python}
+from nltk.stem import WordNetLemmatizer
+wordnet = WordNetLemmatizer()
+my_text_lemmatized = [wordnet.lemmatize(x) for x in my_text_nostopwords]
+my_text_lemmatized
+```
+
+## Visualization of Words 
+
+### Word Cloud 
+
+    @fig-wordcloud shows a word cloud of our tokenized text. 
+
+```{python}
+#| fig-cap: Word Cloud of the Words 
+#| label: fig-wordcloud
+from wordcloud import WordCloud
+# We need a single string; So, it is tranformed below
+my_text_lemmatizedSstring = ' '.join(my_text_lemmatized)
+# Word Cloud 
+word_cloud = WordCloud(collocations = False, background_color = 'white').generate(my_text_lemmatizedSstring)
+import matplotlib.pyplot as plt
+plt.imshow(word_cloud, interpolation="bilinear")
+plt.axis("off")
+plt.show()
+```
+
+
+### Bar Diagram of Word Frequency
+
+    @fig-barword shows the bar diagram of the words in tokenized list. 
+```{python}
+#| warning: false
+#| label: fig-barword
+#| fig-cap: Bar Diagram of Word Frequency
+from collections import Counter
+# calculate word frequencies 
+word_freq = Counter(my_text_lemmatized)
+# extract word and their frequencies 
+words = list(word_freq.keys())
+frequencies = list(word_freq.values())
+# create a data frame 
+import pandas as pd
+import seaborn as sns
+word_df = pd.DataFrame(word_freq.items(), columns = ['Word', "Frequency"])
+word_df = word_df.sort_values(by='Frequency', ascending=False)
+# Create the bar diagram 
+plt.figure(figsize=(10, 5)) 
+sns.barplot(y='Word', x='Frequency', data=word_df[word_df['Frequency']>1], palette='viridis') 
+plt.ylabel('Words') 
+plt.xlabel('Frequencies') 
+plt.title('Word Frequency Bar Diagram') 
+plt.xticks(rotation=90)
+plt.show()
+```

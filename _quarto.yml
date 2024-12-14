@@ -37,7 +37,9 @@ book:
         - prescriptive.qmd 
     - part: "Advanced Techniques and Applications"
       chapters:
-        - advanced_analytics.qmd 
+        - advanced_analytics.qmd
+        - nlp.qmd 
+        - machine_learning.qmd
         - fraud.qmd
         - performance_measurement.qmd
     - part: "Practical Considerations and Future Directions"

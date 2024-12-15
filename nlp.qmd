@@ -19,14 +19,29 @@ At the End of the Chapter, Students should be Able to -
 
 
 ## Introduction 
+::: {style="text-align: justify"}
+    In today's data driven world, a significant amount data is produced each day. For example, Google processes 24 peta bytes of data every day; 10 million photos are uploaded every hour on Facebook; and 400 million tweets are posted on X (formerly Twitter). Of these amount of data, a significant portion consists of text data. Therefore, it it important to gain insights from text data. 
+
+    Natural Language Processing (NLP), according to [IBM](https://www.ibm.com/topics/natural-language-processing), is a subfield of computer science and artificial intelligence (AI) that uses machine learning to enable computers to understand and communicate with human language. Specifically, NLP involves understanding, interpreting, and extracting insights from human language. Businesses use NLP for many purposes such as processing and analyzing large volume of documents, analyzing customer reviews, and scaling customer services (like developing chatbots or virtual assistants).    
+:::
 
 ## Python Libraries for NLP
+::: {style="text-align: justify"}
+    Python has built a rich and efficient ecosystem for NLP. Some of the most popular python modules (libraries) for NLP include - NLTK (Natural Language Toolkit); SpaCy; Gensim; and TextBlob. 
+:::
 
 ## Steps in NLP
+::: {style="text-align: justify"}
+    Like other data science tools or techniques, NLP involves several steps because most the time text data is not readily available or even if they are available, we need to clean the data and make it ready for next step processing. In this section, several important steps, which are called preprocessing, of NLP will be discussed. 
+:::
 
-
+### Preprocessing {#sec-preprocessing}
+::: {style="text-align: justify"}
+    Before applying NLP techniques, it is necessary to preprosess and clean the text data. Therefore, the processes involving cleaning and preparing text data to get them ready for NLP models are called preprocessing. Preprocessing is very important in NLP to get effective and accurate insights from the data. Below we will discuss several important concepts of preprocessing.  
+:::
 
 ```{python}
+# An exmaple of a text data 
 my_text = """
 Accounting is the systematic process of recording, analyzing, and reporting financial \
 transactions. It helps businesses track their income, expenses, and overall financial \
@@ -46,7 +61,7 @@ of businesses and organizations.
 """
 ```
 
-### Tokenize
+#### Tokenization 
 
 ```{python}
 #| warning: false
@@ -68,7 +83,7 @@ my_text_word = word_tokenize(my_text)
 my_text_word[0:5]
 ```
 
-### Removing Punctuation
+#### Removing Punctuation
 
 ::: {style="text-align: justify"}
     It is evident that in our word tokens, punctuations like comma (,), full stop (.) are also included, but they are unncessary. Therefore, we need to eliminate them from the token list.
@@ -79,7 +94,7 @@ my_text_nopunc = [x for x in my_text_word if x not in string.punctuation]
 my_text_nopunc[:11]
 ```
 
-### Filtering Stop Words 
+#### Filtering Stop Words 
 
 ::: {style="text-align: justify"}
     Stop words are the words that we want to ignore. Words like "in", "an", "the" we want to ignore. Therefore, in this step, we want to filter out these kinds of words. 
@@ -109,7 +124,7 @@ my_text_nostopwords = [x for x in my_text_nostopwords if "'s" not in x]
 ```
 
 
-### Stemming 
+#### Stemming 
 
 ::: {style="text-align: justify"}
     Stemming is the process of reducing the words to their base or root form. For example, the token list contains words like recording, reporting, analyzing and so on. The base form of those words are record, report, and analyze respectively. Therefore, we need to reduce those words to base form. Stemming will help to do so. For this purpose, there are several types of stemmers such as Porter stemmer, Lovins stemmer, Dawson stemmer, Krovetz stemmer, and Xerox stemmer.  
@@ -126,7 +141,7 @@ lancaster = LancasterStemmer()
 [lancaster.stem(x) for x in my_text_nostopwords][0:11]
 ```
 
-### Lemmatization 
+#### Lemmatization 
 
 ::: {style="text-align: justify"}
     Lemmatization, like stemming, is the process of reducing a word to its base form, but, unlike stemming, it considers the context of the word.
@@ -137,14 +152,22 @@ lancaster = LancasterStemmer()
 from nltk.stem import WordNetLemmatizer
 wordnet = WordNetLemmatizer()
 my_text_lemmatized = [wordnet.lemmatize(x) for x in my_text_nostopwords]
-my_text_lemmatized
+my_text_lemmatized[:11]
 ```
+
+
+
+#### Other Steps in Preprocessing 
+::: {style="text-align: justify"}
+    In addition to the above preprocessing, we might need to remove many other special characters from the text. These special characters include - hastags, HTML tags, links. For this purpose, knowledge about "regular expression" might be useful. Python built-in package `re` could be handy for regular expression. To learn more about regular expression - <https://www.w3schools.com/python/python_regex.asp>.
+:::
 
 ## Visualization of Words 
 
 ### Word Cloud 
-
+::: {style="text-align: justify"}
     @fig-wordcloud shows a word cloud of our tokenized text. 
+:::
 
 ```{python}
 #| fig-cap: Word Cloud of the Words 
@@ -163,7 +186,9 @@ plt.show()
 
 ### Bar Diagram of Word Frequency
 
+::: {style="text-align: justify"}
     @fig-barword shows the bar diagram of the words in tokenized list. 
+::: 
 ```{python}
 #| warning: false
 #| label: fig-barword
@@ -184,7 +209,52 @@ plt.figure(figsize=(10, 5))
 sns.barplot(y='Word', x='Frequency', data=word_df[word_df['Frequency']>1], palette='viridis') 
 plt.ylabel('Words') 
 plt.xlabel('Frequencies') 
-plt.title('Word Frequency Bar Diagram') 
 plt.xticks(rotation=90)
 plt.show()
 ```
+
+
+## Sentiment Analysis 
+::: {style="text-align: justify"}
+    Sentiment analysis involves converting text into sentiments such as positive, neutral, and negative. Texts are widely used to express emotion, feelings, opinion and so on. Therefore, sometimes sentiment analysis is also called "Opinion Mining." Identifying sentiment from texts could provide valuable insights to make strategic decisions such as improving product features, launching new products, identifying strengths or weaknesses of product or service offerings. Before, we perform the sentiment analysis, we need to do the preprocessing as described in @sec-preprocessing first. 
+
+    Below we use `texblob` python module for seniment analysis of our text about Accounting. `texblob` is simple for sentiment analysis because the function accepts text as input and return sentiment score. There are two types of sentiment scores - polarity and subjectivity. Polarity score actually measures the sentiment of the text and it values are between -1 and +1, where -1 indicates high negative sentiment and +1 indicates very positive sentiment. On the other hand, subjectivity score measures whether the text contaiins factual information or personal opinion. Subjectivity scores range from 0 to 1, where 0 indicates factual information and 1 indicates personal opinion.   
+
+```{python}
+from textblob import TextBlob
+```
+
+```{python}
+# Determining Polarity 
+TextBlob(my_text).sentiment.polarity
+```
+
+```{python}
+# Determining Subjectivity 
+TextBlob(my_text).sentiment.subjectivity
+```
+
+    In the above analysis, we see the polarity score is 0.02857, which is very close to zero. Therefore, we can say our text is neutral. On the other hand, subjectivity score is 0.21706, which is close to 0, indicating that our text is factual information (not personal opinion). 
+
+::: 
+
+
+## Readability Index 
+::: {style="text-align: justify"}
+
+:::
+
+## Text Similarity 
+::: {style="text-align: justify"}
+
+:::
+
+## Topic Modeling 
+::: {style="text-align: justify"}
+
+:::
+
+## Conclusion 
+::: {style="text-align: justify"}
+
+::: 

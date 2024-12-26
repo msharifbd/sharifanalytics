@@ -56,8 +56,9 @@ book:
     
     
 number-depth: 5  
-site-url: https://github.com/msharifbd
-repo-url: https://github.com/msharifbd
+site-url: https://analyticsforaccountingdata.netlify.app/
+repo-url: https://github.com/msharifbd/sharifanalytics
+repo-actions: [edit, issue]
 repo-branch: main
 sharing: [twitter, facebook, linkedin]
 downloads: [pdf, epub]
@@ -66,10 +67,11 @@ bibliography: references.bib
 
 format:
   html:
-    theme: cosmo
+    theme: flatly
     mainfont: Georgia, serif 
     code-link: true
-    callout-appearance: simple 
+    callout-appearance: default
+    cover-image: images/titlepage_1_alt.webp  
 
   pdf:
     documentclass: scrreprt

@@ -12,32 +12,11 @@
 
 # Welcome {.unnumbered}
 
-:::: {.columns}
-
-::: {.column width="45%"}
-
-:::{.justify}
-
 Welcome to the book - *__Analytics for Accounting Data__* - which is slated to be published future. It will be available for purchase in both paperback and hardback, with pre-ordering available now on both Amazon and online.
 
 This is the online version of the book, which is free to use. The book is being developed. So it is recommended to use the book with caution. More chapters and materials wil be added to the book gradually. 
 
 If you want me to add some materials that are necessary for the students, please do not hesitate to ask. All kinds of comments, recommendations, suggestions, criticisms are welcome.
-:::
-
-:::
-
-::: {.column width="5%"}
-
-:::
-
-
-::: {.column width="50%"}
-![](images/titlepage_1_alt.webp){fig-align="right"}
-:::
-
-
-::::
 
 
 

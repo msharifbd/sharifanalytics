@@ -12,7 +12,7 @@
 
 # Welcome {.unnumbered}
 
-Welcome to the book - *__Analytics for Accounting Data__* - which is slated to be published future. It will be available for purchase in both paperback and hardback, with pre-ordering available now on both Amazon and online.
+Welcome to the book - *__Analytics for Accounting Data__* - which is slated to be published future. It will be available for purchase in both paperback and hardback, with pre-ordering available on both Amazon and online.
 
 This is the online version of the book, which is free to use. The book is being developed. So it is recommended to use the book with caution. More chapters and materials wil be added to the book gradually. 
 

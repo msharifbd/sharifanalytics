@@ -71,7 +71,7 @@ format:
     mainfont: Georgia, serif 
     code-link: true
     callout-appearance: default
-    cover-image: images/titlepage_1_alt.webp  
+    cover-image: images/titlepage_1_alt.webp
 
   pdf:
     documentclass: scrreprt
@@ -81,6 +81,7 @@ format:
     sansfont: "Arial"
     monofont: "Courier New"
     colorlinks: true
+
     
 
 editor: visual

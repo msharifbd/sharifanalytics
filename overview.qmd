@@ -322,8 +322,8 @@ those that might be specific to the career path you are choosing. Note that beyo
 
 ::: {style="text-align: justify"}
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Proficiency in data analytics involves a combination of skills. For example, a solid understanding in mathematics and statistics helps one to gain the foundational knowledge in data science.@fig-datascienceroadmap depicts the skills necessary to be proficient in data science.  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Proficiency in data analytics involves a combination of skills. For example, a solid understanding in mathematics and statistics helps one to gain the foundational knowledge in data science. @fig-datascienceroadmap depicts the skills necessary to be proficient in data science.  
 
-![Data Science Skillset](images/data_science_roadmap.jpg){#fig-datascienceroadmap}
+![Data Science Skillset](images/data_science_roadmap.jpg){#fig-datascienceroadmap height=60% width=60%}
 
 ::: 

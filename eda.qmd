@@ -1,27 +1,757 @@
 ---
-title: "Exploratory Data Analysis"
+title: "Exploratory Data Analysis (EDA)"
 format: html
 ---
 
-## Descriptive Statistics
+### Learning Objectives of the Chapter {.unnumbered}
+
+::: {style="text-align: justify"}
+At the End of the Chapter, Students should be Able to -
+
+-   Learn about the purpose of Exploratory Data Analysis (EDA)
+
+-   Understand different techniques of transforming and cleaning data
+
+-   Learn about Different R and Python Packages for EDA
+
+-   Understand how to use six verbs for EDA
+
+-   Perform EDA on some real world data sets. 
+
+-   Learn about how to interpret results from EDA
+:::
+
+
+## Introduction 
 
 ::: {style="text-align: justify"}
      In descriptive statistics, we summarize the data using different metrics such as mean, median, standard deviation, minimum value, maximum value, and percentile. Descriptive statisics is also called summary statistics.
 :::
 
-## Data Visualizations Techniques
+## Data Collection & Importing 
 
-## Identifying Patterns and Trends
 
-## Python Package
+## Data Cleaning 
+
+
+## Packages for Exploratory Data Analysis (EDA)
+
+::: {style="text-align: justify"}
+     In order to use `pyjanitor`, the data frame must be pandas because `pyjanitor` extends pandas data frame functionality. 
+:::
+
+
+::: {.panel-tabset}
+
+## dplyr
+
+```{r}
+#| warning: false
+# loading packages
+library(tidyverse)
+library(lubridate)
+library(janitor)
+```
+
+```{r}
+#| include: false
+library(reticulate)
+Sys.unsetenv("RETICULATE_PYTHON")
+reticulate::use_virtualenv("C:/Users/mshar/OneDrive - Southern Illinois University/ANALYTICS_FOR_ACCOUNTING_DATA/accounting_analytics_book", required = TRUE)
+#Sys.setenv('RETICULATE_PYTHON' = 'C:\\Users\\mshar\\AppData\\Local\\Programs\\Python\\Python311\\python.exe')
+#py_install("pyjanitor")
+#py_install("polars")
+#Sys.setenv('RETICULATE_PYTHON' = '~/.venv/quarto_book_python/Scripts/python.exe')
+```
+
+
+## pandas 
+```{python}
+# loading the package
+import numpy as np
+import pandas as pd
+# from pyjanitor package 
+# pip install pyjanitor
+import janitor 
+from janitor import clean_names, remove_empty
+```
+
+:::
+
+## Importing the Dataset 
+
+::: {.panel-tabset}
+
+## dplyr
+```{r}
+#| warning: false
+# importing data frame 
+df = read_csv("https://raw.githubusercontent.com/msharifbd/DATA/main/Al-Bundy_raw-data.csv")
+```
+
+## pandas 
+```{python}
+# importing data frame 
+df_pd = pd.read_csv("https://raw.githubusercontent.com/msharifbd/DATA/main/Al-Bundy_raw-data.csv")
+```
+
+
+
+:::
+
+## Meta Data
+
+::: {style="text-align: justify"}
+     Meta data is data about the data. Before we put the data into analysis, we need to learn about our dataset. This learning invovles knowing about the number of rows, number of columns, the types of the fields, the appropriateness of those types, the missing values in the dataset and so on. 
+:::
+
+::: {.panel-tabset}
+
+## dplyr 
+
+```{r}
+glimpse(df)
+```
+
+
+```{r}
+map_df(df, ~sum(is.na(.))) |>
+     glimpse()
+```
+
+```{r}
+ncol(df)
+nrow(df)
+```
+
+```{r}
+head(df)
+```
+
+```{r}
+tail(df)
+```
+
+```{r}
+dplyr::sample_n(df, 10)
+```
+
+
+## Pandas 
 
 ```{python}
-# for Data Manipulation
-import pandas as pd
-import numpy as np 
-# for Data Visualization 
-import matplotlib.pyplot as plt 
-import seaborn as sns
-# for Machine Learning 
-import sklearn
+df_pd.info()
 ```
+
+```{python}
+df_pd.shape
+```
+
+```{python}
+print('The total number of rows and columns of the product data is \
+ {} and {} respectively.'.format(df_pd.shape[0], df_pd.shape[1]))
+```
+
+
+```{python}
+print(f'The total number of rows and columns of the product data is \
+ {df_pd.shape[0]} and {df_pd.shape[1]} respectively.')
+```
+
+```{python}
+df_pd.columns
+```
+
+```{python}
+df_pd.head()
+```
+
+```{python}
+df_pd.tail()
+```
+
+```{python}
+df_pd.isna().sum()
+```
+
+
+```{python}
+df_pd.dtypes
+```
+
+```{python}
+df_pd.sample(n=10)
+```
+
+
+:::
+
+## Cleaning the Dataset 
+
+::: {.panel-tabset}
+
+## dplyr
+
+```{r}
+ df |>
+     rename_all(toupper) |>
+     janitor::clean_names() |>
+     rename_all(toupper) |>
+     glimpse()
+```
+
+```{r}
+ df = df |>
+     rename_all(toupper) |>
+     janitor::clean_names() |>
+     rename_all(toupper)
+glimpse(df)
+```
+
+
+## panads 
+
+```{python}
+df_pd.columns.str.upper().to_list()
+```
+
+```{python}
+(df_pd
+     .pipe(remove_empty)
+     .pipe(lambda x: x.clean_names(case_type = "upper"))
+     .pipe(lambda x: x.rename(columns = {'SIZE_US_': 'SIZE_US', 'SIZE_EUROPE_':"SIZE_EUROPE", "SIZE_UK_":"SIZE_UK"}))
+     .pipe(lambda x: x.info())
+     )
+```
+
+```{python}
+# Changing the names of the columns to uppercase
+df_pd.rename(columns = str.upper, inplace = True)
+df_pd.columns
+```
+
+
+```{python}
+#| warning: false
+new_column = df_pd.columns \
+ .str.replace("(", '').str.replace(")", "") \
+ .str.replace(' ','_') # Cleaning the names of the variables
+new_column
+```
+
+
+```{python}
+df_pd.columns = new_column
+df_pd.columns
+df_pd.rename(columns=str.upper, inplace = True)
+df_pd.columns 
+
+```
+
+
+::: 
+
+
+### Changing the Types of Variables 
+
+::: {.panel-tabset}
+
+## dplyr
+
+```{r}
+df |>
+    mutate (DATE = lubridate::mdy(DATE)) |>
+    glimpse()
+```
+
+     From the above, it is now evident the the type of the `DATE` variable now is `date`. 
+
+```{r}
+df |>
+    mutate (DATE = lubridate::mdy(DATE)) |>
+    mutate (PRODUCTID = as.character(PRODUCTID)) |>
+    glimpse()
+```
+
+     From the above, it is now evident the the type of the `DATE` and `PRODUCTID` variable now is date (`date`) and character (`chr`) respectively. We can now incorparte the changes into the data frame. 
+
+```{r}
+df = df |>
+    mutate (DATE = lubridate::mdy(DATE)) |>
+    mutate (PRODUCTID = as.character(PRODUCTID)) 
+glimpse(df)
+```
+
+
+## pandas 
+
+```{python}
+(
+    df_pd
+    .pipe(lambda x: x.assign(DATE = pd.to_datetime(x['DATE'])))
+    .pipe(lambda x: x.info())
+)
+
+```
+
+
+```{python}
+# converting integer to object
+df_pd.INVOICENO = df_pd.INVOICENO.astype(str)
+df_pd[['MONTH', 'PRODUCTID']] = df_pd[['MONTH', 'PRODUCTID']].astype(str)
+df_pd.info()
+```
+
+
+
+:::
+
+## Some Other Useful Functions 
+     There are some other useful functions that can be used to explore the dataset for analysis. Some of those useful functions are discussed below. 
+
+:::{.panel-tabset}
+
+
+## dplyr
+
+```{r}
+df|> count(YEAR)
+```
+
+```{r}
+df|> count(COUNTRY)
+```
+
+```{r}
+df|> distinct(COUNTRY)
+```
+
+## pandas 
+```{python}
+df_pd['YEAR'].value_counts()
+```
+
+```{python}
+df_pd['YEAR'].unique()
+```
+
+
+:::
+
+
+## Six Verbs for EDA 
+
+     @tbl-compareDplyrPandas shows the comparable functions in both `dplyr` and `pandas` packages. These functions are very much important to perform exploratory data analysis in both `R` and `Python`. `group_by` (`groupby` in pandas) and `summarize ()`^[You can also use British spelling - `summarise ()`] (`agg ()` in pandas) are often used together; therefore, they are in the same group in @tbl-compareDplyrPandas. 
+
+```{r}
+#| include: false
+tidyverse_pandas = tibble::tribble(
+  ~`Verb Number`,~`tidyverse`, ~ `pandas`, 
+  '1','filter ()', 'query () or loc () or iloc ()',
+  '2','arrange ()', 'sort_values ()',
+  '3','select ()', 'filter () or loc ()',
+  '4','rename ()', 'rename ()',
+  '5','mutate ()', 'assign ()',
+  '6','group_by ()', 'groupby ()',
+  '6','summarize ()', 'agg ()'
+)
+
+```
+
+```{r}
+#| label: tbl-compareDplyrPandas
+#| tbl-cap: Tidyverse and Pandas Equivalent Functions 
+#| echo: false
+#| warning: false
+# These are R code to prepare Table 2 using KableExtra 
+library(kableExtra)
+kbl(tidyverse_pandas, booktabs = TRUE 
+    #,caption = "Tidyverse and Pandas Equivalent Functions"
+    ) %>% 
+  kable_styling(latex_options = c ('striped', 'hold_positions'))
+```
+
+### 1st Verb - filter () Function 
+
+     Filter functions are used to subset a data frame based on rows, meaning that retaining rows that satisfy given conditions. Filtering rows is also called slicing^[Indexing involves obtaining individual elements.] becasue we obtain a set of elements by filtering.  
+
+:::{.panel-tabset}
+
+## dplyr 
+
+```{r}
+df |> filter (YEAR == "2015")
+```
+
+```{r}
+df |> filter (COUNTRY %in% c("United States", "Canada"))
+```
+
+```{r}
+df |> filter (COUNTRY == "United States", YEAR == "2016")
+```
+
+```{r}
+df |> filter (COUNTRY == "United States", YEAR %in% c("2015","2016"))
+```
+
+```{r}
+df |> filter (COUNTRY %in% c("United States", "Canada"), YEAR == "2014")
+```
+
+
+## pandas 
+
+```{python}
+df_pd.query("YEAR == 2015")
+```
+
+```{python}
+df_pd.query('COUNTRY== "United States" | COUNTRY == "Canada"')
+```
+
+```{python}
+df_pd.query("COUNTRY in ['United States', 'Canada']")
+```
+
+```{python}
+df_pd.query("COUNTRY== 'United States' & YEAR== 2016")
+```
+
+```{python}
+df_pd.query("COUNTRY== 'United States' & YEAR in [2015,2016]")
+```
+
+```{python}
+df_pd[df_pd['COUNTRY'] == "United States"]
+```
+
+```{python}
+df_pd.loc[(df_pd['COUNTRY']=="United States")]
+```
+
+
+```{python}
+df_pd.loc[df_pd['COUNTRY'].isin(["United States", "Canada"])]
+```
+
+```{python}
+df_pd.loc[df_pd['COUNTRY']\
+ .isin(["United States", "Canada"]) &(df_pd['YEAR']==2014)]
+```
+
+```{python}
+df_pd.loc[(df_pd['COUNTRY']=="United States") &(df_pd ["YEAR"] ==2014)]
+```
+
+```{python}
+df_pd.loc[df_pd['COUNTRY'] == "United States", :]
+```
+
+```{python}
+df_pd.loc[
+    df_pd['COUNTRY']=='United States',
+    ['COUNTRY', "UNITPRICE", "SALEPRICE"]]
+```
+
+:::
+
+### 2nd Verb - arrange () Function 
+
+     In arrange functions, we order the rows of a data frame by the values of given columns. It is like sorting or odering the data. 
+
+:::{.panel-tabset}
+
+## dplyr 
+```{r}
+df |>
+    arrange(DATE)     
+```
+
+```{r}
+df |>
+    arrange(desc(DATE))     
+```
+
+
+```{r}
+df |>
+    arrange(MONTH, SALEPRICE)     
+```
+
+
+
+## pandas 
+```{python}
+df_pd.sort_values(by =['DATE'])   
+```
+
+```{python}
+df_pd.sort_values(by =['DATE'], ascending = False)   
+```
+
+```{python}
+df_pd.sort_values(by =['MONTH', 'SALEPRICE'])
+```
+
+
+:::
+
+
+### 3rd Verb - select () Function 
+     Select functions help to select or obtain columns from the data frame. When there are a lot of columns in our dataset, select functions become very useful. 
+
+:::{.panel-tabset}
+
+## dplyr 
+```{r}
+df |> select(DATE, UNITPRICE, DISCOUNT)   
+```
+
+
+```{r}
+df |> select(1:2, 5:8)  
+```
+
+```{r}
+df |>
+    select(starts_with('SIZE'))
+```
+
+```{r}
+df |>
+    select(ends_with('PRICE'))
+```
+
+
+```{r}
+df |>
+    select(contains("_"))
+```
+
+```{r}
+df |>
+    select(matches("SIZE"))
+```
+
+```{r}
+df |>
+    select(matches("PRICE$"))
+```
+
+```{r}
+# starts with letter S
+df |>
+    select(matches("^S"))
+```
+
+
+```{r}
+df |>
+    select(where(is.character))
+```
+
+```{r}
+df |>
+    select(where(is.numeric))
+```
+
+```{r}
+df |>
+    select(MONTH, YEAR, everything())
+```
+
+```{r}
+# any_of () vs all_of ()
+df |>
+    select(any_of(c("PRICE", "SIZE")))
+```
+
+
+```{r}
+# Dropping columns 
+df |>
+    select(-DATE)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## pandas 
+```{python}
+df_pd['DATE']   
+```
+
+```{python}
+df_pd[['DATE', 'UNITPRICE']]   
+```
+
+```{python}
+df_pd.loc[:,['DATE', 'UNITPRICE']]   
+```
+
+
+```{python}
+df_pd.iloc[:,5:8]
+```
+
+```{python}
+df_pd.iloc[:,[3,5,8]]
+```
+
+```{python}
+df_pd.filter(['YEAR','SALEPRICE', 'DISCOUNT', 'UNITPRICE'])
+```
+
+```{python}
+df_pd.filter(['YEAR','SALEPRICE', 'DISCOUNT', 'UNITPRICE'])
+```
+
+```{python}
+ #RegularExpression(Regex)
+df_pd.filter(regex ="PRICE$") #Ends with Price
+```
+
+```{python}
+df_pd.filter(regex ="ˆSIZE") #Starts with SIZE
+```
+
+
+```{python}
+df_pd.filter(regex ="PRICE") #Contains the word Price
+```
+
+```{python}
+df_pd.select_dtypes('object')
+```
+
+```{python}
+df_pd.select_dtypes('int')
+```
+
+```{python}
+df_pd.loc[:,df_pd.columns.str.startswith('SIZE')]
+```
+
+```{python}
+df_pd.loc[:,df_pd.columns.str.contains('PRICE')]
+```
+
+```{python}
+df_pd.loc[:,df_pd.columns.str.endswith('PRICE')]
+```
+
+
+```{python}
+# Dropping columns 
+df_pd.drop(columns =['SIZE_EUROPE', 'SIZE_UK'], axis=1)
+```
+
+```{python}
+# Dropping columns 
+df_pd.drop(columns =['SIZE_EUROPE', 'SIZE_UK'], axis=1)\
+    .pipe(lambda x: x.info())
+```
+
+```{python}
+# Rearranging columns 
+# Sorting Alphabetically
+df_pd.reindex(sorted(df_pd.columns), axis =1)
+```
+
+```{python}
+# Rearranging columns 
+# Sorting As You Want (ASY)
+
+col_first = ['YEAR','MONTH']
+col_rest = df_pd.columns.difference(col_first, sort=False).to_list()
+df_pd2 = df_pd [col_first +col_rest]
+df_pd2.info()
+```
+
+```{python}
+
+```
+
+```{python}
+
+```
+
+```{python}
+
+```
+
+```{python}
+
+```
+
+```{python}
+
+```
+
+:::
+
+
+### 4th Verb - rename () Function 
+
+:::{.panel-tabset}
+
+## dplyr 
+```{r}
+
+     
+```
+
+## pandas 
+```{python}
+df_pd 
+```
+
+:::
+
+### 5th Verb - mutate () Function 
+
+:::{.panel-tabset}
+
+## dplyr 
+```{r}
+
+     
+```
+
+## pandas 
+```{python}
+
+     
+```
+
+:::
+
+### 6th Verbs - group_by () and summarize () Functions 
+
+:::{.panel-tabset}
+
+## dplyr 
+```{r}
+
+     
+```
+
+## pandas 
+```{python}
+
+     
+```
+
+:::

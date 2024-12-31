@@ -576,18 +576,6 @@ df |>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 ## pandas 
 ```{python}
 df_pd['DATE']   
@@ -673,32 +661,12 @@ df_pd.reindex(sorted(df_pd.columns), axis =1)
 ```{python}
 # Rearranging columns 
 # Sorting As You Want (ASY)
-
 col_first = ['YEAR','MONTH']
 col_rest = df_pd.columns.difference(col_first, sort=False).to_list()
 df_pd2 = df_pd [col_first +col_rest]
 df_pd2.info()
 ```
 
-```{python}
-
-```
-
-```{python}
-
-```
-
-```{python}
-
-```
-
-```{python}
-
-```
-
-```{python}
-
-```
 
 :::
 
@@ -709,14 +677,20 @@ df_pd2.info()
 
 ## dplyr 
 ```{r}
-
+df |>
+    rename(INVOICE = INVOICENO,
+    PRODUCT = PRODUCTID) |>
+    glimpse()
      
 ```
 
 ## pandas 
 ```{python}
-df_pd 
+(df_pd.rename(columns = {"PRODUCTID": "PRODUCT", "INVOICENO": "INVOICE"})
+     .pipe(lambda x: x.info())
+)
 ```
+
 
 :::
 
@@ -726,32 +700,164 @@ df_pd
 
 ## dplyr 
 ```{r}
-
+df |>
+    mutate(NECOLUMN = 5,
+    SALESPRICE2 = UNITPRICE*(1-DISCOUNT)) |>
+    glimpse()
      
 ```
 
 ## pandas 
 ```{python}
-
-     
+df_pd['NEWCOLUMN'] = 5
+df_pd.info()     
 ```
+
+```{python}
+df_pd.drop(columns = ['NEWCOLUMN'], axis = 1, inplace = True)   
+df_pd.info() 
+```
+
+```{python}
+df_pd['SALEPRICE2']=df_pd['UNITPRICE']*(1-df_pd['DISCOUNT'])
+df_pd.info()
+```
+
+
+```{python}
+# Using the assign() function
+(df_pd[['PRODUCTID', 'UNITPRICE', 'DISCOUNT']]\
+    .assign(SALEPRICE3 =lambda x: x.UNITPRICE*(1-x.DISCOUNT)) \
+    .head(5)
+)
+```
+
 
 :::
 
 ### 6th Verbs - group_by () and summarize () Functions 
 
+     @fig-splitapplycombine presents Split Apply Combine principle in `group_by ()` and `summarize ()` functions. 
+
+![Split Apply Combine Principle](images/split-apply-combine.png){#fig-splitapplycombine}
+
+
 :::{.panel-tabset}
 
 ## dplyr 
 ```{r}
+df |>
+    group_by(COUNTRY) |>
+    summarize (AVGPRICE = mean(UNITPRICE, na.rm = TRUE))
+     
+```
+
+```{r}
+df |>
+    group_by(COUNTRY) |>
+    summarize (AVGPRICE = mean(UNITPRICE, na.rm = TRUE),
+    AVGSALEPRICE = mean (SALEPRICE, na.rm = TRUE))
+     
+```
+
+
+```{r}
+#| eval: false 
+# Summary Statistics 
+df %>%
+    select(UNITPRICE, SALEPRICE) %>%
+    summarize(across(where(is.numeric), 
+    .fns = 
+    list(N = sum,
+    Mean = mean, 
+    Std = sd,
+    P25 = ~quantile(.,0.25), 
+    P75 = ~quantile(., 0.75))) %>%
+    pivot_longer(everything(), names_sep='_', names_to=c('variable', '.value'))
+
+
 
      
 ```
+
+
 
 ## pandas 
 ```{python}
-
+df_pd.groupby(['COUNTRY'])['UNITPRICE'].mean()
      
 ```
 
+```{python}
+df_pd.groupby(['COUNTRY'])[['UNITPRICE', 'SALEPRICE']].mean()
+     
+```
+
+
+```{python}
+#| warning: false
+df_pd.groupby(['COUNTRY']) [['UNITPRICE', 'SALEPRICE']] \
+    .agg(np.mean) 
+```
+
+```{python}
+df_pd.groupby(['COUNTRY']) [['UNITPRICE', 'SALEPRICE']] \
+    .agg("mean") 
+```
+
+```{python}
+df_pd.groupby(['COUNTRY']) [['UNITPRICE', 'SALEPRICE']] \
+    .agg(AVG_UNITPRICE =("UNITPRICE","mean"),
+    AVG_LISTPRICE =("SALEPRICE","mean"))
+```
+
+```{python}
+df_pd.groupby(['COUNTRY']) [['UNITPRICE', 'SALEPRICE']] \
+    .agg(AVG_UNITPRICE =("UNITPRICE","mean"),
+    AVG_LISTPRICE =("SALEPRICE","mean"),
+    TOTALN=("SALEPRICE","size"), # size function for n
+    TOTALOBS=("SALEPRICE","count") # count function for n
+ )
+```
+
+```{python}
+# Defining a Function
+def percentile(n):
+    def percentile_(x):
+        return x.quantile(n)
+    percentile_.__name__ ='percentile_{:02.0f}'.format(n*100)
+    return percentile_
+
+# Some summary statistics 
+df_pd[['UNITPRICE', 'SALEPRICE']] \
+    .agg(['count', 'mean', 'std', 'median', percentile(0.25), percentile (0.75)]) \
+    .transpose() \
+    .reset_index() \
+    .rename(columns = {"index": "variables", "percentile_25": "P25", "percentile_75": "P75", 'count': "N"}) \
+    .round(3) 
+```
+
+```{python}
+#| eval: false
+# Summary Statistics 
+agg_dict = {
+    "N": "count",
+    'Mean':"mean",
+    "Std. Dev" : "std",
+    'P25': lambda x: x.quantile(0.25),
+    'Median': 'median',
+    'p75': lambda x: x.quantile(0.75)
+}
+
+df_pd[['UNITPRICE', 'SALEPRICE']].agg(agg_dict)
+```
+
+
 :::
+
+## Reshaping Data 
+
+## Merging Datasets 
+
+
+## Conclusions 

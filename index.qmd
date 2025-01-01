@@ -30,15 +30,17 @@ This book is a work in progress.
 # Preface {.unnumbered}
 
 
-This is a Quarto book.
 
-To learn more about Quarto books visit <https://quarto.org/docs/books>.
 
 ```{r}
-1 + 1
+#| include: false 
+#This is a Quarto book.
+#To learn more about Quarto books visit <https://quarto.org/docs/books>.
+
 ```
 
 ```{r}
+#| include: false 
 # To get more idea about how to develop a book in Quarto
 # Please see the following links -
 # https://bradcongelio.com/nfl-analytics-with-r-book/

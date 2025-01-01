@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Analytics for Accounting Data",
     "section": "",
-    "text": "Welcome\nWelcome to the book - Analytics for Accounting Data - which is slated to be published future. It will be available for purchase in both paperback and hardback, with pre-ordering available on both Amazon and online.\nThis is the online version of the book, which is free to use. The book is being developed. So it is recommended to use the book with caution. More chapters and materials wil be added to the book gradually.\nIf you want me to add some materials that are necessary for the students, please do not hesitate to ask. All kinds of comments, recommendations, suggestions, criticisms are welcome.\n\n\n\n\n\n\nWarning\n\n\n\nThis book is a work in progress.\n\n\n\n\nPreface\nThis is a Quarto book.\nTo learn more about Quarto books visit https://quarto.org/docs/books.\n\n1 + 1\n\n[1] 2\n\n\n\n# To get more idea about how to develop a book in Quarto\n# Please see the following links -\n# https://bradcongelio.com/nfl-analytics-with-r-book/\n# https://github.com/bcongelio/nfl-analytics-with-r-book\n# https://github.com/hadley/r4ds/\n# https://r4ds.hadley.nz/\n\n\n\nAbout the Book\nThe book is written for the students in undergraduate and graduate programs.\n\n\nAbout the Author\n\n\n\n\nSharif Islam, DBA, CPA, CMA is an Assistant professor in School of Accountancy in Southern Illinois University Carbondale (SIUC). He is a licensed CPA in Illinois and a Certified Management Accountant (CMA). He teaches Auditing, Accounting Information Systems, Machine Learning, and Analytics for Accounting Data. He did his doctorate from Louisiana Tech University in Computer Information Systems and Accounting. His mansucripts are selected for “Best Research Paper Award” in several conferences of American Accounting Association (AAA). His research also got 2024 “Notable Contribution to the Literature Award” by AIS section of AAA. He published research in Accounting Horizons, Journal of Accounting and Public Policy, Journal of Emerging Technologies in Accounting, Issues in Accounting Education, Advances in Accounting and Managerial Auditing Journal. His research interests lie at the intersection of Accounting and Data Science.\n\n\n\nHow to Read the Book\n\n\nAcknowledgment\n\nTo prepare the book, I took help from many sources on the internet and published materials. Many of them are cited in the book. I acknowledge the contribution of all of those resources that help me to prepare the book for the students.",
+    "text": "Welcome\nWelcome to the book - Analytics for Accounting Data - which is slated to be published future. It will be available for purchase in both paperback and hardback, with pre-ordering available on both Amazon and online.\nThis is the online version of the book, which is free to use. The book is being developed. So it is recommended to use the book with caution. More chapters and materials wil be added to the book gradually.\nIf you want me to add some materials that are necessary for the students, please do not hesitate to ask. All kinds of comments, recommendations, suggestions, criticisms are welcome.\n\n\n\n\n\n\nWarning\n\n\n\nThis book is a work in progress.\n\n\n\n\nPreface\n\n\nAbout the Book\nThe book is written for the students in undergraduate and graduate programs.\n\n\nAbout the Author\n\n\n\n\nSharif Islam, DBA, CPA, CMA is an Assistant professor in School of Accountancy in Southern Illinois University Carbondale (SIUC). He is a licensed CPA in Illinois and a Certified Management Accountant (CMA). He teaches Auditing, Accounting Information Systems, Machine Learning, and Analytics for Accounting Data. He did his doctorate from Louisiana Tech University in Computer Information Systems and Accounting. His mansucripts are selected for “Best Research Paper Award” in several conferences of American Accounting Association (AAA). His research also got 2024 “Notable Contribution to the Literature Award” by AIS section of AAA. He published research in Accounting Horizons, Journal of Accounting and Public Policy, Journal of Emerging Technologies in Accounting, Issues in Accounting Education, Advances in Accounting and Managerial Auditing Journal. His research interests lie at the intersection of Accounting and Data Science.\n\n\n\nHow to Read the Book\n\n\nAcknowledgment\n\nTo prepare the book, I took help from many sources on the internet and published materials. Many of them are cited in the book. I acknowledge the contribution of all of those resources that help me to prepare the book for the students.",
     "crumbs": [
       "Welcome"
     ]
@@ -100,100 +100,100 @@
   {
     "objectID": "fraud.html",
     "href": "fraud.html",
-    "title": "10  Fraud Detection and Risk Management",
+    "title": "12  Fraud Detection and Risk Management",
     "section": "",
-    "text": "10.1 Techniques for Fraud Detection",
+    "text": "12.1 Techniques for Fraud Detection",
     "crumbs": [
       "Advanced Techniques and Applications",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Fraud Detection and Risk Management</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Fraud Detection and Risk Management</span>"
     ]
   },
   {
     "objectID": "fraud.html#risk-assessment-models",
     "href": "fraud.html#risk-assessment-models",
-    "title": "10  Fraud Detection and Risk Management",
-    "section": "10.2 Risk Assessment Models",
-    "text": "10.2 Risk Assessment Models",
+    "title": "12  Fraud Detection and Risk Management",
+    "section": "12.2 Risk Assessment Models",
+    "text": "12.2 Risk Assessment Models",
     "crumbs": [
       "Advanced Techniques and Applications",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Fraud Detection and Risk Management</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Fraud Detection and Risk Management</span>"
     ]
   },
   {
     "objectID": "fraud.html#case-studies-in-fraud-detection",
     "href": "fraud.html#case-studies-in-fraud-detection",
-    "title": "10  Fraud Detection and Risk Management",
-    "section": "10.3 Case Studies in Fraud Detection",
-    "text": "10.3 Case Studies in Fraud Detection",
+    "title": "12  Fraud Detection and Risk Management",
+    "section": "12.3 Case Studies in Fraud Detection",
+    "text": "12.3 Case Studies in Fraud Detection",
     "crumbs": [
       "Advanced Techniques and Applications",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Fraud Detection and Risk Management</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Fraud Detection and Risk Management</span>"
     ]
   },
   {
     "objectID": "performance_measurement.html",
     "href": "performance_measurement.html",
-    "title": "11  Performance Measurement and Management",
+    "title": "13  Performance Measurement and Management",
     "section": "",
-    "text": "11.1 Key Performance Indicators (KPIs)",
+    "text": "13.1 Key Performance Indicators (KPIs)",
     "crumbs": [
       "Advanced Techniques and Applications",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Performance Measurement and Management</span>"
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Performance Measurement and Management</span>"
     ]
   },
   {
     "objectID": "performance_measurement.html#balanced-scorecard",
     "href": "performance_measurement.html#balanced-scorecard",
-    "title": "11  Performance Measurement and Management",
-    "section": "11.2 Balanced Scorecard",
-    "text": "11.2 Balanced Scorecard",
+    "title": "13  Performance Measurement and Management",
+    "section": "13.2 Balanced Scorecard",
+    "text": "13.2 Balanced Scorecard",
     "crumbs": [
       "Advanced Techniques and Applications",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Performance Measurement and Management</span>"
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Performance Measurement and Management</span>"
     ]
   },
   {
     "objectID": "performance_measurement.html#financial-ratio-analysis",
     "href": "performance_measurement.html#financial-ratio-analysis",
-    "title": "11  Performance Measurement and Management",
-    "section": "11.3 Financial Ratio Analysis",
-    "text": "11.3 Financial Ratio Analysis",
+    "title": "13  Performance Measurement and Management",
+    "section": "13.3 Financial Ratio Analysis",
+    "text": "13.3 Financial Ratio Analysis",
     "crumbs": [
       "Advanced Techniques and Applications",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Performance Measurement and Management</span>"
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Performance Measurement and Management</span>"
     ]
   },
   {
     "objectID": "ethics.html",
     "href": "ethics.html",
-    "title": "12  Regulatory and Ethical Considerations",
+    "title": "14  Regulatory and Ethical Considerations",
     "section": "",
-    "text": "12.1 Compliance and Regulatory Requirements",
+    "text": "14.1 Compliance and Regulatory Requirements",
     "crumbs": [
       "Practical Considerations and Future Directions",
-      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Regulatory and Ethical Considerations</span>"
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Regulatory and Ethical Considerations</span>"
     ]
   },
   {
     "objectID": "ethics.html#ethichal-use-of-data",
     "href": "ethics.html#ethichal-use-of-data",
-    "title": "12  Regulatory and Ethical Considerations",
-    "section": "12.2 Ethichal Use of Data",
-    "text": "12.2 Ethichal Use of Data",
+    "title": "14  Regulatory and Ethical Considerations",
+    "section": "14.2 Ethichal Use of Data",
+    "text": "14.2 Ethichal Use of Data",
     "crumbs": [
       "Practical Considerations and Future Directions",
-      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Regulatory and Ethical Considerations</span>"
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Regulatory and Ethical Considerations</span>"
     ]
   },
   {
     "objectID": "ethics.html#data-privacy-security",
     "href": "ethics.html#data-privacy-security",
-    "title": "12  Regulatory and Ethical Considerations",
-    "section": "12.3 Data Privacy & Security",
-    "text": "12.3 Data Privacy & Security",
+    "title": "14  Regulatory and Ethical Considerations",
+    "section": "14.3 Data Privacy & Security",
+    "text": "14.3 Data Privacy & Security",
     "crumbs": [
       "Practical Considerations and Future Directions",
-      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Regulatory and Ethical Considerations</span>"
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Regulatory and Ethical Considerations</span>"
     ]
   },
   {

@@ -70,6 +70,8 @@ format:
     theme: flatly
     mainfont: Georgia, serif 
     code-link: true
+    code-overflow: wrap 
+    fig-cap-location: bottom
     callout-appearance: default
     cover-image: images/titlepage_1_alt.webp
 

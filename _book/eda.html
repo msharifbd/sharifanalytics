@@ -54,7 +54,27 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -374,7 +394,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#th-verb---mutate-function" id="toc-th-verb---mutate-function" class="nav-link" data-scroll-target="#th-verb---mutate-function"><span class="header-section-number">3.9.5</span> 5th Verb - mutate () Function</a></li>
   <li><a href="#th-verbs---group_by-and-summarize-functions" id="toc-th-verbs---group_by-and-summarize-functions" class="nav-link" data-scroll-target="#th-verbs---group_by-and-summarize-functions"><span class="header-section-number">3.9.6</span> 6th Verbs - group_by () and summarize () Functions</a></li>
   </ul></li>
-  <li><a href="#reshaping-data" id="toc-reshaping-data" class="nav-link" data-scroll-target="#reshaping-data"><span class="header-section-number">3.10</span> Reshaping Data</a></li>
+  <li><a href="#reshaping-data" id="toc-reshaping-data" class="nav-link" data-scroll-target="#reshaping-data"><span class="header-section-number">3.10</span> Reshaping Data</a>
+  <ul class="collapse">
+  <li><a href="#long-to-wide-format" id="toc-long-to-wide-format" class="nav-link" data-scroll-target="#long-to-wide-format"><span class="header-section-number">3.10.1</span> Long-to-Wide Format</a></li>
+  <li><a href="#wide-to-long-format" id="toc-wide-to-long-format" class="nav-link" data-scroll-target="#wide-to-long-format"><span class="header-section-number">3.10.2</span> Wide-to-Long Format</a></li>
+  </ul></li>
   <li><a href="#merging-datasets" id="toc-merging-datasets" class="nav-link" data-scroll-target="#merging-datasets"><span class="header-section-number">3.11</span> Merging Datasets</a></li>
   <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions"><span class="header-section-number">3.12</span> Conclusions</a></li>
   </ul>
@@ -578,16 +602,16 @@ $ SalePrice       &lt;int&gt; 0</code></pre>
 <pre><code># A tibble: 10 × 14
    InvoiceNo Date     Country ProductID Shop  Gender `Size (US)` `Size (Europe)`
        &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;        &lt;dbl&gt; &lt;chr&gt;          
- 1     53944 9/1/2014 Germany      2231 GER3  Female         9   39-40          
- 2     53637 7/16/20… United…      2160 US8   Male          11   44             
- 3     55761 4/15/20… United…      2194 US14  Male           9.5 42-43          
- 4     63964 9/17/20… United…      2194 US13  Male           8.5 41-42          
- 5     59603 1/27/20… United…      2167 US15  Male           9   42             
- 6     55217 2/20/20… United…      2166 US1   Male          10.5 43-44          
- 7     63832 9/10/20… Germany      2226 GER1  Female         6.5 37             
- 8     62507 7/7/2016 United…      2172 UK3   Male           8.5 41-42          
- 9     53509 6/25/20… United…      2209 US6   Male          10   43             
-10     57454 8/27/20… Canada       2216 CAN2  Female         9   39-40          
+ 1     61389 5/12/20… United…      2225 US14  Male          10.5 43-44          
+ 2     62050 6/16/20… Germany      2203 GER2  Female         7.5 38             
+ 3     63654 9/2/2016 United…      2154 US3   Male          10.5 43-44          
+ 4     53236 5/13/20… United…      2189 UK4   Male           7.5 40-41          
+ 5     53851 8/18/20… Germany      2199 GER2  Male          10   43             
+ 6     58332 10/30/2… United…      2154 US9   Male          10.5 43-44          
+ 7     57842 9/26/20… United…      2191 US5   Male          12   45             
+ 8     60758 4/7/2016 United…      2218 US12  Female         7.5 38             
+ 9     55227 2/21/20… United…      2212 US15  Male           9   42             
+10     57309 8/16/20… Germany      2187 GER2  Male           8.5 41-42          
 # ℹ 6 more variables: `Size (UK)` &lt;dbl&gt;, UnitPrice &lt;dbl&gt;, Discount &lt;dbl&gt;,
 #   Year &lt;dbl&gt;, Month &lt;dbl&gt;, SalePrice &lt;dbl&gt;</code></pre>
 </div>
@@ -719,16 +743,16 @@ dtype: object</code></pre>
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>df_pd.sample(n<span class="op">=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       InvoiceNo        Date         Country  ...  Year Month SalePrice
-1319       53502   6/24/2014         Germany  ...  2014     6     129.0
-11727      62869   7/25/2016   United States  ...  2016     7     139.0
-5353       57126    8/2/2015  United Kingdom  ...  2015     8     134.1
-14460      65310  11/28/2016  United Kingdom  ...  2016    11     169.0
-11721      62863   7/25/2016  United Kingdom  ...  2016     7     104.3
-8487       59989   2/19/2016   United States  ...  2016     2     139.3
-1868       53981    9/6/2014          Canada  ...  2014     9     159.0
-349        52681   2/18/2014   United States  ...  2014     2      79.5
-12469      63524   8/26/2016   United States  ...  2016     8     151.2
-14185      65053   11/9/2016   United States  ...  2016    11     139.0
+696        52975    4/6/2014          Canada  ...  2014     4     151.2
+866        53113   4/26/2014          Canada  ...  2014     4     129.0
+14487      65335  11/30/2016          Canada  ...  2016    11      94.5
+14917      65729  12/28/2016   United States  ...  2016    12     159.2
+12191      63280   8/14/2016   United States  ...  2016     8     134.1
+8048       59595   1/26/2016   United States  ...  2016     1     134.1
+9695       61070   4/23/2016         Germany  ...  2016     4     179.1
+8429       59935   2/16/2016  United Kingdom  ...  2016     2     179.0
+12288      63366   8/18/2016         Germany  ...  2016     8     149.0
+3160       55110    2/9/2015   United States  ...  2015     2     199.0
 
 [10 rows x 14 columns]</code></pre>
 </div>
@@ -769,7 +793,7 @@ $ SALEPRICE   &lt;dbl&gt; 159.0, 159.2, 119.2, 159.0, 159.0, 159.0, 179.0, 169.0
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a> df <span class="ot">=</span> df <span class="sc">|&gt;</span></span>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> df <span class="sc">|&gt;</span></span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>     <span class="fu">rename_all</span>(toupper) <span class="sc">|&gt;</span></span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>     janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span></span>
 <span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>     <span class="fu">rename_all</span>(toupper)</span>
@@ -2523,20 +2547,29 @@ Figure&nbsp;3.1: Split Apply Combine Principle
 <div class="cell">
 <div class="sourceCode cell-code" id="cb203"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb203-1"><a href="#cb203-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Summary Statistics </span></span>
 <span id="cb203-2"><a href="#cb203-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
-<span id="cb203-3"><a href="#cb203-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(UNITPRICE, SALEPRICE) <span class="sc">%&gt;%</span></span>
-<span id="cb203-4"><a href="#cb203-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), </span>
-<span id="cb203-5"><a href="#cb203-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">.fns =</span> </span>
-<span id="cb203-6"><a href="#cb203-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">list</span>(<span class="at">N =</span> sum,</span>
-<span id="cb203-7"><a href="#cb203-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">Mean =</span> mean, </span>
-<span id="cb203-8"><a href="#cb203-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">Std =</span> sd,</span>
-<span id="cb203-9"><a href="#cb203-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">P25 =</span> <span class="sc">~</span><span class="fu">quantile</span>(.,<span class="fl">0.25</span>), </span>
-<span id="cb203-10"><a href="#cb203-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">P75 =</span> <span class="sc">~</span><span class="fu">quantile</span>(., <span class="fl">0.75</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb203-11"><a href="#cb203-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="fu">everything</span>(), <span class="at">names_sep=</span><span class="st">'_'</span>, <span class="at">names_to=</span><span class="fu">c</span>(<span class="st">'variable'</span>, <span class="st">'.value'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb203-3"><a href="#cb203-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(UNITPRICE, SALEPRICE) <span class="sc">%&gt;%</span></span>
+<span id="cb203-4"><a href="#cb203-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), </span>
+<span id="cb203-5"><a href="#cb203-5" aria-hidden="true" tabindex="-1"></a>                   <span class="at">.fns =</span> <span class="fu">list</span>(<span class="at">N =</span> <span class="sc">~</span><span class="fu">length</span>(.),</span>
+<span id="cb203-6"><a href="#cb203-6" aria-hidden="true" tabindex="-1"></a>                               <span class="at">Mean =</span> mean, </span>
+<span id="cb203-7"><a href="#cb203-7" aria-hidden="true" tabindex="-1"></a>                               <span class="at">Std =</span> sd,</span>
+<span id="cb203-8"><a href="#cb203-8" aria-hidden="true" tabindex="-1"></a>                               <span class="at">Median =</span> median, </span>
+<span id="cb203-9"><a href="#cb203-9" aria-hidden="true" tabindex="-1"></a>                               <span class="at">P25 =</span> <span class="sc">~</span><span class="fu">quantile</span>(.,<span class="fl">0.25</span>), </span>
+<span id="cb203-10"><a href="#cb203-10" aria-hidden="true" tabindex="-1"></a>                               <span class="at">P75 =</span> <span class="sc">~</span><span class="fu">quantile</span>(., <span class="fl">0.75</span>)</span>
+<span id="cb203-11"><a href="#cb203-11" aria-hidden="true" tabindex="-1"></a>                               )</span>
+<span id="cb203-12"><a href="#cb203-12" aria-hidden="true" tabindex="-1"></a>                   )) <span class="sc">%&gt;%</span></span>
+<span id="cb203-13"><a href="#cb203-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">everything</span>(), <span class="at">names_sep=</span><span class="st">'_'</span>, <span class="at">names_to=</span><span class="fu">c</span>(<span class="st">'variable'</span>, <span class="st">'.value'</span>))  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 7
+  variable      N  Mean   Std Median   P25   P75
+  &lt;chr&gt;     &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1 UNITPRICE 14967  164.  22.9    159  149    179
+2 SALEPRICE 14967  144.  35.2    149  125.   169</code></pre>
+</div>
 </div>
 </div>
 <div id="tabset-12-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-12-2-tab">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb204"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb204-1"><a href="#cb204-1" aria-hidden="true" tabindex="-1"></a>df_pd.groupby([<span class="st">'COUNTRY'</span>])[<span class="st">'UNITPRICE'</span>].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb205"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb205-1"><a href="#cb205-1" aria-hidden="true" tabindex="-1"></a>df_pd.groupby([<span class="st">'COUNTRY'</span>])[<span class="st">'UNITPRICE'</span>].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>COUNTRY
 Canada            164.691057
@@ -2547,7 +2580,7 @@ Name: UNITPRICE, dtype: float64</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb206"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb206-1"><a href="#cb206-1" aria-hidden="true" tabindex="-1"></a>df_pd.groupby([<span class="st">'COUNTRY'</span>])[[<span class="st">'UNITPRICE'</span>, <span class="st">'SALEPRICE'</span>]].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb207"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb207-1"><a href="#cb207-1" aria-hidden="true" tabindex="-1"></a>df_pd.groupby([<span class="st">'COUNTRY'</span>])[[<span class="st">'UNITPRICE'</span>, <span class="st">'SALEPRICE'</span>]].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                 UNITPRICE   SALEPRICE
 COUNTRY                               
@@ -2558,8 +2591,8 @@ United States   163.490316  143.727421</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb208"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb208-1"><a href="#cb208-1" aria-hidden="true" tabindex="-1"></a>df_pd.groupby([<span class="st">'COUNTRY'</span>]) [[<span class="st">'UNITPRICE'</span>, <span class="st">'SALEPRICE'</span>]] <span class="op">\</span></span>
-<span id="cb208-2"><a href="#cb208-2" aria-hidden="true" tabindex="-1"></a>    .agg(np.mean) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb209"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb209-1"><a href="#cb209-1" aria-hidden="true" tabindex="-1"></a>df_pd.groupby([<span class="st">'COUNTRY'</span>]) [[<span class="st">'UNITPRICE'</span>, <span class="st">'SALEPRICE'</span>]] <span class="op">\</span></span>
+<span id="cb209-2"><a href="#cb209-2" aria-hidden="true" tabindex="-1"></a>    .agg(np.mean) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                 UNITPRICE   SALEPRICE
 COUNTRY                               
@@ -2570,8 +2603,8 @@ United States   163.490316  143.727421</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb210"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb210-1"><a href="#cb210-1" aria-hidden="true" tabindex="-1"></a>df_pd.groupby([<span class="st">'COUNTRY'</span>]) [[<span class="st">'UNITPRICE'</span>, <span class="st">'SALEPRICE'</span>]] <span class="op">\</span></span>
-<span id="cb210-2"><a href="#cb210-2" aria-hidden="true" tabindex="-1"></a>    .agg(<span class="st">"mean"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb211"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb211-1"><a href="#cb211-1" aria-hidden="true" tabindex="-1"></a>df_pd.groupby([<span class="st">'COUNTRY'</span>]) [[<span class="st">'UNITPRICE'</span>, <span class="st">'SALEPRICE'</span>]] <span class="op">\</span></span>
+<span id="cb211-2"><a href="#cb211-2" aria-hidden="true" tabindex="-1"></a>    .agg(<span class="st">"mean"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                 UNITPRICE   SALEPRICE
 COUNTRY                               
@@ -2582,9 +2615,9 @@ United States   163.490316  143.727421</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb212"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb212-1"><a href="#cb212-1" aria-hidden="true" tabindex="-1"></a>df_pd.groupby([<span class="st">'COUNTRY'</span>]) [[<span class="st">'UNITPRICE'</span>, <span class="st">'SALEPRICE'</span>]] <span class="op">\</span></span>
-<span id="cb212-2"><a href="#cb212-2" aria-hidden="true" tabindex="-1"></a>    .agg(AVG_UNITPRICE <span class="op">=</span>(<span class="st">"UNITPRICE"</span>,<span class="st">"mean"</span>),</span>
-<span id="cb212-3"><a href="#cb212-3" aria-hidden="true" tabindex="-1"></a>    AVG_LISTPRICE <span class="op">=</span>(<span class="st">"SALEPRICE"</span>,<span class="st">"mean"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb213"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb213-1"><a href="#cb213-1" aria-hidden="true" tabindex="-1"></a>df_pd.groupby([<span class="st">'COUNTRY'</span>]) [[<span class="st">'UNITPRICE'</span>, <span class="st">'SALEPRICE'</span>]] <span class="op">\</span></span>
+<span id="cb213-2"><a href="#cb213-2" aria-hidden="true" tabindex="-1"></a>    .agg(AVG_UNITPRICE <span class="op">=</span>(<span class="st">"UNITPRICE"</span>,<span class="st">"mean"</span>),</span>
+<span id="cb213-3"><a href="#cb213-3" aria-hidden="true" tabindex="-1"></a>    AVG_LISTPRICE <span class="op">=</span>(<span class="st">"SALEPRICE"</span>,<span class="st">"mean"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                AVG_UNITPRICE  AVG_LISTPRICE
 COUNTRY                                     
@@ -2595,12 +2628,12 @@ United States      163.490316     143.727421</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb214"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb214-1"><a href="#cb214-1" aria-hidden="true" tabindex="-1"></a>df_pd.groupby([<span class="st">'COUNTRY'</span>]) [[<span class="st">'UNITPRICE'</span>, <span class="st">'SALEPRICE'</span>]] <span class="op">\</span></span>
-<span id="cb214-2"><a href="#cb214-2" aria-hidden="true" tabindex="-1"></a>    .agg(AVG_UNITPRICE <span class="op">=</span>(<span class="st">"UNITPRICE"</span>,<span class="st">"mean"</span>),</span>
-<span id="cb214-3"><a href="#cb214-3" aria-hidden="true" tabindex="-1"></a>    AVG_LISTPRICE <span class="op">=</span>(<span class="st">"SALEPRICE"</span>,<span class="st">"mean"</span>),</span>
-<span id="cb214-4"><a href="#cb214-4" aria-hidden="true" tabindex="-1"></a>    TOTALN<span class="op">=</span>(<span class="st">"SALEPRICE"</span>,<span class="st">"size"</span>), <span class="co"># size function for n</span></span>
-<span id="cb214-5"><a href="#cb214-5" aria-hidden="true" tabindex="-1"></a>    TOTALOBS<span class="op">=</span>(<span class="st">"SALEPRICE"</span>,<span class="st">"count"</span>) <span class="co"># count function for n</span></span>
-<span id="cb214-6"><a href="#cb214-6" aria-hidden="true" tabindex="-1"></a> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb215"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb215-1"><a href="#cb215-1" aria-hidden="true" tabindex="-1"></a>df_pd.groupby([<span class="st">'COUNTRY'</span>]) [[<span class="st">'UNITPRICE'</span>, <span class="st">'SALEPRICE'</span>]] <span class="op">\</span></span>
+<span id="cb215-2"><a href="#cb215-2" aria-hidden="true" tabindex="-1"></a>    .agg(AVG_UNITPRICE <span class="op">=</span>(<span class="st">"UNITPRICE"</span>,<span class="st">"mean"</span>),</span>
+<span id="cb215-3"><a href="#cb215-3" aria-hidden="true" tabindex="-1"></a>    AVG_LISTPRICE <span class="op">=</span>(<span class="st">"SALEPRICE"</span>,<span class="st">"mean"</span>),</span>
+<span id="cb215-4"><a href="#cb215-4" aria-hidden="true" tabindex="-1"></a>    TOTALN<span class="op">=</span>(<span class="st">"SALEPRICE"</span>,<span class="st">"size"</span>), <span class="co"># size function for n</span></span>
+<span id="cb215-5"><a href="#cb215-5" aria-hidden="true" tabindex="-1"></a>    TOTALOBS<span class="op">=</span>(<span class="st">"SALEPRICE"</span>,<span class="st">"count"</span>) <span class="co"># count function for n</span></span>
+<span id="cb215-6"><a href="#cb215-6" aria-hidden="true" tabindex="-1"></a> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                AVG_UNITPRICE  AVG_LISTPRICE  TOTALN  TOTALOBS
 COUNTRY                                                       
@@ -2611,20 +2644,20 @@ United States      163.490316     143.727421    5886      5886</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb216"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb216-1"><a href="#cb216-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Defining a Function</span></span>
-<span id="cb216-2"><a href="#cb216-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> percentile(n):</span>
-<span id="cb216-3"><a href="#cb216-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> percentile_(x):</span>
-<span id="cb216-4"><a href="#cb216-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> x.quantile(n)</span>
-<span id="cb216-5"><a href="#cb216-5" aria-hidden="true" tabindex="-1"></a>    percentile_.<span class="va">__name__</span> <span class="op">=</span><span class="st">'percentile_</span><span class="sc">{:02.0f}</span><span class="st">'</span>.<span class="bu">format</span>(n<span class="op">*</span><span class="dv">100</span>)</span>
-<span id="cb216-6"><a href="#cb216-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> percentile_</span>
-<span id="cb216-7"><a href="#cb216-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb216-8"><a href="#cb216-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Some summary statistics </span></span>
-<span id="cb216-9"><a href="#cb216-9" aria-hidden="true" tabindex="-1"></a>df_pd[[<span class="st">'UNITPRICE'</span>, <span class="st">'SALEPRICE'</span>]] <span class="op">\</span></span>
-<span id="cb216-10"><a href="#cb216-10" aria-hidden="true" tabindex="-1"></a>    .agg([<span class="st">'count'</span>, <span class="st">'mean'</span>, <span class="st">'std'</span>, <span class="st">'median'</span>, percentile(<span class="fl">0.25</span>), percentile (<span class="fl">0.75</span>)]) <span class="op">\</span></span>
-<span id="cb216-11"><a href="#cb216-11" aria-hidden="true" tabindex="-1"></a>    .transpose() <span class="op">\</span></span>
-<span id="cb216-12"><a href="#cb216-12" aria-hidden="true" tabindex="-1"></a>    .reset_index() <span class="op">\</span></span>
-<span id="cb216-13"><a href="#cb216-13" aria-hidden="true" tabindex="-1"></a>    .rename(columns <span class="op">=</span> {<span class="st">"index"</span>: <span class="st">"variables"</span>, <span class="st">"percentile_25"</span>: <span class="st">"P25"</span>, <span class="st">"percentile_75"</span>: <span class="st">"P75"</span>, <span class="st">'count'</span>: <span class="st">"N"</span>}) <span class="op">\</span></span>
-<span id="cb216-14"><a href="#cb216-14" aria-hidden="true" tabindex="-1"></a>    .<span class="bu">round</span>(<span class="dv">3</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb217"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb217-1"><a href="#cb217-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Defining a Function</span></span>
+<span id="cb217-2"><a href="#cb217-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> percentile(n):</span>
+<span id="cb217-3"><a href="#cb217-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> percentile_(x):</span>
+<span id="cb217-4"><a href="#cb217-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> x.quantile(n)</span>
+<span id="cb217-5"><a href="#cb217-5" aria-hidden="true" tabindex="-1"></a>    percentile_.<span class="va">__name__</span> <span class="op">=</span><span class="st">'percentile_</span><span class="sc">{:02.0f}</span><span class="st">'</span>.<span class="bu">format</span>(n<span class="op">*</span><span class="dv">100</span>)</span>
+<span id="cb217-6"><a href="#cb217-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> percentile_</span>
+<span id="cb217-7"><a href="#cb217-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb217-8"><a href="#cb217-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Some summary statistics </span></span>
+<span id="cb217-9"><a href="#cb217-9" aria-hidden="true" tabindex="-1"></a>df_pd[[<span class="st">'UNITPRICE'</span>, <span class="st">'SALEPRICE'</span>]] <span class="op">\</span></span>
+<span id="cb217-10"><a href="#cb217-10" aria-hidden="true" tabindex="-1"></a>    .agg([<span class="st">'count'</span>, <span class="st">'mean'</span>, <span class="st">'std'</span>, <span class="st">'median'</span>, percentile(<span class="fl">0.25</span>), percentile (<span class="fl">0.75</span>)]) <span class="op">\</span></span>
+<span id="cb217-11"><a href="#cb217-11" aria-hidden="true" tabindex="-1"></a>    .transpose() <span class="op">\</span></span>
+<span id="cb217-12"><a href="#cb217-12" aria-hidden="true" tabindex="-1"></a>    .reset_index() <span class="op">\</span></span>
+<span id="cb217-13"><a href="#cb217-13" aria-hidden="true" tabindex="-1"></a>    .rename(columns <span class="op">=</span> {<span class="st">"index"</span>: <span class="st">"variables"</span>, <span class="st">"percentile_25"</span>: <span class="st">"P25"</span>, <span class="st">"percentile_75"</span>: <span class="st">"P75"</span>, <span class="st">'count'</span>: <span class="st">"N"</span>}) <span class="op">\</span></span>
+<span id="cb217-14"><a href="#cb217-14" aria-hidden="true" tabindex="-1"></a>    .<span class="bu">round</span>(<span class="dv">3</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   variables        N     mean     std  median    P25    P75
 0  UNITPRICE  14967.0  164.171  22.941   159.0  149.0  179.0
@@ -2632,17 +2665,17 @@ United States      163.490316     143.727421    5886      5886</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb218"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb218-1"><a href="#cb218-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Summary Statistics </span></span>
-<span id="cb218-2"><a href="#cb218-2" aria-hidden="true" tabindex="-1"></a>agg_dict <span class="op">=</span> {</span>
-<span id="cb218-3"><a href="#cb218-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"N"</span>: <span class="st">"count"</span>,</span>
-<span id="cb218-4"><a href="#cb218-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Mean'</span>:<span class="st">"mean"</span>,</span>
-<span id="cb218-5"><a href="#cb218-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Std. Dev"</span> : <span class="st">"std"</span>,</span>
-<span id="cb218-6"><a href="#cb218-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'P25'</span>: <span class="kw">lambda</span> x: x.quantile(<span class="fl">0.25</span>),</span>
-<span id="cb218-7"><a href="#cb218-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Median'</span>: <span class="st">'median'</span>,</span>
-<span id="cb218-8"><a href="#cb218-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'p75'</span>: <span class="kw">lambda</span> x: x.quantile(<span class="fl">0.75</span>)</span>
-<span id="cb218-9"><a href="#cb218-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb218-10"><a href="#cb218-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb218-11"><a href="#cb218-11" aria-hidden="true" tabindex="-1"></a>df_pd[[<span class="st">'UNITPRICE'</span>, <span class="st">'SALEPRICE'</span>]].agg(agg_dict)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb219"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb219-1"><a href="#cb219-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Summary Statistics </span></span>
+<span id="cb219-2"><a href="#cb219-2" aria-hidden="true" tabindex="-1"></a>agg_dict <span class="op">=</span> {</span>
+<span id="cb219-3"><a href="#cb219-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"N"</span>: <span class="st">"count"</span>,</span>
+<span id="cb219-4"><a href="#cb219-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Mean'</span>:<span class="st">"mean"</span>,</span>
+<span id="cb219-5"><a href="#cb219-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Std. Dev"</span> : <span class="st">"std"</span>,</span>
+<span id="cb219-6"><a href="#cb219-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'P25'</span>: <span class="kw">lambda</span> x: x.quantile(<span class="fl">0.25</span>),</span>
+<span id="cb219-7"><a href="#cb219-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Median'</span>: <span class="st">'median'</span>,</span>
+<span id="cb219-8"><a href="#cb219-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'p75'</span>: <span class="kw">lambda</span> x: x.quantile(<span class="fl">0.75</span>)</span>
+<span id="cb219-9"><a href="#cb219-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb219-10"><a href="#cb219-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb219-11"><a href="#cb219-11" aria-hidden="true" tabindex="-1"></a>df_pd[[<span class="st">'UNITPRICE'</span>, <span class="st">'SALEPRICE'</span>]].agg(agg_dict)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -2651,20 +2684,583 @@ United States      163.490316     143.727421    5886      5886</code></pre>
 </section>
 <section id="reshaping-data" class="level2" data-number="3.10">
 <h2 data-number="3.10" class="anchored" data-anchor-id="reshaping-data"><span class="header-section-number">3.10</span> Reshaping Data</h2>
+<div style="text-align: justify">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Before we discuss about reshaping of the data, we need to discuss about tidy format of the data. Data can come in many shapes, but not all shapes are useful for data analysis. In most cases, tidy format of the data is most useful for analysis. Therefore, if the data is untidy, we need to make it tidy first. There are three interrelated rules which make a dataset tidy <span class="citation" data-cites="wickham2023r">(<a href="references.html#ref-wickham2023r" role="doc-biblioref">Wickham, Çetinkaya-Rundel, and Grolemund 2023</a>)</span>. These rules are given below. <a href="#fig-tidyprinciple" class="quarto-xref">Figure&nbsp;<span>3.2</span></a> visually represents tidy principle.</p>
+<ol type="1">
+<li><p>Each variable must have its own column</p></li>
+<li><p>Each observation must have its own row</p></li>
+<li><p>Each value must have its own cell</p></li>
+</ol>
+<div id="fig-tidyprinciple" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-tidyprinciple-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/tidy-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tidyprinciple-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.2: Tidy Principle
+</figcaption>
+</figure>
+</div>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For analysis, many times we need to change the format of our dataset and we call it reshaping. Data come primarily in two shapes -<em>wide</em> and <em>long</em>. Sometimes <em>wide</em> format is called “record” format and <em>long</em> format is called “stacked” format. In <code>wide</code> format data, there is one row for each subject (units of observation). Data is <code>long</code> when there are multiple rows for each subject (units of observations).</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This reshaping can be two types - a) long to wide and 2) wide to long. Long-to-wide means reshaping a long data, which has many rows, into wide format, which has many variables. In wide-to-long format, we do otherwise. For analytical purpose, reshaping data is useful; so, we need to know how to do the reshaping.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Whether a given dataset (e.g., <a href="#tbl-formatofdata" class="quarto-xref">Table&nbsp;<span>3.2</span></a>) is in wide or long format depends on our research questions (on what variables we are interested in and how we conceive of our data). If we are interested in variable <code>Temp</code> and <code>Month</code> variable is the unit of obsevation, then the dataset in <a href="#tbl-formatofdata" class="quarto-xref">Table&nbsp;<span>3.2</span></a> is in <code>long</code> format because <code>Month</code> is repeated in mutiple rows.</p>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb220"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb220-1"><a href="#cb220-1" aria-hidden="true" tabindex="-1"></a>airquality <span class="ot">=</span> airquality</span>
+<span id="cb220-2"><a href="#cb220-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb220-3"><a href="#cb220-3" aria-hidden="true" tabindex="-1"></a>examp <span class="ot">=</span> airquality <span class="sc">|&gt;</span></span>
+<span id="cb220-4"><a href="#cb220-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div id="tbl-formatofdata" class="cell quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-formatofdata-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3.2: Which Format - Long or Wide
+</figcaption>
+<div aria-describedby="tbl-formatofdata-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<div>
+<table class="table do-not-create-environment cell table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: right;" data-quarto-table-cell-role="th">Ozone</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Solar.R</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Wind</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Temp</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Month</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Day</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">41</td>
+<td style="text-align: right;">190</td>
+<td style="text-align: right;">7.4</td>
+<td style="text-align: right;">67</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">36</td>
+<td style="text-align: right;">118</td>
+<td style="text-align: right;">8.0</td>
+<td style="text-align: right;">72</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">149</td>
+<td style="text-align: right;">12.6</td>
+<td style="text-align: right;">74</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">313</td>
+<td style="text-align: right;">11.5</td>
+<td style="text-align: right;">62</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">14.3</td>
+<td style="text-align: right;">56</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">14.9</td>
+<td style="text-align: right;">66</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">23</td>
+<td style="text-align: right;">299</td>
+<td style="text-align: right;">8.6</td>
+<td style="text-align: right;">65</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">99</td>
+<td style="text-align: right;">13.8</td>
+<td style="text-align: right;">59</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">20.1</td>
+<td style="text-align: right;">61</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">9</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">194</td>
+<td style="text-align: right;">8.6</td>
+<td style="text-align: right;">69</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">10</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<section id="long-to-wide-format" class="level3" data-number="3.10.1">
+<h3 data-number="3.10.1" class="anchored" data-anchor-id="long-to-wide-format"><span class="header-section-number">3.10.1</span> Long-to-Wide Format</h3>
+<div style="text-align: justify">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To make a long dataset to wide, we can use <code>pivot_wider()</code> function from <code>tidyr</code> package in R and <code>pivot()</code> function from <code>pandas</code> in python.</p>
+</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-13-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-13-1" role="tab" aria-controls="tabset-13-1" aria-selected="true">tidyr</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-13-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-13-2" role="tab" aria-controls="tabset-13-2" aria-selected="false">pandas</a></li></ul>
+<div class="tab-content">
+<div id="tabset-13-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-13-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb221"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb221-1"><a href="#cb221-1" aria-hidden="true" tabindex="-1"></a>tidyr<span class="sc">::</span>us_rent_income</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 104 × 5
+   GEOID NAME       variable estimate   moe
+   &lt;chr&gt; &lt;chr&gt;      &lt;chr&gt;       &lt;dbl&gt; &lt;dbl&gt;
+ 1 01    Alabama    income      24476   136
+ 2 01    Alabama    rent          747     3
+ 3 02    Alaska     income      32940   508
+ 4 02    Alaska     rent         1200    13
+ 5 04    Arizona    income      27517   148
+ 6 04    Arizona    rent          972     4
+ 7 05    Arkansas   income      23789   165
+ 8 05    Arkansas   rent          709     5
+ 9 06    California income      29454   109
+10 06    California rent         1358     3
+# ℹ 94 more rows</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb223"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb223-1"><a href="#cb223-1" aria-hidden="true" tabindex="-1"></a>tidyr<span class="sc">::</span>us_rent_income <span class="sc">|&gt;</span></span>
+<span id="cb223-2"><a href="#cb223-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_wider</span>(</span>
+<span id="cb223-3"><a href="#cb223-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">names_from =</span> variable, </span>
+<span id="cb223-4"><a href="#cb223-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">values_from =</span> <span class="fu">c</span>(estimate, moe)</span>
+<span id="cb223-5"><a href="#cb223-5" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 52 × 6
+   GEOID NAME                 estimate_income estimate_rent moe_income moe_rent
+   &lt;chr&gt; &lt;chr&gt;                          &lt;dbl&gt;         &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;
+ 1 01    Alabama                        24476           747        136        3
+ 2 02    Alaska                         32940          1200        508       13
+ 3 04    Arizona                        27517           972        148        4
+ 4 05    Arkansas                       23789           709        165        5
+ 5 06    California                     29454          1358        109        3
+ 6 08    Colorado                       32401          1125        109        5
+ 7 09    Connecticut                    35326          1123        195        5
+ 8 10    Delaware                       31560          1076        247       10
+ 9 11    District of Columbia           43198          1424        681       17
+10 12    Florida                        25952          1077         70        3
+# ℹ 42 more rows</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-13-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-13-2-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb225"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb225-1"><a href="#cb225-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install palmerpenguins package</span></span>
+<span id="cb225-2"><a href="#cb225-2" aria-hidden="true" tabindex="-1"></a><span class="co"># pip install palmerpenguins</span></span>
+<span id="cb225-3"><a href="#cb225-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> palmerpenguins</span>
+<span id="cb225-4"><a href="#cb225-4" aria-hidden="true" tabindex="-1"></a>penguins <span class="op">=</span> palmerpenguins.load_penguins()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb226"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb226-1"><a href="#cb226-1" aria-hidden="true" tabindex="-1"></a>penguins[[<span class="st">"island"</span>, <span class="st">"bill_length_mm"</span>]] <span class="op">\</span></span>
+<span id="cb226-2"><a href="#cb226-2" aria-hidden="true" tabindex="-1"></a>    .pivot(columns <span class="op">=</span> <span class="st">"island"</span>, values <span class="op">=</span> <span class="st">"bill_length_mm"</span>) <span class="op">\</span></span>
+<span id="cb226-3"><a href="#cb226-3" aria-hidden="true" tabindex="-1"></a>    .fillna(<span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>island  Biscoe  Dream  Torgersen
+0          0.0    0.0       39.1
+1          0.0    0.0       39.5
+2          0.0    0.0       40.3
+3          0.0    0.0        0.0
+4          0.0    0.0       36.7
+..         ...    ...        ...
+339        0.0   55.8        0.0
+340        0.0   43.5        0.0
+341        0.0   49.6        0.0
+342        0.0   50.8        0.0
+343        0.0   50.2        0.0
+
+[344 rows x 3 columns]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="wide-to-long-format" class="level3" data-number="3.10.2">
+<h3 data-number="3.10.2" class="anchored" data-anchor-id="wide-to-long-format"><span class="header-section-number">3.10.2</span> Wide-to-Long Format</h3>
+<div style="text-align: justify">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To make a wide dataset to long, we can use <code>pivot_longer()</code> function from <code>tidyr</code> package in R and <code>melt()</code> function from <code>pandas</code> in python.</p>
+</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-14-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-14-1" role="tab" aria-controls="tabset-14-1" aria-selected="true">tidyr</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-14-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-14-2" role="tab" aria-controls="tabset-14-2" aria-selected="false">pandas</a></li></ul>
+<div class="tab-content">
+<div id="tabset-14-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-14-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb228"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb228-1"><a href="#cb228-1" aria-hidden="true" tabindex="-1"></a>relig_income</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 18 × 11
+   religion `&lt;$10k` `$10-20k` `$20-30k` `$30-40k` `$40-50k` `$50-75k` `$75-100k`
+   &lt;chr&gt;      &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;
+ 1 Agnostic      27        34        60        81        76       137        122
+ 2 Atheist       12        27        37        52        35        70         73
+ 3 Buddhist      27        21        30        34        33        58         62
+ 4 Catholic     418       617       732       670       638      1116        949
+ 5 Don’t k…      15        14        15        11        10        35         21
+ 6 Evangel…     575       869      1064       982       881      1486        949
+ 7 Hindu          1         9         7         9        11        34         47
+ 8 Histori…     228       244       236       238       197       223        131
+ 9 Jehovah…      20        27        24        24        21        30         15
+10 Jewish        19        19        25        25        30        95         69
+11 Mainlin…     289       495       619       655       651      1107        939
+12 Mormon        29        40        48        51        56       112         85
+13 Muslim         6         7         9        10         9        23         16
+14 Orthodox      13        17        23        32        32        47         38
+15 Other C…       9         7        11        13        13        14         18
+16 Other F…      20        33        40        46        49        63         46
+17 Other W…       5         2         3         4         2         7          3
+18 Unaffil…     217       299       374       365       341       528        407
+# ℹ 3 more variables: `$100-150k` &lt;dbl&gt;, `&gt;150k` &lt;dbl&gt;,
+#   `Don't know/refused` &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb230"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb230-1"><a href="#cb230-1" aria-hidden="true" tabindex="-1"></a>relig_income <span class="sc">|&gt;</span></span>
+<span id="cb230-2"><a href="#cb230-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(</span>
+<span id="cb230-3"><a href="#cb230-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">cols =</span> <span class="sc">!</span><span class="fu">c</span>(religion),</span>
+<span id="cb230-4"><a href="#cb230-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">names_to =</span> <span class="st">"income"</span>,</span>
+<span id="cb230-5"><a href="#cb230-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">values_to =</span> <span class="st">"count"</span></span>
+<span id="cb230-6"><a href="#cb230-6" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 180 × 3
+   religion income             count
+   &lt;chr&gt;    &lt;chr&gt;              &lt;dbl&gt;
+ 1 Agnostic &lt;$10k                 27
+ 2 Agnostic $10-20k               34
+ 3 Agnostic $20-30k               60
+ 4 Agnostic $30-40k               81
+ 5 Agnostic $40-50k               76
+ 6 Agnostic $50-75k              137
+ 7 Agnostic $75-100k             122
+ 8 Agnostic $100-150k            109
+ 9 Agnostic &gt;150k                 84
+10 Agnostic Don't know/refused    96
+# ℹ 170 more rows</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-14-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-14-2-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb232"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb232-1"><a href="#cb232-1" aria-hidden="true" tabindex="-1"></a>penguins.melt(value_vars<span class="op">=</span>[<span class="st">"bill_length_mm"</span>, <span class="st">"bill_depth_mm"</span>,<span class="st">"flipper_length_mm"</span>, <span class="st">"body_mass_g"</span>],</span>
+<span id="cb232-2"><a href="#cb232-2" aria-hidden="true" tabindex="-1"></a>              id_vars <span class="op">=</span> [<span class="st">'species'</span>, <span class="st">'island'</span>, <span class="st">'sex'</span>, <span class="st">'year'</span>]</span>
+<span id="cb232-3"><a href="#cb232-3" aria-hidden="true" tabindex="-1"></a>              )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        species     island     sex  year        variable   value
+0        Adelie  Torgersen    male  2007  bill_length_mm    39.1
+1        Adelie  Torgersen  female  2007  bill_length_mm    39.5
+2        Adelie  Torgersen  female  2007  bill_length_mm    40.3
+3        Adelie  Torgersen     NaN  2007  bill_length_mm     NaN
+4        Adelie  Torgersen  female  2007  bill_length_mm    36.7
+...         ...        ...     ...   ...             ...     ...
+1371  Chinstrap      Dream    male  2009     body_mass_g  4000.0
+1372  Chinstrap      Dream  female  2009     body_mass_g  3400.0
+1373  Chinstrap      Dream    male  2009     body_mass_g  3775.0
+1374  Chinstrap      Dream    male  2009     body_mass_g  4100.0
+1375  Chinstrap      Dream  female  2009     body_mass_g  3775.0
+
+[1376 rows x 6 columns]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
 </section>
 <section id="merging-datasets" class="level2" data-number="3.11">
 <h2 data-number="3.11" class="anchored" data-anchor-id="merging-datasets"><span class="header-section-number">3.11</span> Merging Datasets</h2>
+<div style="text-align: justify">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Many times, for analysis purposes, we need to join two datasets. This process is also called merging<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. There are different types of joining. So, it is important to learn about those joining techniques. In <a href="#fig-joindatasets" class="quarto-xref">Figure&nbsp;<span>3.3</span></a> shows the joining technique and functions using <code>dplyr</code> in R. Below all of these joining functions are explained.</p>
+<ul>
+<li><p><code>left_join()</code>: The merged dataset contains <strong>all</strong> observations fromthe <strong>first</strong> (or left) dataset and only <strong>matched</strong> observations from the <strong>second</strong> (or right) dataset</p></li>
+<li><p><code>right_join()</code>: The merged dataset contains only <strong>matched</strong> observations from the <strong>first</strong> (or left) dataset and <strong>all</strong> observations from the <strong>second</strong> (or right) dataset</p></li>
+<li><p><code>inner_join()</code>: The merged dataset contains <em>only</em> <strong>matched</strong> observations from both datasets</p></li>
+<li><p><code>semi_join()</code>: The merged dataset contains <strong>matched</strong> observations from the <strong>first</strong> (or left) dataset. Please note that <code>semi_join()</code> differs from <code>inner_join()</code> in that <code>inner_join()</code> will return one row of first dataset (x) for each matching row of second dataset (y), whereas <code>semi_join()</code> will never duplicate rows of x.</p></li>
+<li><p><code>full_join()</code>: The merged dataset contains <strong>all</strong> observations from both datasets</p></li>
+<li><p><code>anti_join()</code>: The merged dataset contains only <strong>not matched</strong> observations from the <strong>first</strong> (or left) dataset and contains only the variable from the <strong>left</strong> dataset</p></li>
+</ul>
+<div id="fig-joindatasets" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-joindatasets-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/join_diagram.png" class="img-fluid figure-img" style="width:40.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-joindatasets-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.3: Joining Datasets
+</figcaption>
+</figure>
+</div>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#tbl-joinRPython" class="quarto-xref">Table&nbsp;<span>3.3</span></a> compares the <code>dplyr</code> joining functions with equivalent joining functions from <code>pandas</code>.</p>
+<div class="cell">
+<div id="tbl-joinRPython" class="cell quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-joinRPython-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3.3: Joining Functions - dplyr vs pandas
+</figcaption>
+<div aria-describedby="tbl-joinRPython-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<div>
+<table class="table do-not-create-environment cell table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">dplyr</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">pandas</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">left_join()</td>
+<td style="text-align: left;">pd.merge(df1, df2, on='key', how='left')</td>
+<td style="text-align: left;">Join matching rows from df2 to df1, keeping all rows from df1.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">right_join()</td>
+<td style="text-align: left;">pd.merge(df1, df2, on='key', how='right')</td>
+<td style="text-align: left;">Join matching rows from df1 to df2, keeping all rows from df2.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">inner_join()</td>
+<td style="text-align: left;">pd.merge(df1, df2, on='key', how='inner')</td>
+<td style="text-align: left;">Join matching rows from both dataframes (default behavior of merge()).</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">full_join()</td>
+<td style="text-align: left;">pd.merge(df1, df2, on='key', how='outer')</td>
+<td style="text-align: left;">Join all rows from both dataframes, filling missing values with NaN.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">semi_join()</td>
+<td style="text-align: left;">No direct equivalent, but can be achieved using filtering</td>
+<td style="text-align: left;">Keep rows in df1 where a match exists in df2.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">anti_join()</td>
+<td style="text-align: left;">No direct equivalent, but can be achieved using filtering</td>
+<td style="text-align: left;">Keep rows in df1 where no match exists in df2.</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+</div>
+</figure>
+</div>
+</div>
+</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-15-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-15-1" role="tab" aria-controls="tabset-15-1" aria-selected="true">dplyr</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-15-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-15-2" role="tab" aria-controls="tabset-15-2" aria-selected="false">pandas</a></li></ul>
+<div class="tab-content">
+<div id="tabset-15-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-15-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb234"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb234-1"><a href="#cb234-1" aria-hidden="true" tabindex="-1"></a>data1 <span class="ot">=</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/msharifbd/DATA/refs/heads/main/DATA.csv"</span>)</span>
+<span id="cb234-2"><a href="#cb234-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(data1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 6,910
+Columns: 14
+$ companyname     &lt;chr&gt; "AMERICAN AIRLINES GROUP INC", "AMERICAN AIRLINES GROU…
+$ stateincorp     &lt;chr&gt; "DE", "DE", "DE", "DE", "DE", "DE", "DE", "DE", "DE", …
+$ ticker          &lt;chr&gt; "AAL", "AAL", "AAL", "AAL", "AAL", "AAL", "AAL", "AAL"…
+$ year            &lt;dbl&gt; 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, …
+$ sic             &lt;dbl&gt; 4512, 4512, 4512, 4512, 4512, 4512, 4512, 4512, 4512, …
+$ totalassets     &lt;dbl&gt; 25175.000, 25438.000, 25088.000, 23848.000, 23510.000,…
+$ costofgoodssold &lt;dbl&gt; 20232.000, 16935.000, 18138.000, 20420.000, 20529.000,…
+$ netincome       &lt;dbl&gt; -2071.000, -1468.000, -471.000, -1979.000, -1876.000, …
+$ sale            &lt;dbl&gt; 23766.000, 19917.000, 22170.000, 24022.000, 24855.000,…
+$ advertising     &lt;dbl&gt; 153.000, 153.000, 165.000, 186.000, 153.000, 166.000, …
+$ sellingadmin    &lt;dbl&gt; 3024.000, 2720.000, 2729.000, 2907.000, 2892.000, 4672…
+$ mktvalue        &lt;dbl&gt; 2976.3858, 2571.1835, 2597.5755, 117.3438, 266.5571, 6…
+$ commonequity    &lt;dbl&gt; -2935.000, -3489.000, -3945.000, -7111.000, -7987.000,…
+$ totalliability  &lt;dbl&gt; 28110.000, 28927.000, 29033.000, 30959.000, 31497.000,…</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb236"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb236-1"><a href="#cb236-1" aria-hidden="true" tabindex="-1"></a>data2 <span class="ot">=</span> <span class="fu">read_csv</span>(<span class="st">"https://github.com/msharifbd/DATA/raw/refs/heads/main/DATA2.csv"</span>)</span>
+<span id="cb236-2"><a href="#cb236-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(data2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 43,147
+Columns: 13
+$ ticker                    &lt;chr&gt; "MLP", "MLP", "MLP", "RCPIQ", "RCPIQ", "RCPI…
+$ cik_code                  &lt;dbl&gt; 63330, 63330, 63330, 776008, 776008, 776008,…
+$ auditor                   &lt;chr&gt; "Accuity LLP", "Accuity LLP", "Accuity LLP",…
+$ INTERNALCONTROL_EFFECTIVE &lt;chr&gt; "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "N…
+$ year_ended_date           &lt;date&gt; 2017-12-31, 2018-12-31, 2019-12-31, 2004-12…
+$ financials_date           &lt;date&gt; 2017-12-31, 2018-12-31, 2019-12-31, 2004-12…
+$ fiscal_year               &lt;dbl&gt; 2017, 2018, 2019, 2004, 2005, 2006, 2007, 20…
+$ signature_date            &lt;date&gt; 2018-02-23, 2019-03-01, 2020-02-28, 2005-04…
+$ NUMBEROFCONTROLWEAKNESS   &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 1, 4, 0, 0, 0, 0, 0, 0, 0,…
+$ audit_fees                &lt;dbl&gt; 206000, 209000, 213000, 224209, 382454, 4155…
+$ non_audit_fees            &lt;dbl&gt; 29000, 30000, 30000, 188081, 92869, 61351, 3…
+$ year                      &lt;dbl&gt; 2017, 2018, 2019, 2004, 2005, 2006, 2007, 20…
+$ big4                      &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb238"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb238-1"><a href="#cb238-1" aria-hidden="true" tabindex="-1"></a><span class="co"># left_join</span></span>
+<span id="cb238-2"><a href="#cb238-2" aria-hidden="true" tabindex="-1"></a><span class="fu">left_join</span>(data1, data2, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"ticker"</span>, <span class="st">"year"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6,969 × 25
+   companyname        stateincorp ticker  year   sic totalassets costofgoodssold
+   &lt;chr&gt;              &lt;chr&gt;       &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt;       &lt;dbl&gt;           &lt;dbl&gt;
+ 1 AMERICAN AIRLINES… DE          AAL     2008  4512       25175           20232
+ 2 AMERICAN AIRLINES… DE          AAL     2009  4512       25438           16935
+ 3 AMERICAN AIRLINES… DE          AAL     2010  4512       25088           18138
+ 4 AMERICAN AIRLINES… DE          AAL     2011  4512       23848           20420
+ 5 AMERICAN AIRLINES… DE          AAL     2012  4512       23510           20529
+ 6 AMERICAN AIRLINES… DE          AAL     2013  4512       42278           19084
+ 7 AMERICAN AIRLINES… DE          AAL     2014  4512       43771           29511
+ 8 AMERICAN AIRLINES… DE          AAL     2015  4512       48415           25416
+ 9 AMERICAN AIRLINES… DE          AAL     2016  4512       51274           25695
+10 AMERICAN AIRLINES… DE          AAL     2017  4512       51396           28262
+# ℹ 6,959 more rows
+# ℹ 18 more variables: netincome &lt;dbl&gt;, sale &lt;dbl&gt;, advertising &lt;dbl&gt;,
+#   sellingadmin &lt;dbl&gt;, mktvalue &lt;dbl&gt;, commonequity &lt;dbl&gt;,
+#   totalliability &lt;dbl&gt;, cik_code &lt;dbl&gt;, auditor &lt;chr&gt;,
+#   INTERNALCONTROL_EFFECTIVE &lt;chr&gt;, year_ended_date &lt;date&gt;,
+#   financials_date &lt;date&gt;, fiscal_year &lt;dbl&gt;, signature_date &lt;date&gt;,
+#   NUMBEROFCONTROLWEAKNESS &lt;dbl&gt;, audit_fees &lt;dbl&gt;, non_audit_fees &lt;dbl&gt;, …</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb240"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb240-1"><a href="#cb240-1" aria-hidden="true" tabindex="-1"></a><span class="co"># left_join</span></span>
+<span id="cb240-2"><a href="#cb240-2" aria-hidden="true" tabindex="-1"></a><span class="fu">left_join</span>(data1 <span class="sc">|&gt;</span> <span class="fu">distinct</span>(ticker, year, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>), </span>
+<span id="cb240-3"><a href="#cb240-3" aria-hidden="true" tabindex="-1"></a>          data2 <span class="sc">|&gt;</span> <span class="fu">distinct</span>(ticker, year, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>), </span>
+<span id="cb240-4"><a href="#cb240-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"ticker"</span>, <span class="st">"year"</span>)</span>
+<span id="cb240-5"><a href="#cb240-5" aria-hidden="true" tabindex="-1"></a>          )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6,910 × 25
+   companyname        stateincorp ticker  year   sic totalassets costofgoodssold
+   &lt;chr&gt;              &lt;chr&gt;       &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt;       &lt;dbl&gt;           &lt;dbl&gt;
+ 1 AMERICAN AIRLINES… DE          AAL     2008  4512       25175           20232
+ 2 AMERICAN AIRLINES… DE          AAL     2009  4512       25438           16935
+ 3 AMERICAN AIRLINES… DE          AAL     2010  4512       25088           18138
+ 4 AMERICAN AIRLINES… DE          AAL     2011  4512       23848           20420
+ 5 AMERICAN AIRLINES… DE          AAL     2012  4512       23510           20529
+ 6 AMERICAN AIRLINES… DE          AAL     2013  4512       42278           19084
+ 7 AMERICAN AIRLINES… DE          AAL     2014  4512       43771           29511
+ 8 AMERICAN AIRLINES… DE          AAL     2015  4512       48415           25416
+ 9 AMERICAN AIRLINES… DE          AAL     2016  4512       51274           25695
+10 AMERICAN AIRLINES… DE          AAL     2017  4512       51396           28262
+# ℹ 6,900 more rows
+# ℹ 18 more variables: netincome &lt;dbl&gt;, sale &lt;dbl&gt;, advertising &lt;dbl&gt;,
+#   sellingadmin &lt;dbl&gt;, mktvalue &lt;dbl&gt;, commonequity &lt;dbl&gt;,
+#   totalliability &lt;dbl&gt;, cik_code &lt;dbl&gt;, auditor &lt;chr&gt;,
+#   INTERNALCONTROL_EFFECTIVE &lt;chr&gt;, year_ended_date &lt;date&gt;,
+#   financials_date &lt;date&gt;, fiscal_year &lt;dbl&gt;, signature_date &lt;date&gt;,
+#   NUMBEROFCONTROLWEAKNESS &lt;dbl&gt;, audit_fees &lt;dbl&gt;, non_audit_fees &lt;dbl&gt;, …</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-15-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-15-2-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb242"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb242-1"><a href="#cb242-1" aria-hidden="true" tabindex="-1"></a>dataset1 <span class="op">=</span> pd.read_csv(<span class="st">"https://raw.githubusercontent.com/msharifbd/DATA/refs/heads/main/DATA.csv"</span>)</span>
+<span id="cb242-2"><a href="#cb242-2" aria-hidden="true" tabindex="-1"></a>dataset2 <span class="op">=</span> pd.read_csv(<span class="st">"https://github.com/msharifbd/DATA/raw/refs/heads/main/DATA2.csv"</span>,encoding<span class="op">=</span><span class="st">"latin-1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb243"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb243-1"><a href="#cb243-1" aria-hidden="true" tabindex="-1"></a>pd.merge(dataset1, dataset2, on<span class="op">=</span>[<span class="st">'ticker'</span>, <span class="st">'year'</span>], how<span class="op">=</span><span class="st">'left'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                      companyname stateincorp  ... non_audit_fees  big4
+0     AMERICAN AIRLINES GROUP INC          DE  ...       990000.0   1.0
+1     AMERICAN AIRLINES GROUP INC          DE  ...      1446000.0   1.0
+2     AMERICAN AIRLINES GROUP INC          DE  ...      1455000.0   1.0
+3     AMERICAN AIRLINES GROUP INC          DE  ...      2645000.0   1.0
+4     AMERICAN AIRLINES GROUP INC          DE  ...      1989000.0   1.0
+...                           ...         ...  ...            ...   ...
+6964         INFOSONICS CORP -OLD          MD  ...            NaN   NaN
+6965         INFOSONICS CORP -OLD          MD  ...            NaN   NaN
+6966         INFOSONICS CORP -OLD          MD  ...            NaN   NaN
+6967         INFOSONICS CORP -OLD          MD  ...            NaN   NaN
+6968         INFOSONICS CORP -OLD          MD  ...            NaN   NaN
+
+[6969 rows x 25 columns]</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb245"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb245-1"><a href="#cb245-1" aria-hidden="true" tabindex="-1"></a>dataset1_drop <span class="op">=</span> dataset1.drop_duplicates(subset<span class="op">=</span>[<span class="st">'ticker'</span>, <span class="st">'year'</span>], ignore_index <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb245-2"><a href="#cb245-2" aria-hidden="true" tabindex="-1"></a>dataset2_drop <span class="op">=</span> dataset2.drop_duplicates(subset<span class="op">=</span>[<span class="st">'ticker'</span>, <span class="st">'year'</span>], ignore_index <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb245-3"><a href="#cb245-3" aria-hidden="true" tabindex="-1"></a>pd.merge(dataset1_drop, dataset2_drop, on<span class="op">=</span>[<span class="st">'ticker'</span>, <span class="st">'year'</span>], how<span class="op">=</span><span class="st">'left'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                      companyname stateincorp  ... non_audit_fees  big4
+0     AMERICAN AIRLINES GROUP INC          DE  ...       990000.0   1.0
+1     AMERICAN AIRLINES GROUP INC          DE  ...      1446000.0   1.0
+2     AMERICAN AIRLINES GROUP INC          DE  ...      1455000.0   1.0
+3     AMERICAN AIRLINES GROUP INC          DE  ...      2645000.0   1.0
+4     AMERICAN AIRLINES GROUP INC          DE  ...      1989000.0   1.0
+...                           ...         ...  ...            ...   ...
+6905         INFOSONICS CORP -OLD          MD  ...            NaN   NaN
+6906         INFOSONICS CORP -OLD          MD  ...            NaN   NaN
+6907         INFOSONICS CORP -OLD          MD  ...            NaN   NaN
+6908         INFOSONICS CORP -OLD          MD  ...            NaN   NaN
+6909         INFOSONICS CORP -OLD          MD  ...            NaN   NaN
+
+[6910 rows x 25 columns]</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb247"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb247-1"><a href="#cb247-1" aria-hidden="true" tabindex="-1"></a>df1 <span class="op">=</span> pd.DataFrame({<span class="st">'id'</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], <span class="st">'value'</span>: [<span class="st">'A'</span>, <span class="st">'B'</span>, <span class="st">'C'</span>]})</span>
+<span id="cb247-2"><a href="#cb247-2" aria-hidden="true" tabindex="-1"></a>df2 <span class="op">=</span> pd.DataFrame({<span class="st">'id'</span>: [<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>], <span class="st">'other_value'</span>: [<span class="st">'X'</span>, <span class="st">'Y'</span>, <span class="st">'Z'</span>]})</span>
+<span id="cb247-3"><a href="#cb247-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb247-4"><a href="#cb247-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Left join</span></span>
+<span id="cb247-5"><a href="#cb247-5" aria-hidden="true" tabindex="-1"></a>left_join <span class="op">=</span> pd.merge(df1, df2, on<span class="op">=</span><span class="st">'id'</span>, how<span class="op">=</span><span class="st">'left'</span>)</span>
+<span id="cb247-6"><a href="#cb247-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb247-7"><a href="#cb247-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Inner join</span></span>
+<span id="cb247-8"><a href="#cb247-8" aria-hidden="true" tabindex="-1"></a>inner_join <span class="op">=</span> pd.merge(df1, df2, on<span class="op">=</span><span class="st">'id'</span>)</span>
+<span id="cb247-9"><a href="#cb247-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb247-10"><a href="#cb247-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Semi join</span></span>
+<span id="cb247-11"><a href="#cb247-11" aria-hidden="true" tabindex="-1"></a>semi_join <span class="op">=</span> df1[df1[<span class="st">'id'</span>].isin(df2[<span class="st">'id'</span>])]</span>
+<span id="cb247-12"><a href="#cb247-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb247-13"><a href="#cb247-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Anti join</span></span>
+<span id="cb247-14"><a href="#cb247-14" aria-hidden="true" tabindex="-1"></a>anti_join <span class="op">=</span> df1[<span class="op">~</span>df1[<span class="st">'id'</span>].isin(df2[<span class="st">'id'</span>])]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="conclusions" class="level2" data-number="3.12">
 <h2 data-number="3.12" class="anchored" data-anchor-id="conclusions"><span class="header-section-number">3.12</span> Conclusions</h2>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-wickham2023r" class="csl-entry" role="listitem">
+Wickham, Hadley, Mine Çetinkaya-Rundel, and Garrett Grolemund. 2023. <em>R for Data Science</em>. " O’Reilly Media, Inc.". <a href="https://r4ds.hadley.nz/">https://r4ds.hadley.nz/</a>.
+</div>
+</div>
 </section>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
 <ol>
 <li id="fn1"><p>You can also use British spelling - <code>summarise ()</code><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>Indexing involves obtaining individual elements.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>In database context, it is “merging”, but commonly it is called “joining”.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 

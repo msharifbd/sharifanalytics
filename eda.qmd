@@ -201,7 +201,7 @@ df_pd.sample(n=10)
 ```
 
 ```{r}
- df = df |>
+df = df |>
      rename_all(toupper) |>
      janitor::clean_names() |>
      rename_all(toupper)
@@ -762,22 +762,19 @@ df |>
 
 
 ```{r}
-#| eval: false 
 # Summary Statistics 
 df %>%
-    select(UNITPRICE, SALEPRICE) %>%
-    summarize(across(where(is.numeric), 
-    .fns = 
-    list(N = sum,
-    Mean = mean, 
-    Std = sd,
-    P25 = ~quantile(.,0.25), 
-    P75 = ~quantile(., 0.75))) %>%
-    pivot_longer(everything(), names_sep='_', names_to=c('variable', '.value'))
-
-
-
-     
+  select(UNITPRICE, SALEPRICE) %>%
+  summarize(across(where(is.numeric), 
+                   .fns = list(N = ~length(.),
+                               Mean = mean, 
+                               Std = sd,
+                               Median = median, 
+                               P25 = ~quantile(.,0.25), 
+                               P75 = ~quantile(., 0.75)
+                               )
+                   )) %>%
+  pivot_longer(everything(), names_sep='_', names_to=c('variable', '.value'))  
 ```
 
 
@@ -857,7 +854,238 @@ df_pd[['UNITPRICE', 'SALEPRICE']].agg(agg_dict)
 
 ## Reshaping Data 
 
+::: {style="text-align: justify"}
+     Before we discuss about reshaping of the data, we need to discuss about tidy format of the data. Data can come in many shapes, but not all shapes are useful for data analysis. In most cases, tidy format of the data is most useful for analysis. Therefore, if the data is untidy, we need to make it tidy first. There are three interrelated rules which make a dataset tidy [@wickham2023r]. These rules are given below. @fig-tidyprinciple visually represents tidy principle. 
+
+1. Each variable must have its own column
+
+2. Each observation must have its own row
+
+3. Each value must have its own cell 
+
+![Tidy Principle](images/tidy-1.png){#fig-tidyprinciple}
+
+     For analysis, many times we need to change the format of our dataset and we call it reshaping. Data come primarily in two shapes -*wide* and *long*. Sometimes *wide* format is called "record" format and *long* format is called "stacked" format. In `wide` format data, there is one row for each subject (units of observation). Data is `long` when there are multiple rows for each subject (units of observations). 
+
+     This reshaping can be two types - a) long to wide and 2) wide to long. Long-to-wide means reshaping a long data, which has many rows, into wide format, which has many variables. In wide-to-long format, we do otherwise. For analytical purpose, reshaping data is useful; so, we need to know how to do the reshaping. 
+
+     Whether a given dataset (e.g., @tbl-formatofdata) is in wide or long format depends on our research questions (on what variables we are interested in and how we conceive of our data). If we are interested in variable `Temp` and `Month` variable is the unit of obsevation, then the dataset in @tbl-formatofdata is in `long` format because `Month` is repeated in mutiple rows. 
+
+:::
+
+```{r}
+#| warning: false
+airquality = airquality
+
+examp = airquality |>
+    slice(1:10)
+```
+
+
+```{r}
+#| label: tbl-formatofdata
+#| tbl-cap: Which Format - Long or Wide 
+#| echo: false
+#| warning: false
+
+kbl(examp, booktabs = TRUE 
+    ) %>% 
+  kable_styling(latex_options = c ('striped', 'hold_positions'))
+```
+
+
+### Long-to-Wide Format  
+
+::: {style="text-align: justify"}
+     To make a long dataset to wide, we can use `pivot_wider()` function from `tidyr` package in R and `pivot()` function from `pandas` in python. 
+:::
+
+
+:::{.panel-tabset}
+
+## tidyr
+```{r}
+tidyr::us_rent_income
+```
+
+```{r}
+tidyr::us_rent_income |>
+    pivot_wider(
+        names_from = variable, 
+        values_from = c(estimate, moe)
+    )
+
+```
+
+
+## pandas 
+
+```{python}
+#| warning: false
+# install palmerpenguins package
+# pip install palmerpenguins
+import palmerpenguins
+penguins = palmerpenguins.load_penguins()
+```
+
+```{python}
+penguins[["island", "bill_length_mm"]] \
+    .pivot(columns = "island", values = "bill_length_mm") \
+    .fillna(0)
+```
+
+
+:::
+
+
+### Wide-to-Long Format  
+
+::: {style="text-align: justify"}
+     To make a wide dataset to long, we can use `pivot_longer()` function from `tidyr` package in R and `melt()` function from `pandas` in python.
+:::
+
+
+:::{.panel-tabset}
+
+## tidyr
+```{r}
+relig_income
+```
+
+```{r}
+relig_income |>
+    pivot_longer(
+        cols = !c(religion),
+        names_to = "income",
+        values_to = "count"
+    )
+```
+
+## pandas 
+
+```{python}
+penguins.melt(value_vars=["bill_length_mm", "bill_depth_mm","flipper_length_mm", "body_mass_g"],
+              id_vars = ['species', 'island', 'sex', 'year']
+              )
+```
+
+:::
+
+
 ## Merging Datasets 
 
+::: {style="text-align: justify"}
+     Many times, for analysis purposes, we need to join two datasets. This process is also called merging^[In database context, it is "merging", but commonly it is called "joining".]. There are different types of joining. So, it is important to learn about those joining techniques. In @fig-joindatasets shows the joining technique and functions using `dplyr` in R. Below all of these joining functions are explained. 
+
+* `left_join()`: The merged dataset contains **all** observations fromthe **first** (or left) dataset and only **matched** observations from the **second** (or right) dataset
+
+* `right_join()`: The merged dataset contains only **matched** observations from the **first** (or left) dataset and **all** observations from the **second** (or right) dataset
+
+* `inner_join()`: The merged dataset contains *only* **matched** observations from both datasets
+
+* `semi_join()`: The merged dataset contains **matched** observations from the **first** (or left) dataset. Please note that `semi_join()` differs from `inner_join()` in that `inner_join()` will return one row of first dataset (x) for each matching row of second dataset (y), whereas `semi_join()` will never duplicate rows of x.   
+
+* `full_join()`: The merged dataset contains **all** observations from both datasets
+
+* `anti_join()`: The merged dataset contains only **not matched** observations from the **first** (or left) dataset and contains only the variable from the **left** dataset
+
+![Joining Datasets](images/join_diagram.png){#fig-joindatasets width="40%"}
+
+```{r}
+#| include: false
+df_join <- tribble(
+  ~dplyr, ~pandas, ~Description,
+  "left_join()", "pd.merge(df1, df2, on='key', how='left')", "Join matching rows from df2 to df1, keeping all rows from df1.",
+  "right_join()", "pd.merge(df1, df2, on='key', how='right')", "Join matching rows from df1 to df2, keeping all rows from df2.",
+  "inner_join()", "pd.merge(df1, df2, on='key', how='inner')", "Join matching rows from both dataframes (default behavior of merge()).",
+  "full_join()", "pd.merge(df1, df2, on='key', how='outer')", "Join all rows from both dataframes, filling missing values with NaN.",
+  "semi_join()", "No direct equivalent, but can be achieved using filtering", "Keep rows in df1 where a match exists in df2.",
+  "anti_join()", "No direct equivalent, but can be achieved using filtering", "Keep rows in df1 where no match exists in df2."
+)
+```
+
+     @tbl-joinRPython compares the `dplyr` joining functions with equivalent joining functions from `pandas`.
+
+```{r}
+#| label: tbl-joinRPython
+#| tbl-cap: Joining Functions - dplyr vs pandas  
+#| echo: false
+#| warning: false
+
+kbl(df_join, booktabs = TRUE 
+    ) %>% 
+  kable_styling(latex_options = c ('striped', 'hold_positions'))
+```
+
+
+:::
+
+:::{.panel-tabset}
+
+## dplyr
+
+```{r}
+#| warning: false
+data1 = read_csv("https://raw.githubusercontent.com/msharifbd/DATA/refs/heads/main/DATA.csv")
+glimpse(data1)
+```
+
+```{r}
+#| warning: false
+data2 = read_csv("https://github.com/msharifbd/DATA/raw/refs/heads/main/DATA2.csv")
+glimpse(data2)
+```
+
+```{r}
+# left_join
+left_join(data1, data2, by = c("ticker", "year"))
+```
+
+```{r}
+# left_join
+left_join(data1 |> distinct(ticker, year, .keep_all = TRUE), 
+          data2 |> distinct(ticker, year, .keep_all = TRUE), 
+          by = c("ticker", "year")
+          )
+```
+
+
+## pandas 
+
+```{python}
+#| warning: false
+dataset1 = pd.read_csv("https://raw.githubusercontent.com/msharifbd/DATA/refs/heads/main/DATA.csv")
+dataset2 = pd.read_csv("https://github.com/msharifbd/DATA/raw/refs/heads/main/DATA2.csv",encoding="latin-1")
+```
+
+```{python}
+pd.merge(dataset1, dataset2, on=['ticker', 'year'], how='left')
+```
+
+```{python}
+#| warning: false
+dataset1_drop = dataset1.drop_duplicates(subset=['ticker', 'year'], ignore_index = True)
+dataset2_drop = dataset2.drop_duplicates(subset=['ticker', 'year'], ignore_index = True)
+pd.merge(dataset1_drop, dataset2_drop, on=['ticker', 'year'], how='left')
+```
+
+```{python}
+df1 = pd.DataFrame({'id': [1, 2, 3], 'value': ['A', 'B', 'C']})
+df2 = pd.DataFrame({'id': [2, 3, 4], 'other_value': ['X', 'Y', 'Z']})
+
+# Left join
+left_join = pd.merge(df1, df2, on='id', how='left')
+
+# Inner join
+inner_join = pd.merge(df1, df2, on='id')
+
+# Semi join
+semi_join = df1[df1['id'].isin(df2['id'])]
+
+# Anti join
+anti_join = df1[~df1['id'].isin(df2['id'])]
+```
+
+:::
 
 ## Conclusions 

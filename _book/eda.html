@@ -602,16 +602,16 @@ $ SalePrice       &lt;int&gt; 0</code></pre>
 <pre><code># A tibble: 10 × 14
    InvoiceNo Date     Country ProductID Shop  Gender `Size (US)` `Size (Europe)`
        &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;        &lt;dbl&gt; &lt;chr&gt;          
- 1     61389 5/12/20… United…      2225 US14  Male          10.5 43-44          
- 2     62050 6/16/20… Germany      2203 GER2  Female         7.5 38             
- 3     63654 9/2/2016 United…      2154 US3   Male          10.5 43-44          
- 4     53236 5/13/20… United…      2189 UK4   Male           7.5 40-41          
- 5     53851 8/18/20… Germany      2199 GER2  Male          10   43             
- 6     58332 10/30/2… United…      2154 US9   Male          10.5 43-44          
- 7     57842 9/26/20… United…      2191 US5   Male          12   45             
- 8     60758 4/7/2016 United…      2218 US12  Female         7.5 38             
- 9     55227 2/21/20… United…      2212 US15  Male           9   42             
-10     57309 8/16/20… Germany      2187 GER2  Male           8.5 41-42          
+ 1     65339 11/30/2… Germany      2168 GER1  Male           9.5 42-43          
+ 2     55821 4/21/20… United…      2175 US6   Female         8   38-39          
+ 3     61324 5/8/2016 Canada       2183 CAN1  Male           9.5 42-43          
+ 4     52493 1/19/20… United…      2232 US4   Female         7.5 38             
+ 5     65582 12/17/2… Canada       2182 CAN6  Female         8.5 39             
+ 6     65474 12/9/20… Canada       2162 CAN6  Male          10.5 43-44          
+ 7     54159 10/1/20… United…      2162 US15  Male           9.5 42-43          
+ 8     59346 1/11/20… United…      2192 UK1   Male           9   42             
+ 9     63165 8/8/2016 United…      2194 US4   Female         9   39-40          
+10     57321 8/17/20… Germany      2201 GER2  Male          10.5 43-44          
 # ℹ 6 more variables: `Size (UK)` &lt;dbl&gt;, UnitPrice &lt;dbl&gt;, Discount &lt;dbl&gt;,
 #   Year &lt;dbl&gt;, Month &lt;dbl&gt;, SalePrice &lt;dbl&gt;</code></pre>
 </div>
@@ -743,16 +743,16 @@ dtype: object</code></pre>
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>df_pd.sample(n<span class="op">=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       InvoiceNo        Date         Country  ...  Year Month SalePrice
-696        52975    4/6/2014          Canada  ...  2014     4     151.2
-866        53113   4/26/2014          Canada  ...  2014     4     129.0
-14487      65335  11/30/2016          Canada  ...  2016    11      94.5
-14917      65729  12/28/2016   United States  ...  2016    12     159.2
-12191      63280   8/14/2016   United States  ...  2016     8     134.1
-8048       59595   1/26/2016   United States  ...  2016     1     134.1
-9695       61070   4/23/2016         Germany  ...  2016     4     179.1
-8429       59935   2/16/2016  United Kingdom  ...  2016     2     179.0
-12288      63366   8/18/2016         Germany  ...  2016     8     149.0
-3160       55110    2/9/2015   United States  ...  2015     2     199.0
+1092       53305   5/25/2014   United States  ...  2014     5     139.0
+8723       60204    3/3/2016         Germany  ...  2016     3     116.1
+3486       55411   3/11/2015         Germany  ...  2015     3     159.2
+4232       56095   5/17/2015         Germany  ...  2015     5     169.0
+4867       56676   6/30/2015  United Kingdom  ...  2015     6     139.3
+14471      65320  11/29/2016         Germany  ...  2016    11      97.3
+12183      63274   8/14/2016         Germany  ...  2016     8     169.0
+7757       59335   1/11/2016  United Kingdom  ...  2016     1     119.2
+10195      61510   5/18/2016         Germany  ...  2016     5     149.0
+7778       59354   1/12/2016          Canada  ...  2016     1      69.5
 
 [10 rows x 14 columns]</code></pre>
 </div>

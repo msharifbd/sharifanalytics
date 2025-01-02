@@ -1,0 +1,1738 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.551">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Analytics for Accounting Data - 9&nbsp; Web Scraping and Textual Analytics</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./nlp.html" rel="next">
+<link href="./prescriptive.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./advanced_analytics.html">Advanced Techniques and Applications</a></li><li class="breadcrumb-item"><a href="./advanced_analytics.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Web Scraping and Textual Analytics</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Analytics for Accounting Data</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://github.com/msharifbd/sharifanalytics" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Analytics-for-Accounting-Data.pdf">
+              <i class="bi bi-bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Analytics-for-Accounting-Data.epub">
+              <i class="bi bi-bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+    </div>
+    <div class="dropdown">
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-1" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Share"><i class="bi bi-share"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-1">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
+              <i class="bi bi-bi-twitter pe-1"></i>
+            Twitter
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.facebook.com/sharer/sharer.php?u=|url|">
+              <i class="bi bi-bi-facebook pe-1"></i>
+            Facebook
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.linkedin.com/sharing/share-offsite/?url=|url|">
+              <i class="bi bi-bi-linkedin pe-1"></i>
+            LinkedIn
+            </a>
+          </li>
+      </ul>
+    </div>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Introduction to Accounting Analytics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Overview of Accounting Analytics</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./foundations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Foundations of Accounting Data</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Data Exploration and Management</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./eda.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis (EDA)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./visualization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data Visualization</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./dashboard.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Dashboard for Visualization</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data_management.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Data Management in Accounting</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Predictive and Prescriptive Analytics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./predictive.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Predictive Modeling - Linear Regression</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./prescriptive.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Prescriptive Analytics in Accounting</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Advanced Techniques and Applications</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./advanced_analytics.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Web Scraping and Textual Analytics</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./nlp.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Natural Language Processing (NLP)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./machine_learning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Machine Learning</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./fraud.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Fraud Detection and Risk Management</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./performance_measurement.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Performance Measurement and Management</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text">Practical Considerations and Future Directions</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ethics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Regulatory and Ethical Considerations</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./future.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Future Directions in Accounting Analytics</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./python_basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">A Primer on Python</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./r_basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">A Primer on R</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter1_solution.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Chapter 1 Solution</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter2_solution.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Chapter 2 Solution</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#learning-objectives-of-the-chapter" id="toc-learning-objectives-of-the-chapter" class="nav-link active" data-scroll-target="#learning-objectives-of-the-chapter">Learning Objectives of the Chapter</a></li>
+  <li><a href="#what-is-web-scraping" id="toc-what-is-web-scraping" class="nav-link" data-scroll-target="#what-is-web-scraping"><span class="header-section-number">9.1</span> What is Web Scraping?</a></li>
+  <li><a href="#legal-and-ethical-consideration-of-web-scraping" id="toc-legal-and-ethical-consideration-of-web-scraping" class="nav-link" data-scroll-target="#legal-and-ethical-consideration-of-web-scraping"><span class="header-section-number">9.2</span> Legal and Ethical Consideration of Web Scraping</a>
+  <ul>
+  <li><a href="#legal-framework-of-web-scraping" id="toc-legal-framework-of-web-scraping" class="nav-link" data-scroll-target="#legal-framework-of-web-scraping"><span class="header-section-number">9.2.1</span> Legal Framework of Web Scraping</a></li>
+  <li><a href="#ethical-considerations-of-web-scraping" id="toc-ethical-considerations-of-web-scraping" class="nav-link" data-scroll-target="#ethical-considerations-of-web-scraping"><span class="header-section-number">9.2.2</span> Ethical Considerations of Web Scraping</a></li>
+  </ul></li>
+  <li><a href="#understanding-html-and-css-selectors" id="toc-understanding-html-and-css-selectors" class="nav-link" data-scroll-target="#understanding-html-and-css-selectors"><span class="header-section-number">9.3</span> Understanding HTML and CSS Selectors</a></li>
+  <li><a href="#an-overview-of-beautiful-soup" id="toc-an-overview-of-beautiful-soup" class="nav-link" data-scroll-target="#an-overview-of-beautiful-soup"><span class="header-section-number">9.4</span> An Overview of Beautiful Soup</a>
+  <ul>
+  <li><a href="#an-example-of-web-scraping" id="toc-an-example-of-web-scraping" class="nav-link" data-scroll-target="#an-example-of-web-scraping"><span class="header-section-number">9.4.1</span> An Example of Web Scraping</a></li>
+  </ul></li>
+  <li><a href="#searching-the-elements-of-tags" id="toc-searching-the-elements-of-tags" class="nav-link" data-scroll-target="#searching-the-elements-of-tags"><span class="header-section-number">9.5</span> Searching the Elements of Tags</a></li>
+  <li><a href="#sec-usebeautifulsoup" id="toc-sec-usebeautifulsoup" class="nav-link" data-scroll-target="#sec-usebeautifulsoup"><span class="header-section-number">9.6</span> Scrape a Website Using BeautifulSoup</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/msharifbd/sharifanalytics/edit/main/advanced_analytics.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/msharifbd/sharifanalytics/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/msharifbd/sharifanalytics/blob/main/advanced_analytics.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./advanced_analytics.html">Advanced Techniques and Applications</a></li><li class="breadcrumb-item"><a href="./advanced_analytics.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Web Scraping and Textual Analytics</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Web Scraping and Textual Analytics</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="learning-objectives-of-the-chapter" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="learning-objectives-of-the-chapter">Learning Objectives of the Chapter</h3>
+<div style="text-align: justify">
+<p>At the End of the Chapter, Students should be Able to -</p>
+<ul>
+<li><p>Gain an Understanding about Web Scraping and Its Importance</p></li>
+<li><p>Understand the Website Structures for Web Scraping</p></li>
+<li><p>Use Python Modules to Scrape Websites</p></li>
+<li><p>Scrape <code>EDGAR</code> Website to Extract Quantitative and Qualitative Data of Different Companies</p></li>
+</ul>
+</div>
+</section>
+<section id="what-is-web-scraping" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="what-is-web-scraping"><span class="header-section-number">9.1</span> What is Web Scraping?</h2>
+<div style="text-align: justify">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Web scraping refers to the techniques of accessing websites and collecting information from them. Having web scraping knowledge is important nowadays because a vast amount of data is available on websites and in many occasions we need to access, collect, and analyze those data. Web scraping is also called “web harvesting” or “web data extraction”.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Web scraping is employed in different kinds of practical applications. For example, companies scrape websites of their competitors to keep track of their pricing, which can help companies to form a competitive pricing strategy. Moreover, marketers and analysts scrape different social media platforms to analyze public sentiment about their products, brands, or events, which help them to gauge public opinions and ultimately tailor their products or services to meet or exceed customers’ expectations.</p>
+</div>
+</section>
+<section id="legal-and-ethical-consideration-of-web-scraping" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="legal-and-ethical-consideration-of-web-scraping"><span class="header-section-number">9.2</span> Legal and Ethical Consideration of Web Scraping</h2>
+<div style="text-align: justify">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;As good citizens on the internet, it is incumbent on us to respect the policies of the websites we plan to scrape. Therefore, before we decide to scrape a website, we must take into consideration the legal and ethical aspects of scraping.</p>
+</div>
+<section id="legal-framework-of-web-scraping" class="level3" data-number="9.2.1">
+<h3 data-number="9.2.1" class="anchored" data-anchor-id="legal-framework-of-web-scraping"><span class="header-section-number">9.2.1</span> Legal Framework of Web Scraping</h3>
+<div style="text-align: justify">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Before scraping a website, we must evaluate the following legal considerations -</p>
+<ol type="1">
+<li><p><strong>Terms of Service</strong>: Please check the terms of service of the website because some sites explicitly prohibit scraping and violating terms of service might result in legal action.</p></li>
+<li><p><strong>Copyright Law</strong>: In most cases, data published online is protected by copyright. As such, it is important to know beforehand what you can legally collect from the website by scraping and how you can use the scraped data.</p></li>
+<li><p><strong>Computer Fraud and Abuse Act (CFAA)</strong>: In the US, the Computer Fraud and Abuse Act (CFAA) was enacted in 1986. The CFAA prohibits intentionally accessing a computer without authorization or in excess of authorization. You might violate CFAA if a website has taken steps to block scraping and you circumvent those measures.</p></li>
+<li><p><strong>Data Protection Law</strong>: Beacause of different kinds of data protection law such as General Data Protection Regulation (GDPR) in Europe or similar law in other jurisdictions, it has become very critical to deal with personal data. If you scrape personal data, you must comply with such laws, which typically include requirements for consent, data minimization, and secure handling of the data.</p></li>
+</ol>
+</div>
+</section>
+<section id="ethical-considerations-of-web-scraping" class="level3" data-number="9.2.2">
+<h3 data-number="9.2.2" class="anchored" data-anchor-id="ethical-considerations-of-web-scraping"><span class="header-section-number">9.2.2</span> Ethical Considerations of Web Scraping</h3>
+<div style="text-align: justify">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In addition to legal considerations, you should also behave ethically when you try to scrape a website. Ethical considerations though aligns with legal considerations, they extend to the idea of good citizenship on the web. Some important ethical considerations during webscraping include -</p>
+<ol type="1">
+<li><p>Web scraping might be equivalent to Distriubted of Denial of Service (DDOS) attack if too many requests are sent to the targeted websites, thus disrupting the regular functioning of the website. Therefore, while web scraping, we should scrape in such a way so that it does not disrupt the usage of the website by other legitimate users. Further, you should not try to scrape a website if it prohibits web scraping. Some websites have <code>robots.txt</code> file, which defines what can be scraped from the website. So please invesitage a website well before you decide to scrape it.</p></li>
+<li><p>How the scraped data will be used is an important considerations even if the data are publicly available. Using the web scraped data in a way that is detrimental to individual or businesses is unethical. Further, you should also consider the ramifications of publishing or sharing the scraped data.</p></li>
+</ol>
+</div>
+</section>
+</section>
+<section id="understanding-html-and-css-selectors" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="understanding-html-and-css-selectors"><span class="header-section-number">9.3</span> Understanding HTML and CSS Selectors</h2>
+<div style="text-align: justify">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Websites are usually created by using HTML - HyperText Markup Language, which describes the structure of a web page and includes cues for the apperance of a website. Therefore, having some knowledge on HTML will help you to scrape a website. HTML document uses different kinds of tags to identify or refer to different elements. A typical HTML document has following elements -</p>
+<p><code>&lt;!DOCTYPE&gt;</code> : Defines the document type</p>
+<p><code>&lt;html&gt;</code> : Defines the HTML document</p>
+<p><code>&lt;head&gt;</code> : Contains metadata or information for the document</p>
+<p><code>&lt;body&gt;</code> : Defines the document body such as text, images, and other media</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;More about HTML tags can be found <a href="https://www.w3schools.com/tags/ref_byfunc.asp">here</a>. Here is an example of a basic HTML structure -</p>
+<div id="38564d35" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>html<span class="op">&gt;&lt;</span>head<span class="op">&gt;&lt;</span>title<span class="op">&gt;</span>The Dormouse<span class="st">'s story&lt;/title&gt;&lt;/head&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;body&gt;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>p <span class="kw">class</span><span class="op">=</span><span class="st">"title"</span><span class="op">&gt;&lt;</span>b<span class="op">&gt;</span>The Dormouse<span class="st">'s story&lt;/b&gt;&lt;/p&gt;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;p class="story"&gt;Once upon a time there were three little sisters; and their names were</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>a href<span class="op">=</span><span class="st">"http://example.com/elsie"</span> <span class="kw">class</span><span class="op">=</span><span class="st">"sister"</span> <span class="bu">id</span><span class="op">=</span><span class="st">"link1"</span><span class="op">&gt;</span>Elsie<span class="op">&lt;/</span>a<span class="op">&gt;</span>,</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>a href<span class="op">=</span><span class="st">"http://example.com/lacie"</span> <span class="kw">class</span><span class="op">=</span><span class="st">"sister"</span> <span class="bu">id</span><span class="op">=</span><span class="st">"link2"</span><span class="op">&gt;</span>Lacie<span class="op">&lt;/</span>a<span class="op">&gt;</span> <span class="kw">and</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>a href<span class="op">=</span><span class="st">"http://example.com/tillie"</span> <span class="kw">class</span><span class="op">=</span><span class="st">"sister"</span> <span class="bu">id</span><span class="op">=</span><span class="st">"link3"</span><span class="op">&gt;</span>Tillie<span class="op">&lt;/</span>a<span class="op">&gt;;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="kw">and</span> they lived at the bottom of a well.<span class="op">&lt;/</span>p<span class="op">&gt;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;/</span>body<span class="op">&gt;&lt;/</span>html<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In addition to HTML tags, CSS (Cascading Style Sheets) selectors are used to style different elements in the website. In web scraping, we use CSS selectors to identify the data we want to extract. There are different types of CSS selectors:</p>
+<ol type="1">
+<li><p><strong>Element Selector</strong>: Selects all elements of a specific type. For example, <code>p</code> selects all <code>&lt;p&gt;</code> elements.</p></li>
+<li><p><strong>ID Selector</strong>: Selects a single element with a specific id. The ID selector is defined with a hash (<code>#</code>). For example, <code>#navbar</code> selects the element with <code>id="navbar"</code>.</p></li>
+<li><p><strong>Class Selector</strong>: Selects all elements with a specific class. The class selector is defined with a dot (<code>.</code>). For example, <code>.menu-item</code> selects all elements with <code>class="menu-item"</code>.</p></li>
+<li><p><strong>Attribute Selector</strong>: Selects elements with a specific attribute or attribute value. For example, <code>[href]</code> selects all elements with an <code>href</code> attribute.</p></li>
+</ol>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Below is an example of CSS selectors -</p>
+<div id="9b1bec66" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;!</span>DOCTYPE html<span class="op">&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>html<span class="op">&gt;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>head<span class="op">&gt;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;</span>style<span class="op">&gt;</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        <span class="co">#header {</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>            background<span class="op">-</span>color: <span class="co">#f2f2f2;</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        .highlight {</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>            font<span class="op">-</span>weight: bold<span class="op">;</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>        a[href<span class="op">^=</span><span class="st">"https"</span>] {</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>            color: green<span class="op">;</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;/</span>style<span class="op">&gt;</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;/</span>head<span class="op">&gt;</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>body<span class="op">&gt;</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;</span>div <span class="bu">id</span><span class="op">=</span><span class="st">"header"</span><span class="op">&gt;</span>This <span class="kw">is</span> the header<span class="op">&lt;/</span>div<span class="op">&gt;</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;</span>p <span class="kw">class</span><span class="op">=</span><span class="st">"highlight"</span><span class="op">&gt;</span>This paragraph <span class="kw">is</span> highlighted.<span class="op">&lt;/</span>p<span class="op">&gt;</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;</span>a href<span class="op">=</span><span class="st">"https://example.com"</span><span class="op">&gt;</span>This link <span class="kw">is</span> green because it uses HTTPS.<span class="op">&lt;/</span>a<span class="op">&gt;</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;/</span>body<span class="op">&gt;</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;/</span>html<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In the above code, <code>#header</code> selects the <code>&lt;div&gt;</code> with the ID of “header,” <code>.highlight</code> selects any element with the “highlight” class, and <code>a[href^="https"]</code> selects anchor tags (<code>&lt;a&gt;</code>) whose <code>href</code> attribute value begins with “https”. Understanding how to use these CSS selectors are very important while web scraping websites.</p>
+</div>
+</section>
+<section id="an-overview-of-beautiful-soup" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="an-overview-of-beautiful-soup"><span class="header-section-number">9.4</span> An Overview of Beautiful Soup</h2>
+<div style="text-align: justify">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>Beautifulsoup</code> is a python module that is widely used to scrape and parse websites. <code>Beautifulsoup</code> has many useful functions that can be easily used to extract data from HTML. <a href="#fig-beautifulsoupprocess" class="quarto-xref">Figure&nbsp;<span>9.1</span></a> shows the basic work process <code>Beautifulsoup</code> uses. It is clear from <a href="#fig-beautifulsoupprocess" class="quarto-xref">Figure&nbsp;<span>9.1</span></a> that using <code>Beautifulsoup</code>, we can extract data by finding HTML tag names, by CSS class names, and so on.</p>
+<div id="fig-beautifulsoupprocess" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-beautifulsoupprocess-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/beautiful_soup_process.jpg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-beautifulsoupprocess-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.1: Beautiful Soup Process
+</figcaption>
+</figure>
+</div>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The following python code can be run to install and import <code>Beautifulsoup</code> module.</p>
+<div id="5377e5eb" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># installing beautifulsoup </span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>pip install beautifulsoup4</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># importing beautifulsoup</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bs4 <span class="im">import</span> BeautifulSoup</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;When we use <code>BeautifulSoup</code> to scrape a website, one of the most critical tasks is to identify the tags or CSS selectors from which we want to extract text or data. These targets are called Document Object Model (DOM). The DOM is a programming interface for web documents. Visualize HTML code of a webpage as an upside-down tree. Each HTML element - headings, paragraphs, and links - is a node in the tree. <a href="#fig-dom" class="quarto-xref">Figure&nbsp;<span>9.2</span></a> shows a basic tree structure of an HTML page.</p>
+<div id="fig-dom" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-dom-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/dom.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dom-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.2: Tree Structure of HTML Page
+</figcaption>
+</figure>
+</div>
+</div>
+<section id="an-example-of-web-scraping" class="level3" data-number="9.4.1">
+<h3 data-number="9.4.1" class="anchored" data-anchor-id="an-example-of-web-scraping"><span class="header-section-number">9.4.1</span> An Example of Web Scraping</h3>
+<div style="text-align: justify">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Below we provide a small example of webscraping. We create a webpage called <code>html</code>, which includes different tags and CSS selectors.</p>
+<div id="b45e7f05" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># an HTML file data </span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>html <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;html&gt;&lt;head&gt;&lt;title&gt;The Dormouse's story&lt;/title&gt;&lt;/head&gt;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;body&gt;</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;p class="title"&gt;&lt;b&gt;The Dormouse's story&lt;/b&gt;&lt;/p&gt;</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;p class="story"&gt;Once upon a time there were three little sisters; and their names were</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;a href="http://example.com/elsie" class="sister" id="link1"&gt;Elsie&lt;/a&gt;,</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;a href="http://example.com/lacie" class="sister" id="link2"&gt;Lacie&lt;/a&gt; and</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;a href="http://example.com/tillie" class="sister" id="link3"&gt;Tillie&lt;/a&gt;;</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="st">and they lived at the bottom of a well.&lt;/p&gt;</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;/body&gt;&lt;/html&gt;"""</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Then we import <code>BeautifulSoup</code> from beautifulsoup.</p>
+<div id="d8c03c15" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># importing beautiful soup </span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bs4 <span class="im">import</span> BeautifulSoup</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Next, we convert the <code>html</code> into beautifulsoup object and name it <code>soup</code>. In <code>BeautifulSoup ()</code>function, we use the built-in parser called <code>html.parser</code>. We can also use other parsers such as <code>lxml</code> or <code>html5lib</code>. Each of these parsers has their own pros and cons. For example, <code>lxml</code> is the fastest and <code>html.parser</code> does not need extra dependencies.</p>
+<div id="2ee3d7d4" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Converting HTML data into Beautiful Soup Object </span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>soup <span class="op">=</span> BeautifulSoup(html, <span class="st">"html.parser"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The <code>prettify()</code> function will turn a soup object into a nicely formatted Unicode string, witha a separate line for each tag and each string.</p>
+<div id="70ea8962" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>soup.prettify()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>'&lt;html&gt;\n &lt;head&gt;\n  &lt;title&gt;\n   The Dormouse\'s story\n  &lt;/title&gt;\n &lt;/head&gt;\n &lt;body&gt;\n  &lt;p class="title"&gt;\n   &lt;b&gt;\n    The Dormouse\'s story\n   &lt;/b&gt;\n  &lt;/p&gt;\n  &lt;p class="story"&gt;\n   Once upon a time there were three little sisters; and their names were\n   &lt;a class="sister" href="http://example.com/elsie" id="link1"&gt;\n    Elsie\n   &lt;/a&gt;\n   ,\n   &lt;a class="sister" href="http://example.com/lacie" id="link2"&gt;\n    Lacie\n   &lt;/a&gt;\n   and\n   &lt;a class="sister" href="http://example.com/tillie" id="link3"&gt;\n    Tillie\n   &lt;/a&gt;\n   ;\nand they lived at the bottom of a well.\n  &lt;/p&gt;\n &lt;/body&gt;\n&lt;/html&gt;\n'</code></pre>
+</div>
+</div>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;We can use <code>get_text()</code> function to see the text element of the tags. <code>text</code> is a property (attribute) of soup object, which calls <code>get_text</code> function.</p>
+<div id="7d62b7d7" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>soup.get_text()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>"\nThe Dormouse's story\n\nThe Dormouse's story\nOnce upon a time there were three little sisters; and their names were\nElsie,\nLacie and\nTillie;\nand they lived at the bottom of a well.\n"</code></pre>
+</div>
+</div>
+<div id="b82eac65" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>soup.text</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>"\nThe Dormouse's story\n\nThe Dormouse's story\nOnce upon a time there were three little sisters; and their names were\nElsie,\nLacie and\nTillie;\nand they lived at the bottom of a well.\n"</code></pre>
+</div>
+</div>
+<div id="ae9e1c54" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(soup.text)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+The Dormouse's story
+
+The Dormouse's story
+Once upon a time there were three little sisters; and their names were
+Elsie,
+Lacie and
+Tillie;
+and they lived at the bottom of a well.
+</code></pre>
+</div>
+</div>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To see the title of the document, we run the following codes -</p>
+<div id="d294c0b2" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Navigating to Specific Tags </span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>soup.head.title</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>&lt;title&gt;The Dormouse's story&lt;/title&gt;</code></pre>
+</div>
+</div>
+<div id="c8443802" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting Text from a Specific Tag</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>soup.head.title.text</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<pre><code>"The Dormouse's story"</code></pre>
+</div>
+</div>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To see the text, from <code>a</code> tag, we run the following code -</p>
+<div id="2d5a94df" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>soup.body.a.text</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<pre><code>'Elsie'</code></pre>
+</div>
+</div>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To see the text, from <code>p</code> tag, we run the following code -</p>
+<div id="91cfa86b" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>soup.body.p.text</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<pre><code>"The Dormouse's story"</code></pre>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="searching-the-elements-of-tags" class="level2" data-number="9.5">
+<h2 data-number="9.5" class="anchored" data-anchor-id="searching-the-elements-of-tags"><span class="header-section-number">9.5</span> Searching the Elements of Tags</h2>
+<div style="text-align: justify">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The <code>find_all()</code> function from beautifulsoup takes an HTML tag as an string argument and returns the list of elements that match the tag. For example, if we want to have all <code>a</code> tags in <code>html</code> data above, we will run the following code. Please note that there is another similar function called <code>find()</code>, which will return the first tag element.</p>
+<div id="b542d372" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>soup.find_all(<span class="st">'a'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<pre><code>[&lt;a class="sister" href="http://example.com/elsie" id="link1"&gt;Elsie&lt;/a&gt;,
+ &lt;a class="sister" href="http://example.com/lacie" id="link2"&gt;Lacie&lt;/a&gt;,
+ &lt;a class="sister" href="http://example.com/tillie" id="link3"&gt;Tillie&lt;/a&gt;]</code></pre>
+</div>
+</div>
+<div id="f30662b0" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>soup.find(<span class="st">'a'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<pre><code>&lt;a class="sister" href="http://example.com/elsie" id="link1"&gt;Elsie&lt;/a&gt;</code></pre>
+</div>
+</div>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;We can also search for tags of a specific class as well by providing <code>class_</code> argument. Beasutiful soup uses <code>class_</code> because <code>class</code> is a reserved keyword in python. For example, let’s search for <code>p</code> tags that have element <code>story</code>.</p>
+<div id="37ca7e5a" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>soup.find_all(<span class="st">"p"</span>, class_ <span class="op">=</span> <span class="st">"title"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<pre><code>[&lt;p class="title"&gt;&lt;b&gt;The Dormouse's story&lt;/b&gt;&lt;/p&gt;]</code></pre>
+</div>
+</div>
+<div id="f9f153dd" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>soup.find(<span class="st">"p"</span>, class_<span class="op">=</span><span class="st">"story"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
+<pre><code>&lt;p class="story"&gt;Once upon a time there were three little sisters; and their names were
+&lt;a class="sister" href="http://example.com/elsie" id="link1"&gt;Elsie&lt;/a&gt;,
+&lt;a class="sister" href="http://example.com/lacie" id="link2"&gt;Lacie&lt;/a&gt; and
+&lt;a class="sister" href="http://example.com/tillie" id="link3"&gt;Tillie&lt;/a&gt;;
+and they lived at the bottom of a well.&lt;/p&gt;</code></pre>
+</div>
+</div>
+<div id="d5e238af" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>soup.find(<span class="st">"p"</span>, class_<span class="op">=</span><span class="st">"story"</span>).get_text()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="16">
+<pre><code>'Once upon a time there were three little sisters; and their names were\nElsie,\nLacie and\nTillie;\nand they lived at the bottom of a well.'</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-usebeautifulsoup" class="level2" data-number="9.6">
+<h2 data-number="9.6" class="anchored" data-anchor-id="sec-usebeautifulsoup"><span class="header-section-number">9.6</span> Scrape a Website Using BeautifulSoup</h2>
+<div style="text-align: justify">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;We have mastered some basic knowledge of Beautifulsoup. Therefore, it is now time to put our knowledge into practice. We are going to parse a <a href="https://books.toscrape.com/catalogue/page-1.html">website</a>, which includes information about books. We would like to extract some data from the website. The data include - book url, title of the book, ratings of the book, price, and availability of the book. Before we start scraping the website, we need to identify the tags or CSS selectors that are relevant for our targeted data. <a href="#fig-webscrapeExample" class="quarto-xref">Figure&nbsp;<span>9.3</span></a> shows how we can identify the tags or selectors relevant for our search. We should hover our cursor over the information that we plan to extract and then click right button of the mouse (on Windows) and click <code>"inspect"</code>. Then we can see all tags and CSS selectors and other tags of the website. <a href="#fig-webscrapeExample" class="quarto-xref">Figure&nbsp;<span>9.3</span></a> visualizes the whole process.</p>
+<div id="fig-webscrapeExample" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-webscrapeExample-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/first_webscraping2.gif" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-webscrapeExample-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.3: How to Find the HTML tags and CSS Class
+</figcaption>
+</figure>
+</div>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;First, we need to import necessary python modules. We use <code>requests</code> module to get the website information.</p>
+<div id="a101e5b1" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># importing requests </span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="co"># importing beautifulsoup</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bs4 <span class="im">import</span> BeautifulSoup</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="co"># importing pandas </span></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Then, we convert the data into <code>soup</code> object.</p>
+<div id="1df561f5" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fetch the website page </span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">'https://books.toscrape.com/catalogue/page-1.html'</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>html <span class="op">=</span> requests.get(url)</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>page <span class="op">=</span> html.text</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Converting it into Soup Object </span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>soup <span class="op">=</span> BeautifulSoup(page, <span class="st">"html.parser"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;After inspecting the tags and CSS selectors, we identify that <code>article</code> tag and <code>product_pod</code> class contains the information that we would like to extract. We use the <code>find</code> function from <code>beautifulsuop</code> to see our expected data. As noted before, <code>find</code> function identifies the first instance of the elements whereas <code>find_all</code> identifies all elements of the parsed HTML.</p>
+<div id="0ea96eed" class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>soup.find(<span class="st">"article"</span>, class_<span class="op">=</span><span class="st">"product_pod"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="19">
+<pre><code>&lt;article class="product_pod"&gt;
+&lt;div class="image_container"&gt;
+&lt;a href="a-light-in-the-attic_1000/index.html"&gt;&lt;img alt="A Light in the Attic" class="thumbnail" src="../media/cache/2c/da/2cdad67c44b002e7ead0cc35693c0e8b.jpg"/&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;p class="star-rating Three"&gt;
+&lt;i class="icon-star"&gt;&lt;/i&gt;
+&lt;i class="icon-star"&gt;&lt;/i&gt;
+&lt;i class="icon-star"&gt;&lt;/i&gt;
+&lt;i class="icon-star"&gt;&lt;/i&gt;
+&lt;i class="icon-star"&gt;&lt;/i&gt;
+&lt;/p&gt;
+&lt;h3&gt;&lt;a href="a-light-in-the-attic_1000/index.html" title="A Light in the Attic"&gt;A Light in the ...&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="product_price"&gt;
+&lt;p class="price_color"&gt;Â£51.77&lt;/p&gt;
+&lt;p class="instock availability"&gt;
+&lt;i class="icon-ok"&gt;&lt;/i&gt;
+    
+        In stock
+    
+&lt;/p&gt;
+&lt;form&gt;
+&lt;button class="btn btn-primary btn-block" data-loading-text="Adding..." type="submit"&gt;Add to basket&lt;/button&gt;
+&lt;/form&gt;
+&lt;/div&gt;
+&lt;/article&gt;</code></pre>
+</div>
+</div>
+<div id="1f2a1660" class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>soup.find_all(<span class="st">"article"</span>, class_<span class="op">=</span><span class="st">"product_pod"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Next, we check the url of each book. The <code>a</code> tag defines a hyperlink and the <code>href</code> is an attribute of <code>a</code> tag. Below, we use <code>a</code> tag to identify the link of each book.</p>
+<div id="3f806a6f" class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>books <span class="op">=</span> soup.find_all(<span class="st">"article"</span>, class_<span class="op">=</span><span class="st">"product_pod"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="6f8c77d9" class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>source_url <span class="op">=</span> <span class="st">"https://books.toscrape.com/catalogue"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="179818f6" class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Book url </span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> h <span class="kw">in</span> soup.find_all(<span class="st">"article"</span>, class_<span class="op">=</span><span class="st">"product_pod"</span>):</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(source_url<span class="op">+</span><span class="st">"/"</span><span class="op">+</span>h.find(<span class="st">'a'</span>)[<span class="st">'href'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>https://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html
+https://books.toscrape.com/catalogue/tipping-the-velvet_999/index.html
+https://books.toscrape.com/catalogue/soumission_998/index.html
+https://books.toscrape.com/catalogue/sharp-objects_997/index.html
+https://books.toscrape.com/catalogue/sapiens-a-brief-history-of-humankind_996/index.html
+https://books.toscrape.com/catalogue/the-requiem-red_995/index.html
+https://books.toscrape.com/catalogue/the-dirty-little-secrets-of-getting-your-dream-job_994/index.html
+https://books.toscrape.com/catalogue/the-coming-woman-a-novel-based-on-the-life-of-the-infamous-feminist-victoria-woodhull_993/index.html
+https://books.toscrape.com/catalogue/the-boys-in-the-boat-nine-americans-and-their-epic-quest-for-gold-at-the-1936-berlin-olympics_992/index.html
+https://books.toscrape.com/catalogue/the-black-maria_991/index.html
+https://books.toscrape.com/catalogue/starving-hearts-triangular-trade-trilogy-1_990/index.html
+https://books.toscrape.com/catalogue/shakespeares-sonnets_989/index.html
+https://books.toscrape.com/catalogue/set-me-free_988/index.html
+https://books.toscrape.com/catalogue/scott-pilgrims-precious-little-life-scott-pilgrim-1_987/index.html
+https://books.toscrape.com/catalogue/rip-it-up-and-start-again_986/index.html
+https://books.toscrape.com/catalogue/our-band-could-be-your-life-scenes-from-the-american-indie-underground-1981-1991_985/index.html
+https://books.toscrape.com/catalogue/olio_984/index.html
+https://books.toscrape.com/catalogue/mesaerion-the-best-science-fiction-stories-1800-1849_983/index.html
+https://books.toscrape.com/catalogue/libertarianism-for-beginners_982/index.html
+https://books.toscrape.com/catalogue/its-only-the-himalayas_981/index.html</code></pre>
+</div>
+</div>
+<div id="814e21e6" class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Book url (Alternative) </span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> h <span class="kw">in</span> soup.find_all(<span class="st">"article"</span>, class_<span class="op">=</span><span class="st">"product_pod"</span>):</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(h.h3.find(<span class="st">'a'</span>)[<span class="st">'href'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>a-light-in-the-attic_1000/index.html
+tipping-the-velvet_999/index.html
+soumission_998/index.html
+sharp-objects_997/index.html
+sapiens-a-brief-history-of-humankind_996/index.html
+the-requiem-red_995/index.html
+the-dirty-little-secrets-of-getting-your-dream-job_994/index.html
+the-coming-woman-a-novel-based-on-the-life-of-the-infamous-feminist-victoria-woodhull_993/index.html
+the-boys-in-the-boat-nine-americans-and-their-epic-quest-for-gold-at-the-1936-berlin-olympics_992/index.html
+the-black-maria_991/index.html
+starving-hearts-triangular-trade-trilogy-1_990/index.html
+shakespeares-sonnets_989/index.html
+set-me-free_988/index.html
+scott-pilgrims-precious-little-life-scott-pilgrim-1_987/index.html
+rip-it-up-and-start-again_986/index.html
+our-band-could-be-your-life-scenes-from-the-american-indie-underground-1981-1991_985/index.html
+olio_984/index.html
+mesaerion-the-best-science-fiction-stories-1800-1849_983/index.html
+libertarianism-for-beginners_982/index.html
+its-only-the-himalayas_981/index.html</code></pre>
+</div>
+</div>
+<div id="bd07a15a" class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Book Title </span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> h <span class="kw">in</span> soup.find_all(<span class="st">"article"</span>, class_<span class="op">=</span><span class="st">"product_pod"</span>):</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(h.h3.find(<span class="st">'a'</span>)[<span class="st">'title'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>A Light in the Attic
+Tipping the Velvet
+Soumission
+Sharp Objects
+Sapiens: A Brief History of Humankind
+The Requiem Red
+The Dirty Little Secrets of Getting Your Dream Job
+The Coming Woman: A Novel Based on the Life of the Infamous Feminist, Victoria Woodhull
+The Boys in the Boat: Nine Americans and Their Epic Quest for Gold at the 1936 Berlin Olympics
+The Black Maria
+Starving Hearts (Triangular Trade Trilogy, #1)
+Shakespeare's Sonnets
+Set Me Free
+Scott Pilgrim's Precious Little Life (Scott Pilgrim #1)
+Rip it Up and Start Again
+Our Band Could Be Your Life: Scenes from the American Indie Underground, 1981-1991
+Olio
+Mesaerion: The Best Science Fiction Stories 1800-1849
+Libertarianism for Beginners
+It's Only the Himalayas</code></pre>
+</div>
+</div>
+<div id="96705b4b" class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ratings </span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>soup.find(<span class="st">'p'</span>, class_<span class="op">=</span><span class="st">'star-rating'</span>)[<span class="st">'class'</span>][<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="25">
+<pre><code>'Three'</code></pre>
+</div>
+</div>
+<div id="5c26467f" class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># price </span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>soup.find(<span class="st">'p'</span>, class_<span class="op">=</span><span class="st">'price_color'</span>).get_text().replace(<span class="st">"Â"</span>,<span class="st">''</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="26">
+<pre><code>'£51.77'</code></pre>
+</div>
+</div>
+<div id="14f66015" class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># availability </span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>soup.find(<span class="st">'p'</span>, class_<span class="op">=</span><span class="st">'instock availability'</span>).get_text().replace(<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>,<span class="st">''</span>).strip()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="27">
+<pre><code>'In stock'</code></pre>
+</div>
+</div>
+<section id="sec-onepage" class="level3" data-number="9.6.1">
+<h3 data-number="9.6.1" class="anchored" data-anchor-id="sec-onepage"><span class="header-section-number">9.6.1</span> Putting All of the Above Actions Together</h3>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In <a href="#sec-usebeautifulsoup" class="quarto-xref"><span>Section 9.6</span></a>, we identify and extract individual tags and data that we want to extract. Now, we will put all of them together and create a data frame. For this purpose, we will use <code>for loop</code>.</p>
+<div id="d1118fa3" class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fetch the Page </span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">'https://books.toscrape.com/catalogue/page-1.html'</span></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>html <span class="op">=</span> requests.get(url)</span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>page <span class="op">=</span> html.text</span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Parse HTML Content</span></span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a>soup <span class="op">=</span> BeautifulSoup(page, <span class="st">"html.parser"</span>)</span>
+<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Information We need </span></span>
+<span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a>book_url <span class="op">=</span> []</span>
+<span id="cb52-11"><a href="#cb52-11" aria-hidden="true" tabindex="-1"></a>title <span class="op">=</span> []</span>
+<span id="cb52-12"><a href="#cb52-12" aria-hidden="true" tabindex="-1"></a>ratings <span class="op">=</span> []</span>
+<span id="cb52-13"><a href="#cb52-13" aria-hidden="true" tabindex="-1"></a>price <span class="op">=</span> []</span>
+<span id="cb52-14"><a href="#cb52-14" aria-hidden="true" tabindex="-1"></a>availability <span class="op">=</span> []</span>
+<span id="cb52-15"><a href="#cb52-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-16"><a href="#cb52-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract listings from the page</span></span>
+<span id="cb52-17"><a href="#cb52-17" aria-hidden="true" tabindex="-1"></a>books <span class="op">=</span> soup.find_all(<span class="st">"article"</span>, class_<span class="op">=</span><span class="st">"product_pod"</span>)</span>
+<span id="cb52-18"><a href="#cb52-18" aria-hidden="true" tabindex="-1"></a>source_url <span class="op">=</span> <span class="st">"https://books.toscrape.com/catalogue"</span></span>
+<span id="cb52-19"><a href="#cb52-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-20"><a href="#cb52-20" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> book <span class="kw">in</span> books:</span>
+<span id="cb52-21"><a href="#cb52-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># extract book url </span></span>
+<span id="cb52-22"><a href="#cb52-22" aria-hidden="true" tabindex="-1"></a>    book_url_text <span class="op">=</span> source_url<span class="op">+</span><span class="st">"/"</span><span class="op">+</span>book.find(<span class="st">'a'</span>)[<span class="st">'href'</span>]</span>
+<span id="cb52-23"><a href="#cb52-23" aria-hidden="true" tabindex="-1"></a>    book_url.append(book_url_text)</span>
+<span id="cb52-24"><a href="#cb52-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-25"><a href="#cb52-25" aria-hidden="true" tabindex="-1"></a>    <span class="co"># extract title </span></span>
+<span id="cb52-26"><a href="#cb52-26" aria-hidden="true" tabindex="-1"></a>    title_text <span class="op">=</span> book.h3.find(<span class="st">'a'</span>)[<span class="st">'title'</span>]</span>
+<span id="cb52-27"><a href="#cb52-27" aria-hidden="true" tabindex="-1"></a>    title.append(title_text)</span>
+<span id="cb52-28"><a href="#cb52-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-29"><a href="#cb52-29" aria-hidden="true" tabindex="-1"></a>    <span class="co"># extract ratings </span></span>
+<span id="cb52-30"><a href="#cb52-30" aria-hidden="true" tabindex="-1"></a>    ratings_text <span class="op">=</span> book.find(<span class="st">'p'</span>, class_<span class="op">=</span><span class="st">'star-rating'</span>)[<span class="st">'class'</span>][<span class="dv">1</span>]</span>
+<span id="cb52-31"><a href="#cb52-31" aria-hidden="true" tabindex="-1"></a>    ratings.append(ratings_text)</span>
+<span id="cb52-32"><a href="#cb52-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-33"><a href="#cb52-33" aria-hidden="true" tabindex="-1"></a>    <span class="co"># extract price </span></span>
+<span id="cb52-34"><a href="#cb52-34" aria-hidden="true" tabindex="-1"></a>    price_text <span class="op">=</span> book.find(<span class="st">'p'</span>, class_<span class="op">=</span><span class="st">'price_color'</span>).get_text().replace(<span class="st">"Â"</span>,<span class="st">''</span>)</span>
+<span id="cb52-35"><a href="#cb52-35" aria-hidden="true" tabindex="-1"></a>    price.append(price_text)</span>
+<span id="cb52-36"><a href="#cb52-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-37"><a href="#cb52-37" aria-hidden="true" tabindex="-1"></a>    <span class="co"># extract availability </span></span>
+<span id="cb52-38"><a href="#cb52-38" aria-hidden="true" tabindex="-1"></a>    availability_text <span class="op">=</span> book.find(<span class="st">'p'</span>, class_<span class="op">=</span><span class="st">'instock availability'</span>).get_text().replace(<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>,<span class="st">''</span>).strip()</span>
+<span id="cb52-39"><a href="#cb52-39" aria-hidden="true" tabindex="-1"></a>    availability.append(availability_text)</span>
+<span id="cb52-40"><a href="#cb52-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-41"><a href="#cb52-41" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating the Data Frame </span></span>
+<span id="cb52-42"><a href="#cb52-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-43"><a href="#cb52-43" aria-hidden="true" tabindex="-1"></a>pd.DataFrame({</span>
+<span id="cb52-44"><a href="#cb52-44" aria-hidden="true" tabindex="-1"></a>    <span class="st">'book_url'</span>:book_url,</span>
+<span id="cb52-45"><a href="#cb52-45" aria-hidden="true" tabindex="-1"></a>    <span class="st">'title'</span>:title,</span>
+<span id="cb52-46"><a href="#cb52-46" aria-hidden="true" tabindex="-1"></a>    <span class="st">'ratings'</span>:ratings,</span>
+<span id="cb52-47"><a href="#cb52-47" aria-hidden="true" tabindex="-1"></a>    <span class="st">'price'</span>:price,</span>
+<span id="cb52-48"><a href="#cb52-48" aria-hidden="true" tabindex="-1"></a>    <span class="st">'availability'</span>:availability</span>
+<span id="cb52-49"><a href="#cb52-49" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="28">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">book_url</th>
+<th data-quarto-table-cell-role="th">title</th>
+<th data-quarto-table-cell-role="th">ratings</th>
+<th data-quarto-table-cell-role="th">price</th>
+<th data-quarto-table-cell-role="th">availability</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>https://books.toscrape.com/catalogue/a-light-i...</td>
+<td>A Light in the Attic</td>
+<td>Three</td>
+<td>£51.77</td>
+<td>In stock</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>https://books.toscrape.com/catalogue/tipping-t...</td>
+<td>Tipping the Velvet</td>
+<td>One</td>
+<td>£53.74</td>
+<td>In stock</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>https://books.toscrape.com/catalogue/soumissio...</td>
+<td>Soumission</td>
+<td>One</td>
+<td>£50.10</td>
+<td>In stock</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>https://books.toscrape.com/catalogue/sharp-obj...</td>
+<td>Sharp Objects</td>
+<td>Four</td>
+<td>£47.82</td>
+<td>In stock</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>https://books.toscrape.com/catalogue/sapiens-a...</td>
+<td>Sapiens: A Brief History of Humankind</td>
+<td>Five</td>
+<td>£54.23</td>
+<td>In stock</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>https://books.toscrape.com/catalogue/the-requi...</td>
+<td>The Requiem Red</td>
+<td>One</td>
+<td>£22.65</td>
+<td>In stock</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>https://books.toscrape.com/catalogue/the-dirty...</td>
+<td>The Dirty Little Secrets of Getting Your Dream...</td>
+<td>Four</td>
+<td>£33.34</td>
+<td>In stock</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>https://books.toscrape.com/catalogue/the-comin...</td>
+<td>The Coming Woman: A Novel Based on the Life of...</td>
+<td>Three</td>
+<td>£17.93</td>
+<td>In stock</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">8</td>
+<td>https://books.toscrape.com/catalogue/the-boys-...</td>
+<td>The Boys in the Boat: Nine Americans and Their...</td>
+<td>Four</td>
+<td>£22.60</td>
+<td>In stock</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9</td>
+<td>https://books.toscrape.com/catalogue/the-black...</td>
+<td>The Black Maria</td>
+<td>One</td>
+<td>£52.15</td>
+<td>In stock</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">10</td>
+<td>https://books.toscrape.com/catalogue/starving-...</td>
+<td>Starving Hearts (Triangular Trade Trilogy, #1)</td>
+<td>Two</td>
+<td>£13.99</td>
+<td>In stock</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">11</td>
+<td>https://books.toscrape.com/catalogue/shakespea...</td>
+<td>Shakespeare's Sonnets</td>
+<td>Four</td>
+<td>£20.66</td>
+<td>In stock</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">12</td>
+<td>https://books.toscrape.com/catalogue/set-me-fr...</td>
+<td>Set Me Free</td>
+<td>Five</td>
+<td>£17.46</td>
+<td>In stock</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">13</td>
+<td>https://books.toscrape.com/catalogue/scott-pil...</td>
+<td>Scott Pilgrim's Precious Little Life (Scott Pi...</td>
+<td>Five</td>
+<td>£52.29</td>
+<td>In stock</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">14</td>
+<td>https://books.toscrape.com/catalogue/rip-it-up...</td>
+<td>Rip it Up and Start Again</td>
+<td>Five</td>
+<td>£35.02</td>
+<td>In stock</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">15</td>
+<td>https://books.toscrape.com/catalogue/our-band-...</td>
+<td>Our Band Could Be Your Life: Scenes from the A...</td>
+<td>Three</td>
+<td>£57.25</td>
+<td>In stock</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">16</td>
+<td>https://books.toscrape.com/catalogue/olio_984/...</td>
+<td>Olio</td>
+<td>One</td>
+<td>£23.88</td>
+<td>In stock</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">17</td>
+<td>https://books.toscrape.com/catalogue/mesaerion...</td>
+<td>Mesaerion: The Best Science Fiction Stories 18...</td>
+<td>One</td>
+<td>£37.59</td>
+<td>In stock</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">18</td>
+<td>https://books.toscrape.com/catalogue/libertari...</td>
+<td>Libertarianism for Beginners</td>
+<td>Two</td>
+<td>£51.33</td>
+<td>In stock</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">19</td>
+<td>https://books.toscrape.com/catalogue/its-only-...</td>
+<td>It's Only the Himalayas</td>
+<td>Two</td>
+<td>£45.17</td>
+<td>In stock</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="doing-the-same-things-for-all-pages" class="level3" data-number="9.6.2">
+<h3 data-number="9.6.2" class="anchored" data-anchor-id="doing-the-same-things-for-all-pages"><span class="header-section-number">9.6.2</span> Doing the Same Things for All Pages</h3>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In <a href="#sec-onepage" class="quarto-xref"><span>Section 9.6.1</span></a>, we scrape the first page of the website, but now we would like to scrape all pages of the website.</p>
+<div id="caba5dea" class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>url1 <span class="op">=</span> <span class="st">'https://books.toscrape.com/catalogue/page-'</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>pages <span class="op">=</span> <span class="bu">range</span>(<span class="dv">51</span>)</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>url2 <span class="op">=</span> <span class="st">'.html'</span></span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Information We need </span></span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>book_url <span class="op">=</span> []</span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>title <span class="op">=</span> []</span>
+<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a>ratings <span class="op">=</span> []</span>
+<span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a>price <span class="op">=</span> []</span>
+<span id="cb53-10"><a href="#cb53-10" aria-hidden="true" tabindex="-1"></a>availability <span class="op">=</span> []</span>
+<span id="cb53-11"><a href="#cb53-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Some other Information </span></span>
+<span id="cb53-12"><a href="#cb53-12" aria-hidden="true" tabindex="-1"></a>source_url <span class="op">=</span> <span class="st">"https://books.toscrape.com/catalogue"</span></span>
+<span id="cb53-13"><a href="#cb53-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-14"><a href="#cb53-14" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> page <span class="kw">in</span> pages:</span>
+<span id="cb53-15"><a href="#cb53-15" aria-hidden="true" tabindex="-1"></a>    url <span class="op">=</span> url1<span class="op">+</span><span class="bu">str</span>(page)<span class="op">+</span>url2</span>
+<span id="cb53-16"><a href="#cb53-16" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> requests.get(url)</span>
+<span id="cb53-17"><a href="#cb53-17" aria-hidden="true" tabindex="-1"></a>    soup <span class="op">=</span> BeautifulSoup(r.text, <span class="st">'html.parser'</span>)</span>
+<span id="cb53-18"><a href="#cb53-18" aria-hidden="true" tabindex="-1"></a>    books <span class="op">=</span> soup.find_all(<span class="st">"article"</span>, class_<span class="op">=</span><span class="st">"product_pod"</span>)</span>
+<span id="cb53-19"><a href="#cb53-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-20"><a href="#cb53-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> book <span class="kw">in</span> books:</span>
+<span id="cb53-21"><a href="#cb53-21" aria-hidden="true" tabindex="-1"></a>        <span class="co"># extract book url </span></span>
+<span id="cb53-22"><a href="#cb53-22" aria-hidden="true" tabindex="-1"></a>        book_url_text <span class="op">=</span> source_url<span class="op">+</span><span class="st">"/"</span><span class="op">+</span>book.find(<span class="st">'a'</span>)[<span class="st">'href'</span>]</span>
+<span id="cb53-23"><a href="#cb53-23" aria-hidden="true" tabindex="-1"></a>        book_url.append(book_url_text)</span>
+<span id="cb53-24"><a href="#cb53-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-25"><a href="#cb53-25" aria-hidden="true" tabindex="-1"></a>        <span class="co"># extract title </span></span>
+<span id="cb53-26"><a href="#cb53-26" aria-hidden="true" tabindex="-1"></a>        title_text <span class="op">=</span> book.h3.find(<span class="st">'a'</span>)[<span class="st">'title'</span>]</span>
+<span id="cb53-27"><a href="#cb53-27" aria-hidden="true" tabindex="-1"></a>        title.append(title_text)</span>
+<span id="cb53-28"><a href="#cb53-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-29"><a href="#cb53-29" aria-hidden="true" tabindex="-1"></a>        <span class="co"># extract ratings </span></span>
+<span id="cb53-30"><a href="#cb53-30" aria-hidden="true" tabindex="-1"></a>        ratings_text <span class="op">=</span> book.find(<span class="st">'p'</span>, class_<span class="op">=</span><span class="st">'star-rating'</span>)[<span class="st">'class'</span>][<span class="dv">1</span>]</span>
+<span id="cb53-31"><a href="#cb53-31" aria-hidden="true" tabindex="-1"></a>        ratings.append(ratings_text)</span>
+<span id="cb53-32"><a href="#cb53-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-33"><a href="#cb53-33" aria-hidden="true" tabindex="-1"></a>        <span class="co"># extract price </span></span>
+<span id="cb53-34"><a href="#cb53-34" aria-hidden="true" tabindex="-1"></a>        price_text <span class="op">=</span> book.find(<span class="st">'p'</span>, class_<span class="op">=</span><span class="st">'price_color'</span>).get_text().replace(<span class="st">"Â"</span>,<span class="st">''</span>)</span>
+<span id="cb53-35"><a href="#cb53-35" aria-hidden="true" tabindex="-1"></a>        price.append(price_text)</span>
+<span id="cb53-36"><a href="#cb53-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-37"><a href="#cb53-37" aria-hidden="true" tabindex="-1"></a>        <span class="co"># extract availability </span></span>
+<span id="cb53-38"><a href="#cb53-38" aria-hidden="true" tabindex="-1"></a>        availability_text <span class="op">=</span> book.find(<span class="st">'p'</span>, class_<span class="op">=</span><span class="st">'instock availability'</span>).get_text().replace(<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>,<span class="st">''</span>).strip()</span>
+<span id="cb53-39"><a href="#cb53-39" aria-hidden="true" tabindex="-1"></a>        availability.append(availability_text)</span>
+<span id="cb53-40"><a href="#cb53-40" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb53-41"><a href="#cb53-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-42"><a href="#cb53-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-43"><a href="#cb53-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-44"><a href="#cb53-44" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating the Data Frame </span></span>
+<span id="cb53-45"><a href="#cb53-45" aria-hidden="true" tabindex="-1"></a>pd.DataFrame({</span>
+<span id="cb53-46"><a href="#cb53-46" aria-hidden="true" tabindex="-1"></a>    <span class="st">'book_url'</span>:book_url,</span>
+<span id="cb53-47"><a href="#cb53-47" aria-hidden="true" tabindex="-1"></a>    <span class="st">'title'</span>:title,</span>
+<span id="cb53-48"><a href="#cb53-48" aria-hidden="true" tabindex="-1"></a>    <span class="st">'ratings'</span>:ratings,</span>
+<span id="cb53-49"><a href="#cb53-49" aria-hidden="true" tabindex="-1"></a>    <span class="st">'price'</span>:price,</span>
+<span id="cb53-50"><a href="#cb53-50" aria-hidden="true" tabindex="-1"></a>    <span class="st">'availability'</span>:availability</span>
+<span id="cb53-51"><a href="#cb53-51" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="29">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">book_url</th>
+<th data-quarto-table-cell-role="th">title</th>
+<th data-quarto-table-cell-role="th">ratings</th>
+<th data-quarto-table-cell-role="th">price</th>
+<th data-quarto-table-cell-role="th">availability</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>https://books.toscrape.com/catalogue/a-light-i...</td>
+<td>A Light in the Attic</td>
+<td>Three</td>
+<td>£51.77</td>
+<td>In stock</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>https://books.toscrape.com/catalogue/tipping-t...</td>
+<td>Tipping the Velvet</td>
+<td>One</td>
+<td>£53.74</td>
+<td>In stock</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>https://books.toscrape.com/catalogue/soumissio...</td>
+<td>Soumission</td>
+<td>One</td>
+<td>£50.10</td>
+<td>In stock</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>https://books.toscrape.com/catalogue/sharp-obj...</td>
+<td>Sharp Objects</td>
+<td>Four</td>
+<td>£47.82</td>
+<td>In stock</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>https://books.toscrape.com/catalogue/sapiens-a...</td>
+<td>Sapiens: A Brief History of Humankind</td>
+<td>Five</td>
+<td>£54.23</td>
+<td>In stock</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">995</td>
+<td>https://books.toscrape.com/catalogue/alice-in-...</td>
+<td>Alice in Wonderland (Alice's Adventures in Won...</td>
+<td>One</td>
+<td>£55.53</td>
+<td>In stock</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">996</td>
+<td>https://books.toscrape.com/catalogue/ajin-demi...</td>
+<td>Ajin: Demi-Human, Volume 1 (Ajin: Demi-Human #1)</td>
+<td>Four</td>
+<td>£57.06</td>
+<td>In stock</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">997</td>
+<td>https://books.toscrape.com/catalogue/a-spys-de...</td>
+<td>A Spy's Devotion (The Regency Spies of London #1)</td>
+<td>Five</td>
+<td>£16.97</td>
+<td>In stock</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">998</td>
+<td>https://books.toscrape.com/catalogue/1st-to-di...</td>
+<td>1st to Die (Women's Murder Club #1)</td>
+<td>One</td>
+<td>£53.98</td>
+<td>In stock</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">999</td>
+<td>https://books.toscrape.com/catalogue/1000-plac...</td>
+<td>1,000 Places to See Before You Die</td>
+<td>Five</td>
+<td>£26.08</td>
+<td>In stock</td>
+</tr>
+</tbody>
+</table>
+
+<p>1000 rows × 5 columns</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="conclusion" class="level2" data-number="9.7">
+<h2 data-number="9.7" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">9.7</span> Conclusion</h2>
+</section>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/analyticsforaccountingdata\.netlify\.app\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./prescriptive.html" class="pagination-link" aria-label="Prescriptive Analytics in Accounting">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Prescriptive Analytics in Accounting</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./nlp.html" class="pagination-link" aria-label="Natural Language Processing (NLP)">
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Natural Language Processing (NLP)</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Copyright©Sharif Islam</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/msharifbd/sharifanalytics/edit/main/advanced_analytics.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/msharifbd/sharifanalytics/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/msharifbd/sharifanalytics/blob/main/advanced_analytics.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>This book was built with <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

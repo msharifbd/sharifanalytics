@@ -476,7 +476,7 @@ div.csl-indent {
 <li><p>Understand different techniques of transforming and cleaning data</p></li>
 <li><p>Learn about Different R and Python Packages for EDA</p></li>
 <li><p>Understand how to use six verbs for EDA</p></li>
-<li><p>Perform EDA on some real world data sets.</p></li>
+<li><p>Perform EDA on some real world data sets</p></li>
 <li><p>Learn about how to interpret results from EDA</p></li>
 </ul>
 </div>
@@ -643,16 +643,16 @@ $ SalePrice       &lt;int&gt; 0</code></pre>
 <pre><code># A tibble: 10 × 14
    InvoiceNo Date     Country ProductID Shop  Gender `Size (US)` `Size (Europe)`
        &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;        &lt;dbl&gt; &lt;chr&gt;          
- 1     64836 10/30/2… Germany      2179 GER3  Female         9.5 40             
- 2     59961 2/18/20… Germany      2203 GER1  Male          10.5 43-44          
- 3     63386 8/20/20… Germany      2229 GER2  Male           9   42             
- 4     56567 6/22/20… United…      2201 US11  Female         6.5 37             
- 5     58121 10/16/2… Canada       2198 CAN5  Female         9   39-40          
- 6     60712 4/4/2016 United…      2192 US6   Female        11   41-42          
- 7     55017 2/1/2015 Canada       2185 CAN6  Female         6   36-37          
- 8     57635 9/10/20… Germany      2172 GER1  Female         9.5 40             
- 9     56235 5/29/20… United…      2201 UK3   Male          10.5 43-44          
-10     65411 12/5/20… Germany      2168 GER1  Male           9.5 42-43          
+ 1     62035 6/16/20… Germany      2205 GER2  Male           9   42             
+ 2     63216 8/11/20… United…      2183 US5   Female        10   40-41          
+ 3     52752 3/1/2014 United…      2157 US3   Male          11.5 44-45          
+ 4     64890 11/1/20… United…      2214 UK5   Male           9.5 42-43          
+ 5     58150 10/17/2… Canada       2195 CAN7  Male          10.5 43-44          
+ 6     55414 3/11/20… United…      2201 US14  Male           9.5 42-43          
+ 7     65680 12/24/2… Germany      2182 GER1  Male           9.5 42-43          
+ 8     54422 11/10/2… United…      2160 US13  Male           9.5 42-43          
+ 9     57743 9/17/20… Germany      2220 GER2  Male          10.5 43-44          
+10     63582 8/29/20… United…      2156 UK2   Male           8.5 41-42          
 # ℹ 6 more variables: `Size (UK)` &lt;dbl&gt;, UnitPrice &lt;dbl&gt;, Discount &lt;dbl&gt;,
 #   Year &lt;dbl&gt;, Month &lt;dbl&gt;, SalePrice &lt;dbl&gt;</code></pre>
 </div>
@@ -783,17 +783,17 @@ dtype: object</code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>df_pd.sample(n<span class="op">=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>       InvoiceNo        Date        Country  ...  Year Month SalePrice
-14820      65636  12/20/2016  United States  ...  2016    12     189.0
-4198       56062   5/14/2015  United States  ...  2015     5     139.0
-2887       54856   1/15/2015         Canada  ...  2015     1     125.1
-13925      64820  10/29/2016        Germany  ...  2016    10      84.5
-2735       54709  12/30/2014         Canada  ...  2014    12      89.5
-8647       60131   2/27/2016  United States  ...  2016     2     129.0
-8617       60102   2/26/2016        Germany  ...  2016     2     134.1
-6959       58608  11/18/2015  United States  ...  2015    11     169.0
-13977      64864  10/31/2016  United States  ...  2016    10     139.0
-1939       54041   9/14/2014  United States  ...  2014     9     161.1
+<pre><code>       InvoiceNo        Date         Country  ...  Year Month SalePrice
+5318       57091   7/31/2015   United States  ...  2015     7     189.0
+5133       56926   7/18/2015         Germany  ...  2015     7     129.0
+11563      62728   7/18/2016   United States  ...  2016     7     139.0
+9032       60480   3/20/2016         Germany  ...  2016     3     169.0
+5316       57089   7/31/2015   United States  ...  2015     7      90.3
+3295       55232   2/21/2015         Germany  ...  2015     2     179.0
+13943      64836  10/30/2016         Germany  ...  2016    10      74.5
+5718       57459   8/28/2015         Germany  ...  2015     8     139.0
+14805      65622  12/19/2016  United Kingdom  ...  2016    12     179.0
+12451      63508   8/25/2016   United States  ...  2016     8     125.1
 
 [10 rows x 14 columns]</code></pre>
 </div>

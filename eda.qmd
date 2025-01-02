@@ -16,7 +16,7 @@ At the End of the Chapter, Students should be Able to -
 
 -   Understand how to use six verbs for EDA
 
--   Perform EDA on some real world data sets. 
+-   Perform EDA on some real world data sets 
 
 -   Learn about how to interpret results from EDA
 :::

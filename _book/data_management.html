@@ -1,0 +1,1700 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.551">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Analytics for Accounting Data - 6&nbsp; Data Management in Accounting</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./predictive.html" rel="next">
+<link href="./dashboard.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./eda.html">Data Exploration and Management</a></li><li class="breadcrumb-item"><a href="./data_management.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Data Management in Accounting</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Analytics for Accounting Data</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://github.com/msharifbd/sharifanalytics" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Analytics-for-Accounting-Data.pdf">
+              <i class="bi bi-bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Analytics-for-Accounting-Data.epub">
+              <i class="bi bi-bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+    </div>
+    <div class="dropdown">
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-1" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Share"><i class="bi bi-share"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-1">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
+              <i class="bi bi-bi-twitter pe-1"></i>
+            Twitter
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.facebook.com/sharer/sharer.php?u=|url|">
+              <i class="bi bi-bi-facebook pe-1"></i>
+            Facebook
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.linkedin.com/sharing/share-offsite/?url=|url|">
+              <i class="bi bi-bi-linkedin pe-1"></i>
+            LinkedIn
+            </a>
+          </li>
+      </ul>
+    </div>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Introduction to Accounting Analytics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Overview of Accounting Analytics</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./foundations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Foundations of Accounting Data</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Data Exploration and Management</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./eda.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis (EDA)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./visualization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data Visualization</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./dashboard.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Dashboard for Visualization</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data_management.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Data Management in Accounting</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Predictive and Prescriptive Analytics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./predictive.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Predictive Modeling - Linear Regression</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./prescriptive.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Prescriptive Analytics in Accounting</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Advanced Techniques and Applications</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./advanced_analytics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Web Scraping and Textual Analytics</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./nlp.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Natural Language Processing (NLP)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./machine_learning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Machine Learning</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./fraud.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Fraud Detection and Risk Management</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./performance_measurement.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Performance Measurement and Management</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text">Practical Considerations and Future Directions</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ethics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Regulatory and Ethical Considerations</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./future.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Future Directions in Accounting Analytics</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./python_basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">A Primer on Python</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./r_basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">A Primer on R</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter1_solution.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Chapter 1 Solution</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter2_solution.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Chapter 2 Solution</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#learning-objectives-of-the-chapter" id="toc-learning-objectives-of-the-chapter" class="nav-link active" data-scroll-target="#learning-objectives-of-the-chapter">Learning Objectives of the Chapter</a></li>
+  <li><a href="#data-management" id="toc-data-management" class="nav-link" data-scroll-target="#data-management"><span class="header-section-number">6.1</span> Data Management</a></li>
+  <li><a href="#relational-database" id="toc-relational-database" class="nav-link" data-scroll-target="#relational-database"><span class="header-section-number">6.2</span> Relational Database</a></li>
+  <li><a href="#relational-database-management-systems-rdbms" id="toc-relational-database-management-systems-rdbms" class="nav-link" data-scroll-target="#relational-database-management-systems-rdbms"><span class="header-section-number">6.3</span> Relational Database Management Systems (RDBMS)</a></li>
+  <li><a href="#creating-a-relational-database-using-postgresql" id="toc-creating-a-relational-database-using-postgresql" class="nav-link" data-scroll-target="#creating-a-relational-database-using-postgresql"><span class="header-section-number">6.4</span> Creating a Relational Database Using <code>PostgreSQL</code></a>
+  <ul>
+  <li><a href="#sec-installPostgreSQL" id="toc-sec-installPostgreSQL" class="nav-link" data-scroll-target="#sec-installPostgreSQL"><span class="header-section-number">6.4.1</span> Installing PostgreSQL</a></li>
+  </ul></li>
+  <li><a href="#connecting-to-the-relational-database" id="toc-connecting-to-the-relational-database" class="nav-link" data-scroll-target="#connecting-to-the-relational-database"><span class="header-section-number">6.5</span> Connecting to the Relational Database</a>
+  <ul>
+  <li><a href="#connection-using-sql-shell-psql" id="toc-connection-using-sql-shell-psql" class="nav-link" data-scroll-target="#connection-using-sql-shell-psql"><span class="header-section-number">6.5.1</span> Connection using SQL Shell (<code>psql</code>)</a></li>
+  <li><a href="#sec-cmdconnection" id="toc-sec-cmdconnection" class="nav-link" data-scroll-target="#sec-cmdconnection"><span class="header-section-number">6.5.2</span> Connection using Command Shell (<code>cmd</code>)</a></li>
+  </ul></li>
+  <li><a href="#sec-dealdatabase" id="toc-sec-dealdatabase" class="nav-link" data-scroll-target="#sec-dealdatabase"><span class="header-section-number">6.6</span> Dealing with the Database</a>
+  <ul>
+  <li><a href="#sec-creatingdatabase" id="toc-sec-creatingdatabase" class="nav-link" data-scroll-target="#sec-creatingdatabase"><span class="header-section-number">6.6.1</span> Creating a Database and Tables inside the Database</a></li>
+  <li><a href="#querying-the-database" id="toc-querying-the-database" class="nav-link" data-scroll-target="#querying-the-database"><span class="header-section-number">6.6.2</span> Querying the Database</a></li>
+  <li><a href="#saving-a-database-from-postgresql" id="toc-saving-a-database-from-postgresql" class="nav-link" data-scroll-target="#saving-a-database-from-postgresql"><span class="header-section-number">6.6.3</span> Saving a Database from PostgreSQL</a></li>
+  <li><a href="#uploading-a-database-to-postgresql" id="toc-uploading-a-database-to-postgresql" class="nav-link" data-scroll-target="#uploading-a-database-to-postgresql"><span class="header-section-number">6.6.4</span> Uploading a Database to PostgreSQL</a></li>
+  </ul></li>
+  <li><a href="#querying-postgresql-database-using-r" id="toc-querying-postgresql-database-using-r" class="nav-link" data-scroll-target="#querying-postgresql-database-using-r"><span class="header-section-number">6.7</span> Querying PostgreSQL Database Using <code>R</code></a></li>
+  <li><a href="#querying-postgresql-database-using-python" id="toc-querying-postgresql-database-using-python" class="nav-link" data-scroll-target="#querying-postgresql-database-using-python"><span class="header-section-number">6.8</span> Querying PostgreSQL Database Using <code>Python</code></a></li>
+  <li><a href="#online-analytical-processing-olap-database-management-system" id="toc-online-analytical-processing-olap-database-management-system" class="nav-link" data-scroll-target="#online-analytical-processing-olap-database-management-system"><span class="header-section-number">6.9</span> Online Analytical Processing (OLAP) Database Management System</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">6.10</span> Conclusion</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/msharifbd/sharifanalytics/edit/main/data_management.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/msharifbd/sharifanalytics/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/msharifbd/sharifanalytics/blob/main/data_management.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./eda.html">Data Exploration and Management</a></li><li class="breadcrumb-item"><a href="./data_management.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Data Management in Accounting</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Data Management in Accounting</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="learning-objectives-of-the-chapter" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="learning-objectives-of-the-chapter">Learning Objectives of the Chapter</h3>
+<div style="text-align: justify">
+<p>At the End of the Chapter, Students should be Able to -</p>
+<ul>
+<li><p>Gain an understanding about data management and its importance</p></li>
+<li><p>Understand the Concepts of Relational Database</p></li>
+<li><p>Develop a database using a Database Management System (DBMS)</p></li>
+<li><p>Connect Analytics Platforms Such as R or Python to the database and retrieve data</p></li>
+<li><p>Gain an understanding about Online Analytical Processing (OLAP) DBMS</p></li>
+<li><p>Create and Use OLAP DBMS</p></li>
+</ul>
+</div>
+</section>
+<section id="data-management" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="data-management"><span class="header-section-number">6.1</span> Data Management</h2>
+<div style="text-align: justify">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Data management is the practice of collecting, keeping, and using data securely, efficiently, and cost-effectively. Data management is important for a variety of data-driven use cases including end-to-end business process execution, regulatory compliance, accurate analytics and AI, data migration, and digital transformation.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Managing digital data in an organization involves a broad range of tasks, policies, procedures, and practices. The work of data management has a wide scope, covering factors such as how to:</p>
+<ul>
+<li>Create, access, and update data across a diverse data tier</li>
+<li>Store data across multiple clouds and on premises</li>
+<li>Provide high availability and disaster recovery</li>
+<li>Use data in a growing variety of apps, analytics, and algorithms</li>
+<li>Ensure data privacy and security</li>
+<li>Archive and destroy data in accordance with retention schedules and compliance requirements</li>
+</ul>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Data management systems are built on data management platforms and can include databases, data lakes and data warehouses, big data management systems, data analytics, and more.</p>
+</div>
+</section>
+<section id="relational-database" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="relational-database"><span class="header-section-number">6.2</span> Relational Database</h2>
+<div style="text-align: justify">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Relational databases organize data into rows and columns, which form a table and different tables are connected to each other usign either <strong>primary key</strong> or <strong>foreign key</strong>. Here’s a simple example of two tables a small business might use to process orders for its products. The first table is a <em>customer info table</em>, so each record includes a customer’s name, address, shipping and billing information, phone number, and other contact information. Each bit of information (each attribute) is in its own column, and the database assigns a unique ID (a key) to each row. In the second table—a <em>customer order</em> table—each record includes the ID of the customer that placed the order, the product ordered, the quantity, the selected size and color, and so on—but not the customer’s name or contact information.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;These two tables have only one thing in common: the ID column (the key). But because of that common column, the relational database can create a relationship between the two tables. Then, when the company’s order processing application submits an order to the database, the database can go to the customer order table, pull the correct information about the product order, and use the customer ID from that table to look up the customer’s billing and shipping information in the customer info table. The warehouse can then pull the correct product, the customer can receive timely delivery of the order, and the company can get paid.</p>
+</div>
+</section>
+<section id="relational-database-management-systems-rdbms" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="relational-database-management-systems-rdbms"><span class="header-section-number">6.3</span> Relational Database Management Systems (RDBMS)</h2>
+<div style="text-align: justify">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;While a relational database organizes data based off a relational data model, a relational database management system (RDBMS) is a more specific reference to the underlying database software that enables users to maintain it. These programs allow users to create, update, insert, or delete data in the system, and they provide:</p>
+<ul>
+<li>Data structure</li>
+<li>Multi-user access</li>
+<li>Privilege control</li>
+<li>Network access</li>
+</ul>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Examples of popular RDBMS systems include MySQL, PostgreSQL, and IBM DB2. Additionally, a relational database system differs from a basic database management system (DBMS) in that it stores data in tables while a DBMS stores information as files.</p>
+</div>
+</section>
+<section id="creating-a-relational-database-using-postgresql" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="creating-a-relational-database-using-postgresql"><span class="header-section-number">6.4</span> Creating a Relational Database Using <code>PostgreSQL</code></h2>
+<div style="text-align: justify">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PostgreSQL is a widely used open-source Relational Database Management System (RDBMS). Since its release in 1996, PostgreSQL has carved a niche as one of the most robust and reliable database systems in the Tech industry. PostgreSQL is known for its rich feature set, reliability, scalability, and strong community support network.</p>
+</div>
+<section id="sec-installPostgreSQL" class="level3" data-number="6.4.1">
+<h3 data-number="6.4.1" class="anchored" data-anchor-id="sec-installPostgreSQL"><span class="header-section-number">6.4.1</span> Installing PostgreSQL</h3>
+<div style="text-align: justify">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To install PostgreSQL locally on your computer, visit the <a href="https://www.w3schools.com/postgresql/postgresql_install.php">installer by EDB</a>, and download the newest version compatible with your operating system. To install PostgreSQL on Windows, you need to have administrator privileges. Below, we delineate the steps to install the PostgreSQL in windows.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Step 01</strong>: When the downloading is complete, double click the downloaded file and an installation wizard will appear and guide you through multiple steps. Click “Next” to specify directory.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/postgresql_install_image1.png" class="img-fluid figure-img"></p>
+<figcaption>Installation Wizard</figcaption>
+</figure>
+</div>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Step 02</strong>: You can specify the location of PostgreSQL, or go with the default choice</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/postgresql_install_image2.png" class="img-fluid figure-img"></p>
+<figcaption>Installation Directory</figcaption>
+</figure>
+</div>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Step 03</strong>: To use PostgreSQL, you need to install PostgreSQL server. For our installation and uses purposes, we select the following servers - PostgreSQL Server, pgAdmin4, and Command Line Tools.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/postgresql_install_image3.png" class="img-fluid figure-img"></p>
+<figcaption>Server Selection</figcaption>
+</figure>
+</div>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Step 04</strong>: Then, we need to choose the storage directory. Alternatively, we can go with the default directory.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/postgresql_install_image4.png" class="img-fluid figure-img"></p>
+<figcaption>Storage Directory</figcaption>
+</figure>
+</div>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Step 05</strong>: At this point, you need to choose your passowrd. It is important to note that the password will be used to connect to the database. Therefore, you must remember your password.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/postgresql_install_image5.png" class="img-fluid figure-img"></p>
+<figcaption>Password Selection</figcaption>
+</figure>
+</div>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Step 06</strong>: Next you need to select the port. The default port number is 5432. If you change the port, you also need to remember the port number because like passowrd, you need to use the port number to connect to the database.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/postgresql_install_image6.png" class="img-fluid figure-img"></p>
+<figcaption>Port Selection</figcaption>
+</figure>
+</div>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Step 07</strong>: We also need to select the geographical location of the database server. We can go with the default choice.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/postgresql_install_image7.png" class="img-fluid figure-img"></p>
+<figcaption>Locale Selection</figcaption>
+</figure>
+</div>
+<p>Then if everything looks ok, you can move forward by clicking ‘Next’. However, it is recommended that you copy and save the information from the “Pre Installation Summary” in some safe place so that you can access them in future, if necessary.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/postgresql_install_image8.png" class="img-fluid figure-img"></p>
+<figcaption>Pre Installation Summary</figcaption>
+</figure>
+</div>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Step 08</strong>: Then you can click “Next” in ‘Ready to Install’ windows and the installation process will start and it will take a while to finish the installation. Once the installing is done, please click ‘Finish’ button on ‘Complete the PostgreSQL Setup Wizard’ window.</p>
+<p><img src="images/postgresql_install_image8.png" class="img-fluid" alt="Ready to Install"> <img src="images/postgresql_install_image8.png" class="img-fluid" alt="Installing"> <img src="images/postgresql_install_image8.png" class="img-fluid" alt="Complete the PostgreSQL Setup Wizard"></p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Some good sources to learn more about PostgreSQL -</p>
+<ol type="1">
+<li><p><a href="https://www.w3schools.com/postgresql/index.php">W3 Schools</a></p></li>
+<li><p><a href="https://www.postgresqltutorial.com/postgresql-getting-started/install-postgresql/">PostgreSQL Tutorial</a></p></li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="connecting-to-the-relational-database" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="connecting-to-the-relational-database"><span class="header-section-number">6.5</span> Connecting to the Relational Database</h2>
+<div style="text-align: justify">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In <a href="#sec-installPostgreSQL" class="quarto-xref"><span>Section 6.4.1</span></a>, we described the steps of installing PostgreSQL database; now, we will try to connect to that database. There are several ways to connect the database we created. These ways include -</p>
+<ul>
+<li>SQL Shell (psql)</li>
+<li>Command Shell (cmd)</li>
+<li>pgAdmin 4</li>
+</ul>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>To connect to PostgreSQL Database using pgAdmin 4, pleae use the following link -</p>
+<ol type="1">
+<li><a href="https://www.w3schools.com/postgresql/postgresql_pgadmin4.php">Connecting using pgAdmin 4</a></li>
+</ol>
+</div>
+</div>
+</div>
+<section id="connection-using-sql-shell-psql" class="level3" data-number="6.5.1">
+<h3 data-number="6.5.1" class="anchored" data-anchor-id="connection-using-sql-shell-psql"><span class="header-section-number">6.5.1</span> Connection using SQL Shell (<code>psql</code>)</h3>
+<div style="text-align: justify">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; First, we will discuss SQL Shell (psql) method. Basically, SQL Shell (psql) is a terminal based program where you can write and execute SQL syntax in the command-line terminal. You will find the SQL Shell (psql) in the start menu under PostgreSQL. If you do not find it please search “psql” on windows search box.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/postgresql_connect_image1.png" class="img-fluid figure-img"></p>
+<figcaption>SQL Shell on Start Menu</figcaption>
+</figure>
+</div>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Once the program is open, you should be able to see a window like below. Usually, the name of the server is localhost as shown below; however, if you choose a different server while installing the PostgreSQL, you must mention your server name. Then, click “enter” on your keyboard.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/postgresql_connect_image2.png" class="img-fluid figure-img"></p>
+<figcaption>Server</figcaption>
+</figure>
+</div>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The default name of your database is <code>postgres</code> as shown below. If you choose a different name, please enter that name. Then, click “enter” on your keyboard.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/postgresql_connect_image3.png" class="img-fluid figure-img"></p>
+<figcaption>Database</figcaption>
+</figure>
+</div>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The default port number is <code>5432</code>. If you use the default port number, then please click “enter” on your keyboard. Otherwise, use the port number that you used while installing PostgreSQL and click “enter” on your keyboard.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/postgresql_connect_image4.png" class="img-fluid figure-img"></p>
+<figcaption>Port</figcaption>
+</figure>
+</div>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Similarly, the default user name is <code>postgres</code>. Please click “enter” on your keyboard if your default name is the same.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/postgresql_connect_image5.png" class="img-fluid figure-img"></p>
+<figcaption>Username</figcaption>
+</figure>
+</div>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Next, you need to provide password that you set while installing the database.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/postgresql_connect_image6.png" class="img-fluid figure-img"></p>
+<figcaption>Password</figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section id="sec-cmdconnection" class="level3" data-number="6.5.2">
+<h3 data-number="6.5.2" class="anchored" data-anchor-id="sec-cmdconnection"><span class="header-section-number">6.5.2</span> Connection using Command Shell (<code>cmd</code>)</h3>
+<div style="text-align: justify">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To use the command prompt (<code>cmd</code>) to connect to PostgreSQL database, you need to use the following steps -</p>
+<ul>
+<li>Step # 01 - Open command prompt by writing <code>cmd</code> in windows search bar as shown below. Then command prompt will open.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cmd_1.jpg" class="img-fluid figure-img"></p>
+<figcaption>Search Bar on Windows</figcaption>
+</figure>
+</div>
+<ul>
+<li><p>Step # 02 - type <code>cd C:\Program Files\PostgreSQL\16\bin</code> on the command prompt and hit enter on the keyboard</p></li>
+<li><p>Step # 03 - type <code>psql -h localhost -p 5432 -d postgres -U postgres</code></p></li>
+<li><p>Step # 04 - Now provide the password that you set while installing PostgreSQL</p></li>
+</ul>
+<p>These steps should ensure that you are connected to the database.</p>
+</div>
+</section>
+</section>
+<section id="sec-dealdatabase" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="sec-dealdatabase"><span class="header-section-number">6.6</span> Dealing with the Database</h2>
+<div style="text-align: justify">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Once the database is created, new tables can be created. Also, different kinds of data manipulation can be performed. For example, after being connected to the database, one should check the database available by running the following code -</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>\l </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># or </span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>\list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To connect to a database, one should run the following code -</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>\c name_of_the_database;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To see all tables in a database, one should run the following code -</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>\dt;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<section id="sec-creatingdatabase" class="level3" data-number="6.6.1">
+<h3 data-number="6.6.1" class="anchored" data-anchor-id="sec-creatingdatabase"><span class="header-section-number">6.6.1</span> Creating a Database and Tables inside the Database</h3>
+<div style="text-align: justify">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To create a database (e.g., <code>my_database</code>), one can run the following code -</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>CREATE DATABASE my_database;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To create a table, following code can be run -</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we are going to create a table called - People</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>CREATE TABLE <span class="fu">People</span> (</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a> pid int not null,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a> prefix text,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a> firstName text,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a> lastName text,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a> suffix text,</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a> homeCity text,</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a> DOB date,</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a> primary <span class="fu">key</span>(pid)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>);</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Similarly, four more tables are created by running the following code -</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Table - Customer </span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>CREATE TABLE <span class="fu">Customers</span> (</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a> pid int not null references <span class="fu">People</span>(pid),</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a> paymentTerms text,</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a> discountPct <span class="fu">decimal</span>(<span class="dv">5</span>,<span class="dv">2</span>),</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a> primary <span class="fu">key</span>(pid)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>);</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Table - Agent </span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>CREATE TABLE <span class="fu">Agents</span> (</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a> pid int not null references <span class="fu">People</span>(pid),</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a> paymentTerms text,</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a> commissionPct <span class="fu">decimal</span>(<span class="dv">5</span>,<span class="dv">2</span>),</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a> primary <span class="fu">key</span>(pid)</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>);</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Table - Products </span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>CREATE TABLE <span class="fu">Products</span> (</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a> prodId <span class="fu">char</span>(<span class="dv">3</span>) not null,</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a> name text,</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a> city text,</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a> qtyOnHand int,</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a> priceUSD <span class="fu">numeric</span>(<span class="dv">10</span>,<span class="dv">2</span>),</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a> primary <span class="fu">key</span>(prodId)</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>);</span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Table - Orders </span></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>CREATE TABLE <span class="fu">Orders</span> (</span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a> orderNum int not null,</span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a> dateOrdered date not null,</span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a> custId int not null references <span class="fu">Customers</span>(pid),</span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a> agentId int not null references <span class="fu">Agents</span>(pid),</span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a> prodId <span class="fu">char</span>(<span class="dv">3</span>) not null references <span class="fu">Products</span>(prodId),</span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>  quantityOrdered integer,</span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a> totalUSD <span class="fu">numeric</span>(<span class="dv">12</span>,<span class="dv">2</span>),</span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a> primary <span class="fu">key</span>(orderNum)</span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>);</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Next, we will populate the tables with different kinds of data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Inserting records into table - People </span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>INSERT INTO <span class="fu">People</span> (pid, prefix, firstName, lastName, suffix, homeCity, DOB)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>VALUES</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a> (<span class="dv">001</span>, <span class="st">'Dr.'</span>, <span class="st">'Neil'</span>, <span class="st">'Peart'</span>, <span class="st">'Ph.D.'</span>, <span class="st">'Toronto'</span>, <span class="st">'1952-09-12'</span>),</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a> (<span class="dv">002</span>, <span class="st">'Ms.'</span>, <span class="st">'Regina'</span>, <span class="st">'Schock'</span>, <span class="cn">NULL</span>, <span class="st">'Toronto'</span>, <span class="st">'1957-08-31'</span>),</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a> (<span class="dv">003</span>, <span class="st">'Mr.'</span>, <span class="st">'Bruce'</span>, <span class="st">'Crump'</span>, <span class="st">'Jr.'</span>, <span class="st">'Jacksonville'</span>, <span class="st">'1957-07-17'</span>),</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a> (<span class="dv">004</span>, <span class="st">'Mr.'</span>, <span class="st">'Todd'</span>, <span class="st">'Sucherman'</span>, <span class="cn">NULL</span>, <span class="st">'Chicago'</span>, <span class="st">'1969-05-02'</span>),</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a> (<span class="dv">005</span>, <span class="st">'Mr.'</span>, <span class="st">'Bernard'</span>, <span class="st">'Purdie'</span>, <span class="cn">NULL</span>, <span class="st">'Teaneck'</span>, <span class="st">'1939-06-11'</span>),</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a> (<span class="dv">006</span>, <span class="st">'Ms.'</span>, <span class="st">'Demetra'</span>, <span class="st">'Plakas'</span>, <span class="st">'Esq.'</span>, <span class="st">'Santa Monica'</span>, <span class="st">'1960-11-09'</span>),</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a> (<span class="dv">007</span>, <span class="st">'Ms.'</span>, <span class="st">'Terri Lyne'</span>, <span class="st">'Carrington'</span>, <span class="cn">NULL</span>, <span class="st">'Boston'</span>, <span class="st">'1965-08-04'</span>),</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a> (<span class="dv">008</span>, <span class="st">'Dr.'</span>, <span class="st">'Bill'</span>, <span class="st">'Bruford'</span>, <span class="st">'Ph.D.'</span>, <span class="st">'Kent'</span>, <span class="st">'1949-05-17'</span>),</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a> (<span class="dv">009</span>, <span class="st">'Mr.'</span>, <span class="st">'Alan'</span>, <span class="st">'White'</span>, <span class="st">'III'</span>, <span class="st">'Pelton'</span>, <span class="st">'1949-06-14'</span>)</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>;</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Inserting records into table - Customers </span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>INSERT INTO <span class="fu">Customers</span> (pid, paymentTerms, discountPct)</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>VALUES</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a> (<span class="dv">001</span>, <span class="st">'Net 30'</span> , <span class="fl">21.12</span>),</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a> (<span class="dv">004</span>, <span class="st">'Net 15'</span> , <span class="fl">4.04</span>),</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a> (<span class="dv">005</span>, <span class="st">'In Advance'</span>, <span class="fl">5.50</span>),</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a> (<span class="dv">007</span>, <span class="st">'On Receipt'</span>, <span class="fl">2.00</span>),</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a> (<span class="dv">008</span>, <span class="st">'Net 30'</span> , <span class="fl">10.00</span>)</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>;</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Inserting records into table - Agents </span></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>INSERT INTO <span class="fu">Agents</span> (pid, paymentTerms, commissionPct)</span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>VALUES</span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a> (<span class="dv">002</span>, <span class="st">'Quarterly'</span>, <span class="fl">5.00</span>),</span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a> (<span class="dv">003</span>, <span class="st">'Annually'</span>, <span class="fl">10.00</span>),</span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a> (<span class="dv">005</span>, <span class="st">'Monthly'</span>, <span class="fl">2.00</span>),</span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a> (<span class="dv">006</span>, <span class="st">'Weekly'</span>, <span class="fl">1.00</span>)</span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>;</span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Inserting records into table - Products </span></span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>INSERT INTO <span class="fu">Products</span>( prodId, name, city, qtyOnHand, priceUSD )</span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a>VALUES</span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>(<span class="st">'p01'</span>, <span class="st">'Heisenberg Compensator'</span>, <span class="st">'Dallas'</span>, <span class="dv">47</span>,  <span class="fl">67.50</span>),</span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a>(<span class="st">'p02'</span>, <span class="st">'Universal Translator'</span>, <span class="st">'Newark'</span>, <span class="dv">2399</span>, <span class="fl">5.50</span> ),</span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a>(<span class="st">'p03'</span>, <span class="st">'Commodore PET'</span>, <span class="st">'Duluth'</span>, <span class="dv">1979</span>, <span class="fl">65.02</span> ),</span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a>(<span class="st">'p04'</span>, <span class="st">'LCARS module'</span>, <span class="st">'Duluth'</span>, <span class="dv">3</span>, <span class="fl">47.00</span> ),</span>
+<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a>(<span class="st">'p05'</span>, <span class="st">'Remo drumhead'</span>, <span class="st">'Dallas'</span>, <span class="dv">8675309</span>, <span class="fl">16.61</span> ),</span>
+<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a>(<span class="st">'p06'</span>, <span class="st">'Trapper Keeper'</span>, <span class="st">'Dallas'</span>, <span class="dv">1982</span>, <span class="fl">2.00</span> ),</span>
+<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a>(<span class="st">'p07'</span>, <span class="st">'Flux Capacitor'</span>, <span class="st">'Newark'</span>, <span class="dv">1007</span>, <span class="fl">1.00</span> ),</span>
+<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a>(<span class="st">'p08'</span>, <span class="st">'HAL 9000 memory core'</span>, <span class="st">'Newark'</span>, <span class="dv">200</span>, <span class="fl">1.25</span> ),</span>
+<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a>(<span class="st">'p09'</span>, <span class="st">'Red Barchetta'</span>,  <span class="st">'Toronto'</span>, <span class="dv">1</span>, <span class="fl">379000.47</span> )</span>
+<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a>;</span>
+<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a><span class="co"># Inserting records into table - Orders </span></span>
+<span id="cb7-54"><a href="#cb7-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-55"><a href="#cb7-55" aria-hidden="true" tabindex="-1"></a>INSERT INTO <span class="fu">Orders</span>(orderNum, dateOrdered, custId, agentId, prodId, quantityOrdered, totalUSD)</span>
+<span id="cb7-56"><a href="#cb7-56" aria-hidden="true" tabindex="-1"></a>VALUES</span>
+<span id="cb7-57"><a href="#cb7-57" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1011</span>, <span class="st">'2020-01-23'</span>, <span class="dv">001</span>, <span class="dv">002</span>, <span class="st">'p01'</span>, <span class="dv">1100</span>, <span class="fl">58568.40</span>),</span>
+<span id="cb7-58"><a href="#cb7-58" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1012</span>, <span class="st">'2020-01-23'</span>, <span class="dv">004</span>, <span class="dv">003</span>, <span class="st">'p03'</span>, <span class="dv">1200</span>, <span class="fl">74871.83</span>),</span>
+<span id="cb7-59"><a href="#cb7-59" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1015</span>, <span class="st">'2020-01-23'</span>, <span class="dv">005</span>, <span class="dv">003</span>, <span class="st">'p05'</span>, <span class="dv">1000</span>, <span class="fl">15696.45</span>),</span>
+<span id="cb7-60"><a href="#cb7-60" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1016</span>, <span class="st">'2020-01-23'</span>, <span class="dv">008</span>, <span class="dv">003</span>, <span class="st">'p01'</span>, <span class="dv">1000</span>, <span class="fl">60750.00</span>),</span>
+<span id="cb7-61"><a href="#cb7-61" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1017</span>, <span class="st">'2020-02-14'</span>, <span class="dv">001</span>, <span class="dv">003</span>, <span class="st">'p03'</span>, <span class="dv">500</span>, <span class="fl">25643.88</span>),</span>
+<span id="cb7-62"><a href="#cb7-62" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1018</span>, <span class="st">'2020-02-14'</span>, <span class="dv">001</span>, <span class="dv">003</span>, <span class="st">'p04'</span>, <span class="dv">600</span>, <span class="fl">22244.16</span>),</span>
+<span id="cb7-63"><a href="#cb7-63" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1019</span>, <span class="st">'2020-02-14'</span>, <span class="dv">001</span>, <span class="dv">002</span>, <span class="st">'p02'</span>, <span class="dv">400</span>, <span class="fl">1735.36</span>),</span>
+<span id="cb7-64"><a href="#cb7-64" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1020</span>, <span class="st">'2020-02-14'</span>, <span class="dv">004</span>, <span class="dv">005</span>, <span class="st">'p07'</span>, <span class="dv">600</span>, <span class="fl">575.76</span>),</span>
+<span id="cb7-65"><a href="#cb7-65" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1021</span>, <span class="st">'2020-02-14'</span>, <span class="dv">004</span>, <span class="dv">005</span>, <span class="st">'p01'</span>, <span class="dv">1000</span>, <span class="fl">64773.00</span>),</span>
+<span id="cb7-66"><a href="#cb7-66" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1022</span>, <span class="st">'2020-03-15'</span>, <span class="dv">001</span>, <span class="dv">003</span>, <span class="st">'p06'</span>, <span class="dv">450</span>, <span class="fl">709.92</span>),</span>
+<span id="cb7-67"><a href="#cb7-67" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1023</span>, <span class="st">'2020-03-15'</span>, <span class="dv">001</span>, <span class="dv">002</span>, <span class="st">'p05'</span>, <span class="dv">500</span>, <span class="fl">6550.984</span>),</span>
+<span id="cb7-68"><a href="#cb7-68" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1024</span>, <span class="st">'2020-03-15'</span>, <span class="dv">005</span>, <span class="dv">002</span>, <span class="st">'p01'</span>, <span class="dv">880</span>, <span class="fl">56133.00</span>),</span>
+<span id="cb7-69"><a href="#cb7-69" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1025</span>, <span class="st">'2020-04-01'</span>, <span class="dv">008</span>, <span class="dv">003</span>, <span class="st">'p07'</span>, <span class="dv">888</span>, <span class="fl">799.20</span>),</span>
+<span id="cb7-70"><a href="#cb7-70" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1026</span>, <span class="st">'2020-05-01'</span>, <span class="dv">008</span>, <span class="dv">005</span>, <span class="st">'p03'</span>, <span class="dv">808</span>, <span class="fl">47282.54</span>)</span>
+<span id="cb7-71"><a href="#cb7-71" aria-hidden="true" tabindex="-1"></a>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="querying-the-database" class="level3" data-number="6.6.2">
+<h3 data-number="6.6.2" class="anchored" data-anchor-id="querying-the-database"><span class="header-section-number">6.6.2</span> Querying the Database</h3>
+<div style="text-align: justify">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Once the database is created, we need to retrieve data from the database for which we need to write queries. For example, we want retireve <code>prodid</code>, <code>name</code>, and <code>city</code> from the table <em>products</em>. Then, we need to write the following query -</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># SQL Query = </span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>SELECT prodid, name, city FROM products;</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Output </span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a> prodid <span class="sc">|</span>          name          <span class="sc">|</span>  city</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="sc">--------+------------------------+---------</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a> p01    <span class="sc">|</span> Heisenberg Compensator <span class="sc">|</span> Dallas</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a> p02    <span class="sc">|</span> Universal Translator   <span class="sc">|</span> Newark</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a> p03    <span class="sc">|</span> Commodore PET          <span class="sc">|</span> Duluth</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a> p04    <span class="sc">|</span> LCARS module           <span class="sc">|</span> Duluth</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a> p05    <span class="sc">|</span> Remo drumhead          <span class="sc">|</span> Dallas</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a> p06    <span class="sc">|</span> Trapper Keeper         <span class="sc">|</span> Dallas</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a> p07    <span class="sc">|</span> Flux Capacitor         <span class="sc">|</span> Newark</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a> p08    <span class="sc">|</span> HAL <span class="dv">9000</span> memory core   <span class="sc">|</span> Newark</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a> p09    <span class="sc">|</span> Red Barchetta          <span class="sc">|</span> Toronto</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>(<span class="dv">9</span> rows)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Similarly, if we want to collect all fields from <em>products</em> table for the city <em>Dallas</em>, then we can write the following queries -</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># SQL Query = </span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>SELECT <span class="sc">*</span> FROM products WHERE city <span class="ot">=</span> <span class="st">'Dallas'</span>;</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Output </span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a> prodid <span class="sc">|</span>          name          <span class="sc">|</span>  city  <span class="sc">|</span> qtyonhand <span class="sc">|</span> priceusd</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="sc">--------+------------------------+--------+-----------+----------</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a> p01    <span class="sc">|</span> Heisenberg Compensator <span class="sc">|</span> Dallas <span class="sc">|</span>        <span class="dv">47</span> <span class="sc">|</span>    <span class="fl">67.50</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a> p05    <span class="sc">|</span> Remo drumhead          <span class="sc">|</span> Dallas <span class="sc">|</span>   <span class="dv">8675309</span> <span class="sc">|</span>    <span class="fl">16.61</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a> p06    <span class="sc">|</span> Trapper Keeper         <span class="sc">|</span> Dallas <span class="sc">|</span>      <span class="dv">1982</span> <span class="sc">|</span>     <span class="fl">2.00</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>(<span class="dv">3</span> rows)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="saving-a-database-from-postgresql" class="level3" data-number="6.6.3">
+<h3 data-number="6.6.3" class="anchored" data-anchor-id="saving-a-database-from-postgresql"><span class="header-section-number">6.6.3</span> Saving a Database from PostgreSQL</h3>
+<div style="text-align: justify">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In order to share a database with stakeholders, we need to save the a particular database. Therefore, knowing how to save the database is very important. We must use the Command Prompt (<code>cmd</code>) to save a database. First, we need to open a command prompt following step # 01 in <a href="#sec-cmdconnection" class="quarto-xref"><span>Section 6.5.2</span></a>. Then we need to write the following codes on command prompt -</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First line of code and then hit enter on the Keyboard</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>cd ..</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Second line of code and then hit enter on the Keyboard</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>cd ..</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Third line of code and then hit enter on the Keyboard</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>cd \Program Files\PostgreSQL\<span class="dv">16</span>\bin</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Fourth line of code and then hit enter on the Keyboard</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>pg_dump <span class="sc">-</span>h localhost <span class="sc">-</span>d name_of_your_database <span class="sc">-</span>U postgres <span class="sc">-</span>p <span class="dv">5433</span> <span class="sc">-</span>F tar <span class="sc">&gt;</span>K<span class="sc">:</span>\name_of_your_database.tar</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Fifth Line of code - provide your password</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>You can watch the youtube video to learn more about how to save a database from PostgreSQL - <a href="https://www.youtube.com/watch?v=sa5VXDG_aW8" class="uri">https://www.youtube.com/watch?v=sa5VXDG_aW8</a></p>
+</div>
+</div>
+</div>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In the fourth line of code above - <code>pg_dump -h localhost -d name_of_your_database -U postgres -p 5433 -F tar &gt;K:\name_of_your_database.tar</code>- the “<code>name_of_your_database</code>” is the database name that you want to save to share and “<code>K:\\</code>” is the directory (folder) address (path) on which you want to save your database and “<code>name_of_your_database</code>” is the name of the database that you would like to assign to the saved database and “.tar” is the file extension. It is important to note that when you run the fourth line of code above, it might show the message - “<strong>Access is denied</strong>”. In such situation, you should change the path (address) of the directory in which you would like to save the database.</p>
+</div>
+</section>
+<section id="uploading-a-database-to-postgresql" class="level3" data-number="6.6.4">
+<h3 data-number="6.6.4" class="anchored" data-anchor-id="uploading-a-database-to-postgresql"><span class="header-section-number">6.6.4</span> Uploading a Database to PostgreSQL</h3>
+<div style="text-align: justify">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sometimes, you might need to upload a database to PostgreSQL. Therefore, you should know how you can upload the database to PostgreSQL. First, you should create a database following the process as described in <a href="#sec-creatingdatabase" class="quarto-xref"><span>Section 6.6.1</span></a>. For example, we create a database called <code>my_database</code> in PostgreSQL. Assume that the database that we want to upload to PostgreSQL is in the path - <code>K:\</code> and the name of the database is <code>my_database_upload</code>. Therefore, the complete path of the database to be uploaded is - “<code>K:\my_database_upload.tar</code>”. Then, you should open a command prompt as described in <a href="#sec-cmdconnection" class="quarto-xref"><span>Section 6.5.2</span></a>. Then run the following code -</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First line of code and then hit enter on the Keyboard</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>cd ..</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Second line of code and then hit enter on the Keyboard</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>cd ..</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Third line of code and then hit enter on the Keyboard</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>cd \Program Files\PostgreSQL\<span class="dv">16</span>\bin</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Fourth line of code and then hit enter on the Keyboard</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>pg_restore <span class="sc">-</span>h localhost <span class="sc">-</span>p <span class="dv">5433</span> <span class="sc">-</span>d my_database <span class="sc">-</span>U postgres <span class="sc">-</span>v <span class="st">"K:\my_database_upload.tar"</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Fifth Line of code - provide your password</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In the fourth line of code above - <code>pg_restore -h localhost -p 5433 -d my_database -U postgres -v "K:\my_database_upload.tar"</code>- “<code>my_database</code>” is the name of the database that you created on the PostgreSQL and “<code>K:\my_database_upload.tar</code>” is the path of the database to be uploaded.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Once you upload the database to the PostgreSQL , you can check whether the database is uploaded by following <a href="#sec-dealdatabase" class="quarto-xref"><span>Section 6.6</span></a>.</p>
+</div>
+</section>
+</section>
+<section id="querying-postgresql-database-using-r" class="level2" data-number="6.7">
+<h2 data-number="6.7" class="anchored" data-anchor-id="querying-postgresql-database-using-r"><span class="header-section-number">6.7</span> Querying PostgreSQL Database Using <code>R</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing Necessary Packages</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DBI)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RPostgres)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Connecting to PostgreSQL Database </span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>con <span class="ot">=</span> <span class="fu">dbConnect</span>(RPostgres<span class="sc">::</span><span class="fu">Postgres</span>()</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>                 , <span class="at">host=</span><span class="st">'localhost'</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>                 , <span class="at">port=</span><span class="st">'5433'</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>                 , <span class="at">dbname=</span><span class="st">'my_database'</span>,</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>                 , <span class="at">user=</span><span class="st">'postgres'</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>                 , <span class="at">password=</span><span class="st">"YourPassword"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking all Tables in the Database </span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dbListTables</span>(con)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "agents"    "customers" "orders"    "people"    "products" </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># To see a table </span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>con <span class="sc">%&gt;%</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tbl</span> (<span class="st">'orders'</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># Source:   table&lt;"orders"&gt; [?? x 7]
+# Database: postgres  [postgres@localhost:5433/my_database]
+   ordernum dateordered custid agentid prodid quantityordered totalusd
+      &lt;int&gt; &lt;date&gt;       &lt;int&gt;   &lt;int&gt; &lt;chr&gt;            &lt;int&gt;    &lt;dbl&gt;
+ 1     1011 2020-01-23       1       2 p01               1100   58568.
+ 2     1012 2020-01-23       4       3 p03               1200   74872.
+ 3     1015 2020-01-23       5       3 p05               1000   15696.
+ 4     1016 2020-01-23       8       3 p01               1000   60750 
+ 5     1017 2020-02-14       1       3 p03                500   25644.
+ 6     1018 2020-02-14       1       3 p04                600   22244.
+ 7     1019 2020-02-14       1       2 p02                400    1735.
+ 8     1020 2020-02-14       4       5 p07                600     576.
+ 9     1021 2020-02-14       4       5 p01               1000   64773 
+10     1022 2020-03-15       1       3 p06                450     710.
+# ℹ more rows</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>con <span class="sc">%&gt;%</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tbl</span> (<span class="st">'orders'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">collect</span> ()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 14 × 7
+   ordernum dateordered custid agentid prodid quantityordered totalusd
+      &lt;int&gt; &lt;date&gt;       &lt;int&gt;   &lt;int&gt; &lt;chr&gt;            &lt;int&gt;    &lt;dbl&gt;
+ 1     1011 2020-01-23       1       2 p01               1100   58568.
+ 2     1012 2020-01-23       4       3 p03               1200   74872.
+ 3     1015 2020-01-23       5       3 p05               1000   15696.
+ 4     1016 2020-01-23       8       3 p01               1000   60750 
+ 5     1017 2020-02-14       1       3 p03                500   25644.
+ 6     1018 2020-02-14       1       3 p04                600   22244.
+ 7     1019 2020-02-14       1       2 p02                400    1735.
+ 8     1020 2020-02-14       4       5 p07                600     576.
+ 9     1021 2020-02-14       4       5 p01               1000   64773 
+10     1022 2020-03-15       1       3 p06                450     710.
+11     1023 2020-03-15       1       2 p05                500    6551.
+12     1024 2020-03-15       5       2 p01                880   56133 
+13     1025 2020-04-01       8       3 p07                888     799.
+14     1026 2020-05-01       8       5 p03                808   47283.</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Selecting some columns </span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>con <span class="sc">%&gt;%</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tbl</span> (<span class="st">'orders'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span> (ordernum, dateordered, custid, agentid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># Source:   SQL [?? x 4]
+# Database: postgres  [postgres@localhost:5433/my_database]
+   ordernum dateordered custid agentid
+      &lt;int&gt; &lt;date&gt;       &lt;int&gt;   &lt;int&gt;
+ 1     1011 2020-01-23       1       2
+ 2     1012 2020-01-23       4       3
+ 3     1015 2020-01-23       5       3
+ 4     1016 2020-01-23       8       3
+ 5     1017 2020-02-14       1       3
+ 6     1018 2020-02-14       1       3
+ 7     1019 2020-02-14       1       2
+ 8     1020 2020-02-14       4       5
+ 9     1021 2020-02-14       4       5
+10     1022 2020-03-15       1       3
+# ℹ more rows</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtering some rows</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>con <span class="sc">%&gt;%</span> </span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tbl</span> (<span class="st">'products'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span> (city <span class="sc">==</span> <span class="st">"Dallas"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># Source:   SQL [3 x 5]
+# Database: postgres  [postgres@localhost:5433/my_database]
+  prodid name                   city   qtyonhand priceusd
+  &lt;chr&gt;  &lt;chr&gt;                  &lt;chr&gt;      &lt;int&gt;    &lt;dbl&gt;
+1 p01    Heisenberg Compensator Dallas        47     67.5
+2 p05    Remo drumhead          Dallas   8675309     16.6
+3 p06    Trapper Keeper         Dallas      1982      2  </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># showing the SQL query</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>con <span class="sc">%&gt;%</span> </span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tbl</span> (<span class="st">'products'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span> (city <span class="sc">==</span> <span class="st">"Dallas"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">show_query</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;SQL&gt;
+SELECT "products".*
+FROM "products"
+WHERE ("city" = 'Dallas')</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Disconnecting the database </span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>con <span class="sc">%&gt;%</span> <span class="fu">dbDisconnect</span> ()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="querying-postgresql-database-using-python" class="level2" data-number="6.8">
+<h2 data-number="6.8" class="anchored" data-anchor-id="querying-postgresql-database-using-python"><span class="header-section-number">6.8</span> Querying PostgreSQL Database Using <code>Python</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing Necessary Python Packages </span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ibis</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># To know more about the next line of code</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="co"># see - https://ibis-project.org/tutorials/ibis-for-dplyr-users</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>ibis.options.interactive <span class="op">=</span> <span class="va">True</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># to connect to the database </span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>conn <span class="op">=</span> ibis.postgres.<span class="ex">connect</span>(</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>    user<span class="op">=</span><span class="st">'postgres'</span>, </span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>    password <span class="op">=</span> <span class="st">'YourPassword'</span>,</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>    host <span class="op">=</span> <span class="st">"localhost"</span>,</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>    port <span class="op">=</span> <span class="dv">5433</span>,</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>    database <span class="op">=</span> <span class="st">"my_database"</span> <span class="co"># here our database name will be 'dvdrental'</span></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># See all tables in a database </span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>conn.list_tables()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>['actor', 'actor_info', 'address', 'category', 'city', 'country', 'customer', 'customer_list', 'ff48_df', 'film', 'film_actor', 'film_category', 'film_list', 'inventory', 'language', 'nicer_but_slower_film_list', 'payment', 'rental', 'sales_by_film_category', 'sales_by_store', 'staff', 'staff_list', 'store']</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># To know the total number of rows </span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>conn.table(<span class="st">'actor'</span>).count() <span class="co"># total rows </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>conn.table(<span class="st">'actor'</span>).columns <span class="co"># name of the columns </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>['actor_id', 'first_name', 'last_name', 'last_update']</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># To see the SQL command </span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>conn.table(<span class="st">'actor'</span>).<span class="bu">compile</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'SELECT * FROM "actor"'</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Dealing with a table </span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>conn.table(<span class="st">'country'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>┌────────────┬────────────────┬─────────────────────┐
+│ country_id │ country        │ last_update         │
+├────────────┼────────────────┼─────────────────────┤
+│ !int32     │ !string        │ !timestamp(6)       │
+├────────────┼────────────────┼─────────────────────┤
+│          1 │ Afghanistan    │ 2006-02-15 09:44:00 │
+│          2 │ Algeria        │ 2006-02-15 09:44:00 │
+│          3 │ American Samoa │ 2006-02-15 09:44:00 │
+│          4 │ Angola         │ 2006-02-15 09:44:00 │
+│          5 │ Anguilla       │ 2006-02-15 09:44:00 │
+│          6 │ Argentina      │ 2006-02-15 09:44:00 │
+│          7 │ Armenia        │ 2006-02-15 09:44:00 │
+│          8 │ Australia      │ 2006-02-15 09:44:00 │
+│          9 │ Austria        │ 2006-02-15 09:44:00 │
+│         10 │ Azerbaijan     │ 2006-02-15 09:44:00 │
+│          … │ …              │ …                   │
+└────────────┴────────────────┴─────────────────────┘</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>conn.table(<span class="st">'country'</span>).head(<span class="dv">5</span>).execute()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   country_id         country         last_update
+0           1     Afghanistan 2006-02-15 09:44:00
+1           2         Algeria 2006-02-15 09:44:00
+2           3  American Samoa 2006-02-15 09:44:00
+3           4          Angola 2006-02-15 09:44:00
+4           5        Anguilla 2006-02-15 09:44:00</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co">## describe () or columns () equivalent to glimpse ()</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>conn.table(<span class="st">'country'</span>).describe</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;bound method Table.describe of ┌────────────┬────────────────┬─────────────────────┐
+│ country_id │ country        │ last_update         │
+├────────────┼────────────────┼─────────────────────┤
+│ !int32     │ !string        │ !timestamp(6)       │
+├────────────┼────────────────┼─────────────────────┤
+│          1 │ Afghanistan    │ 2006-02-15 09:44:00 │
+│          2 │ Algeria        │ 2006-02-15 09:44:00 │
+│          3 │ American Samoa │ 2006-02-15 09:44:00 │
+│          4 │ Angola         │ 2006-02-15 09:44:00 │
+│          5 │ Anguilla       │ 2006-02-15 09:44:00 │
+│          6 │ Argentina      │ 2006-02-15 09:44:00 │
+│          7 │ Armenia        │ 2006-02-15 09:44:00 │
+│          8 │ Australia      │ 2006-02-15 09:44:00 │
+│          9 │ Austria        │ 2006-02-15 09:44:00 │
+│         10 │ Azerbaijan     │ 2006-02-15 09:44:00 │
+│          … │ …              │ …                   │
+└────────────┴────────────────┴─────────────────────┘&gt;</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># filtering rows    </span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>conn.table(<span class="st">'country'</span>)[conn.table(<span class="st">'country'</span>)[<span class="st">'country'</span>]<span class="op">==</span><span class="st">"Zambia"</span>] <span class="op">\</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>    .execute()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   country_id country         last_update
+0         109  Zambia 2006-02-15 09:44:00</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Selecting Columns </span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>conn.table(<span class="st">'country'</span>)[[<span class="st">"country_id"</span>, <span class="st">"country"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>┌────────────┬────────────────┐
+│ country_id │ country        │
+├────────────┼────────────────┤
+│ !int32     │ !string        │
+├────────────┼────────────────┤
+│          1 │ Afghanistan    │
+│          2 │ Algeria        │
+│          3 │ American Samoa │
+│          4 │ Angola         │
+│          5 │ Anguilla       │
+│          6 │ Argentina      │
+│          7 │ Armenia        │
+│          8 │ Australia      │
+│          9 │ Austria        │
+│         10 │ Azerbaijan     │
+│          … │ …              │
+└────────────┴────────────────┘</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange </span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>conn.table(<span class="st">'rental'</span>) <span class="op">\</span></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>    .order_by([<span class="st">'inventory_id'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>┌───────────┬─────────────────────┬──────────────┬─────────────┬───┐
+│ rental_id │ rental_date         │ inventory_id │ customer_id │ … │
+├───────────┼─────────────────────┼──────────────┼─────────────┼───┤
+│ !int32    │ !timestamp(6)       │ !int32       │ !int16      │ … │
+├───────────┼─────────────────────┼──────────────┼─────────────┼───┤
+│      4863 │ 2005-07-08 19:03:15 │            1 │         431 │ … │
+│     11433 │ 2005-08-02 20:13:10 │            1 │         518 │ … │
+│     14714 │ 2005-08-21 21:27:43 │            1 │         279 │ … │
+│       972 │ 2005-05-30 20:21:07 │            2 │         411 │ … │
+│      2117 │ 2005-06-17 20:24:00 │            2 │         170 │ … │
+│      4187 │ 2005-07-07 10:41:31 │            2 │         161 │ … │
+│      9449 │ 2005-07-30 22:02:34 │            2 │         581 │ … │
+│     15453 │ 2005-08-23 01:01:01 │            2 │         359 │ … │
+│     10126 │ 2005-07-31 21:36:07 │            3 │          39 │ … │
+│     15421 │ 2005-08-22 23:56:37 │            3 │         541 │ … │
+│         … │ …                   │            … │           … │ … │
+└───────────┴─────────────────────┴──────────────┴─────────────┴───┘</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Group By</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>conn.table(<span class="st">'payment'</span>)[[<span class="st">'payment_id'</span>, <span class="st">'customer_id'</span>, <span class="st">'staff_id'</span>, <span class="st">'amount'</span>]] <span class="op">\</span></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>    .execute() <span class="op">\</span></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>    .groupby(<span class="st">'customer_id'</span>).agg({<span class="st">'amount'</span>: <span class="st">'mean'</span>}) <span class="op">\</span></span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>    .reset_index() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     customer_id    amount
+0              1  3.823333
+1              2  4.759231
+2              3  5.448333
+3              4  3.717273
+4              5  3.847143
+..           ...       ...
+594          595  3.817586
+595          596  3.353636
+596          597  3.816087
+597          598  3.808182
+598          599  4.378889
+
+[599 rows x 2 columns]</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># To disconnect the database </span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>conn.disconnect()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="online-analytical-processing-olap-database-management-system" class="level2" data-number="6.9">
+<h2 data-number="6.9" class="anchored" data-anchor-id="online-analytical-processing-olap-database-management-system"><span class="header-section-number">6.9</span> Online Analytical Processing (OLAP) Database Management System</h2>
+</section>
+<section id="conclusion" class="level2" data-number="6.10">
+<h2 data-number="6.10" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">6.10</span> Conclusion</h2>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/analyticsforaccountingdata\.netlify\.app\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./dashboard.html" class="pagination-link" aria-label="Dashboard for Visualization">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Dashboard for Visualization</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./predictive.html" class="pagination-link" aria-label="Predictive Modeling - Linear Regression">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Predictive Modeling - Linear Regression</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Copyright©Sharif Islam</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/msharifbd/sharifanalytics/edit/main/data_management.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/msharifbd/sharifanalytics/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/msharifbd/sharifanalytics/blob/main/data_management.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>This book was built with <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

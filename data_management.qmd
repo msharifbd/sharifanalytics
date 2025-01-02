@@ -578,7 +578,6 @@ conn = ibis.postgres.connect(
 )
 ```
 
-
 ```{python}
 #| eval: false
 # to connect to the database 
@@ -590,7 +589,6 @@ conn = ibis.postgres.connect(
     database = "my_database" # here our database name will be 'dvdrental'
 )
 ```
-
 
 ```{python}
 # See all tables in a database 

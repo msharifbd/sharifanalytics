@@ -6,6 +6,9 @@ engine: knitr
 book:
   title: "Analytics for Accounting Data"
   reader-mode: true
+  sidebar: 
+    style: floating  
+    search: true 
   date: today
   date-format: long 
   author: 
@@ -55,18 +58,20 @@ book:
     - references.qmd
     
     
-number-depth: 5  
-site-url: https://analyticsforaccountingdata.netlify.app/
-repo-url: https://github.com/msharifbd/sharifanalytics
-repo-actions: [edit, issue]
-repo-branch: main
-sharing: [twitter, facebook, linkedin]
-downloads: [pdf, epub]
+    
+  site-url: https://analyticsforaccountingdata.netlify.app/
+  repo-url: https://github.com/msharifbd/sharifanalytics
+  repo-actions: [edit, issue, source]
+  repo-branch: main
+  sharing: [twitter, facebook, linkedin]
+  downloads: [pdf, epub]
 bibliography: references.bib
 
 
 format:
   html:
+    number-depth: 5
+    toc-depth: 5
     theme: flatly
     mainfont: Georgia, serif 
     code-link: true

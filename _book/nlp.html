@@ -511,7 +511,7 @@ window.Quarto = {
 <div style="text-align: justify">
 <p>&nbsp;&nbsp;&nbsp;&nbsp;Before applying NLP techniques, it is necessary to preprosess and clean the text data. Therefore, the processes involving cleaning and preparing text data to get them ready for NLP models are called preprocessing. Preprocessing is very important in NLP to get effective and accurate insights from the data. Below we will discuss several important concepts of preprocessing.</p>
 </div>
-<div id="a85cc364" class="cell" data-execution_count="1">
+<div id="5cd2ce7e" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># An exmaple of a text data </span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>my_text <span class="op">=</span> <span class="st">"""</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="st">Accounting is the systematic process of recording, analyzing, and reporting financial </span><span class="ch">\</span></span>
@@ -533,18 +533,18 @@ window.Quarto = {
 </div>
 <section id="tokenization" class="level4" data-number="10.3.1.1">
 <h4 data-number="10.3.1.1" class="anchored" data-anchor-id="tokenization"><span class="header-section-number">10.3.1.1</span> Tokenization</h4>
-<div id="f2ae2aa9" class="cell" data-execution_count="2">
+<div id="8473a175" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nltk</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>nltk.download(<span class="st">"punkt_tab"</span>)</span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.tokenize <span class="im">import</span> sent_tokenize, word_tokenize</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="fe07cb3d" class="cell" data-execution_count="3">
+<div id="5fe5905a" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sentence tokenize</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>my_text_sent <span class="op">=</span> sent_tokenize(my_text)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>my_text_sent[<span class="dv">0</span>:<span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="37">
+<div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>['\nAccounting is the systematic process of recording, analyzing, and reporting financial transactions.',
  'It helps businesses track their income, expenses, and overall financial health.',
  "Accountants use various financial statements, such as balance sheets and income statements, to summarize a company's financial position.",
@@ -552,11 +552,11 @@ window.Quarto = {
  'Financial accounting focuses on providing information to external stakeholders, such as investors and creditors, while managerial accounting provides information to internal stakeholders, like managers, to aid in decision-making.']</code></pre>
 </div>
 </div>
-<div id="0e21b2b4" class="cell" data-execution_count="4">
+<div id="50b684b2" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># word tokenize</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>my_text_word <span class="op">=</span> word_tokenize(my_text)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>my_text_word[<span class="dv">0</span>:<span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="38">
+<div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>['Accounting', 'is', 'the', 'systematic', 'process']</code></pre>
 </div>
 </div>
@@ -566,11 +566,11 @@ window.Quarto = {
 <div style="text-align: justify">
 <p>&nbsp;&nbsp;&nbsp;&nbsp;It is evident that in our word tokens, punctuations like comma (,), full stop (.) are also included, but they are unncessary. Therefore, we need to eliminate them from the token list.</p>
 </div>
-<div id="cd0de69e" class="cell" data-execution_count="5">
+<div id="18c6df59" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> string</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>my_text_nopunc <span class="op">=</span> [x <span class="cf">for</span> x <span class="kw">in</span> my_text_word <span class="cf">if</span> x <span class="kw">not</span> <span class="kw">in</span> string.punctuation]</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>my_text_nopunc[:<span class="dv">11</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="39">
+<div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>['Accounting',
  'is',
  'the',
@@ -590,16 +590,16 @@ window.Quarto = {
 <div style="text-align: justify">
 <p>&nbsp;&nbsp;&nbsp;&nbsp;Stop words are the words that we want to ignore. Words like “in”, “an”, “the” we want to ignore. Therefore, in this step, we want to filter out these kinds of words.</p>
 </div>
-<div id="f7376163" class="cell" data-execution_count="6">
+<div id="177d2509" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>nltk.download(<span class="st">"stopwords"</span>) <span class="co"># to download the stopwords from NLTK repository</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.corpus <span class="im">import</span> stopwords <span class="co"># imports the module </span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>stop_words <span class="op">=</span> <span class="bu">set</span>(stopwords.words(<span class="st">"english"</span>)) <span class="co"># access the stopwords for english </span></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># print(stop_words)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="6268ffe6" class="cell" data-execution_count="7">
+<div id="a8bf8f3b" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>my_text_nostopwords <span class="op">=</span> [x <span class="cf">for</span> x <span class="kw">in</span> my_text_nopunc <span class="cf">if</span> x.lower() <span class="kw">not</span> <span class="kw">in</span> stop_words]</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>my_text_nostopwords[<span class="dv">0</span>:<span class="dv">11</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="41">
+<div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>['Accounting',
  'systematic',
  'process',
@@ -616,11 +616,11 @@ window.Quarto = {
 <div style="text-align: justify">
 <p>&nbsp;&nbsp;&nbsp;&nbsp;Still we can see there are some unnessary words in the list. So, we need to eliminate them. For example, “’s” is in the <code>my_text_nostopwords</code>. We need to get rid of it.</p>
 </div>
-<div id="1bfad500" class="cell" data-execution_count="8">
+<div id="0d5a49c7" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">"'s"</span> <span class="kw">in</span> my_text_nostopwords</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>my_text_nostopwords <span class="op">=</span> [x <span class="cf">for</span> x <span class="kw">in</span> my_text_nostopwords <span class="cf">if</span> <span class="st">"'s"</span> <span class="kw">not</span> <span class="kw">in</span> x]</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co">"'s"</span> <span class="kw">in</span> my_text_nostopwords</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="42">
+<div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>False</code></pre>
 </div>
 </div>
@@ -630,7 +630,7 @@ window.Quarto = {
 <div style="text-align: justify">
 <p>&nbsp;&nbsp;&nbsp;&nbsp;Stemming is the process of reducing the words to their base or root form. For example, the token list contains words like recording, reporting, analyzing and so on. The base form of those words are record, report, and analyze respectively. Therefore, we need to reduce those words to base form. Stemming will help to do so. For this purpose, there are several types of stemmers such as Porter stemmer, Lovins stemmer, Dawson stemmer, Krovetz stemmer, and Xerox stemmer.</p>
 </div>
-<div id="bd9fb46b" class="cell" data-execution_count="9">
+<div id="199e2e7f" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.stem <span class="im">import</span> PorterStemmer,SnowballStemmer, LancasterStemmer</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>porter <span class="op">=</span> PorterStemmer()</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>snowball <span class="op">=</span> SnowballStemmer(<span class="st">"english"</span>)</span>
@@ -638,7 +638,7 @@ window.Quarto = {
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>[porter.stem(x) <span class="cf">for</span> x <span class="kw">in</span> my_text_nostopwords]</span>
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>[snowball.stem(x) <span class="cf">for</span> x <span class="kw">in</span> my_text_nostopwords]</span>
 <span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>[lancaster.stem(x) <span class="cf">for</span> x <span class="kw">in</span> my_text_nostopwords][<span class="dv">0</span>:<span class="dv">11</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="43">
+<div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>['account',
  'system',
  'process',
@@ -658,12 +658,12 @@ window.Quarto = {
 <div style="text-align: justify">
 <p>&nbsp;&nbsp;&nbsp;&nbsp;Lemmatization, like stemming, is the process of reducing a word to its base form, but, unlike stemming, it considers the context of the word.</p>
 </div>
-<div id="66e39c76" class="cell" data-execution_count="10">
+<div id="393d304b" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.stem <span class="im">import</span> WordNetLemmatizer</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>wordnet <span class="op">=</span> WordNetLemmatizer()</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>my_text_lemmatized <span class="op">=</span> [wordnet.lemmatize(x) <span class="cf">for</span> x <span class="kw">in</span> my_text_nostopwords]</span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>my_text_lemmatized[:<span class="dv">11</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="44">
+<div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>['Accounting',
  'systematic',
  'process',
@@ -776,7 +776,7 @@ w_{i,j} = tf_{i,j} × log\frac{N}{df_{i}}
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">sklearn</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">gensim</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<div id="a6daa8ad" class="cell" data-execution_count="13">
+<div id="5f5525b9" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># using sklearn package </span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co"># preprocessing function </span></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
@@ -808,7 +808,7 @@ w_{i,j} = tf_{i,j} × log\frac{N}{df_{i}}
 <span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> preprocess_documents(documents): </span>
 <span id="cb20-30"><a href="#cb20-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [preprocess_text(doc) <span class="cf">for</span> doc <span class="kw">in</span> documents]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="c275f150" class="cell" data-execution_count="14">
+<div id="507e08c0" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Bag of Words (BoW)</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.feature_extraction.text <span class="im">import</span> CountVectorizer</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -819,20 +819,20 @@ w_{i,j} = tf_{i,j} × log\frac{N}{df_{i}}
 <span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the feature names (terms) </span></span>
 <span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>feature_names <span class="op">=</span> vectorizer.get_feature_names_out()</span>
 <span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>feature_names</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="48">
+<div class="cell-output cell-output-display" data-execution_count="14">
 <pre><code>array(['accounting', 'business', 'called', 'degree', 'graduate',
        'language', 'love'], dtype=object)</code></pre>
 </div>
 </div>
-<div id="bb077661" class="cell" data-execution_count="15">
+<div id="8f6e7139" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>texts_processed</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="49">
+<div class="cell-output cell-output-display" data-execution_count="15">
 <pre><code>['love accounting',
  'accounting called language business',
  'graduate accounting degree']</code></pre>
 </div>
 </div>
-<div id="fe2501c6" class="cell" data-execution_count="16">
+<div id="f9dcda84" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(X.toarray())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1 0 0 0 0 0 1]
@@ -840,9 +840,9 @@ w_{i,j} = tf_{i,j} × log\frac{N}{df_{i}}
  [1 0 0 1 1 0 0]]</code></pre>
 </div>
 </div>
-<div id="5c244392" class="cell" data-execution_count="17">
+<div id="9541b16c" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>pd.DataFrame(X.toarray(), columns <span class="op">=</span> feature_names)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="51">
+<div class="cell-output cell-output-display" data-execution_count="17">
 <div>
 <div>
 
@@ -898,7 +898,7 @@ w_{i,j} = tf_{i,j} × log\frac{N}{df_{i}}
 </div>
 </div>
 </div>
-<div id="98bd2318" class="cell" data-execution_count="18">
+<div id="6e6a718b" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.feature_extraction.text <span class="im">import</span> TfidfVectorizer</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>vectorizer <span class="op">=</span> TfidfVectorizer()</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> vectorizer.fit_transform(texts_processed)</span>
@@ -912,10 +912,10 @@ w_{i,j} = tf_{i,j} × log\frac{N}{df_{i}}
   0.        ]]</code></pre>
 </div>
 </div>
-<div id="f4d7557e" class="cell" data-execution_count="19">
+<div id="e1542341" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>pd.DataFrame(X.toarray(), </span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>columns <span class="op">=</span> vectorizer.get_feature_names_out())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="53">
+<div class="cell-output cell-output-display" data-execution_count="19">
 <div>
 <div>
 
@@ -973,7 +973,7 @@ w_{i,j} = tf_{i,j} × log\frac{N}{df_{i}}
 </div>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<div id="82f81323" class="cell" data-execution_count="20">
+<div id="834d0c3d" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># using gensim package</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> string</span>
@@ -1022,7 +1022,7 @@ w_{i,j} = tf_{i,j} × log\frac{N}{df_{i}}
 <span id="cb31-46"><a href="#cb31-46" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a corpus using the dictionary</span></span>
 <span id="cb31-47"><a href="#cb31-47" aria-hidden="true" tabindex="-1"></a>corpus <span class="op">=</span> [dictionary.doc2bow(text) <span class="cf">for</span> text <span class="kw">in</span> texts_processed]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="492c75fe" class="cell" data-execution_count="21">
+<div id="d4ea90d0" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a TF-IDF model from the corpus</span></span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>tfidf_model <span class="op">=</span> models.TfidfModel(corpus)</span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1036,7 +1036,7 @@ w_{i,j} = tf_{i,j} × log\frac{N}{df_{i}}
 <span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a>df_tfidf_matrix <span class="op">=</span> pd.DataFrame(tfidf_matrix, columns<span class="op">=</span>[dictionary[i] <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(dictionary))])</span>
 <span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a>df_tfidf_matrix</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="55">
+<div class="cell-output cell-output-display" data-execution_count="21">
 <div>
 <div>
 
@@ -1092,13 +1092,13 @@ w_{i,j} = tf_{i,j} × log\frac{N}{df_{i}}
 </div>
 </div>
 </div>
-<div id="1eab313a" class="cell" data-execution_count="22">
+<div id="a8dca566" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert the corpus to a document-term matrix (DTM)</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>dtm_matrix <span class="op">=</span> matutils.corpus2dense(corpus, num_terms<span class="op">=</span><span class="bu">len</span>(dictionary)).T</span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert the DTM to a DataFrame for easier inspection</span></span>
 <span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>df_dtm_matrix <span class="op">=</span> pd.DataFrame(dtm_matrix, columns<span class="op">=</span>[dictionary[i] <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(dictionary))])</span>
 <span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>df_dtm_matrix</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="56">
+<div class="cell-output cell-output-display" data-execution_count="22">
 <div>
 <div>
 
@@ -1161,7 +1161,7 @@ w_{i,j} = tf_{i,j} × log\frac{N}{df_{i}}
 <section id="word-embeddings" class="level3" data-number="10.5.3">
 <h3 data-number="10.5.3" class="anchored" data-anchor-id="word-embeddings"><span class="header-section-number">10.5.3</span> Word Embeddings</h3>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;Word embeddings are dense vector representations of words (not documents) that capture semantic relationships. Popular models include Word2Vec, GloVe, and FastText.</p>
-<div id="06b9d6e4" class="cell" data-execution_count="23">
+<div id="1dfe03a4" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gensim.models <span class="im">import</span> Word2Vec</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample tokenized texts</span></span>
@@ -1181,7 +1181,7 @@ w_{i,j} = tf_{i,j} × log\frac{N}{df_{i}}
 <span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a>df_word_vectors <span class="op">=</span> pd.DataFrame(word_vectors).T</span>
 <span id="cb34-18"><a href="#cb34-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the word vectors</span></span>
 <span id="cb34-19"><a href="#cb34-19" aria-hidden="true" tabindex="-1"></a>df_word_vectors</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="57">
+<div class="cell-output cell-output-display" data-execution_count="23">
 <div>
 <div>
 
@@ -1305,7 +1305,7 @@ w_{i,j} = tf_{i,j} × log\frac{N}{df_{i}}
 <section id="doc2vec" class="level3" data-number="10.5.4">
 <h3 data-number="10.5.4" class="anchored" data-anchor-id="doc2vec"><span class="header-section-number">10.5.4</span> Doc2Vec</h3>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;Doc2Vec is an extension of Word2Vec that generates vector representations for entire documents, capturing the context of the document.</p>
-<div id="48d40490" class="cell" data-execution_count="24">
+<div id="1bea1c73" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gensim.models <span class="im">import</span> Doc2Vec</span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gensim.models.doc2vec <span class="im">import</span> TaggedDocument</span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1322,7 +1322,7 @@ w_{i,j} = tf_{i,j} × log\frac{N}{df_{i}}
 <span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a>df_doc_vectors <span class="op">=</span> pd.DataFrame(doc_vectors).T </span>
 <span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the DataFrame </span></span>
 <span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a>df_doc_vectors</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="58">
+<div class="cell-output cell-output-display" data-execution_count="24">
 <div>
 <div>
 
@@ -1394,7 +1394,7 @@ w_{i,j} = tf_{i,j} × log\frac{N}{df_{i}}
 <section id="bert-bidirectional-encoder-representations-from-transformers" class="level3" data-number="10.5.5">
 <h3 data-number="10.5.5" class="anchored" data-anchor-id="bert-bidirectional-encoder-representations-from-transformers"><span class="header-section-number">10.5.5</span> BERT (Bidirectional Encoder Representations from Transformers)</h3>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;BERT is a transformer-based model that generates contextualized word embeddings. It captures the context of words in a sentence, making it powerful for various NLP tasks.</p>
-<div id="4d840379" class="cell" data-execution_count="25">
+<div id="6e93f89a" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> transformers <span class="im">import</span> BertTokenizer, BertModel</span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1427,64 +1427,67 @@ Figure&nbsp;10.3: Topic Modeling
 <p>&nbsp;&nbsp;&nbsp;&nbsp;There are two commonly used methods for topic modeling. They include - Latent Semantic Analysis (LSA) and Latent Dirichlet Allocation (LDA). LSA assumes that words with similar meaning will appear in similar documents. LSA uses mathmatical techniques to reduce the dimensionality of the data, but LDA is a proabilistic technique, which assumes documents contain topics and topics contain words.</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;In LSA, a term-document matrix is created in which rows represent terms and columns represent documents. The values (cells) of the matrix indicates the frequency of each term in each document. Then Singular Value Decomposition (SVD) is applied on the term-document matrix. The SVD technique converts the term-document matrix into three matrices - U (term-topic matrx), <span class="math inline">\(\sum\)</span> (diagonal matrix of singualr values), and V (document-topic matrix). This breakdown helps to reduce the dimensionality of the data while retaining the most improtant relationships between the data. Then, we select the top <span class="math inline">\(k\)</span> singualr values and their associated vectors from <span class="math inline">\(U\)</span> and <span class="math inline">\(V\)</span> matrices to form a reduced dimensional representation of the data.</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;In LDA, on the other hand, it is assumed each document is a mixture of topics and that each topic is a mixture of words. Therefore, in LDA documents are mapped to a list of topics by assigning words in the document to different topics. LDA uses Bayesian inferences to find the underlying topics in a corpus of documents. Of the two methods, it is recommended to use LDA because of its probabilistic nature, interpretability and scalability.</p>
-<div id="68be9620" class="cell" data-execution_count="26">
+<div id="3b0ccd6f" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.tokenize <span class="im">import</span> word_tokenize</span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> gensim, spacy, logging, warnings</span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gensim <span class="im">import</span> corpora, models, matutils, utils</span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gensim.utils <span class="im">import</span> simple_preprocess</span>
-<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gensim.models <span class="im">import</span> CoherenceModel</span>
-<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyLDAvis </span>
-<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyLDAvis.gensim_models <span class="im">as</span> gensimvis</span>
-<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a><span class="co"># NLTK Stop words</span></span>
-<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.corpus <span class="im">import</span> stopwords</span>
-<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>stop_words <span class="op">=</span> stopwords.words(<span class="st">'english'</span>)</span>
-<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a>stop_words.extend(</span>
-<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a>    [<span class="st">'from'</span>, <span class="st">'subject'</span>, <span class="st">'re'</span>, <span class="st">'edu'</span>, <span class="st">'use'</span>, <span class="st">'not'</span>, <span class="st">'would'</span>, <span class="st">'say'</span>, <span class="st">'could'</span>, <span class="st">'_'</span>, <span class="st">'be'</span>, <span class="st">'know'</span>, <span class="st">'good'</span>, <span class="st">'go'</span>, <span class="st">'get'</span>, <span class="st">'do'</span>, <span class="st">'done'</span>, <span class="st">'try'</span>, <span class="st">'many'</span>, <span class="st">'some'</span>, <span class="st">'nice'</span>, <span class="st">'thank'</span>, <span class="st">'think'</span>, <span class="st">'see'</span>, <span class="st">'rather'</span>, <span class="st">'easy'</span>, <span class="st">'easily'</span>, <span class="st">'lot'</span>, <span class="st">'lack'</span>, <span class="st">'make'</span>, <span class="st">'want'</span>, <span class="st">'seem'</span>, <span class="st">'run'</span>, <span class="st">'need'</span>, <span class="st">'even'</span>, <span class="st">'right'</span>, <span class="st">'line'</span>, <span class="st">'even'</span>, <span class="st">'also'</span>, <span class="st">'may'</span>, <span class="st">'take'</span>, <span class="st">'come'</span>]</span>
-<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb37-15"><a href="#cb37-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-16"><a href="#cb37-16" aria-hidden="true" tabindex="-1"></a><span class="co"># reading the dataset</span></span>
-<span id="cb37-17"><a href="#cb37-17" aria-hidden="true" tabindex="-1"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'DATA/tripadvisor_hotel_reviews.csv'</span>)</span>
-<span id="cb37-18"><a href="#cb37-18" aria-hidden="true" tabindex="-1"></a>df_500<span class="op">=</span> df[<span class="dv">0</span>:<span class="dv">500</span>]</span>
-<span id="cb37-19"><a href="#cb37-19" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sent_to_words(sentences):</span>
-<span id="cb37-20"><a href="#cb37-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> sent <span class="kw">in</span> sentences:</span>
-<span id="cb37-21"><a href="#cb37-21" aria-hidden="true" tabindex="-1"></a>        sent <span class="op">=</span> re.sub(<span class="st">'\S*@\S*\s?'</span>, <span class="st">''</span>, sent)  <span class="co"># remove emails</span></span>
-<span id="cb37-22"><a href="#cb37-22" aria-hidden="true" tabindex="-1"></a>        sent <span class="op">=</span> re.sub(<span class="st">'\s+'</span>, <span class="st">' '</span>, sent)  <span class="co"># remove newline chars</span></span>
-<span id="cb37-23"><a href="#cb37-23" aria-hidden="true" tabindex="-1"></a>        sent <span class="op">=</span> re.sub(<span class="st">"</span><span class="ch">\'</span><span class="st">"</span>, <span class="st">""</span>, sent)  <span class="co"># remove single quotes</span></span>
-<span id="cb37-24"><a href="#cb37-24" aria-hidden="true" tabindex="-1"></a>        sent <span class="op">=</span> utils.simple_preprocess(<span class="bu">str</span>(sent), deacc<span class="op">=</span><span class="va">True</span>) </span>
-<span id="cb37-25"><a href="#cb37-25" aria-hidden="true" tabindex="-1"></a>        <span class="cf">yield</span>(sent)  </span>
-<span id="cb37-26"><a href="#cb37-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-27"><a href="#cb37-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to list</span></span>
-<span id="cb37-28"><a href="#cb37-28" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> df_500.Review.values.tolist()</span>
-<span id="cb37-29"><a href="#cb37-29" aria-hidden="true" tabindex="-1"></a>data_words <span class="op">=</span> <span class="bu">list</span>(sent_to_words(data))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.tokenize <span class="im">import</span> word_tokenize</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> gensim, spacy, logging, warnings</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gensim <span class="im">import</span> corpora, models, matutils, utils</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gensim.utils <span class="im">import</span> simple_preprocess</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gensim.models <span class="im">import</span> CoherenceModel</span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyLDAvis </span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyLDAvis.gensim_models <span class="im">as</span> gensimvis</span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a><span class="co"># NLTK Stop words</span></span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.corpus <span class="im">import</span> stopwords</span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a>stop_words <span class="op">=</span> stopwords.words(<span class="st">'english'</span>)</span>
+<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a>stop_words.extend(</span>
+<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a>    [<span class="st">'from'</span>, <span class="st">'subject'</span>, <span class="st">'re'</span>, <span class="st">'edu'</span>, <span class="st">'use'</span>, <span class="st">'not'</span>, <span class="st">'would'</span>, <span class="st">'say'</span>, <span class="st">'could'</span>, <span class="st">'_'</span>, <span class="st">'be'</span>, <span class="st">'know'</span>, <span class="st">'good'</span>, <span class="st">'go'</span>, <span class="st">'get'</span>, <span class="st">'do'</span>, <span class="st">'done'</span>, <span class="st">'try'</span>, <span class="st">'many'</span>, <span class="st">'some'</span>, <span class="st">'nice'</span>, <span class="st">'thank'</span>, <span class="st">'think'</span>, <span class="st">'see'</span>, <span class="st">'rather'</span>, <span class="st">'easy'</span>, <span class="st">'easily'</span>, <span class="st">'lot'</span>, <span class="st">'lack'</span>, <span class="st">'make'</span>, <span class="st">'want'</span>, <span class="st">'seem'</span>, <span class="st">'run'</span>, <span class="st">'need'</span>, <span class="st">'even'</span>, <span class="st">'right'</span>, <span class="st">'line'</span>, <span class="st">'even'</span>, <span class="st">'also'</span>, <span class="st">'may'</span>, <span class="st">'take'</span>, <span class="st">'come'</span>]</span>
+<span id="cb37-15"><a href="#cb37-15" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb37-16"><a href="#cb37-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-17"><a href="#cb37-17" aria-hidden="true" tabindex="-1"></a><span class="co"># reading the dataset</span></span>
+<span id="cb37-18"><a href="#cb37-18" aria-hidden="true" tabindex="-1"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'DATA/tripadvisor_hotel_reviews.csv'</span>)</span>
+<span id="cb37-19"><a href="#cb37-19" aria-hidden="true" tabindex="-1"></a>df_500<span class="op">=</span> df[<span class="dv">0</span>:<span class="dv">500</span>]</span>
+<span id="cb37-20"><a href="#cb37-20" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sent_to_words(sentences):</span>
+<span id="cb37-21"><a href="#cb37-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> sent <span class="kw">in</span> sentences:</span>
+<span id="cb37-22"><a href="#cb37-22" aria-hidden="true" tabindex="-1"></a>        sent <span class="op">=</span> re.sub(<span class="st">'\S*@\S*\s?'</span>, <span class="st">''</span>, sent)  <span class="co"># remove emails</span></span>
+<span id="cb37-23"><a href="#cb37-23" aria-hidden="true" tabindex="-1"></a>        sent <span class="op">=</span> re.sub(<span class="st">'\s+'</span>, <span class="st">' '</span>, sent)  <span class="co"># remove newline chars</span></span>
+<span id="cb37-24"><a href="#cb37-24" aria-hidden="true" tabindex="-1"></a>        sent <span class="op">=</span> re.sub(<span class="st">"</span><span class="ch">\'</span><span class="st">"</span>, <span class="st">""</span>, sent)  <span class="co"># remove single quotes</span></span>
+<span id="cb37-25"><a href="#cb37-25" aria-hidden="true" tabindex="-1"></a>        sent <span class="op">=</span> utils.simple_preprocess(<span class="bu">str</span>(sent), deacc<span class="op">=</span><span class="va">True</span>) </span>
+<span id="cb37-26"><a href="#cb37-26" aria-hidden="true" tabindex="-1"></a>        <span class="cf">yield</span>(sent)  </span>
+<span id="cb37-27"><a href="#cb37-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-28"><a href="#cb37-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to list</span></span>
+<span id="cb37-29"><a href="#cb37-29" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> df_500.Review.values.tolist()</span>
+<span id="cb37-30"><a href="#cb37-30" aria-hidden="true" tabindex="-1"></a>data_words <span class="op">=</span> <span class="bu">list</span>(sent_to_words(data))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="a720d427" class="cell" data-execution_count="27">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;In topic modeling, sometimes we use bigrams or trigrams. Specifically, bigrams and trigrams arte sequences of two or three words respectively that appear consecutively in texts. They are also called n-grams, where <span class="math inline">\(n\)</span> represents the number of words in the sequence. In topic modeling, bigrams or trigrams help to capture the context and meaning of texts better than individual words. For example, by considering the triplets such as “machine learning algorithm”, we can identify patterns, relationships, and meanings better. Therefore, bigrams or trigrams enhances the quality and coherence of the topics generated by LDA.</p>
+<div id="236d2fe1" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Build the bigram and trigram models</span></span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>bigram <span class="op">=</span> gensim.models.Phrases(data_words, min_count<span class="op">=</span><span class="dv">5</span>, threshold<span class="op">=</span><span class="dv">100</span>) </span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="co"># higher threshold fewer phrases</span></span>
 <span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>trigram <span class="op">=</span> gensim.models.Phrases(bigram[data_words], threshold<span class="op">=</span><span class="dv">100</span>)  </span>
 <span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>bigram_mod <span class="op">=</span> gensim.models.phrases.Phraser(bigram)</span>
 <span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>trigram_mod <span class="op">=</span> gensim.models.phrases.Phraser(trigram)</span>
-<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Before running the process_words function, please run the following line of code in the terminal - </span></span>
-<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a><span class="co"># python -m spacy download en_core_web_sm</span></span>
-<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> process_words(texts, stop_words<span class="op">=</span>stop_words, allowed_postags<span class="op">=</span>[<span class="st">'NOUN'</span>, <span class="st">'ADJ'</span>, <span class="st">'VERB'</span>, <span class="st">'ADV'</span>]):</span>
-<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Remove Stopwords, Form Bigrams, Trigrams and Lemmatization"""</span></span>
-<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>    texts <span class="op">=</span> [[word <span class="cf">for</span> word <span class="kw">in</span> simple_preprocess(<span class="bu">str</span>(doc)) <span class="cf">if</span> word <span class="kw">not</span> <span class="kw">in</span> stop_words] <span class="cf">for</span> doc <span class="kw">in</span> texts]</span>
-<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a>    texts <span class="op">=</span> [bigram_mod[doc] <span class="cf">for</span> doc <span class="kw">in</span> texts]</span>
-<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a>    texts <span class="op">=</span> [trigram_mod[bigram_mod[doc]] <span class="cf">for</span> doc <span class="kw">in</span> texts]</span>
-<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a>    texts_out <span class="op">=</span> []</span>
-<span id="cb38-15"><a href="#cb38-15" aria-hidden="true" tabindex="-1"></a>    nlp <span class="op">=</span> spacy.load(<span class="st">"en_core_web_sm"</span>)</span>
-<span id="cb38-16"><a href="#cb38-16" aria-hidden="true" tabindex="-1"></a>    <span class="co">#nlp = spacy.load('en', disable=['parser', 'ner'])</span></span>
-<span id="cb38-17"><a href="#cb38-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> sent <span class="kw">in</span> texts:</span>
-<span id="cb38-18"><a href="#cb38-18" aria-hidden="true" tabindex="-1"></a>        doc <span class="op">=</span> nlp(<span class="st">" "</span>.join(sent)) </span>
-<span id="cb38-19"><a href="#cb38-19" aria-hidden="true" tabindex="-1"></a>        texts_out.append([token.lemma_ <span class="cf">for</span> token <span class="kw">in</span> doc <span class="cf">if</span> token.pos_ <span class="kw">in</span> allowed_postags])</span>
-<span id="cb38-20"><a href="#cb38-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># remove stopwords once more after lemmatization</span></span>
-<span id="cb38-21"><a href="#cb38-21" aria-hidden="true" tabindex="-1"></a>    texts_out <span class="op">=</span> [[word <span class="cf">for</span> word <span class="kw">in</span> simple_preprocess(<span class="bu">str</span>(doc)) <span class="cf">if</span> word <span class="kw">not</span> <span class="kw">in</span> stop_words] <span class="cf">for</span> doc <span class="kw">in</span> texts_out]    </span>
-<span id="cb38-22"><a href="#cb38-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> texts_out</span>
-<span id="cb38-23"><a href="#cb38-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-24"><a href="#cb38-24" aria-hidden="true" tabindex="-1"></a>data_ready <span class="op">=</span> process_words(data_words)  <span class="co"># processed Text Data!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Before running the process_words function, please run the following line of code in the terminal - </span></span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a><span class="co"># python -m spacy download en_core_web_sm</span></span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> process_words(texts, stop_words<span class="op">=</span>stop_words, allowed_postags<span class="op">=</span>[<span class="st">'NOUN'</span>, <span class="st">'ADJ'</span>, <span class="st">'VERB'</span>, <span class="st">'ADV'</span>]):</span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Remove Stopwords, Form Bigrams, Trigrams and Lemmatization"""</span></span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a>    texts <span class="op">=</span> [[word <span class="cf">for</span> word <span class="kw">in</span> simple_preprocess(<span class="bu">str</span>(doc)) <span class="cf">if</span> word <span class="kw">not</span> <span class="kw">in</span> stop_words] <span class="cf">for</span> doc <span class="kw">in</span> texts]</span>
+<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a>    texts <span class="op">=</span> [bigram_mod[doc] <span class="cf">for</span> doc <span class="kw">in</span> texts]</span>
+<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a>    texts <span class="op">=</span> [trigram_mod[bigram_mod[doc]] <span class="cf">for</span> doc <span class="kw">in</span> texts]</span>
+<span id="cb38-15"><a href="#cb38-15" aria-hidden="true" tabindex="-1"></a>    texts_out <span class="op">=</span> []</span>
+<span id="cb38-16"><a href="#cb38-16" aria-hidden="true" tabindex="-1"></a>    nlp <span class="op">=</span> spacy.load(<span class="st">"en_core_web_sm"</span>)</span>
+<span id="cb38-17"><a href="#cb38-17" aria-hidden="true" tabindex="-1"></a>    <span class="co">#nlp = spacy.load('en', disable=['parser', 'ner'])</span></span>
+<span id="cb38-18"><a href="#cb38-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> sent <span class="kw">in</span> texts:</span>
+<span id="cb38-19"><a href="#cb38-19" aria-hidden="true" tabindex="-1"></a>        doc <span class="op">=</span> nlp(<span class="st">" "</span>.join(sent)) </span>
+<span id="cb38-20"><a href="#cb38-20" aria-hidden="true" tabindex="-1"></a>        texts_out.append([token.lemma_ <span class="cf">for</span> token <span class="kw">in</span> doc <span class="cf">if</span> token.pos_ <span class="kw">in</span> allowed_postags])</span>
+<span id="cb38-21"><a href="#cb38-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># remove stopwords once more after lemmatization</span></span>
+<span id="cb38-22"><a href="#cb38-22" aria-hidden="true" tabindex="-1"></a>    texts_out <span class="op">=</span> [[word <span class="cf">for</span> word <span class="kw">in</span> simple_preprocess(<span class="bu">str</span>(doc)) <span class="cf">if</span> word <span class="kw">not</span> <span class="kw">in</span> stop_words] <span class="cf">for</span> doc <span class="kw">in</span> texts_out]    </span>
+<span id="cb38-23"><a href="#cb38-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> texts_out</span>
+<span id="cb38-24"><a href="#cb38-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-25"><a href="#cb38-25" aria-hidden="true" tabindex="-1"></a>data_ready <span class="op">=</span> process_words(data_words)  <span class="co"># processed Text Data!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="3e18563c" class="cell" data-execution_count="28">
+<div id="a24a0c61" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># turn our tokenized documents into a term  &lt;-&gt; id dictionary)</span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>dictionary <span class="op">=</span> corpora.Dictionary(data_ready)</span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="co"># convert tokenized documents into a document-term matrix)</span></span>
@@ -1496,7 +1499,7 @@ Figure&nbsp;10.3: Topic Modeling
 <span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>columns<span class="op">=</span>[dictionary[i] <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(dictionary))])</span>
 <span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the DataFrame </span></span>
 <span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a>df_doc_term_matrix</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="61">
+<div class="cell-output cell-output-display" data-execution_count="27">
 <div>
 <div>
 
@@ -1801,7 +1804,7 @@ Figure&nbsp;10.3: Topic Modeling
 </div>
 </div>
 </div>
-<div id="c27abaef" class="cell" data-execution_count="29">
+<div id="f3ae91db" class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a TF-IDF model from the corpus </span></span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>tfidf_model <span class="op">=</span> models.TfidfModel(corpus)</span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Transform the corpus using the TF-IDF model </span></span>
@@ -1813,7 +1816,7 @@ Figure&nbsp;10.3: Topic Modeling
 <span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>columns<span class="op">=</span>[dictionary[i] <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(dictionary))])</span>
 <span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the DataFrame </span></span>
 <span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>df_doc_term_matrix_tfidf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="62">
+<div class="cell-output cell-output-display" data-execution_count="28">
 <div>
 <div>
 
@@ -2118,7 +2121,7 @@ Figure&nbsp;10.3: Topic Modeling
 </div>
 </div>
 </div>
-<div id="b080da75" class="cell" data-execution_count="30">
+<div id="5cf8b2da" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create an LDA model from the corpus</span></span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>lda_model <span class="op">=</span> models.LdaModel(corpus, num_topics<span class="op">=</span><span class="dv">3</span>, id2word<span class="op">=</span>dictionary, passes<span class="op">=</span><span class="dv">15</span>)</span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the topics</span></span>
@@ -2126,17 +2129,17 @@ Figure&nbsp;10.3: Topic Modeling
 <span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Topic: </span><span class="sc">{</span>idx<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss">Words: </span><span class="sc">{</span>topic<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Topic: 0 
-Words: 0.037*"hotel" + 0.034*"room" + 0.024*"stay" + 0.016*"great" + 0.012*"staff" + 0.011*"location" + 0.009*"night" + 0.009*"place" + 0.007*"clean" + 0.007*"bed"
+Words: 0.027*"hotel" + 0.025*"room" + 0.022*"stay" + 0.014*"great" + 0.008*"staff" + 0.008*"night" + 0.008*"bed" + 0.007*"location" + 0.007*"service" + 0.007*"place"
 
 Topic: 1 
-Words: 0.036*"room" + 0.026*"hotel" + 0.015*"stay" + 0.011*"night" + 0.010*"bed" + 0.010*"great" + 0.008*"desk" + 0.007*"check" + 0.007*"service" + 0.007*"staff"
+Words: 0.039*"room" + 0.035*"hotel" + 0.019*"stay" + 0.013*"great" + 0.011*"night" + 0.010*"staff" + 0.009*"location" + 0.009*"bed" + 0.008*"place" + 0.007*"service"
 
 Topic: 2 
-Words: 0.008*"room" + 0.006*"hotel" + 0.006*"stay" + 0.005*"night" + 0.005*"experience" + 0.005*"car" + 0.004*"place" + 0.004*"time" + 0.004*"day" + 0.004*"small"
+Words: 0.010*"room" + 0.006*"hotel" + 0.005*"resort" + 0.005*"stay" + 0.005*"great" + 0.005*"service" + 0.004*"day" + 0.004*"clean" + 0.004*"staff" + 0.004*"leave"
 </code></pre>
 </div>
 </div>
-<div id="191ef643" class="cell" data-execution_count="31">
+<div id="b346675d" class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Topic Membership Likelihood </span></span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a DataFrame with topic vectors for each document</span></span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>topic_vectors <span class="op">=</span> []</span>
@@ -2146,7 +2149,7 @@ Words: 0.008*"room" + 0.006*"hotel" + 0.006*"stay" + 0.005*"night" + 0.005*"expe
 <span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>df_topic_vectors <span class="op">=</span> pd.DataFrame(topic_vectors)</span>
 <span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the DataFrame of the probabilities</span></span>
 <span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>df_topic_vectors</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="64">
+<div class="cell-output cell-output-display" data-execution_count="30">
 <div>
 <div>
 
@@ -2163,33 +2166,33 @@ Words: 0.008*"room" + 0.006*"hotel" + 0.006*"stay" + 0.005*"night" + 0.005*"expe
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">0</td>
-<td>0.553082</td>
-<td>0.441380</td>
-<td>0.005538</td>
+<td>0.182255</td>
+<td>0.812190</td>
+<td>0.005556</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
-<td>0.002036</td>
-<td>0.996117</td>
-<td>0.001847</td>
+<td>0.002008</td>
+<td>0.996022</td>
+<td>0.001971</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
-<td>0.002672</td>
-<td>0.994915</td>
-<td>0.002413</td>
+<td>0.002660</td>
+<td>0.994917</td>
+<td>0.002423</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">3</td>
-<td>0.405067</td>
-<td>0.589449</td>
-<td>0.005484</td>
+<td>0.005384</td>
+<td>0.989572</td>
+<td>0.005044</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">4</td>
-<td>0.002656</td>
-<td>0.994998</td>
-<td>0.002345</td>
+<td>0.597903</td>
+<td>0.399632</td>
+<td>0.002464</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">...</td>
@@ -2199,33 +2202,33 @@ Words: 0.008*"room" + 0.006*"hotel" + 0.006*"stay" + 0.005*"night" + 0.005*"expe
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">495</td>
-<td>0.574681</td>
-<td>0.010936</td>
-<td>0.414383</td>
+<td>0.101436</td>
+<td>0.011756</td>
+<td>0.886808</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">496</td>
-<td>0.987764</td>
-<td>0.006567</td>
-<td>0.005669</td>
+<td>0.006329</td>
+<td>0.987908</td>
+<td>0.005763</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">497</td>
-<td>0.989896</td>
-<td>0.005081</td>
-<td>0.005023</td>
+<td>0.005593</td>
+<td>0.989801</td>
+<td>0.004606</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">498</td>
-<td>0.059115</td>
-<td>0.933843</td>
-<td>0.007043</td>
+<td>0.184575</td>
+<td>0.806612</td>
+<td>0.008812</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">499</td>
-<td>0.015304</td>
-<td>0.972297</td>
-<td>0.012399</td>
+<td>0.014154</td>
+<td>0.973308</td>
+<td>0.012538</td>
 </tr>
 </tbody>
 </table>
@@ -2235,19 +2238,19 @@ Words: 0.008*"room" + 0.006*"hotel" + 0.006*"stay" + 0.005*"night" + 0.005*"expe
 </div>
 </div>
 </div>
-<div id="d42d69b0" class="cell" data-execution_count="32">
+<div id="427ab05e" class="cell" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the visualization </span></span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>vis_data <span class="op">=</span> gensimvis.prepare(lda_model, corpus, dictionary) </span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>pyLDAvis.display(vis_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="65">
+<div class="cell-output cell-output-display" data-execution_count="31">
 
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/bmabey/pyLDAvis@3.4.0/pyLDAvis/js/ldavis.v1.0.0.css">
 
 
-<div id="ldavis_el5335625957515861443022450497" style="background-color:white;"></div>
+<div id="ldavis_el1354827880204483685870099568" style="background-color:white;"></div>
 <script type="text/javascript">
 
-var ldavis_el5335625957515861443022450497_data = {"mdsDat": {"x": [-0.0715604642644882, -0.04047066083792873, 0.11203112510241701], "y": [-0.03935133397011915, 0.04737370059461537, -0.008022366624496235], "topics": [1, 2, 3], "cluster": [1, 1, 1], "Freq": [55.12779026629692, 40.4606922197905, 4.411517513912586]}, "tinfo": {"Term": ["experience", "car", "night", "time", "day", "small", "place", "sheet", "bad", "room", "parking", "business", "stay", "desk", "charge", "service", "way", "offer", "window", "floor", "park", "customer", "management", "call", "tell", "eat", "pillow", "bed", "kid", "garage", "resort", "conference", "gym", "marqueen", "pike", "convention", "spectacular", "hill", "group", "arena", "appetizer", "freeway", "require", "drawback", "fitness", "puget_sound", "maintain", "self", "ideal", "fault", "suggestion", "post", "renovate", "club", "explore", "serve", "pioneer_square", "careful", "deck", "elegant", "tourist", "negative", "market", "modern", "concierge", "center", "excellent", "friendly", "quiet", "enjoy", "staying", "parking", "helpful", "love", "tower", "hotel", "location", "stay", "expensive", "great", "comfortable", "walk", "view", "staff", "clean", "really", "room", "block", "restaurant", "area", "place", "downtown", "large", "bar", "little", "time", "night", "seattle", "service", "lobby", "small", "bed", "day", "bathroom", "desk", "clerk", "basically", "drawer", "horrible", "obviously", "contract", "prompt", "travelodge", "shoot", "air_conditione", "miserable", "particular", "bread", "plumbing", "overly", "mid", "sour", "dresser", "scene", "inexpensive", "air_conditioner", "cleanliness", "white", "answer", "bag", "train", "voucher", "assure", "result", "bellhop", "prior", "call", "dryer", "cancel", "hair", "dirty", "outside", "curtain", "tub", "hot", "send", "pull", "construction", "reservation", "pillow", "shower", "check", "desk", "room", "manager", "tell", "bed", "towel", "tv", "price", "water", "night", "luggage", "hotel", "bad", "give", "thing", "service", "look", "free", "stay", "bathroom", "great", "ask", "feel", "small", "book", "pay", "day", "place", "staff", "well", "location", "time", "clean", "downtown", "smash", "satisfy", "notify", "elbow", "effortlessly", "full", "kg", "frequent", "certificate", "ballroom", "push", "litter", "lightly", "discard", "penny", "welcoming", "portland", "painting", "expressway", "travelocity", "incidental", "itinerary", "killer", "raise", "lie", "greatly", "thread", "stepper", "excercise", "cong", "certain", "dog", "art", "garage", "sheet", "pet", "experience", "car", "executive", "remember", "management", "customer", "ambience", "age", "day", "time", "kid", "night", "response", "room", "small", "bad", "place", "stay", "charge", "business", "hotel", "service", "way", "offer", "window", "parking", "park", "floor", "desk", "bed", "eat", "free"], "Freq": [91.0, 93.0, 330.0, 175.0, 163.0, 178.0, 253.0, 30.0, 72.0, 1153.0, 152.0, 67.0, 652.0, 202.0, 60.0, 232.0, 66.0, 57.0, 60.0, 103.0, 44.0, 25.0, 23.0, 61.0, 79.0, 46.0, 44.0, 274.0, 24.0, 14.0, 17.335630850964296, 16.398739218240305, 15.429424464987875, 15.431209874309223, 46.034806348254506, 11.617274541933288, 9.726351565132225, 8.814875021419066, 10.586208838799285, 7.868478292644035, 7.850356987894974, 7.84799625577765, 7.807078535066358, 6.93442128351576, 9.575806767309924, 7.786473253695813, 5.98999864812597, 5.98715366326663, 5.976952726563774, 5.966689076949508, 5.96667817035622, 6.8244495580568305, 6.819286922123657, 19.825562472385553, 7.67288817388036, 11.911399187103768, 6.792535775434968, 6.671498765755059, 5.902673372971554, 5.041050321851063, 16.828917070730483, 15.00996124974445, 110.47708027763886, 29.387580033800663, 35.87270584278027, 25.202347183462553, 64.54827729087522, 121.16254893129864, 37.20395589431592, 55.988695625211456, 13.89192200908959, 120.48127948811762, 86.32277163778608, 68.42328518303017, 34.88706391937476, 701.7309102124763, 209.4975259539147, 440.63038248701463, 37.775378492531175, 296.83551819610506, 105.36224576153089, 128.93189992419065, 102.21505665271285, 216.02268768553822, 134.60396537932672, 95.98558575305606, 646.0923467702911, 75.30087384490787, 115.16698519394716, 86.793674709616, 161.77165231625798, 103.46797991388685, 73.22387457066881, 57.31282585264829, 85.98187515795664, 111.26866336797842, 177.38945764184575, 54.493885938082194, 128.24264685472232, 78.0413081009824, 102.32257821198948, 133.53325202826989, 91.67058843708847, 90.43418212079077, 81.89860368563662, 33.36954111103731, 9.110198486838101, 7.4249698940862805, 7.423274472149362, 7.405750309239534, 6.533141933554686, 8.16980205104655, 5.64105661789905, 5.636912920233112, 8.079834221804752, 4.753215860704467, 4.7526759352576065, 4.750833624781771, 4.746310498410404, 4.74636012832546, 4.725021666298816, 4.725410700794256, 4.723610815890969, 4.723096906125388, 4.715377453127903, 5.4925014744159615, 7.891482290306635, 6.8321989939630665, 10.284873737134733, 30.4424199519053, 9.140805735742733, 3.8624297281478013, 3.8612782340702485, 3.8615519990855582, 3.8611061303325536, 9.88918803259452, 52.728237008721486, 6.215454843661476, 10.741143959755998, 11.865673784265894, 19.720597238273662, 11.104341281514452, 14.159321909551133, 21.047565084850113, 30.711186754479407, 13.358228640497204, 14.357386895715242, 19.916199940264985, 46.75933998088774, 32.16960823638959, 50.85327325070998, 99.52005736756597, 116.53141197573414, 495.94847518756086, 27.86005700012338, 49.78467393902087, 137.19611748715607, 27.30690117848749, 28.209281899828525, 75.8598694914347, 47.38845198606957, 145.67317594086776, 26.934212535715798, 360.7301002096026, 42.24111896628541, 38.176515375296354, 49.668168513909045, 98.93450762008342, 49.26383519691154, 54.667351434355574, 203.35416468305326, 72.52146682719733, 134.87022272480434, 55.25237606531752, 47.73720300013418, 70.65679087028747, 49.65635659412568, 53.580667622006, 65.99171973992898, 85.0066564324242, 95.36437487762386, 52.58619939376077, 77.4213611001615, 57.996590174922574, 49.707017530643, 49.12354583573281, 1.6668463467470505, 1.6520385268449242, 1.1670435425440997, 1.1669315644173865, 1.1663345804838567, 1.1652964917549964, 1.165149078617024, 1.1650789068213283, 1.1649316682400614, 1.16474393250307, 1.1641215505688591, 1.1631712638629712, 1.1622899270558391, 1.1619174230458529, 1.1615768629130117, 1.1612501800382746, 1.1597331077089448, 1.1579941738066568, 1.15764916247782, 1.1557733761182554, 1.1553534799626688, 1.1536877725984265, 1.137688777736532, 1.1361353976124144, 1.1195535579101528, 1.1153458685190016, 2.1578644101784152, 0.6668382105777808, 0.6668352867529602, 0.6668346321653138, 1.5960068716520934, 2.957676951702445, 3.3267463839470577, 3.8770699135868534, 5.506382553801918, 2.4235081215060377, 7.3784819266287585, 7.311336944210163, 2.437602528151925, 2.303743892934546, 3.542754372335787, 3.4947170651510846, 1.9351440182282948, 2.0612189953813376, 6.097625317280954, 6.226732344412188, 3.0264700985363584, 7.664188662040626, 2.148432238585349, 11.282546685640327, 5.856328600709125, 4.232343780265755, 6.412971781322463, 8.79178797490874, 3.8361632478304246, 3.848966633080877, 9.174997896769547, 5.316247360333597, 3.671090557054603, 3.4628300934921277, 3.3741531923107337, 4.045773732954864, 3.029773758748635, 3.5679642008879062, 3.9320200154311022, 4.07670971968111, 2.918347056668699, 3.004213420331449], "Total": [91.0, 93.0, 330.0, 175.0, 163.0, 178.0, 253.0, 30.0, 72.0, 1153.0, 152.0, 67.0, 652.0, 202.0, 60.0, 232.0, 66.0, 57.0, 60.0, 103.0, 44.0, 25.0, 23.0, 61.0, 79.0, 46.0, 44.0, 274.0, 24.0, 14.0, 17.812978508732815, 16.868512633921707, 15.912479747531835, 15.919783999075918, 47.91074701052727, 12.130418852555357, 10.239506107739345, 9.29503971660263, 11.180170658326432, 8.348627529778659, 8.337478639446502, 8.344271779953088, 8.313824606541559, 7.4025152310829, 10.229954624849908, 8.342725973138982, 6.45636504607812, 6.45609217378188, 6.45021302707619, 6.454733659350106, 6.454940137028104, 7.395121228219984, 7.394511414661931, 21.523138600842344, 8.336907498374675, 12.952438385007518, 7.392932615487731, 7.280340711876798, 6.4500022120241765, 5.5094024052215245, 18.58959308962174, 16.60641503998603, 128.0958322498076, 33.66164207525856, 41.58403763065889, 28.91222513399424, 77.25845261247008, 150.18810418580665, 43.900936894296215, 67.6167542272072, 15.621479359514048, 152.74864974369495, 109.12775770611182, 85.87655873496813, 41.68922540340612, 1071.6360083188483, 288.3688090770079, 652.7763351449767, 45.610168261848045, 433.8262536871999, 139.08832644028547, 174.1703406736087, 136.15355783542853, 312.83406259411856, 185.85292258759503, 130.11765142314655, 1153.3233686434921, 100.31788059887879, 163.81493140728458, 121.35159156851148, 253.19128053000463, 152.90564226529315, 101.77854705706766, 76.08267289721843, 125.08199129254592, 175.4919858873132, 330.7268222447541, 72.25982856454783, 232.49340183513934, 118.5650043937774, 178.83569768298608, 274.80607923510706, 163.7599334942984, 165.5431365116221, 202.36203567680187, 34.725753910998044, 9.703682251719865, 7.914247514284438, 7.912832196189957, 7.915446443366044, 7.021139580129277, 8.814235253825768, 6.1293760941107704, 6.130445898996607, 8.818482427704607, 5.2384849006949095, 5.2385305614732225, 5.238075019800415, 5.237292499429365, 5.238299854576192, 5.238427536241434, 5.239612582110505, 5.238885982928799, 5.23926251361473, 5.239902673211694, 6.13810792860375, 8.831332733349633, 7.653816947732058, 11.52371145232676, 34.146158526579306, 10.261450820785877, 4.346046620743962, 4.345917108918853, 4.346352371302337, 4.3465560950849405, 11.179560702652976, 61.028849320517, 7.03964091186995, 12.39376006115692, 13.823861045858907, 23.656507156217696, 13.043235827298657, 16.966735510490988, 25.997510042854667, 39.512570897042636, 16.0692010855115, 17.529581164250335, 25.11657335455646, 64.4725213858138, 44.10304833709646, 74.28847643022154, 159.21592643655632, 202.36203567680187, 1153.3233686434921, 39.238220226918315, 79.69211654438547, 274.80607923510706, 38.871372820105336, 40.66487653136516, 141.54342952800923, 79.77128903817763, 330.7268222447541, 39.75684113200958, 1071.6360083188483, 72.21255828684576, 63.663073822242296, 91.24101339284556, 232.49340183513934, 93.41371068406116, 107.57261019409243, 652.7763351449767, 165.5431365116221, 433.8262536871999, 114.59046654396703, 92.07429231225574, 178.83569768298608, 101.81123774215625, 115.35491148997482, 163.7599334942984, 253.19128053000463, 312.83406259411856, 114.18658188922598, 288.3688090770079, 175.4919858873132, 185.85292258759503, 152.90564226529315, 2.2822538060269206, 2.294221961586215, 1.7811049783858734, 1.7812007607707367, 1.7816383399269804, 1.7824104988635103, 1.7825289611264195, 1.7825122832123514, 1.7826487512946034, 1.782947286199819, 1.7831342727935011, 1.7842169549009608, 1.7849310137695744, 1.785247375356835, 1.7855407269764676, 1.785468413058573, 1.786949630438042, 1.7885852583547146, 1.7881860330764523, 1.7892547693112406, 1.7903625488578987, 1.7922077082962389, 1.8055111200771332, 1.8070878914539188, 1.8196929931673727, 1.8240457255655778, 3.7353549148218566, 1.2802912637279946, 1.2802934107729849, 1.2802953302757882, 3.2881104882530097, 7.632165386420047, 10.20264360184216, 14.283403823613124, 30.185621904145236, 7.172516873991103, 91.11729990257581, 93.95356266884939, 8.874748143618902, 8.12254940604463, 23.884277622745117, 25.69944587055168, 6.652975401236915, 8.398686630729324, 163.7599334942984, 175.4919858873132, 24.022214372038068, 330.7268222447541, 10.080161209335188, 1153.3233686434921, 178.83569768298608, 72.21255828684576, 253.19128053000463, 652.7763351449767, 60.12784447889992, 67.57336927673052, 1071.6360083188483, 232.49340183513934, 66.33918164992771, 57.9753739229043, 60.58945663231115, 152.74864974369495, 44.964595120355554, 103.8960598966087, 202.36203567680187, 274.80607923510706, 46.86005506779561, 107.57261019409243], "Category": ["Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3"], "logprob": [30.0, 29.0, 28.0, 27.0, 26.0, 25.0, 24.0, 23.0, 22.0, 21.0, 20.0, 19.0, 18.0, 17.0, 16.0, 15.0, 14.0, 13.0, 12.0, 11.0, 10.0, 9.0, 8.0, 7.0, 6.0, 5.0, 4.0, 3.0, 2.0, 1.0, -6.9855, -7.0411, -7.102, -7.1019, -6.0089, -7.3858, -7.5634, -7.6618, -7.4787, -7.7754, -7.7777, -7.778, -7.7832, -7.9018, -7.579, -7.7859, -8.0482, -8.0487, -8.0504, -8.0521, -8.0521, -7.9178, -7.9185, -6.8513, -7.8006, -7.3608, -7.9225, -7.9404, -8.0629, -8.2207, -7.0152, -7.1296, -5.1335, -6.4577, -6.2583, -6.6113, -5.6709, -5.0411, -6.2219, -5.8131, -7.207, -5.0468, -5.3802, -5.6126, -6.2862, -3.2847, -4.4936, -3.7501, -6.2066, -4.1451, -5.1809, -4.979, -5.2112, -4.4629, -4.9359, -5.2741, -3.3673, -5.5168, -5.0919, -5.3747, -4.7521, -5.199, -5.5448, -5.7898, -5.3841, -5.1263, -4.6599, -5.8402, -4.9844, -5.481, -5.2101, -4.9439, -5.3201, -5.3337, -5.4328, -6.0213, -7.3196, -7.5241, -7.5243, -7.5267, -7.6521, -7.4285, -7.7989, -7.7996, -7.4396, -7.9701, -7.9702, -7.9706, -7.9716, -7.9716, -7.9761, -7.976, -7.9764, -7.9765, -7.9781, -7.8256, -7.4632, -7.6073, -7.1983, -6.1131, -7.3162, -8.1777, -8.178, -8.1779, -8.178, -7.2375, -5.5638, -7.7019, -7.1549, -7.0553, -6.5473, -7.1216, -6.8786, -6.4822, -6.1043, -6.9368, -6.8647, -6.5374, -5.6839, -6.0579, -5.6, -4.9286, -4.7708, -3.3225, -6.2018, -5.6212, -4.6075, -6.2218, -6.1893, -5.2001, -5.6706, -4.5476, -6.2356, -3.6408, -5.7856, -5.8867, -5.6236, -4.9345, -5.6318, -5.5277, -4.214, -5.2451, -4.6246, -5.517, -5.6632, -5.2711, -5.6238, -5.5478, -5.3394, -5.0862, -4.9712, -5.5665, -5.1797, -5.4686, -5.6228, -5.6346, -6.8019, -6.8108, -7.1584, -7.1585, -7.159, -7.1599, -7.16, -7.1601, -7.1602, -7.1603, -7.1609, -7.1617, -7.1624, -7.1628, -7.1631, -7.1633, -7.1647, -7.1662, -7.1664, -7.1681, -7.1684, -7.1699, -7.1838, -7.1852, -7.1999, -7.2037, -6.5437, -7.718, -7.7181, -7.7181, -6.8453, -6.2284, -6.1108, -5.9578, -5.6069, -6.4276, -5.3143, -5.3234, -6.4218, -6.4783, -6.0479, -6.0616, -6.6527, -6.5895, -5.5049, -5.484, -6.2054, -5.2763, -6.5481, -4.8896, -5.5453, -5.8701, -5.4545, -5.139, -5.9684, -5.965, -5.0964, -5.6421, -6.0124, -6.0708, -6.0967, -5.9152, -6.2044, -6.0408, -5.9437, -5.9076, -6.2418, -6.2128], "loglift": [30.0, 29.0, 28.0, 27.0, 26.0, 25.0, 24.0, 23.0, 22.0, 21.0, 20.0, 19.0, 18.0, 17.0, 16.0, 15.0, 14.0, 13.0, 12.0, 11.0, 10.0, 9.0, 8.0, 7.0, 6.0, 5.0, 4.0, 3.0, 2.0, 1.0, 0.5684, 0.5673, 0.5647, 0.5643, 0.5556, 0.5523, 0.5441, 0.5425, 0.5409, 0.5363, 0.5353, 0.5342, 0.5326, 0.5302, 0.5294, 0.5265, 0.5205, 0.5201, 0.5193, 0.5169, 0.5169, 0.5152, 0.5145, 0.5134, 0.5125, 0.5117, 0.5108, 0.5082, 0.5068, 0.5067, 0.496, 0.4944, 0.4475, 0.4597, 0.4478, 0.4582, 0.4158, 0.3808, 0.43, 0.4068, 0.4782, 0.3582, 0.3611, 0.3683, 0.4174, 0.1721, 0.276, 0.2025, 0.407, 0.2161, 0.3178, 0.2948, 0.3088, 0.2252, 0.2729, 0.2913, 0.0161, 0.3087, 0.2432, 0.2604, 0.1476, 0.205, 0.2662, 0.3122, 0.2207, 0.1399, -0.0274, 0.3133, 0.0006, 0.1773, 0.0372, -0.1262, 0.0153, -0.0091, -0.3091, 0.865, 0.8417, 0.841, 0.841, 0.8383, 0.8328, 0.8289, 0.8218, 0.8209, 0.8174, 0.8076, 0.8075, 0.8072, 0.8064, 0.8062, 0.8017, 0.8015, 0.8013, 0.8011, 0.7994, 0.7937, 0.7923, 0.7913, 0.7911, 0.79, 0.7892, 0.7869, 0.7866, 0.7866, 0.7864, 0.7822, 0.7586, 0.7803, 0.7617, 0.7521, 0.7229, 0.7439, 0.724, 0.6936, 0.6528, 0.7201, 0.7052, 0.6728, 0.5836, 0.5893, 0.5258, 0.4349, 0.3529, 0.0609, 0.5624, 0.4344, 0.2102, 0.5517, 0.5391, 0.2811, 0.3841, 0.0849, 0.5155, -0.184, 0.3686, 0.3935, 0.2967, 0.0504, 0.265, 0.2279, -0.2614, 0.0795, -0.2635, 0.1754, 0.248, -0.0238, 0.1868, 0.138, -0.004, -0.1866, -0.2831, 0.1295, -0.4101, -0.2024, -0.414, -0.2306, 2.8067, 2.7926, 2.6982, 2.698, 2.6973, 2.696, 2.6958, 2.6957, 2.6955, 2.6952, 2.6945, 2.6931, 2.692, 2.6915, 2.691, 2.6908, 2.6886, 2.6862, 2.6861, 2.6839, 2.6829, 2.6805, 2.6591, 2.6569, 2.6352, 2.6291, 2.5722, 2.4687, 2.4686, 2.4686, 2.3981, 2.173, 2.0003, 1.8169, 1.4195, 2.0359, 0.6074, 0.5676, 1.8288, 1.8608, 1.2126, 1.1257, 1.8861, 1.7162, -0.1696, -0.2178, 1.0494, -0.6438, 1.5751, -1.5062, -0.298, 0.2841, -0.5549, -1.1865, 0.369, 0.2555, -1.6395, -0.6571, 0.2267, 0.303, 0.233, -0.5102, 0.4236, -0.2504, -0.82, -1.0898, 0.3448, -0.4572]}, "token.table": {"Topic": [1, 2, 3, 1, 2, 2, 1, 2, 3, 1, 2, 1, 1, 2, 3, 1, 1, 2, 3, 1, 2, 3, 2, 1, 2, 3, 1, 2, 3, 3, 1, 2, 2, 1, 2, 3, 1, 2, 3, 2, 1, 2, 1, 2, 3, 2, 1, 2, 3, 1, 2, 3, 1, 2, 1, 2, 3, 1, 1, 2, 1, 3, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 1, 2, 1, 2, 1, 2, 3, 1, 2, 3, 1, 3, 1, 2, 2, 1, 1, 2, 1, 2, 3, 1, 2, 3, 1, 1, 2, 3, 1, 2, 3, 3, 1, 2, 3, 1, 2, 1, 2, 2, 1, 2, 1, 2, 3, 3, 3, 1, 1, 2, 3, 1, 2, 3, 3, 1, 2, 3, 1, 2, 1, 2, 3, 1, 3, 1, 1, 2, 3, 1, 1, 2, 3, 1, 2, 3, 1, 3, 1, 2, 3, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 3, 1, 1, 1, 2, 3, 1, 2, 1, 2, 1, 2, 1, 2, 3, 1, 3, 2, 3, 3, 1, 2, 3, 3, 1, 2, 3, 3, 3, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 1, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 2, 1, 2, 1, 2, 1, 2, 3, 3, 2, 1, 2, 3, 1, 2, 3, 2, 3, 1, 2, 3, 1, 2, 3, 2, 1, 2, 3, 3, 1, 2, 3, 1, 2, 1, 2, 3, 1, 1, 2, 3, 2, 3, 1, 1, 2, 3, 1, 2, 3, 2, 1, 1, 2, 3, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 1, 1, 2, 3, 1, 1, 2, 3, 1, 2, 3, 2, 1, 2, 3, 3, 2, 1, 2, 3, 1, 1, 2, 1, 2, 1, 2, 3, 1, 2, 3, 2, 1, 2, 1, 2, 3, 3, 2, 1, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 1, 2, 3, 1, 2, 3, 1, 3, 1, 2, 3, 1, 2, 1, 2, 1, 2, 3, 1, 2, 3, 3, 2, 1, 2, 1, 2, 1, 2, 3, 2, 1, 2, 3, 1, 2, 3, 1, 2, 3, 3, 1, 2, 3, 2, 3, 1, 2, 3], "Freq": [0.47626494187373297, 0.3571987064052997, 0.23813247093686649, 0.11339819614068147, 0.9071855691254518, 0.8145832654228616, 0.300617374840761, 0.300617374840761, 0.300617374840761, 0.0867775980105862, 0.867775980105862, 0.9595226981632295, 0.7169250841747914, 0.28017761910279204, 0.008240518208905648, 0.9582413362513609, 0.5880828767670231, 0.09801381279450386, 0.29404143838351154, 0.4974235791083874, 0.4799701201923036, 0.02618018837412565, 0.9204041171864625, 0.3600481774474975, 0.5816162866459575, 0.055392027299615, 0.08785761354867505, 0.8785761354867505, 0.029285871182891682, 0.5608690777007793, 0.749185035559968, 0.23658474807156882, 0.9274829664177076, 0.543664943751271, 0.4409726765982531, 0.01812216479170903, 0.48761657810836817, 0.49853336717049584, 0.014555718749503527, 0.9202688087985741, 0.7476234500994655, 0.24920781669982187, 0.5009270207397036, 0.4911049222938271, 0.009822098445876542, 0.9545491389679474, 0.7103390065312197, 0.22198093954100617, 0.05919491721093498, 0.1146998522491674, 0.8684417384579818, 0.016385693178452485, 0.08068576405106337, 0.8875434045616971, 0.617326244502595, 0.3086631222512975, 0.0745048915778994, 0.9614934626040971, 0.8646861278970068, 0.10376233534764082, 0.30412603334728733, 0.6082520666945747, 0.5609630047836263, 0.44904320509069384, 0.48230566472704156, 0.06652491927269538, 0.3642851647954427, 0.6280778703369702, 0.006280778703369702, 0.7263808291008856, 0.26902993670403175, 0.010761197468161269, 0.11323319256489052, 0.9058655405191242, 0.02879707097398074, 0.9503033421413645, 0.9292325051150888, 0.09292325051150889, 0.7549159781218552, 0.23725930740972592, 0.007189675982112907, 0.8657168002718929, 0.12023844448220734, 0.024047688896441467, 0.9485127910936751, 0.7810697862848489, 0.1990717415715045, 0.796286966286018, 0.9969891525602048, 0.9892486109391118, 0.1768165713519268, 0.8251439996423251, 0.5447588275061693, 0.35020210339682317, 0.11673403446560772, 0.5617979809646366, 0.4030289863441958, 0.03663899875856325, 0.9302322391168678, 0.4052143462865956, 0.578171689213801, 0.019766553477394908, 0.08454333460103958, 0.8454333460103958, 0.08454333460103958, 0.5601464613833251, 0.26204882870575774, 0.26204882870575774, 0.39307324305863656, 0.6736180462281028, 0.3204590705356994, 0.9456245318627982, 0.884480803432757, 0.9544013777533579, 0.14205270020433025, 0.8523162012259815, 0.6828843874319703, 0.2560816452869889, 0.06402041132174723, 0.5612811408408424, 0.5614190281208356, 0.9075394447973633, 0.8281971035141329, 0.1626815739045618, 0.014789233991323801, 0.8413318905834327, 0.15532281056924913, 0.012943567547437427, 0.781070957317701, 0.11267925397060619, 0.5633962698530309, 0.22535850794121237, 0.8331475512618577, 0.153474548916658, 0.6145923996856378, 0.3072961998428189, 0.07682404996070473, 0.9595884327083686, 0.5592259314762503, 0.9295503605030403, 0.45615338380840864, 0.5213181529238956, 0.032582384557743475, 0.9775214423442976, 0.6833752894061147, 0.27912511820813135, 0.03850001630456984, 0.464802331279174, 0.5112825644070914, 0.02788813987675044, 0.9587415428174101, 0.5610059517782686, 0.8056563511202172, 0.1864328746393891, 0.006658316951406754, 0.5610379879593471, 0.4200679385736391, 0.2800452923824261, 0.2800452923824261, 0.36127693212268946, 0.5968923226374869, 0.031415385401973, 0.6846058703817975, 0.3111844865371807, 0.004610140541291567, 0.5482318704976172, 0.9838848024925049, 0.9426563450820185, 0.07233869008684525, 0.8680642810421431, 0.07233869008684525, 0.7880671408240937, 0.21076214231342041, 0.9682583694531572, 0.8846390049027595, 0.22777561155033865, 0.7845604397844999, 0.6550731727475987, 0.3368681130511155, 0.008398374009584599, 0.930201835941492, 0.558546089247631, 0.9542161967171328, 0.5579710406170775, 0.5610007028262126, 0.37465322141475965, 0.49953762855301287, 0.12488440713825322, 0.5538597845674188, 0.7172434870687296, 0.27510709093047164, 0.009825253247516845, 0.5495432491935861, 0.5602457418721813, 0.5604699570044768, 0.6875490157400863, 0.28781121589119896, 0.023984267990933245, 0.6578669684095558, 0.3289334842047779, 0.008434191902686612, 0.7247663180666231, 0.267019169814019, 0.0034677814261560914, 0.4496127997960615, 0.5245482664287384, 0.021410133323621974, 0.7918342444282299, 0.17466931862387425, 0.023289242483183235, 0.32698774927400504, 0.6791284023383182, 0.9293154828109764, 0.5861596578775207, 0.29307982893876033, 0.1674741879650059, 0.2548535571228527, 0.7135899599439874, 0.05097071142457053, 0.8587320763526655, 0.13271313907268467, 0.007806655239569686, 0.9422238392726116, 0.9544849032287072, 0.954474451064415, 0.8615147156268741, 0.11882961594853436, 0.9032653925535405, 0.0602176928369027, 0.5351848960983615, 0.4414519481941287, 0.024189147846253627, 0.5614492195211593, 0.8843468337615648, 0.5347097897328583, 0.3967201665759917, 0.051746108683825, 0.07666809166380815, 0.8433490083018896, 0.07666809166380815, 0.9545081684531648, 0.5591011081685202, 0.7116710361640406, 0.22239719880126269, 0.0667191596403788, 0.7856043258081453, 0.18330767602190057, 0.026186810860271508, 0.9544661315469847, 0.528802798355936, 0.46812051002000893, 0.008668898333703868, 0.5600544333107107, 0.41826321955108464, 0.27884214636738974, 0.27884214636738974, 0.9601186136774819, 0.041744287551194866, 0.20406752683418977, 0.7255734287437858, 0.045348339296486614, 0.9468502371217936, 0.639832460505298, 0.33571456261080446, 0.023697498537233255, 0.9546917611618563, 0.5596128637128212, 0.9465700133877196, 0.4592230117409831, 0.5369376752663803, 0.007064969411399741, 0.08944895301321582, 0.8944895301321582, 0.08944895301321582, 0.907622700055305, 0.9589191860978707, 0.1711392857530545, 0.798650000180921, 0.0570464285843515, 0.5608102627254065, 0.8428066145624147, 0.1366713429020132, 0.553376515181802, 0.7377938269712929, 0.25361662802138196, 0.015370704728568604, 0.24622811139956158, 0.49245622279912316, 0.24622811139956158, 0.9466480755064237, 0.9622526789542045, 0.26367822499556515, 0.7289927396936213, 0.015510483823268539, 0.9543603273122317, 0.2976142878768362, 0.4960238131280604, 0.19840952525122413, 0.7020117092628233, 0.2930135829966567, 0.006104449645763681, 0.9203119439672683, 0.5601204463235734, 0.430061519158657, 0.009537654658760539, 0.8717552327052125, 0.9543327876789942, 0.7473031845316821, 0.23526211364886288, 0.013838947861697816, 0.9293547611302599, 0.18669254208940697, 0.8090010157207634, 0.9264664801563567, 0.07720554001302972, 0.5505532586716787, 0.4258185360038765, 0.02150598666686245, 0.33128355055115666, 0.4637969707716193, 0.198770130330694, 0.9787216295281298, 0.3096038727029714, 0.68651293512398, 0.5703559262581387, 0.39701245847380245, 0.033550348603419926, 0.8763267234864275, 0.9542690268878641, 0.9766096035082865, 0.6904618960251961, 0.3036753709370076, 0.003196582851968501, 0.6755759611016801, 0.3109794106658527, 0.013787264512279185, 0.8962019331077944, 0.06401442379341389, 0.7810722671715863, 0.9295206264705096, 0.3388039014494242, 0.6274146323137485, 0.03764487793882491, 0.43839933942619386, 0.5479991742827424, 0.010959983485654846, 0.26771217804016656, 0.5354243560803331, 0.6325075155926222, 0.3304994225619107, 0.03418959543743904, 0.9144901622129006, 0.05379353895370003, 0.28298460285689986, 0.6945985706487542, 0.839545461958629, 0.1439220791929078, 0.02398701319881797, 0.09745210667232089, 0.877068960050888, 0.09745210667232089, 0.5588919013388697, 0.9788924529798265, 0.19232611091438867, 0.8077696658404324, 0.29509495721066065, 0.6885549001582082, 0.7491541287763438, 0.24237339460411123, 0.007344648321336704, 0.9203766892208981, 0.7406542325236827, 0.25262624985303905, 0.00574150567847816, 0.40114683347645497, 0.5891844116685433, 0.012535838546139218, 0.6029619148918698, 0.3467031010628251, 0.060296191489186975, 0.5600771162828713, 0.5342133812112615, 0.4641526099048665, 0.008757596413299368, 0.9145763542299252, 0.1306537648899893, 0.4786311284484251, 0.4621266067777898, 0.04951356501190605], "Term": ["age", "age", "age", "air_conditione", "air_conditione", "air_conditioner", "ambience", "ambience", "ambience", "answer", "answer", "appetizer", "area", "area", "area", "arena", "art", "art", "art", "ask", "ask", "ask", "assure", "bad", "bad", "bad", "bag", "bag", "bag", "ballroom", "bar", "bar", "basically", "bathroom", "bathroom", "bathroom", "bed", "bed", "bed", "bellhop", "block", "block", "book", "book", "book", "bread", "business", "business", "business", "call", "call", "call", "cancel", "cancel", "car", "car", "car", "careful", "center", "center", "certain", "certain", "certificate", "charge", "charge", "charge", "check", "check", "check", "clean", "clean", "clean", "cleanliness", "cleanliness", "clerk", "clerk", "club", "club", "comfortable", "comfortable", "comfortable", "concierge", "concierge", "concierge", "conference", "cong", "construction", "construction", "contract", "convention", "curtain", "curtain", "customer", "customer", "customer", "day", "day", "day", "deck", "desk", "desk", "desk", "dirty", "dirty", "dirty", "discard", "dog", "dog", "dog", "downtown", "downtown", "drawback", "drawer", "dresser", "dryer", "dryer", "eat", "eat", "eat", "effortlessly", "elbow", "elegant", "enjoy", "enjoy", "enjoy", "excellent", "excellent", "excellent", "excercise", "executive", "executive", "executive", "expensive", "expensive", "experience", "experience", "experience", "explore", "expressway", "fault", "feel", "feel", "feel", "fitness", "floor", "floor", "floor", "free", "free", "free", "freeway", "frequent", "friendly", "friendly", "friendly", "full", "garage", "garage", "garage", "give", "give", "give", "great", "great", "great", "greatly", "group", "gym", "hair", "hair", "hair", "helpful", "helpful", "hill", "horrible", "hot", "hot", "hotel", "hotel", "hotel", "ideal", "incidental", "inexpensive", "itinerary", "kg", "kid", "kid", "kid", "killer", "large", "large", "large", "lie", "lightly", "litter", "little", "little", "little", "lobby", "lobby", "lobby", "location", "location", "location", "look", "look", "look", "love", "love", "love", "luggage", "luggage", "maintain", "management", "management", "management", "manager", "manager", "manager", "market", "market", "market", "marqueen", "mid", "miserable", "modern", "modern", "negative", "negative", "night", "night", "night", "notify", "obviously", "offer", "offer", "offer", "outside", "outside", "outside", "overly", "painting", "park", "park", "park", "parking", "parking", "parking", "particular", "pay", "pay", "pay", "penny", "pet", "pet", "pet", "pike", "pike", "pillow", "pillow", "pillow", "pioneer_square", "place", "place", "place", "plumbing", "portland", "post", "price", "price", "price", "prior", "prior", "prior", "prompt", "puget_sound", "pull", "pull", "pull", "push", "quiet", "quiet", "raise", "really", "really", "really", "remember", "remember", "remember", "renovate", "require", "reservation", "reservation", "reservation", "resort", "response", "response", "response", "restaurant", "restaurant", "restaurant", "result", "room", "room", "room", "satisfy", "scene", "seattle", "seattle", "seattle", "self", "send", "send", "serve", "serve", "service", "service", "service", "sheet", "sheet", "sheet", "shoot", "shower", "shower", "small", "small", "small", "smash", "sour", "spectacular", "staff", "staff", "staff", "stay", "stay", "stay", "staying", "staying", "stepper", "suggestion", "tell", "tell", "tell", "thing", "thing", "thing", "thread", "thread", "time", "time", "time", "tourist", "tourist", "towel", "towel", "tower", "tower", "tower", "train", "train", "train", "travelocity", "travelodge", "tub", "tub", "tv", "tv", "view", "view", "view", "voucher", "walk", "walk", "walk", "water", "water", "water", "way", "way", "way", "welcoming", "well", "well", "well", "white", "white", "window", "window", "window"]}, "R": 30, "lambda.step": 0.01, "plot.opts": {"xlab": "PC1", "ylab": "PC2"}, "topic.order": [1, 2, 3]};
+var ldavis_el1354827880204483685870099568_data = {"mdsDat": {"x": [-0.059111837216723674, -0.04357564140754274, 0.10268747862426648], "y": [-0.03959704872767733, 0.04380308167955942, -0.004206032951882093], "topics": [1, 2, 3], "cluster": [1, 1, 1], "Freq": [70.5236540737143, 23.658588501100645, 5.8177574251850475]}, "tinfo": {"Term": ["stay", "room", "hotel", "great", "service", "day", "leave", "lobby", "clean", "staff", "way", "food", "bad", "floor", "water", "experience", "shop", "pool", "comfortable", "evening", "excellent", "night", "desk", "love", "time", "open", "location", "quite", "travel", "tour", "th_floor", "directly", "complimentary", "edgewater", "ready", "noisy", "information", "picture", "switch", "suitcase", "attach", "later", "normally", "drop", "dingy", "hill", "mayflower_park", "unit", "unfortunately", "employee", "unique", "rent", "spectacular", "reserve", "starbuck", "ace", "romantic", "earplug", "surround", "zone", "public", "bag", "online", "fax", "cab", "downtown", "noise", "pm", "busy", "room", "arrive", "walk", "sleep", "mention", "breakfast", "hotel", "early", "bus", "seattle", "book", "small", "night", "eat", "ask", "free", "hear", "location", "clean", "staff", "bed", "place", "stay", "desk", "restaurant", "day", "market", "great", "friendly", "block", "check", "price", "service", "parking", "view", "area", "time", "bathroom", "floor", "really", "balcony", "uncomfortable", "cleanliness", "bliss", "product", "spring", "chip", "thoroughly", "numerous", "job", "candle", "decoration", "radio", "anytime", "banquet", "mobile", "favor", "peak", "cater", "grace", "swimming", "fool", "laundry", "ruin", "washer", "existent", "wood", "overhaul", "com", "vibration", "wing", "andra", "cold", "terrific", "art", "poor", "style", "cookie", "dark", "schedule", "charming", "luxury", "meeting", "management", "stay", "expect", "especially", "great", "hotel", "comfortable", "room", "well", "bathroom", "lobby", "bed", "service", "excellent", "staff", "really", "time", "place", "location", "night", "old", "love", "experience", "little", "large", "overall", "food", "pay", "check", "desk", "parking", "price", "small", "clean", "restaurant", "friendly", "resort", "beach", "starfish", "certain", "tournament", "smash", "power", "dominican", "lacrosse", "stickie", "verbally", "emotional", "notify", "elbow", "force", "complex", "shirt", "catamaran", "rum", "sidewalk", "monitor", "hesitant", "palm", "chilly", "elderly", "mosquito", "theatre", "bureau", "function", "exec", "daughter", "awhile", "spray", "tour", "boat", "structural", "confirm", "embassy", "age", "executive", "team", "roof", "issue", "require", "construction", "leave", "pool", "shop", "evening", "turn", "mail", "way", "room", "day", "service", "food", "lobby", "clean", "hotel", "great", "water", "bad", "floor", "stay", "staff", "night", "desk", "experience", "open", "travel", "location", "walk"], "Freq": [647.0, 1163.0, 1073.0, 425.0, 231.0, 165.0, 69.0, 113.0, 183.0, 308.0, 65.0, 68.0, 74.0, 104.0, 79.0, 92.0, 41.0, 41.0, 134.0, 38.0, 72.0, 336.0, 205.0, 83.0, 176.0, 57.0, 285.0, 65.0, 45.0, 16.0, 35.55018993725389, 25.13703382579722, 22.084486894246904, 17.484663037642758, 13.69525166120118, 36.500734774187535, 11.794016880895855, 12.692196432003092, 10.851381042462304, 9.896744622552296, 9.893965973789319, 21.556987320120655, 9.847167054641242, 13.416126870350142, 8.942058671117765, 8.93880145016011, 8.937321085441296, 8.93396270855328, 8.929696021173323, 12.440319560656034, 8.920038071518626, 8.907577753779352, 9.777084830832267, 13.359288399520418, 7.983137425523045, 7.979223039831591, 9.76480729139475, 7.967018053613091, 7.966311357354769, 7.956414121602735, 21.235797010035373, 34.2043946966679, 17.758801189940502, 11.532331372439218, 24.200994051650376, 136.54117334627952, 52.79019654409612, 24.45115476031681, 18.37258747029261, 939.0599302518668, 65.59153115580737, 147.94514412173336, 56.66443798136633, 19.153409399129437, 80.4127864521041, 845.610491193691, 52.96919091643094, 36.71726985634744, 63.495317970915835, 87.7666077202696, 151.03154689673516, 265.9521065403235, 43.09755807918422, 97.5873054072571, 91.5818522284443, 46.4710818469254, 220.9878852896961, 146.48252703649433, 236.83087408332548, 215.30623154634483, 198.57673171258224, 460.58105017561843, 161.2166905648849, 129.98283115244672, 132.28848315657652, 103.40120692582806, 307.0258455946542, 118.93457206678872, 83.09141223113922, 125.7802250079337, 111.6452952584652, 166.88383366443256, 117.83217613295834, 105.37746731561509, 95.84151868920675, 128.426039988922, 117.08446498182386, 85.0117006029621, 92.21227831052741, 6.025184746679511, 6.006478009257442, 7.525736940831767, 5.205522502492151, 6.601765187361945, 4.3991949988947265, 4.358571993487032, 4.345663193222726, 4.328104154348395, 4.326023131614609, 3.581170050596432, 3.580732408613506, 3.577484964680305, 3.4855122786534465, 2.7547206111433793, 2.7544563877216017, 2.7535738487282244, 2.7519274255464667, 3.458706590182635, 2.746187294575753, 2.7399886926721235, 2.7333957449175688, 2.7279998767045472, 2.715328152017089, 2.7129936713862386, 2.709668294415436, 5.22002834494442, 2.654265393741566, 3.287787034966199, 2.6484463936006675, 4.3999275226415495, 12.920654511214225, 12.189209189127519, 5.74629119118133, 8.332917729279325, 10.012368604726035, 13.99197493757299, 7.326078115292681, 16.19737786323879, 5.096152260461668, 9.687823607646278, 11.90120051066088, 7.574643315407213, 13.825541797764416, 177.53803879561195, 29.4936228090622, 19.488344472525863, 109.88580394515472, 215.21739027167007, 46.480570466515815, 204.57733728044568, 36.008792924024924, 46.2296120434508, 35.156260724488895, 63.07132621958856, 55.57021939510286, 25.79321989159866, 64.6186560228207, 36.62395185655203, 44.17062212615644, 55.03896415379654, 58.64648961309098, 63.80251316908214, 28.428745783277726, 27.11786622032687, 28.477038991010783, 33.45713140599813, 29.07739205059252, 22.152759415740984, 23.410507837765703, 30.27979818652817, 35.29341912613689, 38.462804579970395, 32.159397016789, 29.050953794160847, 29.394531302801834, 29.231344670793877, 28.203555345714378, 27.713351390472848, 10.37079584335754, 2.454947884937015, 2.4535176562190837, 2.4476123516478467, 1.8916309073478148, 1.8904770329797749, 1.8903634295881284, 1.8881263520602263, 1.3244757004767171, 1.3238812105903404, 1.3238532413662574, 1.3232466660126843, 1.3232630101683214, 1.323258406180818, 1.323207071720155, 1.32314296119417, 1.3221336520337372, 1.3217900794662958, 1.321707092591547, 1.3215116533220277, 1.3213620237281671, 1.3214124373913294, 1.3213856191641222, 1.3212534847227746, 1.3211928271874172, 1.3212267815952548, 1.3174937534278102, 1.3171180680475325, 1.3168612806445303, 1.316195198752476, 4.376016458182198, 2.7111738316631424, 1.8840751883562965, 5.153975706968061, 1.9017250348493329, 1.6244971934286303, 3.9468028171964233, 1.894774970413887, 3.0701094450045083, 3.1963613715190102, 2.7094256976081015, 2.4677658465452326, 4.5856332468195244, 2.4633257609969528, 4.358096818021462, 7.176074642386617, 5.495581911346627, 5.441073922097616, 5.239052792043401, 4.455545277917189, 2.4669737304952726, 5.8712774203966225, 19.433630144113998, 8.162999675976826, 8.944138898931287, 5.4957946155692845, 6.38648111717966, 7.311828278310637, 12.389857988618854, 9.034294182222878, 5.421774466882112, 5.326133072081469, 5.821436493279808, 9.05888407947854, 7.300369874212174, 6.51320403161576, 5.874894773378044, 4.9844716198528625, 4.470880239493516, 4.250381465993152, 5.451497349805315, 4.786003847353771], "Total": [647.0, 1163.0, 1073.0, 425.0, 231.0, 165.0, 69.0, 113.0, 183.0, 308.0, 65.0, 68.0, 74.0, 104.0, 79.0, 92.0, 41.0, 41.0, 134.0, 38.0, 72.0, 336.0, 205.0, 83.0, 176.0, 57.0, 285.0, 65.0, 45.0, 16.0, 36.210054951119304, 25.691803639896126, 22.749958029723455, 18.02530198417722, 14.1959634241002, 37.99312168489305, 12.277151981568961, 13.231770554553828, 11.326345993606067, 10.367951564960793, 10.367637061511932, 22.59664857298267, 10.347222537655023, 14.113979226337971, 9.40973384284898, 9.409299691962158, 9.409370962507543, 9.408519606607129, 9.405811464639745, 13.108739523744882, 9.406402846785904, 9.396231273066762, 10.334013870256891, 14.126903790079178, 8.450998844797738, 8.450722311586738, 10.345628094736337, 8.445007098228885, 8.448530916949867, 8.440571063161231, 22.59502255455296, 36.60834939649746, 18.886836481979685, 12.246271151464684, 26.094804973031735, 154.76520243483597, 58.40755621044846, 26.424576365789843, 19.80170577641707, 1163.0708976764265, 73.95428803495861, 173.62735346798033, 63.9299323198259, 20.70549301532282, 92.34714777216489, 1073.21773945398, 60.05906795454343, 40.85556652521459, 72.99351718155106, 102.80712506030427, 183.79481286318332, 336.2678237410214, 48.765309614024, 117.26453363232699, 109.83870512330304, 53.06665302491345, 285.08587225259237, 183.02569998559883, 308.74989998035835, 279.61184802700035, 256.6453958828666, 647.1779730507089, 205.55438991823334, 162.34658874012763, 165.8004366670627, 126.90241016014045, 425.94594372203176, 148.60181800100725, 99.84853983004231, 162.2860756983686, 142.6416980416955, 231.39819195846673, 152.95293594952278, 134.9451290298437, 120.21325201571983, 176.93672833684036, 165.57476748428445, 104.13313406146118, 129.14080252902892, 6.57771819385144, 6.5673647386763925, 8.255231643331722, 5.749027144838108, 7.354106619620081, 4.919840371835692, 4.924865207169197, 4.911956597280479, 4.929537816893577, 4.928995878614844, 4.09158556122347, 4.091439380314819, 4.092116729695837, 4.091674781614296, 3.2645049380447455, 3.2646781858483633, 3.2646258762709826, 3.2645592692133714, 4.10894083713395, 3.265407315124255, 3.2658446754755586, 3.266851702614435, 3.2679547652625773, 3.2696689779835246, 3.2704027396206543, 3.270059471741712, 6.314879446550873, 3.2334816008780853, 4.012827251268927, 3.24153740308927, 5.4864191443106645, 16.980871082235687, 16.680780633723355, 7.578024606286039, 11.515671140540075, 14.568074755913042, 21.601053572972614, 10.202795793336813, 25.76375067723406, 6.722430393212613, 14.594145895517691, 19.06092826297214, 11.12203547351681, 24.681725882159387, 647.1779730507089, 66.08083235726758, 39.739088607094395, 425.94594372203176, 1073.21773945398, 134.555324822016, 1163.0708976764265, 113.65389786148205, 165.57476748428445, 113.68456736501453, 279.61184802700035, 231.39819195846673, 72.4980434972818, 308.74989998035835, 129.14080252902892, 176.93672833684036, 256.6453958828666, 285.08587225259237, 336.2678237410214, 89.6873548366051, 83.07714419597959, 92.70232456160103, 123.39734917669469, 99.74943065318551, 61.028190224585096, 68.22913978767461, 115.76138807048734, 162.2860756983686, 205.55438991823334, 152.95293594952278, 142.6416980416955, 183.79481286318332, 183.02569998559883, 162.34658874012763, 148.60181800100725, 11.033556075016625, 3.0604650462992575, 3.061457538403375, 3.064116265125193, 2.489390156750815, 2.489823086533839, 2.490104219042135, 2.4916613267590058, 1.9207803769976726, 1.9210777856612955, 1.9210809820104058, 1.9211590843524216, 1.9213323465413334, 1.9213293774510836, 1.9215298087759505, 1.921642905095252, 1.9220996695112413, 1.9225297189790553, 1.922612982112264, 1.9225992675405956, 1.9225601085903659, 1.9227986661394645, 1.9227919591787155, 1.9227443809828952, 1.9228003558828584, 1.9228653713587462, 1.9248755824946917, 1.9250880518390687, 1.9253072859070404, 1.9255350264774425, 11.057474153254407, 5.691403036386402, 3.320642735066629, 16.53888450997079, 3.437936005796531, 2.671116333856272, 11.283491531784076, 3.442615065792169, 7.883827966365887, 9.255260400402364, 7.077618463989939, 6.547654502426047, 24.704608924814004, 6.886295162672192, 23.34493768693781, 69.84997237421075, 41.27747019368136, 41.22598624440137, 38.421264562774574, 29.652970502058697, 8.325124990283896, 65.81273116615523, 1163.0708976764265, 165.8004366670627, 231.39819195846673, 68.22913978767461, 113.68456736501453, 183.02569998559883, 1073.21773945398, 425.94594372203176, 79.18679438610368, 74.80521394893488, 104.13313406146118, 647.1779730507089, 308.74989998035835, 336.2678237410214, 205.55438991823334, 92.70232456160103, 57.019755397566264, 45.430328500310644, 285.08587225259237, 173.62735346798033], "Category": ["Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3"], "logprob": [30.0, 29.0, 28.0, 27.0, 26.0, 25.0, 24.0, 23.0, 22.0, 21.0, 20.0, 19.0, 18.0, 17.0, 16.0, 15.0, 14.0, 13.0, 12.0, 11.0, 10.0, 9.0, 8.0, 7.0, 6.0, 5.0, 4.0, 3.0, 2.0, 1.0, -6.5136, -6.8602, -6.9897, -7.2232, -7.4675, -6.4872, -7.617, -7.5436, -7.7003, -7.7924, -7.7926, -7.0139, -7.7974, -7.4881, -7.8938, -7.8942, -7.8943, -7.8947, -7.8952, -7.5636, -7.8963, -7.8977, -7.8045, -7.4924, -8.0072, -8.0077, -7.8058, -8.0093, -8.0093, -8.0106, -7.0289, -6.5522, -7.2077, -7.6394, -6.8982, -5.1679, -6.1182, -6.8879, -7.1737, -3.2397, -5.9011, -5.0877, -6.0474, -7.1321, -5.6974, -3.3445, -6.1149, -6.4813, -5.9336, -5.6099, -5.0671, -4.5013, -6.3211, -5.5038, -5.5673, -6.2457, -4.6865, -5.0977, -4.6172, -4.7125, -4.7934, -3.9521, -5.0018, -5.2172, -5.1996, -5.446, -4.3576, -5.306, -5.6646, -5.25, -5.3692, -4.9673, -5.3153, -5.427, -5.5219, -5.2292, -5.3217, -5.6418, -5.5605, -7.1964, -7.1995, -6.974, -7.3426, -7.105, -7.5109, -7.5202, -7.5232, -7.5272, -7.5277, -7.7167, -7.7168, -7.7177, -7.7437, -7.979, -7.9791, -7.9794, -7.98, -7.7515, -7.9821, -7.9844, -7.9868, -7.9888, -7.9934, -7.9943, -7.9955, -7.3398, -8.0162, -7.8021, -8.0184, -7.5108, -6.4335, -6.4918, -7.2438, -6.8721, -6.6885, -6.3539, -7.0009, -6.2075, -7.3639, -6.7215, -6.5157, -6.9675, -6.3658, -3.8132, -5.6082, -6.0225, -4.2929, -3.6207, -5.1533, -3.6714, -5.4086, -5.1587, -5.4325, -4.8481, -4.9747, -5.7422, -4.8238, -5.3916, -5.2043, -4.9843, -4.9208, -4.8366, -5.6449, -5.6922, -5.6433, -5.4821, -5.6224, -5.8944, -5.8392, -5.5819, -5.4287, -5.3427, -5.5216, -5.6233, -5.6115, -5.6171, -5.6529, -5.6704, -5.2505, -6.6914, -6.692, -6.6944, -6.9521, -6.9527, -6.9528, -6.954, -7.3085, -7.309, -7.309, -7.3094, -7.3094, -7.3094, -7.3095, -7.3095, -7.3103, -7.3105, -7.3106, -7.3108, -7.3109, -7.3108, -7.3109, -7.311, -7.311, -7.311, -7.3138, -7.3141, -7.3143, -7.3148, -6.1134, -6.5922, -6.9561, -5.9498, -6.9468, -7.1043, -6.2166, -6.9504, -6.4678, -6.4275, -6.5928, -6.6862, -6.0666, -6.688, -6.1175, -5.6188, -5.8856, -5.8956, -5.9334, -6.0954, -6.6865, -5.8195, -4.6225, -5.4899, -5.3985, -5.8856, -5.7354, -5.6, -5.0727, -5.3885, -5.8991, -5.9169, -5.828, -5.3858, -5.6016, -5.7157, -5.8188, -5.9832, -6.092, -6.1425, -5.8936, -6.0238], "loglift": [30.0, 29.0, 28.0, 27.0, 26.0, 25.0, 24.0, 23.0, 22.0, 21.0, 20.0, 19.0, 18.0, 17.0, 16.0, 15.0, 14.0, 13.0, 12.0, 11.0, 10.0, 9.0, 8.0, 7.0, 6.0, 5.0, 4.0, 3.0, 2.0, 1.0, 0.3308, 0.3274, 0.3195, 0.3188, 0.3133, 0.3091, 0.3091, 0.3076, 0.3064, 0.3027, 0.3025, 0.3021, 0.2997, 0.2985, 0.2982, 0.2979, 0.2978, 0.2975, 0.2973, 0.2969, 0.2961, 0.2958, 0.2938, 0.2934, 0.2923, 0.2918, 0.2914, 0.291, 0.2905, 0.2902, 0.2872, 0.2813, 0.2876, 0.2892, 0.2739, 0.2239, 0.2481, 0.2716, 0.2743, 0.1353, 0.2292, 0.1892, 0.2286, 0.2713, 0.2108, 0.1109, 0.2236, 0.2424, 0.2098, 0.191, 0.1529, 0.1146, 0.2257, 0.1655, 0.1674, 0.2165, 0.0945, 0.1265, 0.084, 0.0879, 0.0927, 0.0091, 0.1063, 0.1269, 0.1234, 0.1444, 0.0218, 0.1265, 0.1655, 0.0944, 0.1042, 0.0224, 0.0884, 0.1019, 0.1227, 0.0288, 0.0027, 0.1463, 0.0124, 1.3537, 1.3522, 1.3489, 1.3421, 1.3335, 1.3296, 1.3193, 1.3189, 1.3113, 1.311, 1.3082, 1.3081, 1.307, 1.2811, 1.2717, 1.2715, 1.2712, 1.2706, 1.2692, 1.2683, 1.2659, 1.2632, 1.2608, 1.2557, 1.2546, 1.2535, 1.251, 1.2441, 1.2422, 1.2394, 1.2208, 1.1682, 1.1277, 1.1647, 1.1179, 1.0664, 1.0072, 1.1102, 0.9773, 1.1645, 1.0317, 0.9704, 1.0573, 0.8619, 0.148, 0.6347, 0.7289, 0.0866, -0.1653, 0.3785, -0.2964, 0.292, 0.1656, 0.2678, -0.0477, 0.015, 0.408, -0.1226, 0.1812, 0.0537, -0.0982, -0.1398, -0.2207, 0.2925, 0.3219, 0.2611, 0.1363, 0.2087, 0.4281, 0.3718, 0.1004, -0.0842, -0.2346, -0.118, -0.1498, -0.3916, -0.3929, -0.3088, -0.2379, 2.7823, 2.6238, 2.6229, 2.6196, 2.5697, 2.5689, 2.5687, 2.5669, 2.4725, 2.4719, 2.4719, 2.4714, 2.4713, 2.4713, 2.4712, 2.4711, 2.4701, 2.4696, 2.4695, 2.4694, 2.4693, 2.4692, 2.4692, 2.4691, 2.469, 2.469, 2.4651, 2.4647, 2.4644, 2.4638, 1.9173, 2.1027, 2.2775, 1.6783, 2.2521, 2.347, 1.7938, 2.2471, 1.9012, 1.7811, 1.8841, 1.8685, 1.1602, 1.8162, 1.1659, 0.5687, 0.8279, 0.8192, 0.8518, 0.9488, 1.628, 0.4275, -1.2476, -0.1669, -0.4089, 0.3254, -0.035, -0.3759, -1.6173, -1.009, 0.1629, 0.202, -0.0399, -1.4246, -0.9004, -1.0998, -0.7108, -0.0788, 0.2984, 0.4751, -1.1126, -0.747]}, "token.table": {"Topic": [1, 1, 2, 3, 1, 2, 2, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 1, 2, 3, 1, 2, 3, 1, 2, 3, 2, 2, 1, 2, 3, 3, 1, 2, 3, 2, 1, 2, 3, 1, 3, 1, 2, 3, 1, 2, 3, 3, 1, 2, 3, 1, 2, 1, 2, 3, 2, 3, 2, 3, 1, 2, 3, 1, 2, 3, 3, 2, 1, 2, 3, 1, 2, 1, 2, 3, 2, 1, 2, 3, 3, 1, 1, 2, 3, 1, 2, 3, 1, 2, 1, 2, 3, 1, 2, 3, 1, 2, 3, 2, 1, 2, 3, 1, 1, 3, 1, 2, 3, 1, 1, 2, 3, 1, 1, 2, 3, 1, 3, 3, 1, 3, 3, 1, 1, 2, 3, 1, 2, 3, 1, 2, 3, 3, 1, 3, 2, 1, 2, 1, 2, 3, 2, 1, 2, 1, 2, 3, 1, 2, 3, 2, 3, 1, 2, 3, 1, 2, 3, 3, 2, 1, 2, 3, 1, 2, 3, 3, 1, 1, 2, 3, 1, 1, 2, 3, 2, 3, 1, 2, 3, 1, 2, 2, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 1, 2, 1, 2, 2, 3, 3, 1, 2, 3, 1, 2, 1, 2, 1, 3, 2, 1, 2, 3, 1, 2, 1, 2, 3, 1, 2, 3, 2, 3, 1, 2, 3, 1, 2, 2, 1, 1, 2, 3, 1, 2, 1, 2, 3, 1, 2, 3, 1, 2, 3, 2, 1, 2, 1, 2, 3, 2, 1, 1, 2, 1, 1, 3, 1, 2, 3, 1, 2, 3, 1, 1, 2, 3, 1, 2, 3, 2, 3, 1, 2, 1, 2, 3, 1, 2, 3, 3, 1, 2, 3, 3, 1, 2, 1, 2, 3, 3, 1, 2, 3, 2, 1, 2, 3, 1, 3, 1, 2, 3, 3, 1, 3, 1, 2, 1, 1, 2, 1, 2, 3, 1, 2, 1, 3, 2, 1, 2, 3, 1, 3, 3, 1, 2, 3, 1, 2, 3, 2, 1, 1, 1, 3, 2, 1, 2, 3, 1, 2, 3, 2, 1, 2, 3, 1, 2, 3, 1, 2, 3, 2, 3, 2, 3, 1], "Freq": [0.9466646406108086, 0.12684193570258204, 0.38052580710774614, 0.38052580710774614, 0.23555917600626194, 0.7655673220203513, 0.7331961018701502, 0.7985808418812798, 0.1830081095977933, 0.024955651308789992, 0.8924431801547658, 0.0811311981958878, 0.0405655990979439, 0.17367637331697905, 0.6947054932679162, 0.08683818665848952, 0.8357173048354987, 0.14497136920615794, 0.025583182801086693, 0.9645399371784801, 0.3514071991060124, 0.1757035995530062, 0.5271107986590187, 0.8421872844719941, 0.09357636494133267, 0.06684026067238048, 0.9287498770226713, 0.05463234570721596, 0.02731617285360798, 0.9121704249368018, 0.9189754823274462, 0.7066294084399368, 0.27782010930117174, 0.012079135187007466, 0.6534954556721432, 0.7689230678781495, 0.2253123408201089, 0.003576386362223951, 0.869712365941664, 0.8312590263340742, 0.15022753487965196, 0.020030337983953594, 0.290872197246822, 0.581744394493644, 0.8559718010632166, 0.10699647513290207, 0.038907809139237116, 0.8662963819670179, 0.11911575252046497, 0.010828704774587724, 0.5194567588971752, 0.9056293461789332, 0.024476468815646843, 0.07342940644694053, 0.9090125973610406, 0.05050069985339114, 0.9197232945332736, 0.0383218039388864, 0.0383218039388864, 0.9776161197528316, 0.5201480061026272, 0.730115160794709, 0.6527167466728891, 0.20556187539014475, 0.6852062513004825, 0.1370412502600965, 0.7764067216351245, 0.21566853378753456, 0.006161958108215274, 0.5200899349339437, 0.8122049704380016, 0.7977021806854876, 0.15844769342382972, 0.03824599496437269, 0.12113530464136205, 0.9690824371308964, 0.23979693084106884, 0.7193907925232066, 0.05994923271026721, 0.7476025784691696, 0.6317104143773897, 0.3418668124865874, 0.022295661683907873, 0.5203880478253747, 0.9670347510644365, 0.44312524947758175, 0.1772500997910327, 0.3545001995820654, 0.6853734293303544, 0.12850751799944146, 0.1713433573325886, 0.29403705227141996, 0.6860864552999798, 0.3493280195399803, 0.6210275902932982, 0.03881422439333114, 0.4521828340451886, 0.18087313361807544, 0.3617462672361509, 0.7961378308373456, 0.1507836800828306, 0.04825077762650579, 0.9776510484904745, 0.7832476847808677, 0.184865913178093, 0.029189354712330473, 0.9564563833906566, 0.9730729827460676, 0.8026773055074353, 0.8852119070996206, 0.10984381328973394, 0.006461400781749056, 0.9210726324253627, 0.8824645770412857, 0.08325137519257411, 0.033300550077029645, 0.9473053020497504, 0.881774366662362, 0.08202552248021971, 0.04101276124010986, 0.9431187347054025, 0.5204729661327732, 0.5200747945258454, 0.2904768557880848, 0.5809537115761696, 0.5205191012784227, 0.915419821887792, 0.45295452490036625, 0.47811866517260887, 0.05032828054448514, 0.676708596030719, 0.18219077585442436, 0.13013626846744597, 0.5793259786600272, 0.3586303677419216, 0.0551739027295264, 0.5193361773477534, 0.6482799770538229, 0.32413998852691145, 0.9174145075722822, 0.5447873266087986, 0.43885645754597663, 0.6364457447967692, 0.30204204837812776, 0.05393608006752281, 0.9189414388354811, 0.9798901111678203, 0.08165750926398502, 0.8162627656038042, 0.12484018768058182, 0.057618548160268526, 0.5716032786191632, 0.3370993694420706, 0.07328247161784143, 0.918315330199753, 0.5204186765320171, 0.8375918115269329, 0.12745962349322892, 0.03641703528377969, 0.8007977398984002, 0.18842299762315298, 0.013458785544510927, 0.5193976085375304, 0.9187215285838987, 0.7207487347275814, 0.2582487323128142, 0.021129441734684798, 0.8668343936898407, 0.07537690379911659, 0.05653267784933744, 0.5200752515643091, 0.9565005148776587, 0.7882836528870821, 0.2003321340079464, 0.011181328409745846, 0.9774253848135924, 0.5666958761665726, 0.24286966121424539, 0.20239138434520448, 0.8115243141822404, 0.5206217285305033, 0.6917332715401967, 0.2907284764444305, 0.020050239754788313, 0.9735957050862825, 0.04425435023119466, 0.9180053628309487, 0.6442379069088138, 0.2576951627635255, 0.10021478551914881, 0.6969355547245605, 0.26742875937105226, 0.032415607196491183, 0.6333313453955879, 0.3078694040117441, 0.05277761211629899, 0.7752050224508815, 0.20695518698914936, 0.01753857516857198, 0.6259242599544782, 0.32499913497636373, 0.04814801999649833, 0.3672433946251315, 0.6295601050716539, 0.36035495004594476, 0.36035495004594476, 0.2402366333639632, 0.40515805287458717, 0.567221274024422, 0.04051580528745872, 0.8116473112687335, 0.1733615616302149, 0.007880070983191587, 0.9564932699392216, 0.26973479873746475, 0.7192927966332393, 0.917630890794984, 0.04829636267342022, 0.9189267147384746, 0.5201397842032657, 0.520057209878076, 0.7910361361390956, 0.19032448388309067, 0.020816740424713043, 0.9074168384829443, 0.08560536212103248, 0.973860487350058, 0.02632055371216373, 0.9664429235583336, 0.5204721618308981, 0.811435097686432, 0.6578407860002988, 0.3121956272543791, 0.02229968766102708, 0.9530447312960095, 0.052946929516444974, 0.6839734707396624, 0.2455289382142378, 0.07015112520406795, 0.606277195241071, 0.36048914311631247, 0.03277174028330113, 0.9277925067473151, 0.520077065657759, 0.771479143355196, 0.20921468294378198, 0.01961387652597956, 0.7342690116003389, 0.2591537688001196, 0.9189601880693931, 0.9824837837386727, 0.7753889342742153, 0.21430347429689367, 0.0116892804161942, 0.9082454026044943, 0.07568711688370786, 0.5814309812928858, 0.2907154906464429, 0.12113145443601789, 0.2745730006895001, 0.6864325017237501, 0.8031792343090511, 0.7851841469754612, 0.20330660948471765, 0.014021145481704666, 0.9518491316572216, 0.929408233574365, 0.04425753493211262, 0.6601597680478152, 0.2763459494153645, 0.061410210981192107, 0.9774892223803489, 0.986195834812626, 0.71240071455588, 0.2865089830279083, 0.95783083009009, 0.580863861555394, 0.290431930777697, 0.9202299522369111, 0.07078691940283932, 0.9063261139029406, 0.8007559691204498, 0.17247051642594302, 0.024638645203706146, 0.9665918693798604, 0.30545289145280297, 0.30545289145280297, 0.30545289145280297, 0.8073454523502621, 0.1762575268709305, 0.01633606346608624, 0.9175240735990848, 0.5201254799087842, 0.14875572397293435, 0.7437786198646718, 0.8630903460002487, 0.12329862085717838, 0.01369984676190871, 0.7216996752938093, 0.24200707674522948, 0.03889399447691188, 0.5202643837165237, 0.7034398116779632, 0.16979581661192214, 0.12128272615137296, 0.5201291901453848, 0.8916011316083187, 0.1094948758115479, 0.8215683437834791, 0.15778464880609863, 0.01632254987649296, 0.8032699234001652, 0.9676782057339557, 0.30114651884703125, 0.6022930376940625, 0.813034508781739, 0.7676115847003583, 0.21052638398954976, 0.022672072121951513, 0.9466336638922436, 0.6532835993678517, 0.7123233781071205, 0.27504026313029817, 0.013906530158273502, 0.5205411292889259, 0.37437530792839224, 0.7487506158567845, 0.32405826763739193, 0.6481165352747839, 0.9645106786373974, 0.9469101881310511, 0.9185984938377857, 0.9711870011925916, 0.5651618578129795, 0.4238713933597346, 0.2639210221541089, 0.7917630664623266, 0.9941989883361718, 0.5195140969599565, 0.8143394431079893, 0.7234224414747973, 0.24867646425696155, 0.022606951296087415, 0.6650992691416665, 0.30231784960984837, 0.8034096200534617, 0.5723049085991578, 0.3301759088072065, 0.08804690901525505, 0.6744686842962824, 0.1686171710740706, 0.13489373685925646, 0.913608462259591, 0.9568552414466998, 0.9567950837949952, 0.9565798208763634, 0.520540263197808, 0.9254867758554695, 0.7780940353673588, 0.20008132338017795, 0.014820838768902072, 0.8524002528627701, 0.12094868452782549, 0.02879730583995845, 0.9173182139481637, 0.8208439362132672, 0.11365531424491393, 0.0631418412471744, 0.7141475390428738, 0.19753017037356083, 0.09116777094164347, 0.6774954616501168, 0.3167511249273273, 0.008798642359092425, 0.7290729881890159, 0.18226824704725397, 0.7917807524783316, 0.15835615049566631, 0.9478031687827263], "Term": ["ace", "age", "age", "age", "andra", "andra", "anytime", "area", "area", "area", "arrive", "arrive", "arrive", "art", "art", "art", "ask", "ask", "ask", "attach", "awhile", "awhile", "awhile", "bad", "bad", "bad", "bag", "bag", "bag", "balcony", "banquet", "bathroom", "bathroom", "bathroom", "beach", "bed", "bed", "bed", "bliss", "block", "block", "block", "boat", "boat", "book", "book", "book", "breakfast", "breakfast", "breakfast", "bureau", "bus", "bus", "bus", "busy", "busy", "cab", "cab", "cab", "candle", "catamaran", "cater", "certain", "charming", "charming", "charming", "check", "check", "check", "chilly", "chip", "clean", "clean", "clean", "cleanliness", "cleanliness", "cold", "cold", "cold", "com", "comfortable", "comfortable", "comfortable", "complex", "complimentary", "confirm", "confirm", "confirm", "construction", "construction", "construction", "cookie", "cookie", "dark", "dark", "dark", "daughter", "daughter", "daughter", "day", "day", "day", "decoration", "desk", "desk", "desk", "dingy", "directly", "dominican", "downtown", "downtown", "downtown", "drop", "early", "early", "early", "earplug", "eat", "eat", "eat", "edgewater", "elbow", "elderly", "embassy", "embassy", "emotional", "employee", "especially", "especially", "especially", "evening", "evening", "evening", "excellent", "excellent", "excellent", "exec", "executive", "executive", "existent", "expect", "expect", "experience", "experience", "experience", "favor", "fax", "fax", "floor", "floor", "floor", "food", "food", "food", "fool", "force", "free", "free", "free", "friendly", "friendly", "friendly", "function", "grace", "great", "great", "great", "hear", "hear", "hear", "hesitant", "hill", "hotel", "hotel", "hotel", "information", "issue", "issue", "issue", "job", "lacrosse", "large", "large", "large", "later", "later", "laundry", "leave", "leave", "leave", "little", "little", "little", "lobby", "lobby", "lobby", "location", "location", "location", "love", "love", "love", "luxury", "luxury", "mail", "mail", "mail", "management", "management", "management", "market", "market", "market", "mayflower_park", "meeting", "meeting", "mention", "mention", "mobile", "monitor", "mosquito", "night", "night", "night", "noise", "noise", "noisy", "noisy", "normally", "notify", "numerous", "old", "old", "old", "online", "online", "open", "open", "open", "overall", "overall", "overall", "overhaul", "palm", "parking", "parking", "parking", "pay", "pay", "peak", "picture", "place", "place", "place", "pm", "pm", "pool", "pool", "pool", "poor", "poor", "power", "price", "price", "price", "product", "public", "public", "quite", "quite", "quite", "radio", "ready", "really", "really", "rent", "require", "require", "reserve", "reserve", "resort", "restaurant", "restaurant", "restaurant", "romantic", "roof", "roof", "roof", "room", "room", "room", "ruin", "rum", "schedule", "schedule", "seattle", "seattle", "seattle", "service", "service", "service", "shirt", "shop", "shop", "shop", "sidewalk", "sleep", "sleep", "small", "small", "small", "smash", "spectacular", "spray", "spray", "spring", "staff", "staff", "staff", "starbuck", "starfish", "stay", "stay", "stay", "stickie", "structural", "structural", "style", "style", "suitcase", "surround", "swimming", "switch", "team", "team", "terrific", "terrific", "th_floor", "theatre", "thoroughly", "time", "time", "time", "tour", "tour", "tournament", "travel", "travel", "travel", "turn", "turn", "turn", "uncomfortable", "unfortunately", "unique", "unit", "verbally", "vibration", "view", "view", "view", "walk", "walk", "walk", "washer", "water", "water", "water", "way", "way", "way", "well", "well", "well", "wing", "wing", "wood", "wood", "zone"]}, "R": 30, "lambda.step": 0.01, "plot.opts": {"xlab": "PC1", "ylab": "PC2"}, "topic.order": [2, 1, 3]};
 
 function LDAvis_load_lib(url, callback){
   var s = document.createElement('script');
@@ -2261,7 +2264,7 @@ function LDAvis_load_lib(url, callback){
 if(typeof(LDAvis) !== "undefined"){
    // already loaded: just create the visualization
    !function(LDAvis){
-       new LDAvis("#" + "ldavis_el5335625957515861443022450497", ldavis_el5335625957515861443022450497_data);
+       new LDAvis("#" + "ldavis_el1354827880204483685870099568", ldavis_el1354827880204483685870099568_data);
    }(LDAvis);
 }else if(typeof define === "function" && define.amd){
    // require.js is available: use it to load d3/LDAvis
@@ -2269,18 +2272,117 @@ if(typeof(LDAvis) !== "undefined"){
    require(["d3"], function(d3){
       window.d3 = d3;
       LDAvis_load_lib("https://cdn.jsdelivr.net/gh/bmabey/pyLDAvis@3.4.0/pyLDAvis/js/ldavis.v3.0.0.js", function(){
-        new LDAvis("#" + "ldavis_el5335625957515861443022450497", ldavis_el5335625957515861443022450497_data);
+        new LDAvis("#" + "ldavis_el1354827880204483685870099568", ldavis_el1354827880204483685870099568_data);
       });
     });
 }else{
     // require.js not available: dynamically load d3 & LDAvis
     LDAvis_load_lib("https://d3js.org/d3.v5.js", function(){
          LDAvis_load_lib("https://cdn.jsdelivr.net/gh/bmabey/pyLDAvis@3.4.0/pyLDAvis/js/ldavis.v3.0.0.js", function(){
-                 new LDAvis("#" + "ldavis_el5335625957515861443022450497", ldavis_el5335625957515861443022450497_data);
+                 new LDAvis("#" + "ldavis_el1354827880204483685870099568", ldavis_el1354827880204483685870099568_data);
             })
          });
 }
 </script>
+</div>
+</div>
+<div id="59fe19b6" class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Dominat topics and its percentage contribution in each document</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> format_topics_sentences(ldamodel<span class="op">=</span><span class="va">None</span>, corpus<span class="op">=</span>corpus, texts<span class="op">=</span>data):</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Init output</span></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>    sent_topics_df <span class="op">=</span> pd.DataFrame()</span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Get main topic in each document</span></span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i, row_list <span class="kw">in</span> <span class="bu">enumerate</span>(ldamodel[corpus]):</span>
+<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a>        row <span class="op">=</span> row_list[<span class="dv">0</span>] <span class="cf">if</span> ldamodel.per_word_topics <span class="cf">else</span> row_list            </span>
+<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a>        <span class="co"># print(row)</span></span>
+<span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a>        row <span class="op">=</span> <span class="bu">sorted</span>(row, key<span class="op">=</span><span class="kw">lambda</span> x: (x[<span class="dv">1</span>]), reverse<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb45-12"><a href="#cb45-12" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Get the Dominant topic, Perc Contribution and Keywords for each document</span></span>
+<span id="cb45-13"><a href="#cb45-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> j, (topic_num, prop_topic) <span class="kw">in</span> <span class="bu">enumerate</span>(row):</span>
+<span id="cb45-14"><a href="#cb45-14" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> j <span class="op">==</span> <span class="dv">0</span>:  <span class="co"># =&gt; dominant topic</span></span>
+<span id="cb45-15"><a href="#cb45-15" aria-hidden="true" tabindex="-1"></a>                wp <span class="op">=</span> ldamodel.show_topic(topic_num)</span>
+<span id="cb45-16"><a href="#cb45-16" aria-hidden="true" tabindex="-1"></a>                topic_keywords <span class="op">=</span> <span class="st">", "</span>.join([word <span class="cf">for</span> word, prop <span class="kw">in</span> wp])</span>
+<span id="cb45-17"><a href="#cb45-17" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Create a new row as a DataFrame and concatenate it</span></span>
+<span id="cb45-18"><a href="#cb45-18" aria-hidden="true" tabindex="-1"></a>                new_row <span class="op">=</span> pd.Series([<span class="bu">int</span>(topic_num), <span class="bu">round</span>(prop_topic, <span class="dv">4</span>), topic_keywords])</span>
+<span id="cb45-19"><a href="#cb45-19" aria-hidden="true" tabindex="-1"></a>                sent_topics_df <span class="op">=</span> pd.concat([sent_topics_df, new_row.to_frame().T], ignore_index<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb45-20"><a href="#cb45-20" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
+<span id="cb45-21"><a href="#cb45-21" aria-hidden="true" tabindex="-1"></a>                <span class="cf">break</span></span>
+<span id="cb45-22"><a href="#cb45-22" aria-hidden="true" tabindex="-1"></a>    sent_topics_df.columns <span class="op">=</span> [<span class="st">'Dominant_Topic'</span>, <span class="st">'Perc_Contribution'</span>, <span class="st">'Topic_Keywords'</span>]</span>
+<span id="cb45-23"><a href="#cb45-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-24"><a href="#cb45-24" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add original text to the end of the output</span></span>
+<span id="cb45-25"><a href="#cb45-25" aria-hidden="true" tabindex="-1"></a>    contents <span class="op">=</span> pd.Series(texts)</span>
+<span id="cb45-26"><a href="#cb45-26" aria-hidden="true" tabindex="-1"></a>    sent_topics_df <span class="op">=</span> pd.concat([sent_topics_df, contents], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb45-27"><a href="#cb45-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span>(sent_topics_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="619e3d5d" class="cell" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>df_topic_sents_keywords <span class="op">=</span> format_topics_sentences(ldamodel<span class="op">=</span>lda_model, corpus<span class="op">=</span>corpus, texts<span class="op">=</span>data_ready)</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Format</span></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>df_dominant_topic <span class="op">=</span> df_topic_sents_keywords.reset_index()</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>df_dominant_topic.columns <span class="op">=</span> [<span class="st">'Document_No'</span>, <span class="st">'Dominant_Topic'</span>, <span class="st">'Topic_Perc_Contrib'</span>, <span class="st">'Keywords'</span>, <span class="st">'Text'</span>]</span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>df_dominant_topic.head(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="33">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Document_No</th>
+<th data-quarto-table-cell-role="th">Dominant_Topic</th>
+<th data-quarto-table-cell-role="th">Topic_Perc_Contrib</th>
+<th data-quarto-table-cell-role="th">Keywords</th>
+<th data-quarto-table-cell-role="th">Text</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>0</td>
+<td>1</td>
+<td>0.8122</td>
+<td>room, hotel, stay, great, night, staff, locati...</td>
+<td>[hotel, expensive, parking, deal, stay, hotel,...</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>1</td>
+<td>1</td>
+<td>0.996</td>
+<td>room, hotel, stay, great, night, staff, locati...</td>
+<td>[special, charge, diamond, member, decide, cha...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>2</td>
+<td>1</td>
+<td>0.9949</td>
+<td>room, hotel, stay, great, night, staff, locati...</td>
+<td>[room, experience, hotel, level, positive, lar...</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>3</td>
+<td>1</td>
+<td>0.9896</td>
+<td>room, hotel, stay, great, night, staff, locati...</td>
+<td>[unique, great, stay, wonderful, time, hotel, ...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>4</td>
+<td>0</td>
+<td>0.5979</td>
+<td>hotel, room, stay, great, staff, night, bed, l...</td>
+<td>[great, stay, great, stay, game, awesome, down...</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -2290,20 +2392,20 @@ if(typeof(LDAvis) !== "undefined"){
 <div style="text-align: justify">
 <p>&nbsp;&nbsp;&nbsp;&nbsp;Sentiment analysis involves converting text into sentiments such as positive, neutral, and negative. Texts are widely used to express emotion, feelings, opinion and so on. Therefore, sometimes sentiment analysis is also called “Opinion Mining.” Identifying sentiment from texts could provide valuable insights to make strategic decisions such as improving product features, launching new products, identifying strengths or weaknesses of product or service offerings. Before, we perform the sentiment analysis, we need to do the preprocessing as described in <a href="#sec-preprocessing" class="quarto-xref"><span>Section 10.3.1</span></a> first.</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;Below we use <code>texblob</code> python module for seniment analysis of our text about Accounting. <code>texblob</code> is simple for sentiment analysis because the function accepts text as input and return sentiment score. There are two types of sentiment scores - polarity and subjectivity. Polarity score actually measures the sentiment of the text and it values are between -1 and +1, where -1 indicates high negative sentiment and +1 indicates very positive sentiment. On the other hand, subjectivity score measures whether the text contaiins factual information or personal opinion. Subjectivity scores range from 0 to 1, where 0 indicates factual information and 1 indicates personal opinion.</p>
-<div id="2242a1ee" class="cell" data-execution_count="33">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> textblob <span class="im">import</span> TextBlob</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="91dd8801" class="cell" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> textblob <span class="im">import</span> TextBlob</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="926e81b2" class="cell" data-execution_count="34">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Determining Polarity </span></span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>TextBlob(my_text).sentiment.polarity</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="67">
+<div id="cc8a61dc" class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Determining Polarity </span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>TextBlob(my_text).sentiment.polarity</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="35">
 <pre><code>0.028571428571428574</code></pre>
 </div>
 </div>
-<div id="ff44371b" class="cell" data-execution_count="35">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Determining Subjectivity </span></span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>TextBlob(my_text).sentiment.subjectivity</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="68">
+<div id="2b66cacf" class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Determining Subjectivity </span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>TextBlob(my_text).sentiment.subjectivity</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="36">
 <pre><code>0.21706349206349207</code></pre>
 </div>
 </div>

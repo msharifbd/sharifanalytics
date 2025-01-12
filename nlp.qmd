@@ -653,6 +653,48 @@ df_dominant_topic.columns = ['Document_No', 'Dominant_Topic', 'Topic_Perc_Contri
 df_dominant_topic.head(5)
 ```
 
+    There are two goodness of fit (gof) measures to evaluate topic modeling. They are - coherence score and perplexity. Coherence score measures the coherence between topics. Higher coherence score indicates more meaningful and interpretable topics. Coherent scores range from 0 to 1. The higher coherence scores indicate more interpretable and meaningful topics.
+
+    Perplexity score evaluates how well the model represents the data. Lower perplexity score indicates a better fit. Perplexity might not always correlate with human interpretability of the topics. Unlike, coherence socres, there is no good or bad perplexity score, but it is useful to compare different models on the same dataset. 
+
+
+```{python}
+#| warning: false
+#| eval: false
+# Compute Coherence Score
+from gensim.models import CoherenceModel
+coherence_model_lda = CoherenceModel(model=lda_model, texts=data_ready,dictionary=dictionary, coherence='c_v')
+coherence_lda = coherence_model_lda.get_coherence()
+print('\nCoherence Score: ', coherence_lda)
+```
+
+```{python}
+#| warning: false
+#| echo: false
+coherence_lda = np.float64(0.3579669980731333)
+print('\nCoherence Score: ', coherence_lda)
+
+# reasons for the code in this cell - https://stackoverflow.com/questions/63763610/get-coherence-function-error-in-python-while-using-lda
+```
+
+```{python}
+#| warning: false
+# Compute Perplexity
+print('\nPerplexity : ', lda_model.log_perplexity(corpus)) 
+lda_model.log_perplexity(corpus)
+```
+
+    To optimize topic modeling performance, we can tune some hyperparameters (also called **hyperparameter tuning**). Some of the important hyperparameters of topic modeling include - number of topics, document topic density, topic word density, number of iterations and so on.  
+
+
+```{python}
+#| eval: false
+#| include: false
+## Tuning hyperparameters: (https://www.kaggle.com/code/pranjalsoni17/topic-modelling-using-lda)
+# We can try out different number of topics, different values of alpha and beta(eta) to 
+# increse the conharence score. High conherence score is good for our model.
+```
+
 :::
 
 

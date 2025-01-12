@@ -20,14 +20,14 @@ At the End of the Chapter, Students should be Able to -
 
 ## Introduction 
 ::: {style="text-align: justify"}
-    In today's data driven world, a significant amount data is produced each day. For example, Google processes 24 peta bytes of data every day; 10 million photos are uploaded every hour on Facebook; and 400 million tweets are posted on X (formerly Twitter). Of these amount of data, a significant portion consists of text data. Therefore, it it important to gain insights from text data. 
+    In today's data driven world, a significant amount data is produced each day. For example, Google processes 24 peta bytes of data every day; 10 million photos are uploaded every hour on Facebook; and 400 million tweets are posted on X (formerly Twitter). Of these amount of data, a significant portion consists of text data. Therefore, it it important to gain insights from text data.
 
     Natural Language Processing (NLP), according to [IBM](https://www.ibm.com/topics/natural-language-processing), is a subfield of computer science and artificial intelligence (AI) that uses machine learning to enable computers to understand and communicate with human language. Specifically, NLP involves understanding, interpreting, and extracting insights from human language. Businesses use NLP for many purposes such as processing and analyzing large volume of documents, analyzing customer reviews, and scaling customer services (like developing chatbots or virtual assistants).    
 :::
 
 ## Python Libraries for NLP
 ::: {style="text-align: justify"}
-    Python has built a rich and efficient ecosystem for NLP. Some of the most popular python modules (libraries) for NLP include - NLTK (Natural Language Toolkit); SpaCy; Gensim; and TextBlob. 
+    Python has built a rich and efficient ecosystem for NLP. Some of the most popular python modules (libraries) for NLP include - `nltk` (Natural Language Toolkit); `SpaCy`; `gensim`; and `TextBlob`. 
 :::
 
 ## Steps in NLP
@@ -36,6 +36,7 @@ At the End of the Chapter, Students should be Able to -
 :::
 
 ### Preprocessing {#sec-preprocessing}
+
 ::: {style="text-align: justify"}
     Before applying NLP techniques, it is necessary to preprosess and clean the text data. Therefore, the processes involving cleaning and preparing text data to get them ready for NLP models are called preprocessing. Preprocessing is very important in NLP to get effective and accurate insights from the data. Below we will discuss several important concepts of preprocessing.  
 :::
@@ -65,6 +66,8 @@ of businesses and organizations.
 
 ```{python}
 #| warning: false
+import numpy as np
+import pandas as pd
 import nltk
 nltk.download("punkt_tab")
 from nltk.tokenize import sent_tokenize, word_tokenize
@@ -213,6 +216,398 @@ plt.xticks(rotation=90)
 plt.show()
 ```
 
+## Vectorization of Text 
+::: {style="text-align: justify"}
+    Using word clouds or bar diagrams of most frequent words is easy to use and helps to quickly explore datasets. However, they suffer from some shortcomings. For example, they ignore context and are unable to capture the relations between words within the data. Therefore, sometimes we need convert the texts into numbers. 
+
+    The process of converting text data into numeric vectors is called text vectorization. Text vectorization actually helps us to capture semantic relationships between words, thus allowing us to understand the meaning of text beyond just keywords. Further, it enhances processing of data. Moreover, vectorized text can be used for various NLP tasks such as document classification, sentiment analysis, and topic modeling. There are several techniques of text vectorization, spanning from simple to complex technieques. 
+
+### __Bag of Words (BoW)__: 
+
+    Bag of Words is the simplest text vectorization technique. BoW counts the frequency of words in text documents. BoW does not consider the order of the words or syntax. "Dog toy" or "toy dog" have equal importance in BoW. In BoW, each document is represented as a vector of word frequencies. Actually, BoW generates __document-term__ matrix, which is a `m×n` matrix, where `m` is the document and `n` is the term (word). So, the cell in the matrix contains raw count of the number of times the $j$-word appear in the $i%-th document.  
+
+
+
+
+### __Term Frequency-Inverse Document Frequency (TF-IDF)__: 
+
+    TF-IDF is another text vectorization technique. It is basically an extension of BoW model and considers the *importance* or *significance* of words in the texts. Term Frequecny (TF) refers to the frequency at which a particular word appears in a document and IDF measures how rare a word is across a collection of documents. IDF assigns more weights to words that are frequent in a document, but rare across all documents^[The collection of documents is called corpus.]. Since TF-IDF takes into consideration the *significance* of the words, it is sometimes called Latent Semantic Analysis (LSA). Unlike BoW, the cell in TF-IDF matrix contains tf-idf score, which is calculated in @eq-tfidfscore^[You might find some discrepencies between @eq-tfidfscore tf-idf scores and tf-idf scores generated by different packages because the packages uses a slightly different formula that might include some kinds of smoothing.].
+
+$$
+w_{i,j} = tf_{i,j} × log\frac{N}{df_{i}} 
+$$ {#eq-tfidfscore}
+
+    In @eq-tfidfscore, $tf_{i,j}$ refers to the occurrences of term $j$ in document $i$; $N$ is total number of documents; $df_{i}$ is the number of documents that contain the term $j$; and $w_{i,j}$ is the tf-idf score in the TF-IDF matrix.
+
+::: {.panel-tabset}
+
+## sklearn
+
+```{python}
+#| warning: false
+# using sklearn package 
+# preprocessing function 
+import re
+import string
+import nltk
+from nltk.corpus import stopwords
+from nltk.stem import PorterStemmer, WordNetLemmatizer
+
+# Download necessary NLTK data
+nltk.download('stopwords')
+nltk.download('wordnet')
+
+def preprocess_text(text):
+    # Lowercase the text
+    text = text.lower()
+    # Remove punctuation
+    text = text.translate(str.maketrans('', '', string.punctuation))
+    # Remove numbers
+    text = re.sub(r'\d+', '', text)
+    # Remove stopwords
+    stop_words = set(stopwords.words('english'))
+    text = ' '.join([word for word in text.split() if word not in stop_words])
+    # Lemmatization
+    lemmatizer = WordNetLemmatizer()
+    text = ' '.join([lemmatizer.lemmatize(word) for word in text.split()])
+    
+    return text
+
+def preprocess_documents(documents): 
+    return [preprocess_text(doc) for doc in documents]
+```
+
+
+```{python}
+# Bag of Words (BoW)
+from sklearn.feature_extraction.text import CountVectorizer
+
+texts = ["I love Accounting", "Accounting is called language of Business", "I will graduate with an Accounting degree"]
+texts_processed = preprocess_documents(texts)
+vectorizer = CountVectorizer()
+X = vectorizer.fit_transform(texts_processed)
+# Get the feature names (terms) 
+feature_names = vectorizer.get_feature_names_out()
+feature_names
+
+```
+
+```{python}
+texts_processed
+```
+
+
+```{python}
+print(X.toarray())
+```
+
+```{python}
+pd.DataFrame(X.toarray(), columns = feature_names)
+```
+
+
+```{python}
+#| warning: false
+from sklearn.feature_extraction.text import TfidfVectorizer
+vectorizer = TfidfVectorizer()
+X = vectorizer.fit_transform(texts_processed)
+print(X.toarray())
+```      
+
+```{python}
+pd.DataFrame(X.toarray(), 
+columns = vectorizer.get_feature_names_out())
+```
+
+
+
+
+## gensim
+
+```{python}
+#| warning: false
+# using gensim package
+import re
+import string
+import nltk
+from nltk.corpus import stopwords
+from nltk.stem import PorterStemmer, WordNetLemmatizer
+from gensim import corpora, models, matutils
+import pandas as pd
+
+# Download necessary NLTK data
+nltk.download('stopwords')
+nltk.download('wordnet')
+
+def preprocess_text(text):
+    # Lowercase the text
+    text = text.lower()
+    
+    # Remove punctuation
+    text = text.translate(str.maketrans('', '', string.punctuation))
+    
+    # Remove numbers
+    text = re.sub(r'\d+', '', text)
+    
+    # Remove stopwords
+    stop_words = set(stopwords.words('english'))
+    text = ' '.join([word for word in text.split() if word not in stop_words])
+    
+    # Lemmatization
+    lemmatizer = WordNetLemmatizer()
+    text = ' '.join([lemmatizer.lemmatize(word) for word in text.split()])
+    
+    return text
+
+def preprocess_documents(documents):
+    return [preprocess_text(doc).split() for doc in documents]
+
+# Sample documents
+documents = ["I love Accounting", "Accounting is called language of Business", "I will graduate with an Accounting degree"]
+
+# Preprocess the documents
+texts_processed = preprocess_documents(documents)
+
+# Create a dictionary from the tokenized texts
+dictionary = corpora.Dictionary(texts_processed)
+
+# Create a corpus using the dictionary
+corpus = [dictionary.doc2bow(text) for text in texts_processed]
+```
+
+```{python}
+# Create a TF-IDF model from the corpus
+tfidf_model = models.TfidfModel(corpus)
+
+# Transform the corpus using the TF-IDF model
+corpus_tfidf = tfidf_model[corpus]
+
+# Convert the TF-IDF weighted corpus to a dense matrix
+tfidf_matrix = matutils.corpus2dense(corpus_tfidf, num_terms=len(dictionary)).T
+
+# Convert the dense matrix to a DataFrame for easier inspection
+df_tfidf_matrix = pd.DataFrame(tfidf_matrix, columns=[dictionary[i] for i in range(len(dictionary))])
+
+df_tfidf_matrix
+```
+
+
+```{python}
+# Convert the corpus to a document-term matrix (DTM)
+dtm_matrix = matutils.corpus2dense(corpus, num_terms=len(dictionary)).T
+# Convert the DTM to a DataFrame for easier inspection
+df_dtm_matrix = pd.DataFrame(dtm_matrix, columns=[dictionary[i] for i in range(len(dictionary))])
+df_dtm_matrix
+```
+
+:::
+
+### __Word Embeddings__ 
+
+    Word embeddings are dense vector representations of words (not documents) that capture semantic relationships. Popular models include Word2Vec, GloVe, and FastText.
+
+```{python}
+from gensim.models import Word2Vec
+
+# Sample tokenized texts
+texts_processed = [
+    ['love', 'accounting'],
+    ['accounting', 'called', 'language', 'business'],
+    ['graduate', 'accounting', 'degree']
+]
+
+# Create the Word2Vec model
+model = Word2Vec(sentences=texts_processed, vector_size=10, window=5, min_count=1, workers=4)
+
+# Get the word vectors for all terms in the vocabulary
+word_vectors = {word: model.wv[word] for word in model.wv.index_to_key}
+
+# Create a Data Frame from the word vectors 
+df_word_vectors = pd.DataFrame(word_vectors).T
+# Print the word vectors
+df_word_vectors
+
+```
+
+
+### __Doc2Vec__
+
+    Doc2Vec is an extension of Word2Vec that generates vector representations for entire documents, capturing the context of the document.
+
+```{python}
+from gensim.models import Doc2Vec
+from gensim.models.doc2vec import TaggedDocument
+
+texts_processed = [['love', 'accounting'],
+ ['accounting', 'called', 'language', 'business'],
+ ['graduate', 'accounting', 'degree']]
+# Create tagged documents
+tagged_data = [TaggedDocument(words=text, tags=[str(i)]) for i, text in enumerate(texts)]
+# Create Doc2Vec Model 
+model = Doc2Vec(tagged_data, vector_size=10, window=5, min_count=1, workers=4)
+# Get the document vectors for all documents
+doc_vectors = {str(i): model.dv[str(i)] for i in range(len(texts_processed))} 
+# Create a DataFrame for the document vectors 
+df_doc_vectors = pd.DataFrame(doc_vectors).T 
+# Print the DataFrame 
+df_doc_vectors
+```
+
+### __BERT (Bidirectional Encoder Representations from Transformers)__
+
+    BERT is a transformer-based model that generates contextualized word embeddings. It captures the context of words in a sentence, making it powerful for various NLP tasks. 
+
+```{python}
+#| eval: false
+from transformers import BertTokenizer, BertModel
+import torch
+
+tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+model = BertModel.from_pretrained('bert-base-uncased')
+
+text = "I love programming"
+inputs = tokenizer(text, return_tensors='pt')
+outputs = model(**inputs)
+last_hidden_states = outputs.last_hidden_state
+print(last_hidden_states)
+
+```
+
+
+:::
+
+## Topic Modeling 
+::: {style="text-align: justify"}
+    Topic Modeling is a technique in NLP that tries to identify or extract semantic patterns or topic from a collection of documents. In other words, topic modeling helps to idenfity the cluster of words that appear together often and ultimately, they can be grouped into topics. For example, imagine an auditor is reveiwing important contracts of the client to test some management assertions, but before starting collecting evident to test the assertion, the auditor needs to understand the main themes of those contracts. Topic modeling can be used to figure out the themes (topics) based on the words used in the contracts. @fig-topicmodeling shows the general process of how topic modeling works.   
+
+![Topic Modeling](images/topic-modeling.avif){#fig-topicmodeling}
+
+    There are two commonly used methods for topic modeling. They include - Latent Semantic Analysis (LSA) and Latent Dirichlet Allocation (LDA). LSA assumes that words with similar meaning will appear in similar documents. LSA uses mathmatical techniques to reduce the dimensionality of the data, but LDA is a proabilistic technique, which assumes documents contain topics and topics contain words.  
+
+    In LSA, a term-document matrix is created in which rows represent terms and columns represent documents. The values (cells) of the matrix indicates the frequency of each term in each document. Then Singular Value Decomposition (SVD) is applied on the term-document matrix. The SVD technique converts the term-document matrix into three matrices - U (term-topic matrx), $\sum$ (diagonal matrix of singualr values), and V (document-topic matrix). This breakdown helps to reduce the dimensionality of the data while retaining the most improtant relationships between the data. Then, we select the top $k$ singualr values and their associated vectors from $U$ and $V$ matrices to form a reduced dimensional representation of the data.
+
+    In LDA, on the other hand, it is assumed each document is a mixture of topics and that each topic is a mixture of words. Therefore, in LDA documents are mapped to a list of topics by assigning words in the document to different topics. LDA uses Bayesian inferences to find the underlying topics in a corpus of documents. Of the two methods, it is recommended to use LDA because of its probabilistic nature, interpretability and scalability.
+
+
+```{python}
+#| warning: false
+import pandas as pd
+from nltk.tokenize import word_tokenize
+import gensim, spacy, logging, warnings
+from gensim import corpora, models, matutils, utils
+from gensim.utils import simple_preprocess
+from gensim.models import CoherenceModel
+import pyLDAvis 
+import pyLDAvis.gensim_models as gensimvis
+# NLTK Stop words
+from nltk.corpus import stopwords
+stop_words = stopwords.words('english')
+stop_words.extend(['from', 'subject', 're', 'edu', 'use', 'not', 'would', 'say', 'could', '_', 'be', 'know', 'good', 'go', 'get', 'do', 'done', 'try', 'many', 'some', 'nice', 'thank', 'think', 'see', 'rather', 'easy', 'easily', 'lot', 'lack', 'make', 'want', 'seem', 'run', 'need', 'even', 'right', 'line', 'even', 'also', 'may', 'take', 'come'])
+
+# reading the dataset
+df= pd.read_csv('DATA/tripadvisor_hotel_reviews.csv')
+df_500= df[0:500]
+def sent_to_words(sentences):
+    for sent in sentences:
+        sent = re.sub('\S*@\S*\s?', '', sent)  # remove emails
+        sent = re.sub('\s+', ' ', sent)  # remove newline chars
+        sent = re.sub("\'", "", sent)  # remove single quotes
+        sent = utils.simple_preprocess(str(sent), deacc=True) 
+        yield(sent)  
+
+# Convert to list
+data = df_500.Review.values.tolist()
+data_words = list(sent_to_words(data))
+```
+
+```{python}
+#| warning: false
+# Build the bigram and trigram models
+bigram = gensim.models.Phrases(data_words, min_count=5, threshold=100) # higher threshold fewer phrases.
+trigram = gensim.models.Phrases(bigram[data_words], threshold=100)  
+bigram_mod = gensim.models.phrases.Phraser(bigram)
+trigram_mod = gensim.models.phrases.Phraser(trigram)
+# Before running the process_words function, please run the following line of code in the terminal - 
+# python -m spacy download en_core_web_sm
+def process_words(texts, stop_words=stop_words, allowed_postags=['NOUN', 'ADJ', 'VERB', 'ADV']):
+    """Remove Stopwords, Form Bigrams, Trigrams and Lemmatization"""
+    texts = [[word for word in simple_preprocess(str(doc)) if word not in stop_words] for doc in texts]
+    texts = [bigram_mod[doc] for doc in texts]
+    texts = [trigram_mod[bigram_mod[doc]] for doc in texts]
+    texts_out = []
+    nlp = spacy.load("en_core_web_sm")
+    #nlp = spacy.load('en', disable=['parser', 'ner'])
+    for sent in texts:
+        doc = nlp(" ".join(sent)) 
+        texts_out.append([token.lemma_ for token in doc if token.pos_ in allowed_postags])
+    # remove stopwords once more after lemmatization
+    texts_out = [[word for word in simple_preprocess(str(doc)) if word not in stop_words] for doc in texts_out]    
+    return texts_out
+
+data_ready = process_words(data_words)  # processed Text Data!
+```
+
+
+```{python}
+# turn our tokenized documents into a term  <-> id dictionary)
+dictionary = corpora.Dictionary(data_ready)
+# convert tokenized documents into a document-term matrix)
+corpus = [dictionary.doc2bow(text) for text in data_ready]
+# Convert the corpus to a document-term matrix 
+doc_term_matrix = matutils.corpus2csc(corpus).transpose()
+# Convert the document-term matrix to a DataFrame 
+df_doc_term_matrix = pd.DataFrame(doc_term_matrix.toarray(), 
+columns=[dictionary[i] for i in range(len(dictionary))])
+# Print the DataFrame 
+df_doc_term_matrix
+```
+
+```{python}
+#| warning: false
+# Create a TF-IDF model from the corpus 
+tfidf_model = models.TfidfModel(corpus)
+# Transform the corpus using the TF-IDF model 
+corpus_tfidf = tfidf_model[corpus]
+# Convert the TF-IDF weighted corpus to a document-term matrix 
+doc_term_matrix_tfidf = matutils.corpus2csc(corpus_tfidf).transpose()
+# Convert the document-term matrix to a DataFrame 
+df_doc_term_matrix_tfidf = pd.DataFrame(doc_term_matrix_tfidf.toarray(), 
+columns=[dictionary[i] for i in range(len(dictionary))])
+# Print the DataFrame 
+df_doc_term_matrix_tfidf
+```
+
+```{python}
+#| warning: false
+# Create an LDA model from the corpus
+lda_model = models.LdaModel(corpus, num_topics=3, id2word=dictionary, passes=15)
+# Print the topics
+for idx, topic in lda_model.print_topics(-1):
+    print(f"Topic: {idx} \nWords: {topic}\n")
+```
+
+```{python}
+#| warning: false
+# Topic Membership Likelihood 
+# Create a DataFrame with topic vectors for each document
+topic_vectors = []
+for doc in corpus:
+    topic_vector = lda_model.get_document_topics(doc, minimum_probability=0)
+    topic_vectors.append([prob for _, prob in topic_vector])
+df_topic_vectors = pd.DataFrame(topic_vectors)
+# Print the DataFrame of the probabilities
+df_topic_vectors
+```
+
+```{python}
+#| warning: false
+# Create the visualization 
+vis_data = gensimvis.prepare(lda_model, corpus, dictionary) 
+pyLDAvis.display(vis_data)
+```
+
+:::
+
 
 ## Sentiment Analysis 
 ::: {style="text-align: justify"}
@@ -249,10 +644,7 @@ TextBlob(my_text).sentiment.subjectivity
 
 :::
 
-## Topic Modeling 
-::: {style="text-align: justify"}
 
-:::
 
 ## Conclusion 
 ::: {style="text-align: justify"}

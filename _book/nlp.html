@@ -57,7 +57,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -102,7 +102,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 
+
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -410,11 +445,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#word-cloud" id="toc-word-cloud" class="nav-link" data-scroll-target="#word-cloud"><span class="header-section-number">10.4.1</span> Word Cloud</a></li>
   <li><a href="#bar-diagram-of-word-frequency" id="toc-bar-diagram-of-word-frequency" class="nav-link" data-scroll-target="#bar-diagram-of-word-frequency"><span class="header-section-number">10.4.2</span> Bar Diagram of Word Frequency</a></li>
   </ul></li>
-  <li><a href="#sentiment-analysis" id="toc-sentiment-analysis" class="nav-link" data-scroll-target="#sentiment-analysis"><span class="header-section-number">10.5</span> Sentiment Analysis</a></li>
-  <li><a href="#readability-index" id="toc-readability-index" class="nav-link" data-scroll-target="#readability-index"><span class="header-section-number">10.6</span> Readability Index</a></li>
-  <li><a href="#text-similarity" id="toc-text-similarity" class="nav-link" data-scroll-target="#text-similarity"><span class="header-section-number">10.7</span> Text Similarity</a></li>
-  <li><a href="#topic-modeling" id="toc-topic-modeling" class="nav-link" data-scroll-target="#topic-modeling"><span class="header-section-number">10.8</span> Topic Modeling</a></li>
-  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">10.9</span> Conclusion</a></li>
+  <li><a href="#vectorization-of-text" id="toc-vectorization-of-text" class="nav-link" data-scroll-target="#vectorization-of-text"><span class="header-section-number">10.5</span> Vectorization of Text</a></li>
+  <li><a href="#topic-modeling" id="toc-topic-modeling" class="nav-link" data-scroll-target="#topic-modeling"><span class="header-section-number">10.6</span> Topic Modeling</a></li>
+  <li><a href="#sentiment-analysis" id="toc-sentiment-analysis" class="nav-link" data-scroll-target="#sentiment-analysis"><span class="header-section-number">10.7</span> Sentiment Analysis</a></li>
+  <li><a href="#readability-index" id="toc-readability-index" class="nav-link" data-scroll-target="#readability-index"><span class="header-section-number">10.8</span> Readability Index</a></li>
+  <li><a href="#text-similarity" id="toc-text-similarity" class="nav-link" data-scroll-target="#text-similarity"><span class="header-section-number">10.9</span> Text Similarity</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">10.10</span> Conclusion</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/msharifbd/sharifanalytics/edit/main/nlp.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/msharifbd/sharifanalytics/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/msharifbd/sharifanalytics/blob/main/nlp.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
     </div>
@@ -462,7 +498,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="python-libraries-for-nlp" class="level2" data-number="10.2">
 <h2 data-number="10.2" class="anchored" data-anchor-id="python-libraries-for-nlp"><span class="header-section-number">10.2</span> Python Libraries for NLP</h2>
 <div style="text-align: justify">
-<p>&nbsp;&nbsp;&nbsp;&nbsp;Python has built a rich and efficient ecosystem for NLP. Some of the most popular python modules (libraries) for NLP include - NLTK (Natural Language Toolkit); SpaCy; Gensim; and TextBlob.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Python has built a rich and efficient ecosystem for NLP. Some of the most popular python modules (libraries) for NLP include - <code>nltk</code> (Natural Language Toolkit); <code>SpaCy</code>; <code>gensim</code>; and <code>TextBlob</code>.</p>
 </div>
 </section>
 <section id="steps-in-nlp" class="level2" data-number="10.3">
@@ -475,7 +511,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div style="text-align: justify">
 <p>&nbsp;&nbsp;&nbsp;&nbsp;Before applying NLP techniques, it is necessary to preprosess and clean the text data. Therefore, the processes involving cleaning and preparing text data to get them ready for NLP models are called preprocessing. Preprocessing is very important in NLP to get effective and accurate insights from the data. Below we will discuss several important concepts of preprocessing.</p>
 </div>
-<div id="d851624d" class="cell" data-execution_count="1">
+<div id="7a7d0176" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># An exmaple of a text data </span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>my_text <span class="op">=</span> <span class="st">"""</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="st">Accounting is the systematic process of recording, analyzing, and reporting financial </span><span class="ch">\</span></span>
@@ -497,12 +533,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="tokenization" class="level4" data-number="10.3.1.1">
 <h4 data-number="10.3.1.1" class="anchored" data-anchor-id="tokenization"><span class="header-section-number">10.3.1.1</span> Tokenization</h4>
-<div id="79e306b8" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nltk</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>nltk.download(<span class="st">"punkt_tab"</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.tokenize <span class="im">import</span> sent_tokenize, word_tokenize</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="748e52ab" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nltk</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>nltk.download(<span class="st">"punkt_tab"</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.tokenize <span class="im">import</span> sent_tokenize, word_tokenize</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="39b3a939" class="cell" data-execution_count="3">
+<div id="b78467ca" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sentence tokenize</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>my_text_sent <span class="op">=</span> sent_tokenize(my_text)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>my_text_sent[<span class="dv">0</span>:<span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -514,7 +552,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  'Financial accounting focuses on providing information to external stakeholders, such as investors and creditors, while managerial accounting provides information to internal stakeholders, like managers, to aid in decision-making.']</code></pre>
 </div>
 </div>
-<div id="ed9524c5" class="cell" data-execution_count="4">
+<div id="70ebe478" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># word tokenize</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>my_text_word <span class="op">=</span> word_tokenize(my_text)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>my_text_word[<span class="dv">0</span>:<span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -528,7 +566,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div style="text-align: justify">
 <p>&nbsp;&nbsp;&nbsp;&nbsp;It is evident that in our word tokens, punctuations like comma (,), full stop (.) are also included, but they are unncessary. Therefore, we need to eliminate them from the token list.</p>
 </div>
-<div id="065abfe3" class="cell" data-execution_count="5">
+<div id="8a2df483" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> string</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>my_text_nopunc <span class="op">=</span> [x <span class="cf">for</span> x <span class="kw">in</span> my_text_word <span class="cf">if</span> x <span class="kw">not</span> <span class="kw">in</span> string.punctuation]</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>my_text_nopunc[:<span class="dv">11</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -552,13 +590,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div style="text-align: justify">
 <p>&nbsp;&nbsp;&nbsp;&nbsp;Stop words are the words that we want to ignore. Words like “in”, “an”, “the” we want to ignore. Therefore, in this step, we want to filter out these kinds of words.</p>
 </div>
-<div id="6ef86e25" class="cell" data-execution_count="6">
+<div id="ab55b070" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>nltk.download(<span class="st">"stopwords"</span>) <span class="co"># to download the stopwords from NLTK repository</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.corpus <span class="im">import</span> stopwords <span class="co"># imports the module </span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>stop_words <span class="op">=</span> <span class="bu">set</span>(stopwords.words(<span class="st">"english"</span>)) <span class="co"># access the stopwords for english </span></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># print(stop_words)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="71d7e27c" class="cell" data-execution_count="7">
+<div id="5c61b7c8" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>my_text_nostopwords <span class="op">=</span> [x <span class="cf">for</span> x <span class="kw">in</span> my_text_nopunc <span class="cf">if</span> x.lower() <span class="kw">not</span> <span class="kw">in</span> stop_words]</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>my_text_nostopwords[<span class="dv">0</span>:<span class="dv">11</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
@@ -578,7 +616,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div style="text-align: justify">
 <p>&nbsp;&nbsp;&nbsp;&nbsp;Still we can see there are some unnessary words in the list. So, we need to eliminate them. For example, “’s” is in the <code>my_text_nostopwords</code>. We need to get rid of it.</p>
 </div>
-<div id="ceea2726" class="cell" data-execution_count="8">
+<div id="e79926b1" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">"'s"</span> <span class="kw">in</span> my_text_nostopwords</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>my_text_nostopwords <span class="op">=</span> [x <span class="cf">for</span> x <span class="kw">in</span> my_text_nostopwords <span class="cf">if</span> <span class="st">"'s"</span> <span class="kw">not</span> <span class="kw">in</span> x]</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co">"'s"</span> <span class="kw">in</span> my_text_nostopwords</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -592,7 +630,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div style="text-align: justify">
 <p>&nbsp;&nbsp;&nbsp;&nbsp;Stemming is the process of reducing the words to their base or root form. For example, the token list contains words like recording, reporting, analyzing and so on. The base form of those words are record, report, and analyze respectively. Therefore, we need to reduce those words to base form. Stemming will help to do so. For this purpose, there are several types of stemmers such as Porter stemmer, Lovins stemmer, Dawson stemmer, Krovetz stemmer, and Xerox stemmer.</p>
 </div>
-<div id="27005dc0" class="cell" data-execution_count="9">
+<div id="1f80dcfb" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.stem <span class="im">import</span> PorterStemmer,SnowballStemmer, LancasterStemmer</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>porter <span class="op">=</span> PorterStemmer()</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>snowball <span class="op">=</span> SnowballStemmer(<span class="st">"english"</span>)</span>
@@ -620,7 +658,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div style="text-align: justify">
 <p>&nbsp;&nbsp;&nbsp;&nbsp;Lemmatization, like stemming, is the process of reducing a word to its base form, but, unlike stemming, it considers the context of the word.</p>
 </div>
-<div id="3efb8e56" class="cell" data-execution_count="10">
+<div id="dbb4bca3" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.stem <span class="im">import</span> WordNetLemmatizer</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>wordnet <span class="op">=</span> WordNetLemmatizer()</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>my_text_lemmatized <span class="op">=</span> [wordnet.lemmatize(x) <span class="cf">for</span> x <span class="kw">in</span> my_text_nostopwords]</span>
@@ -718,56 +756,1586 @@ Figure&nbsp;10.2: Bar Diagram of Word Frequency
 </div>
 </section>
 </section>
-<section id="sentiment-analysis" class="level2" data-number="10.5">
-<h2 data-number="10.5" class="anchored" data-anchor-id="sentiment-analysis"><span class="header-section-number">10.5</span> Sentiment Analysis</h2>
+<section id="vectorization-of-text" class="level2" data-number="10.5">
+<h2 data-number="10.5" class="anchored" data-anchor-id="vectorization-of-text"><span class="header-section-number">10.5</span> Vectorization of Text</h2>
+<div style="text-align: justify">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Using word clouds or bar diagrams of most frequent words is easy to use and helps to quickly explore datasets. However, they suffer from some shortcomings. For example, they ignore context and are unable to capture the relations between words within the data. Therefore, sometimes we need convert the texts into numbers.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;The process of converting text data into numeric vectors is called text vectorization. Text vectorization actually helps us to capture semantic relationships between words, thus allowing us to understand the meaning of text beyond just keywords. Further, it enhances processing of data. Moreover, vectorized text can be used for various NLP tasks such as document classification, sentiment analysis, and topic modeling. There are several techniques of text vectorization, spanning from simple to complex technieques.</p>
+<section id="bag-of-words-bow" class="level3" data-number="10.5.1">
+<h3 data-number="10.5.1" class="anchored" data-anchor-id="bag-of-words-bow"><span class="header-section-number">10.5.1</span> <strong>Bag of Words (BoW)</strong>:</h3>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Bag of Words is the simplest text vectorization technique. BoW counts the frequency of words in text documents. BoW does not consider the order of the words or syntax. “Dog toy” or “toy dog” have equal importance in BoW. In BoW, each document is represented as a vector of word frequencies. Actually, BoW generates <strong>document-term</strong> matrix, which is a <code>m×n</code> matrix, where <code>m</code> is the document and <code>n</code> is the term (word). So, the cell in the matrix contains raw count of the number of times the <span class="math inline">\(j\)</span>-word appear in the $i%-th document.</p>
+</section>
+<section id="term-frequency-inverse-document-frequency-tf-idf" class="level3" data-number="10.5.2">
+<h3 data-number="10.5.2" class="anchored" data-anchor-id="term-frequency-inverse-document-frequency-tf-idf"><span class="header-section-number">10.5.2</span> <strong>Term Frequency-Inverse Document Frequency (TF-IDF)</strong>:</h3>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;TF-IDF is another text vectorization technique. It is basically an extension of BoW model and considers the <em>importance</em> or <em>significance</em> of words in the texts. Term Frequecny (TF) refers to the frequency at which a particular word appears in a document and IDF measures how rare a word is across a collection of documents. IDF assigns more weights to words that are frequent in a document, but rare across all documents<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. Since TF-IDF takes into consideration the <em>significance</em> of the words, it is sometimes called Latent Semantic Analysis (LSA). Unlike BoW, the cell in TF-IDF matrix contains tf-idf score, which is calculated in <a href="#eq-tfidfscore" class="quarto-xref">Equation&nbsp;<span>10.1</span></a><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p>
+<p><span id="eq-tfidfscore"><span class="math display">\[
+w_{i,j} = tf_{i,j} × log\frac{N}{df_{i}}
+\tag{10.1}\]</span></span></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;In <a href="#eq-tfidfscore" class="quarto-xref">Equation&nbsp;<span>10.1</span></a>, <span class="math inline">\(tf_{i,j}\)</span> refers to the occurrences of term <span class="math inline">\(j\)</span> in document <span class="math inline">\(i\)</span>; <span class="math inline">\(N\)</span> is total number of documents; <span class="math inline">\(df_{i}\)</span> is the number of documents that contain the term <span class="math inline">\(j\)</span>; and <span class="math inline">\(w_{i,j}\)</span> is the tf-idf score in the TF-IDF matrix.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">sklearn</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">gensim</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div id="d6adcc8f" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># using sklearn package </span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co"># preprocessing function </span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> string</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nltk</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.corpus <span class="im">import</span> stopwords</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.stem <span class="im">import</span> PorterStemmer, WordNetLemmatizer</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Download necessary NLTK data</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>nltk.download(<span class="st">'stopwords'</span>)</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>nltk.download(<span class="st">'wordnet'</span>)</span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> preprocess_text(text):</span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Lowercase the text</span></span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>    text <span class="op">=</span> text.lower()</span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Remove punctuation</span></span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>    text <span class="op">=</span> text.translate(<span class="bu">str</span>.maketrans(<span class="st">''</span>, <span class="st">''</span>, string.punctuation))</span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Remove numbers</span></span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>    text <span class="op">=</span> re.sub(<span class="vs">r'\d+'</span>, <span class="st">''</span>, text)</span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Remove stopwords</span></span>
+<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a>    stop_words <span class="op">=</span> <span class="bu">set</span>(stopwords.words(<span class="st">'english'</span>))</span>
+<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a>    text <span class="op">=</span> <span class="st">' '</span>.join([word <span class="cf">for</span> word <span class="kw">in</span> text.split() <span class="cf">if</span> word <span class="kw">not</span> <span class="kw">in</span> stop_words])</span>
+<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Lemmatization</span></span>
+<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a>    lemmatizer <span class="op">=</span> WordNetLemmatizer()</span>
+<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a>    text <span class="op">=</span> <span class="st">' '</span>.join([lemmatizer.lemmatize(word) <span class="cf">for</span> word <span class="kw">in</span> text.split()])</span>
+<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> text</span>
+<span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> preprocess_documents(documents): </span>
+<span id="cb20-30"><a href="#cb20-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [preprocess_text(doc) <span class="cf">for</span> doc <span class="kw">in</span> documents]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="570740bf" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Bag of Words (BoW)</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.feature_extraction.text <span class="im">import</span> CountVectorizer</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>texts <span class="op">=</span> [<span class="st">"I love Accounting"</span>, <span class="st">"Accounting is called language of Business"</span>, <span class="st">"I will graduate with an Accounting degree"</span>]</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>texts_processed <span class="op">=</span> preprocess_documents(texts)</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>vectorizer <span class="op">=</span> CountVectorizer()</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> vectorizer.fit_transform(texts_processed)</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the feature names (terms) </span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>feature_names <span class="op">=</span> vectorizer.get_feature_names_out()</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>feature_names</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<pre><code>array(['accounting', 'business', 'called', 'degree', 'graduate',
+       'language', 'love'], dtype=object)</code></pre>
+</div>
+</div>
+<div id="3758674c" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>texts_processed</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
+<pre><code>['love accounting',
+ 'accounting called language business',
+ 'graduate accounting degree']</code></pre>
+</div>
+</div>
+<div id="dc80260c" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(X.toarray())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1 0 0 0 0 0 1]
+ [1 1 1 0 0 1 0]
+ [1 0 0 1 1 0 0]]</code></pre>
+</div>
+</div>
+<div id="cab955d2" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>pd.DataFrame(X.toarray(), columns <span class="op">=</span> feature_names)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">accounting</th>
+<th data-quarto-table-cell-role="th">business</th>
+<th data-quarto-table-cell-role="th">called</th>
+<th data-quarto-table-cell-role="th">degree</th>
+<th data-quarto-table-cell-role="th">graduate</th>
+<th data-quarto-table-cell-role="th">language</th>
+<th data-quarto-table-cell-role="th">love</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+<div id="d7330c39" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.feature_extraction.text <span class="im">import</span> TfidfVectorizer</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>vectorizer <span class="op">=</span> TfidfVectorizer()</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> vectorizer.fit_transform(texts_processed)</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(X.toarray())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[0.50854232 0.         0.         0.         0.         0.
+  0.861037  ]
+ [0.32274454 0.54645401 0.54645401 0.         0.         0.54645401
+  0.        ]
+ [0.38537163 0.         0.         0.65249088 0.65249088 0.
+  0.        ]]</code></pre>
+</div>
+</div>
+<div id="87688f93" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>pd.DataFrame(X.toarray(), </span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>columns <span class="op">=</span> vectorizer.get_feature_names_out())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="19">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">accounting</th>
+<th data-quarto-table-cell-role="th">business</th>
+<th data-quarto-table-cell-role="th">called</th>
+<th data-quarto-table-cell-role="th">degree</th>
+<th data-quarto-table-cell-role="th">graduate</th>
+<th data-quarto-table-cell-role="th">language</th>
+<th data-quarto-table-cell-role="th">love</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>0.508542</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.861037</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>0.322745</td>
+<td>0.546454</td>
+<td>0.546454</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.546454</td>
+<td>0.000000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>0.385372</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.652491</td>
+<td>0.652491</td>
+<td>0.000000</td>
+<td>0.000000</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div id="464dbf99" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># using gensim package</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> string</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nltk</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.corpus <span class="im">import</span> stopwords</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.stem <span class="im">import</span> PorterStemmer, WordNetLemmatizer</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gensim <span class="im">import</span> corpora, models, matutils</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Download necessary NLTK data</span></span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>nltk.download(<span class="st">'stopwords'</span>)</span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>nltk.download(<span class="st">'wordnet'</span>)</span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> preprocess_text(text):</span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Lowercase the text</span></span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>    text <span class="op">=</span> text.lower()</span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Remove punctuation</span></span>
+<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a>    text <span class="op">=</span> text.translate(<span class="bu">str</span>.maketrans(<span class="st">''</span>, <span class="st">''</span>, string.punctuation))</span>
+<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb31-21"><a href="#cb31-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Remove numbers</span></span>
+<span id="cb31-22"><a href="#cb31-22" aria-hidden="true" tabindex="-1"></a>    text <span class="op">=</span> re.sub(<span class="vs">r'\d+'</span>, <span class="st">''</span>, text)</span>
+<span id="cb31-23"><a href="#cb31-23" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb31-24"><a href="#cb31-24" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Remove stopwords</span></span>
+<span id="cb31-25"><a href="#cb31-25" aria-hidden="true" tabindex="-1"></a>    stop_words <span class="op">=</span> <span class="bu">set</span>(stopwords.words(<span class="st">'english'</span>))</span>
+<span id="cb31-26"><a href="#cb31-26" aria-hidden="true" tabindex="-1"></a>    text <span class="op">=</span> <span class="st">' '</span>.join([word <span class="cf">for</span> word <span class="kw">in</span> text.split() <span class="cf">if</span> word <span class="kw">not</span> <span class="kw">in</span> stop_words])</span>
+<span id="cb31-27"><a href="#cb31-27" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb31-28"><a href="#cb31-28" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Lemmatization</span></span>
+<span id="cb31-29"><a href="#cb31-29" aria-hidden="true" tabindex="-1"></a>    lemmatizer <span class="op">=</span> WordNetLemmatizer()</span>
+<span id="cb31-30"><a href="#cb31-30" aria-hidden="true" tabindex="-1"></a>    text <span class="op">=</span> <span class="st">' '</span>.join([lemmatizer.lemmatize(word) <span class="cf">for</span> word <span class="kw">in</span> text.split()])</span>
+<span id="cb31-31"><a href="#cb31-31" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb31-32"><a href="#cb31-32" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> text</span>
+<span id="cb31-33"><a href="#cb31-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-34"><a href="#cb31-34" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> preprocess_documents(documents):</span>
+<span id="cb31-35"><a href="#cb31-35" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [preprocess_text(doc).split() <span class="cf">for</span> doc <span class="kw">in</span> documents]</span>
+<span id="cb31-36"><a href="#cb31-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-37"><a href="#cb31-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample documents</span></span>
+<span id="cb31-38"><a href="#cb31-38" aria-hidden="true" tabindex="-1"></a>documents <span class="op">=</span> [<span class="st">"I love Accounting"</span>, <span class="st">"Accounting is called language of Business"</span>, <span class="st">"I will graduate with an Accounting degree"</span>]</span>
+<span id="cb31-39"><a href="#cb31-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-40"><a href="#cb31-40" aria-hidden="true" tabindex="-1"></a><span class="co"># Preprocess the documents</span></span>
+<span id="cb31-41"><a href="#cb31-41" aria-hidden="true" tabindex="-1"></a>texts_processed <span class="op">=</span> preprocess_documents(documents)</span>
+<span id="cb31-42"><a href="#cb31-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-43"><a href="#cb31-43" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a dictionary from the tokenized texts</span></span>
+<span id="cb31-44"><a href="#cb31-44" aria-hidden="true" tabindex="-1"></a>dictionary <span class="op">=</span> corpora.Dictionary(texts_processed)</span>
+<span id="cb31-45"><a href="#cb31-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-46"><a href="#cb31-46" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a corpus using the dictionary</span></span>
+<span id="cb31-47"><a href="#cb31-47" aria-hidden="true" tabindex="-1"></a>corpus <span class="op">=</span> [dictionary.doc2bow(text) <span class="cf">for</span> text <span class="kw">in</span> texts_processed]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="a73deeea" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a TF-IDF model from the corpus</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>tfidf_model <span class="op">=</span> models.TfidfModel(corpus)</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Transform the corpus using the TF-IDF model</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>corpus_tfidf <span class="op">=</span> tfidf_model[corpus]</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert the TF-IDF weighted corpus to a dense matrix</span></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>tfidf_matrix <span class="op">=</span> matutils.corpus2dense(corpus_tfidf, num_terms<span class="op">=</span><span class="bu">len</span>(dictionary)).T</span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert the dense matrix to a DataFrame for easier inspection</span></span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a>df_tfidf_matrix <span class="op">=</span> pd.DataFrame(tfidf_matrix, columns<span class="op">=</span>[dictionary[i] <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(dictionary))])</span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a>df_tfidf_matrix</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="21">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">accounting</th>
+<th data-quarto-table-cell-role="th">love</th>
+<th data-quarto-table-cell-role="th">business</th>
+<th data-quarto-table-cell-role="th">called</th>
+<th data-quarto-table-cell-role="th">language</th>
+<th data-quarto-table-cell-role="th">degree</th>
+<th data-quarto-table-cell-role="th">graduate</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>0.00000</td>
+<td>0.00000</td>
+<td>0.00000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.57735</td>
+<td>0.57735</td>
+<td>0.57735</td>
+<td>0.000000</td>
+<td>0.000000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.00000</td>
+<td>0.00000</td>
+<td>0.00000</td>
+<td>0.707107</td>
+<td>0.707107</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+<div id="09182a65" class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert the corpus to a document-term matrix (DTM)</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>dtm_matrix <span class="op">=</span> matutils.corpus2dense(corpus, num_terms<span class="op">=</span><span class="bu">len</span>(dictionary)).T</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert the DTM to a DataFrame for easier inspection</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>df_dtm_matrix <span class="op">=</span> pd.DataFrame(dtm_matrix, columns<span class="op">=</span>[dictionary[i] <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(dictionary))])</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>df_dtm_matrix</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="22">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">accounting</th>
+<th data-quarto-table-cell-role="th">love</th>
+<th data-quarto-table-cell-role="th">business</th>
+<th data-quarto-table-cell-role="th">called</th>
+<th data-quarto-table-cell-role="th">language</th>
+<th data-quarto-table-cell-role="th">degree</th>
+<th data-quarto-table-cell-role="th">graduate</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>1.0</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>1.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="word-embeddings" class="level3" data-number="10.5.3">
+<h3 data-number="10.5.3" class="anchored" data-anchor-id="word-embeddings"><span class="header-section-number">10.5.3</span> <strong>Word Embeddings</strong></h3>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Word embeddings are dense vector representations of words (not documents) that capture semantic relationships. Popular models include Word2Vec, GloVe, and FastText.</p>
+<div id="cca4ea2b" class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gensim.models <span class="im">import</span> Word2Vec</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample tokenized texts</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>texts_processed <span class="op">=</span> [</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>    [<span class="st">'love'</span>, <span class="st">'accounting'</span>],</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>    [<span class="st">'accounting'</span>, <span class="st">'called'</span>, <span class="st">'language'</span>, <span class="st">'business'</span>],</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>    [<span class="st">'graduate'</span>, <span class="st">'accounting'</span>, <span class="st">'degree'</span>]</span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the Word2Vec model</span></span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> Word2Vec(sentences<span class="op">=</span>texts_processed, vector_size<span class="op">=</span><span class="dv">10</span>, window<span class="op">=</span><span class="dv">5</span>, min_count<span class="op">=</span><span class="dv">1</span>, workers<span class="op">=</span><span class="dv">4</span>)</span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the word vectors for all terms in the vocabulary</span></span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a>word_vectors <span class="op">=</span> {word: model.wv[word] <span class="cf">for</span> word <span class="kw">in</span> model.wv.index_to_key}</span>
+<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a Data Frame from the word vectors </span></span>
+<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a>df_word_vectors <span class="op">=</span> pd.DataFrame(word_vectors).T</span>
+<span id="cb34-18"><a href="#cb34-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the word vectors</span></span>
+<span id="cb34-19"><a href="#cb34-19" aria-hidden="true" tabindex="-1"></a>df_word_vectors</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="23">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">0</th>
+<th data-quarto-table-cell-role="th">1</th>
+<th data-quarto-table-cell-role="th">2</th>
+<th data-quarto-table-cell-role="th">3</th>
+<th data-quarto-table-cell-role="th">4</th>
+<th data-quarto-table-cell-role="th">5</th>
+<th data-quarto-table-cell-role="th">6</th>
+<th data-quarto-table-cell-role="th">7</th>
+<th data-quarto-table-cell-role="th">8</th>
+<th data-quarto-table-cell-role="th">9</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">accounting</td>
+<td>-0.005362</td>
+<td>0.002364</td>
+<td>0.051033</td>
+<td>0.090093</td>
+<td>-0.093029</td>
+<td>-0.071168</td>
+<td>0.064589</td>
+<td>0.089730</td>
+<td>-0.050154</td>
+<td>-0.037634</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">degree</td>
+<td>0.073805</td>
+<td>-0.015335</td>
+<td>-0.045366</td>
+<td>0.065541</td>
+<td>-0.048602</td>
+<td>-0.018160</td>
+<td>0.028766</td>
+<td>0.009919</td>
+<td>-0.082852</td>
+<td>-0.094488</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">graduate</td>
+<td>0.073118</td>
+<td>0.050703</td>
+<td>0.067577</td>
+<td>0.007629</td>
+<td>0.063509</td>
+<td>-0.034054</td>
+<td>-0.009464</td>
+<td>0.057686</td>
+<td>-0.075216</td>
+<td>-0.039361</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">business</td>
+<td>-0.075116</td>
+<td>-0.009300</td>
+<td>0.095381</td>
+<td>-0.073192</td>
+<td>-0.023338</td>
+<td>-0.019377</td>
+<td>0.080774</td>
+<td>-0.059309</td>
+<td>0.000452</td>
+<td>-0.047537</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">language</td>
+<td>-0.096036</td>
+<td>0.050073</td>
+<td>-0.087596</td>
+<td>-0.043918</td>
+<td>-0.000351</td>
+<td>-0.002962</td>
+<td>-0.076612</td>
+<td>0.096147</td>
+<td>0.049821</td>
+<td>0.092331</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">called</td>
+<td>-0.081579</td>
+<td>0.044958</td>
+<td>-0.041371</td>
+<td>0.008245</td>
+<td>0.084986</td>
+<td>-0.044622</td>
+<td>0.045175</td>
+<td>-0.067870</td>
+<td>-0.035485</td>
+<td>0.093985</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">love</td>
+<td>-0.015777</td>
+<td>0.003214</td>
+<td>-0.041406</td>
+<td>-0.076827</td>
+<td>-0.015080</td>
+<td>0.024698</td>
+<td>-0.008880</td>
+<td>0.055337</td>
+<td>-0.027430</td>
+<td>0.022601</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="doc2vec" class="level3" data-number="10.5.4">
+<h3 data-number="10.5.4" class="anchored" data-anchor-id="doc2vec"><span class="header-section-number">10.5.4</span> <strong>Doc2Vec</strong></h3>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Doc2Vec is an extension of Word2Vec that generates vector representations for entire documents, capturing the context of the document.</p>
+<div id="ccc72c78" class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gensim.models <span class="im">import</span> Doc2Vec</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gensim.models.doc2vec <span class="im">import</span> TaggedDocument</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>texts_processed <span class="op">=</span> [[<span class="st">'love'</span>, <span class="st">'accounting'</span>],</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a> [<span class="st">'accounting'</span>, <span class="st">'called'</span>, <span class="st">'language'</span>, <span class="st">'business'</span>],</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a> [<span class="st">'graduate'</span>, <span class="st">'accounting'</span>, <span class="st">'degree'</span>]]</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Create tagged documents</span></span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>tagged_data <span class="op">=</span> [TaggedDocument(words<span class="op">=</span>text, tags<span class="op">=</span>[<span class="bu">str</span>(i)]) <span class="cf">for</span> i, text <span class="kw">in</span> <span class="bu">enumerate</span>(texts)]</span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Create Doc2Vec Model </span></span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> Doc2Vec(tagged_data, vector_size<span class="op">=</span><span class="dv">10</span>, window<span class="op">=</span><span class="dv">5</span>, min_count<span class="op">=</span><span class="dv">1</span>, workers<span class="op">=</span><span class="dv">4</span>)</span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the document vectors for all documents</span></span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>doc_vectors <span class="op">=</span> {<span class="bu">str</span>(i): model.dv[<span class="bu">str</span>(i)] <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(texts_processed))} </span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a DataFrame for the document vectors </span></span>
+<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a>df_doc_vectors <span class="op">=</span> pd.DataFrame(doc_vectors).T </span>
+<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the DataFrame </span></span>
+<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a>df_doc_vectors</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="24">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">0</th>
+<th data-quarto-table-cell-role="th">1</th>
+<th data-quarto-table-cell-role="th">2</th>
+<th data-quarto-table-cell-role="th">3</th>
+<th data-quarto-table-cell-role="th">4</th>
+<th data-quarto-table-cell-role="th">5</th>
+<th data-quarto-table-cell-role="th">6</th>
+<th data-quarto-table-cell-role="th">7</th>
+<th data-quarto-table-cell-role="th">8</th>
+<th data-quarto-table-cell-role="th">9</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>-0.052996</td>
+<td>-0.059291</td>
+<td>-0.099730</td>
+<td>0.085218</td>
+<td>0.036740</td>
+<td>0.001727</td>
+<td>-0.098661</td>
+<td>-0.050780</td>
+<td>-0.099170</td>
+<td>0.019854</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>0.026782</td>
+<td>0.047362</td>
+<td>-0.044838</td>
+<td>-0.031941</td>
+<td>-0.028554</td>
+<td>-0.089483</td>
+<td>0.022004</td>
+<td>0.094703</td>
+<td>-0.100429</td>
+<td>-0.035253</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>-0.039851</td>
+<td>0.027446</td>
+<td>-0.059339</td>
+<td>0.025528</td>
+<td>0.061253</td>
+<td>-0.084000</td>
+<td>-0.082807</td>
+<td>-0.096986</td>
+<td>0.042936</td>
+<td>-0.091991</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="bert-bidirectional-encoder-representations-from-transformers" class="level3" data-number="10.5.5">
+<h3 data-number="10.5.5" class="anchored" data-anchor-id="bert-bidirectional-encoder-representations-from-transformers"><span class="header-section-number">10.5.5</span> <strong>BERT (Bidirectional Encoder Representations from Transformers)</strong></h3>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;BERT is a transformer-based model that generates contextualized word embeddings. It captures the context of words in a sentence, making it powerful for various NLP tasks.</p>
+<div id="a105dd89" class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> transformers <span class="im">import</span> BertTokenizer, BertModel</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>tokenizer <span class="op">=</span> BertTokenizer.from_pretrained(<span class="st">'bert-base-uncased'</span>)</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> BertModel.from_pretrained(<span class="st">'bert-base-uncased'</span>)</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>text <span class="op">=</span> <span class="st">"I love programming"</span></span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>inputs <span class="op">=</span> tokenizer(text, return_tensors<span class="op">=</span><span class="st">'pt'</span>)</span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>outputs <span class="op">=</span> model(<span class="op">**</span>inputs)</span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>last_hidden_states <span class="op">=</span> outputs.last_hidden_state</span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(last_hidden_states)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</div>
+</section>
+<section id="topic-modeling" class="level2" data-number="10.6">
+<h2 data-number="10.6" class="anchored" data-anchor-id="topic-modeling"><span class="header-section-number">10.6</span> Topic Modeling</h2>
+<div style="text-align: justify">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Topic Modeling is a technique in NLP that tries to identify or extract semantic patterns or topic from a collection of documents. In other words, topic modeling helps to idenfity the cluster of words that appear together often and ultimately, they can be grouped into topics. For example, imagine an auditor is reveiwing important contracts of the client to test some management assertions, but before starting collecting evident to test the assertion, the auditor needs to understand the main themes of those contracts. Topic modeling can be used to figure out the themes (topics) based on the words used in the contracts. <a href="#fig-topicmodeling" class="quarto-xref">Figure&nbsp;<span>10.3</span></a> shows the general process of how topic modeling works.</p>
+<div id="fig-topicmodeling" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-topicmodeling-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/topic-modeling.avif" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-topicmodeling-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10.3: Topic Modeling
+</figcaption>
+</figure>
+</div>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;There are two commonly used methods for topic modeling. They include - Latent Semantic Analysis (LSA) and Latent Dirichlet Allocation (LDA). LSA assumes that words with similar meaning will appear in similar documents. LSA uses mathmatical techniques to reduce the dimensionality of the data, but LDA is a proabilistic technique, which assumes documents contain topics and topics contain words.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;In LSA, a term-document matrix is created in which rows represent terms and columns represent documents. The values (cells) of the matrix indicates the frequency of each term in each document. Then Singular Value Decomposition (SVD) is applied on the term-document matrix. The SVD technique converts the term-document matrix into three matrices - U (term-topic matrx), <span class="math inline">\(\sum\)</span> (diagonal matrix of singualr values), and V (document-topic matrix). This breakdown helps to reduce the dimensionality of the data while retaining the most improtant relationships between the data. Then, we select the top <span class="math inline">\(k\)</span> singualr values and their associated vectors from <span class="math inline">\(U\)</span> and <span class="math inline">\(V\)</span> matrices to form a reduced dimensional representation of the data.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;In LDA, on the other hand, it is assumed each document is a mixture of topics and that each topic is a mixture of words. Therefore, in LDA documents are mapped to a list of topics by assigning words in the document to different topics. LDA uses Bayesian inferences to find the underlying topics in a corpus of documents. Of the two methods, it is recommended to use LDA because of its probabilistic nature, interpretability and scalability.</p>
+<div id="3e27986a" class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.tokenize <span class="im">import</span> word_tokenize</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> gensim, spacy, logging, warnings</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gensim <span class="im">import</span> corpora, models, matutils, utils</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gensim.utils <span class="im">import</span> simple_preprocess</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gensim.models <span class="im">import</span> CoherenceModel</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyLDAvis </span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyLDAvis.gensim_models <span class="im">as</span> gensimvis</span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a><span class="co"># NLTK Stop words</span></span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.corpus <span class="im">import</span> stopwords</span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>stop_words <span class="op">=</span> stopwords.words(<span class="st">'english'</span>)</span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a>stop_words.extend([<span class="st">'from'</span>, <span class="st">'subject'</span>, <span class="st">'re'</span>, <span class="st">'edu'</span>, <span class="st">'use'</span>, <span class="st">'not'</span>, <span class="st">'would'</span>, <span class="st">'say'</span>, <span class="st">'could'</span>, <span class="st">'_'</span>, <span class="st">'be'</span>, <span class="st">'know'</span>, </span>
+<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'good'</span>, <span class="st">'go'</span>, <span class="st">'get'</span>, <span class="st">'do'</span>, <span class="st">'done'</span>, <span class="st">'try'</span>, <span class="st">'many'</span>, <span class="st">'some'</span>, <span class="st">'nice'</span>, <span class="st">'thank'</span>, <span class="st">'think'</span>, <span class="st">'see'</span>,</span>
+<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'rather'</span>, <span class="st">'easy'</span>, <span class="st">'easily'</span>, <span class="st">'lot'</span>, <span class="st">'lack'</span>, <span class="st">'make'</span>, <span class="st">'want'</span>, <span class="st">'seem'</span>, <span class="st">'run'</span>, <span class="st">'need'</span>, <span class="st">'even'</span>, </span>
+<span id="cb37-15"><a href="#cb37-15" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'right'</span>, <span class="st">'line'</span>, <span class="st">'even'</span>, <span class="st">'also'</span>, <span class="st">'may'</span>, <span class="st">'take'</span>, <span class="st">'come'</span>])</span>
+<span id="cb37-16"><a href="#cb37-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-17"><a href="#cb37-17" aria-hidden="true" tabindex="-1"></a><span class="co"># reading the dataset</span></span>
+<span id="cb37-18"><a href="#cb37-18" aria-hidden="true" tabindex="-1"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'DATA/tripadvisor_hotel_reviews.csv'</span>)</span>
+<span id="cb37-19"><a href="#cb37-19" aria-hidden="true" tabindex="-1"></a>df_500<span class="op">=</span> df[<span class="dv">0</span>:<span class="dv">500</span>]</span>
+<span id="cb37-20"><a href="#cb37-20" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sent_to_words(sentences):</span>
+<span id="cb37-21"><a href="#cb37-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> sent <span class="kw">in</span> sentences:</span>
+<span id="cb37-22"><a href="#cb37-22" aria-hidden="true" tabindex="-1"></a>        sent <span class="op">=</span> re.sub(<span class="st">'\S*@\S*\s?'</span>, <span class="st">''</span>, sent)  <span class="co"># remove emails</span></span>
+<span id="cb37-23"><a href="#cb37-23" aria-hidden="true" tabindex="-1"></a>        sent <span class="op">=</span> re.sub(<span class="st">'\s+'</span>, <span class="st">' '</span>, sent)  <span class="co"># remove newline chars</span></span>
+<span id="cb37-24"><a href="#cb37-24" aria-hidden="true" tabindex="-1"></a>        sent <span class="op">=</span> re.sub(<span class="st">"</span><span class="ch">\'</span><span class="st">"</span>, <span class="st">""</span>, sent)  <span class="co"># remove single quotes</span></span>
+<span id="cb37-25"><a href="#cb37-25" aria-hidden="true" tabindex="-1"></a>        sent <span class="op">=</span> utils.simple_preprocess(<span class="bu">str</span>(sent), deacc<span class="op">=</span><span class="va">True</span>) </span>
+<span id="cb37-26"><a href="#cb37-26" aria-hidden="true" tabindex="-1"></a>        <span class="cf">yield</span>(sent)  </span>
+<span id="cb37-27"><a href="#cb37-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-28"><a href="#cb37-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to list</span></span>
+<span id="cb37-29"><a href="#cb37-29" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> df_500.Review.values.tolist()</span>
+<span id="cb37-30"><a href="#cb37-30" aria-hidden="true" tabindex="-1"></a>data_words <span class="op">=</span> <span class="bu">list</span>(sent_to_words(data))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="7006733b" class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Build the bigram and trigram models</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>bigram <span class="op">=</span> gensim.models.Phrases(data_words, min_count<span class="op">=</span><span class="dv">5</span>, threshold<span class="op">=</span><span class="dv">100</span>) <span class="co"># higher threshold fewer phrases.</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>trigram <span class="op">=</span> gensim.models.Phrases(bigram[data_words], threshold<span class="op">=</span><span class="dv">100</span>)  </span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>bigram_mod <span class="op">=</span> gensim.models.phrases.Phraser(bigram)</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>trigram_mod <span class="op">=</span> gensim.models.phrases.Phraser(trigram)</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Before running the process_words function, please run the following line of code in the terminal - </span></span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a><span class="co"># python -m spacy download en_core_web_sm</span></span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> process_words(texts, stop_words<span class="op">=</span>stop_words, allowed_postags<span class="op">=</span>[<span class="st">'NOUN'</span>, <span class="st">'ADJ'</span>, <span class="st">'VERB'</span>, <span class="st">'ADV'</span>]):</span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Remove Stopwords, Form Bigrams, Trigrams and Lemmatization"""</span></span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>    texts <span class="op">=</span> [[word <span class="cf">for</span> word <span class="kw">in</span> simple_preprocess(<span class="bu">str</span>(doc)) <span class="cf">if</span> word <span class="kw">not</span> <span class="kw">in</span> stop_words] <span class="cf">for</span> doc <span class="kw">in</span> texts]</span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>    texts <span class="op">=</span> [bigram_mod[doc] <span class="cf">for</span> doc <span class="kw">in</span> texts]</span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a>    texts <span class="op">=</span> [trigram_mod[bigram_mod[doc]] <span class="cf">for</span> doc <span class="kw">in</span> texts]</span>
+<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a>    texts_out <span class="op">=</span> []</span>
+<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a>    nlp <span class="op">=</span> spacy.load(<span class="st">"en_core_web_sm"</span>)</span>
+<span id="cb38-15"><a href="#cb38-15" aria-hidden="true" tabindex="-1"></a>    <span class="co">#nlp = spacy.load('en', disable=['parser', 'ner'])</span></span>
+<span id="cb38-16"><a href="#cb38-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> sent <span class="kw">in</span> texts:</span>
+<span id="cb38-17"><a href="#cb38-17" aria-hidden="true" tabindex="-1"></a>        doc <span class="op">=</span> nlp(<span class="st">" "</span>.join(sent)) </span>
+<span id="cb38-18"><a href="#cb38-18" aria-hidden="true" tabindex="-1"></a>        texts_out.append([token.lemma_ <span class="cf">for</span> token <span class="kw">in</span> doc <span class="cf">if</span> token.pos_ <span class="kw">in</span> allowed_postags])</span>
+<span id="cb38-19"><a href="#cb38-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># remove stopwords once more after lemmatization</span></span>
+<span id="cb38-20"><a href="#cb38-20" aria-hidden="true" tabindex="-1"></a>    texts_out <span class="op">=</span> [[word <span class="cf">for</span> word <span class="kw">in</span> simple_preprocess(<span class="bu">str</span>(doc)) <span class="cf">if</span> word <span class="kw">not</span> <span class="kw">in</span> stop_words] <span class="cf">for</span> doc <span class="kw">in</span> texts_out]    </span>
+<span id="cb38-21"><a href="#cb38-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> texts_out</span>
+<span id="cb38-22"><a href="#cb38-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-23"><a href="#cb38-23" aria-hidden="true" tabindex="-1"></a>data_ready <span class="op">=</span> process_words(data_words)  <span class="co"># processed Text Data!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="9df54eaf" class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># turn our tokenized documents into a term  &lt;-&gt; id dictionary)</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>dictionary <span class="op">=</span> corpora.Dictionary(data_ready)</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="co"># convert tokenized documents into a document-term matrix)</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>corpus <span class="op">=</span> [dictionary.doc2bow(text) <span class="cf">for</span> text <span class="kw">in</span> data_ready]</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert the corpus to a document-term matrix </span></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>doc_term_matrix <span class="op">=</span> matutils.corpus2csc(corpus).transpose()</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert the document-term matrix to a DataFrame </span></span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>df_doc_term_matrix <span class="op">=</span> pd.DataFrame(doc_term_matrix.toarray(), </span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>columns<span class="op">=</span>[dictionary[i] <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(dictionary))])</span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the DataFrame </span></span>
+<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a>df_doc_term_matrix</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="27">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">advantage</th>
+<th data-quarto-table-cell-role="th">advice</th>
+<th data-quarto-table-cell-role="th">anniversary</th>
+<th data-quarto-table-cell-role="th">arrive</th>
+<th data-quarto-table-cell-role="th">aveda</th>
+<th data-quarto-table-cell-role="th">bang</th>
+<th data-quarto-table-cell-role="th">bed</th>
+<th data-quarto-table-cell-role="th">check</th>
+<th data-quarto-table-cell-role="th">closing</th>
+<th data-quarto-table-cell-role="th">comfortable</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">cushy</th>
+<th data-quarto-table-cell-role="th">gouge</th>
+<th data-quarto-table-cell-role="th">humor</th>
+<th data-quarto-table-cell-role="th">last</th>
+<th data-quarto-table-cell-role="th">navigating</th>
+<th data-quarto-table-cell-role="th">oxygen</th>
+<th data-quarto-table-cell-role="th">replacement</th>
+<th data-quarto-table-cell-role="th">extraordinarily</th>
+<th data-quarto-table-cell-role="th">ranier</th>
+<th data-quarto-table-cell-role="th">seperate</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>...</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>2.0</td>
+<td>1.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>...</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>2.0</td>
+<td>2.0</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>...</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>...</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>...</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">495</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>...</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">496</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>2.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>...</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">497</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>...</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">498</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>2.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>...</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">499</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>...</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+</tbody>
+</table>
+
+<p>500 rows × 4230 columns</p>
+</div>
+</div>
+</div>
+</div>
+<div id="0e7e799f" class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a TF-IDF model from the corpus </span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>tfidf_model <span class="op">=</span> models.TfidfModel(corpus)</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Transform the corpus using the TF-IDF model </span></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>corpus_tfidf <span class="op">=</span> tfidf_model[corpus]</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert the TF-IDF weighted corpus to a document-term matrix </span></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>doc_term_matrix_tfidf <span class="op">=</span> matutils.corpus2csc(corpus_tfidf).transpose()</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert the document-term matrix to a DataFrame </span></span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>df_doc_term_matrix_tfidf <span class="op">=</span> pd.DataFrame(doc_term_matrix_tfidf.toarray(), </span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>columns<span class="op">=</span>[dictionary[i] <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(dictionary))])</span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the DataFrame </span></span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>df_doc_term_matrix_tfidf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="28">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">advantage</th>
+<th data-quarto-table-cell-role="th">advice</th>
+<th data-quarto-table-cell-role="th">anniversary</th>
+<th data-quarto-table-cell-role="th">arrive</th>
+<th data-quarto-table-cell-role="th">aveda</th>
+<th data-quarto-table-cell-role="th">bang</th>
+<th data-quarto-table-cell-role="th">bed</th>
+<th data-quarto-table-cell-role="th">check</th>
+<th data-quarto-table-cell-role="th">closing</th>
+<th data-quarto-table-cell-role="th">comfortable</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">cushy</th>
+<th data-quarto-table-cell-role="th">gouge</th>
+<th data-quarto-table-cell-role="th">humor</th>
+<th data-quarto-table-cell-role="th">last</th>
+<th data-quarto-table-cell-role="th">navigating</th>
+<th data-quarto-table-cell-role="th">oxygen</th>
+<th data-quarto-table-cell-role="th">replacement</th>
+<th data-quarto-table-cell-role="th">extraordinarily</th>
+<th data-quarto-table-cell-role="th">ranier</th>
+<th data-quarto-table-cell-role="th">seperate</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>0.160135</td>
+<td>0.173497</td>
+<td>0.179099</td>
+<td>0.085600</td>
+<td>0.23166</td>
+<td>0.23166</td>
+<td>0.038655</td>
+<td>0.060582</td>
+<td>0.23166</td>
+<td>0.056518</td>
+<td>...</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.140405</td>
+<td>0.033553</td>
+<td>0.00000</td>
+<td>0.00000</td>
+<td>0.015152</td>
+<td>0.000000</td>
+<td>0.00000</td>
+<td>0.022154</td>
+<td>...</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.00000</td>
+<td>0.00000</td>
+<td>0.040298</td>
+<td>0.063157</td>
+<td>0.00000</td>
+<td>0.029460</td>
+<td>...</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.00000</td>
+<td>0.00000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.00000</td>
+<td>0.000000</td>
+<td>...</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.00000</td>
+<td>0.00000</td>
+<td>0.000000</td>
+<td>0.026962</td>
+<td>0.00000</td>
+<td>0.000000</td>
+<td>...</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">495</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.00000</td>
+<td>0.00000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.00000</td>
+<td>0.000000</td>
+<td>...</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">496</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.00000</td>
+<td>0.00000</td>
+<td>0.065851</td>
+<td>0.000000</td>
+<td>0.00000</td>
+<td>0.048142</td>
+<td>...</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">497</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.00000</td>
+<td>0.00000</td>
+<td>0.029146</td>
+<td>0.000000</td>
+<td>0.00000</td>
+<td>0.042615</td>
+<td>...</td>
+<td>0.196603</td>
+<td>0.196603</td>
+<td>0.196603</td>
+<td>0.196603</td>
+<td>0.196603</td>
+<td>0.196603</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">498</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.00000</td>
+<td>0.00000</td>
+<td>0.075078</td>
+<td>0.000000</td>
+<td>0.00000</td>
+<td>0.000000</td>
+<td>...</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.253216</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">499</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.00000</td>
+<td>0.00000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.00000</td>
+<td>0.067615</td>
+<td>...</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.311936</td>
+<td>0.311936</td>
+<td>0.311936</td>
+</tr>
+</tbody>
+</table>
+
+<p>500 rows × 4230 columns</p>
+</div>
+</div>
+</div>
+</div>
+<div id="1b70ea2a" class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create an LDA model from the corpus</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>lda_model <span class="op">=</span> models.LdaModel(corpus, num_topics<span class="op">=</span><span class="dv">3</span>, id2word<span class="op">=</span>dictionary, passes<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the topics</span></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> idx, topic <span class="kw">in</span> lda_model.print_topics(<span class="op">-</span><span class="dv">1</span>):</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Topic: </span><span class="sc">{</span>idx<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss">Words: </span><span class="sc">{</span>topic<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Topic: 0 
+Words: 0.036*"room" + 0.031*"hotel" + 0.018*"stay" + 0.010*"bed" + 0.010*"night" + 0.009*"great" + 0.008*"staff" + 0.007*"service" + 0.007*"place" + 0.007*"desk"
+
+Topic: 1 
+Words: 0.036*"room" + 0.026*"hotel" + 0.016*"stay" + 0.011*"night" + 0.008*"bed" + 0.007*"desk" + 0.006*"staff" + 0.006*"great" + 0.006*"place" + 0.006*"time"
+
+Topic: 2 
+Words: 0.033*"hotel" + 0.027*"room" + 0.021*"stay" + 0.021*"great" + 0.013*"location" + 0.012*"staff" + 0.008*"place" + 0.008*"night" + 0.008*"clean" + 0.007*"friendly"
+</code></pre>
+</div>
+</div>
+<div id="970ebdb3" class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Topic Membership Likelihood </span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a DataFrame with topic vectors for each document</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>topic_vectors <span class="op">=</span> []</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> doc <span class="kw">in</span> corpus:</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>    topic_vector <span class="op">=</span> lda_model.get_document_topics(doc, minimum_probability<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>    topic_vectors.append([prob <span class="cf">for</span> _, prob <span class="kw">in</span> topic_vector])</span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>df_topic_vectors <span class="op">=</span> pd.DataFrame(topic_vectors)</span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the DataFrame of the probabilities</span></span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>df_topic_vectors</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="30">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">0</th>
+<th data-quarto-table-cell-role="th">1</th>
+<th data-quarto-table-cell-role="th">2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>0.871004</td>
+<td>0.006472</td>
+<td>0.122524</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>0.202587</td>
+<td>0.360392</td>
+<td>0.437021</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>0.994530</td>
+<td>0.002767</td>
+<td>0.002703</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>0.005711</td>
+<td>0.005410</td>
+<td>0.988879</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>0.002912</td>
+<td>0.069632</td>
+<td>0.927456</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">495</td>
+<td>0.978796</td>
+<td>0.010403</td>
+<td>0.010800</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">496</td>
+<td>0.987470</td>
+<td>0.006143</td>
+<td>0.006388</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">497</td>
+<td>0.311404</td>
+<td>0.660057</td>
+<td>0.028539</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">498</td>
+<td>0.984959</td>
+<td>0.007621</td>
+<td>0.007420</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">499</td>
+<td>0.013914</td>
+<td>0.013034</td>
+<td>0.973051</td>
+</tr>
+</tbody>
+</table>
+
+<p>500 rows × 3 columns</p>
+</div>
+</div>
+</div>
+</div>
+<div id="4b2baccc" class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the visualization </span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>vis_data <span class="op">=</span> gensimvis.prepare(lda_model, corpus, dictionary) </span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>pyLDAvis.display(vis_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="31">
+
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/bmabey/pyLDAvis@3.4.0/pyLDAvis/js/ldavis.v1.0.0.css">
+
+
+<div id="ldavis_el5869225671670773762574400954" style="background-color:white;"></div>
+<script type="text/javascript">
+
+var ldavis_el5869225671670773762574400954_data = {"mdsDat": {"x": [0.0031743333891612047, -0.05461969980178389, 0.05144536641262267], "y": [-0.04547085398795126, 0.020694137785389508, 0.024776716202561774], "topics": [1, 2, 3], "cluster": [1, 1, 1], "Freq": [42.116244031165664, 34.85003475748855, 23.033721211345785]}, "tinfo": {"Term": ["room", "great", "tell", "ask", "location", "priceline", "bag", "check", "desk", "call", "reservation", "night", "little", "bed", "book", "manager", "car", "friendly", "inform", "street", "hotel", "pay", "resort", "luggage", "stay", "request", "day", "building", "sheet", "old", "section", "shampoo", "drawer", "newly", "hide", "grocery", "improvement", "sixth", "blanket", "wonder", "true", "bread", "personnel", "drain", "counter", "chip", "warwick", "cleanliness", "advertise", "microwave", "self", "surprised", "remain", "strong", "ground", "blind", "final", "accurate", "min", "variety", "difficult", "exceed", "appreciate", "allow", "request", "alexis", "expectation", "deliver", "non", "towel", "reach", "worth", "mail", "room", "block", "bed", "check", "clerk", "wine", "rate", "hotel", "price", "shower", "guest", "charge", "desk", "stay", "high", "night", "service", "downtown", "arrive", "way", "free", "elevator", "day", "airport", "place", "time", "small", "staff", "parking", "pay", "great", "lobby", "location", "restaurant", "clean", "walk", "bathroom", "comfortable", "large", "breakfast", "car", "resort", "starwood", "maintain", "immaculate", "cosy", "transportation", "dimly", "panel", "spray", "seating", "cozy", "boat", "beach", "starfish", "olympic", "historic", "deck", "sufficient", "aaa", "suggestion", "outdoor", "individual", "cute", "studio", "gloomy", "mobile", "renovated", "bay", "banquet", "nyc", "mayflower_park", "puget_sound", "mile", "adult", "building", "dingy", "great", "quick", "modern", "decor", "little", "location", "friendly", "fine", "old", "ride", "bar", "boutique", "staff", "eat", "clean", "helpful", "really", "hotel", "stay", "love", "restaurant", "spacious", "excellent", "bathroom", "business", "enjoy", "room", "place", "walk", "comfortable", "area", "service", "downtown", "lobby", "recommend", "small", "night", "market", "view", "price", "large", "time", "bed", "inform", "thread", "cigarette", "sense", "thinking", "taken_care", "handicapped", "delay", "superior", "pile", "await", "okay", "harbor", "notch", "promo", "lcd", "crash", "honestly", "continually", "correct", "renting", "fortunately", "checkout", "minibar", "museum", "renaissance", "schedule", "direct", "overrate", "uncertainty", "earplug", "suitcase", "bag", "priceline", "fax", "tell", "marqueen", "manager", "advance", "follow", "luggage", "customer", "room", "ask", "later", "sheet", "cancel", "book", "street", "hotel", "night", "call", "reservation", "desk", "car", "stay", "day", "bed", "pay", "offer", "pm", "time", "floor", "check", "view", "parking", "experience", "well", "place", "staff", "service", "small", "great", "location", "walk", "market", "clean", "bathroom"], "Freq": [1119.0, 421.0, 78.0, 111.0, 278.0, 31.0, 33.0, 155.0, 198.0, 60.0, 62.0, 324.0, 122.0, 269.0, 98.0, 38.0, 94.0, 144.0, 14.0, 74.0, 1038.0, 111.0, 17.0, 38.0, 634.0, 53.0, 161.0, 38.0, 33.0, 90.0, 10.064368509423863, 8.365556391492836, 7.513919759017012, 7.498729861709226, 6.626605199065959, 6.579645252416432, 5.713516141395664, 5.659820312692591, 4.829420373178015, 4.828650046241041, 4.822678658470539, 4.818692456127124, 7.212623188161228, 5.606279882554954, 4.791868497318517, 4.78767856870567, 14.274727242517313, 7.957058141101786, 5.557544726019841, 5.525303481564136, 5.4934526083036435, 4.708967320530607, 3.9237887801761078, 3.9227618164661875, 3.9222022983069897, 3.9219614930232845, 3.9219452449159062, 3.91966051104767, 3.919162235754743, 3.916224244646281, 10.894679292656928, 4.693774923513994, 13.040661823011312, 10.048231222470495, 44.037163769571436, 5.4552537244759876, 9.119144444923029, 6.149555350410645, 8.33688806418775, 29.344871832746122, 7.52598668676311, 23.958935867289995, 8.116076284920064, 515.1713514965089, 60.548780453368906, 145.85211743139058, 90.60602597363545, 24.37145614918432, 24.725224941272167, 36.84795452076011, 448.2634117746074, 76.23604649301409, 43.87898552791916, 42.11111478745005, 37.46267958264729, 99.27274311847111, 256.49673592414035, 35.60016986597311, 143.69715511369193, 106.10988671014232, 74.91413380618704, 41.33503852017236, 39.42625752663059, 55.331084890831576, 40.62133165461066, 75.67474520818594, 33.59118054495885, 100.3007633719891, 74.81686513629556, 75.96844433067899, 108.70121819842117, 66.01737012443903, 53.68511995045672, 126.72542535839915, 54.6958755483402, 86.29827441844543, 61.491830604426184, 63.686881585826, 61.154416573959686, 59.42453140883162, 52.76744684341513, 46.57159521904863, 44.75498015644537, 44.08875775976881, 16.62007835740438, 6.653210166071944, 5.753886421105723, 5.7107225521395275, 4.855508987610205, 5.54302374888886, 3.945071857259275, 3.9450122172285167, 3.944197941201632, 3.9433357463061034, 8.648871085703027, 3.94324059804894, 3.9424483853860353, 3.941135959969291, 3.9352453865267085, 5.514131773757127, 5.470549045615373, 3.904580413255149, 4.686496035242483, 5.436797269826995, 3.864651929772574, 4.574449654450784, 7.591978724213493, 3.034979811710594, 3.0347057433611555, 3.0345740526574003, 3.0345516445533582, 3.0342603392008107, 3.0340976218914584, 3.0339624837870813, 7.579973496287907, 6.600070553926255, 6.597276780462295, 5.191819121056147, 28.01458961010492, 7.158899021091588, 244.98951967705952, 20.63189016700267, 22.671519923645153, 23.73895236779598, 73.80949266754543, 150.86617196052077, 84.0904742139398, 33.09354014532106, 54.05074082460548, 18.852642579329714, 44.755089808111826, 15.917703575745174, 143.59093213168285, 29.170450638127107, 89.274399477052, 56.774391401996354, 66.03708802646547, 385.1923133825266, 249.15461946582894, 46.755814959256426, 76.80896838973156, 25.641881658099493, 41.31257070552648, 76.94629628298371, 37.81706367642281, 36.72276494974566, 319.76477542857594, 100.09669462701225, 73.62916327789637, 62.25961947945964, 53.858326227336406, 83.78432849119513, 61.294363852860165, 51.50752443784256, 37.86447508769521, 65.73130634922646, 94.23597015797435, 48.859771832542684, 48.69837280918841, 49.409684632219744, 42.836870606570216, 51.246542421164825, 57.59880554462987, 12.631739974487902, 4.422544685865224, 4.310213245608447, 3.5913352742548703, 3.5649087835460675, 4.273234250056638, 3.536855658154255, 3.5187209257798693, 2.769319003078105, 2.7691570003803014, 2.7686108393864406, 2.765727373647053, 2.76318112871322, 2.762898136658829, 2.762150326737322, 2.7619794378155884, 2.7607205560921497, 2.757386399303176, 2.751063737050923, 3.429767545720061, 2.741795861195563, 2.7411139004718974, 4.106283064783424, 2.724203644184708, 2.6918782957495515, 6.683339954760591, 5.244714073515864, 5.235752658460146, 2.587950944811745, 1.938583751262588, 5.74299427002609, 6.9201591896105965, 21.513600996545122, 19.65573309575909, 7.764845357292665, 40.03282341934827, 9.362488165100457, 21.095784418462973, 6.950564202269256, 6.406885426959346, 19.359718849828095, 14.59106941299707, 284.1633516686589, 44.32218092524454, 11.639702897299793, 16.562629029856883, 7.382361772668185, 36.456653283711844, 29.489345157039217, 205.17862693164156, 86.52251021185424, 24.820647055566994, 25.478271373962432, 58.15461745169158, 33.61930659081807, 128.55656229909806, 46.52570926579987, 65.58603437038076, 35.711176565616356, 22.908699874460996, 12.583395270677528, 46.74769898787371, 32.790009540167866, 42.56488867401137, 37.895054958691254, 40.835481849174826, 29.87053955563814, 31.89204339661575, 48.64108261933772, 50.307142971554626, 39.900928159627625, 35.79860971782842, 50.177325721122266, 41.770432912428035, 33.03641404856386, 29.69379392877873, 27.2460429895801, 26.60655750489317], "Total": [1119.0, 421.0, 78.0, 111.0, 278.0, 31.0, 33.0, 155.0, 198.0, 60.0, 62.0, 324.0, 122.0, 269.0, 98.0, 38.0, 94.0, 144.0, 14.0, 74.0, 1038.0, 111.0, 17.0, 38.0, 634.0, 53.0, 161.0, 38.0, 33.0, 90.0, 10.834105140839547, 9.032130210375069, 8.131532436593995, 8.131105890715055, 7.225175981085633, 7.220502232339812, 6.317101383482445, 6.318062580820101, 5.412826766802088, 5.4128078068736745, 5.412370485027392, 5.412819177206418, 8.11387209244671, 6.319020258161964, 5.409593052483177, 5.412682739677936, 16.214454954035908, 9.039636917297434, 6.31605948464746, 6.318617728898352, 6.298556531897621, 5.404047206412403, 4.506538791518958, 4.506394877145952, 4.506446879090391, 4.506373533503224, 4.506422400324618, 4.506131924579739, 4.506345577433631, 4.505816425171722, 12.60014458293032, 5.403996943149962, 15.237301936693472, 11.744779121520764, 53.879853488952776, 6.314318886743768, 10.756405256173377, 7.195332066689358, 9.947030485689858, 38.780166328974055, 8.96162755081268, 33.206195668436536, 9.844241763474873, 1119.0994785937437, 97.09562508760152, 269.0369573464012, 155.81034892422414, 34.647020252566975, 35.27902407626881, 55.88500381239581, 1038.6343520887756, 139.50100023443966, 73.57946260795688, 70.14890692153891, 61.05258176526542, 198.9234626110358, 634.2079176890674, 57.42504932151926, 324.4556354835205, 229.79514336096506, 148.7473816062067, 71.06491542131911, 67.42199383466206, 107.35945254270462, 72.01368918894148, 161.89212911304386, 56.674086974944636, 249.03854061833908, 172.8111065453341, 177.49836039773385, 302.59929330165863, 147.90930287629968, 111.10464166413412, 421.8922707565809, 116.2868844617106, 278.9348792913942, 158.977414305686, 180.20732405245812, 167.81999390041992, 162.9773851967085, 134.5325192451574, 99.05840738522713, 88.8992745142903, 94.95433820966872, 17.2805006376357, 7.258750384534092, 6.348955454547463, 6.348670120099009, 5.437983740105207, 6.3431263877039985, 4.526724754855327, 4.526712341868224, 4.526649346295069, 4.526598505438859, 9.928161973237616, 4.52666640641373, 4.526619919673026, 4.526642022691319, 4.525775267781958, 6.346967839216193, 6.323809578227476, 4.525910373676646, 5.4358912910637915, 6.344937307365021, 4.519623253666598, 5.424839478249171, 9.003380288138995, 3.6154571757649094, 3.6153930517798756, 3.615379494930002, 3.615456223807912, 3.6153808371475447, 3.61547926053973, 3.6153824182486227, 9.0751302935719, 8.137109689880209, 8.153000372146236, 6.343847806531658, 38.494735421087476, 9.073598451447019, 421.8922707565809, 28.792828335324884, 32.29807018215386, 34.092223372334054, 122.78758387932984, 278.9348792913942, 144.78216083185322, 51.22245049594238, 90.33273138418741, 27.23898071827821, 73.60914165320636, 22.50380995087478, 302.59929330165863, 47.31712241213604, 180.20732405245812, 105.26475246799488, 126.1843427570656, 1038.6343520887756, 634.2079176890674, 84.0373391513343, 158.977414305686, 41.40035725053353, 74.86575109760929, 162.9773851967085, 68.04105088560136, 65.58555811191104, 1119.0994785937437, 249.03854061833908, 167.81999390041992, 134.5325192451574, 116.95251489146838, 229.79514336096506, 148.7473816062067, 116.2868844617106, 71.39860059072483, 177.49836039773385, 324.4556354835205, 121.76259266110334, 130.08864799778226, 139.50100023443966, 99.05840738522713, 172.8111065453341, 269.0369573464012, 14.277385295435446, 5.041362078231235, 5.050490506111824, 4.209581506062117, 4.211985249468148, 5.053696260679266, 4.213556656871817, 4.215857905191414, 3.377225155112572, 3.377227513792601, 3.37728884645312, 3.377441097662481, 3.3775737201625082, 3.3776550394434173, 3.3776472769823425, 3.377637095868848, 3.3777979995859044, 3.3780460824232224, 3.3787178892935135, 4.2240466175847615, 3.3790009729621557, 3.378875081984329, 5.0685078669467964, 3.3811361845201047, 3.382951285236186, 8.462712420079978, 6.778254191755861, 6.7785492853439, 3.391730145567785, 2.545450536559191, 7.647590720771175, 9.347088678718027, 33.423486270338024, 31.768898920712964, 11.083907965976962, 78.01661493032489, 14.564980375477703, 38.92281693700378, 10.25051486026329, 9.392996195509745, 38.172046596928354, 26.825934023117384, 1119.0994785937437, 111.25798101163144, 20.714522779642103, 33.01167366174626, 12.02443624096244, 98.39920058708896, 74.49529550535081, 1038.6343520887756, 324.4556354835205, 60.33039702704106, 62.9994293697533, 198.9234626110358, 94.95433820966872, 634.2079176890674, 161.89212911304386, 269.0369573464012, 111.10464166413412, 57.83810902708083, 24.263051988506877, 172.8111065453341, 101.42882945841902, 155.81034892422414, 130.08864799778226, 147.90930287629968, 92.6389647994236, 110.65274625878962, 249.03854061833908, 302.59929330165863, 229.79514336096506, 177.49836039773385, 421.8922707565809, 278.9348792913942, 167.81999390041992, 121.76259266110334, 180.20732405245812, 162.9773851967085], "Category": ["Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Default", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic1", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic2", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3", "Topic3"], "logprob": [30.0, 29.0, 28.0, 27.0, 26.0, 25.0, 24.0, 23.0, 22.0, 21.0, 20.0, 19.0, 18.0, 17.0, 16.0, 15.0, 14.0, 13.0, 12.0, 11.0, 10.0, 9.0, 8.0, 7.0, 6.0, 5.0, 4.0, 3.0, 2.0, 1.0, -7.2601, -7.4449, -7.5523, -7.5543, -7.678, -7.6851, -7.8262, -7.8357, -7.9943, -7.9945, -7.9957, -7.9966, -7.5932, -7.8452, -8.0021, -8.003, -6.9106, -7.495, -7.8539, -7.8597, -7.8655, -8.0196, -8.202, -8.2023, -8.2024, -8.2025, -8.2025, -8.2031, -8.2032, -8.2039, -7.1808, -8.0228, -7.001, -7.2617, -5.784, -7.8725, -7.3587, -7.7527, -7.4484, -6.1899, -7.5507, -6.3927, -7.4752, -3.3246, -5.4656, -4.5865, -5.0625, -6.3756, -6.3612, -5.9623, -3.4637, -5.2352, -5.7876, -5.8287, -5.9457, -4.9712, -4.0219, -5.9967, -4.6013, -4.9046, -5.2527, -5.8473, -5.8946, -5.5557, -5.8648, -5.2426, -6.0548, -4.9609, -5.254, -5.2387, -4.8805, -5.3791, -5.5859, -4.727, -5.5673, -5.1112, -5.4502, -5.4151, -5.4557, -5.4843, -5.6032, -5.7281, -5.7679, -5.7829, -6.5691, -7.4846, -7.6298, -7.6373, -7.7996, -7.6671, -8.0072, -8.0072, -8.0074, -8.0076, -7.2222, -8.0077, -8.0079, -8.0082, -8.0097, -7.6724, -7.6803, -8.0175, -7.835, -7.6865, -8.0278, -7.8592, -7.3526, -8.2695, -8.2696, -8.2696, -8.2696, -8.2697, -8.2698, -8.2698, -7.3542, -7.4926, -7.493, -7.7326, -6.047, -7.4113, -3.8785, -6.3528, -6.2586, -6.2126, -5.0782, -4.3633, -4.9478, -5.8803, -5.3898, -6.443, -5.5785, -6.6122, -4.4127, -6.0065, -4.888, -5.3406, -5.1895, -3.4259, -3.8616, -5.5347, -5.0384, -6.1354, -5.6585, -5.0366, -5.7469, -5.7763, -3.6121, -4.7735, -5.0806, -5.2484, -5.3933, -4.9514, -5.264, -5.4379, -5.7457, -5.1941, -4.8339, -5.4907, -5.494, -5.4795, -5.6223, -5.443, -5.3262, -6.4294, -7.4789, -7.5046, -7.6871, -7.6944, -7.5132, -7.7023, -7.7075, -7.947, -7.947, -7.9472, -7.9483, -7.9492, -7.9493, -7.9496, -7.9496, -7.9501, -7.9513, -7.9536, -7.7331, -7.957, -7.9572, -7.5531, -7.9634, -7.9753, -7.066, -7.3084, -7.3101, -8.0147, -8.3036, -7.2176, -7.0311, -5.8969, -5.9872, -6.916, -5.2759, -6.7289, -5.9165, -7.0268, -7.1082, -6.0024, -6.2852, -3.316, -5.1741, -6.5112, -6.1584, -6.9665, -5.3695, -5.5816, -3.6417, -4.5052, -5.7539, -5.7278, -4.9025, -5.4505, -4.1092, -5.1256, -4.7822, -5.3901, -5.8341, -6.4332, -5.1208, -5.4755, -5.2146, -5.3308, -5.256, -5.5687, -5.5032, -5.0811, -5.0474, -5.2792, -5.3877, -5.05, -5.2334, -5.468, -5.5746, -5.6607, -5.6844], "loglift": [30.0, 29.0, 28.0, 27.0, 26.0, 25.0, 24.0, 23.0, 22.0, 21.0, 20.0, 19.0, 18.0, 17.0, 16.0, 15.0, 14.0, 13.0, 12.0, 11.0, 10.0, 9.0, 8.0, 7.0, 6.0, 5.0, 4.0, 3.0, 2.0, 1.0, 0.791, 0.7881, 0.7857, 0.7838, 0.7783, 0.7718, 0.7643, 0.7547, 0.7507, 0.7505, 0.7494, 0.7485, 0.747, 0.7451, 0.7435, 0.742, 0.7373, 0.7372, 0.7368, 0.7306, 0.728, 0.7271, 0.7263, 0.726, 0.7259, 0.7258, 0.7258, 0.7253, 0.7251, 0.7245, 0.7193, 0.7238, 0.7091, 0.7087, 0.663, 0.7185, 0.6996, 0.7077, 0.6882, 0.5859, 0.6901, 0.5383, 0.6717, 0.089, 0.3925, 0.2525, 0.3226, 0.5129, 0.5093, 0.4482, 0.0245, 0.2605, 0.3478, 0.3544, 0.3763, 0.1697, -0.0405, 0.3866, 0.0503, 0.092, 0.1788, 0.3229, 0.3282, 0.2019, 0.2922, 0.1043, 0.3417, -0.0447, 0.0276, 0.0161, -0.1591, 0.0581, 0.1374, -0.338, 0.1105, -0.3084, -0.0851, -0.1754, -0.1448, -0.1442, -0.0712, 0.11, 0.1784, 0.0975, 1.0151, 0.967, 0.9557, 0.9482, 0.9408, 0.9193, 0.9166, 0.9166, 0.9164, 0.9162, 0.9162, 0.9161, 0.9159, 0.9156, 0.9143, 0.9135, 0.9092, 0.9064, 0.9058, 0.8996, 0.8976, 0.8836, 0.8836, 0.8791, 0.879, 0.879, 0.879, 0.8789, 0.8788, 0.8788, 0.8741, 0.8448, 0.8424, 0.8537, 0.7363, 0.8171, 0.5106, 0.7208, 0.7002, 0.6922, 0.5451, 0.4395, 0.5108, 0.6173, 0.5405, 0.6861, 0.5566, 0.7079, 0.3087, 0.5704, 0.3517, 0.4367, 0.4066, 0.0622, 0.1198, 0.4678, 0.3267, 0.5751, 0.4596, 0.3036, 0.4668, 0.4742, -0.1986, 0.1426, 0.2303, 0.2836, 0.2787, 0.0452, 0.1676, 0.2398, 0.4199, 0.0607, -0.1822, 0.141, 0.0715, 0.0162, 0.2158, -0.1614, -0.4872, 1.3457, 1.3372, 1.3097, 1.3094, 1.3014, 1.3005, 1.2931, 1.2875, 1.2698, 1.2697, 1.2695, 1.2684, 1.2674, 1.2673, 1.267, 1.267, 1.2665, 1.2652, 1.2627, 1.2599, 1.2592, 1.259, 1.2577, 1.2522, 1.2397, 1.2322, 1.2117, 1.21, 1.1977, 1.1959, 1.1818, 1.1676, 1.0276, 0.9881, 1.1123, 0.801, 1.0263, 0.8557, 1.0797, 1.0856, 0.7893, 0.8593, 0.0975, 0.5478, 0.8918, 0.7785, 0.9804, 0.4753, 0.5415, -0.1536, 0.1465, 0.5801, 0.5629, 0.2384, 0.4299, -0.1278, 0.2213, 0.0567, 0.3332, 0.5421, 0.8116, 0.1608, 0.339, 0.1706, 0.2348, 0.1812, 0.3364, 0.2242, -0.1649, -0.3261, -0.2826, -0.1328, -0.661, -0.4306, -0.1571, 0.0571, -0.421, -0.3442]}, "token.table": {"Topic": [2, 1, 1, 2, 1, 3, 1, 1, 2, 3, 1, 2, 1, 2, 1, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 3, 1, 2, 3, 2, 1, 2, 3, 1, 2, 3, 2, 2, 1, 2, 3, 1, 1, 1, 2, 3, 2, 1, 2, 3, 1, 2, 3, 1, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 3, 1, 3, 1, 2, 3, 1, 2, 1, 2, 3, 1, 2, 3, 3, 3, 2, 1, 2, 3, 3, 1, 2, 3, 2, 3, 1, 2, 3, 2, 3, 1, 2, 3, 3, 1, 3, 1, 2, 3, 1, 2, 3, 2, 1, 2, 1, 3, 1, 2, 3, 1, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 1, 2, 3, 1, 3, 1, 2, 3, 1, 3, 1, 1, 2, 3, 1, 2, 3, 1, 3, 3, 1, 2, 3, 1, 2, 3, 2, 1, 2, 3, 1, 1, 1, 2, 3, 3, 3, 1, 2, 3, 1, 1, 2, 3, 1, 2, 3, 1, 2, 3, 2, 1, 2, 2, 3, 1, 2, 3, 1, 2, 3, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 3, 2, 1, 2, 3, 1, 2, 3, 1, 3, 1, 2, 1, 2, 1, 2, 1, 3, 2, 1, 2, 3, 3, 1, 1, 2, 3, 1, 2, 3, 2, 1, 2, 3, 3, 1, 2, 3, 2, 2, 3, 2, 1, 2, 3, 1, 2, 3, 1, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 3, 1, 2, 3, 1, 2, 3, 1, 1, 2, 3, 2, 3, 1, 2, 3, 1, 2, 3, 2, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 3, 2, 1, 1, 3, 1, 2, 3, 1, 1, 2, 3, 1, 2, 3, 1, 1, 2, 3, 1, 2, 3, 2, 1, 2, 3, 2, 2, 1, 2, 3, 1, 2, 3, 1, 2, 2, 1, 2, 1, 3, 3, 1, 3, 1, 2, 3, 3, 3, 1, 2, 3, 1, 2, 3, 2, 1, 3, 1, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 1, 2, 3], "Freq": [0.9198123605267152, 0.887679292783479, 0.15763303762905456, 0.7881651881452728, 0.2926682260253748, 0.6828925273925412, 0.9499593875871957, 0.5999214423168608, 0.2999607211584304, 0.1058684898206225, 0.7918510435855498, 0.15837020871710997, 0.8514421511492127, 0.08514421511492126, 0.8531694163449142, 0.13125683328383295, 0.3420191522783404, 0.46172585557575957, 0.19666101256004573, 0.5769372939786854, 0.18293133711519294, 0.23921790238140614, 0.37750100818034005, 0.22470298105972622, 0.39547724666511813, 0.888286473675666, 0.29919081208696624, 0.059838162417393245, 0.6582197865913257, 0.8297655120699409, 0.24453484439206108, 0.6113371109801526, 0.1494379604618151, 0.3620134163325107, 0.4724581874170055, 0.1656671566267422, 0.8297881012078754, 0.8836615556379503, 0.5426763721982487, 0.21558376429793444, 0.24531945592523574, 0.9237317607624107, 0.8876316999160138, 0.6282466377343432, 0.2677772554277529, 0.10299125208759725, 0.8836524808482665, 0.315043209853755, 0.315043209853755, 0.36585663079790903, 0.17774767955879, 0.71099071823516, 0.1333107596690925, 0.9237330559748208, 0.5061908575279361, 0.3712066288538198, 0.12373554295127327, 0.10391031283225274, 0.7273721898257691, 0.18184304745644228, 0.2792431885266593, 0.5584863770533186, 0.17636411906946903, 0.5138371621540183, 0.08287696163774488, 0.4143848081887244, 0.33265592829821006, 0.5821478745218676, 0.4633806188280053, 0.17903342091082022, 0.35806684182164045, 0.6060349772308953, 0.1146552659626018, 0.27844850305203295, 0.5840433618710166, 0.147615355198169, 0.2759765336313595, 0.1972967244504618, 0.7891868978018473, 0.9237563405198784, 0.7920022808001363, 0.3551464977159845, 0.49387559838629097, 0.14982742872393098, 0.8849912970167996, 0.11062391212709995, 0.6927002618131889, 0.05772502181776574, 0.23090008727106295, 0.3939567942187909, 0.460855117765378, 0.14866294121463808, 0.8879107692022482, 0.7102194344898942, 0.9194584314632883, 0.9242839436332164, 0.9065122048029058, 0.10072357831143398, 0.8881525776164768, 0.14910944001252593, 0.29821888002505187, 0.5591604000469722, 0.8885551586151655, 0.11106939482689569, 0.46944839391748155, 0.2470781020618324, 0.29031676992265304, 0.7906626437985611, 0.15813252875971223, 0.14666101255389274, 0.7039728602586851, 0.14666101255389274, 0.9487985814404214, 0.8338739538897554, 0.13897899231495925, 0.4976788494456245, 0.20610942249768288, 0.29156942694794163, 0.8730058554170824, 0.07936416867428021, 0.07936416867428021, 0.8836410907709008, 0.22041971668704918, 0.7714690084046721, 0.14752419107759962, 0.7376209553879982, 0.5042105561128783, 0.41009125230514104, 0.08739649639289891, 0.9495142846314029, 0.9838243974773974, 0.2615202712885663, 0.7845608138656989, 0.1690719890005005, 0.6128859601268143, 0.21133998625062564, 0.5693361979057728, 0.2082937309411364, 0.22217997967054548, 0.3049451826860003, 0.5641485879691005, 0.13722533220870012, 0.9252410859221407, 0.3606455502569879, 0.5476469466865372, 0.08014345561266398, 0.8367107584417823, 0.09296786204908693, 0.3562215971589238, 0.32383781559902164, 0.32383781559902164, 0.2706626588030833, 0.7217670901415556, 0.8876220745999892, 0.214749585259912, 0.644248755779736, 0.13665882698358037, 0.40422432378368367, 0.26619650590632826, 0.3253512849966234, 0.3193869067501729, 0.6387738135003458, 0.8878694616428894, 0.5122976943098935, 0.3166931201188432, 0.16766106359232877, 0.29699791571655876, 0.5801819748881614, 0.12432470890460601, 0.8297852977626002, 0.30102471366031536, 0.5807169672974587, 0.11851366679539975, 0.9694616488930358, 0.8876172530868454, 0.5987263642892786, 0.15680928588528725, 0.24234162364089848, 0.9493167710172993, 0.8882115531902167, 0.34199481930996406, 0.5414917972407763, 0.11399827310332135, 0.9688345333490688, 0.6269041198108207, 0.2612100499211753, 0.12189802329654847, 0.15755554862296153, 0.9453332917377693, 0.8880873519191209, 0.4313356274987792, 0.3706790548817634, 0.1973745616902896, 0.9450798177408576, 0.9498027078825138, 0.9216862581920515, 0.0700408358608705, 0.9105308661913164, 0.47446755142369923, 0.43408733428125673, 0.10095054285610622, 0.33792716706365483, 0.09655061916104424, 0.5793037149662654, 0.888194887387182, 0.23618023161445953, 0.6026667979127588, 0.16288291835479968, 0.4729682135229074, 0.44716994733074883, 0.08599422064052861, 0.3083156908109673, 0.5413449920053032, 0.15057277923326312, 0.2617883933757403, 0.5592752040299905, 0.1903915588187202, 0.31436616764912, 0.1833802644619867, 0.4977464321111067, 0.8126578148133694, 0.10158222685167118, 0.9450373440094745, 0.2826105833450698, 0.1798430984923171, 0.5395292954769514, 0.3531462254559582, 0.4024224429614407, 0.2463810875274127, 0.34328916834095013, 0.6179205030137103, 0.11019125540360784, 0.8815300432288627, 0.9495747736975532, 0.15826246228292554, 0.12265423210532186, 0.858579624737253, 0.8876372065273352, 0.8872757074189839, 0.8297884092685223, 0.154808010874988, 0.7121168500249448, 0.154808010874988, 0.8867996453547957, 0.8608915065284453, 0.4438203077761426, 0.28971603424275977, 0.26814143594808615, 0.8042601268297184, 0.1005325158537148, 0.8881901689091232, 0.8297877383198847, 0.34579277117506807, 0.25934457838130104, 0.39766168685132824, 0.8882464307301445, 0.3321055340661541, 0.5977899613190774, 0.07749129128210262, 0.8838264746540021, 0.885029520271397, 0.8845043300158515, 0.8836435138595875, 0.4462193974046209, 0.27719689838771905, 0.27719689838771905, 0.4860282990087878, 0.19801152922580242, 0.3240188660058585, 0.86272003307969, 0.88830260553901, 0.4015442740377031, 0.4015442740377031, 0.1967566942784745, 0.3297194435304143, 0.16485972176520716, 0.5357940957369233, 0.5447989610990425, 0.3512519617612247, 0.10035770336034992, 0.37772791653714305, 0.031477326378095256, 0.6295465275619051, 0.8881922101351744, 0.12289375934598241, 0.860256315421877, 0.12289375934598241, 0.17365435384705433, 0.7293482861576283, 0.13892348307764346, 0.6620738565968042, 0.26840832024194766, 0.07157555206451938, 0.8926949881190414, 0.11158687351488017, 0.301146712577161, 0.5230442902655954, 0.17434809675519847, 0.26611165825101946, 0.5322233165020389, 0.21008815125080482, 0.8875991498237552, 0.11816542384534312, 0.11816542384534312, 0.8271579669174018, 0.8297707991165513, 0.8878363824116009, 0.816631767735254, 0.07423925161229582, 0.11135887741844373, 0.4920679490294468, 0.1111121175227783, 0.39682899115277964, 0.9837677944917411, 0.3837023030372577, 0.4843455300634236, 0.13209423547184282, 0.2936967459517216, 0.6975297716353389, 0.0367120932439652, 0.46019143950200664, 0.28594419541872257, 0.25377547343411627, 0.1475306135931377, 0.7376530679656886, 0.8836657360253769, 0.9230111642820081, 0.7938326781189669, 0.9502132205397844, 0.46128041894033367, 0.36554297349988707, 0.17406808261899384, 0.885726823425389, 0.15146157238898106, 0.3332154592557583, 0.5149693461225355, 0.5979929512999982, 0.27181497786363557, 0.12231674003863599, 0.9496582098148804, 0.4281729692020879, 0.3718344206228658, 0.20281877488519956, 0.26569819031835146, 0.6280139043888308, 0.12077190469015975, 0.8836558111738617, 0.36021234157787285, 0.475876854928566, 0.16523501907241875, 0.8836572408307641, 0.9643533155396279, 0.40365311258303926, 0.3926157227858468, 0.20340332626254712, 0.335591661599682, 0.2684733292797456, 0.38928632745563113, 0.8876274958250733, 0.8297705806362651, 0.8838000909749745, 0.15760597017077357, 0.7880298508538679, 0.2139703675384734, 0.7488962863846569, 0.8883032259363833, 0.925232480217241, 0.7914998831889356, 0.3845334743989138, 0.10254225983971034, 0.5127112991985517, 0.9496709421062395, 0.7934363646031555, 0.43399988287399227, 0.2951199203543148, 0.2719732599343685, 0.7478049411648103, 0.18050464097081628, 0.07735913184463555, 0.9459057936526157, 0.923809634582821, 0.785715523155872, 0.8877414485095352, 0.330543830394279, 0.3766662253330156, 0.29210850127866517, 0.36348469918426907, 0.4409486514694411, 0.19663926349312916, 0.8634271111601742, 0.06167336508286959, 0.06167336508286959, 0.5784462573984257, 0.31147106167607536, 0.10382368722535845, 0.3343794099196244, 0.3795658166655196, 0.2891930031737292, 0.7086363825131088, 0.2551090977047192, 0.02834545530052435, 0.9237349964006751, 0.7227566879277504, 0.15057430998494797, 0.12045944798795839], "Term": ["aaa", "accurate", "adult", "adult", "advance", "advance", "advertise", "airport", "airport", "airport", "alexis", "alexis", "allow", "allow", "appreciate", "appreciate", "area", "area", "area", "arrive", "arrive", "arrive", "ask", "ask", "ask", "await", "bag", "bag", "bag", "banquet", "bar", "bar", "bar", "bathroom", "bathroom", "bathroom", "bay", "beach", "bed", "bed", "bed", "blanket", "blind", "block", "block", "block", "boat", "book", "book", "book", "boutique", "boutique", "boutique", "bread", "breakfast", "breakfast", "breakfast", "building", "building", "building", "business", "business", "business", "call", "call", "call", "cancel", "cancel", "car", "car", "car", "charge", "charge", "charge", "check", "check", "check", "checkout", "checkout", "chip", "cigarette", "clean", "clean", "clean", "cleanliness", "cleanliness", "clerk", "clerk", "clerk", "comfortable", "comfortable", "comfortable", "continually", "correct", "cosy", "counter", "cozy", "cozy", "crash", "customer", "customer", "customer", "cute", "cute", "day", "day", "day", "deck", "deck", "decor", "decor", "decor", "delay", "deliver", "deliver", "desk", "desk", "desk", "difficult", "difficult", "difficult", "dimly", "dingy", "dingy", "direct", "direct", "downtown", "downtown", "downtown", "drain", "drawer", "earplug", "earplug", "eat", "eat", "eat", "elevator", "elevator", "elevator", "enjoy", "enjoy", "enjoy", "exceed", "excellent", "excellent", "excellent", "expectation", "expectation", "experience", "experience", "experience", "fax", "fax", "final", "fine", "fine", "fine", "floor", "floor", "floor", "follow", "follow", "fortunately", "free", "free", "free", "friendly", "friendly", "friendly", "gloomy", "great", "great", "great", "grocery", "ground", "guest", "guest", "guest", "handicapped", "harbor", "helpful", "helpful", "helpful", "hide", "high", "high", "high", "historic", "historic", "honestly", "hotel", "hotel", "hotel", "immaculate", "improvement", "individual", "inform", "inform", "large", "large", "large", "later", "later", "later", "lcd", "little", "little", "little", "lobby", "lobby", "lobby", "location", "location", "location", "love", "love", "love", "luggage", "luggage", "luggage", "mail", "mail", "maintain", "manager", "manager", "manager", "market", "market", "market", "marqueen", "marqueen", "mayflower_park", "mayflower_park", "microwave", "microwave", "mile", "mile", "min", "minibar", "mobile", "modern", "modern", "modern", "museum", "newly", "night", "night", "night", "non", "non", "notch", "nyc", "offer", "offer", "offer", "okay", "old", "old", "old", "olympic", "outdoor", "overrate", "panel", "parking", "parking", "parking", "pay", "pay", "pay", "personnel", "pile", "place", "place", "place", "pm", "pm", "pm", "price", "price", "price", "priceline", "priceline", "priceline", "promo", "puget_sound", "puget_sound", "puget_sound", "quick", "quick", "quick", "rate", "rate", "rate", "reach", "reach", "really", "really", "really", "recommend", "recommend", "recommend", "remain", "renaissance", "renaissance", "renaissance", "renovated", "renting", "request", "request", "request", "reservation", "reservation", "reservation", "resort", "restaurant", "restaurant", "restaurant", "ride", "ride", "ride", "room", "room", "room", "schedule", "schedule", "seating", "section", "self", "sense", "service", "service", "service", "shampoo", "sheet", "sheet", "sheet", "shower", "shower", "shower", "sixth", "small", "small", "small", "spacious", "spacious", "spacious", "spray", "staff", "staff", "staff", "starfish", "starwood", "stay", "stay", "stay", "street", "street", "street", "strong", "studio", "sufficient", "suggestion", "suggestion", "suitcase", "suitcase", "superior", "surprised", "taken_care", "tell", "tell", "tell", "thinking", "thread", "time", "time", "time", "towel", "towel", "towel", "transportation", "true", "uncertainty", "variety", "view", "view", "view", "walk", "walk", "walk", "warwick", "warwick", "warwick", "way", "way", "way", "well", "well", "well", "wine", "wine", "wine", "wonder", "worth", "worth", "worth"]}, "R": 30, "lambda.step": 0.01, "plot.opts": {"xlab": "PC1", "ylab": "PC2"}, "topic.order": [1, 3, 2]};
+
+function LDAvis_load_lib(url, callback){
+  var s = document.createElement('script');
+  s.src = url;
+  s.async = true;
+  s.onreadystatechange = s.onload = callback;
+  s.onerror = function(){console.warn("failed to load library " + url);};
+  document.getElementsByTagName("head")[0].appendChild(s);
+}
+
+if(typeof(LDAvis) !== "undefined"){
+   // already loaded: just create the visualization
+   !function(LDAvis){
+       new LDAvis("#" + "ldavis_el5869225671670773762574400954", ldavis_el5869225671670773762574400954_data);
+   }(LDAvis);
+}else if(typeof define === "function" && define.amd){
+   // require.js is available: use it to load d3/LDAvis
+   require.config({paths: {d3: "https://d3js.org/d3.v5"}});
+   require(["d3"], function(d3){
+      window.d3 = d3;
+      LDAvis_load_lib("https://cdn.jsdelivr.net/gh/bmabey/pyLDAvis@3.4.0/pyLDAvis/js/ldavis.v3.0.0.js", function(){
+        new LDAvis("#" + "ldavis_el5869225671670773762574400954", ldavis_el5869225671670773762574400954_data);
+      });
+    });
+}else{
+    // require.js not available: dynamically load d3 & LDAvis
+    LDAvis_load_lib("https://d3js.org/d3.v5.js", function(){
+         LDAvis_load_lib("https://cdn.jsdelivr.net/gh/bmabey/pyLDAvis@3.4.0/pyLDAvis/js/ldavis.v3.0.0.js", function(){
+                 new LDAvis("#" + "ldavis_el5869225671670773762574400954", ldavis_el5869225671670773762574400954_data);
+            })
+         });
+}
+</script>
+</div>
+</div>
+</div>
+</section>
+<section id="sentiment-analysis" class="level2" data-number="10.7">
+<h2 data-number="10.7" class="anchored" data-anchor-id="sentiment-analysis"><span class="header-section-number">10.7</span> Sentiment Analysis</h2>
 <div style="text-align: justify">
 <p>&nbsp;&nbsp;&nbsp;&nbsp;Sentiment analysis involves converting text into sentiments such as positive, neutral, and negative. Texts are widely used to express emotion, feelings, opinion and so on. Therefore, sometimes sentiment analysis is also called “Opinion Mining.” Identifying sentiment from texts could provide valuable insights to make strategic decisions such as improving product features, launching new products, identifying strengths or weaknesses of product or service offerings. Before, we perform the sentiment analysis, we need to do the preprocessing as described in <a href="#sec-preprocessing" class="quarto-xref"><span>Section 10.3.1</span></a> first.</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;Below we use <code>texblob</code> python module for seniment analysis of our text about Accounting. <code>texblob</code> is simple for sentiment analysis because the function accepts text as input and return sentiment score. There are two types of sentiment scores - polarity and subjectivity. Polarity score actually measures the sentiment of the text and it values are between -1 and +1, where -1 indicates high negative sentiment and +1 indicates very positive sentiment. On the other hand, subjectivity score measures whether the text contaiins factual information or personal opinion. Subjectivity scores range from 0 to 1, where 0 indicates factual information and 1 indicates personal opinion.</p>
-<div id="62be18c9" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> textblob <span class="im">import</span> TextBlob</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cae47598" class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> textblob <span class="im">import</span> TextBlob</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="f8aafc44" class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Determining Polarity </span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>TextBlob(my_text).sentiment.polarity</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="14">
+<div id="41ae1f5b" class="cell" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Determining Polarity </span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>TextBlob(my_text).sentiment.polarity</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="33">
 <pre><code>0.028571428571428574</code></pre>
 </div>
 </div>
-<div id="ec33af4e" class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Determining Subjectivity </span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>TextBlob(my_text).sentiment.subjectivity</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="15">
+<div id="48a80fa9" class="cell" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Determining Subjectivity </span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>TextBlob(my_text).sentiment.subjectivity</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="34">
 <pre><code>0.21706349206349207</code></pre>
 </div>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;In the above analysis, we see the polarity score is 0.02857, which is very close to zero. Therefore, we can say our text is neutral. On the other hand, subjectivity score is 0.21706, which is close to 0, indicating that our text is factual information (not personal opinion).</p>
 </div>
 </section>
-<section id="readability-index" class="level2" data-number="10.6">
-<h2 data-number="10.6" class="anchored" data-anchor-id="readability-index"><span class="header-section-number">10.6</span> Readability Index</h2>
+<section id="readability-index" class="level2" data-number="10.8">
+<h2 data-number="10.8" class="anchored" data-anchor-id="readability-index"><span class="header-section-number">10.8</span> Readability Index</h2>
 <div style="text-align: justify">
 
 </div>
 </section>
-<section id="text-similarity" class="level2" data-number="10.7">
-<h2 data-number="10.7" class="anchored" data-anchor-id="text-similarity"><span class="header-section-number">10.7</span> Text Similarity</h2>
+<section id="text-similarity" class="level2" data-number="10.9">
+<h2 data-number="10.9" class="anchored" data-anchor-id="text-similarity"><span class="header-section-number">10.9</span> Text Similarity</h2>
 <div style="text-align: justify">
 
 </div>
 </section>
-<section id="topic-modeling" class="level2" data-number="10.8">
-<h2 data-number="10.8" class="anchored" data-anchor-id="topic-modeling"><span class="header-section-number">10.8</span> Topic Modeling</h2>
+<section id="conclusion" class="level2" data-number="10.10">
+<h2 data-number="10.10" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">10.10</span> Conclusion</h2>
 <div style="text-align: justify">
 
 </div>
+
+
 </section>
-<section id="conclusion" class="level2" data-number="10.9">
-<h2 data-number="10.9" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">10.9</span> Conclusion</h2>
-<div style="text-align: justify">
-
-</div>
-
-
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>The collection of documents is called corpus.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>You might find some discrepencies between <a href="#eq-tfidfscore" class="quarto-xref">Equation&nbsp;<span>10.1</span></a> tf-idf scores and tf-idf scores generated by different packages because the packages uses a slightly different formula that might include some kinds of smoothing.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
 </section>
 
 </main> <!-- /main -->

@@ -543,7 +543,7 @@ plt.show()
 
      A hyperparameter is a parameter of the model that is set before the start of learning process. Different machine learning models have different hyperparameters. You can find out more about the different hyperparameters of k-NN in [scikit-learn](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html). For example, `weights` argument has two options - "uniform" or "distance"; `p` argument selects the either manhattn distance or euclidean distance.
 
-     Sure! Grid search and random search are two popular methods for hyperparameter tuning in machine learning. Both methods aim to find the best combination of hyperparameters that optimize the performance of a model. Grid search is an exhaustive search method that evaluates all possible combinations of hyperparameters from a predefined grid. It systematically explores the hyperparameter space by creating a grid of hyperparameter values and evaluating the model for each combination. One advantage of grid search is that it evaluates all possible combinations, ensuring that the best hyperparameters are found within the predefined grid. On the other hand, random search randomly samples hyperparameter combinations from a predefined distribution. It evaluates a fixed number of random combinations, rather than exhaustively searching the entire grid. One of the disadvantages of grid search is that it may miss the optimal combination of hyperparameters, as it does not evaluate all possible combinations. 
+     *Grid search* and *random search* are two popular methods for hyperparameter tuning in machine learning. Both methods aim to find the best combination of hyperparameters that optimize the performance of a model. **Grid search** is an exhaustive search method that evaluates all possible combinations of hyperparameters from a predefined grid. It systematically explores the hyperparameter space by creating a grid of hyperparameter values and evaluating the model for each combination. One advantage of grid search is that it evaluates all possible combinations, ensuring that the best hyperparameters are found within the predefined grid. On the other hand, **random search** randomly samples hyperparameter combinations from a predefined distribution. It evaluates a fixed number of random combinations, rather than exhaustively searching the entire grid. One of the disadvantages of grid search is that it may miss the optimal combination of hyperparameters, as it does not evaluate all possible combinations. 
 
      We will use the  Grid Search technique for hyperparameter optimization. An exhaustive grid search takes in as many hyperparameters as you would like, and tries every single possible combination of the hyperparameters as well as as many cross-validations as you would like it to perform. An exhaustive grid search is a good way to determine the best hyperparameter values to use, but it can quickly become time consuming with every additional parameter value and cross-validation that you add. Specifically, we will use three hyperparamters- n-neighbors, weights and metric.
 
@@ -918,11 +918,11 @@ print('Average cross-validation score: {:.4f}'.format(scores.mean()))
 
 **Interpretation**
 
-    * Using the mean cross-validation, we can conclude that we expect the model to be around 96.46 % accurate on average.
+* Using the mean cross-validation, we can conclude that we expect the model to be around 96.46 % accurate on average.
 
-    * If we look at all the 10 scores produced by the 10-fold cross-validation, we can also conclude that there is a relatively high variance in the accuracy between folds, ranging from 100% accuracy to 87.72% accuracy. So, we can conclude that the model is very dependent on the particular folds used for training, but it also be the consequence of the small size of the dataset.
+* If we look at all the 10 scores produced by the 10-fold cross-validation, we can also conclude that there is a relatively high variance in the accuracy between folds, ranging from 100% accuracy to 87.72% accuracy. So, we can conclude that the model is very dependent on the particular folds used for training, but it also be the consequence of the small size of the dataset.
 
-    * We can see that 10-fold cross-validation accuracy does not result in performance improvement for this model.
+* We can see that 10-fold cross-validation accuracy does not result in performance improvement for this model.
 
 
 

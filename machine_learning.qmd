@@ -10,7 +10,7 @@ At the End of the Chapter, Students should be Able to -
 
 -   Learn about the Nature of Machine Learning (ML) 
 
--   Recognize the Importance of Machine Learning in Modern Business World 
+-   Recognize the Importance of Machine Learning in Accounting & Auditing 
 
 -   Understand Different Types of Machine Learning
 
@@ -19,9 +19,927 @@ At the End of the Chapter, Students should be Able to -
 -   Build Some Machine Learning Models and Evaluate their Performance 
 :::
 
+```{python}
+#| include: false
+#| eval: false
+# Machine Learning Systems 
+# Link of the above Book - https://mlsysbook.ai/
+```
+
 
 ## Introduction 
+::: {style="text-align: justify"}
+     Machine Learning (ML), which is a subset of Artificial Intelligence (AI)^[Though AI and ML are used interchangeably in the book, there are differences between them. @reddy2025 differentiates them in the following way: `Artificial Intelligence` - the goal of creating machines that can match or exceed human intelligence—representing humanity’s quest to build systems that can think, reason, and adapt. `Machine Learning` - the scientific discipline of understanding how systems can learn and improve from experience—providing the theoretical foundation for building intelligent systems.], has been woven into the fabric of our daily lives [@reddy2025]. Since waking up from the sleep until we go to the bed, we keep interacting with ML based products or services. For example, while commuting to the office, our GPS suggests the best route; at work, email filters spam [@reddy2025]. Therefore, it is dubbed AI is everywhere. While 18th and 19th centuries are characterized by Industrial Revolution, and 20th century is by Computer and Internet - the 21st century seems to be dominated by ML and AI. 
 
-## Importance of Machine Learning 
+     It goes without saying that AI/ML has potential to significantly transform accounting and auditing profession in many ways. For example, repetitive tasks such as data entry, reconiliation, verification can be subordinated to AI, which allows accountants and auditors to get involved more with stratgeic decision making. Even in strategic decision making, AI facilitates effective and efficient decision making by identifying and processing vast amount of the unstructured data. Moreover, ML systems allow continuous montioring of finanical activites and real time insights of potential risks, thus enhancing the accuracy of financial reporting. Therefore, understanding how ML systems work is important for the future generation of accountants and auditors.    
+:::
+
+
+
+
+
+## Importance of Machine Learning in Accounting  
+::: {style="text-align: justify"}
+     Accountants and auditors have already started leveraging the power of AI in their day to day business. For example, auditors are using AI/ML to review and extract information from contracts, thus reducing time and human errors [@schatsky16cognitive]. The auditing process is being automated gradually, reducing the time spent on reviewing the audit documentations and allowing more time to spend on professional judgment [@schatsky16cognitive;@persico2017ai]. For example, audit procedure - confirmation - is handled by AI-enabled system, ultimately providing the auditors with the relevant documentation for professional judgment. AI-enabled drone using computer vision is being used in accounting profession to count inventory and communicate the data with the auditors in real time, thus allowing more data to be captured and allowing auditors to focus on risk management [@vien2018drone]. Academic research also supports that AI/ML is enhancing the performance of accountants and auditors [@fedyk2022artificial;@estep2024financial]. 
+
+     Recently, accounting firms have turned  their focus on Generative Artificial Intelligence (GenAI). For example, PricewaterhouseCoopers dedicated $1 billion investment in GenAI, partnering with Microsoft and OpenAI to automate aspects of its tax, audit and consulting services [@loten2023pwc]. Other accounting firms started following the same feat [@deloitte2024industryadvantage].  Moreover, big four accounting firms are developing their own chatbot like ChatGPT. For example, EY rolled out [EY.ai EYQ](https://www.ey.com/en_us/services/ai/platform) - a large language model - to aid EY employees in ideation, research, and creation; and to aid clients to capture the transformative power of AI to transform their businesses through confident and responsible adoption of AI [@ey2023ai]. To sum up, all  these developments highlight the importance of AI/ML in accounting. Therefore, future generations of accountants should prepare themselves to embrace these technologies, develop relevant skills, and stay updated with the latest advancements in AI and ML. This will enable them to leverage AI/ML tools effectively, enhance their professional capabilities, and contribute to the evolving landscape of the accounting profession.  
+:::
+
+## Types of Machine Learning 
+::: {style="text-align: justify"}
+     Machine learning can be categorized into different types based on the the nature of learning process and the type of data it used. Usually, ML can be categorized into three types - supervised, unsupervised, and reinforcement learning. @fig-mltypes shows different types of machine learning. 
+
+
+![Machine Learning Types](images/ml-types.webp){#fig-mltypes}
+
+### Supervised Machine Learning 
+
+
+
+### Unsupervised Machine Learning 
+
+
+### Reinforcement Learning 
+:::
+
+## Roadmap for Building ML Systems  
+::: {style="text-align: justify"}
+     In the previous sections, we discuss about machine learning and different types of ML. In this section, we will discuss typical workflow (also called roadmap) for using machine systems [@raschka2022machine]. @fig-mlroadmap shows the typical workflow when ML systems are developed.  
+
+
+![Machine Learning Roadmap](images/ml-roadmap.png){#fig-mlroadmap}
+:::
+
+
+## Example of a Machine Learning System
+::: {style="text-align: justify"}
+     Using a dataset, machine learning roadmap or workflow is illustrated below. A supervised machine learning for classification is used. 
+
+
+### Preprocessing Data 
+     Since data rarely come into the form ready to feed into an ML system, preprocessing is an important step before feeding the data into an ML system. Preprocessing invloves getting the data ready into shape so that data become ready to feed into an ML system. Based on the condition or circumstances of the data, we need to decide what kinds of preprocessing we will perform on the dataset. Usually, in preprocessing, we clean and transform the dataset. Some of the cleaning includes - fixing the name of the fixtures, removing missing rows, changing the types of the features and so on. 
+
+
+```{python}
+#| warning: false
+# importing necessary python packages 
+import numpy as np # linear algebra
+import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
+import matplotlib.pyplot as plt # for data visualization purposes
+import seaborn as sns # for data visualization
+import sklearn # for Machine Learning
+```
+
+
+
+
+
+
+```{python}
+#| warning: false
+# importing Dataset 
+df = pd.read_csv("DATA/breast-cancer-wisconsin.txt", header=None)
+```
+
+```{python}
+#| warning: false
+# meta data 
+df.shape
+df.info()
+df.head()
+```
+
+```{python}
+#| warning: false
+# assigning column names 
+col_names = ['Id', 'Clump_thickness', 'Uniformity_Cell_Size', 'Uniformity_Cell_Shape', 'Marginal_Adhesion','Single_Epithelial_Cell_Size', 'Bare_Nuclei', 'Bland_Chromatin', 'Normal_Nucleoli', 'Mitoses', 'Class']
+df.columns = col_names
+df.columns
+df.info()
+df.head()
+```
+
+```{python}
+#| warning: false
+# Dropping redundant columns 
+df.drop('Id', axis=1, inplace=True)
+df.info()
+```
+
+```{python}
+#| warning: false
+# changing the types of variables 
+df['Bare_Nuclei'] = pd.to_numeric(df['Bare_Nuclei'], errors='coerce')
+df.dtypes
+```
+
+```{python}
+#| warning: false
+# Checking missing observations 
+df.isnull().sum() # Checking missing values in variables
+df.isna().sum() # Checking missing values in the dataframe 
+```
+
+```{python}
+#| warning: false
+# summary statistics 
+round(df.describe(),2).transpose()
+```
+
+```{python}
+#| warning: false
+# visualization 
+
+# Set the figure size
+plt.figure(figsize=(15, 20))
+
+# Create subplots
+for i, column in enumerate(df.drop(columns = ['Class']).columns, 1):
+    plt.subplot(5, 2, i)
+    sns.histplot(df[column], bins=10, color = "orangered")
+    plt.title(f'Histogram of {column}')
+
+plt.tight_layout()
+plt.show()
+
+```
+
+```{python}
+#| warning: false
+# Discovering pattern and relation 
+correlation = df.corr()
+correlation['Class'].sort_values(ascending=False)
+```
+
+     The correlation coefficient ranges from -1 to +1. When it is close to +1, this signifies that there is a strong positive correlation. So, we can see that there is a strong positive correlation between `Class` and `Bare_Nuclei`, `Class` and `Uniformity_Cell_Shape`, `Class` and `Uniformity_Cell_Size`. When it is close to -1, it means that there is a strong negative correlation. When it is close to 0, it means that there is no correlation. We can see that all the variables are positively correlated with Class variable. Some variables are strongly positive correlated while some variables are negatively correlated.  
+
+
+```{python}
+#| warning: false
+plt.figure(figsize=(10,8))
+plt.title('Correlation of Attributes with Class variable')
+a = sns.heatmap(correlation, square=True, annot=True, fmt='.2f', linecolor='white')
+a.set_xticklabels(a.get_xticklabels(), rotation=90)
+a.set_yticklabels(a.get_yticklabels(), rotation=30)           
+plt.show()
+```
+
+### Declaring Feature Vector and Target Vector 
+     In machine learning, the terms "feature vector" and "target vector" are fundamental concepts. A feature vector is a collection of input variables (features) that are used to make predictions. Each feature represents a measurable property or characteristic of the data. The feature vector is typically represented as a row in a dataset, where each column corresponds to a different feature. On the otherhand, The target vector, also known as the response vector or label, is the output variable that the model aims to predict. It represents the ground truth or actual values that correspond to the feature vectors. In our dataset, the target vector is `Class` and all other variables (features) are feature vector.  
+
+```{python}
+#| warning: false
+# Feature Vector 
+X = df.drop(['Class'], axis = 1) 
+# Target Vector 
+y = df["Class"]
+```
+
+### Training and Testing Dataset 
+
+     The training dataset is the portion of the data used to train the machine learning model. It contains input-output pairs where the input is the feature vector, and the output is the target vector. The model learns the relationship between the inputs and outputs during the training process. The testing dataset is the portion of the data used to evaluate the performance of the trained model. It contains input-output pairs that the model has not seen during training. The testing dataset helps assess how well the model generalizes to new, unseen data. 
+
+     Splitting the dataset into training and testing sets is a very important step in building and evaluating machine learning models. We need to split the dataset into training and testing for the following reasons. 
+
+ * __Model Evaluation__: The testing dataset is used to evaluate the model's performance on new, unseen data. This helps determine how well the model generalizes to real-world scenarios. Overfitting occurs when a model performs well on the training data but poorly on new data. By evaluating the model on a separate testing set, we can detect and mitigate overfitting. If we use the same dataset for developing and evaluating model, then model performance will be overstated. 
+
+ * __Hyperparameter Tuning__: To optimize the performance of machine learning models, we need to identify the best parameters^[Sometimes, we are confused between parameters and hyperparameters. Parameters are learned from the training data, while hyperparameters are set (supplied) before training and are not learned from the data. For example, in linear regression, coefficients - betas ($\beta$) are parameters because they are learned from the data whereas in ridge regression - lambda ($\lambda$) is a hyperparameter, which controls the amount of regularization applied to the model and it is supplied from outside of the model.] for the model. Hyperparameter tuning is the process of identifying the best parameters for optimizing the performance of machine learning models. During the training process, hyperparameters (e.g., value of $k$ in KNN algorithm) are tuned to improve the model's performance. The testing set helps validate that these parameters are optimized for generalization, not just for the training data.  
+
+ * __Bias-Variance Tradeoff__: Splitting the data helps in managing the bias-variance tradeoff. A model with high bias may underfit the data, while a model with high variance may overfit. Evaluating on a testing set helps find the right balance.  
+
+```{python}
+#| warning: false
+# Split X and y into training and testing sets
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
+```
+
+```{python}
+#| warning: false
+# check the shape of X_train and X_test
+X_train.shape, X_test.shape
+```
+
+### Feature Engineering 
+
+     Feature engineering is the process of creating new features or modifying existing ones to improve the performance of a machine learning model. It involves transforming raw data into meaningful features that better represent the underlying patterns and relationships in the data. Effective feature engineering can significantly enhance the accuracy and efficiency of machine learning models. Key Steps in Feature Engineering - 
+
+a) **Data Cleaning**:
+    * **Handling Missing Values**: Filling in or removing missing data points.
+    * **Removing Outliers**: Identifying and eliminating data points that deviate significantly from the rest of the data.
+
+b) **Feature Creation**:
+    * **Combining Features**: Creating new features by combining existing ones (e.g., creating a "total sales" feature by summing individual sales columns).
+    * **Extracting Features**: Deriving new features from existing data (e.g., extracting the day of the week from a date column).
+
+c) **Feature Transformation**:
+    * **Scaling**: Normalizing or standardizing features to ensure they have similar scales (e.g., using Min-Max scaling or Z-score normalization).
+    * **Encoding Categorical Variables**: Converting categorical variables into numerical representations (e.g., one-hot encoding or label encoding).
+
+d) **Feature Selection**:
+    * **Removing Redundant Features**: Eliminating features that provide little or no additional information.
+    * **Selecting Important Features**: Identifying and retaining the most relevant features using techniques like correlation analysis, mutual information, or feature importance scores from models.
+
+e) **Dimensionality Reduction**:
+    * **Principal Component Analysis (PCA)**: Reducing the number of features while preserving the most important information.
+    * **t-Distributed Stochastic Neighbor Embedding (t-SNE)**: Visualizing high-dimensional data in lower dimensions.
+
+
+```{python}
+#| warning: false
+# check missing values in numerical variables in X_train
+X_train.isnull().sum()
+```
+
+
+```{python}
+#| warning: false
+# check missing values in numerical variables in X_test
+X_test.isnull().sum()
+```
+
+
+```{python}
+#| warning: false
+# print percentage of missing values in the numerical variables in training set
+for col in X_train.columns:
+    if X_train[col].isnull().mean()>0:
+        print(col, round(X_train[col].isnull().mean(),4))
+```
+
+     It is assumed that the data are missing completely at random (MCAR). There are two methods which can be used to impute missing values. One is mean or median imputation and other one is random sample imputation. When there are outliers in the dataset, we should use median imputation. So, I will use median imputation because median imputation is robust to outliers.
+
+     I will impute missing values with the appropriate statistical measures of the data, in this case median. Imputation should be done over the training set, and then propagated to the test set. It means that the statistical measures to be used to fill missing values both in train and test set, should be extracted from the train set only. This is to avoid overfitting.
+
+
+```{python}
+#| warning: false
+# impute missing values in X_train and X_test with respective column median in X_train
+for df in [X_train, X_test]:
+    for col in X_train.columns:
+        col_median=X_train[col].median()
+        df[col].fillna(col_median, inplace=True)  
+```
+
+
+```{python}
+#| warning: false
+# check again missing values in numerical variables in X_train
+X_train.isnull().sum()
+```
+
+
+```{python}
+#| warning: false
+# check missing values in numerical variables in X_test
+X_test.isnull().sum()
+```
+
+     Now, we will perform feature selection. Feature selection involves identifying the features that have the greatest explanatory power to predict the target variables. Therere are many techniques that can be used for feature selection. When there are many variables, using feature selection is very much important. Otherwise, noises might be introduced in the model. 
+
+```{python}
+#| warning: false
+# feature selectiong using Chi-square test 
+from sklearn.feature_selection import SelectKBest, chi2, f_classif
+chi_feature = SelectKBest(chi2, k = 4).fit(X_train, y_train)
+print ('Score: ', chi_feature.scores_)
+print ('Features: ', X_train.columns)
+```
+
+     
+```{python}
+#| warning: false
+# feature selection using ANOVA 
+anova_feature = SelectKBest (f_classif, k = 4).fit(X_train, y_train)
+print ('Scores: ', anova_feature.scores_)
+print ('Features: ', X_train.columns)
+```
+
+     We can rank the features based on their scores. Higher scores indicate more relevant feature. Therefore, chi-square test above indicate that the four relevant features are - `Clump_thickness`, `Uniformity_Cell_Size`, `Uniformity_Cell_Shape`, and `Marginal_Adhesion`. Using ANOVA suggests the same results.
+
+     Now, we will perform feature scaling. Normalizing or standardizing features to ensure they have similar scales (e.g., using Min-Max scaling or Z-score normalization). Feature scaling is important because some algorimthms (such as KNN, Support Vector Machines) in ML are sensitive to the scale of features. Scaling ensures that all features contribute equally to the model's predictions. Moreover, if features are not scaled, features with larger values tend to dominate learning process in ML, thus leading to bias in results. Therefore, scaling ensures that each feature contributes equally to the model. Moreover, distance-based alogrithms perform better when features are scaled.   
+
+
+```{python}
+#| warning: false
+# Feature Scaling 
+cols = X_train.columns
+from sklearn.preprocessing import StandardScaler
+scaler = StandardScaler()
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)
+X_train = pd.DataFrame(X_train, columns=[cols])
+X_test = pd.DataFrame(X_test, columns=[cols])
+X_train.head()
+```
+
+
+:::
+
+::: {style="text-align: justify"}
+## Machine Learning Algorithms 
+     Now, the data is ready to feed to a Machine Learning algorithm. An algorithm is a step-by-step procedure or set of rules designed to perform a specific task or solve a particular problem. It is a sequence of instructions that takes an input, processes it, and produces an output. Machine learning algorithms are the backbone of machine learning systems. They are used to build models that can learn from data and make predictions or decisions. Different algorthims learn different ways from the data. For different ML, different kinds of algorithms are used. For example, for classification supervised machine learning, we can use KNN algorithm, logistic regression, decision trees, and support vector machines. 
+
+### K Nearnest Neighbor (KNN) Algorithm 
+     KNN is a simple, yet powerful, machine learning supervised algorithm. KNN is an instance based ML algorithm because it uses similarity between data points to make a prediction. To measure the similarity between data points, KNN relies on distance metrics such as Euclidean distance, or Manhattan distance, or Minkowski distance. KNN is called *lazy learner* because all of its computation is done in prediction phase. The *K* in KNN represents the number of nearest neighbors to consider when making the prediction. For example, when K = 2, the number of neareast number that will be used is 2.  
+
+     Assume you are trying to build a model that will classify reptiles into one of three classes [@rhys2020machine]. The classes are - Adder, Grass Snake, and Slow worm. We have two features of the reptiles - length of it and how aggressive (aggressiveness) the reptile is - which we will use to classify the reptiles. Further assume that a reptile expert helps you manually classify the observations so far, but you decide to build a kNN classifier to help you quickly classify future specimens you come across. @fig-knnwork1 plots the data before classification. Each of the reptile is plotted against body length and aggressiveness and we have three new reptiles that need to be classified.   
+
+![Reptile Characteristics](images/knn-work1.png){#fig-knnwork1}
+
+     To predict the classifiction of the new reptiles, KNN will use distance based metrics as mentioned above and calculate the distance between each new unlabelled cases and all the labeled cases. Then, for each new unlabelled case, the algorithm ranks the neighbors from the nearest (most similar) to the furthest (the least similar) [@rhys2020machine]. @fig-knnwork2 shows the ranking of the neighbors. The algorithm identifies *K*-labeled cases (neighbors) nearest to each unlabeled cas. We actually determine the value of *K*. Each of the K-nearest neighbor cases votes to which class the unlabeled case belongs. @fig-knnwork3 shows the membership of new cases based on the value of K.   
+
+![Ranking the Neighbors](images/knn-work2.png){#fig-knnwork2}
+
+![Different K Values](images/knn-work3.png){#fig-knnwork3}
+
+
+### Building First KNN Model 
+
+```{python}
+#| warning: false
+# import KNeighbors ClaSSifier from sklearn
+from sklearn.neighbors import KNeighborsClassifier
+# instantiate the model
+knn = KNeighborsClassifier(n_neighbors=3)
+# fit the model to the training set
+knn.fit(X_train, y_train)
+```
+
+
+```{python}
+#| warning: false
+# prediction using test data 
+y_pred = knn.predict(X_test)
+y_pred
+```
+
+     `predict_proba ()` method gives the probabilities for the target variable(2 and 4) in this case, in array form. 2 is for probability of benign cancer and 4 is for probability of malignant cancer.
+
+```{python}
+#| warning: false
+# Prediction probability
+knn.predict_proba(X_test)[0:11]
+```
+
+
+```{python}
+#| warning: false
+# probability of getting output as 2 - benign cancer
+knn.predict_proba(X_test)[:,0]
+```
+
+
+```{python}
+#| warning: false
+# probability of getting output as 4 - malignant cancer
+knn.predict_proba(X_test)[:,1]
+```
+
+### Model Evaluation (Accuracy Score)
+
+```{python}
+#| warning: false
+from sklearn.metrics import accuracy_score
+print('Model accuracy score: {0:0.4f}'. format(accuracy_score(y_test, y_pred)))
+```
+
+     So, the ML model predicts the outcome variable with 97.14% accuracy. 
+
+### Overfitting and Underfitting 
+
+     Overfitting and underfitting are two important sources of error in machine learning model building. In underfitting, the model is too simple or there are few predictors, thus failing to adequately describe the relationships/patterns in data. In underfitting, the model performs poorly on both training and testing data and is *biased*. On the other hand, in overfitting, the model is too complex or there are many predictors on the model. Thus, in overfitting, we are modeling not only the patterns in the data, but also the *noise* present in the dataset. In underfitting, the model performs very well on the trained data set, but performs poor on the testing data set. The problem with underfitting and obverfitting is that they reduce the *generalizability* of the model. Therefore, during model building process, we need to trade off between overfitting and underfitting. @fig-overfitting shows the tradeoff between overfitting and underfitting. Splitting the dataset into *training* and *testing* is one of the ways to deal with overfitting and underfitting. Splitting the data is calso called *cross validation (CV)*, which is discussed further in @sec-crossvalidate.  
+
+![Overfitting vs Underfitting](images/overfitting-underfitting.png){#fig-overfitting}
+```{python}
+#| warning: false
+y_pred_train = knn.predict(X_train)
+# print the scores on training and test set
+print('Training set score: {:.4f}'.format(knn.score(X_train, y_train)))
+print('Test set score: {:.4f}'.format(knn.score(X_test, y_test)))
+```
+
+     The training-set accuracy score is 0.9821 while the test-set accuracy to be 0.9714. These two values are quite comparable. So, there is no question of overfitting.
+
+### Comparing Model Accuracy with Null Accuracy
+
+     Null accuracy is a baseline measure used to evaluate the performance of a machine learning classification model. It represents the accuracy that could be achieved by always predicting the most frequent class in the dataset. Null accuracy is particularly useful for understanding how well a model performs compared to a simple, naive approach. If the model's accuracy is *lower than or equal to the null accuracy*, it indicates that *the model is not performing better* than a naive approach of always predicting the most frequent class. In such cases, we may need to improve our model by feature engineering, or hyperparameter tuning, or using different algorithms. We can see that the occurences of most frequent class is 85. So, we can calculate null accuracy by dividing 85 by total number of occurences. We can see that our model accuracy score is 0.9714 but null accuracy score is 0.6071. So, we can conclude that our K Nearest Neighbors model is doing a very good job in predicting the class labels. 
+
+```{python}
+#| warning: false
+# check class distribution in test set
+y_test.value_counts()
+```
+
+
+```{python}
+#| warning: false
+# check null accuracy score
+null_accuracy = (85/(85+55))
+print('Null accuracy score: {0:0.4f}'. format(null_accuracy))
+```
+
+
+### Rebuild KNN Classification Model Using Different Values of K
+
+```{python}
+# instantiate the model with k=5
+knn_5 = KNeighborsClassifier(n_neighbors=5)
+# fit the model to the training set
+knn_5.fit(X_train, y_train)
+# predict on the test-set
+y_pred_5 = knn_5.predict(X_test)
+print('Model accuracy score with k=5 : {0:0.4f}'. format(accuracy_score(y_test, y_pred_5)))
+```
+
+#### Rebuild KNN Classification Model Using K=6
+```{python}
+# instantiate the model with k=6
+knn_6 = KNeighborsClassifier(n_neighbors=6)
+# fit the model to the training set
+knn_6.fit(X_train, y_train)
+# predict on the test-set
+y_pred_6 = knn_6.predict(X_test)
+print('Model accuracy score with k=6 : {0:0.4f}'. format(accuracy_score(y_test, y_pred_6)))
+```
+
+#### Rebuild KNN Classification Model Using K=7 
+
+```{python}
+# instantiate the model with k=7
+knn_7 = KNeighborsClassifier(n_neighbors=7)
+# fit the model to the training set
+knn_7.fit(X_train, y_train)
+# predict on the test-set
+y_pred_7 = knn_7.predict(X_test)
+print('Model accuracy score with k=7 : {0:0.4f}'. format(accuracy_score(y_test, y_pred_7)))
+```
+
+#### Rebuild KNN Classification Model Using K=8 
+
+```{python}
+# instantiate the model with k=8
+knn_8 = KNeighborsClassifier(n_neighbors=8)
+# fit the model to the training set
+knn_8.fit(X_train, y_train)
+# predict on the test-set
+y_pred_8 = knn_8.predict(X_test)
+print('Model accuracy score with k=8 : {0:0.4f}'. format(accuracy_score(y_test, y_pred_8)))
+```
+
+#### Rebuild KNN Classification Model Using K=9
+
+```{python}
+# instantiate the model with k=9
+knn_9 = KNeighborsClassifier(n_neighbors=9)
+# fit the model to the training set
+knn_9.fit(X_train, y_train)
+# predict on the test-set
+y_pred_9 = knn_9.predict(X_test)
+print('Model accuracy score with k=9 : {0:0.4f}'. format(accuracy_score(y_test, y_pred_9)))
+```
+
+     Our original model accuracy score with k=3 is 0.9714. Now, we can see that we get same accuracy score of 0.9714 with k=5. But, if we increase the value of k further, this would result in enhanced accuracy. With k=6,7,8 we get accuracy score of 0.9786. So, it results in performance improvement. If we increase k to 9, then accuracy decreases again to 0.9714. Now, based on the above analysis we can conclude that our classification model accuracy is very good. Our model is doing a very good job in terms of predicting the class labels. But, it does not give the underlying distribution of values. Also, it does not tell anything about the type of errors our classifer is making.
+
+
+```{python}
+
+```
+
+```{python}
+
+```
+
+
+
+### Automating the Calculation of Value `K`
+
+```{python}
+from sklearn import metrics
+mean_acc = np.zeros(20)
+for i in range(1,21):
+#Train Model and Predict  
+    knn = KNeighborsClassifier(n_neighbors = i).fit(X_train,y_train)
+    yhat= knn.predict(X_test)
+    mean_acc[i-1] = metrics.accuracy_score(y_test, yhat)
+
+mean_acc
+```
+
+```{python}
+loc = np.arange(1,21,step=1.0)
+plt.figure(figsize = (10, 6))
+# Create a line plot 
+sns.lineplot(x=range(1, 21), y=mean_acc, marker='o', color= "orangered")
+plt.xticks(loc)
+plt.xlabel('Number of Neighbors ')
+plt.ylabel('Accuracy')
+plt.title('Accuracy vs. Number of Neighbors')
+plt.show()
+```
+
+
+### Hyperparameter Tuning 
+
+     A hyperparameter is a parameter of the model that is set before the start of learning process. Different machine learning models have different hyperparameters. You can find out more about the different hyperparameters of k-NN in [scikit-learn](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html). For example, `weights` argument has two options - "uniform" or "distance"; `p` argument selects the either manhattn distance or euclidean distance.
+
+     Sure! Grid search and random search are two popular methods for hyperparameter tuning in machine learning. Both methods aim to find the best combination of hyperparameters that optimize the performance of a model. Grid search is an exhaustive search method that evaluates all possible combinations of hyperparameters from a predefined grid. It systematically explores the hyperparameter space by creating a grid of hyperparameter values and evaluating the model for each combination. One advantage of grid search is that it evaluates all possible combinations, ensuring that the best hyperparameters are found within the predefined grid. On the other hand, random search randomly samples hyperparameter combinations from a predefined distribution. It evaluates a fixed number of random combinations, rather than exhaustively searching the entire grid. One of the disadvantages of grid search is that it may miss the optimal combination of hyperparameters, as it does not evaluate all possible combinations. 
+
+     We will use the  Grid Search technique for hyperparameter optimization. An exhaustive grid search takes in as many hyperparameters as you would like, and tries every single possible combination of the hyperparameters as well as as many cross-validations as you would like it to perform. An exhaustive grid search is a good way to determine the best hyperparameter values to use, but it can quickly become time consuming with every additional parameter value and cross-validation that you add. Specifically, we will use three hyperparamters- n-neighbors, weights and metric.
+
+1. **n_neighbors**: Decide the best k based on the values we have computed earlier.
+
+2. **weights**: Check whether adding weights to the data points is beneficial to the model or not. ‘uniform’ assigns no weight, while ‘distance’ weighs points by the inverse of their distances meaning nearer points will have more weight than the farther points.
+
+3. **metric**: The distance metric to be used will calculating the similarity. 
+
+
+```{python}
+from sklearn.model_selection import GridSearchCV
+```
+
+     Since we have provided the class validation score as 3( cv= 3), Grid Search will evaluate the model `10 x 2 x 3 x 3 = 180` times with different hyperparameters.
+
+
+```{python}
+grid_params = { 'n_neighbors' : [3,4,5,6,7,8,9,10,11,12],
+               'weights' : ['uniform','distance'],
+               'metric' : ['minkowski','euclidean','manhattan']}
+gs = GridSearchCV(KNeighborsClassifier(), grid_params, verbose = 1, cv=3, n_jobs = -1)
+```
+
+```{python}
+# fit the model on our train set
+g_res = gs.fit(X_train, y_train)
+```
+
+```{python}
+# find the best score
+g_res.best_score_
+```
+
+```{python}
+# get the hyperparameters with the best score
+g_res.best_params_
+```
+
+```{python}
+# use the best hyperparameters
+knn = KNeighborsClassifier(n_neighbors = 5, weights = 'distance', \
+algorithm = 'brute',metric = 'manhattan')
+knn.fit(X_train, y_train)
+```
+
+```{python}
+# get a prediction
+y_hat = knn.predict(X_train)
+y_knn = knn.predict(X_test)
+```
+
+```{python}
+from sklearn import metrics
+```
+
+```{python}
+print('Training set accuracy: ', metrics.accuracy_score(y_train, y_hat))
+print('Test set accuracy: ', metrics.accuracy_score(y_test, y_knn))
+```
+
+### Confusion Matrix
+
+     A confusion matrix is a tool for summarizing the performance of a classification algorithm. A confusion matrix will give us a clear picture of classification model performance and the types of errors produced by the model. It gives us a summary of correct and incorrect predictions broken down by each category. The summary is represented in a tabular form. Four types of outcomes are possible while evaluating a classification model performance. These four outcomes are described below:
+
+`True Positives (TP)` – True Positives occur when we predict an observation belongs to a certain class and the observation actually belongs to that class.
+
+`True Negatives (TN)` – True Negatives occur when we predict an observation does not belong to a certain class and the observation actually does not belong to that class.
+
+`False Positives (FP)` – False Positives occur when we predict an observation belongs to a certain class but the observation actually does not belong to that class. This type of error is called Type I error.
+
+`False Negatives (FN)` – False Negatives occur when we predict an observation does not belong to a certain class but the observation actually belongs to that class. This is a very serious error and it is called Type II error.
+
+These four outcomes are summarized in a confusion matrix given below.
+```{python}
+# Print the Confusion Matrix with k =3 and slice it into four pieces
+from sklearn.metrics import confusion_matrix
+cm = confusion_matrix(y_test, y_pred)
+print('Confusion matrix\n\n', cm)
+print('\nTrue Positives(TP) = ', cm[0,0])
+print('\nTrue Negatives(TN) = ', cm[1,1])
+print('\nFalse Positives(FP) = ', cm[0,1])
+print('\nFalse Negatives(FN) = ', cm[1,0])
+```
+
+     The confusion matrix shows 83 + 53 = 136 correct predictions & 2 + 2 = 4 incorrect predictions. In this case, we have - 
+True Positives (Actual Positive:1 and Predict Positive:1) - 83
+True Negatives (Actual Negative:0 and Predict Negative:0) - 53
+False Positives (Actual Negative:0 but Predict Positive:1) - 2 (Type I error)
+False Negatives (Actual Positive:1 but Predict Negative:0) - 2 (Type II error)
+
+```{python}
+# Print the Confusion Matrix with k =7 and slice it into four pieces
+cm_7 = confusion_matrix(y_test, y_pred_7)
+print('Confusion matrix\n\n', cm_7)
+print('\nTrue Positives(TP) = ', cm_7[0,0])
+print('\nTrue Negatives(TN) = ', cm_7[1,1])
+print('\nFalse Positives(FP) = ', cm_7[0,1])
+print('\nFalse Negatives(FN) = ', cm_7[1,0])
+```
+
+
+```{python}
+# visualize confusion matrix with seaborn heatmap
+plt.figure(figsize=(6,4))
+cm_matrix = pd.DataFrame(data=cm_7, columns=['Actual Positive:1', 'Actual Negative:0'], 
+                                 index=['Predict Positive:1', 'Predict Negative:0'])
+sns.heatmap(cm_matrix, annot=True, fmt='d', cmap='OrRd')
+```
+
+
+### Classification Matrices 
+
+#### Classification Report 
+     Classification report is another way to evaluate the classification model performance. It displays the precision, recall, f1 and support scores for the model. I have described these terms in later. We can print a classification report as follows
+
+```{python}
+from sklearn.metrics import classification_report
+print(classification_report(y_test, y_pred_7))
+```
+
+#### Classification Accuracy 
+```{python}
+TP = cm_7[0,0]
+TN = cm_7[1,1]
+FP = cm_7[0,1]
+FN = cm_7[1,0]
+```
+
+#### Classification Error 
+
+```{python}
+# print classification error
+classification_error = (FP + FN) / float(TP + TN + FP + FN)
+print('Classification error : {0:0.4f}'.format(classification_error))
+```
+
+
+#### Precision 
+     Precision can be defined as the percentage of correctly predicted positive outcomes out of all the predicted positive outcomes. It can be given as the ratio of true positives (TP) to the sum of true and false positives (TP + FP). Precision is a metric that tells us about the quality of positive predictions. So, Precision identifies the proportion of correctly predicted positive outcome. It is more concerned with the positive class than the negative class. Precision is a useful metric in cases where False Positive is a higher concern than False Negatives. Precision is important in music or video recommendation systems, e-commerce websites, etc. Wrong results could lead to customer churn and be harmful to the business. Mathematically, precision can be defined as the ratio of TP to (TP + FP).
+
+
+```{python}
+# print precision score
+precision = TP / float(TP + FP)
+print('Precision : {0:0.4f}'.format(precision))
+```
+
+#### Recall 
+     Recall can be defined as the percentage of correctly predicted positive outcomes out of all the actual positive outcomes. It can be given as the ratio of true positives (TP) to the sum of true positives and false negatives (TP + FN). Recall tells us about how well the model identifies true positives. Recall is also called Sensitivity. Recall identifies the proportion of correctly predicted actual positives. Mathematically, recall can be given as the ratio of TP to (TP + FN). Recall is a useful metric in cases where False Negative triumphs over False Positive. Recall is important in medical cases where it doesn’t matter whether we raise a false alarm, but the actual positive cases should not go undetected!
+
+
+```{python}
+recall = TP / float(TP + FN)
+print('Recall or Sensitivity : {0:0.4f}'.format(recall))
+```
+
+#### Precision vs Recall 
+     Data scientists optimize their model to have higher precision or recall depending on the circumstances. A model with higher recall than precision often makes more positive predictions. A model like this comes with higher false positives and low false negatives. In scenarios like disease prediction, models should always be optimized for recall. False positives are better than false negatives in the healthcare industry.
+
+     On the other hand, a model with higher precision will have fewer false positives and more false negatives. If you were to build a bot detection machine learning model for an online store, you may want to optimize for higher precision, since banning legitimate users from the website will lead to a decline in sales.
+
+#### f1-Score
+
+     In practice, when we try to increase the precision of our model, the recall goes down, and vice-versa. The F1-score captures both the trends in a single value:
+
+        $f1-score = 2/((1/Recall) + (1/Precision))$
+
+     f1-score is the weighted harmonic mean of precision and recall, and so it gives a combined idea about these two metrics. It is maximum when Precision is equal to Recall. The best possible f1-score would be 1.0 and the worst would be 0.0. f1-score is the harmonic mean of precision and recall. So, f1-score is always lower than accuracy measures as they embed precision and recall into their computation. The weighted average of f1-score should be used to compare classifier models, not global accuracy.
+
+#### Support 
+
+     Support is the actual number of occurrences of the class in our dataset.
+
+#### True Positive Rate 
+
+     True Positive Rate is synonymous with Recall.
+```{python}
+true_positive_rate = TP / float(TP + FN)
+print('True Positive Rate : {0:0.4f}'.format(true_positive_rate))
+```
+
+#### False Positive Rate 
+
+```{python}
+false_positive_rate = FP / float(FP + TN)
+print('False Positive Rate : {0:0.4f}'.format(false_positive_rate))
+```
+
+#### Specificity (True Negative Rate)
+```{python}
+specificity = TN / (TN + FP)
+print('Specificity : {0:0.4f}'.format(specificity))
+```
+
+#### Adjusting the Classification Threshold Level
+
+```{python}
+# print the first 10 predicted probabilities of two classes- 2 and 4
+y_pred_prob = knn.predict_proba(X_test)[0:10]
+y_pred_prob
+```
+
+In each row, the numbers sum to 1. There are 2 columns which correspond to 2 classes - 2 and 4.
+
+Class 2 - predicted probability that there is benign cancer.
+
+Class 4 - predicted probability that there is malignant cancer.
+
+Importance of predicted probabilities
+
+We can rank the observations by probability of benign or malignant cancer.
+
+* `predict_proba` process
+
+   * Predicts the probabilities
+
+   * Choose the class with the highest probability
+* Classification threshold level
+
+   * There is a classification threshold level of 0.5.
+
+   * Class 4 - probability of malignant cancer is predicted if probability > 0.5.
+
+   * Class 2 - probability of benign cancer is predicted if probability < 0.5.
+
+
+
+```{python}
+y_pred_prob_df = pd.DataFrame(data=y_pred_prob, \
+columns=['Prob of - benign cancer (2)', 'Prob of - malignant cancer (4)'])
+y_pred_prob_df
+```
+
+```{python}
+# print the first 10 predicted probabilities for class 4 - Probability of malignant cancer
+knn.predict_proba(X_test)[0:10, 1]
+```
+
+```{python}
+# store the predicted probabilities for class 4 - Probability of malignant cancer
+y_pred_1 = knn.predict_proba(X_test)[:, 1]
+```
+
+```{python}
+# plot histogram of predicted probabilities
+# adjust figure size
+plt.figure(figsize=(6,4))
+# adjust the font size 
+plt.rcParams['font.size'] = 12
+# plot histogram with 10 bins
+#plt.hist(y_pred_1, bins = 10)
+sns.histplot(y_pred_1, bins=10, kde=False, color='orangered')
+# set the title of predicted probabilities
+plt.title('Histogram of predicted probabilities of malignant cancer')
+# set the x-axis limit
+plt.xlim(0,1)
+# set the title
+plt.xlabel('Predicted probabilities of malignant cancer')
+plt.ylabel('Frequency')
+```
+
+```{python}
+
+
+```
+
+```{python}
+
+
+```
+
+```{python}
+
+
+```
+
+### ROC (Receiver Operating Characteristics) - AUC (Area Under ROC Curve) Curve
+
+#### ROC Curve 
+
+     Another tool to measure the classification model performance visually is ROC Curve. ROC Curve stands for Receiver Operating Characteristic Curve. An ROC Curve is a plot which shows the performance of a classification model at various classification threshold levels.
+
+     The ROC Curve plots the True Positive Rate (TPR) against the False Positive Rate (FPR) at various threshold levels. True Positive Rate (TPR) is also called Recall. It is defined as the ratio of TP to (TP + FN). False Positive Rate (FPR) is defined as the ratio of FP to (FP + TN).
+
+     In the ROC Curve, we will focus on the TPR (True Positive Rate) and FPR (False Positive Rate) of a single point. This will give us the general performance of the ROC curve which consists of the TPR and FPR at various threshold levels. So, an ROC Curve plots TPR vs FPR at different classification threshold levels. If we lower the threshold levels, it may result in more items being classified as positive. It will increase both True Positives (TP) and False Positives (FP).
+
+
+```{python}
+# plot ROC Curve
+from sklearn.metrics import roc_curve
+fpr, tpr, thresholds = roc_curve(y_test, y_pred_1, pos_label=4)
+plt.figure(figsize=(6,4))
+# plt.plot(fpr, tpr, linewidth=2)
+# plt.plot([0,1], [0,1], 'k--' )
+sns.lineplot(x=fpr, y=tpr, linewidth=2, color='orangered')
+plt.rcParams['font.size'] = 12
+plt.title('ROC curve for Breast Cancer kNN classifier')
+plt.xlabel('False Positive Rate (1 - Specificity)')
+plt.ylabel('True Positive Rate (Sensitivity)')
+plt.show()
+```
+
+     ROC curve help us to choose a threshold level that balances sensitivity and specificity for a particular context.
+
+#### ROC AUC 
+
+     ROC AUC stands for Receiver Operating Characteristic - Area Under Curve. It is a technique to compare classifier performance. In this technique, we measure the area under the curve (AUC). A perfect classifier will have a ROC AUC equal to 1, whereas a purely random classifier will have a ROC AUC equal to 0.5. So, ROC AUC is the percentage of the ROC plot that is underneath the curve.
+
+```{python}
+# compute ROC AUC
+from sklearn.metrics import roc_auc_score
+ROC_AUC = roc_auc_score(y_test, y_pred_1)
+print('ROC AUC : {:.4f}'.format(ROC_AUC))
+```
+
+**Interpretation**:
+
+    * ROC AUC is a single number summary of classifier performance. The higher the value, the better the classifier.
+
+    * ROC AUC of our model approaches towards 1. So, we can conclude that our classifier does a good job in predicting whether it is benign or malignant cancer.
+
+
+
+```{python}
+from sklearn.model_selection import cross_val_score
+Cross_validated_ROC_AUC = \
+cross_val_score(knn_7, X_train, y_train, cv=5,scoring='roc_auc').mean()
+print('Cross validated ROC AUC : {:.4f}'.format(Cross_validated_ROC_AUC))
+```
+
+**Interpretation**: 
+
+     Our Cross Validated ROC AUC is very close to 1. So, we can conclude that, the KNN classifier is indeed a very good model.
+
+
+
+
+### Cross Validation {#sec-crossvalidate} 
+     Cross-validation involves splitting the dataset into multiple subsets, training the model on some subsets, and validating it on the remaining subsets. This process is repeated several times, and the results are averaged to obtain a more reliable estimate of the model's performance. There are three common cross validation approaches - Holdout cross valiation, K-fold cross validation, and Leave-one-out (LOO) cross validation. 
+
+#### Holdout Cross Validation 
+     Holdout CV is the simplest of all cross validation approaches. In holdout CV, we "hold out" a random proportion of our dataset as *test* data set and train the model on remaining dataset called *training* data set. Next, we pass the test data set through the model and calculate performance metrics. @fig-hlodout shows the process of holdout cross validation. A common rule of thumb for the training and testing split is 80-20.  
+
+
+![Holdout Cross Validation](images/holdoutcv.png){#fig-hlodout}
+
+#### K-fold Cross Validation 
+     In K-fold CV, the dataset is divided into $K$ equally sized folds. The model is trained on K-1 folds and validated on the remaining fold. The process is repeated K times, with each fold used ad the validation set once. @fig-kfoldcv shows the process of K-fold cv. There is a variation of K-fold cross validation, which is called stratified K-fold CV, which is similar to K-fold CV, but ensures that each fold has a similar distribution of the target variable. The stratified K-fold CV is useful for imbalanced dataset. 
+
+
+![K-fold Cross Validation](images/kfoldcv.png){#fig-kfoldcv}
+
+#### Leave-One-Out (LOO) Cross Validation 
+     In LOO, each data point is used as a test and the model is trained on the remaining data points. The process is repeated until all data point is used as a test data. For a data set of 1000 observations, LOO cv involves training the model 1000 times, each time using a different data point as the validation set. @fig-loocv shows the process of LOO cv.  
+
+![Leave-One-Out Cross Validation](images/loocv.png){#fig-loocv}
+
+
+
+```{python}
+# Applying 10-Fold Cross Validation
+from sklearn.model_selection import cross_val_score
+scores = cross_val_score(knn_7, X_train, y_train, cv = 10, scoring='accuracy')
+print('Cross-validation scores:{}'.format(scores))
+```
+
+```{python}
+# compute Average cross-validation score
+print('Average cross-validation score: {:.4f}'.format(scores.mean()))
+```
+
+**Interpretation**
+
+    * Using the mean cross-validation, we can conclude that we expect the model to be around 96.46 % accurate on average.
+
+    * If we look at all the 10 scores produced by the 10-fold cross-validation, we can also conclude that there is a relatively high variance in the accuracy between folds, ranging from 100% accuracy to 87.72% accuracy. So, we can conclude that the model is very dependent on the particular folds used for training, but it also be the consequence of the small size of the dataset.
+
+    * We can see that 10-fold cross-validation accuracy does not result in performance improvement for this model.
+
+
+
+```{python}
+
+```
+
+```{python}
+
+```
+
+
+:::
+
+
 
 ## Conclusion 
+::: {style="text-align: justify"}
+
+:::

@@ -625,10 +625,30 @@ conn = ibis.postgres.connect(
 )
 ```
 
+     If you do not know how to set the password in python environment, please follow these steps - 
+
+1. Crate a `.env` file in your working directory. You can create the `.env` file using notepad, but not that the extension of the file `.txt` must be deleted. Once the `.env` file is created, then save your password as you did in R enviornment. For example - save the line - `POSTGRESS_PASSWORD="YOURPASSWORD"`, where replace the word YOURPASSWORD with your own password. 
+
+2. Then, if necessary, please install python package `python-dotenv` by running the code in terminal - `pip install python-dotenv`. Once the package is installed, please run the following code to get connected to your local postgreSQL database. 
+
+```{python}
+#| eval: false
+
+# load environment variable from .env file 
+load_dotenv()
+
+# Connect to your PostgreSQL database 
+conn = ibis.postgres.connect(
+    user='postgres',
+    password=os.getenv('POSTGRESS_PASSWORD'),
+    host='localhost',
+    port=5433,
+    database='my_database'
+)
+```
 
 
      Alternatively, you can use `getpass` python package, which is very similar to `askpass` package in R.  
-
 
 ```{python}
 #| include: true

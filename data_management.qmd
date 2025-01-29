@@ -633,7 +633,7 @@ conn = ibis.postgres.connect(
 
 ```{python}
 #| eval: false
-
+from dotenv import load_dotenv
 # load environment variable from .env file 
 load_dotenv()
 

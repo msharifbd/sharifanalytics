@@ -472,22 +472,13 @@ pg_restore -h localhost -p 5433 -d my_database -U postgres -v "K:\my_database_up
 ```{r}
 #| warning: false 
 # Importing Necessary Packages
-
 library(DBI)
 library(RPostgres)
+library(askpass)
 library(tidyverse)
 ```
 
-```{r}
-#| include: false
-# Connecting to PostgreSQL Database 
-con = dbConnect(RPostgres::Postgres()
-                 , host='localhost'
-                 , port='5433'
-                 , dbname='my_database',
-                 , user='postgres'
-                 , password="Plethora20046029!")
-```
+     In order to connect to the local postgreSQL database, you can run the following code. However, there is a problem that if you publish this connection code, your password will be shared; therefore, it is better not to share the password. 
 
 ```{r}
 #| eval: false
@@ -499,6 +490,45 @@ con = dbConnect(RPostgres::Postgres()
                  , user='postgres'
                  , password="YourPassword") 
 ```
+
+     For the below code, first we set the password in environment variable in R environment. Since I use IDE `Positron` (or VS Code), I get access to the environment by running the following code. Then, the password is stored by running the code - `POSTGRESS_PASSWORD="YOURPASSWORD"`. Replace, the word "YOURPASSWORD" with your own password and save the file.
+
+```{r}
+#| eval: false
+library(usethis)
+usethis::edit_r_environ()
+```
+
+
+
+```{r}
+#| include: true
+#| eval: true
+# Connecting to PostgreSQL Database 
+con = dbConnect(RPostgres::Postgres()
+                 , host='localhost'
+                 , port='5433'
+                 , dbname='my_database',
+                 , user='postgres'
+                 , password= Sys.getenv("POSTGRESS_PASSWORD")
+                 )
+```
+
+     Alternatively, you can use `askpass` package to input your password without sharing your password with third party. 
+```{r}
+#| include: true
+#| eval: false
+# Connecting to PostgreSQL Database 
+con = dbConnect(RPostgres::Postgres()
+                 , host='localhost'
+                 , port='5433'
+                 , dbname='my_database',
+                 , user='postgres'
+                 , password=askpass::askpass("Enter your database password (R):")
+                 )
+```
+
+
 
 ```{r}
 # Checking all Tables in the Database 
@@ -558,24 +588,14 @@ Sys.setenv('RETICULATE_PYTHON' = 'C:\\Users\\mshar\\AppData\\Local\\Programs\\Py
 ```{python}
 # Importing Necessary Python Packages 
 import ibis
+import getpass
+import os 
 ```
 
 ```{python}
 # To know more about the next line of code
 # see - https://ibis-project.org/tutorials/ibis-for-dplyr-users
 ibis.options.interactive = True
-```
-
-```{python}
-#| include: false
-# to connect to the database 
-conn = ibis.postgres.connect(
-    user='postgres', 
-    password = 'Plethora20046029!',
-    host = "localhost",
-    port = 5433,
-    database = "dvdrental"
-)
 ```
 
 ```{python}
@@ -589,6 +609,40 @@ conn = ibis.postgres.connect(
     database = "my_database" # here our database name will be 'dvdrental'
 )
 ```
+
+     Like before, if you do not share your password, please get the password from environment. 
+
+```{python}
+#| include: true
+#| eval: true
+# to connect to the database 
+conn = ibis.postgres.connect(
+    user='postgres', 
+    password = os.getenv("POSTGRESS_PASSWORD"),
+    host = "localhost",
+    port = 5433,
+    database = "dvdrental"
+)
+```
+
+
+
+     Alternatively, you can use `getpass` python package, which is very similar to `askpass` package in R.  
+
+
+```{python}
+#| include: true
+#| eval: false
+# to connect to the database 
+conn = ibis.postgres.connect(
+    user='postgres', 
+    password = getpass.getpass("Enter your database password (Python): "),
+    host = "localhost",
+    port = 5433,
+    database = "dvdrental"
+)
+```
+
 
 ```{python}
 # See all tables in a database 

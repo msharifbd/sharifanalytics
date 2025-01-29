@@ -643,16 +643,16 @@ $ SalePrice       &lt;int&gt; 0</code></pre>
 <pre><code># A tibble: 10 × 14
    InvoiceNo Date     Country ProductID Shop  Gender `Size (US)` `Size (Europe)`
        &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;        &lt;dbl&gt; &lt;chr&gt;          
- 1     62035 6/16/20… Germany      2205 GER2  Male           9   42             
- 2     63216 8/11/20… United…      2183 US5   Female        10   40-41          
- 3     52752 3/1/2014 United…      2157 US3   Male          11.5 44-45          
- 4     64890 11/1/20… United…      2214 UK5   Male           9.5 42-43          
- 5     58150 10/17/2… Canada       2195 CAN7  Male          10.5 43-44          
- 6     55414 3/11/20… United…      2201 US14  Male           9.5 42-43          
- 7     65680 12/24/2… Germany      2182 GER1  Male           9.5 42-43          
- 8     54422 11/10/2… United…      2160 US13  Male           9.5 42-43          
- 9     57743 9/17/20… Germany      2220 GER2  Male          10.5 43-44          
-10     63582 8/29/20… United…      2156 UK2   Male           8.5 41-42          
+ 1     53447 6/16/20… United…      2233 US6   Male          15   48             
+ 2     59640 1/29/20… United…      2184 UK5   Male           9   42             
+ 3     60822 4/11/20… Germany      2187 GER1  Male           8.5 41-42          
+ 4     54788 1/8/2015 Germany      2205 GER2  Male          10   43             
+ 5     60904 4/15/20… United…      2163 US15  Male          10   43             
+ 6     61231 5/2/2016 United…      2224 US15  Female         9.5 40             
+ 7     59809 2/8/2016 United…      2179 US15  Male           8.5 41-42          
+ 8     64075 9/22/20… Germany      2190 GER3  Female         7   37-38          
+ 9     57027 7/26/20… Germany      2238 GER3  Male           9.5 42-43          
+10     61895 6/9/2016 United…      2186 US13  Female         6.5 37             
 # ℹ 6 more variables: `Size (UK)` &lt;dbl&gt;, UnitPrice &lt;dbl&gt;, Discount &lt;dbl&gt;,
 #   Year &lt;dbl&gt;, Month &lt;dbl&gt;, SalePrice &lt;dbl&gt;</code></pre>
 </div>
@@ -784,16 +784,16 @@ dtype: object</code></pre>
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>df_pd.sample(n<span class="op">=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       InvoiceNo        Date         Country  ...  Year Month SalePrice
-5318       57091   7/31/2015   United States  ...  2015     7     189.0
-5133       56926   7/18/2015         Germany  ...  2015     7     129.0
-11563      62728   7/18/2016   United States  ...  2016     7     139.0
-9032       60480   3/20/2016         Germany  ...  2016     3     169.0
-5316       57089   7/31/2015   United States  ...  2015     7      90.3
-3295       55232   2/21/2015         Germany  ...  2015     2     179.0
-13943      64836  10/30/2016         Germany  ...  2016    10      74.5
-5718       57459   8/28/2015         Germany  ...  2015     8     139.0
-14805      65622  12/19/2016  United Kingdom  ...  2016    12     179.0
-12451      63508   8/25/2016   United States  ...  2016     8     125.1
+13641      64564  10/17/2016   United States  ...  2016    10     199.0
+433        52752    3/1/2014   United States  ...  2014     3     119.2
+4075       55955    5/6/2015   United States  ...  2015     5     116.1
+10998      62222   6/24/2016         Germany  ...  2016     6     199.0
+2670       54654  12/21/2014          Canada  ...  2014    12     151.2
+6066       57783   9/21/2015          Canada  ...  2015     9     179.1
+10471      61755    6/1/2016          Canada  ...  2016     6     159.0
+8234       59758    2/5/2016          Canada  ...  2016     2     199.0
+3148       55099    2/8/2015   United States  ...  2015     2     132.3
+14065      64942   11/4/2016  United Kingdom  ...  2016    11      74.5
 
 [10 rows x 14 columns]</code></pre>
 </div>
@@ -1143,7 +1143,7 @@ Name: count, dtype: int64</code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>df_pd[<span class="st">'YEAR'</span>].unique()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>array([2014, 2015, 2016])</code></pre>
+<pre><code>array([2014, 2015, 2016], dtype=int64)</code></pre>
 </div>
 </div>
 </div>
@@ -1152,7 +1152,7 @@ Name: count, dtype: int64</code></pre>
 </section>
 <section id="six-verbs-for-eda" class="level2" data-number="3.9">
 <h2 data-number="3.9" class="anchored" data-anchor-id="six-verbs-for-eda"><span class="header-section-number">3.9</span> Six Verbs for EDA</h2>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#tbl-compareDplyrPandas" class="quarto-xref">Table&nbsp;<span>3.1</span></a> shows the comparable functions in both <code>dplyr</code> and <code>pandas</code> packages. These functions are very much important to perform exploratory data analysis in both <code>R</code> and <code>Python</code>. <code>group_by</code> (<code>groupby</code> in pandas) and <code>summarize ()</code><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> (<code>agg ()</code> in pandas) are often used together; therefore, they are in the same group in <a href="#tbl-compareDplyrPandas" class="quarto-xref">Table&nbsp;<span>3.1</span></a>.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#tbl-compareDplyrPandas" class="quarto-xref">Table&nbsp;<span class="quarto-unresolved-ref">tbl-compareDplyrPandas</span></a> shows the comparable functions in both <code>dplyr</code> and <code>pandas</code> packages. These functions are very much important to perform exploratory data analysis in both <code>R</code> and <code>Python</code>. <code>group_by</code> (<code>groupby</code> in pandas) and <code>summarize ()</code><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> (<code>agg ()</code> in pandas) are often used together; therefore, they are in the same group in <a href="#tbl-compareDplyrPandas" class="quarto-xref">Table&nbsp;<span class="quarto-unresolved-ref">tbl-compareDplyrPandas</span></a>.</p>
 <div class="cell">
 <div id="tbl-compareDplyrPandas" class="cell quarto-float anchored">
 <figure class="quarto-float quarto-float-tbl figure">
@@ -2541,7 +2541,7 @@ memory usage: 1.7+ MB</code></pre>
 </section>
 <section id="th-verbs---group_by-and-summarize-functions" class="level3" data-number="3.9.6">
 <h3 data-number="3.9.6" class="anchored" data-anchor-id="th-verbs---group_by-and-summarize-functions"><span class="header-section-number">3.9.6</span> 6th Verbs - group_by () and summarize () Functions</h3>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#fig-splitapplycombine" class="quarto-xref">Figure&nbsp;<span>3.1</span></a> presents Split Apply Combine principle in <code>group_by ()</code> and <code>summarize ()</code> functions.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#fig-splitapplycombine" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-splitapplycombine</span></a> presents Split Apply Combine principle in <code>group_by ()</code> and <code>summarize ()</code> functions.</p>
 <div id="fig-splitapplycombine" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-splitapplycombine-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -2726,7 +2726,7 @@ United States      163.490316     143.727421    5886      5886</code></pre>
 <section id="reshaping-data" class="level2" data-number="3.10">
 <h2 data-number="3.10" class="anchored" data-anchor-id="reshaping-data"><span class="header-section-number">3.10</span> Reshaping Data</h2>
 <div style="text-align: justify">
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Before we discuss about reshaping of the data, we need to discuss about tidy format of the data. Data can come in many shapes, but not all shapes are useful for data analysis. In most cases, tidy format of the data is most useful for analysis. Therefore, if the data is untidy, we need to make it tidy first. There are three interrelated rules which make a dataset tidy <span class="citation" data-cites="wickham2023r">(<a href="references.html#ref-wickham2023r" role="doc-biblioref">Wickham, Çetinkaya-Rundel, and Grolemund 2023</a>)</span>. These rules are given below. <a href="#fig-tidyprinciple" class="quarto-xref">Figure&nbsp;<span>3.2</span></a> visually represents tidy principle.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Before we discuss about reshaping of the data, we need to discuss about tidy format of the data. Data can come in many shapes, but not all shapes are useful for data analysis. In most cases, tidy format of the data is most useful for analysis. Therefore, if the data is untidy, we need to make it tidy first. There are three interrelated rules which make a dataset tidy <span class="citation" data-cites="wickham2023r">(<a href="#ref-wickham2023r" role="doc-biblioref">Wickham, Çetinkaya-Rundel, and Grolemund 2023</a>)</span>. These rules are given below. <a href="#fig-tidyprinciple" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-tidyprinciple</span></a> visually represents tidy principle.</p>
 <ol type="1">
 <li><p>Each variable must have its own column</p></li>
 <li><p>Each observation must have its own row</p></li>
@@ -2744,7 +2744,7 @@ Figure&nbsp;3.2: Tidy Principle
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For analysis, many times we need to change the format of our dataset and we call it reshaping. Data come primarily in two shapes -<em>wide</em> and <em>long</em>. Sometimes <em>wide</em> format is called “record” format and <em>long</em> format is called “stacked” format. In <code>wide</code> format data, there is one row for each subject (units of observation). Data is <code>long</code> when there are multiple rows for each subject (units of observations).</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This reshaping can be two types - a) long to wide and 2) wide to long. Long-to-wide means reshaping a long data, which has many rows, into wide format, which has many variables. In wide-to-long format, we do otherwise. For analytical purpose, reshaping data is useful; so, we need to know how to do the reshaping.</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Whether a given dataset (e.g., <a href="#tbl-formatofdata" class="quarto-xref">Table&nbsp;<span>3.2</span></a>) is in wide or long format depends on our research questions (on what variables we are interested in and how we conceive of our data). If we are interested in variable <code>Temp</code> and <code>Month</code> variable is the unit of obsevation, then the dataset in <a href="#tbl-formatofdata" class="quarto-xref">Table&nbsp;<span>3.2</span></a> is in <code>long</code> format because <code>Month</code> is repeated in mutiple rows.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Whether a given dataset (e.g., <a href="#tbl-formatofdata" class="quarto-xref">Table&nbsp;<span class="quarto-unresolved-ref">tbl-formatofdata</span></a>) is in wide or long format depends on our research questions (on what variables we are interested in and how we conceive of our data). If we are interested in variable <code>Temp</code> and <code>Month</code> variable is the unit of obsevation, then the dataset in <a href="#tbl-formatofdata" class="quarto-xref">Table&nbsp;<span class="quarto-unresolved-ref">tbl-formatofdata</span></a> is in <code>long</code> format because <code>Month</code> is repeated in mutiple rows.</p>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb220"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb220-1"><a href="#cb220-1" aria-hidden="true" tabindex="-1"></a>airquality <span class="ot">=</span> airquality</span>
@@ -3039,7 +3039,7 @@ Table&nbsp;3.2: Which Format - Long or Wide
 <section id="merging-datasets" class="level2" data-number="3.11">
 <h2 data-number="3.11" class="anchored" data-anchor-id="merging-datasets"><span class="header-section-number">3.11</span> Merging Datasets</h2>
 <div style="text-align: justify">
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Many times, for analysis purposes, we need to join two datasets. This process is also called merging<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. There are different types of joining. So, it is important to learn about those joining techniques. In <a href="#fig-joindatasets" class="quarto-xref">Figure&nbsp;<span>3.3</span></a> shows the joining technique and functions using <code>dplyr</code> in R. Below all of these joining functions are explained.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Many times, for analysis purposes, we need to join two datasets. This process is also called merging<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. There are different types of joining. So, it is important to learn about those joining techniques. In <a href="#fig-joindatasets" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-joindatasets</span></a> shows the joining technique and functions using <code>dplyr</code> in R. Below all of these joining functions are explained.</p>
 <ul>
 <li><p><code>left_join()</code>: The merged dataset contains <strong>all</strong> observations fromthe <strong>first</strong> (or left) dataset and only <strong>matched</strong> observations from the <strong>second</strong> (or right) dataset</p></li>
 <li><p><code>right_join()</code>: The merged dataset contains only <strong>matched</strong> observations from the <strong>first</strong> (or left) dataset and <strong>all</strong> observations from the <strong>second</strong> (or right) dataset</p></li>
@@ -3058,7 +3058,7 @@ Figure&nbsp;3.3: Joining Datasets
 </figcaption>
 </figure>
 </div>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#tbl-joinRPython" class="quarto-xref">Table&nbsp;<span>3.3</span></a> compares the <code>dplyr</code> joining functions with equivalent joining functions from <code>pandas</code>.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#tbl-joinRPython" class="quarto-xref">Table&nbsp;<span class="quarto-unresolved-ref">tbl-joinRPython</span></a> compares the <code>dplyr</code> joining functions with equivalent joining functions from <code>pandas</code>.</p>
 <div class="cell">
 <div id="tbl-joinRPython" class="cell quarto-float anchored">
 <figure class="quarto-float quarto-float-tbl figure">
@@ -3290,7 +3290,7 @@ $ big4                      &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 <h2 data-number="3.12" class="anchored" data-anchor-id="conclusions"><span class="header-section-number">3.12</span> Conclusions</h2>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-wickham2023r" class="csl-entry" role="listitem">
 Wickham, Hadley, Mine Çetinkaya-Rundel, and Garrett Grolemund. 2023. <em>R for Data Science</em>. " O’Reilly Media, Inc.". <a href="https://r4ds.hadley.nz/">https://r4ds.hadley.nz/</a>.
 </div>

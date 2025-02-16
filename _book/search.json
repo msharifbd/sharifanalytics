@@ -15,7 +15,7 @@
     "href": "visualization.html#what-is-visualization",
     "title": "4  Data Visualization",
     "section": "4.1 What is Visualization?",
-    "text": "4.1 What is Visualization?\n\n     To learn more about different kinds of visualization in R, you should visit - https://r-graph-gallery.com/ and https://www.kaggle.com/code/ruchiraperera/seaborn-vs-plotly-express.",
+    "text": "4.1 What is Visualization?\n\n     Visualization refers to the graphical presentation of data. Visualization involves using charts, graphs, maps, and other visualization tools. Visualization enables to understand trends, partterns, and outliers, if any, in the dataset. Visualization is very critical in data analytics process in that it allows complex data to be presented in a way that is easy to understand and interpret. Visualization tools can range from simple charts to more sophisticated advanced tools like interactive dashboards.",
     "crumbs": [
       "Data Exploration and Management",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Data Visualization</span>"
@@ -26,7 +26,7 @@
     "href": "visualization.html#importance-of-visualization",
     "title": "4  Data Visualization",
     "section": "4.2 Importance of Visualization",
-    "text": "4.2 Importance of Visualization",
+    "text": "4.2 Importance of Visualization\n\n     Mastering visualization technique is important because it allows to simplify story telling of complex data, identify pattern, enhance communication and so on.\n\nSimlifying Complex Data: More complex data can be made simpler and understandable using visualization, thus enabling decsion makers to understand key insights and make informed decisions.\nIdentifying Trends and Patterns: Using visualization, patterns and trends can be easily identified in the data, which further help to identify correlation between variables.\nImproving Communication: Visualization is very effective to communicate findings from the data to stakehloders in a simple and understandway way. Therefore, users who lack technical expertise can easily understand the main point of data.\nSupporting Effective Decision Making: Visualization emphasizes important insights, thus helping organizations make data-driven decisions. Moreover, visualization makes the data more understandable and accessible, thus supporting strategic planning and operational improvements.\nDetecting Outliers and Anomalies: Effective visualization tools and techniques make it easy to spot outliers and anomalies in the data. These unusual data points can be important for identifying errors, fraud, or opportunities for further investigation.\nEngaging Audience: Interactive and visually appealing visualization can engage audience and enhance effective delivery of main points. Visualization tools like interactive dashboards allow users to explore the data themselves, thus leading to deeper understanding of the data.\nEncouraging Exploration: Data visualization tools often allow for interactive exploration of data. Users can drill down into specific data points, filter relevant data, and view different dimensions of the data, thus leading to new iinsights and discoveries.",
     "crumbs": [
       "Data Exploration and Management",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Data Visualization</span>"

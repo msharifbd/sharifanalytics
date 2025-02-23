@@ -68,7 +68,7 @@ At the End of the Chapter, Students should be Able to -
 ### Installing PostgreSQL {#sec-installPostgreSQL}
 
 ::: {style="text-align: justify"}
-     To install PostgreSQL locally on your computer, visit the [installer by EDB](https://www.w3schools.com/postgresql/postgresql_install.php), and download the newest version compatible with your operating system. To install PostgreSQL on Windows, you need to have administrator privileges. Below, we delineate the steps to install the PostgreSQL in windows.
+     To install PostgreSQL locally on your computer, visit the [installer by EDB](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads), and download the newest version compatible with your operating system. To install PostgreSQL on Windows, you need to have administrator privileges. Below, we delineate the steps to install the PostgreSQL in windows.
 
      **Step 01**: When the downloading is complete, double click the downloaded file and an installation wizard will appear and guide you through multiple steps. Click "Next" to specify directory.
 
@@ -478,7 +478,7 @@ library(askpass)
 library(tidyverse)
 ```
 
-     In order to connect to the local postgreSQL database, you can run the following code. However, there is a problem that if you publish this connection code, your password will be shared; therefore, it is better not to share the password. 
+     In order to connect to the local postgreSQL database, you can run the following code. However, there is a problem that if you publish this connection code, your password will be shared; therefore, it is better not to share the password.
 
 ```{r}
 #| eval: false
@@ -499,8 +499,6 @@ library(usethis)
 usethis::edit_r_environ()
 ```
 
-
-
 ```{r}
 #| include: true
 #| eval: true
@@ -514,7 +512,8 @@ con = dbConnect(RPostgres::Postgres()
                  )
 ```
 
-     Alternatively, you can use `askpass` package to input your password without sharing your password with third party. 
+     Alternatively, you can use `askpass` package to input your password without sharing your password with third party.
+
 ```{r}
 #| include: true
 #| eval: false
@@ -527,8 +526,6 @@ con = dbConnect(RPostgres::Postgres()
                  , password=askpass::askpass("Enter your database password (R):")
                  )
 ```
-
-
 
 ```{r}
 # Checking all Tables in the Database 
@@ -610,7 +607,7 @@ conn = ibis.postgres.connect(
 )
 ```
 
-     Like before, if you do not share your password, please get the password from environment. 
+     Like before, if you do not share your password, please get the password from environment.
 
 ```{python}
 #| include: true
@@ -625,11 +622,11 @@ conn = ibis.postgres.connect(
 )
 ```
 
-     If you do not know how to set the password in python environment, please follow these steps - 
+     If you do not know how to set the password in python environment, please follow these steps -
 
-1. Crate a `.env` file in your working directory. You can create the `.env` file using notepad, but not that the extension of the file `.txt` must be deleted. Once the `.env` file is created, then save your password as you did in R enviornment. For example - save the line - `POSTGRESS_PASSWORD="YOURPASSWORD"`, where replace the word YOURPASSWORD with your own password. 
+1.  Crate a `.env` file in your working directory. You can create the `.env` file using notepad, but not that the extension of the file `.txt` must be deleted. Once the `.env` file is created, then save your password as you did in R enviornment. For example - save the line - `POSTGRESS_PASSWORD="YOURPASSWORD"`, where replace the word YOURPASSWORD with your own password.
 
-2. Then, if necessary, please install python package `python-dotenv` by running the code in terminal - `pip install python-dotenv`. Once the package is installed, please run the following code to get connected to your local postgreSQL database. 
+2.  Then, if necessary, please install python package `python-dotenv` by running the code in terminal - `pip install python-dotenv`. Once the package is installed, please run the following code to get connected to your local postgreSQL database.
 
 ```{python}
 #| eval: false
@@ -647,8 +644,7 @@ conn = ibis.postgres.connect(
 )
 ```
 
-
-     Alternatively, you can use `getpass` python package, which is very similar to `askpass` package in R.  
+     Alternatively, you can use `getpass` python package, which is very similar to `askpass` package in R.
 
 ```{python}
 #| include: true
@@ -662,7 +658,6 @@ conn = ibis.postgres.connect(
     database = "dvdrental"
 )
 ```
-
 
 ```{python}
 # See all tables in a database 

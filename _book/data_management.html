@@ -555,7 +555,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Step 08</strong>: Then you can click “Next” in ‘Ready to Install’ windows and the installation process will start and it will take a while to finish the installation. Once the installing is done, please click ‘Finish’ button on ‘Complete the PostgreSQL Setup Wizard’ window.</p>
-<p><img src="images/postgresql_install_image8.png" class="img-fluid" alt="Ready to Install"> <img src="images/postgresql_install_image8.png" class="img-fluid" alt="Installing"> <img src="images/postgresql_install_image8.png" class="img-fluid" alt="Complete the PostgreSQL Setup Wizard"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/postgresql_install_image9.png" class="img-fluid figure-img"></p>
+<figcaption>Ready to Install</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/postgresql_install_image10.png" class="img-fluid figure-img"></p>
+<figcaption>Installing</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/postgresql_install_image11.png" class="img-fluid figure-img"></p>
+<figcaption>Complete the PostgreSQL Setup Wizard</figcaption>
+</figure>
+</div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
@@ -704,138 +721,147 @@ Tip
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>CREATE DATABASE my_database;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To create a table, following code can be run -</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Then, you need to connect to the database (here <code>my_database</code>) by running the following code -</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we are going to create a table called - People</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>CREATE TABLE <span class="fu">People</span> (</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a> pid int not null,</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a> prefix text,</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a> firstName text,</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a> lastName text,</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a> suffix text,</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a> homeCity text,</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a> DOB date,</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a> primary <span class="fu">key</span>(pid)</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>);</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>\c my_database;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Once you run the above code, you will be connected to <code>my_database</code>.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Next, in order to create a table, following code can be run -</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we are going to create a table called - People</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>CREATE TABLE <span class="fu">People</span> (</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a> pid int not null,</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a> prefix text,</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a> firstName text,</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a> lastName text,</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a> suffix text,</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a> homeCity text,</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a> DOB date,</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a> primary <span class="fu">key</span>(pid)</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>);</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Similarly, four more tables are created by running the following code -</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Table - Customer </span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>CREATE TABLE <span class="fu">Customers</span> (</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a> pid int not null references <span class="fu">People</span>(pid),</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a> paymentTerms text,</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a> discountPct <span class="fu">decimal</span>(<span class="dv">5</span>,<span class="dv">2</span>),</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a> primary <span class="fu">key</span>(pid)</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>);</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Table - Agent </span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>CREATE TABLE <span class="fu">Agents</span> (</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a> pid int not null references <span class="fu">People</span>(pid),</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a> paymentTerms text,</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a> commissionPct <span class="fu">decimal</span>(<span class="dv">5</span>,<span class="dv">2</span>),</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a> primary <span class="fu">key</span>(pid)</span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>);</span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Table - Products </span></span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>CREATE TABLE <span class="fu">Products</span> (</span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a> prodId <span class="fu">char</span>(<span class="dv">3</span>) not null,</span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a> name text,</span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a> city text,</span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a> qtyOnHand int,</span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a> priceUSD <span class="fu">numeric</span>(<span class="dv">10</span>,<span class="dv">2</span>),</span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a> primary <span class="fu">key</span>(prodId)</span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>);</span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Table - Orders </span></span>
-<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>CREATE TABLE <span class="fu">Orders</span> (</span>
-<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a> orderNum int not null,</span>
-<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a> dateOrdered date not null,</span>
-<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a> custId int not null references <span class="fu">Customers</span>(pid),</span>
-<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a> agentId int not null references <span class="fu">Agents</span>(pid),</span>
-<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a> prodId <span class="fu">char</span>(<span class="dv">3</span>) not null references <span class="fu">Products</span>(prodId),</span>
-<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>  quantityOrdered integer,</span>
-<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a> totalUSD <span class="fu">numeric</span>(<span class="dv">12</span>,<span class="dv">2</span>),</span>
-<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a> primary <span class="fu">key</span>(orderNum)</span>
-<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>);</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Table - Customer </span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>CREATE TABLE <span class="fu">Customers</span> (</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a> pid int not null references <span class="fu">People</span>(pid),</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a> paymentTerms text,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a> discountPct <span class="fu">decimal</span>(<span class="dv">5</span>,<span class="dv">2</span>),</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a> primary <span class="fu">key</span>(pid)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>);</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Table - Agent </span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>CREATE TABLE <span class="fu">Agents</span> (</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a> pid int not null references <span class="fu">People</span>(pid),</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a> paymentTerms text,</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a> commissionPct <span class="fu">decimal</span>(<span class="dv">5</span>,<span class="dv">2</span>),</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a> primary <span class="fu">key</span>(pid)</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>);</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Table - Products </span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>CREATE TABLE <span class="fu">Products</span> (</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a> prodId <span class="fu">char</span>(<span class="dv">3</span>) not null,</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a> name text,</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a> city text,</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a> qtyOnHand int,</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a> priceUSD <span class="fu">numeric</span>(<span class="dv">10</span>,<span class="dv">2</span>),</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a> primary <span class="fu">key</span>(prodId)</span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>);</span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Table - Orders </span></span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>CREATE TABLE <span class="fu">Orders</span> (</span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a> orderNum int not null,</span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a> dateOrdered date not null,</span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a> custId int not null references <span class="fu">Customers</span>(pid),</span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a> agentId int not null references <span class="fu">Agents</span>(pid),</span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a> prodId <span class="fu">char</span>(<span class="dv">3</span>) not null references <span class="fu">Products</span>(prodId),</span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>  quantityOrdered integer,</span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a> totalUSD <span class="fu">numeric</span>(<span class="dv">12</span>,<span class="dv">2</span>),</span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a> primary <span class="fu">key</span>(orderNum)</span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>);</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Next, we will populate the tables with different kinds of data.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Inserting records into table - People </span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>INSERT INTO <span class="fu">People</span> (pid, prefix, firstName, lastName, suffix, homeCity, DOB)</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>VALUES</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a> (<span class="dv">001</span>, <span class="st">'Dr.'</span>, <span class="st">'Neil'</span>, <span class="st">'Peart'</span>, <span class="st">'Ph.D.'</span>, <span class="st">'Toronto'</span>, <span class="st">'1952-09-12'</span>),</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a> (<span class="dv">002</span>, <span class="st">'Ms.'</span>, <span class="st">'Regina'</span>, <span class="st">'Schock'</span>, <span class="cn">NULL</span>, <span class="st">'Toronto'</span>, <span class="st">'1957-08-31'</span>),</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a> (<span class="dv">003</span>, <span class="st">'Mr.'</span>, <span class="st">'Bruce'</span>, <span class="st">'Crump'</span>, <span class="st">'Jr.'</span>, <span class="st">'Jacksonville'</span>, <span class="st">'1957-07-17'</span>),</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a> (<span class="dv">004</span>, <span class="st">'Mr.'</span>, <span class="st">'Todd'</span>, <span class="st">'Sucherman'</span>, <span class="cn">NULL</span>, <span class="st">'Chicago'</span>, <span class="st">'1969-05-02'</span>),</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a> (<span class="dv">005</span>, <span class="st">'Mr.'</span>, <span class="st">'Bernard'</span>, <span class="st">'Purdie'</span>, <span class="cn">NULL</span>, <span class="st">'Teaneck'</span>, <span class="st">'1939-06-11'</span>),</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a> (<span class="dv">006</span>, <span class="st">'Ms.'</span>, <span class="st">'Demetra'</span>, <span class="st">'Plakas'</span>, <span class="st">'Esq.'</span>, <span class="st">'Santa Monica'</span>, <span class="st">'1960-11-09'</span>),</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a> (<span class="dv">007</span>, <span class="st">'Ms.'</span>, <span class="st">'Terri Lyne'</span>, <span class="st">'Carrington'</span>, <span class="cn">NULL</span>, <span class="st">'Boston'</span>, <span class="st">'1965-08-04'</span>),</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a> (<span class="dv">008</span>, <span class="st">'Dr.'</span>, <span class="st">'Bill'</span>, <span class="st">'Bruford'</span>, <span class="st">'Ph.D.'</span>, <span class="st">'Kent'</span>, <span class="st">'1949-05-17'</span>),</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a> (<span class="dv">009</span>, <span class="st">'Mr.'</span>, <span class="st">'Alan'</span>, <span class="st">'White'</span>, <span class="st">'III'</span>, <span class="st">'Pelton'</span>, <span class="st">'1949-06-14'</span>)</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>;</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Inserting records into table - Customers </span></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>INSERT INTO <span class="fu">Customers</span> (pid, paymentTerms, discountPct)</span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>VALUES</span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a> (<span class="dv">001</span>, <span class="st">'Net 30'</span> , <span class="fl">21.12</span>),</span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a> (<span class="dv">004</span>, <span class="st">'Net 15'</span> , <span class="fl">4.04</span>),</span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a> (<span class="dv">005</span>, <span class="st">'In Advance'</span>, <span class="fl">5.50</span>),</span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a> (<span class="dv">007</span>, <span class="st">'On Receipt'</span>, <span class="fl">2.00</span>),</span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a> (<span class="dv">008</span>, <span class="st">'Net 30'</span> , <span class="fl">10.00</span>)</span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>;</span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Inserting records into table - Agents </span></span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>INSERT INTO <span class="fu">Agents</span> (pid, paymentTerms, commissionPct)</span>
-<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>VALUES</span>
-<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a> (<span class="dv">002</span>, <span class="st">'Quarterly'</span>, <span class="fl">5.00</span>),</span>
-<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a> (<span class="dv">003</span>, <span class="st">'Annually'</span>, <span class="fl">10.00</span>),</span>
-<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a> (<span class="dv">005</span>, <span class="st">'Monthly'</span>, <span class="fl">2.00</span>),</span>
-<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a> (<span class="dv">006</span>, <span class="st">'Weekly'</span>, <span class="fl">1.00</span>)</span>
-<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>;</span>
-<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Inserting records into table - Products </span></span>
-<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>INSERT INTO <span class="fu">Products</span>( prodId, name, city, qtyOnHand, priceUSD )</span>
-<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a>VALUES</span>
-<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>(<span class="st">'p01'</span>, <span class="st">'Heisenberg Compensator'</span>, <span class="st">'Dallas'</span>, <span class="dv">47</span>,  <span class="fl">67.50</span>),</span>
-<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a>(<span class="st">'p02'</span>, <span class="st">'Universal Translator'</span>, <span class="st">'Newark'</span>, <span class="dv">2399</span>, <span class="fl">5.50</span> ),</span>
-<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a>(<span class="st">'p03'</span>, <span class="st">'Commodore PET'</span>, <span class="st">'Duluth'</span>, <span class="dv">1979</span>, <span class="fl">65.02</span> ),</span>
-<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a>(<span class="st">'p04'</span>, <span class="st">'LCARS module'</span>, <span class="st">'Duluth'</span>, <span class="dv">3</span>, <span class="fl">47.00</span> ),</span>
-<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a>(<span class="st">'p05'</span>, <span class="st">'Remo drumhead'</span>, <span class="st">'Dallas'</span>, <span class="dv">8675309</span>, <span class="fl">16.61</span> ),</span>
-<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a>(<span class="st">'p06'</span>, <span class="st">'Trapper Keeper'</span>, <span class="st">'Dallas'</span>, <span class="dv">1982</span>, <span class="fl">2.00</span> ),</span>
-<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a>(<span class="st">'p07'</span>, <span class="st">'Flux Capacitor'</span>, <span class="st">'Newark'</span>, <span class="dv">1007</span>, <span class="fl">1.00</span> ),</span>
-<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a>(<span class="st">'p08'</span>, <span class="st">'HAL 9000 memory core'</span>, <span class="st">'Newark'</span>, <span class="dv">200</span>, <span class="fl">1.25</span> ),</span>
-<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a>(<span class="st">'p09'</span>, <span class="st">'Red Barchetta'</span>,  <span class="st">'Toronto'</span>, <span class="dv">1</span>, <span class="fl">379000.47</span> )</span>
-<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a>;</span>
-<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a><span class="co"># Inserting records into table - Orders </span></span>
-<span id="cb7-54"><a href="#cb7-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-55"><a href="#cb7-55" aria-hidden="true" tabindex="-1"></a>INSERT INTO <span class="fu">Orders</span>(orderNum, dateOrdered, custId, agentId, prodId, quantityOrdered, totalUSD)</span>
-<span id="cb7-56"><a href="#cb7-56" aria-hidden="true" tabindex="-1"></a>VALUES</span>
-<span id="cb7-57"><a href="#cb7-57" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1011</span>, <span class="st">'2020-01-23'</span>, <span class="dv">001</span>, <span class="dv">002</span>, <span class="st">'p01'</span>, <span class="dv">1100</span>, <span class="fl">58568.40</span>),</span>
-<span id="cb7-58"><a href="#cb7-58" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1012</span>, <span class="st">'2020-01-23'</span>, <span class="dv">004</span>, <span class="dv">003</span>, <span class="st">'p03'</span>, <span class="dv">1200</span>, <span class="fl">74871.83</span>),</span>
-<span id="cb7-59"><a href="#cb7-59" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1015</span>, <span class="st">'2020-01-23'</span>, <span class="dv">005</span>, <span class="dv">003</span>, <span class="st">'p05'</span>, <span class="dv">1000</span>, <span class="fl">15696.45</span>),</span>
-<span id="cb7-60"><a href="#cb7-60" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1016</span>, <span class="st">'2020-01-23'</span>, <span class="dv">008</span>, <span class="dv">003</span>, <span class="st">'p01'</span>, <span class="dv">1000</span>, <span class="fl">60750.00</span>),</span>
-<span id="cb7-61"><a href="#cb7-61" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1017</span>, <span class="st">'2020-02-14'</span>, <span class="dv">001</span>, <span class="dv">003</span>, <span class="st">'p03'</span>, <span class="dv">500</span>, <span class="fl">25643.88</span>),</span>
-<span id="cb7-62"><a href="#cb7-62" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1018</span>, <span class="st">'2020-02-14'</span>, <span class="dv">001</span>, <span class="dv">003</span>, <span class="st">'p04'</span>, <span class="dv">600</span>, <span class="fl">22244.16</span>),</span>
-<span id="cb7-63"><a href="#cb7-63" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1019</span>, <span class="st">'2020-02-14'</span>, <span class="dv">001</span>, <span class="dv">002</span>, <span class="st">'p02'</span>, <span class="dv">400</span>, <span class="fl">1735.36</span>),</span>
-<span id="cb7-64"><a href="#cb7-64" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1020</span>, <span class="st">'2020-02-14'</span>, <span class="dv">004</span>, <span class="dv">005</span>, <span class="st">'p07'</span>, <span class="dv">600</span>, <span class="fl">575.76</span>),</span>
-<span id="cb7-65"><a href="#cb7-65" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1021</span>, <span class="st">'2020-02-14'</span>, <span class="dv">004</span>, <span class="dv">005</span>, <span class="st">'p01'</span>, <span class="dv">1000</span>, <span class="fl">64773.00</span>),</span>
-<span id="cb7-66"><a href="#cb7-66" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1022</span>, <span class="st">'2020-03-15'</span>, <span class="dv">001</span>, <span class="dv">003</span>, <span class="st">'p06'</span>, <span class="dv">450</span>, <span class="fl">709.92</span>),</span>
-<span id="cb7-67"><a href="#cb7-67" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1023</span>, <span class="st">'2020-03-15'</span>, <span class="dv">001</span>, <span class="dv">002</span>, <span class="st">'p05'</span>, <span class="dv">500</span>, <span class="fl">6550.984</span>),</span>
-<span id="cb7-68"><a href="#cb7-68" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1024</span>, <span class="st">'2020-03-15'</span>, <span class="dv">005</span>, <span class="dv">002</span>, <span class="st">'p01'</span>, <span class="dv">880</span>, <span class="fl">56133.00</span>),</span>
-<span id="cb7-69"><a href="#cb7-69" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1025</span>, <span class="st">'2020-04-01'</span>, <span class="dv">008</span>, <span class="dv">003</span>, <span class="st">'p07'</span>, <span class="dv">888</span>, <span class="fl">799.20</span>),</span>
-<span id="cb7-70"><a href="#cb7-70" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1026</span>, <span class="st">'2020-05-01'</span>, <span class="dv">008</span>, <span class="dv">005</span>, <span class="st">'p03'</span>, <span class="dv">808</span>, <span class="fl">47282.54</span>)</span>
-<span id="cb7-71"><a href="#cb7-71" aria-hidden="true" tabindex="-1"></a>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Inserting records into table - People </span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>INSERT INTO <span class="fu">People</span> (pid, prefix, firstName, lastName, suffix, homeCity, DOB)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>VALUES</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a> (<span class="dv">001</span>, <span class="st">'Dr.'</span>, <span class="st">'Neil'</span>, <span class="st">'Peart'</span>, <span class="st">'Ph.D.'</span>, <span class="st">'Toronto'</span>, <span class="st">'1952-09-12'</span>),</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a> (<span class="dv">002</span>, <span class="st">'Ms.'</span>, <span class="st">'Regina'</span>, <span class="st">'Schock'</span>, <span class="cn">NULL</span>, <span class="st">'Toronto'</span>, <span class="st">'1957-08-31'</span>),</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a> (<span class="dv">003</span>, <span class="st">'Mr.'</span>, <span class="st">'Bruce'</span>, <span class="st">'Crump'</span>, <span class="st">'Jr.'</span>, <span class="st">'Jacksonville'</span>, <span class="st">'1957-07-17'</span>),</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a> (<span class="dv">004</span>, <span class="st">'Mr.'</span>, <span class="st">'Todd'</span>, <span class="st">'Sucherman'</span>, <span class="cn">NULL</span>, <span class="st">'Chicago'</span>, <span class="st">'1969-05-02'</span>),</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a> (<span class="dv">005</span>, <span class="st">'Mr.'</span>, <span class="st">'Bernard'</span>, <span class="st">'Purdie'</span>, <span class="cn">NULL</span>, <span class="st">'Teaneck'</span>, <span class="st">'1939-06-11'</span>),</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a> (<span class="dv">006</span>, <span class="st">'Ms.'</span>, <span class="st">'Demetra'</span>, <span class="st">'Plakas'</span>, <span class="st">'Esq.'</span>, <span class="st">'Santa Monica'</span>, <span class="st">'1960-11-09'</span>),</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a> (<span class="dv">007</span>, <span class="st">'Ms.'</span>, <span class="st">'Terri Lyne'</span>, <span class="st">'Carrington'</span>, <span class="cn">NULL</span>, <span class="st">'Boston'</span>, <span class="st">'1965-08-04'</span>),</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a> (<span class="dv">008</span>, <span class="st">'Dr.'</span>, <span class="st">'Bill'</span>, <span class="st">'Bruford'</span>, <span class="st">'Ph.D.'</span>, <span class="st">'Kent'</span>, <span class="st">'1949-05-17'</span>),</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a> (<span class="dv">009</span>, <span class="st">'Mr.'</span>, <span class="st">'Alan'</span>, <span class="st">'White'</span>, <span class="st">'III'</span>, <span class="st">'Pelton'</span>, <span class="st">'1949-06-14'</span>)</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>;</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Inserting records into table - Customers </span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>INSERT INTO <span class="fu">Customers</span> (pid, paymentTerms, discountPct)</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>VALUES</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a> (<span class="dv">001</span>, <span class="st">'Net 30'</span> , <span class="fl">21.12</span>),</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a> (<span class="dv">004</span>, <span class="st">'Net 15'</span> , <span class="fl">4.04</span>),</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a> (<span class="dv">005</span>, <span class="st">'In Advance'</span>, <span class="fl">5.50</span>),</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a> (<span class="dv">007</span>, <span class="st">'On Receipt'</span>, <span class="fl">2.00</span>),</span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a> (<span class="dv">008</span>, <span class="st">'Net 30'</span> , <span class="fl">10.00</span>)</span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>;</span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Inserting records into table - Agents </span></span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>INSERT INTO <span class="fu">Agents</span> (pid, paymentTerms, commissionPct)</span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>VALUES</span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a> (<span class="dv">002</span>, <span class="st">'Quarterly'</span>, <span class="fl">5.00</span>),</span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a> (<span class="dv">003</span>, <span class="st">'Annually'</span>, <span class="fl">10.00</span>),</span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a> (<span class="dv">005</span>, <span class="st">'Monthly'</span>, <span class="fl">2.00</span>),</span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a> (<span class="dv">006</span>, <span class="st">'Weekly'</span>, <span class="fl">1.00</span>)</span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>;</span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Inserting records into table - Products </span></span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a>INSERT INTO <span class="fu">Products</span>( prodId, name, city, qtyOnHand, priceUSD )</span>
+<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a>VALUES</span>
+<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a>(<span class="st">'p01'</span>, <span class="st">'Heisenberg Compensator'</span>, <span class="st">'Dallas'</span>, <span class="dv">47</span>,  <span class="fl">67.50</span>),</span>
+<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a>(<span class="st">'p02'</span>, <span class="st">'Universal Translator'</span>, <span class="st">'Newark'</span>, <span class="dv">2399</span>, <span class="fl">5.50</span> ),</span>
+<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a>(<span class="st">'p03'</span>, <span class="st">'Commodore PET'</span>, <span class="st">'Duluth'</span>, <span class="dv">1979</span>, <span class="fl">65.02</span> ),</span>
+<span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a>(<span class="st">'p04'</span>, <span class="st">'LCARS module'</span>, <span class="st">'Duluth'</span>, <span class="dv">3</span>, <span class="fl">47.00</span> ),</span>
+<span id="cb8-45"><a href="#cb8-45" aria-hidden="true" tabindex="-1"></a>(<span class="st">'p05'</span>, <span class="st">'Remo drumhead'</span>, <span class="st">'Dallas'</span>, <span class="dv">8675309</span>, <span class="fl">16.61</span> ),</span>
+<span id="cb8-46"><a href="#cb8-46" aria-hidden="true" tabindex="-1"></a>(<span class="st">'p06'</span>, <span class="st">'Trapper Keeper'</span>, <span class="st">'Dallas'</span>, <span class="dv">1982</span>, <span class="fl">2.00</span> ),</span>
+<span id="cb8-47"><a href="#cb8-47" aria-hidden="true" tabindex="-1"></a>(<span class="st">'p07'</span>, <span class="st">'Flux Capacitor'</span>, <span class="st">'Newark'</span>, <span class="dv">1007</span>, <span class="fl">1.00</span> ),</span>
+<span id="cb8-48"><a href="#cb8-48" aria-hidden="true" tabindex="-1"></a>(<span class="st">'p08'</span>, <span class="st">'HAL 9000 memory core'</span>, <span class="st">'Newark'</span>, <span class="dv">200</span>, <span class="fl">1.25</span> ),</span>
+<span id="cb8-49"><a href="#cb8-49" aria-hidden="true" tabindex="-1"></a>(<span class="st">'p09'</span>, <span class="st">'Red Barchetta'</span>,  <span class="st">'Toronto'</span>, <span class="dv">1</span>, <span class="fl">379000.47</span> )</span>
+<span id="cb8-50"><a href="#cb8-50" aria-hidden="true" tabindex="-1"></a>;</span>
+<span id="cb8-51"><a href="#cb8-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-52"><a href="#cb8-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-53"><a href="#cb8-53" aria-hidden="true" tabindex="-1"></a><span class="co"># Inserting records into table - Orders </span></span>
+<span id="cb8-54"><a href="#cb8-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-55"><a href="#cb8-55" aria-hidden="true" tabindex="-1"></a>INSERT INTO <span class="fu">Orders</span>(orderNum, dateOrdered, custId, agentId, prodId, quantityOrdered, totalUSD)</span>
+<span id="cb8-56"><a href="#cb8-56" aria-hidden="true" tabindex="-1"></a>VALUES</span>
+<span id="cb8-57"><a href="#cb8-57" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1011</span>, <span class="st">'2020-01-23'</span>, <span class="dv">001</span>, <span class="dv">002</span>, <span class="st">'p01'</span>, <span class="dv">1100</span>, <span class="fl">58568.40</span>),</span>
+<span id="cb8-58"><a href="#cb8-58" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1012</span>, <span class="st">'2020-01-23'</span>, <span class="dv">004</span>, <span class="dv">003</span>, <span class="st">'p03'</span>, <span class="dv">1200</span>, <span class="fl">74871.83</span>),</span>
+<span id="cb8-59"><a href="#cb8-59" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1015</span>, <span class="st">'2020-01-23'</span>, <span class="dv">005</span>, <span class="dv">003</span>, <span class="st">'p05'</span>, <span class="dv">1000</span>, <span class="fl">15696.45</span>),</span>
+<span id="cb8-60"><a href="#cb8-60" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1016</span>, <span class="st">'2020-01-23'</span>, <span class="dv">008</span>, <span class="dv">003</span>, <span class="st">'p01'</span>, <span class="dv">1000</span>, <span class="fl">60750.00</span>),</span>
+<span id="cb8-61"><a href="#cb8-61" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1017</span>, <span class="st">'2020-02-14'</span>, <span class="dv">001</span>, <span class="dv">003</span>, <span class="st">'p03'</span>, <span class="dv">500</span>, <span class="fl">25643.88</span>),</span>
+<span id="cb8-62"><a href="#cb8-62" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1018</span>, <span class="st">'2020-02-14'</span>, <span class="dv">001</span>, <span class="dv">003</span>, <span class="st">'p04'</span>, <span class="dv">600</span>, <span class="fl">22244.16</span>),</span>
+<span id="cb8-63"><a href="#cb8-63" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1019</span>, <span class="st">'2020-02-14'</span>, <span class="dv">001</span>, <span class="dv">002</span>, <span class="st">'p02'</span>, <span class="dv">400</span>, <span class="fl">1735.36</span>),</span>
+<span id="cb8-64"><a href="#cb8-64" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1020</span>, <span class="st">'2020-02-14'</span>, <span class="dv">004</span>, <span class="dv">005</span>, <span class="st">'p07'</span>, <span class="dv">600</span>, <span class="fl">575.76</span>),</span>
+<span id="cb8-65"><a href="#cb8-65" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1021</span>, <span class="st">'2020-02-14'</span>, <span class="dv">004</span>, <span class="dv">005</span>, <span class="st">'p01'</span>, <span class="dv">1000</span>, <span class="fl">64773.00</span>),</span>
+<span id="cb8-66"><a href="#cb8-66" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1022</span>, <span class="st">'2020-03-15'</span>, <span class="dv">001</span>, <span class="dv">003</span>, <span class="st">'p06'</span>, <span class="dv">450</span>, <span class="fl">709.92</span>),</span>
+<span id="cb8-67"><a href="#cb8-67" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1023</span>, <span class="st">'2020-03-15'</span>, <span class="dv">001</span>, <span class="dv">002</span>, <span class="st">'p05'</span>, <span class="dv">500</span>, <span class="fl">6550.984</span>),</span>
+<span id="cb8-68"><a href="#cb8-68" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1024</span>, <span class="st">'2020-03-15'</span>, <span class="dv">005</span>, <span class="dv">002</span>, <span class="st">'p01'</span>, <span class="dv">880</span>, <span class="fl">56133.00</span>),</span>
+<span id="cb8-69"><a href="#cb8-69" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1025</span>, <span class="st">'2020-04-01'</span>, <span class="dv">008</span>, <span class="dv">003</span>, <span class="st">'p07'</span>, <span class="dv">888</span>, <span class="fl">799.20</span>),</span>
+<span id="cb8-70"><a href="#cb8-70" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1026</span>, <span class="st">'2020-05-01'</span>, <span class="dv">008</span>, <span class="dv">005</span>, <span class="st">'p03'</span>, <span class="dv">808</span>, <span class="fl">47282.54</span>)</span>
+<span id="cb8-71"><a href="#cb8-71" aria-hidden="true" tabindex="-1"></a>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Now to see whether the database contains the tables we just created above, you can run the following code -</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>\dt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -844,38 +870,42 @@ Tip
 <div style="text-align: justify">
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Once the database is created, we need to retrieve data from the database for which we need to write queries. For example, we want retireve <code>prodid</code>, <code>name</code>, and <code>city</code> from the table <em>products</em>. Then, we need to write the following query -</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># SQL Query = </span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>SELECT prodid, name, city FROM products;</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Output </span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a> prodid <span class="sc">|</span>          name          <span class="sc">|</span>  city</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="sc">--------+------------------------+---------</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a> p01    <span class="sc">|</span> Heisenberg Compensator <span class="sc">|</span> Dallas</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a> p02    <span class="sc">|</span> Universal Translator   <span class="sc">|</span> Newark</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a> p03    <span class="sc">|</span> Commodore PET          <span class="sc">|</span> Duluth</span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a> p04    <span class="sc">|</span> LCARS module           <span class="sc">|</span> Duluth</span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a> p05    <span class="sc">|</span> Remo drumhead          <span class="sc">|</span> Dallas</span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a> p06    <span class="sc">|</span> Trapper Keeper         <span class="sc">|</span> Dallas</span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a> p07    <span class="sc">|</span> Flux Capacitor         <span class="sc">|</span> Newark</span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a> p08    <span class="sc">|</span> HAL <span class="dv">9000</span> memory core   <span class="sc">|</span> Newark</span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a> p09    <span class="sc">|</span> Red Barchetta          <span class="sc">|</span> Toronto</span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>(<span class="dv">9</span> rows)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># SQL Query = </span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>SELECT prodid, name, city FROM products;</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Output </span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a> prodid <span class="sc">|</span>          name          <span class="sc">|</span>  city</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="sc">--------+------------------------+---------</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a> p01    <span class="sc">|</span> Heisenberg Compensator <span class="sc">|</span> Dallas</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a> p02    <span class="sc">|</span> Universal Translator   <span class="sc">|</span> Newark</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a> p03    <span class="sc">|</span> Commodore PET          <span class="sc">|</span> Duluth</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a> p04    <span class="sc">|</span> LCARS module           <span class="sc">|</span> Duluth</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a> p05    <span class="sc">|</span> Remo drumhead          <span class="sc">|</span> Dallas</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a> p06    <span class="sc">|</span> Trapper Keeper         <span class="sc">|</span> Dallas</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a> p07    <span class="sc">|</span> Flux Capacitor         <span class="sc">|</span> Newark</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a> p08    <span class="sc">|</span> HAL <span class="dv">9000</span> memory core   <span class="sc">|</span> Newark</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a> p09    <span class="sc">|</span> Red Barchetta          <span class="sc">|</span> Toronto</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>(<span class="dv">9</span> rows)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Similarly, if we want to collect all fields from <em>products</em> table for the city <em>Dallas</em>, then we can write the following queries -</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># SQL Query = </span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>SELECT <span class="sc">*</span> FROM products WHERE city <span class="ot">=</span> <span class="st">'Dallas'</span>;</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Output </span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a> prodid <span class="sc">|</span>          name          <span class="sc">|</span>  city  <span class="sc">|</span> qtyonhand <span class="sc">|</span> priceusd</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="sc">--------+------------------------+--------+-----------+----------</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a> p01    <span class="sc">|</span> Heisenberg Compensator <span class="sc">|</span> Dallas <span class="sc">|</span>        <span class="dv">47</span> <span class="sc">|</span>    <span class="fl">67.50</span></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a> p05    <span class="sc">|</span> Remo drumhead          <span class="sc">|</span> Dallas <span class="sc">|</span>   <span class="dv">8675309</span> <span class="sc">|</span>    <span class="fl">16.61</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a> p06    <span class="sc">|</span> Trapper Keeper         <span class="sc">|</span> Dallas <span class="sc">|</span>      <span class="dv">1982</span> <span class="sc">|</span>     <span class="fl">2.00</span></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>(<span class="dv">3</span> rows)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># SQL Query = </span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>SELECT <span class="sc">*</span> FROM products WHERE city <span class="ot">=</span> <span class="st">'Dallas'</span>;</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Output </span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a> prodid <span class="sc">|</span>          name          <span class="sc">|</span>  city  <span class="sc">|</span> qtyonhand <span class="sc">|</span> priceusd</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="sc">--------+------------------------+--------+-----------+----------</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a> p01    <span class="sc">|</span> Heisenberg Compensator <span class="sc">|</span> Dallas <span class="sc">|</span>        <span class="dv">47</span> <span class="sc">|</span>    <span class="fl">67.50</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a> p05    <span class="sc">|</span> Remo drumhead          <span class="sc">|</span> Dallas <span class="sc">|</span>   <span class="dv">8675309</span> <span class="sc">|</span>    <span class="fl">16.61</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a> p06    <span class="sc">|</span> Trapper Keeper         <span class="sc">|</span> Dallas <span class="sc">|</span>      <span class="dv">1982</span> <span class="sc">|</span>     <span class="fl">2.00</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>(<span class="dv">3</span> rows)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If you need to quit the database, then run the following line of code -</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>\q</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -884,15 +914,15 @@ Tip
 <div style="text-align: justify">
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In order to share a database with stakeholders, we need to save the a particular database. Therefore, knowing how to save the database is very important. We must use the Command Prompt (<code>cmd</code>) to save a database. First, we need to open a command prompt following step # 01 in <a href="#sec-cmdconnection" class="quarto-xref"><span>Section 6.5.2</span></a>. Then we need to write the following codes on command prompt -</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First line of code and then hit enter on the Keyboard</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>cd ..</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Second line of code and then hit enter on the Keyboard</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>cd ..</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Third line of code and then hit enter on the Keyboard</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>cd \Program Files\PostgreSQL\<span class="dv">16</span>\bin</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Fourth line of code and then hit enter on the Keyboard</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>pg_dump <span class="sc">-</span>h localhost <span class="sc">-</span>d name_of_your_database <span class="sc">-</span>U postgres <span class="sc">-</span>p <span class="dv">5433</span> <span class="sc">-</span>F tar <span class="sc">&gt;</span>K<span class="sc">:</span>\name_of_your_database.tar</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Fifth Line of code - provide your password</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First line of code and then hit enter on the Keyboard</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>cd ..</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Second line of code and then hit enter on the Keyboard</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>cd ..</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Third line of code and then hit enter on the Keyboard</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>cd \Program Files\PostgreSQL\<span class="dv">16</span>\bin</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Fourth line of code and then hit enter on the Keyboard</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>pg_dump <span class="sc">-</span>h localhost <span class="sc">-</span>d name_of_your_database <span class="sc">-</span>U postgres <span class="sc">-</span>p <span class="dv">5433</span> <span class="sc">-</span>F tar <span class="sc">&gt;</span>K<span class="sc">:</span>\name_of_your_database.tar</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Fifth Line of code - provide your password</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
@@ -918,15 +948,15 @@ Tip
 <div style="text-align: justify">
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sometimes, you might need to upload a database to PostgreSQL. Therefore, you should know how you can upload the database to PostgreSQL. First, you should create a database following the process as described in <a href="#sec-creatingdatabase" class="quarto-xref"><span>Section 6.6.1</span></a>. For example, we create a database called <code>my_database</code> in PostgreSQL. Assume that the database that we want to upload to PostgreSQL is in the path - <code>K:\</code> and the name of the database is <code>my_database_upload</code>. Therefore, the complete path of the database to be uploaded is - “<code>K:\my_database_upload.tar</code>”. Then, you should open a command prompt as described in <a href="#sec-cmdconnection" class="quarto-xref"><span>Section 6.5.2</span></a>. Then run the following code -</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First line of code and then hit enter on the Keyboard</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>cd ..</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Second line of code and then hit enter on the Keyboard</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>cd ..</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Third line of code and then hit enter on the Keyboard</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>cd \Program Files\PostgreSQL\<span class="dv">16</span>\bin</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Fourth line of code and then hit enter on the Keyboard</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>pg_restore <span class="sc">-</span>h localhost <span class="sc">-</span>p <span class="dv">5433</span> <span class="sc">-</span>d my_database <span class="sc">-</span>U postgres <span class="sc">-</span>v <span class="st">"K:\my_database_upload.tar"</span></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Fifth Line of code - provide your password</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First line of code and then hit enter on the Keyboard</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>cd ..</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Second line of code and then hit enter on the Keyboard</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>cd ..</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Third line of code and then hit enter on the Keyboard</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>cd \Program Files\PostgreSQL\<span class="dv">16</span>\bin</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Fourth line of code and then hit enter on the Keyboard</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>pg_restore <span class="sc">-</span>h localhost <span class="sc">-</span>p <span class="dv">5433</span> <span class="sc">-</span>d my_database <span class="sc">-</span>U postgres <span class="sc">-</span>v <span class="st">"K:\my_database_upload.tar"</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Fifth Line of code - provide your password</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In the fourth line of code above - <code>pg_restore -h localhost -p 5433 -d my_database -U postgres -v "K:\my_database_upload.tar"</code>- “<code>my_database</code>” is the name of the database that you created on the PostgreSQL and “<code>K:\my_database_upload.tar</code>” is the path of the database to be uploaded.</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Once you upload the database to the PostgreSQL , you can check whether the database is uploaded by following <a href="#sec-dealdatabase" class="quarto-xref"><span>Section 6.6</span></a>.</p>
@@ -936,38 +966,13 @@ Tip
 <section id="querying-postgresql-database-using-r" class="level2" data-number="6.7">
 <h2 data-number="6.7" class="anchored" data-anchor-id="querying-postgresql-database-using-r"><span class="header-section-number">6.7</span> Querying PostgreSQL Database Using <code>R</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing Necessary Packages</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DBI)</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RPostgres)</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(askpass)</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing Necessary Packages</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DBI)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RPostgres)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(askpass)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In order to connect to the local postgreSQL database, you can run the following code. However, there is a problem that if you publish this connection code, your password will be shared; therefore, it is better not to share the password.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Connecting to PostgreSQL Database </span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>con <span class="ot">=</span> <span class="fu">dbConnect</span>(RPostgres<span class="sc">::</span><span class="fu">Postgres</span>()</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>                 , <span class="at">host=</span><span class="st">'localhost'</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>                 , <span class="at">port=</span><span class="st">'5433'</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>                 , <span class="at">dbname=</span><span class="st">'my_database'</span>,</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>                 , <span class="at">user=</span><span class="st">'postgres'</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>                 , <span class="at">password=</span><span class="st">"YourPassword"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For the below code, first we set the password in environment variable in R environment. Since I use IDE <code>Positron</code> (or VS Code), I get access to the environment by running the following code. Then, the password is stored by running the code - <code>POSTGRESS_PASSWORD="YOURPASSWORD"</code>. Replace, the word “YOURPASSWORD” with your own password and save the file.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(usethis)</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">edit_r_environ</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Connecting to PostgreSQL Database </span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>con <span class="ot">=</span> <span class="fu">dbConnect</span>(RPostgres<span class="sc">::</span><span class="fu">Postgres</span>()</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>                 , <span class="at">host=</span><span class="st">'localhost'</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>                 , <span class="at">port=</span><span class="st">'5433'</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>                 , <span class="at">dbname=</span><span class="st">'my_database'</span>,</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>                 , <span class="at">user=</span><span class="st">'postgres'</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>                 , <span class="at">password=</span> <span class="fu">Sys.getenv</span>(<span class="st">"POSTGRESS_PASSWORD"</span>)</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>                 )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Alternatively, you can use <code>askpass</code> package to input your password without sharing your password with third party.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Connecting to PostgreSQL Database </span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>con <span class="ot">=</span> <span class="fu">dbConnect</span>(RPostgres<span class="sc">::</span><span class="fu">Postgres</span>()</span>
@@ -975,20 +980,45 @@ Tip
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>                 , <span class="at">port=</span><span class="st">'5433'</span></span>
 <span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>                 , <span class="at">dbname=</span><span class="st">'my_database'</span>,</span>
 <span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>                 , <span class="at">user=</span><span class="st">'postgres'</span></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>                 , <span class="at">password=</span>askpass<span class="sc">::</span><span class="fu">askpass</span>(<span class="st">"Enter your database password (R):"</span>)</span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>                 )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>                 , <span class="at">password=</span><span class="st">"YourPassword"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For the below code, first we set the password in environment variable in R environment. Since I use IDE <code>Positron</code> (or VS Code), I get access to the environment by running the following code. Then, the password is stored by running the code - <code>POSTGRESS_PASSWORD="YOURPASSWORD"</code>. Replace, the word “YOURPASSWORD” with your own password and save the file.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(usethis)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">edit_r_environ</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking all Tables in the Database </span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dbListTables</span>(con)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Connecting to PostgreSQL Database </span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>con <span class="ot">=</span> <span class="fu">dbConnect</span>(RPostgres<span class="sc">::</span><span class="fu">Postgres</span>()</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>                 , <span class="at">host=</span><span class="st">'localhost'</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>                 , <span class="at">port=</span><span class="st">'5433'</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>                 , <span class="at">dbname=</span><span class="st">'my_database'</span>,</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>                 , <span class="at">user=</span><span class="st">'postgres'</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>                 , <span class="at">password=</span> <span class="fu">Sys.getenv</span>(<span class="st">"POSTGRESS_PASSWORD"</span>)</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>                 )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Alternatively, you can use <code>askpass</code> package to input your password without sharing your password with third party.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Connecting to PostgreSQL Database </span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>con <span class="ot">=</span> <span class="fu">dbConnect</span>(RPostgres<span class="sc">::</span><span class="fu">Postgres</span>()</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>                 , <span class="at">host=</span><span class="st">'localhost'</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>                 , <span class="at">port=</span><span class="st">'5433'</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>                 , <span class="at">dbname=</span><span class="st">'my_database'</span>,</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>                 , <span class="at">user=</span><span class="st">'postgres'</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>                 , <span class="at">password=</span>askpass<span class="sc">::</span><span class="fu">askpass</span>(<span class="st">"Enter your database password (R):"</span>)</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>                 )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking all Tables in the Database </span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dbListTables</span>(con)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "agents"    "customers" "orders"    "people"    "products" </code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># To see a table </span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>con <span class="sc">%&gt;%</span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tbl</span> (<span class="st">'orders'</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># To see a table </span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>con <span class="sc">%&gt;%</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tbl</span> (<span class="st">'orders'</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># Source:   table&lt;"orders"&gt; [?? x 7]
 # Database: postgres  [postgres@localhost:5433/my_database]
@@ -1008,9 +1038,9 @@ Tip
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>con <span class="sc">%&gt;%</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tbl</span> (<span class="st">'orders'</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">collect</span> ()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>con <span class="sc">%&gt;%</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tbl</span> (<span class="st">'orders'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">collect</span> ()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 14 × 7
    ordernum dateordered custid agentid prodid quantityordered totalusd
@@ -1032,10 +1062,10 @@ Tip
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Selecting some columns </span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>con <span class="sc">%&gt;%</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tbl</span> (<span class="st">'orders'</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span> (ordernum, dateordered, custid, agentid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Selecting some columns </span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>con <span class="sc">%&gt;%</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tbl</span> (<span class="st">'orders'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span> (ordernum, dateordered, custid, agentid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># Source:   SQL [?? x 4]
 # Database: postgres  [postgres@localhost:5433/my_database]
@@ -1055,10 +1085,10 @@ Tip
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtering some rows</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>con <span class="sc">%&gt;%</span> </span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tbl</span> (<span class="st">'products'</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span> (city <span class="sc">==</span> <span class="st">"Dallas"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtering some rows</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>con <span class="sc">%&gt;%</span> </span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tbl</span> (<span class="st">'products'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span> (city <span class="sc">==</span> <span class="st">"Dallas"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># Source:   SQL [3 x 5]
 # Database: postgres  [postgres@localhost:5433/my_database]
@@ -1070,11 +1100,11 @@ Tip
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># showing the SQL query</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>con <span class="sc">%&gt;%</span> </span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tbl</span> (<span class="st">'products'</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span> (city <span class="sc">==</span> <span class="st">"Dallas"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">show_query</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># showing the SQL query</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>con <span class="sc">%&gt;%</span> </span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tbl</span> (<span class="st">'products'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span> (city <span class="sc">==</span> <span class="st">"Dallas"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">show_query</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;SQL&gt;
 SELECT "products".*
@@ -1083,43 +1113,43 @@ WHERE ("city" = 'Dallas')</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Disconnecting the database </span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>con <span class="sc">%&gt;%</span> <span class="fu">dbDisconnect</span> ()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Disconnecting the database </span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>con <span class="sc">%&gt;%</span> <span class="fu">dbDisconnect</span> ()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="querying-postgresql-database-using-python" class="level2" data-number="6.8">
 <h2 data-number="6.8" class="anchored" data-anchor-id="querying-postgresql-database-using-python"><span class="header-section-number">6.8</span> Querying PostgreSQL Database Using <code>Python</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing Necessary Python Packages </span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ibis</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> getpass</span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing Necessary Python Packages </span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ibis</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> getpass</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># To know more about the next line of code</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="co"># see - https://ibis-project.org/tutorials/ibis-for-dplyr-users</span></span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>ibis.options.interactive <span class="op">=</span> <span class="va">True</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># To know more about the next line of code</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="co"># see - https://ibis-project.org/tutorials/ibis-for-dplyr-users</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>ibis.options.interactive <span class="op">=</span> <span class="va">True</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># to connect to the database </span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>conn <span class="op">=</span> ibis.postgres.<span class="ex">connect</span>(</span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>    user<span class="op">=</span><span class="st">'postgres'</span>, </span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>    password <span class="op">=</span> <span class="st">'YourPassword'</span>,</span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>    host <span class="op">=</span> <span class="st">"localhost"</span>,</span>
-<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>    port <span class="op">=</span> <span class="dv">5433</span>,</span>
-<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>    database <span class="op">=</span> <span class="st">"my_database"</span> <span class="co"># here our database name will be 'dvdrental'</span></span>
-<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># to connect to the database </span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>conn <span class="op">=</span> ibis.postgres.<span class="ex">connect</span>(</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>    user<span class="op">=</span><span class="st">'postgres'</span>, </span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>    password <span class="op">=</span> <span class="st">'YourPassword'</span>,</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>    host <span class="op">=</span> <span class="st">"localhost"</span>,</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>    port <span class="op">=</span> <span class="dv">5433</span>,</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>    database <span class="op">=</span> <span class="st">"my_database"</span> <span class="co"># here our database name will be 'dvdrental'</span></span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Like before, if you do not share your password, please get the password from environment.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># to connect to the database </span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>conn <span class="op">=</span> ibis.postgres.<span class="ex">connect</span>(</span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>    user<span class="op">=</span><span class="st">'postgres'</span>, </span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>    password <span class="op">=</span> os.getenv(<span class="st">"POSTGRESS_PASSWORD"</span>),</span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>    host <span class="op">=</span> <span class="st">"localhost"</span>,</span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>    port <span class="op">=</span> <span class="dv">5433</span>,</span>
-<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>    database <span class="op">=</span> <span class="st">"dvdrental"</span></span>
-<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># to connect to the database </span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>conn <span class="op">=</span> ibis.postgres.<span class="ex">connect</span>(</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>    user<span class="op">=</span><span class="st">'postgres'</span>, </span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>    password <span class="op">=</span> os.getenv(<span class="st">"POSTGRESS_PASSWORD"</span>),</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>    host <span class="op">=</span> <span class="st">"localhost"</span>,</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>    port <span class="op">=</span> <span class="dv">5433</span>,</span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>    database <span class="op">=</span> <span class="st">"dvdrental"</span></span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If you do not know how to set the password in python environment, please follow these steps -</p>
 <ol type="1">
@@ -1127,60 +1157,60 @@ WHERE ("city" = 'Dallas')</code></pre>
 <li><p>Then, if necessary, please install python package <code>python-dotenv</code> by running the code in terminal - <code>pip install python-dotenv</code>. Once the package is installed, please run the following code to get connected to your local postgreSQL database.</p></li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dotenv <span class="im">import</span> load_dotenv</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="co"># load environment variable from .env file </span></span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>load_dotenv()</span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Connect to your PostgreSQL database </span></span>
-<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>conn <span class="op">=</span> ibis.postgres.<span class="ex">connect</span>(</span>
-<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>    user<span class="op">=</span><span class="st">'postgres'</span>,</span>
-<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>    password<span class="op">=</span>os.getenv(<span class="st">'POSTGRESS_PASSWORD'</span>),</span>
-<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>    host<span class="op">=</span><span class="st">'localhost'</span>,</span>
-<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>    port<span class="op">=</span><span class="dv">5433</span>,</span>
-<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>    database<span class="op">=</span><span class="st">'my_database'</span></span>
-<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dotenv <span class="im">import</span> load_dotenv</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="co"># load environment variable from .env file </span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>load_dotenv()</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Connect to your PostgreSQL database </span></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>conn <span class="op">=</span> ibis.postgres.<span class="ex">connect</span>(</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>    user<span class="op">=</span><span class="st">'postgres'</span>,</span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>    password<span class="op">=</span>os.getenv(<span class="st">'POSTGRESS_PASSWORD'</span>),</span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>    host<span class="op">=</span><span class="st">'localhost'</span>,</span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>    port<span class="op">=</span><span class="dv">5433</span>,</span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>    database<span class="op">=</span><span class="st">'my_database'</span></span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Alternatively, you can use <code>getpass</code> python package, which is very similar to <code>askpass</code> package in R.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># to connect to the database </span></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>conn <span class="op">=</span> ibis.postgres.<span class="ex">connect</span>(</span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>    user<span class="op">=</span><span class="st">'postgres'</span>, </span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>    password <span class="op">=</span> getpass.getpass(<span class="st">"Enter your database password (Python): "</span>),</span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>    host <span class="op">=</span> <span class="st">"localhost"</span>,</span>
-<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>    port <span class="op">=</span> <span class="dv">5433</span>,</span>
-<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>    database <span class="op">=</span> <span class="st">"dvdrental"</span></span>
-<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># to connect to the database </span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>conn <span class="op">=</span> ibis.postgres.<span class="ex">connect</span>(</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>    user<span class="op">=</span><span class="st">'postgres'</span>, </span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>    password <span class="op">=</span> getpass.getpass(<span class="st">"Enter your database password (Python): "</span>),</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>    host <span class="op">=</span> <span class="st">"localhost"</span>,</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>    port <span class="op">=</span> <span class="dv">5433</span>,</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>    database <span class="op">=</span> <span class="st">"dvdrental"</span></span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># See all tables in a database </span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>conn.list_tables()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># See all tables in a database </span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>conn.list_tables()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>['actor', 'actor_info', 'address', 'category', 'city', 'country', 'customer', 'customer_list', 'ff48_df', 'film', 'film_actor', 'film_category', 'film_list', 'inventory', 'language', 'nicer_but_slower_film_list', 'payment', 'rental', 'sales_by_film_category', 'sales_by_store', 'staff', 'staff_list', 'store']</code></pre>
+<pre><code>['actor', 'actor_info', 'address', 'category', 'city', 'country', 'customer', 'customer_list', 'film', 'film_actor', 'film_category', 'film_list', 'inventory', 'language', 'nicer_but_slower_film_list', 'payment', 'rental', 'sales_by_film_category', 'sales_by_store', 'staff', 'staff_list', 'store']</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># To know the total number of rows </span></span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>conn.table(<span class="st">'actor'</span>).count() <span class="co"># total rows </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># To know the total number of rows </span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>conn.table(<span class="st">'actor'</span>).count() <span class="co"># total rows </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>conn.table(<span class="st">'actor'</span>).columns <span class="co"># name of the columns </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>conn.table(<span class="st">'actor'</span>).columns <span class="co"># name of the columns </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>['actor_id', 'first_name', 'last_name', 'last_update']</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># To see the SQL command </span></span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>conn.table(<span class="st">'actor'</span>).<span class="bu">compile</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># To see the SQL command </span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>conn.table(<span class="st">'actor'</span>).<span class="bu">compile</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'SELECT * FROM "actor"'</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Dealing with a table </span></span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>conn.table(<span class="st">'country'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Dealing with a table </span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>conn.table(<span class="st">'country'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>┌────────────┬────────────────┬─────────────────────┐
 │ country_id │ country        │ last_update         │
@@ -1200,7 +1230,7 @@ WHERE ("city" = 'Dallas')</code></pre>
 │          … │ …              │ …                   │
 └────────────┴────────────────┴─────────────────────┘</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>conn.table(<span class="st">'country'</span>).head(<span class="dv">5</span>).execute()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>conn.table(<span class="st">'country'</span>).head(<span class="dv">5</span>).execute()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   country_id         country         last_update
 0           1     Afghanistan 2006-02-15 09:44:00
@@ -1211,8 +1241,8 @@ WHERE ("city" = 'Dallas')</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co">## describe () or columns () equivalent to glimpse ()</span></span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>conn.table(<span class="st">'country'</span>).describe</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co">## describe () or columns () equivalent to glimpse ()</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>conn.table(<span class="st">'country'</span>).describe</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;bound method Table.describe of ┌────────────┬────────────────┬─────────────────────┐
 │ country_id │ country        │ last_update         │
@@ -1234,17 +1264,17 @@ WHERE ("city" = 'Dallas')</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># filtering rows    </span></span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>conn.table(<span class="st">'country'</span>)[conn.table(<span class="st">'country'</span>)[<span class="st">'country'</span>]<span class="op">==</span><span class="st">"Zambia"</span>] <span class="op">\</span></span>
-<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>    .execute()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># filtering rows    </span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>conn.table(<span class="st">'country'</span>)[conn.table(<span class="st">'country'</span>)[<span class="st">'country'</span>]<span class="op">==</span><span class="st">"Zambia"</span>] <span class="op">\</span></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>    .execute()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   country_id country         last_update
 0         109  Zambia 2006-02-15 09:44:00</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Selecting Columns </span></span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>conn.table(<span class="st">'country'</span>)[[<span class="st">"country_id"</span>, <span class="st">"country"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Selecting Columns </span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>conn.table(<span class="st">'country'</span>)[[<span class="st">"country_id"</span>, <span class="st">"country"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>┌────────────┬────────────────┐
 │ country_id │ country        │
@@ -1266,10 +1296,10 @@ WHERE ("city" = 'Dallas')</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange </span></span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>conn.table(<span class="st">'rental'</span>) <span class="op">\</span></span>
-<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>    .order_by([<span class="st">'inventory_id'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange </span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>conn.table(<span class="st">'rental'</span>) <span class="op">\</span></span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>    .order_by([<span class="st">'inventory_id'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>┌───────────┬─────────────────────┬──────────────┬─────────────┬───┐
 │ rental_id │ rental_date         │ inventory_id │ customer_id │ … │
@@ -1291,11 +1321,11 @@ WHERE ("city" = 'Dallas')</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Group By</span></span>
-<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>conn.table(<span class="st">'payment'</span>)[[<span class="st">'payment_id'</span>, <span class="st">'customer_id'</span>, <span class="st">'staff_id'</span>, <span class="st">'amount'</span>]] <span class="op">\</span></span>
-<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>    .execute() <span class="op">\</span></span>
-<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>    .groupby(<span class="st">'customer_id'</span>).agg({<span class="st">'amount'</span>: <span class="st">'mean'</span>}) <span class="op">\</span></span>
-<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>    .reset_index() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Group By</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>conn.table(<span class="st">'payment'</span>)[[<span class="st">'payment_id'</span>, <span class="st">'customer_id'</span>, <span class="st">'staff_id'</span>, <span class="st">'amount'</span>]] <span class="op">\</span></span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>    .execute() <span class="op">\</span></span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>    .groupby(<span class="st">'customer_id'</span>).agg({<span class="st">'amount'</span>: <span class="st">'mean'</span>}) <span class="op">\</span></span>
+<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a>    .reset_index() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     customer_id    amount
 0              1  3.823333
@@ -1314,8 +1344,8 @@ WHERE ("city" = 'Dallas')</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># To disconnect the database </span></span>
-<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>conn.disconnect()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># To disconnect the database </span></span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>conn.disconnect()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="online-analytical-processing-olap-database-management-system" class="level2" data-number="6.9">

@@ -104,7 +104,11 @@ Then if everything looks ok, you can move forward by clicking 'Next'. However, i
 
      **Step 08**: Then you can click "Next" in 'Ready to Install' windows and the installation process will start and it will take a while to finish the installation. Once the installing is done, please click 'Finish' button on 'Complete the PostgreSQL Setup Wizard' window.
 
-![Ready to Install](images/postgresql_install_image8.png) ![Installing](images/postgresql_install_image8.png) ![Complete the PostgreSQL Setup Wizard](images/postgresql_install_image8.png)
+![Ready to Install](images/postgresql_install_image9.png) 
+
+![Installing](images/postgresql_install_image10.png) 
+
+![Complete the PostgreSQL Setup Wizard](images/postgresql_install_image11.png)
 :::
 
 ::: {.callout-tip collapse="true"}
@@ -222,7 +226,17 @@ These steps should ensure that you are connected to the database.
 CREATE DATABASE my_database;
 ```
 
-     To create a table, following code can be run -
+     Then, you need to connect to the database (here `my_database`) by running the following code - 
+
+```{r}
+#| eval: false
+\c my_database;
+```
+
+     Once you run the above code, you will be connected to  `my_database`. 
+
+
+     Next, in order to create a table, following code can be run -
 
 ```{r}
 #| eval: false
@@ -364,6 +378,14 @@ VALUES
 (1026, '2020-05-01', 008, 005, 'p03', 808, 47282.54)
 ;
 ```
+
+     Now to see whether the database contains the tables we just created above, you can run the following code - 
+
+```{r}
+#| eval: false
+\dt
+```
+
 :::
 
 ### Querying the Database
@@ -412,6 +434,15 @@ SELECT * FROM products WHERE city = 'Dallas';
 (3 rows)
 
 ```
+
+     If you need to quit the database, then run the following line of code - 
+
+```{r}
+#| eval: false
+\q
+```
+
+
 :::
 
 ### Saving a Database from PostgreSQL

@@ -783,7 +783,7 @@ Figure&nbsp;7.6: Regression of Tip and Total Bill
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Time:</td>
-<td>12:41:36</td>
+<td>13:28:30</td>
 <td data-quarto-table-cell-role="th">Log-Likelihood:</td>
 <td>-350.54</td>
 </tr>
@@ -898,7 +898,7 @@ Figure&nbsp;7.6: Regression of Tip and Total Bill
 </section>
 <section id="residual-standard-error-rse" class="level4" data-number="7.2.2.4">
 <h4 data-number="7.2.2.4" class="anchored" data-anchor-id="residual-standard-error-rse"><span class="header-section-number">7.2.2.4</span> Residual Standard Error (RSE)</h4>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Residual Standard Error (RSE) measures how far away an observation is from the prediction (regression line). In another words, it is mean (average) distance between the actual outcome and regression line. For example, <span class="quarto-unresolved-ref">?fig-r-relation-KO-SPY</span> regression equation’s RSE is 0.01034, which means the regression model predicts CocaCola’s return with an avearagr error 0.01034.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Residual Standard Error (RSE) measures how far away an observation is from the prediction (regression line). In another words, it is mean (average) distance between the actual outcome and regression line. For example, <a href="#fig-r-reg-equation" class="quarto-xref">Figure&nbsp;<span>7.5</span></a> regression equation’s RSE is 1.022, which means the regression model predicts tip with an avearagr error 1.022.</p>
 </section>
 </div>
 </section>
@@ -979,7 +979,7 @@ Dep. Variable:                    tip   R-squared:                       0.470
 Model:                            OLS   Adj. R-squared:                  0.454
 Method:                 Least Squares   F-statistic:                     29.90
 Date:                Mon, 10 Mar 2025   Prob (F-statistic):           2.12e-29
-Time:                        12:41:37   Log-Likelihood:                -347.49
+Time:                        13:28:31   Log-Likelihood:                -347.49
 No. Observations:                 244   AIC:                             711.0
 Df Residuals:                     236   BIC:                             739.0
 Df Model:                           7                                         
@@ -1045,7 +1045,7 @@ Figure&nbsp;7.9: Testing Assumption 1
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="fu">durbinWatsonTest</span>(<span class="fu">lm</span>(tip <span class="sc">~</span> total_bill<span class="sc">+</span>size, <span class="at">data =</span> tips))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> lag Autocorrelation D-W Statistic p-value
-   1     -0.05550935      2.100257     0.4
+   1     -0.05550935      2.100257   0.448
  Alternative hypothesis: rho != 0</code></pre>
 </div>
 </div>
@@ -1547,52 +1547,52 @@ Table&nbsp;7.2: Regression of Investment on Market Value and PPE
 <div aria-describedby="tbl-py-multiple-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <div>
-<div id="hbdjidaxxt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="nqtwggedoo" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>
-#hbdjidaxxt table {
+#nqtwggedoo table {
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
           -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale;
         }
 
-#hbdjidaxxt thead, tbody, tfoot, tr, td, th { border-style: none; }
+#nqtwggedoo thead, tbody, tfoot, tr, td, th { border-style: none; }
  tr { background-color: transparent; }
-#hbdjidaxxt p { margin: 0; padding: 0; }
- #hbdjidaxxt .gt_table { display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: hidden; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; }
- #hbdjidaxxt .gt_caption { padding-top: 4px; padding-bottom: 4px; }
- #hbdjidaxxt .gt_title { color: #333333; font-size: 125%; font-weight: initial; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; border-bottom-color: #FFFFFF; border-bottom-width: 0; }
- #hbdjidaxxt .gt_subtitle { color: #333333; font-size: 85%; font-weight: initial; padding-top: 3px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; border-top-color: #FFFFFF; border-top-width: 0; }
- #hbdjidaxxt .gt_heading { background-color: #FFFFFF; text-align: center; border-bottom-color: #FFFFFF; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
- #hbdjidaxxt .gt_bottom_border { border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; }
- #hbdjidaxxt .gt_col_headings { border-top-style: solid; border-top-width: 2px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
- #hbdjidaxxt .gt_col_heading { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; border-left-style: none; border-left-width: 0px; border-left-color: white; border-right-style: none; border-right-width: 0px; border-right-color: white; vertical-align: bottom; padding-top: 4px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; overflow-x: hidden; }
- #hbdjidaxxt .gt_column_spanner_outer { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; padding-top: 0; padding-bottom: 0; padding-left: 4px; padding-right: 4px; }
- #hbdjidaxxt .gt_column_spanner_outer:first-child { padding-left: 0; }
- #hbdjidaxxt .gt_column_spanner_outer:last-child { padding-right: 0; }
- #hbdjidaxxt .gt_column_spanner { border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; vertical-align: bottom; padding-top: 4px; padding-bottom: 4px; overflow-x: hidden; display: inline-block; width: 100%; }
- #hbdjidaxxt .gt_spanner_row { border-bottom-style: hidden; }
- #hbdjidaxxt .gt_group_heading { padding-top: 0px; padding-bottom: 0px; padding-left: 5px; padding-right: 5px; color: #333333; background-color: #FFFFFF; font-size: 0px; font-weight: initial; text-transform: inherit; border-top-style: solid; border-top-width: 0.5px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; border-left-style: none; border-left-width: 1px; border-left-color: white; border-right-style: none; border-right-width: 1px; border-right-color: white; vertical-align: middle; text-align: left; }
- #hbdjidaxxt .gt_empty_group_heading { padding: 0.5px; color: #333333; background-color: #FFFFFF; font-size: 0px; font-weight: initial; border-top-style: solid; border-top-width: 0.5px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; vertical-align: middle; }
- #hbdjidaxxt .gt_from_md> :first-child { margin-top: 0; }
- #hbdjidaxxt .gt_from_md> :last-child { margin-bottom: 0; }
- #hbdjidaxxt .gt_row { padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: none; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 0px; border-left-color: white; border-right-style: none; border-right-width: 0px; border-right-color: white; vertical-align: middle; overflow-x: hidden; }
- #hbdjidaxxt .gt_stub { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: hidden; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; }
- #hbdjidaxxt .gt_stub_row_group { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: solid; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; vertical-align: top; }
- #hbdjidaxxt .gt_row_group_first td { border-top-width: 0.5px; }
- #hbdjidaxxt .gt_row_group_first th { border-top-width: 0.5px; }
- #hbdjidaxxt .gt_striped { background-color: rgba(128,128,128,0.05); }
- #hbdjidaxxt .gt_table_body { border-top-style: solid; border-top-width: 0.5px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: black; }
- #hbdjidaxxt .gt_sourcenotes { color: #333333; background-color: #FFFFFF; border-bottom-style: none; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; }
- #hbdjidaxxt .gt_sourcenote { font-size: 90%; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; text-align: left; }
- #hbdjidaxxt .gt_left { text-align: left; }
- #hbdjidaxxt .gt_center { text-align: center; }
- #hbdjidaxxt .gt_right { text-align: right; font-variant-numeric: tabular-nums; }
- #hbdjidaxxt .gt_font_normal { font-weight: normal; }
- #hbdjidaxxt .gt_font_bold { font-weight: bold; }
- #hbdjidaxxt .gt_font_italic { font-style: italic; }
- #hbdjidaxxt .gt_super { font-size: 65%; }
- #hbdjidaxxt .gt_footnote_marks { font-size: 75%; vertical-align: 0.4em; position: initial; }
- #hbdjidaxxt .gt_asterisk { font-size: 100%; vertical-align: 0; }
+#nqtwggedoo p { margin: 0; padding: 0; }
+ #nqtwggedoo .gt_table { display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: hidden; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; }
+ #nqtwggedoo .gt_caption { padding-top: 4px; padding-bottom: 4px; }
+ #nqtwggedoo .gt_title { color: #333333; font-size: 125%; font-weight: initial; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; border-bottom-color: #FFFFFF; border-bottom-width: 0; }
+ #nqtwggedoo .gt_subtitle { color: #333333; font-size: 85%; font-weight: initial; padding-top: 3px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; border-top-color: #FFFFFF; border-top-width: 0; }
+ #nqtwggedoo .gt_heading { background-color: #FFFFFF; text-align: center; border-bottom-color: #FFFFFF; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
+ #nqtwggedoo .gt_bottom_border { border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; }
+ #nqtwggedoo .gt_col_headings { border-top-style: solid; border-top-width: 2px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
+ #nqtwggedoo .gt_col_heading { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; border-left-style: none; border-left-width: 0px; border-left-color: white; border-right-style: none; border-right-width: 0px; border-right-color: white; vertical-align: bottom; padding-top: 4px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; overflow-x: hidden; }
+ #nqtwggedoo .gt_column_spanner_outer { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; padding-top: 0; padding-bottom: 0; padding-left: 4px; padding-right: 4px; }
+ #nqtwggedoo .gt_column_spanner_outer:first-child { padding-left: 0; }
+ #nqtwggedoo .gt_column_spanner_outer:last-child { padding-right: 0; }
+ #nqtwggedoo .gt_column_spanner { border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; vertical-align: bottom; padding-top: 4px; padding-bottom: 4px; overflow-x: hidden; display: inline-block; width: 100%; }
+ #nqtwggedoo .gt_spanner_row { border-bottom-style: hidden; }
+ #nqtwggedoo .gt_group_heading { padding-top: 0px; padding-bottom: 0px; padding-left: 5px; padding-right: 5px; color: #333333; background-color: #FFFFFF; font-size: 0px; font-weight: initial; text-transform: inherit; border-top-style: solid; border-top-width: 0.5px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; border-left-style: none; border-left-width: 1px; border-left-color: white; border-right-style: none; border-right-width: 1px; border-right-color: white; vertical-align: middle; text-align: left; }
+ #nqtwggedoo .gt_empty_group_heading { padding: 0.5px; color: #333333; background-color: #FFFFFF; font-size: 0px; font-weight: initial; border-top-style: solid; border-top-width: 0.5px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; vertical-align: middle; }
+ #nqtwggedoo .gt_from_md> :first-child { margin-top: 0; }
+ #nqtwggedoo .gt_from_md> :last-child { margin-bottom: 0; }
+ #nqtwggedoo .gt_row { padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: none; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 0px; border-left-color: white; border-right-style: none; border-right-width: 0px; border-right-color: white; vertical-align: middle; overflow-x: hidden; }
+ #nqtwggedoo .gt_stub { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: hidden; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; }
+ #nqtwggedoo .gt_stub_row_group { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: solid; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; vertical-align: top; }
+ #nqtwggedoo .gt_row_group_first td { border-top-width: 0.5px; }
+ #nqtwggedoo .gt_row_group_first th { border-top-width: 0.5px; }
+ #nqtwggedoo .gt_striped { background-color: rgba(128,128,128,0.05); }
+ #nqtwggedoo .gt_table_body { border-top-style: solid; border-top-width: 0.5px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: black; }
+ #nqtwggedoo .gt_sourcenotes { color: #333333; background-color: #FFFFFF; border-bottom-style: none; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; }
+ #nqtwggedoo .gt_sourcenote { font-size: 90%; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; text-align: left; }
+ #nqtwggedoo .gt_left { text-align: left; }
+ #nqtwggedoo .gt_center { text-align: center; }
+ #nqtwggedoo .gt_right { text-align: right; font-variant-numeric: tabular-nums; }
+ #nqtwggedoo .gt_font_normal { font-weight: normal; }
+ #nqtwggedoo .gt_font_bold { font-weight: bold; }
+ #nqtwggedoo .gt_font_italic { font-style: italic; }
+ #nqtwggedoo .gt_super { font-size: 65%; }
+ #nqtwggedoo .gt_footnote_marks { font-size: 75%; vertical-align: 0.4em; position: initial; }
+ #nqtwggedoo .gt_asterisk { font-size: 100%; vertical-align: 0; }
  
 </style>
 
@@ -1640,13 +1640,13 @@ Table&nbsp;7.2: Regression of Investment on Market Value and PPE
 <td colspan="4" class="gt_group_heading" data-quarto-table-cell-role="th">fe</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th">year</td>
+<td class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th">firm</td>
 <td class="gt_row gt_center">x</td>
 <td class="gt_row gt_center">x</td>
 <td class="gt_row gt_center">x</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th">firm</td>
+<td class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th">year</td>
 <td class="gt_row gt_center">x</td>
 <td class="gt_row gt_center">x</td>
 <td class="gt_row gt_center">x</td>
@@ -1993,7 +1993,7 @@ Table&nbsp;7.2: Regression of Investment on Market Value and PPE
 <span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a><span class="fu">durbinWatsonTest</span>(<span class="fu">lm</span>(tip <span class="sc">~</span> total_bill<span class="sc">+</span>size<span class="sc">+</span>Gender<span class="sc">+</span>smoker<span class="sc">+</span>time<span class="sc">+</span>day_Thur <span class="sc">+</span> day_Fri <span class="sc">+</span> day_Sat, <span class="at">data =</span> tips))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> lag Autocorrelation D-W Statistic p-value
-   1     -0.05420024      2.096103   0.636
+   1     -0.05420024      2.096103   0.652
  Alternative hypothesis: rho != 0</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. Multicollinearity: Variance Inflation Factor (VIF) ---------- (5)</span></span>
@@ -2075,52 +2075,52 @@ size         0.192598    0.085315   2.257502  0.024872  0.024540  0.360655</code
 <span id="cb67-5"><a href="#cb67-5" aria-hidden="true" tabindex="-1"></a>        )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<div id="ahptcmcgno" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="wivauscamn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>
-#ahptcmcgno table {
+#wivauscamn table {
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
           -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale;
         }
 
-#ahptcmcgno thead, tbody, tfoot, tr, td, th { border-style: none; }
+#wivauscamn thead, tbody, tfoot, tr, td, th { border-style: none; }
  tr { background-color: transparent; }
-#ahptcmcgno p { margin: 0; padding: 0; }
- #ahptcmcgno .gt_table { display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: hidden; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; }
- #ahptcmcgno .gt_caption { padding-top: 4px; padding-bottom: 4px; }
- #ahptcmcgno .gt_title { color: #333333; font-size: 125%; font-weight: initial; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; border-bottom-color: #FFFFFF; border-bottom-width: 0; }
- #ahptcmcgno .gt_subtitle { color: #333333; font-size: 85%; font-weight: initial; padding-top: 3px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; border-top-color: #FFFFFF; border-top-width: 0; }
- #ahptcmcgno .gt_heading { background-color: #FFFFFF; text-align: center; border-bottom-color: #FFFFFF; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
- #ahptcmcgno .gt_bottom_border { border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; }
- #ahptcmcgno .gt_col_headings { border-top-style: solid; border-top-width: 2px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
- #ahptcmcgno .gt_col_heading { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; border-left-style: none; border-left-width: 0px; border-left-color: white; border-right-style: none; border-right-width: 0px; border-right-color: white; vertical-align: bottom; padding-top: 4px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; overflow-x: hidden; }
- #ahptcmcgno .gt_column_spanner_outer { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; padding-top: 0; padding-bottom: 0; padding-left: 4px; padding-right: 4px; }
- #ahptcmcgno .gt_column_spanner_outer:first-child { padding-left: 0; }
- #ahptcmcgno .gt_column_spanner_outer:last-child { padding-right: 0; }
- #ahptcmcgno .gt_column_spanner { border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; vertical-align: bottom; padding-top: 4px; padding-bottom: 4px; overflow-x: hidden; display: inline-block; width: 100%; }
- #ahptcmcgno .gt_spanner_row { border-bottom-style: hidden; }
- #ahptcmcgno .gt_group_heading { padding-top: 0px; padding-bottom: 0px; padding-left: 5px; padding-right: 5px; color: #333333; background-color: #FFFFFF; font-size: 0px; font-weight: initial; text-transform: inherit; border-top-style: solid; border-top-width: 0.5px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; border-left-style: none; border-left-width: 1px; border-left-color: white; border-right-style: none; border-right-width: 1px; border-right-color: white; vertical-align: middle; text-align: left; }
- #ahptcmcgno .gt_empty_group_heading { padding: 0.5px; color: #333333; background-color: #FFFFFF; font-size: 0px; font-weight: initial; border-top-style: solid; border-top-width: 0.5px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; vertical-align: middle; }
- #ahptcmcgno .gt_from_md> :first-child { margin-top: 0; }
- #ahptcmcgno .gt_from_md> :last-child { margin-bottom: 0; }
- #ahptcmcgno .gt_row { padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: none; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 0px; border-left-color: white; border-right-style: none; border-right-width: 0px; border-right-color: white; vertical-align: middle; overflow-x: hidden; }
- #ahptcmcgno .gt_stub { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: hidden; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; }
- #ahptcmcgno .gt_stub_row_group { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: solid; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; vertical-align: top; }
- #ahptcmcgno .gt_row_group_first td { border-top-width: 0.5px; }
- #ahptcmcgno .gt_row_group_first th { border-top-width: 0.5px; }
- #ahptcmcgno .gt_striped { background-color: rgba(128,128,128,0.05); }
- #ahptcmcgno .gt_table_body { border-top-style: solid; border-top-width: 0.5px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: black; }
- #ahptcmcgno .gt_sourcenotes { color: #333333; background-color: #FFFFFF; border-bottom-style: none; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; }
- #ahptcmcgno .gt_sourcenote { font-size: 90%; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; text-align: left; }
- #ahptcmcgno .gt_left { text-align: left; }
- #ahptcmcgno .gt_center { text-align: center; }
- #ahptcmcgno .gt_right { text-align: right; font-variant-numeric: tabular-nums; }
- #ahptcmcgno .gt_font_normal { font-weight: normal; }
- #ahptcmcgno .gt_font_bold { font-weight: bold; }
- #ahptcmcgno .gt_font_italic { font-style: italic; }
- #ahptcmcgno .gt_super { font-size: 65%; }
- #ahptcmcgno .gt_footnote_marks { font-size: 75%; vertical-align: 0.4em; position: initial; }
- #ahptcmcgno .gt_asterisk { font-size: 100%; vertical-align: 0; }
+#wivauscamn p { margin: 0; padding: 0; }
+ #wivauscamn .gt_table { display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: hidden; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; }
+ #wivauscamn .gt_caption { padding-top: 4px; padding-bottom: 4px; }
+ #wivauscamn .gt_title { color: #333333; font-size: 125%; font-weight: initial; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; border-bottom-color: #FFFFFF; border-bottom-width: 0; }
+ #wivauscamn .gt_subtitle { color: #333333; font-size: 85%; font-weight: initial; padding-top: 3px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; border-top-color: #FFFFFF; border-top-width: 0; }
+ #wivauscamn .gt_heading { background-color: #FFFFFF; text-align: center; border-bottom-color: #FFFFFF; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
+ #wivauscamn .gt_bottom_border { border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; }
+ #wivauscamn .gt_col_headings { border-top-style: solid; border-top-width: 2px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
+ #wivauscamn .gt_col_heading { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; border-left-style: none; border-left-width: 0px; border-left-color: white; border-right-style: none; border-right-width: 0px; border-right-color: white; vertical-align: bottom; padding-top: 4px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; overflow-x: hidden; }
+ #wivauscamn .gt_column_spanner_outer { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; padding-top: 0; padding-bottom: 0; padding-left: 4px; padding-right: 4px; }
+ #wivauscamn .gt_column_spanner_outer:first-child { padding-left: 0; }
+ #wivauscamn .gt_column_spanner_outer:last-child { padding-right: 0; }
+ #wivauscamn .gt_column_spanner { border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; vertical-align: bottom; padding-top: 4px; padding-bottom: 4px; overflow-x: hidden; display: inline-block; width: 100%; }
+ #wivauscamn .gt_spanner_row { border-bottom-style: hidden; }
+ #wivauscamn .gt_group_heading { padding-top: 0px; padding-bottom: 0px; padding-left: 5px; padding-right: 5px; color: #333333; background-color: #FFFFFF; font-size: 0px; font-weight: initial; text-transform: inherit; border-top-style: solid; border-top-width: 0.5px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; border-left-style: none; border-left-width: 1px; border-left-color: white; border-right-style: none; border-right-width: 1px; border-right-color: white; vertical-align: middle; text-align: left; }
+ #wivauscamn .gt_empty_group_heading { padding: 0.5px; color: #333333; background-color: #FFFFFF; font-size: 0px; font-weight: initial; border-top-style: solid; border-top-width: 0.5px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; vertical-align: middle; }
+ #wivauscamn .gt_from_md> :first-child { margin-top: 0; }
+ #wivauscamn .gt_from_md> :last-child { margin-bottom: 0; }
+ #wivauscamn .gt_row { padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: none; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 0px; border-left-color: white; border-right-style: none; border-right-width: 0px; border-right-color: white; vertical-align: middle; overflow-x: hidden; }
+ #wivauscamn .gt_stub { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: hidden; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; }
+ #wivauscamn .gt_stub_row_group { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: solid; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; vertical-align: top; }
+ #wivauscamn .gt_row_group_first td { border-top-width: 0.5px; }
+ #wivauscamn .gt_row_group_first th { border-top-width: 0.5px; }
+ #wivauscamn .gt_striped { background-color: rgba(128,128,128,0.05); }
+ #wivauscamn .gt_table_body { border-top-style: solid; border-top-width: 0.5px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: black; }
+ #wivauscamn .gt_sourcenotes { color: #333333; background-color: #FFFFFF; border-bottom-style: none; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; }
+ #wivauscamn .gt_sourcenote { font-size: 90%; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; text-align: left; }
+ #wivauscamn .gt_left { text-align: left; }
+ #wivauscamn .gt_center { text-align: center; }
+ #wivauscamn .gt_right { text-align: right; font-variant-numeric: tabular-nums; }
+ #wivauscamn .gt_font_normal { font-weight: normal; }
+ #wivauscamn .gt_font_bold { font-weight: bold; }
+ #wivauscamn .gt_font_italic { font-style: italic; }
+ #wivauscamn .gt_super { font-size: 65%; }
+ #wivauscamn .gt_footnote_marks { font-size: 75%; vertical-align: 0.4em; position: initial; }
+ #wivauscamn .gt_asterisk { font-size: 100%; vertical-align: 0; }
  
 </style>
 
@@ -2300,7 +2300,7 @@ size         0.192598    0.085315   2.257502  0.024872  0.024540  0.360655</code
        <script type="text/javascript" data-lets-plot-script="library" src="https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.6.1/js-package/distr/lets-plot.min.js"></script>
    
    
-          <div id="XRNwrI"></div>
+          <div id="fy7F4E"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
    
    (function() {
@@ -2325,7 +2325,7 @@ size         0.192598    0.085315   2.257502  0.024872  0.024540  0.360655</code
        };
    }
    
-   const containerDiv = document.getElementById("XRNwrI");
+   const containerDiv = document.getElementById("fy7F4E");
    let fig = null;
    
    function renderPlot() {
@@ -2523,7 +2523,7 @@ Dep. Variable:                    tip   R-squared:                       0.470
 Model:                            OLS   Adj. R-squared:                  0.454
 Method:                 Least Squares   F-statistic:                     29.90
 Date:                Mon, 10 Mar 2025   Prob (F-statistic):           2.12e-29
-Time:                        12:42:19   Log-Likelihood:                -347.49
+Time:                        13:28:54   Log-Likelihood:                -347.49
 No. Observations:                 244   AIC:                             711.0
 Df Residuals:                     236   BIC:                             739.0
 Df Model:                           7                                         

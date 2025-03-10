@@ -506,7 +506,7 @@ plt.show()
 
 #### Residual Standard Error (RSE)
 
-     Residual Standard Error (RSE) measures how far away an observation is from the prediction (regression line). In another words, it is mean (average) distance between the actual outcome and regression line. For example, @fig-r-relation-KO-SPY regression equation's RSE is 0.01034, which means the regression model predicts CocaCola's return with an avearagr error 0.01034.
+     Residual Standard Error (RSE) measures how far away an observation is from the prediction (regression line). In another words, it is mean (average) distance between the actual outcome and regression line. For example, @fig-r-reg-equation regression equation's RSE is 1.022, which means the regression model predicts tip with an avearagr error 1.022.
 :::
 
 ::: {style="text-align: justify"}

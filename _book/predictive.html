@@ -482,7 +482,7 @@ window.Quarto = {
 <h2 data-number="7.2" class="anchored" data-anchor-id="regression-analysis"><span class="header-section-number">7.2</span> Regression Analysis</h2>
 <section id="simple-linear-regression" class="level3" data-number="7.2.1">
 <h3 data-number="7.2.1" class="anchored" data-anchor-id="simple-linear-regression"><span class="header-section-number">7.2.1</span> Simple Linear Regression</h3>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Regression analysis is one of very useful predictive modeling techniques that identify the relationship between two or more variables. The objective of linear regression is to identify a linear line of best fit that can predict the outcome variable (target variable/dependent variable/response variable) for one or more independent variables(predictors). For example, we can draw a scatter diagram to see the relation between horsepower and miles per gallon (MPG). <a href="#fig-r-hrspower-mpg" class="quarto-xref">Figure&nbsp;<span>7.1</span></a> and <a href="#fig-py-hrspower-mpg" class="quarto-xref">Figure&nbsp;<span>7.2</span></a> show the relationship between horsepower and MPG in R and Python respectively. It is clear that there exists a negative relationship between horsepower and MPG and it makes sense because more power means higher fuel consumption. Similarly, there is negative relationship between vehicle weight and MPG because heavier vehicles need more energy to move (<a href="#fig-r-weight-mpg" class="quarto-xref">Figure&nbsp;<span>7.3</span></a> and <a href="#fig-py-weight-mpg" class="quarto-xref">Figure&nbsp;<span>7.4</span></a>). The equation of a simple linear regression is - <span class="math display">\[y= mX + C\]</span></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Regression analysis is one of very useful predictive modeling techniques that identify the relationship between two or more variables. The objective of linear regression is to identify a linear line of best fit that can predict the outcome variable (target variable/dependent variable/response variable) for one or more independent variables(predictors). For example, we can draw a scatter diagram to see the relation between tip and total bill in restaurant. <a href="#fig-r-hrspower-mpg" class="quarto-xref">Figure&nbsp;<span>7.1</span></a> and <a href="#fig-py-hrspower-mpg" class="quarto-xref">Figure&nbsp;<span>7.2</span></a> show the relationship between tip and total bill in R and Python respectively. It is clear that there exists a positive relationship between tip and total bill and it makes sense because higher bill generates higher tips. Similarly, there is positive relationship between size of the diners and tips because when there are more people in a group to dine, the higher the bill and tips (<a href="#fig-r-weight-mpg" class="quarto-xref">Figure&nbsp;<span>7.3</span></a> and <a href="#fig-py-weight-mpg" class="quarto-xref">Figure&nbsp;<span>7.4</span></a>). The equation of a simple linear regression is - <span class="math display">\[y= mX + C\]</span></p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;where <span class="math inline">\(y\)</span> = Target variable (Dependent variable); <span class="math inline">\(m\)</span> = slope or rate of change; <span class="math inline">\(X\)</span> = predictor or independent variable; and <span class="math inline">\(C\)</span> = intercept or constant.</p>
 </section>
 </section>
@@ -620,7 +620,7 @@ Figure&nbsp;7.4: Relationship between Tip and Size
 </div>
 </div>
 <div style="text-align: justify">
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Now we can quantify these relationships using linear regression in which we will try to draw a line that will help us to idenfity the relation between the variables. For example, in <a href="#fig-r-reg-equation" class="quarto-xref">Figure&nbsp;<span>7.5</span></a>, we can see the linear line that shows the relation between horsepower and MPG. The regression equation we find is <code>y = 40-0.16x</code>, where <span class="math inline">\(y\)</span> is MPG, <span class="math inline">\(x\)</span> is Horsepower, <span class="math inline">\(40\)</span> is intercept, and <span class="math inline">\(1.6\)</span> is slope, which means one unit change of Horsepower results in 1.6 units reduction of MPG and the value of MPG is 40 when horsepower is 0. <a href="#fig-py-reg-equation" class="quarto-xref">Figure&nbsp;<span>7.6</span></a> shows the same results.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Now we can quantify these relationships using linear regression in which we will try to draw a line that will help us to idenfity the relation between the variables. For example, in <a href="#fig-r-reg-equation" class="quarto-xref">Figure&nbsp;<span>7.5</span></a>, we can see the linear line that shows the relation between horsepower and MPG. The regression equation we find is <code>y = 0.92 + 0.11x</code>, where <span class="math inline">\(y\)</span> is tips, <span class="math inline">\(x\)</span> is total bill, <span class="math inline">\(0.92\)</span> is intercept (or constant), and <span class="math inline">\(0.11\)</span> is slope, which means one unit change of total bill results in $0.11 increase of tips and the value of tips is 0.92 when total bill is 0. <a href="#fig-py-reg-equation" class="quarto-xref">Figure&nbsp;<span>7.6</span></a> shows the same results.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">Python</a></li></ul>
 <div class="tab-content">
@@ -795,7 +795,7 @@ Dep. Variable:                    tip   R-squared:                       0.470
 Model:                            OLS   Adj. R-squared:                  0.454
 Method:                 Least Squares   F-statistic:                     29.90
 Date:                Sun, 09 Mar 2025   Prob (F-statistic):           2.12e-29
-Time:                        22:11:45   Log-Likelihood:                -347.49
+Time:                        22:38:41   Log-Likelihood:                -347.49
 No. Observations:                 244   AIC:                             711.0
 Df Residuals:                     236   BIC:                             739.0
 Df Model:                           7                                         
@@ -861,7 +861,7 @@ Figure&nbsp;7.9: Testing Assumption 1
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">durbinWatsonTest</span>(<span class="fu">lm</span>(tip <span class="sc">~</span> total_bill<span class="sc">+</span>size, <span class="at">data =</span> tips))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> lag Autocorrelation D-W Statistic p-value
-   1     -0.05550935      2.100257   0.392
+   1     -0.05550935      2.100257    0.45
  Alternative hypothesis: rho != 0</code></pre>
 </div>
 </div>
@@ -1363,52 +1363,52 @@ Table&nbsp;7.2: Regression of Investment on Market Value and PPE
 <div aria-describedby="tbl-py-multiple-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <div>
-<div id="hwrljukvjn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="naqslpzalg" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>
-#hwrljukvjn table {
+#naqslpzalg table {
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
           -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale;
         }
 
-#hwrljukvjn thead, tbody, tfoot, tr, td, th { border-style: none; }
+#naqslpzalg thead, tbody, tfoot, tr, td, th { border-style: none; }
  tr { background-color: transparent; }
-#hwrljukvjn p { margin: 0; padding: 0; }
- #hwrljukvjn .gt_table { display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: hidden; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; }
- #hwrljukvjn .gt_caption { padding-top: 4px; padding-bottom: 4px; }
- #hwrljukvjn .gt_title { color: #333333; font-size: 125%; font-weight: initial; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; border-bottom-color: #FFFFFF; border-bottom-width: 0; }
- #hwrljukvjn .gt_subtitle { color: #333333; font-size: 85%; font-weight: initial; padding-top: 3px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; border-top-color: #FFFFFF; border-top-width: 0; }
- #hwrljukvjn .gt_heading { background-color: #FFFFFF; text-align: center; border-bottom-color: #FFFFFF; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
- #hwrljukvjn .gt_bottom_border { border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; }
- #hwrljukvjn .gt_col_headings { border-top-style: solid; border-top-width: 2px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
- #hwrljukvjn .gt_col_heading { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; border-left-style: none; border-left-width: 0px; border-left-color: white; border-right-style: none; border-right-width: 0px; border-right-color: white; vertical-align: bottom; padding-top: 4px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; overflow-x: hidden; }
- #hwrljukvjn .gt_column_spanner_outer { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; padding-top: 0; padding-bottom: 0; padding-left: 4px; padding-right: 4px; }
- #hwrljukvjn .gt_column_spanner_outer:first-child { padding-left: 0; }
- #hwrljukvjn .gt_column_spanner_outer:last-child { padding-right: 0; }
- #hwrljukvjn .gt_column_spanner { border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; vertical-align: bottom; padding-top: 4px; padding-bottom: 4px; overflow-x: hidden; display: inline-block; width: 100%; }
- #hwrljukvjn .gt_spanner_row { border-bottom-style: hidden; }
- #hwrljukvjn .gt_group_heading { padding-top: 0px; padding-bottom: 0px; padding-left: 5px; padding-right: 5px; color: #333333; background-color: #FFFFFF; font-size: 0px; font-weight: initial; text-transform: inherit; border-top-style: solid; border-top-width: 0.5px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; border-left-style: none; border-left-width: 1px; border-left-color: white; border-right-style: none; border-right-width: 1px; border-right-color: white; vertical-align: middle; text-align: left; }
- #hwrljukvjn .gt_empty_group_heading { padding: 0.5px; color: #333333; background-color: #FFFFFF; font-size: 0px; font-weight: initial; border-top-style: solid; border-top-width: 0.5px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; vertical-align: middle; }
- #hwrljukvjn .gt_from_md> :first-child { margin-top: 0; }
- #hwrljukvjn .gt_from_md> :last-child { margin-bottom: 0; }
- #hwrljukvjn .gt_row { padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: none; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 0px; border-left-color: white; border-right-style: none; border-right-width: 0px; border-right-color: white; vertical-align: middle; overflow-x: hidden; }
- #hwrljukvjn .gt_stub { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: hidden; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; }
- #hwrljukvjn .gt_stub_row_group { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: solid; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; vertical-align: top; }
- #hwrljukvjn .gt_row_group_first td { border-top-width: 0.5px; }
- #hwrljukvjn .gt_row_group_first th { border-top-width: 0.5px; }
- #hwrljukvjn .gt_striped { background-color: rgba(128,128,128,0.05); }
- #hwrljukvjn .gt_table_body { border-top-style: solid; border-top-width: 0.5px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: black; }
- #hwrljukvjn .gt_sourcenotes { color: #333333; background-color: #FFFFFF; border-bottom-style: none; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; }
- #hwrljukvjn .gt_sourcenote { font-size: 90%; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; text-align: left; }
- #hwrljukvjn .gt_left { text-align: left; }
- #hwrljukvjn .gt_center { text-align: center; }
- #hwrljukvjn .gt_right { text-align: right; font-variant-numeric: tabular-nums; }
- #hwrljukvjn .gt_font_normal { font-weight: normal; }
- #hwrljukvjn .gt_font_bold { font-weight: bold; }
- #hwrljukvjn .gt_font_italic { font-style: italic; }
- #hwrljukvjn .gt_super { font-size: 65%; }
- #hwrljukvjn .gt_footnote_marks { font-size: 75%; vertical-align: 0.4em; position: initial; }
- #hwrljukvjn .gt_asterisk { font-size: 100%; vertical-align: 0; }
+#naqslpzalg p { margin: 0; padding: 0; }
+ #naqslpzalg .gt_table { display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: hidden; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; }
+ #naqslpzalg .gt_caption { padding-top: 4px; padding-bottom: 4px; }
+ #naqslpzalg .gt_title { color: #333333; font-size: 125%; font-weight: initial; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; border-bottom-color: #FFFFFF; border-bottom-width: 0; }
+ #naqslpzalg .gt_subtitle { color: #333333; font-size: 85%; font-weight: initial; padding-top: 3px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; border-top-color: #FFFFFF; border-top-width: 0; }
+ #naqslpzalg .gt_heading { background-color: #FFFFFF; text-align: center; border-bottom-color: #FFFFFF; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
+ #naqslpzalg .gt_bottom_border { border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; }
+ #naqslpzalg .gt_col_headings { border-top-style: solid; border-top-width: 2px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
+ #naqslpzalg .gt_col_heading { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; border-left-style: none; border-left-width: 0px; border-left-color: white; border-right-style: none; border-right-width: 0px; border-right-color: white; vertical-align: bottom; padding-top: 4px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; overflow-x: hidden; }
+ #naqslpzalg .gt_column_spanner_outer { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; padding-top: 0; padding-bottom: 0; padding-left: 4px; padding-right: 4px; }
+ #naqslpzalg .gt_column_spanner_outer:first-child { padding-left: 0; }
+ #naqslpzalg .gt_column_spanner_outer:last-child { padding-right: 0; }
+ #naqslpzalg .gt_column_spanner { border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; vertical-align: bottom; padding-top: 4px; padding-bottom: 4px; overflow-x: hidden; display: inline-block; width: 100%; }
+ #naqslpzalg .gt_spanner_row { border-bottom-style: hidden; }
+ #naqslpzalg .gt_group_heading { padding-top: 0px; padding-bottom: 0px; padding-left: 5px; padding-right: 5px; color: #333333; background-color: #FFFFFF; font-size: 0px; font-weight: initial; text-transform: inherit; border-top-style: solid; border-top-width: 0.5px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; border-left-style: none; border-left-width: 1px; border-left-color: white; border-right-style: none; border-right-width: 1px; border-right-color: white; vertical-align: middle; text-align: left; }
+ #naqslpzalg .gt_empty_group_heading { padding: 0.5px; color: #333333; background-color: #FFFFFF; font-size: 0px; font-weight: initial; border-top-style: solid; border-top-width: 0.5px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; vertical-align: middle; }
+ #naqslpzalg .gt_from_md> :first-child { margin-top: 0; }
+ #naqslpzalg .gt_from_md> :last-child { margin-bottom: 0; }
+ #naqslpzalg .gt_row { padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: none; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 0px; border-left-color: white; border-right-style: none; border-right-width: 0px; border-right-color: white; vertical-align: middle; overflow-x: hidden; }
+ #naqslpzalg .gt_stub { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: hidden; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; }
+ #naqslpzalg .gt_stub_row_group { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: solid; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; vertical-align: top; }
+ #naqslpzalg .gt_row_group_first td { border-top-width: 0.5px; }
+ #naqslpzalg .gt_row_group_first th { border-top-width: 0.5px; }
+ #naqslpzalg .gt_striped { background-color: rgba(128,128,128,0.05); }
+ #naqslpzalg .gt_table_body { border-top-style: solid; border-top-width: 0.5px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: black; }
+ #naqslpzalg .gt_sourcenotes { color: #333333; background-color: #FFFFFF; border-bottom-style: none; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; }
+ #naqslpzalg .gt_sourcenote { font-size: 90%; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; text-align: left; }
+ #naqslpzalg .gt_left { text-align: left; }
+ #naqslpzalg .gt_center { text-align: center; }
+ #naqslpzalg .gt_right { text-align: right; font-variant-numeric: tabular-nums; }
+ #naqslpzalg .gt_font_normal { font-weight: normal; }
+ #naqslpzalg .gt_font_bold { font-weight: bold; }
+ #naqslpzalg .gt_font_italic { font-style: italic; }
+ #naqslpzalg .gt_super { font-size: 65%; }
+ #naqslpzalg .gt_footnote_marks { font-size: 75%; vertical-align: 0.4em; position: initial; }
+ #naqslpzalg .gt_asterisk { font-size: 100%; vertical-align: 0; }
  
 </style>
 
@@ -1456,13 +1456,13 @@ Table&nbsp;7.2: Regression of Investment on Market Value and PPE
 <td colspan="4" class="gt_group_heading" data-quarto-table-cell-role="th">fe</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th">year</td>
+<td class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th">firm</td>
 <td class="gt_row gt_center">x</td>
 <td class="gt_row gt_center">x</td>
 <td class="gt_row gt_center">x</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th">firm</td>
+<td class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th">year</td>
 <td class="gt_row gt_center">x</td>
 <td class="gt_row gt_center">x</td>
 <td class="gt_row gt_center">x</td>
@@ -1809,7 +1809,7 @@ Table&nbsp;7.2: Regression of Investment on Market Value and PPE
 <span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="fu">durbinWatsonTest</span>(<span class="fu">lm</span>(tip <span class="sc">~</span> total_bill<span class="sc">+</span>size<span class="sc">+</span>Gender<span class="sc">+</span>smoker<span class="sc">+</span>time<span class="sc">+</span>day_Thur <span class="sc">+</span> day_Fri <span class="sc">+</span> day_Sat, <span class="at">data =</span> tips))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> lag Autocorrelation D-W Statistic p-value
-   1     -0.05420024      2.096103   0.616
+   1     -0.05420024      2.096103   0.706
  Alternative hypothesis: rho != 0</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. Multicollinearity: Variance Inflation Factor (VIF) ---------- (5)</span></span>
@@ -1891,52 +1891,52 @@ size         0.192598    0.085315   2.257502  0.024872  0.024540  0.360655</code
 <span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a>        )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<div id="sflwnwipqx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="ioibtpoaps" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>
-#sflwnwipqx table {
+#ioibtpoaps table {
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
           -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale;
         }
 
-#sflwnwipqx thead, tbody, tfoot, tr, td, th { border-style: none; }
+#ioibtpoaps thead, tbody, tfoot, tr, td, th { border-style: none; }
  tr { background-color: transparent; }
-#sflwnwipqx p { margin: 0; padding: 0; }
- #sflwnwipqx .gt_table { display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: hidden; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; }
- #sflwnwipqx .gt_caption { padding-top: 4px; padding-bottom: 4px; }
- #sflwnwipqx .gt_title { color: #333333; font-size: 125%; font-weight: initial; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; border-bottom-color: #FFFFFF; border-bottom-width: 0; }
- #sflwnwipqx .gt_subtitle { color: #333333; font-size: 85%; font-weight: initial; padding-top: 3px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; border-top-color: #FFFFFF; border-top-width: 0; }
- #sflwnwipqx .gt_heading { background-color: #FFFFFF; text-align: center; border-bottom-color: #FFFFFF; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
- #sflwnwipqx .gt_bottom_border { border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; }
- #sflwnwipqx .gt_col_headings { border-top-style: solid; border-top-width: 2px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
- #sflwnwipqx .gt_col_heading { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; border-left-style: none; border-left-width: 0px; border-left-color: white; border-right-style: none; border-right-width: 0px; border-right-color: white; vertical-align: bottom; padding-top: 4px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; overflow-x: hidden; }
- #sflwnwipqx .gt_column_spanner_outer { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; padding-top: 0; padding-bottom: 0; padding-left: 4px; padding-right: 4px; }
- #sflwnwipqx .gt_column_spanner_outer:first-child { padding-left: 0; }
- #sflwnwipqx .gt_column_spanner_outer:last-child { padding-right: 0; }
- #sflwnwipqx .gt_column_spanner { border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; vertical-align: bottom; padding-top: 4px; padding-bottom: 4px; overflow-x: hidden; display: inline-block; width: 100%; }
- #sflwnwipqx .gt_spanner_row { border-bottom-style: hidden; }
- #sflwnwipqx .gt_group_heading { padding-top: 0px; padding-bottom: 0px; padding-left: 5px; padding-right: 5px; color: #333333; background-color: #FFFFFF; font-size: 0px; font-weight: initial; text-transform: inherit; border-top-style: solid; border-top-width: 0.5px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; border-left-style: none; border-left-width: 1px; border-left-color: white; border-right-style: none; border-right-width: 1px; border-right-color: white; vertical-align: middle; text-align: left; }
- #sflwnwipqx .gt_empty_group_heading { padding: 0.5px; color: #333333; background-color: #FFFFFF; font-size: 0px; font-weight: initial; border-top-style: solid; border-top-width: 0.5px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; vertical-align: middle; }
- #sflwnwipqx .gt_from_md> :first-child { margin-top: 0; }
- #sflwnwipqx .gt_from_md> :last-child { margin-bottom: 0; }
- #sflwnwipqx .gt_row { padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: none; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 0px; border-left-color: white; border-right-style: none; border-right-width: 0px; border-right-color: white; vertical-align: middle; overflow-x: hidden; }
- #sflwnwipqx .gt_stub { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: hidden; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; }
- #sflwnwipqx .gt_stub_row_group { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: solid; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; vertical-align: top; }
- #sflwnwipqx .gt_row_group_first td { border-top-width: 0.5px; }
- #sflwnwipqx .gt_row_group_first th { border-top-width: 0.5px; }
- #sflwnwipqx .gt_striped { background-color: rgba(128,128,128,0.05); }
- #sflwnwipqx .gt_table_body { border-top-style: solid; border-top-width: 0.5px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: black; }
- #sflwnwipqx .gt_sourcenotes { color: #333333; background-color: #FFFFFF; border-bottom-style: none; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; }
- #sflwnwipqx .gt_sourcenote { font-size: 90%; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; text-align: left; }
- #sflwnwipqx .gt_left { text-align: left; }
- #sflwnwipqx .gt_center { text-align: center; }
- #sflwnwipqx .gt_right { text-align: right; font-variant-numeric: tabular-nums; }
- #sflwnwipqx .gt_font_normal { font-weight: normal; }
- #sflwnwipqx .gt_font_bold { font-weight: bold; }
- #sflwnwipqx .gt_font_italic { font-style: italic; }
- #sflwnwipqx .gt_super { font-size: 65%; }
- #sflwnwipqx .gt_footnote_marks { font-size: 75%; vertical-align: 0.4em; position: initial; }
- #sflwnwipqx .gt_asterisk { font-size: 100%; vertical-align: 0; }
+#ioibtpoaps p { margin: 0; padding: 0; }
+ #ioibtpoaps .gt_table { display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: hidden; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; }
+ #ioibtpoaps .gt_caption { padding-top: 4px; padding-bottom: 4px; }
+ #ioibtpoaps .gt_title { color: #333333; font-size: 125%; font-weight: initial; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; border-bottom-color: #FFFFFF; border-bottom-width: 0; }
+ #ioibtpoaps .gt_subtitle { color: #333333; font-size: 85%; font-weight: initial; padding-top: 3px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; border-top-color: #FFFFFF; border-top-width: 0; }
+ #ioibtpoaps .gt_heading { background-color: #FFFFFF; text-align: center; border-bottom-color: #FFFFFF; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
+ #ioibtpoaps .gt_bottom_border { border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; }
+ #ioibtpoaps .gt_col_headings { border-top-style: solid; border-top-width: 2px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
+ #ioibtpoaps .gt_col_heading { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; border-left-style: none; border-left-width: 0px; border-left-color: white; border-right-style: none; border-right-width: 0px; border-right-color: white; vertical-align: bottom; padding-top: 4px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; overflow-x: hidden; }
+ #ioibtpoaps .gt_column_spanner_outer { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; padding-top: 0; padding-bottom: 0; padding-left: 4px; padding-right: 4px; }
+ #ioibtpoaps .gt_column_spanner_outer:first-child { padding-left: 0; }
+ #ioibtpoaps .gt_column_spanner_outer:last-child { padding-right: 0; }
+ #ioibtpoaps .gt_column_spanner { border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; vertical-align: bottom; padding-top: 4px; padding-bottom: 4px; overflow-x: hidden; display: inline-block; width: 100%; }
+ #ioibtpoaps .gt_spanner_row { border-bottom-style: hidden; }
+ #ioibtpoaps .gt_group_heading { padding-top: 0px; padding-bottom: 0px; padding-left: 5px; padding-right: 5px; color: #333333; background-color: #FFFFFF; font-size: 0px; font-weight: initial; text-transform: inherit; border-top-style: solid; border-top-width: 0.5px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; border-left-style: none; border-left-width: 1px; border-left-color: white; border-right-style: none; border-right-width: 1px; border-right-color: white; vertical-align: middle; text-align: left; }
+ #ioibtpoaps .gt_empty_group_heading { padding: 0.5px; color: #333333; background-color: #FFFFFF; font-size: 0px; font-weight: initial; border-top-style: solid; border-top-width: 0.5px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; vertical-align: middle; }
+ #ioibtpoaps .gt_from_md> :first-child { margin-top: 0; }
+ #ioibtpoaps .gt_from_md> :last-child { margin-bottom: 0; }
+ #ioibtpoaps .gt_row { padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: none; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 0px; border-left-color: white; border-right-style: none; border-right-width: 0px; border-right-color: white; vertical-align: middle; overflow-x: hidden; }
+ #ioibtpoaps .gt_stub { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: hidden; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; }
+ #ioibtpoaps .gt_stub_row_group { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: solid; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; vertical-align: top; }
+ #ioibtpoaps .gt_row_group_first td { border-top-width: 0.5px; }
+ #ioibtpoaps .gt_row_group_first th { border-top-width: 0.5px; }
+ #ioibtpoaps .gt_striped { background-color: rgba(128,128,128,0.05); }
+ #ioibtpoaps .gt_table_body { border-top-style: solid; border-top-width: 0.5px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: black; }
+ #ioibtpoaps .gt_sourcenotes { color: #333333; background-color: #FFFFFF; border-bottom-style: none; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; }
+ #ioibtpoaps .gt_sourcenote { font-size: 90%; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; text-align: left; }
+ #ioibtpoaps .gt_left { text-align: left; }
+ #ioibtpoaps .gt_center { text-align: center; }
+ #ioibtpoaps .gt_right { text-align: right; font-variant-numeric: tabular-nums; }
+ #ioibtpoaps .gt_font_normal { font-weight: normal; }
+ #ioibtpoaps .gt_font_bold { font-weight: bold; }
+ #ioibtpoaps .gt_font_italic { font-style: italic; }
+ #ioibtpoaps .gt_super { font-size: 65%; }
+ #ioibtpoaps .gt_footnote_marks { font-size: 75%; vertical-align: 0.4em; position: initial; }
+ #ioibtpoaps .gt_asterisk { font-size: 100%; vertical-align: 0; }
  
 </style>
 
@@ -2116,7 +2116,7 @@ size         0.192598    0.085315   2.257502  0.024872  0.024540  0.360655</code
        <script type="text/javascript" data-lets-plot-script="library" src="https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.6.1/js-package/distr/lets-plot.min.js"></script>
    
    
-          <div id="UuR4e3"></div>
+          <div id="bOoGTt"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
    
    (function() {
@@ -2141,7 +2141,7 @@ size         0.192598    0.085315   2.257502  0.024872  0.024540  0.360655</code
        };
    }
    
-   const containerDiv = document.getElementById("UuR4e3");
+   const containerDiv = document.getElementById("bOoGTt");
    let fig = null;
    
    function renderPlot() {
@@ -2339,7 +2339,7 @@ Dep. Variable:                    tip   R-squared:                       0.470
 Model:                            OLS   Adj. R-squared:                  0.454
 Method:                 Least Squares   F-statistic:                     29.90
 Date:                Sun, 09 Mar 2025   Prob (F-statistic):           2.12e-29
-Time:                        22:12:15   Log-Likelihood:                -347.49
+Time:                        22:39:08   Log-Likelihood:                -347.49
 No. Observations:                 244   AIC:                             711.0
 Df Residuals:                     236   BIC:                             739.0
 Df Model:                           7                                         

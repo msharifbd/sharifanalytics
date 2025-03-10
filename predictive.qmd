@@ -32,7 +32,7 @@ At the End of the Chapter, Students should be Able to -
 
 ### Simple Linear Regression
 
-     Regression analysis is one of very useful predictive modeling techniques that identify the relationship between two or more variables. The objective of linear regression is to identify a linear line of best fit that can predict the outcome variable (target variable/dependent variable/response variable) for one or more independent variables(predictors). For example, we can draw a scatter diagram to see the relation between horsepower and miles per gallon (MPG). @fig-r-hrspower-mpg and @fig-py-hrspower-mpg show the relationship between horsepower and MPG in R and Python respectively. It is clear that there exists a negative relationship between horsepower and MPG and it makes sense because more power means higher fuel consumption. Similarly, there is negative relationship between vehicle weight and MPG because heavier vehicles need more energy to move (@fig-r-weight-mpg and @fig-py-weight-mpg). The equation of a simple linear regression is - $$y= mX + C$$
+     Regression analysis is one of very useful predictive modeling techniques that identify the relationship between two or more variables. The objective of linear regression is to identify a linear line of best fit that can predict the outcome variable (target variable/dependent variable/response variable) for one or more independent variables(predictors). For example, we can draw a scatter diagram to see the relation between tip and total bill in restaurant. @fig-r-hrspower-mpg and @fig-py-hrspower-mpg show the relationship between tip and total bill in R and Python respectively. It is clear that there exists a positive relationship between tip and total bill and it makes sense because higher bill generates higher tips. Similarly, there is positive relationship between size of the diners and tips because when there are more people in a group to dine, the higher the bill and tips (@fig-r-weight-mpg and @fig-py-weight-mpg). The equation of a simple linear regression is - $$y= mX + C$$
 
      where $y$ = Target variable (Dependent variable); $m$ = slope or rate of change; $X$ = predictor or independent variable; and $C$ = intercept or constant.
 :::
@@ -204,7 +204,7 @@ sns.scatterplot(x = "Weight", y = "MPG", data = py_df)
 :::
 
 ::: {style="text-align: justify"}
-     Now we can quantify these relationships using linear regression in which we will try to draw a line that will help us to idenfity the relation between the variables. For example, in @fig-r-reg-equation, we can see the linear line that shows the relation between horsepower and MPG. The regression equation we find is `y = 40-0.16x`, where $y$ is MPG, $x$ is Horsepower, $40$ is intercept, and $1.6$ is slope, which means one unit change of Horsepower results in 1.6 units reduction of MPG and the value of MPG is 40 when horsepower is 0. @fig-py-reg-equation shows the same results.
+     Now we can quantify these relationships using linear regression in which we will try to draw a line that will help us to idenfity the relation between the variables. For example, in @fig-r-reg-equation, we can see the linear line that shows the relation between horsepower and MPG. The regression equation we find is `y = 0.92 + 0.11x`, where $y$ is tips, $x$ is total bill, $0.92$ is intercept (or constant), and $0.11$ is slope, which means one unit change of total bill results in $0.11 increase of tips and the value of tips is 0.92 when total bill is 0. @fig-py-reg-equation shows the same results.
 
 ::: panel-tabset
 ## R

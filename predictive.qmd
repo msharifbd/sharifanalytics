@@ -37,17 +37,28 @@ At the End of the Chapter, Students should be Able to -
      where $y$ = Target variable (Dependent variable); $m$ = slope or rate of change; $X$ = predictor or independent variable; and $C$ = intercept or constant.
 :::
 
-::: panel-tabset
+::: {.panel-tabset}
 ## R
 
 ```{r}
 #| warning: false
 # loading necessary packages 
 library(tidyverse)
+library(broom)
+library(reshape2) # for tips data 
 ```
 
 ```{r}
 #| warning: false
+# loading the dataset 
+data ("tips")
+glimpse(as_tibble(tips))
+```
+
+```{r}
+#| warning: false
+#| include: false 
+#| eval: false 
 # loading the dataset 
 r_df = read_csv('http://web.pdx.edu/~gerbing/data/cars.csv')
 glimpse (r_df)
@@ -58,7 +69,10 @@ glimpse (r_df)
 ```{r}
 #| include: false
 library(reticulate)
-Sys.setenv('RETICULATE_PYTHON' = 'C:\\Users\\mshar\\AppData\\Local\\Programs\\Python\\Python311\\python.exe')
+Sys.unsetenv("RETICULATE_PYTHON")
+reticulate::use_virtualenv("C:/Users/mshar/OneDrive - Southern Illinois University/ANALYTICS_FOR_ACCOUNTING_DATA/accounting_analytics_book", required = TRUE)
+
+#Sys.setenv('RETICULATE_PYTHON' = 'C:\\Users\\mshar\\AppData\\Local\\Programs\\Python\\Python311\\python.exe')
 
 #Sys.setenv('RETICULATE_PYTHON' = '~/.venv/quarto_book_python/Scripts/python.exe')
 ```
@@ -68,25 +82,48 @@ Sys.setenv('RETICULATE_PYTHON' = 'C:\\Users\\mshar\\AppData\\Local\\Programs\\Py
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt 
+sns.set_theme(style="darkgrid")
 ```
 
 ```{python}
+#| warning: false 
+
+# loading the dataset 
+tips = sns.load_dataset("tips")
+tips.head()
+```
+
+
+```{python}
+#| include: false 
+#| eval: false 
 # loading the dataset 
 py_df = pd.read_csv("http://web.pdx.edu/~gerbing/data/cars.csv")
 py_df.info()
 ```
+
+
 :::
+
 
 ::: panel-tabset
 ## R
 
 ```{r}
-#| fig-cap: "Relationship between Horsepower and MPG"
+#| fig-cap: "Relationship between Tips and Total Bill"
 #| label: fig-r-hrspower-mpg
+ggplot(tips, aes (x = total_bill, y = tip)) + 
+  geom_point()
+```
+
+
+```{r}
+#| fig-cap: "Relationship between Horsepower and MPG"
+#| eval: false
+#| include: false
+# label: fig-r-hrspower-mpg
 ggplot(r_df, aes(x = Horsepower, y = MPG))+
     geom_point()
-    
-
 ```
 
 ## Python
@@ -95,28 +132,45 @@ ggplot(r_df, aes(x = Horsepower, y = MPG))+
 #| include: false
 library(reticulate)
 #Sys.setenv('RETICULATE_PYTHON' = 'C:\\Users\\mshar\\AppData\\Local\\Programs\\Python\\Python311\\python.exe')
+```
+
+```{python}
+#| fig-cap: "Relationship between Tips and Total Bill"
+#| label: fig-py-hrspower-mpg
+sns.set_theme(style="darkgrid")
+sns.scatterplot(data = tips, x = "total_bill", y = "tip")
 ```
 
 ```{python}
 #| fig-cap: "Relationship between Horsepower and MPG"
-#| label: fig-py-hrspower-mpg
+#| include: false 
+#| eval: false
+# label: fig-py-hrspower-mpg
 sns.set_theme(style="darkgrid")
 sns.scatterplot(x = "Horsepower", y = "MPG", data = py_df)
-
 ```
 :::
 
 ::: panel-tabset
+
 ## R
 
 ```{r}
-#| fig-cap: "Relationship between Weight and MPG"
+#| fig-cap: "Relationship between Tip and Size"
 #| label: fig-r-weight-mpg
+ggplot(tips, aes (x = size, y = tip)) + 
+  geom_point()
+```
+
+```{r}
+#| fig-cap: "Relationship between Weight and MPG"
+#| include: false 
+#| eval: false
+# label: fig-r-weight-mpg
 ggplot(r_df, aes(x = Weight, y = MPG))+
     geom_point()
-    
-
 ```
+
 
 ## Python
 
@@ -127,12 +181,26 @@ library(reticulate)
 ```
 
 ```{python}
-#| fig-cap: "Relationship between Weight and MPG"
+#| fig-cap: "Relationship between Tip and Size"
 #| label: fig-py-weight-mpg
+sns.set_theme(style="darkgrid")
+sns.scatterplot(data = tips, x = "size", y = "tip")
+
+```
+
+
+
+```{python}
+#| fig-cap: "Relationship between Weight and MPG"
+#| eval: false 
+#| include: false 
+# fig-py-weight-mpg
 sns.set_theme(style="darkgrid")
 sns.scatterplot(x = "Weight", y = "MPG", data = py_df)
 
 ```
+
+
 :::
 
 ::: {style="text-align: justify"}
@@ -143,8 +211,24 @@ sns.scatterplot(x = "Weight", y = "MPG", data = py_df)
 
 ```{r}
 #| warning: false
-#| fig-cap: Regression of Horsepower and MPG
+#| fig-cap: Regression of Tip and Total Bill
 #| label: fig-r-reg-equation
+library(ggpubr) 
+ggplot(tips, aes (x = total_bill, y = tip)) + 
+  geom_point() + 
+  geom_smooth(method = "lm") + 
+  labs(x = "Total Bill", y = "Tip") + 
+  stat_regline_equation(label.x = 20, label.y = 9 )
+
+```
+
+
+```{r}
+#| warning: false
+#| fig-cap: Regression of Horsepower and MPG
+#| eval: false 
+#| include: false 
+# label: fig-r-reg-equation
 library(ggpubr)
 ggplot(r_df, aes (x = Horsepower, y = MPG))+
     geom_point()+
@@ -163,8 +247,39 @@ library(reticulate)
 
 ```{python}
 #| label: fig-py-reg-equation
+#| fig-cap: Regression of Tip and Total Bill
+#| warning: false
+# To run the regression model
+from scipy import stats
+import statsmodels.api as sm
+import statsmodels.formula.api as smf
+
+simple_reg = smf.ols('tip ~ total_bill', data = tips)
+simple_reg_model = simple_reg.fit()
+## adding fitted and residual to the dataframe 
+tips['fitted'] = simple_reg_model.fittedvalues
+tips['residual'] = simple_reg_model.resid
+tips.head()
+simple_re_parameters = simple_reg_model.params
+# Visualization 
+plt.figure(figsize = (12, 8))
+plt.scatter(tips['total_bill'], tips['tip'])
+plt.xlabel("Total Bill")
+plt.ylabel("Tip")
+plt.plot(tips['total_bill'], 
+    simple_re_parameters.Intercept+simple_re_parameters.total_bill*tips['total_bill'], 
+    label = 'Y={:.4f}+{:.4f}X'.format(simple_re_parameters.Intercept, simple_re_parameters.total_bill), 
+    color = "red")
+plt.legend()
+```
+
+
+```{python}
 #| fig-cap: Regression of Horsepower and MPG
 #| warning: false
+#| include: false 
+#| eval: false 
+# label: fig-py-reg-equation
 
 import plotnine as p9
 from scipy import stats
@@ -182,21 +297,34 @@ plot=(p9.ggplot(data=py_df, mapping= p9.aes('Horsepower','MPG'))
 # print the plot
 print(plot)
 ```
-:::
+
+
 :::
 
+:::
+
+```{python}
+#| include: false 
+#| eval: false 
 #### Relationship between Stock Returns and a Market Index
 
 ::: {style="text-align: justify"}
      Now we will try to build a simple linear model between the return of a stock and a market index. Using `tidyquant` package from `R` or `yfinance` module from `python`, we will get share prices of different stocks and a market index. For example, we will get the share price data of Coca-Cola (NYSE:KO) and its competitor PepsiCO (NYSE:PEP). Moreover, we will collect data on US Dollar index (ICE:DX) and SPDR S&P500 ETF (NYSERCA:SPY).
+```
 
+```{r}
+#| include: false 
+#| eval: false
 ::: panel-tabset
 ## R
+```
 
 ```{r}
 #| label: fig-r-relation-KO-SPY
 #| fig-cap: Linear Model between SPY and KO
 #| warning: false
+#| include: false 
+#| eval: false
 library(tidyquant)
 
 tickers = c("KO", "SPY", "PEP","DX-Y.NYB")
@@ -248,7 +376,11 @@ ggplot(df_stockR, aes (x = SPY, y = KO))+
 
 ```
 
+```{python}
+#| include: false 
+#| eval: false
 ## Python
+```
 
 ```{r}
 #| include: false
@@ -260,6 +392,8 @@ library(reticulate)
 ```{python}
 #| label: fig-py-relation-KO-SPY
 #| fig-cap: Linear Model between SPY and KO
+#| include: false 
+#| eval: false
 import yfinance as yf
 import datetime
 import numpy as np
@@ -332,6 +466,8 @@ plt.legend()
 plt.show()
 
 ```
+
+
 :::
 :::
 
@@ -358,6 +494,7 @@ plt.show()
 :::
 
 ::: {style="text-align: justify"}
+
 ### Assumptions of Linear Regression
 
      Linear regression follows some assumptions. After fitting a regression model, we should check the assumptions of the model.
@@ -374,6 +511,15 @@ plt.show()
 ```{r}
 #| label: fig-r-assump1
 #| fig-cap: Testing Assumption 1
+plot(lm(tip ~ total_bill, data = tips),1)
+
+```
+
+```{r}
+#| fig-cap: Testing Assumption 1
+#| include: false 
+#| eval: false
+# label: fig-r-assump1
 plot(lm(KO ~ SPY, data = df_stockR), 1)
 ```
 
@@ -389,6 +535,56 @@ library(reticulate)
 ```{python}
 #| label: fig-py-assump1
 #| fig-cap: Testing Assumption 1
+#######################################################
+# Testing Model Assumptions 
+#######################################################
+import numpy as np
+import pandas as pd
+import statsmodels.api as sm
+import seaborn as sns
+import matplotlib.pyplot as plt
+from statsmodels.stats.outliers_influence import variance_inflation_factor
+from statsmodels.stats.stattools import durbin_watson
+
+# Example Data
+
+import pandas as pd
+import statsmodels.api as sm
+
+# Assuming your dataset is named 'tips'
+# Convert categorical variables into dummy variables
+tips = sns.load_dataset("tips")
+tips = pd.get_dummies(tips, columns=['sex', 'smoker', 'day'], drop_first=True,
+                       dtype = int)
+
+# Now, you can add the constant
+X = sm.add_constant(tips[['total_bill', 'size', 'sex_Female', 'smoker_No', 'day_Fri', 'day_Sat', 'day_Sun']])
+y = tips['tip']  # Assuming 'tip' is the dependent variable
+
+# Fit the model
+model = sm.OLS(y, X).fit()
+
+# Print summary
+print(model.summary())
+
+# 1. Linearity: Check Residual vs Fitted Plot ------------------ (1)
+fitted_values = model.fittedvalues
+residuals = model.resid
+sns.residplot(x=fitted_values, y=residuals, lowess=True, line_kws={'color': 'red'})
+plt.xlabel('Fitted values')
+plt.ylabel('Residuals')
+plt.title('Residuals vs Fitted')
+plt.axhline(0, color='black', linestyle='--')
+plt.show()
+```
+
+
+```{python}
+#| fig-cap: Testing Assumption 1
+#| eval: false 
+#| include: false 
+# label: fig-py-assump1
+
 sns.residplot(x = 'fitted', y = 'ko', data=df_stock, 
 lowess=True,
 line_kws={'color': 'red', 'lw': 1, 'alpha': 0.8})
@@ -400,6 +596,9 @@ plt.ylabel('Residuals')
 # https://robert-alvarez.github.io/2018-06-04-diagnostic_plots/
 # https://www.kirenz.com/blog/posts/2021-11-14-linear-regression-diagnostics-in-python/
 ```
+
+
+
 :::
 
 2.  **Independence**:
@@ -413,9 +612,19 @@ plt.ylabel('Residuals')
 
 ```{r}
 #| warning: false 
+# 4. Independence: Durbin-Watson Test --------------------------- (4)
+library(car)
+durbinWatsonTest(lm(tip ~ total_bill+size, data = tips))
+```
+
+```{r}
+#| warning: false 
+#| eval: false 
+#| include: false 
 library(car)
 durbinWatsonTest(lm(KO ~ SPY, data = df_stockR))
 ```
+
 
 ## Python
 
@@ -427,9 +636,20 @@ library(reticulate)
 ```
 
 ```{python}
+# 4. Independence: Durbin-Watson Test --------------------------- (4)
+from statsmodels.stats.stattools import durbin_watson
+dw_stat = durbin_watson(model.resid)
+print(f'Durbin-Watson statistic: {dw_stat}')
+```
+
+```{python}
+#| eval: false 
+#| include: false 
 from statsmodels.stats.stattools import durbin_watson
 durbin_watson(slr_sm_model_ko.resid)
 ```
+
+
 :::
 
 3.  **Residual Error**:
@@ -449,11 +669,27 @@ durbin_watson(slr_sm_model_ko.resid)
 #| warning: false 
 #| label: fig-r-assump3
 #| fig-cap: Testing Assumption 3 
+# 3. Homoscedasticity: Scale-Location Plot ----------------------- (3)
+# Scale-Location Plot 
+plot(lm(tip ~ total_bill, data = tips),3)
+# Non-Constant Error Variance Test 
+ncvTest (lm(tip ~ total_bill, data = tips))
+```
+
+```{r}
+#| warning: false 
+#| fig-cap: Testing Assumption 3 
+#| eval: false 
+#| include: false 
+# label: fig-r-assump3
+
+
 # Scale-Location Plot 
 plot(lm(KO ~ SPY, data = df_stockR),3)
 # Non-Constant Error Variance Test 
 ncvTest (lm(KO ~ SPY, data = df_stockR))
 ```
+
 
 ## Python
 
@@ -468,6 +704,26 @@ library(reticulate)
 #| warning: false 
 #| label: fig-py-assump3
 #| fig-cap: Testing Assumption 3 
+
+# 3. Homoscedasticity: Scale-Location Plot ----------------------- (3)
+standardized_residuals = residuals / np.std(residuals)
+sns.scatterplot(x=fitted_values, y=np.sqrt(np.abs(standardized_residuals)), alpha=0.7)
+plt.xlabel('Fitted values')
+plt.ylabel('Sqrt(|Standardized Residuals|)')
+plt.title('Scale-Location Plot')
+plt.axhline(0, color='black', linestyle='--')
+plt.show()
+
+```
+
+
+
+```{python}
+#| warning: false 
+#| fig-cap: Testing Assumption 3 
+#| eval: false 
+#| include: false 
+# label: fig-py-assump3
 
 # Scale-Location Plot 
 sns.regplot(
@@ -497,6 +753,10 @@ for stat, value in zip(labels,white_test):
 ```
 :::
 
+
+
+:::
+
 4.  **Normality**:
 
      The residuals are normally distributed. We can test this assumption by Q-Q plots (also called Quantile-Quantile plot) of the residuals. @fig-r-qqplot and @fig-py-qqplot show a QQ plot. The dots do not lie perfectly along the straight line. Moreover, Kolmogorov-Smirnov (KS) test can be used to check the normality assumption. KS tests whether a sample comes from a certain distribution. From the KS result below, we can see test statistic is 0.484 and p-value is 2.2e-16, thus rejecting null hypothesis and indicating that sample data does not come from a normal distribution.
@@ -509,6 +769,36 @@ for stat, value in zip(labels,white_test):
 #| label: fig-r-qqplot
 #| fig-cap: Testing Assumption 4
 
+###################################################
+## Simple Linear Regression model 
+###################################################
+simple_reg = lm (tip ~ total_bill, data = tips)
+#######################################
+# Drawing QQ Plot
+########################################
+## qqnorm () function 
+#qqnorm((df_stockR$residual))
+## qqline () function 
+#qqline(df_stockR$residual)
+# qqPlot () function from car package 
+qqPlot(augment(simple_reg)$.resid) 
+
+#########################################
+# Kolmogorov-Smirnov (KS) test
+##########################################
+library(stats)
+ks.test(augment(simple_reg)$.resid, "pnorm")
+```
+
+
+```{r}
+#| warning: false 
+#| fig-cap: Testing Assumption 4
+#| eval: false 
+#| include: false 
+# label: fig-r-qqplot
+
+# 2. Normality: Q-Q Plot for Residuals -------------------------- (2)
 #######################################
 # Drawing QQ Plot
 ########################################
@@ -526,6 +816,7 @@ library(stats)
 ks.test(df_stockR$residual, "pnorm")
 ```
 
+
 ## Python
 
 ```{r}
@@ -539,6 +830,32 @@ library(reticulate)
 #| warning: false
 #| label: fig-py-qqplot
 #| fig-cap: Testing Assumption 4
+# 2. Normality: Q-Q Plot for Residuals -------------------------- (2)
+#######################################
+# Drawing QQ Plot
+########################################
+sm.qqplot(residuals, line='s')
+plt.title('Q-Q Plot')
+plt.show()
+
+#########################################
+# Kolmogorov-Smirnov (KS) test
+##########################################
+from scipy.stats import kstest
+ks_test = kstest(simple_reg_model.resid, "norm")
+label_ks = ["KS Statistic", "P-value"]
+
+for stat, value in zip(label_ks, ks_test[:2]):
+    print('{}: {:.5f}'.format(stat, value))
+```
+
+
+```{python}
+#| warning: false
+#| fig-cap: Testing Assumption 4
+#| eval: false 
+#| include: false 
+# label: fig-py-qqplot
 #######################################
 # Drawing QQ Plot
 ########################################
@@ -554,6 +871,8 @@ label_ks = ["KS Statistic", "P-value"]
 for stat, value in zip(label_ks, ks_test[:2]):
     print('{}: {:.5f}'.format(stat, value))
 ```
+
+
 :::
 
 5.  **Multicollinearity**:
@@ -568,6 +887,25 @@ for stat, value in zip(label_ks, ks_test[:2]):
 #| label: fig-r-corplot
 #| fig-cap: Correlation Plot 
 
+# 5. Multicollinearity: Variance Inflation Factor (VIF) ---------- (5)
+## Variance Inflation Factor (VIF)
+library(car)
+vif(lm(tip ~ total_bill+size, data = tips))
+
+## Correlation Matrix and Correlation Plot 
+# to get the function 
+source("http://www.sthda.com/upload/rquery_cormat.r")
+rquery.cormat(tips|> select(tip, total_bill,size), type = c("lower"), graph = TRUE)$r
+
+```
+
+```{r}
+#| warning: false
+#| fig-cap: Correlation Plot 
+#| eval: false 
+#| include: false
+# label: fig-r-corplot
+
 ## Variance Inflation Factor (VIF)
 library(car)
 vif(lm(KO ~ SPY+PEP, data = df_stockR))
@@ -577,6 +915,7 @@ vif(lm(KO ~ SPY+PEP, data = df_stockR))
 source("http://www.sthda.com/upload/rquery_cormat.r")
 rquery.cormat(df_stockR |> select(KO:DX.Y.NYB), type = c("lower"), graph = TRUE)$r
 ```
+
 
 ## Python
 
@@ -591,6 +930,34 @@ library(reticulate)
 #| warning: false
 #| label: fig-py-corplot
 #| fig-cap: Correlation Plot 
+
+## Correlation Matrix and Correlation Plot 
+### Correlation Matrix
+correlation_matrix = tips[["tip", "total_bill", "size"]].corr()
+print(correlation_matrix)
+
+### Correlation Plot
+mask = np.triu(np.ones_like(tips[["tip", "total_bill", "size"]].corr()))
+sns.heatmap(tips[["tip", "total_bill", "size"]].corr(), 
+annot=True, cmap="YlGnBu", 
+mask=mask)
+
+## Variance Inflation Factor (VIF)
+# 5. Multicollinearity: Variance Inflation Factor (VIF) ---------- (5)
+vif_data = pd.DataFrame()
+vif_data["feature"] = X.columns
+from statsmodels.stats.outliers_influence import variance_inflation_factor
+vif_data["VIF"] = [variance_inflation_factor(X.values, i) for i in range(X.shape[1])]
+print(vif_data)
+
+```
+
+```{python}
+#| warning: false
+#| fig-cap: Correlation Plot 
+#| eval: false 
+#| include: false 
+# label: fig-py-corplot
 
 ## Correlation Matrix and Correlation Plot 
 ### Correlation Matrix
@@ -616,6 +983,8 @@ pd.Series([variance_inflation_factor(X.values, i)
               index=X.columns[1:])
 
 ```
+
+
 :::
 
 6.  **No Endogeneity**:
@@ -779,6 +1148,244 @@ pf.etable([fe_model1, fe_model2, fe_model3]
 ```
 :::
 :::
+
+
+::: {style="text-align: justify"}
+#### Relation Between Tips and Total Bill in Restaurant  
+
+          Here we run multiple linear regression models and evaluate the model assumptions.
+:::
+ 
+
+::: panel-tabset
+
+## R
+
+```{r}
+# Loading Packages 
+library(AER)
+library(modelsummary)
+library(kableExtra)
+library(fixest)
+```
+
+```{r}
+#| warning: false 
+# All models 
+models_r = list()
+
+## Model ----------------------------------------- (1)
+models_r[["Model1"]] = feols(tip ~ total_bill+size, data = tips)
+## Model ----------------------------------------- (2)
+tips = tips |> 
+  mutate(Gender = if_else(sex == "Female", 0,1)) 
+
+models_r[["Model2"]] = feols(tip ~ total_bill+size+Gender, data = tips)
+
+ ## Model ----------------------------------------- (3)
+models_r[["Model3"]] = feols(tip ~ total_bill+size+Gender+smoker, data = tips)
+## Model ----------------------------------------- (4)
+models_r[["Model4"]] = feols(tip ~ total_bill+size+Gender+smoker+time, data = tips)
+## Model ----------------------------------------- (5)
+tips = tips |> 
+  mutate(day_Thur = if_else(day == "Thur", 1,0),
+        day_Fri = if_else(day == "Fri", 1, 0),
+        day_Sat = if_else(day == "Sat", 1, 0)
+        )
+models_r[["Model5"]] = feols(tip ~ total_bill+size+Gender+smoker+time+day_Thur + day_Fri + day_Sat, data = tips)
+```
+
+```{r}
+#| warning: false 
+# Regression Table
+modelsummary(models_r, fmt = 2,
+              estimate = "{estimate}{stars}",
+              statistic = "statistic"
+              ,stars = c ("*" = 0.10, "**" = 0.05, "***" =  0.01)
+              ,gof_map = c("nobs", "r.squared", "adj.r.squared")
+              ,output = "kableExtra"
+            ) |> 
+  footnote('Numbers in parentheses are t values.') |> 
+  kable_styling(full_width = TRUE)
+
+```
+
+```{r}
+#| warning: false 
+#######################################################
+# Testing Model Assumptions 
+#######################################################
+# 1. Linearity: Check Residual vs Fitted Plot ------------------ (1)
+plot(lm(tip ~ total_bill+size+Gender+smoker+time+day_Thur + day_Fri + day_Sat, data = tips),1)
+
+# 2. Normality: Q-Q Plot for Residuals -------------------------- (2)
+#######################################
+# Drawing QQ Plot
+########################################
+qqPlot(augment(lm(tip ~ total_bill+size+Gender+smoker+time+day_Thur + day_Fri + day_Sat, data = tips))$.resid)
+
+# 3. Homoscedasticity: Scale-Location Plot ----------------------- (3)
+# Scale-Location Plot 
+plot(lm(tip ~ total_bill+size+Gender+smoker+time+day_Thur + day_Fri + day_Sat, data = tips),3)
+# 4. Independence: Durbin-Watson Test --------------------------- (4)
+library(car)
+durbinWatsonTest(lm(tip ~ total_bill+size+Gender+smoker+time+day_Thur + day_Fri + day_Sat, data = tips))
+# 5. Multicollinearity: Variance Inflation Factor (VIF) ---------- (5)
+## Variance Inflation Factor (VIF)
+library(car)
+vif(lm(tip ~ total_bill+size+Gender+smoker+time+day_Thur + day_Fri + day_Sat, data = tips))
+```
+
+
+## Python 
+
+```{python}
+# loading the packages
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+```
+
+```{python}
+# To run the regression model
+from scipy import stats
+import statsmodels.api as sm
+import statsmodels.formula.api as smf
+###################################################
+# Multiple Linear Regression Model 
+###################################################
+import pyfixest as pf
+from pyfixest.estimation import feols
+tips = sns.load_dataset("tips")
+## Model ----------------------------------------- (1)
+fe_model1 = feols("tip~total_bill+size", data = tips)
+#fe_model1.summary()
+fe_model1.tidy()
+#pf.etable(fe_model1)
+#fe_model1.coefplot()
+
+## Model ----------------------------------------- (2)
+#tips['Gender'] = tips['sex'].map({'Female':0, 'Male':1})
+
+fe_model2 = feols("tip~total_bill+size+sex", data = tips)
+
+#fe_model2 = feols("tip~total_bill+size+Gender", data = tips)
+#fe_model2.summary()
+#fe_model2.tidy()
+#pf.etable([fe_model1, fe_model2]
+#          ,coef_fmt= 'b \n (t)'
+#          ,signif_code= [0.01,0.05,0.10]
+#        )
+
+## Model ----------------------------------------- (3)
+fe_model3 = feols("tip~total_bill+size+sex+smoker", data = tips)
+
+## Model ----------------------------------------- (4)
+fe_model4 = feols("tip~total_bill+size+sex+smoker+time", data = tips)
+## Model ----------------------------------------- (5)
+tips = pd.get_dummies(tips, columns = ['day'],dtype = int) # adding the dummy variables of the day variable
+
+## Model ----------------------------------------- (4)
+fe_model5 = feols("tip~total_bill+size+sex+smoker+time+day_Thur + day_Fri + day_Sat", data = tips)
+#fe_model5.summary()
+#fe_model5.tidy()
+```
+
+```{python}
+pf.etable([fe_model1, fe_model2, fe_model3,fe_model4, fe_model5]
+          ,coef_fmt= 'b \n (t)'
+          ,signif_code= [0.01,0.05,0.10]
+
+        )
+
+```
+
+```{python}
+fe_model5.coefplot()
+```
+
+```{python}
+#######################################################
+# Testing Model Assumptions 
+#######################################################
+import numpy as np
+import pandas as pd
+import statsmodels.api as sm
+import seaborn as sns
+import matplotlib.pyplot as plt
+from statsmodels.stats.outliers_influence import variance_inflation_factor
+from statsmodels.stats.stattools import durbin_watson
+
+# Example Data
+
+import pandas as pd
+import statsmodels.api as sm
+
+# Assuming your dataset is named 'tips'
+# Convert categorical variables into dummy variables
+tips = sns.load_dataset("tips")
+tips = pd.get_dummies(tips, columns=['sex', 'smoker', 'day'], drop_first=True,
+                       dtype = int)
+
+# Now, you can add the constant
+X = sm.add_constant(tips[['total_bill', 'size', 'sex_Female', 'smoker_No', 'day_Fri', 'day_Sat', 'day_Sun']])
+y = tips['tip']  # Assuming 'tip' is the dependent variable
+
+# Fit the model
+model = sm.OLS(y, X).fit()
+
+# Print summary
+print(model.summary())
+
+
+# 1. Linearity: Check Residual vs Fitted Plot ------------------ (1)
+fitted_values = model.fittedvalues
+residuals = model.resid
+sns.residplot(x=fitted_values, y=residuals, lowess=True, line_kws={'color': 'red'})
+plt.xlabel('Fitted values')
+plt.ylabel('Residuals')
+plt.title('Residuals vs Fitted')
+plt.axhline(0, color='black', linestyle='--')
+plt.show()
+
+# 2. Normality: Q-Q Plot for Residuals -------------------------- (2)
+sm.qqplot(residuals, line='s')
+plt.title('Q-Q Plot')
+plt.show()
+
+# 3. Homoscedasticity: Scale-Location Plot ----------------------- (3)
+standardized_residuals = residuals / np.std(residuals)
+sns.scatterplot(x=fitted_values, y=np.sqrt(np.abs(standardized_residuals)), alpha=0.7)
+plt.xlabel('Fitted values')
+plt.ylabel('Sqrt(|Standardized Residuals|)')
+plt.title('Scale-Location Plot')
+plt.axhline(0, color='black', linestyle='--')
+plt.show()
+
+# 4. Independence: Durbin-Watson Test --------------------------- (4)
+from statsmodels.stats.stattools import durbin_watson
+dw_stat = durbin_watson(model.resid)
+print(f'Durbin-Watson statistic: {dw_stat}')
+
+# 5. Multicollinearity: Variance Inflation Factor (VIF) ---------- (5)
+vif_data = pd.DataFrame()
+vif_data["feature"] = X.columns
+from statsmodels.stats.outliers_influence import variance_inflation_factor
+vif_data["VIF"] = [variance_inflation_factor(X.values, i) for i in range(X.shape[1])]
+print(vif_data)
+
+```
+
+
+
+
+:::
+
+
+
+
+
 
 ## Time Series Analysis
 

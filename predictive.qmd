@@ -220,6 +220,18 @@ ggplot(tips, aes (x = total_bill, y = tip)) +
   labs(x = "Total Bill", y = "Tip") + 
   stat_regline_equation(label.x = 20, label.y = 9 )
 
+
+```
+
+```{r}
+#| warning: false
+# Model Results 
+simple_reg = lm(tip ~ total_bill, data = tips)
+summary(simple_reg)
+ 
+broom::tidy(simple_reg)
+broom::glance(simple_reg)
+broom::augment(simple_reg)
 ```
 
 
@@ -273,6 +285,11 @@ plt.plot(tips['total_bill'],
 plt.legend()
 ```
 
+```{python}
+#| warning: false
+# Model Results 
+simple_reg_model.summary()
+```
 
 ```{python}
 #| fig-cap: Regression of Horsepower and MPG
@@ -468,8 +485,7 @@ plt.show()
 ```
 
 
-:::
-:::
+
 
 ### Evaluating Linear Regression Models - Assessing the Fitness
 

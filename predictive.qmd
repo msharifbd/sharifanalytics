@@ -1018,7 +1018,7 @@ check_model(simple_reg)
 ```
 
 
-:::
+
 
 ::: {style="text-align: justify"}
 ### Multiple Linear Regression

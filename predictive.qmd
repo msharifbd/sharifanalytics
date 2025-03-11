@@ -674,7 +674,7 @@ durbin_watson(slr_sm_model_ko.resid)
 
      The assumption homoscedasticity is tested using the Scale-Location plot, in which fitted values are compared with square root of standardized residuals. Theoretically, we want to see @fig-assump3. @fig-r-assump3 and @fig-py-assump3 show Scale-Location plot (also called spread-location plot) of our model. From @fig-r-assump3 and @fig-py-assump3, it is clear that residual plots have a trend (are not all equally spread out). Thus, the assumption is violated. One solution to the problem is that using log or square root transformation of outcome variable. Moreover, we can use Non-Constant Error Variance (NVC) test to test the assumption. If p-value of the test is less than 0.05, then null hypothesis is rejected, meaning that homoscedasticity is violated. Moreover, Breusch-Pagan test or White test can also be used to test homoscedasticity.
 
-     Finally, testing the assumption - errors are independent from each other and predictors - requires the knowledge of study design and data collection to establish the validity of this assumption. Violation of this assumption is also called endogeneity problem of the model, which is the same as assumption 6 - No Endogeneity below.
+     Finally, testing the assumption - errors are independent from each other and predictors - requires the knowledge of study design and data collection to establish the validity of this assumption. Violation of this assumption is also called **endogeneity** problem of the model, which is the same as assumption 6 - No Endogeneity below.
 
 ![Assumption 3- What We Want to See](images/Linear_Reg_Assump3.webp){#fig-assump3 fig-align="center"}
 
@@ -775,7 +775,7 @@ for stat, value in zip(labels,white_test):
 
 4.  **Normality**:
 
-     The residuals are normally distributed. We can test this assumption by Q-Q plots (also called Quantile-Quantile plot) of the residuals. @fig-r-qqplot and @fig-py-qqplot show a QQ plot. The dots do not lie perfectly along the straight line. Moreover, Kolmogorov-Smirnov (KS) test can be used to check the normality assumption. KS tests whether a sample comes from a certain distribution. From the KS result below, we can see test statistic is 0.484 and p-value is 2.2e-16, thus rejecting null hypothesis and indicating that sample data does not come from a normal distribution.
+     The residuals are normally distributed. We can test this assumption by Q-Q plots (also called Quantile-Quantile plot) of the residuals. @fig-r-qqplot and @fig-py-qqplot show a QQ plot. The null hypothesis in KS test is - the residuals are drawn from a normal distribution. The dots do not lie perfectly ( a small deviation is acceptable) along the straight line. Moreover, Kolmogorov-Smirnov (KS) test can be used to check the normality assumption. KS tests whether a sample comes from a certain distribution. From the KS result below, we can see test statistic is 0.074052 and p-value is 0.1376, thus failing to reject null hypothesis and indicating that sample data does not come from a normal distribution.
 
 ::: panel-tabset
 ## R
@@ -1006,6 +1006,18 @@ pd.Series([variance_inflation_factor(X.values, i)
 6.  **No Endogeneity**:
 
      There is no relation between the errors and the independent variables.
+
+#### Testing All Assumptions Together
+
+      We can test all of these assumptions at the same time using `check_model()` function from `performance` package in R.
+
+```{r}
+#| warning: false
+library(performance)
+check_model(simple_reg)
+```
+
+
 :::
 
 ::: {style="text-align: justify"}

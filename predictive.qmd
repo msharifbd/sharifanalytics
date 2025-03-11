@@ -893,7 +893,7 @@ for stat, value in zip(label_ks, ks_test[:2]):
 
 5.  **Multicollinearity**:
 
-     There is little or no correlation between the predictor variables. It makes difficult to interpret the coefficients of the model. Variance Inflation Factor (VIF) can be used to test the multicollinearity. A value equal to or greater than 10 of VIF indicates multicollinearity in the data. We see the VIF of SPY and PEP is 1.84 and 1.84 respectively. Moreover, correlation matrix can also be used to identify the predictors that are highly correlated. @fig-r-corplot and @fig-py-corplot show a correlation plot of our stock returns data.
+     There is little or no correlation between the predictor variables. It makes difficult to interpret the coefficients of the model. Variance Inflation Factor (VIF) can be used to test the multicollinearity. A value equal to or greater than 10 of VIF indicates multicollinearity in the data. We see the VIF of `total_bill` and `size` is 1.56 and 1.56 respectively. Moreover, correlation matrix can also be used to identify the predictors that are highly correlated. @fig-r-corplot and @fig-py-corplot show a correlation plot of our stock returns data.
 
 ::: panel-tabset
 ## R

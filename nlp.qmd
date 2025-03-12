@@ -186,6 +186,28 @@ plt.axis("off")
 plt.show()
 ```
 
+::: {style="text-align: justify"}
+    Now we are going to present a word cloud of customer reviews about many products of a company. 
+::: 
+
+```{python}
+customer_reviews = pd.read_csv("https://raw.githubusercontent.com/msharifbd/DATA/refs/heads/main/Customer_Reviews2.csv")
+
+customer_reviews['ProductId'].value_counts().reset_index()
+
+product1_reviews = customer_reviews[customer_reviews['ProductId'] == "B003VXFK44"]['Text'].to_list()
+
+# Combine the text into a single string 
+combined_product1_reviews = " ".join(product1_reviews)
+# Generate the word cloud
+word_cloud = WordCloud(width=800, height=400, background_color='white', colormap='viridis').generate(combined_product1_reviews)
+# Display the word cloud
+plt.figure(figsize=(10, 5))
+plt.imshow(word_cloud, interpolation='bilinear')
+plt.axis('off')
+plt.title("Word Cloud")
+plt.show()
+```
 
 ### Bar Diagram of Word Frequency
 
@@ -720,16 +742,184 @@ TextBlob(my_text).sentiment.subjectivity
 
     In the above analysis, we see the polarity score is 0.02857, which is very close to zero. Therefore, we can say our text is neutral. On the other hand, subjectivity score is 0.21706, which is close to 0, indicating that our text is factual information (not personal opinion). 
 
+    Now, we are going to measure the polarity and subjectivity of our customer rieveiw data. 
+
+```{python}
+product1 = customer_reviews[customer_reviews['ProductId'] == "B003VXFK44"].reset_index()
+product1['polarity'] = product1['Text'].apply(lambda x: TextBlob(x).sentiment.polarity)
+product1['subjectivity'] = product1['Text'].apply(lambda x: TextBlob(x).sentiment.subjectivity)
+```
+
 ::: 
 
 
 ## Readability Index 
+
 ::: {style="text-align: justify"}
+    **Flesch Readability**
+
+
+    **Kincaid Readability** 
+
+    **Gunning Fog Index Readability** 
+
+    **Smog Index Readability**
 
 :::
 
+
+::: {style="text-align: justify"}
+    We are going to collect Item 7 - Management Discussion & Analysis (MD&A) and Item 1A - Risk Factors from 10-K for some companies and calculate their readability 
+
+```{python}
+#| warning: false
+# edgartools - my version is 3.13.0
+# pip install edgartools # latest version on 03.12.2025 is 3.13.0
+# pip install edgartools==2.31.1 # to install a specific version
+# pip list - shows all packages with their versions 
+from edgar import *
+```
+
+```{python}
+#| warning: false
+#| include: false
+# Tell the SEC who you are
+set_identity("msharifbd@outlook.com")
+```
+
+```{python}
+#| warning: false
+# Tell the SEC who you are
+set_identity("YOUREMAIL@outlook.com")
+```
+
+```{python}
+#| warning: false
+filings2 = get_filings(form='10-K', amendments=False, filing_date="2024-12-01:2024-12-05")
+filings2_df = filings2.to_pandas()
+
+# Create a list to store the Item 1c text
+items_texts = []
+
+for n, filing in enumerate(filings2):
+    url = filing.url
+    cik = filing.cik
+    filing_date = filing.header.filing_date,
+    reporting_date = filing.header.period_of_report,
+    comn = filing.company
+
+    # Extract the text for Item 1c
+    TenK = filing.obj()
+    
+    # Bypass None values
+    try:
+        item7_text = TenK['Item 7'] # Management Discussion & Analysis (MDA)
+        item1a_text = TenK['Item 1A'] # Risk Factors 
+    except:
+        item7_text = None
+        item1a_text = None
+
+    # Append the data to the list
+    # item1c_text = TenK['Item 1C']
+    items_texts.append({
+        'CIK': cik,
+        'Filing Date': str(filing_date),
+        'Item 7 Text': item7_text,
+        'Item 1a Text': item1a_text,
+        'url': url,
+        'reporting_date': str(reporting_date),
+        'comn': comn
+    })
+
+# Create a DataFrame from the Item 1c text data
+items_df = pd.DataFrame(items_texts)
+```
+
+```{python}
+#| warning: false
+import readability # for readability 
+import textstat # for readability 
+# Flesch Readability 
+items_df['Item7_Flesch_read'] = items_df['Item 7 Text'].apply (lambda x: textstat.flesch_reading_ease(x))
+items_df['Item7_Flesch2_read'] = items_df['Item 7 Text'].apply (lambda x: readability.getmeasures(x)['readability grades']['FleschReadingEase'])
+# Kincaid Readability 
+items_df['Item7_kincaid_read'] = items_df['Item 7 Text'].apply (lambda x: textstat.flesch_kincaid_grade(x))
+items_df['Item7_kincaid2_read'] = items_df['Item 7 Text'].apply (lambda x: readability.getmeasures(x)['readability grades']['Kincaid'])
+# Gunning Fog Index
+items_df['Item7_GunningFogIndex_read'] = items_df['Item 7 Text'].apply (lambda x: textstat.gunning_fog(x))
+items_df['Item7_GunningFogIndex2_read'] = items_df['Item 7 Text'].apply (lambda x: readability.getmeasures(x)['readability grades']['GunningFogIndex'])
+# Smog Index
+items_df['Item7_SmogIndex_read'] = items_df['Item 7 Text'].apply (lambda x: textstat.smog_index(x))
+items_df['Item7_SmogIndex2_read'] = items_df['Item 7 Text'].apply (lambda x: readability.getmeasures(x)['readability grades']['SMOGIndex'])
+
+# Total words and sentences 
+items_df['Item7_TotalWords'] = items_df['Item 7 Text'].apply (lambda x: readability.getmeasures(x)['sentence info']['words'])
+items_df['Item7_TotalSentences'] = items_df['Item 7 Text'].apply (lambda x: readability.getmeasures(x)['sentence info']['sentences'])
+
+```
+
+
+:::
+
+
+
 ## Text Similarity 
 ::: {style="text-align: justify"}
+    Jaccard Similarity 
+
+```{python}
+#| warning: false
+# Jaccard Similarity 
+def jaccard_similarity(list1, list2):
+    s1 = set(list1)
+    s2 = set(list2)
+    return float(len(s1.intersection(s2)) / len(s1.union(s2)))
+
+jaccard_similarity(items_df['Item 7 Text'][0].split(),
+                items_df['Item 7 Text'][1].split())
+
+jaccard_similarity(items_df['Item 7 Text'][0].split(),
+                items_df['Item 1a Text'][5].split())
+```
+
+    Cosine Similarity
+
+```{python}
+#| warning: false
+import math
+from collections import Counter
+
+def counter_cosine_similarity(c1, c2):
+    terms = set(c1).union(c2)
+    dotprod = sum(c1.get(k, 0) * c2.get(k, 0) for k in terms)
+    magA = math.sqrt(sum(c1.get(k, 0)**2 for k in terms))
+    magB = math.sqrt(sum(c2.get(k, 0)**2 for k in terms))
+    return dotprod / (magA * magB)
+
+
+counter_cosine_similarity(Counter(items_df['Item 7 Text'][0]),
+                Counter(items_df['Item 7 Text'][5]))
+```
+
+```{python}
+#| warning: false
+# Alternatively, using sklearn we can compute cosine similiarity
+
+from sklearn.metrics.pairwise import cosine_similarity
+from sklearn.feature_extraction.text import CountVectorizer
+
+# Sample texts
+text1 = items_df['Item 7 Text'][0]
+text2 = items_df['Item 7 Text'][5]
+
+# Convert text to vectorized representation
+vectorizer = CountVectorizer()
+vectors = vectorizer.fit_transform([text1, text2])
+
+# Compute cosine similarity
+cos_sim = cosine_similarity(vectors[0], vectors[1])
+print("Cosine Similarity:", cos_sim[0][0])
+```
 
 :::
 

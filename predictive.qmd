@@ -1417,6 +1417,10 @@ print(vif_data)
 
 ## Time Series Analysis
 
-## Exercises
+
+## Conclusion 
+
+
+## Exercises {.unnumbered}
 
 1.  Calculate a linear model between PepsiCo stock returns and S&P 500 Market index (the Ticker of S&P 500 Index is `^GSPC`)

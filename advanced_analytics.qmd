@@ -465,5 +465,12 @@ pd.DataFrame({
 
 ```
 
+:::
+
+
+::: {style="text-align: justify"}
 ## Conclusion
+
+     On this chapter, we discuss about how to collect unstructured data, particularly collecting data from websites. The structure of HTML taggings and CSS selectors are highlighted because they are very important to understand how to scrape a website. Moreover, we scrape a page of a website and finally we demonstrated how to extract data from multiple pages of a website and convert them into a data frame. 
+
 :::

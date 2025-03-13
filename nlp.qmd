@@ -742,7 +742,7 @@ TextBlob(my_text).sentiment.subjectivity
 
     In the above analysis, we see the polarity score is 0.02857, which is very close to zero. Therefore, we can say our text is neutral. On the other hand, subjectivity score is 0.21706, which is close to 0, indicating that our text is factual information (not personal opinion). 
 
-    Now, we are going to measure the polarity and subjectivity of our customer rieveiw data. 
+    Now, we are going to measure the polarity and subjectivity of our customer reveiw data. 
 
 ```{python}
 product1 = customer_reviews[customer_reviews['ProductId'] == "B003VXFK44"].reset_index()
@@ -756,14 +756,19 @@ product1['subjectivity'] = product1['Text'].apply(lambda x: TextBlob(x).sentimen
 ## Readability Index 
 
 ::: {style="text-align: justify"}
-    **Flesch Readability**
+    In NLP, readability index is used to measure how easily a text can be understood by the readers. Readability index measures the complexity of text based on such factors as structure of sentences, grammar, and vocabulary. Some of the widely used readability index include - Flesch readability index, Kincaid readability index, Gunning Fog index, and Smog index. 
+
+:::
+
+::: {style="text-align: justify"}
+    **Flesch Readability** index determines how easy or difficult texts are to understand. It is also called Flesch Reading Ease score. Flesch readability index use sentence length and syllables in words to measure the complexity of text. The score of Flesch readability index ranges from 0 to 100, with higher scores indicating easier readability. The rule of thumb of Flesch readability: 0 - 30: very difficult; 60 - 70: standard/easy to read; 90 - 100: very easy.  
 
 
-    **Kincaid Readability** 
+    **Kincaid Readability** index is a readability metric used to estimate the US school grade level required to comprehend texts. It is also called Flesch-Kincaid Grade Level. It is based on Flesch readability index but translates the score of Flesch readability index into grade level system. The rule of thumb of Kincaid readability index is 12+: College or Profession level; 9-12: High School Level; 6-8: Middle School level; 1-5: Elementary school. For example, a text with Kincaid readability score 7.5 can be understood by a 7th grader in the second half of school year and a text with 15 score can be comprehended by a senior college student.  
 
-    **Gunning Fog Index Readability** 
+    **Gunning Fog Index** measures how many years of formal education one needs to understand a piece of text. It uses average sentence length and percentage of hard words to determine whether a text is very complex for its users. The rule of thumb of Gunning Fox index is - 13+: Difficult (College level or professional content); 9-12: Standard difficulty (High school graduates); 6-8: Easy to read (Suitable for most audiences). 
 
-    **Smog Index Readability**
+    **Smog Index** is desigend to estimate the years of education a reader needs to comprehend a piece of text. The rule of thumb is the same as Gunning Fox index. Overall, all of the above readability indices' interpreationa are the same.
 
 :::
 
@@ -864,8 +869,17 @@ items_df['Item7_TotalSentences'] = items_df['Item 7 Text'].apply (lambda x: read
 
 
 ## Text Similarity 
+
 ::: {style="text-align: justify"}
-    Jaccard Similarity 
+    Text similarity measures how similar two pieces of texts are. Text similairty can be classified into two groups - Semantic similarity and Syntactic similarity. While semantic similarity focuses on meanings even if the pieces of text have different wordings whereas syntactic similarity measures on exact wording and structure. Jaccard similarity and cosine similarity are the two widely used measures of text similarity.  
+:::
+
+::: {style="text-align: justify"}
+    **Jaccard Similarity** measures the similarity of two pieces of text by comparing the sets of words. Jaccard similarity is defined as - 
+
+$$\text{Jaccard Similarity} = \frac{|A \cap B|}{|A \cup B|}$$
+
+    For example, the two texts - Text A: "I love natural language processing" and Text B: "I enjoy natural processing"  - have the following sets - Set A = {I, love, natural, language, processing} and Set B = {I, enjoy, natural, processing}. Now, the intersection is {I, natural, processing} and union is {I, love, natural, language, processing, enjoy}. Therefore, jaccard similarity is 3/6 = 0.50.   
 
 ```{python}
 #| warning: false
@@ -882,7 +896,19 @@ jaccard_similarity(items_df['Item 7 Text'][0].split(),
                 items_df['Item 1a Text'][5].split())
 ```
 
-    Cosine Similarity
+    **Cosine Similarity** calculates the similarity between two pieces of text documents or vectors by determining the cosine of the angle between them in a multidimensional space. It is particularly useful when text is vectorized. The formula for cosine similarity is -
+
+$$\text{Cosine Similarity} = \frac{\vec{A} \cdot \vec{B}}{\|\vec{A}\| \|\vec{B}\|}$$
+
+    For example, we have two vectors - A = [1, 2, 3] and B = [4, 5, 6]. Now, 
+
+1. $$\vec{A} \cdot \vec{B} = (1 \times 4) + (2 \times 5) + (3 \times 6) = 32$$
+
+2. $$\|\vec{A}\| = \sqrt{1^2 + 2^2 + 3^2} = \sqrt{14}, \quad \|\vec{B}\| = \sqrt{4^2 + 5^2 + 6^2} = \sqrt{77}$$
+
+3. $$\text{Cosine Similarity} = \frac{32}{\sqrt{14} \times \sqrt{77}} \approx 0.9746$$
+
+    The value of cosine similarity lies between -1 and +1, where 1 means completely identical, -1 means completely dissimilar and 0 means no similarity.
 
 ```{python}
 #| warning: false

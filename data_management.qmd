@@ -104,9 +104,9 @@ Then if everything looks ok, you can move forward by clicking 'Next'. However, i
 
      **Step 08**: Then you can click "Next" in 'Ready to Install' windows and the installation process will start and it will take a while to finish the installation. Once the installing is done, please click 'Finish' button on 'Complete the PostgreSQL Setup Wizard' window.
 
-![Ready to Install](images/postgresql_install_image9.png) 
+![Ready to Install](images/postgresql_install_image9.png)
 
-![Installing](images/postgresql_install_image10.png) 
+![Installing](images/postgresql_install_image10.png)
 
 ![Complete the PostgreSQL Setup Wizard](images/postgresql_install_image11.png)
 :::
@@ -226,15 +226,14 @@ These steps should ensure that you are connected to the database.
 CREATE DATABASE my_database;
 ```
 
-     Then, you need to connect to the database (here `my_database`) by running the following code - 
+     Then, you need to connect to the database (here `my_database`) by running the following code -
 
 ```{r}
 #| eval: false
 \c my_database;
 ```
 
-     Once you run the above code, you will be connected to  `my_database`. 
-
+     Once you run the above code, you will be connected to `my_database`.
 
      Next, in order to create a table, following code can be run -
 
@@ -379,13 +378,12 @@ VALUES
 ;
 ```
 
-     Now to see whether the database contains the tables we just created above, you can run the following code - 
+     Now to see whether the database contains the tables we just created above, you can run the following code -
 
 ```{r}
 #| eval: false
 \dt
 ```
-
 :::
 
 ### Querying the Database
@@ -435,14 +433,12 @@ SELECT * FROM products WHERE city = 'Dallas';
 
 ```
 
-     If you need to quit the database, then run the following line of code - 
+     If you need to quit the database, then run the following line of code -
 
 ```{r}
 #| eval: false
 \q
 ```
-
-
 :::
 
 ### Saving a Database from PostgreSQL
@@ -481,19 +477,34 @@ You can watch the youtube video to learn more about how to save a database from 
 ```{r}
 #| eval: false
 
+###########################################################
 # First line of code and then hit enter on the Keyboard
+###########################################################
 cd ..
-# Second line of code and then hit enter on the Keyboard
-cd ..
-# Third line of code and then hit enter on the Keyboard
-cd \Program Files\PostgreSQL\16\bin
-# Fourth line of code and then hit enter on the Keyboard
-pg_restore -h localhost -p 5433 -d my_database -U postgres -v "K:\my_database_upload.tar"
-# Fifth Line of code - provide your password
 
+###########################################################
+# Second line of code and then hit enter on the Keyboard
+###########################################################
+cd ..
+
+###########################################################
+# Third line of code and then hit enter on the Keyboard
+###########################################################
+cd \Program Files\PostgreSQL\16\bin
+
+###########################################################
+# Fourth line of code and then hit enter on the Keyboard
+###########################################################
+#pg_restore -h localhost -p 5433 -d my_database -U postgres -v #"K:\my_database_upload.tar"
+
+pg_restore -h localhost -p 5433 -d my_database -U postgres K:\my_database_upload.tar
+
+###########################################################
+# Fifth Line of code - provide your password
+###########################################################
 ```
 
-     In the fourth line of code above - `pg_restore -h localhost -p 5433 -d my_database -U postgres -v "K:\my_database_upload.tar"`- "`my_database`" is the name of the database that you created on the PostgreSQL and "`K:\my_database_upload.tar`" is the path of the database to be uploaded.
+     In the fourth line of code above - `pg_restore -h localhost -p 5433 -d my_database -U postgres K:\my_database_upload.tar`- "`my_database`" is the name of the database that you created on the PostgreSQL and "`K:\my_database_upload.tar`" is the path of the database to be uploaded.
 
      Once you upload the database to the PostgreSQL , you can check whether the database is uploaded by following @sec-dealdatabase.
 :::

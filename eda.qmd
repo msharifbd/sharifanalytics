@@ -16,33 +16,28 @@ At the End of the Chapter, Students should be Able to -
 
 -   Understand how to use six verbs for EDA
 
--   Perform EDA on some real world data sets 
+-   Perform EDA on some real world data sets
 
 -   Learn about how to interpret results from EDA
 :::
 
-
-## Introduction 
+## Introduction
 
 ::: {style="text-align: justify"}
      In descriptive statistics, we summarize the data using different metrics such as mean, median, standard deviation, minimum value, maximum value, and percentile. Descriptive statisics is also called summary statistics.
 :::
 
-## Data Collection & Importing 
+## Data Collection & Importing
 
-
-## Data Cleaning 
-
+## Data Cleaning
 
 ## Packages for Exploratory Data Analysis (EDA)
 
 ::: {style="text-align: justify"}
-     In order to use `pyjanitor`, the data frame must be pandas because `pyjanitor` extends pandas data frame functionality. 
+     In order to use `pyjanitor`, the data frame must be pandas because `pyjanitor` extends pandas data frame functionality.
 :::
 
-
-::: {.panel-tabset}
-
+::: panel-tabset
 ## dplyr
 
 ```{r}
@@ -64,8 +59,8 @@ reticulate::use_virtualenv("C:/Users/mshar/OneDrive - Southern Illinois Universi
 #Sys.setenv('RETICULATE_PYTHON' = '~/.venv/quarto_book_python/Scripts/python.exe')
 ```
 
+## pandas
 
-## pandas 
 ```{python}
 # loading the package
 import numpy as np
@@ -75,44 +70,39 @@ import pandas as pd
 import janitor 
 from janitor import clean_names, remove_empty
 ```
-
 :::
 
-## Importing the Dataset 
+## Importing the Dataset
 
-::: {.panel-tabset}
-
+::: panel-tabset
 ## dplyr
+
 ```{r}
 #| warning: false
 # importing data frame 
 df = read_csv("https://raw.githubusercontent.com/msharifbd/DATA/main/Al-Bundy_raw-data.csv")
 ```
 
-## pandas 
+## pandas
+
 ```{python}
 # importing data frame 
 df_pd = pd.read_csv("https://raw.githubusercontent.com/msharifbd/DATA/main/Al-Bundy_raw-data.csv")
 ```
-
-
-
 :::
 
 ## Meta Data
 
 ::: {style="text-align: justify"}
-     Meta data is data about the data. Before we put the data into analysis, we need to learn about our dataset. This learning invovles knowing about the number of rows, number of columns, the types of the fields, the appropriateness of those types, the missing values in the dataset and so on. 
+     Meta data is data about the data. Before we put the data into analysis, we need to learn about our dataset. This learning invovles knowing about the number of rows, number of columns, the types of the fields, the appropriateness of those types, the missing values in the dataset and so on.
 :::
 
-::: {.panel-tabset}
-
-## dplyr 
+::: panel-tabset
+## dplyr
 
 ```{r}
 glimpse(df)
 ```
-
 
 ```{r}
 map_df(df, ~sum(is.na(.))) |>
@@ -136,8 +126,7 @@ tail(df)
 dplyr::sample_n(df, 10)
 ```
 
-
-## Pandas 
+## Pandas
 
 ```{python}
 df_pd.info()
@@ -151,7 +140,6 @@ df_pd.shape
 print('The total number of rows and columns of the product data is \
  {} and {} respectively.'.format(df_pd.shape[0], df_pd.shape[1]))
 ```
-
 
 ```{python}
 print(f'The total number of rows and columns of the product data is \
@@ -174,7 +162,6 @@ df_pd.tail()
 df_pd.isna().sum()
 ```
 
-
 ```{python}
 df_pd.dtypes
 ```
@@ -182,14 +169,11 @@ df_pd.dtypes
 ```{python}
 df_pd.sample(n=10)
 ```
-
-
 :::
 
-## Cleaning the Dataset 
+## Cleaning the Dataset
 
-::: {.panel-tabset}
-
+::: panel-tabset
 ## dplyr
 
 ```{r}
@@ -208,8 +192,7 @@ df = df |>
 glimpse(df)
 ```
 
-
-## panads 
+## panads
 
 ```{python}
 df_pd.columns.str.upper().to_list()
@@ -230,7 +213,6 @@ df_pd.rename(columns = str.upper, inplace = True)
 df_pd.columns
 ```
 
-
 ```{python}
 #| warning: false
 new_column = df_pd.columns \
@@ -239,7 +221,6 @@ new_column = df_pd.columns \
 new_column
 ```
 
-
 ```{python}
 df_pd.columns = new_column
 df_pd.columns
@@ -247,15 +228,11 @@ df_pd.rename(columns=str.upper, inplace = True)
 df_pd.columns 
 
 ```
+:::
 
+### Changing the Types of Variables
 
-::: 
-
-
-### Changing the Types of Variables 
-
-::: {.panel-tabset}
-
+::: panel-tabset
 ## dplyr
 
 ```{r}
@@ -264,7 +241,7 @@ df |>
     glimpse()
 ```
 
-     From the above, it is now evident the the type of the `DATE` variable now is `date`. 
+     From the above, it is now evident the the type of the `DATE` variable now is `date`.
 
 ```{r}
 df |>
@@ -273,7 +250,7 @@ df |>
     glimpse()
 ```
 
-     From the above, it is now evident the the type of the `DATE` and `PRODUCTID` variable now is date (`date`) and character (`chr`) respectively. We can now incorparte the changes into the data frame. 
+     From the above, it is now evident the the type of the `DATE` and `PRODUCTID` variable now is date (`date`) and character (`chr`) respectively. We can now incorparte the changes into the data frame.
 
 ```{r}
 df = df |>
@@ -282,8 +259,7 @@ df = df |>
 glimpse(df)
 ```
 
-
-## pandas 
+## pandas
 
 ```{python}
 (
@@ -294,24 +270,19 @@ glimpse(df)
 
 ```
 
-
 ```{python}
 # converting integer to object
 df_pd.INVOICENO = df_pd.INVOICENO.astype(str)
 df_pd[['MONTH', 'PRODUCTID']] = df_pd[['MONTH', 'PRODUCTID']].astype(str)
 df_pd.info()
 ```
-
-
-
 :::
 
-## Some Other Useful Functions 
-     There are some other useful functions that can be used to explore the dataset for analysis. Some of those useful functions are discussed below. 
+## Some Other Useful Functions
 
-:::{.panel-tabset}
+     There are some other useful functions that can be used to explore the dataset for analysis. Some of those useful functions are discussed below.
 
-
+::: panel-tabset
 ## dplyr
 
 ```{r}
@@ -326,7 +297,8 @@ df|> count(COUNTRY)
 df|> distinct(COUNTRY)
 ```
 
-## pandas 
+## pandas
+
 ```{python}
 df_pd['YEAR'].value_counts()
 ```
@@ -334,14 +306,13 @@ df_pd['YEAR'].value_counts()
 ```{python}
 df_pd['YEAR'].unique()
 ```
-
-
 :::
 
+## Six Verbs for EDA
 
-## Six Verbs for EDA 
+     @tbl-compareDplyrPandas shows the comparable functions in both `dplyr` and `pandas` packages. These functions are very much important to perform exploratory data analysis in both `R` and `Python`. `group_by` (`groupby` in pandas) and `summarize ()`[^1] (`agg ()` in pandas) are often used together; therefore, they are in the same group in @tbl-compareDplyrPandas.
 
-     @tbl-compareDplyrPandas shows the comparable functions in both `dplyr` and `pandas` packages. These functions are very much important to perform exploratory data analysis in both `R` and `Python`. `group_by` (`groupby` in pandas) and `summarize ()`^[You can also use British spelling - `summarise ()`] (`agg ()` in pandas) are often used together; therefore, they are in the same group in @tbl-compareDplyrPandas. 
+[^1]: You can also use British spelling - `summarise ()`
 
 ```{r}
 #| include: false
@@ -371,13 +342,14 @@ kbl(tidyverse_pandas, booktabs = TRUE
   kable_styling(latex_options = c ('striped', 'hold_positions'))
 ```
 
-### 1st Verb - filter () Function 
+### 1st Verb - filter () Function
 
-     Filter functions are used to subset a data frame based on rows, meaning that retaining rows that satisfy given conditions. Filtering rows is also called slicing^[Indexing involves obtaining individual elements.] becasue we obtain a set of elements by filtering.  
+     Filter functions are used to subset a data frame based on rows, meaning that retaining rows that satisfy given conditions. Filtering rows is also called slicing[^2] becasue we obtain a set of elements by filtering.
 
-:::{.panel-tabset}
+[^2]: Indexing involves obtaining individual elements.
 
-## dplyr 
+::: panel-tabset
+## dplyr
 
 ```{r}
 df |> filter (YEAR == "2015")
@@ -399,8 +371,7 @@ df |> filter (COUNTRY == "United States", YEAR %in% c("2015","2016"))
 df |> filter (COUNTRY %in% c("United States", "Canada"), YEAR == "2014")
 ```
 
-
-## pandas 
+## pandas
 
 ```{python}
 df_pd.query("YEAR == 2015")
@@ -430,7 +401,6 @@ df_pd[df_pd['COUNTRY'] == "United States"]
 df_pd.loc[(df_pd['COUNTRY']=="United States")]
 ```
 
-
 ```{python}
 df_pd.loc[df_pd['COUNTRY'].isin(["United States", "Canada"])]
 ```
@@ -453,16 +423,15 @@ df_pd.loc[
     df_pd['COUNTRY']=='United States',
     ['COUNTRY', "UNITPRICE", "SALEPRICE"]]
 ```
-
 :::
 
-### 2nd Verb - arrange () Function 
+### 2nd Verb - arrange () Function
 
-     In arrange functions, we order the rows of a data frame by the values of given columns. It is like sorting or odering the data. 
+     In arrange functions, we order the rows of a data frame by the values of given columns. It is like sorting or odering the data.
 
-:::{.panel-tabset}
+::: panel-tabset
+## dplyr
 
-## dplyr 
 ```{r}
 df |>
     arrange(DATE)     
@@ -473,15 +442,13 @@ df |>
     arrange(desc(DATE))     
 ```
 
-
 ```{r}
 df |>
     arrange(MONTH, SALEPRICE)     
 ```
 
+## pandas
 
-
-## pandas 
 ```{python}
 df_pd.sort_values(by =['DATE'])   
 ```
@@ -493,21 +460,18 @@ df_pd.sort_values(by =['DATE'], ascending = False)
 ```{python}
 df_pd.sort_values(by =['MONTH', 'SALEPRICE'])
 ```
-
-
 :::
 
+### 3rd Verb - select () Function
 
-### 3rd Verb - select () Function 
-     Select functions help to select or obtain columns from the data frame. When there are a lot of columns in our dataset, select functions become very useful. 
+     Select functions help to select or obtain columns from the data frame. When there are a lot of columns in our dataset, select functions become very useful.
 
-:::{.panel-tabset}
+::: panel-tabset
+## dplyr
 
-## dplyr 
 ```{r}
 df |> select(DATE, UNITPRICE, DISCOUNT)   
 ```
-
 
 ```{r}
 df |> select(1:2, 5:8)  
@@ -522,7 +486,6 @@ df |>
 df |>
     select(ends_with('PRICE'))
 ```
-
 
 ```{r}
 df |>
@@ -545,7 +508,6 @@ df |>
     select(matches("^S"))
 ```
 
-
 ```{r}
 df |>
     select(where(is.character))
@@ -567,16 +529,14 @@ df |>
     select(any_of(c("PRICE", "SIZE")))
 ```
 
-
 ```{r}
 # Dropping columns 
 df |>
     select(-DATE)
 ```
 
+## pandas
 
-
-## pandas 
 ```{python}
 df_pd['DATE']   
 ```
@@ -588,7 +548,6 @@ df_pd[['DATE', 'UNITPRICE']]
 ```{python}
 df_pd.loc[:,['DATE', 'UNITPRICE']]   
 ```
-
 
 ```{python}
 df_pd.iloc[:,5:8]
@@ -615,7 +574,6 @@ df_pd.filter(regex ="PRICE$") #Ends with Price
 df_pd.filter(regex ="ˆSIZE") #Starts with SIZE
 ```
 
-
 ```{python}
 df_pd.filter(regex ="PRICE") #Contains the word Price
 ```
@@ -639,7 +597,6 @@ df_pd.loc[:,df_pd.columns.str.contains('PRICE')]
 ```{python}
 df_pd.loc[:,df_pd.columns.str.endswith('PRICE')]
 ```
-
 
 ```{python}
 # Dropping columns 
@@ -666,16 +623,13 @@ col_rest = df_pd.columns.difference(col_first, sort=False).to_list()
 df_pd2 = df_pd [col_first +col_rest]
 df_pd2.info()
 ```
-
-
 :::
 
+### 4th Verb - rename () Function
 
-### 4th Verb - rename () Function 
+::: panel-tabset
+## dplyr
 
-:::{.panel-tabset}
-
-## dplyr 
 ```{r}
 df |>
     rename(INVOICE = INVOICENO,
@@ -684,21 +638,20 @@ df |>
      
 ```
 
-## pandas 
+## pandas
+
 ```{python}
 (df_pd.rename(columns = {"PRODUCTID": "PRODUCT", "INVOICENO": "INVOICE"})
      .pipe(lambda x: x.info())
 )
 ```
-
-
 :::
 
-### 5th Verb - mutate () Function 
+### 5th Verb - mutate () Function
 
-:::{.panel-tabset}
+::: panel-tabset
+## dplyr
 
-## dplyr 
 ```{r}
 df |>
     mutate(NECOLUMN = 5,
@@ -707,7 +660,8 @@ df |>
      
 ```
 
-## pandas 
+## pandas
+
 ```{python}
 df_pd['NEWCOLUMN'] = 5
 df_pd.info()     
@@ -723,7 +677,6 @@ df_pd['SALEPRICE2']=df_pd['UNITPRICE']*(1-df_pd['DISCOUNT'])
 df_pd.info()
 ```
 
-
 ```{python}
 # Using the assign() function
 (df_pd[['PRODUCTID', 'UNITPRICE', 'DISCOUNT']]\
@@ -731,20 +684,17 @@ df_pd.info()
     .head(5)
 )
 ```
-
-
 :::
 
-### 6th Verbs - group_by () and summarize () Functions 
+### 6th Verbs - group_by () and summarize () Functions
 
-     @fig-splitapplycombine presents Split Apply Combine principle in `group_by ()` and `summarize ()` functions. 
+     @fig-splitapplycombine presents Split Apply Combine principle in `group_by ()` and `summarize ()` functions.
 
 ![Split Apply Combine Principle](images/split-apply-combine.png){#fig-splitapplycombine}
 
+::: panel-tabset
+## dplyr
 
-:::{.panel-tabset}
-
-## dplyr 
 ```{r}
 df |>
     group_by(COUNTRY) |>
@@ -759,7 +709,6 @@ df |>
     AVGSALEPRICE = mean (SALEPRICE, na.rm = TRUE))
      
 ```
-
 
 ```{r}
 # Summary Statistics 
@@ -777,9 +726,8 @@ df %>%
   pivot_longer(everything(), names_sep='_', names_to=c('variable', '.value'))  
 ```
 
+## pandas
 
-
-## pandas 
 ```{python}
 df_pd.groupby(['COUNTRY'])['UNITPRICE'].mean()
      
@@ -789,7 +737,6 @@ df_pd.groupby(['COUNTRY'])['UNITPRICE'].mean()
 df_pd.groupby(['COUNTRY'])[['UNITPRICE', 'SALEPRICE']].mean()
      
 ```
-
 
 ```{python}
 #| warning: false
@@ -848,29 +795,26 @@ agg_dict = {
 
 df_pd[['UNITPRICE', 'SALEPRICE']].agg(agg_dict)
 ```
-
-
 :::
 
-## Reshaping Data 
+## Reshaping Data
 
 ::: {style="text-align: justify"}
-     Before we discuss about reshaping of the data, we need to discuss about tidy format of the data. Data can come in many shapes, but not all shapes are useful for data analysis. In most cases, tidy format of the data is most useful for analysis. Therefore, if the data is untidy, we need to make it tidy first. There are three interrelated rules which make a dataset tidy [@wickham2023r]. These rules are given below. @fig-tidyprinciple visually represents tidy principle. 
+     Before we discuss about reshaping of the data, we need to discuss about tidy format of the data. Data can come in many shapes, but not all shapes are useful for data analysis. In most cases, tidy format of the data is most useful for analysis. Therefore, if the data is untidy, we need to make it tidy first. There are three interrelated rules which make a dataset tidy [@wickham2023r]. These rules are given below. @fig-tidyprinciple visually represents tidy principle.
 
-1. Each variable must have its own column
+1.  Each variable must have its own column
 
-2. Each observation must have its own row
+2.  Each observation must have its own row
 
-3. Each value must have its own cell 
+3.  Each value must have its own cell
 
 ![Tidy Principle](images/tidy-1.png){#fig-tidyprinciple}
 
-     For analysis, many times we need to change the format of our dataset and we call it reshaping. Data come primarily in two shapes -*wide* and *long*. Sometimes *wide* format is called "record" format and *long* format is called "stacked" format. In `wide` format data, there is one row for each subject (units of observation). Data is `long` when there are multiple rows for each subject (units of observations). 
+     For analysis, many times we need to change the format of our dataset and we call it reshaping. Data come primarily in two shapes -*wide* and *long*. Sometimes *wide* format is called "record" format and *long* format is called "stacked" format. In `wide` format data, there is one row for each subject (units of observation). Data is `long` when there are multiple rows for each subject (units of observations).
 
-     This reshaping can be two types - a) long to wide and 2) wide to long. Long-to-wide means reshaping a long data, which has many rows, into wide format, which has many variables. In wide-to-long format, we do otherwise. For analytical purpose, reshaping data is useful; so, we need to know how to do the reshaping. 
+     This reshaping can be two types - a) long to wide and 2) wide to long. Long-to-wide means reshaping a long data, which has many rows, into wide format, which has many variables. In wide-to-long format, we do otherwise. For analytical purpose, reshaping data is useful; so, we need to know how to do the reshaping.
 
-     Whether a given dataset (e.g., @tbl-formatofdata) is in wide or long format depends on our research questions (on what variables we are interested in and how we conceive of our data). If we are interested in variable `Temp` and `Month` variable is the unit of obsevation, then the dataset in @tbl-formatofdata is in `long` format because `Month` is repeated in mutiple rows. 
-
+     Whether a given dataset (e.g., @tbl-formatofdata) is in wide or long format depends on our research questions (on what variables we are interested in and how we conceive of our data). If we are interested in variable `Temp` and `Month` variable is the unit of obsevation, then the dataset in @tbl-formatofdata is in `long` format because `Month` is repeated in mutiple rows.
 :::
 
 ```{r}
@@ -880,7 +824,6 @@ airquality = airquality
 examp = airquality |>
     slice(1:10)
 ```
-
 
 ```{r}
 #| label: tbl-formatofdata
@@ -893,17 +836,15 @@ kbl(examp, booktabs = TRUE
   kable_styling(latex_options = c ('striped', 'hold_positions'))
 ```
 
-
-### Long-to-Wide Format  
+### Long-to-Wide Format
 
 ::: {style="text-align: justify"}
-     To make a long dataset to wide, we can use `pivot_wider()` function from `tidyr` package in R and `pivot()` function from `pandas` in python. 
+     To make a long dataset to wide, we can use `pivot_wider()` function from `tidyr` package in R and `pivot()` function from `pandas` in python.
 :::
 
-
-:::{.panel-tabset}
-
+::: panel-tabset
 ## tidyr
+
 ```{r}
 tidyr::us_rent_income
 ```
@@ -917,8 +858,7 @@ tidyr::us_rent_income |>
 
 ```
 
-
-## pandas 
+## pandas
 
 ```{python}
 #| warning: false
@@ -933,21 +873,17 @@ penguins[["island", "bill_length_mm"]] \
     .pivot(columns = "island", values = "bill_length_mm") \
     .fillna(0)
 ```
-
-
 :::
 
-
-### Wide-to-Long Format  
+### Wide-to-Long Format
 
 ::: {style="text-align: justify"}
      To make a wide dataset to long, we can use `pivot_longer()` function from `tidyr` package in R and `melt()` function from `pandas` in python.
 :::
 
-
-:::{.panel-tabset}
-
+::: panel-tabset
 ## tidyr
+
 ```{r}
 relig_income
 ```
@@ -961,33 +897,31 @@ relig_income |>
     )
 ```
 
-## pandas 
+## pandas
 
 ```{python}
 penguins.melt(value_vars=["bill_length_mm", "bill_depth_mm","flipper_length_mm", "body_mass_g"],
               id_vars = ['species', 'island', 'sex', 'year']
               )
 ```
-
 :::
 
-
-## Merging Datasets 
+## Merging Datasets
 
 ::: {style="text-align: justify"}
-     Many times, for analysis purposes, we need to join two datasets. This process is also called merging^[In database context, it is "merging", but commonly it is called "joining".]. There are different types of joining. So, it is important to learn about those joining techniques. In @fig-joindatasets shows the joining technique and functions using `dplyr` in R. Below all of these joining functions are explained. 
+     Many times, for analysis purposes, we need to join two datasets. This process is also called merging[^3]. There are different types of joining. So, it is important to learn about those joining techniques. In @fig-joindatasets shows the joining technique and functions using `dplyr` in R. Below all of these joining functions are explained.
 
-* `left_join()`: The merged dataset contains **all** observations fromthe **first** (or left) dataset and only **matched** observations from the **second** (or right) dataset
+-   `left_join()`: The merged dataset contains **all** observations fromthe **first** (or left) dataset and only **matched** observations from the **second** (or right) dataset
 
-* `right_join()`: The merged dataset contains only **matched** observations from the **first** (or left) dataset and **all** observations from the **second** (or right) dataset
+-   `right_join()`: The merged dataset contains only **matched** observations from the **first** (or left) dataset and **all** observations from the **second** (or right) dataset
 
-* `inner_join()`: The merged dataset contains *only* **matched** observations from both datasets
+-   `inner_join()`: The merged dataset contains *only* **matched** observations from both datasets
 
-* `semi_join()`: The merged dataset contains **matched** observations from the **first** (or left) dataset. Please note that `semi_join()` differs from `inner_join()` in that `inner_join()` will return one row of first dataset (x) for each matching row of second dataset (y), whereas `semi_join()` will never duplicate rows of x.   
+-   `semi_join()`: The merged dataset contains **matched** observations from the **first** (or left) dataset. Please note that `semi_join()` differs from `inner_join()` in that `inner_join()` will return one row of first dataset (x) for each matching row of second dataset (y), whereas `semi_join()` will never duplicate rows of x.
 
-* `full_join()`: The merged dataset contains **all** observations from both datasets
+-   `full_join()`: The merged dataset contains **all** observations from both datasets
 
-* `anti_join()`: The merged dataset contains only **not matched** observations from the **first** (or left) dataset and contains only the variable from the **left** dataset
+-   `anti_join()`: The merged dataset contains only **not matched** observations from the **first** (or left) dataset and contains only the variable from the **left** dataset
 
 ![Joining Datasets](images/join_diagram.png){#fig-joindatasets width="40%"}
 
@@ -1016,12 +950,11 @@ kbl(df_join, booktabs = TRUE
     ) %>% 
   kable_styling(latex_options = c ('striped', 'hold_positions'))
 ```
-
-
 :::
 
-:::{.panel-tabset}
+[^3]: In database context, it is "merging", but commonly it is called "joining".
 
+::: panel-tabset
 ## dplyr
 
 ```{r}
@@ -1049,8 +982,7 @@ left_join(data1 |> distinct(ticker, year, .keep_all = TRUE),
           )
 ```
 
-
-## pandas 
+## pandas
 
 ```{python}
 #| warning: false
@@ -1085,7 +1017,6 @@ semi_join = df1[df1['id'].isin(df2['id'])]
 # Anti join
 anti_join = df1[~df1['id'].isin(df2['id'])]
 ```
-
 :::
 
-## Conclusions 
+## Conclusions

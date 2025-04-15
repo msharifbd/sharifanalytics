@@ -1,6 +1,7 @@
 ---
 title: "Predictive Modeling - Linear Regression"
 format: html 
+editor: source
 ---
 
 ### Learning Objectives of the Chapter {.unnumbered}
@@ -37,7 +38,7 @@ At the End of the Chapter, Students should be Able to -
      where $y$ = Target variable (Dependent variable); $m$ = slope or rate of change; $X$ = predictor or independent variable; and $C$ = intercept or constant.
 :::
 
-::: {.panel-tabset}
+::: panel-tabset
 ## R
 
 ```{r}
@@ -93,7 +94,6 @@ tips = sns.load_dataset("tips")
 tips.head()
 ```
 
-
 ```{python}
 #| include: false 
 #| eval: false 
@@ -101,10 +101,7 @@ tips.head()
 py_df = pd.read_csv("http://web.pdx.edu/~gerbing/data/cars.csv")
 py_df.info()
 ```
-
-
 :::
-
 
 ::: panel-tabset
 ## R
@@ -115,7 +112,6 @@ py_df.info()
 ggplot(tips, aes (x = total_bill, y = tip)) + 
   geom_point()
 ```
-
 
 ```{r}
 #| fig-cap: "Relationship between Horsepower and MPG"
@@ -152,7 +148,6 @@ sns.scatterplot(x = "Horsepower", y = "MPG", data = py_df)
 :::
 
 ::: panel-tabset
-
 ## R
 
 ```{r}
@@ -171,7 +166,6 @@ ggplot(r_df, aes(x = Weight, y = MPG))+
     geom_point()
 ```
 
-
 ## Python
 
 ```{r}
@@ -188,8 +182,6 @@ sns.scatterplot(data = tips, x = "size", y = "tip")
 
 ```
 
-
-
 ```{python}
 #| fig-cap: "Relationship between Weight and MPG"
 #| eval: false 
@@ -199,12 +191,10 @@ sns.set_theme(style="darkgrid")
 sns.scatterplot(x = "Weight", y = "MPG", data = py_df)
 
 ```
-
-
 :::
 
 ::: {style="text-align: justify"}
-     Now we can quantify these relationships using linear regression in which we will try to draw a line that will help us to idenfity the relation between the variables. For example, in @fig-r-reg-equation, we can see the linear line that shows the relation between horsepower and MPG. The regression equation we find is `y = 0.92 + 0.11x`, where $y$ is tips, $x$ is total bill, $0.92$ is intercept (or constant), and $0.11$ is slope, which means one unit change of total bill results in $0.11 increase of tips and the value of tips is 0.92 when total bill is 0. @fig-py-reg-equation shows the same results.
+     Now we can quantify these relationships using linear regression in which we will try to draw a line that will help us to idenfity the relation between the variables. For example, in @fig-r-reg-equation, we can see the linear line that shows the relation between horsepower and MPG. The regression equation we find is `y = 0.92 + 0.11x`, where $y$ is tips, $x$ is total bill, $0.92$ is intercept (or constant), and $0.11$ is slope, which means one unit change of total bill results in \$0.11 increase of tips and the value of tips is 0.92 when total bill is 0. @fig-py-reg-equation shows the same results.
 
 ::: panel-tabset
 ## R
@@ -233,7 +223,6 @@ broom::tidy(simple_reg)
 broom::glance(simple_reg)
 broom::augment(simple_reg)
 ```
-
 
 ```{r}
 #| warning: false
@@ -314,10 +303,7 @@ plot=(p9.ggplot(data=py_df, mapping= p9.aes('Horsepower','MPG'))
 # print the plot
 print(plot)
 ```
-
-
 :::
-
 :::
 
 ```{python}
@@ -484,9 +470,6 @@ plt.show()
 
 ```
 
-
-
-
 ### Evaluating Linear Regression Models - Assessing the Fitness
 
 ::: {style="text-align: justify"}
@@ -510,7 +493,6 @@ plt.show()
 :::
 
 ::: {style="text-align: justify"}
-
 ### Assumptions of Linear Regression
 
      Linear regression follows some assumptions. After fitting a regression model, we should check the assumptions of the model.
@@ -594,7 +576,6 @@ plt.axhline(0, color='black', linestyle='--')
 plt.show()
 ```
 
-
 ```{python}
 #| fig-cap: Testing Assumption 1
 #| eval: false 
@@ -612,9 +593,6 @@ plt.ylabel('Residuals')
 # https://robert-alvarez.github.io/2018-06-04-diagnostic_plots/
 # https://www.kirenz.com/blog/posts/2021-11-14-linear-regression-diagnostics-in-python/
 ```
-
-
-
 :::
 
 2.  **Independence**:
@@ -641,7 +619,6 @@ library(car)
 durbinWatsonTest(lm(KO ~ SPY, data = df_stockR))
 ```
 
-
 ## Python
 
 ```{r}
@@ -664,8 +641,6 @@ print(f'Durbin-Watson statistic: {dw_stat}')
 from statsmodels.stats.stattools import durbin_watson
 durbin_watson(slr_sm_model_ko.resid)
 ```
-
-
 :::
 
 3.  **Residual Error**:
@@ -706,7 +681,6 @@ plot(lm(KO ~ SPY, data = df_stockR),3)
 ncvTest (lm(KO ~ SPY, data = df_stockR))
 ```
 
-
 ## Python
 
 ```{r}
@@ -731,8 +705,6 @@ plt.axhline(0, color='black', linestyle='--')
 plt.show()
 
 ```
-
-
 
 ```{python}
 #| warning: false 
@@ -768,9 +740,6 @@ for stat, value in zip(labels,white_test):
     print('{}: {:.3f}'.format(stat, value))
 ```
 :::
-
-
-
 :::
 
 4.  **Normality**:
@@ -806,7 +775,6 @@ library(stats)
 ks.test(augment(simple_reg)$.resid, "pnorm")
 ```
 
-
 ```{r}
 #| warning: false 
 #| fig-cap: Testing Assumption 4
@@ -831,7 +799,6 @@ qqPlot(df_stockR$residual)
 library(stats)
 ks.test(df_stockR$residual, "pnorm")
 ```
-
 
 ## Python
 
@@ -865,7 +832,6 @@ for stat, value in zip(label_ks, ks_test[:2]):
     print('{}: {:.5f}'.format(stat, value))
 ```
 
-
 ```{python}
 #| warning: false
 #| fig-cap: Testing Assumption 4
@@ -887,8 +853,6 @@ label_ks = ["KS Statistic", "P-value"]
 for stat, value in zip(label_ks, ks_test[:2]):
     print('{}: {:.5f}'.format(stat, value))
 ```
-
-
 :::
 
 5.  **Multicollinearity**:
@@ -931,7 +895,6 @@ vif(lm(KO ~ SPY+PEP, data = df_stockR))
 source("http://www.sthda.com/upload/rquery_cormat.r")
 rquery.cormat(df_stockR |> select(KO:DX.Y.NYB), type = c("lower"), graph = TRUE)$r
 ```
-
 
 ## Python
 
@@ -999,8 +962,6 @@ pd.Series([variance_inflation_factor(X.values, i)
               index=X.columns[1:])
 
 ```
-
-
 :::
 
 6.  **No Endogeneity**:
@@ -1016,9 +977,6 @@ pd.Series([variance_inflation_factor(X.values, i)
 library(performance)
 check_model(simple_reg)
 ```
-
-
-
 
 ::: {style="text-align: justify"}
 ### Multiple Linear Regression
@@ -1177,16 +1135,13 @@ pf.etable([fe_model1, fe_model2, fe_model3]
 :::
 :::
 
-
 ::: {style="text-align: justify"}
-#### Relation Between Tips and Total Bill in Restaurant  
+#### Relation Between Tips and Total Bill in Restaurant
 
-          Here we run multiple linear regression models and evaluate the model assumptions.
+      Here we run multiple linear regression models and evaluate the model assumptions.
 :::
- 
 
 ::: panel-tabset
-
 ## R
 
 ```{r}
@@ -1264,8 +1219,7 @@ library(car)
 vif(lm(tip ~ total_bill+size+Gender+smoker+time+day_Thur + day_Fri + day_Sat, data = tips))
 ```
 
-
-## Python 
+## Python
 
 ```{python}
 # loading the packages
@@ -1404,22 +1358,164 @@ vif_data["VIF"] = [variance_inflation_factor(X.values, i) for i in range(X.shape
 print(vif_data)
 
 ```
+:::
 
 
 
+
+::: {style="text-align: justify"}
+## Identifying Infuential Observations
+
+      Influential observations might affect the estimates of the regression equations. Therefore, sometimes we need to identify them and run the regression model after excluding them. @fig-influ-r and @fig-influ-py show the influential observations in a given model. 
+
+      Cook's distance and hat values are two measures used in regression analysis to identify influential observations that may affect the model's results.
+
+      **Cook's Distance** measures the influence of a data point on the regression model. It quantifies how much the fitted values change when a specific observation is removed. The formula for Cook's distance is:
+
+
+
+
+      A general rule of thumb is that a Cook's distance greater than 4/𝑛
+ (where 𝑛 is the total number of observations) indicates a potentially influential observation.
+
+      **Hat Values** lso known as leverage values, measure how far an observation's predictor values are from the mean of the predictor values. They indicate the potential influence of an observation on the fitted values. The formula for hat values is:
+
+
+      Hat values range between 0 and 1. Observations with high hat values have greater leverage and can disproportionately affect the regression line. A rule of thumb is that hat values greater than 2𝑝/𝑛 (where 𝑝 is the number of predictors and 𝑛 is the number of observations) may indicate high leverage.
+
+
+::: panel-tabset
+
+## R
+```{r}
+#| warning: false
+#| fig-cap: Influential Observations (R)
+#| label: fig-influ-r
+# Install and load the necessary packages
+library(car)
+library(reshape2)
+
+# Load the 'tips' dataset
+data("tips")
+
+# Fit a linear model
+model <- lm(tip ~ total_bill + size+sex, data = tips)
+
+# Create the influence plot with index labeling
+influencePlot(model, 
+              id.method = "identify",  # This allows labeling by index
+              id.n = 5,                # Labels the top 5 influential points
+              main = "Influence Plot for 'tips' Dataset",
+              xlab = "Hat Values",
+              ylab = "Studentized Residuals")
+
+```
+
+
+
+## Python 
+
+```{python}
+#| warning: false
+#| fig-cap: Influential Observations (Python)
+#| label: fig-influ-py
+import statsmodels.api as sm
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Load the 'tips' dataset
+tips = sns.load_dataset('tips')
+
+# Fit a linear regression model
+X = sm.add_constant(tips[['total_bill', 'size']])  # Independent variables
+y = tips['tip']  # Dependent variable
+model = sm.OLS(y, X).fit()
+
+# Create the influence plot
+sm.graphics.influence_plot(model, criterion="cooks", size=48, plot_alpha=0.75)
+plt.title("Influence Plot for 'tips' Dataset")
+plt.xlabel("Hat Values (Leverage)")
+plt.ylabel("Studentized Residuals")
+plt.show()
+```
+
+
+:::
 
 :::
 
 
 
 
+::: {style="text-align: justify"}
+      Alternatively, we can identify a certain number (e.g., 10) of influential observations by running the following code - 
+::: 
+
+::: panel-tabset
+
+## R 
+
+```{r}
+## Top 10 influential observations 
+# Load necessary libraries
+library(reshape2)
+
+# Load the 'tips' dataset
+data("tips")
+tips = as_tibble(tips)
+# Fit a linear model
+model <- lm(tip ~ total_bill + size, data = tips)
+
+# Calculate Cook's distance
+cooks_d <- cooks.distance(model)
+
+# Identify the top 10 influential observations
+top_10 <- order(cooks_d, decreasing = TRUE)[1:10]
+
+# Display the top 10 influential observations
+data.frame(Index = top_10, Cook_Distance = cooks_d[top_10])
+```
+
+
+## Python 
+
+```{python}
+## Top 10 influential observations 
+
+import statsmodels.api as sm
+import seaborn as sns
+import pandas as pd
+
+# Load the 'tips' dataset
+tips = sns.load_dataset('tips')
+
+# Fit a linear regression model
+X = sm.add_constant(tips[['total_bill', 'size']])  # Independent variables
+y = tips['tip']  # Dependent variable
+model = sm.OLS(y, X).fit()
+
+# Get influence measures
+influence = model.get_influence()
+summary_frame = influence.summary_frame()
+
+# Add index to identify observations
+summary_frame['index'] = summary_frame.index
+
+# Sort by Cook's distance and select the top 10 influential points
+top_10_influential = summary_frame.sort_values(by='cooks_d', ascending=False).head(10)
+
+# Display the top 10 influential observations
+print(top_10_influential[['index', 'cooks_d', 'hat_diag', 'student_resid']])
+```
+
+
+:::
+
 
 
 ## Time Series Analysis
 
-
-## Conclusion 
-
+## Conclusion
 
 ## Exercises {.unnumbered}
 

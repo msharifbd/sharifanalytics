@@ -1,6 +1,7 @@
 ---
 title: "Machine Learning"
 format: html
+editor: source 
 ---
 
 ### Learning Objectives of the Chapter {.unnumbered}
@@ -8,15 +9,15 @@ format: html
 ::: {style="text-align: justify"}
 At the End of the Chapter, Students should be Able to -
 
--   Learn about the Nature of Machine Learning (ML) 
+-   Learn about the Nature of Machine Learning (ML)
 
--   Recognize the Importance of Machine Learning in Accounting & Auditing 
+-   Recognize the Importance of Machine Learning in Accounting & Auditing
 
 -   Understand Different Types of Machine Learning
 
 -   Learn about Different Kinds of Machine Learning Algorithms
 
--   Build Some Machine Learning Models and Evaluate their Performance 
+-   Build Some Machine Learning Models and Evaluate their Performance
 :::
 
 ```{python}
@@ -26,59 +27,54 @@ At the End of the Chapter, Students should be Able to -
 # Link of the above Book - https://mlsysbook.ai/
 ```
 
+## Introduction
 
-## Introduction 
 ::: {style="text-align: justify"}
-     Machine Learning (ML), which is a subset of Artificial Intelligence (AI)^[Though AI and ML are used interchangeably in the book, there are differences between them. @reddy2025 differentiates them in the following way: `Artificial Intelligence` - the goal of creating machines that can match or exceed human intelligence—representing humanity’s quest to build systems that can think, reason, and adapt. `Machine Learning` - the scientific discipline of understanding how systems can learn and improve from experience—providing the theoretical foundation for building intelligent systems.], has been woven into the fabric of our daily lives [@reddy2025]. Since waking up from the sleep until we go to the bed, we keep interacting with ML based products or services. For example, while commuting to the office, our GPS suggests the best route; at work, email filters spam [@reddy2025]. Therefore, it is dubbed AI is everywhere. While 18th and 19th centuries are characterized by Industrial Revolution, and 20th century is by Computer and Internet - the 21st century seems to be dominated by ML and AI. 
+     Machine Learning (ML), which is a subset of Artificial Intelligence (AI)[^machine_learning-1], has been woven into the fabric of our daily lives [@reddy2025]. Since waking up from the sleep until we go to the bed, we keep interacting with ML based products or services. For example, while commuting to the office, our GPS suggests the best route; at work, email filters spam [@reddy2025]. Therefore, it is dubbed AI is everywhere. While 18th and 19th centuries are characterized by Industrial Revolution, and 20th century is by Computer and Internet - the 21st century seems to be dominated by ML and AI.
 
-     It goes without saying that AI/ML has potential to significantly transform accounting and auditing profession in many ways. For example, repetitive tasks such as data entry, reconiliation, verification can be subordinated to AI, which allows accountants and auditors to get involved more with stratgeic decision making. Even in strategic decision making, AI facilitates effective and efficient decision making by identifying and processing vast amount of the unstructured data. Moreover, ML systems allow continuous montioring of finanical activites and real time insights of potential risks, thus enhancing the accuracy of financial reporting. Therefore, understanding how ML systems work is important for the future generation of accountants and auditors.    
+     It goes without saying that AI/ML has potential to significantly transform accounting and auditing profession in many ways. For example, repetitive tasks such as data entry, reconiliation, verification can be subordinated to AI, which allows accountants and auditors to get involved more with stratgeic decision making. Even in strategic decision making, AI facilitates effective and efficient decision making by identifying and processing vast amount of the unstructured data. Moreover, ML systems allow continuous montioring of finanical activites and real time insights of potential risks, thus enhancing the accuracy of financial reporting. Therefore, understanding how ML systems work is important for the future generation of accountants and auditors.
 :::
 
+[^machine_learning-1]: Though AI and ML are used interchangeably in the book, there are differences between them. @reddy2025 differentiates them in the following way: `Artificial Intelligence` - the goal of creating machines that can match or exceed human intelligence—representing humanity’s quest to build systems that can think, reason, and adapt. `Machine Learning` - the scientific discipline of understanding how systems can learn and improve from experience—providing the theoretical foundation for building intelligent systems.
 
+## Importance of Machine Learning in Accounting
 
-
-
-## Importance of Machine Learning in Accounting  
 ::: {style="text-align: justify"}
-     Accountants and auditors have already started leveraging the power of AI in their day to day business. For example, auditors are using AI/ML to review and extract information from contracts, thus reducing time and human errors [@schatsky16cognitive]. The auditing process is being automated gradually, reducing the time spent on reviewing the audit documentations and allowing more time to spend on professional judgment [@schatsky16cognitive;@persico2017ai]. For example, audit procedure - confirmation - is handled by AI-enabled system, ultimately providing the auditors with the relevant documentation for professional judgment. AI-enabled drone using computer vision is being used in accounting profession to count inventory and communicate the data with the auditors in real time, thus allowing more data to be captured and allowing auditors to focus on risk management [@vien2018drone]. Academic research also supports that AI/ML is enhancing the performance of accountants and auditors [@fedyk2022artificial;@estep2024financial]. 
+     Accountants and auditors have already started leveraging the power of AI in their day to day business. For example, auditors are using AI/ML to review and extract information from contracts, thus reducing time and human errors [@schatsky16cognitive]. The auditing process is being automated gradually, reducing the time spent on reviewing the audit documentations and allowing more time to spend on professional judgment [@schatsky16cognitive; @persico2017ai]. For example, audit procedure - confirmation - is handled by AI-enabled system, ultimately providing the auditors with the relevant documentation for professional judgment. AI-enabled drone using computer vision is being used in accounting profession to count inventory and communicate the data with the auditors in real time, thus allowing more data to be captured and allowing auditors to focus on risk management [@vien2018drone]. Academic research also supports that AI/ML is enhancing the performance of accountants and auditors [@fedyk2022artificial; @estep2024financial].
 
-     Recently, accounting firms have turned  their focus on Generative Artificial Intelligence (GenAI). For example, PricewaterhouseCoopers dedicated $1 billion investment in GenAI, partnering with Microsoft and OpenAI to automate aspects of its tax, audit and consulting services [@loten2023pwc]. Other accounting firms started following the same feat [@deloitte2024industryadvantage].  Moreover, big four accounting firms are developing their own chatbot like ChatGPT. For example, EY rolled out [EY.ai EYQ](https://www.ey.com/en_us/services/ai/platform) - a large language model - to aid EY employees in ideation, research, and creation; and to aid clients to capture the transformative power of AI to transform their businesses through confident and responsible adoption of AI [@ey2023ai]. To sum up, all  these developments highlight the importance of AI/ML in accounting. Therefore, future generations of accountants should prepare themselves to embrace these technologies, develop relevant skills, and stay updated with the latest advancements in AI and ML. This will enable them to leverage AI/ML tools effectively, enhance their professional capabilities, and contribute to the evolving landscape of the accounting profession.  
+     Recently, accounting firms have turned their focus on Generative Artificial Intelligence (GenAI). For example, PricewaterhouseCoopers dedicated \$1 billion investment in GenAI, partnering with Microsoft and OpenAI to automate aspects of its tax, audit and consulting services [@loten2023pwc]. Other accounting firms started following the same feat [@deloitte2024industryadvantage]. Moreover, big four accounting firms are developing their own chatbot like ChatGPT. For example, EY rolled out [EY.ai EYQ](https://www.ey.com/en_us/services/ai/platform) - a large language model - to aid EY employees in ideation, research, and creation; and to aid clients to capture the transformative power of AI to transform their businesses through confident and responsible adoption of AI [@ey2023ai]. To sum up, all these developments highlight the importance of AI/ML in accounting. Therefore, future generations of accountants should prepare themselves to embrace these technologies, develop relevant skills, and stay updated with the latest advancements in AI and ML. This will enable them to leverage AI/ML tools effectively, enhance their professional capabilities, and contribute to the evolving landscape of the accounting profession.
 :::
 
-## Types of Machine Learning 
-::: {style="text-align: justify"}
-     Machine learning can be categorized into different types based on the the nature of learning process and the type of data it used. Usually, ML can be categorized into three types - supervised, unsupervised, and reinforcement learning. @fig-mltypes shows different types of machine learning. 
+## Types of Machine Learning
 
+::: {style="text-align: justify"}
+     Machine learning can be categorized into different types based on the the nature of learning process and the type of data it used. Usually, ML can be categorized into three types - supervised, unsupervised, and reinforcement learning. @fig-mltypes shows different types of machine learning.
 
 ![Machine Learning Types](images/ml-types.webp){#fig-mltypes}
 
-### Supervised Machine Learning 
+### Supervised Machine Learning
 
+### Unsupervised Machine Learning
 
-
-### Unsupervised Machine Learning 
-
-
-### Reinforcement Learning 
+### Reinforcement Learning
 :::
 
-## Roadmap for Building ML Systems  
-::: {style="text-align: justify"}
-     In the previous sections, we discuss about machine learning and different types of ML. In this section, we will discuss typical workflow (also called roadmap) for using machine systems [@raschka2022machine]. @fig-mlroadmap shows the typical workflow when ML systems are developed.  
+## Roadmap for Building ML Systems
 
+::: {style="text-align: justify"}
+     In the previous sections, we discuss about machine learning and different types of ML. In this section, we will discuss typical workflow (also called roadmap) for using machine systems [@raschka2022machine]. @fig-mlroadmap shows the typical workflow when ML systems are developed.
 
 ![Machine Learning Roadmap](images/ml-roadmap.png){#fig-mlroadmap}
 :::
 
-
 ## Example of a Machine Learning System
+
 ::: {style="text-align: justify"}
-     Using a dataset, machine learning roadmap or workflow is illustrated below. A supervised machine learning for classification is used. 
+     Using a dataset, machine learning roadmap or workflow is illustrated below. A supervised machine learning for classification is used.
 
+### Preprocessing Data
 
-### Preprocessing Data 
-     Since data rarely come into the form ready to feed into an ML system, preprocessing is an important step before feeding the data into an ML system. Preprocessing invloves getting the data ready into shape so that data become ready to feed into an ML system. Based on the condition or circumstances of the data, we need to decide what kinds of preprocessing we will perform on the dataset. Usually, in preprocessing, we clean and transform the dataset. Some of the cleaning includes - fixing the name of the fixtures, removing missing rows, changing the types of the features and so on. 
-
+     Since data rarely come into the form ready to feed into an ML system, preprocessing is an important step before feeding the data into an ML system. Preprocessing invloves getting the data ready into shape so that data become ready to feed into an ML system. Based on the condition or circumstances of the data, we need to decide what kinds of preprocessing we will perform on the dataset. Usually, in preprocessing, we clean and transform the dataset. Some of the cleaning includes - fixing the name of the fixtures, removing missing rows, changing the types of the features and so on.
 
 ```{python}
 #| warning: false
@@ -89,11 +85,6 @@ import matplotlib.pyplot as plt # for data visualization purposes
 import seaborn as sns # for data visualization
 import sklearn # for Machine Learning
 ```
-
-
-
-
-
 
 ```{python}
 #| warning: false
@@ -171,8 +162,7 @@ correlation = df.corr()
 correlation['Class'].sort_values(ascending=False)
 ```
 
-     The correlation coefficient ranges from -1 to +1. When it is close to +1, this signifies that there is a strong positive correlation. So, we can see that there is a strong positive correlation between `Class` and `Bare_Nuclei`, `Class` and `Uniformity_Cell_Shape`, `Class` and `Uniformity_Cell_Size`. When it is close to -1, it means that there is a strong negative correlation. When it is close to 0, it means that there is no correlation. We can see that all the variables are positively correlated with Class variable. Some variables are strongly positive correlated while some variables are negatively correlated.  
-
+     The correlation coefficient ranges from -1 to +1. When it is close to +1, this signifies that there is a strong positive correlation. So, we can see that there is a strong positive correlation between `Class` and `Bare_Nuclei`, `Class` and `Uniformity_Cell_Shape`, `Class` and `Uniformity_Cell_Size`. When it is close to -1, it means that there is a strong negative correlation. When it is close to 0, it means that there is no correlation. We can see that all the variables are positively correlated with Class variable. Some variables are strongly positive correlated while some variables are negatively correlated.
 
 ```{python}
 #| warning: false
@@ -184,8 +174,9 @@ a.set_yticklabels(a.get_yticklabels(), rotation=30)
 plt.show()
 ```
 
-### Declaring Feature Vector and Target Vector 
-     In machine learning, the terms "feature vector" and "target vector" are fundamental concepts. A feature vector is a collection of input variables (features) that are used to make predictions. Each feature represents a measurable property or characteristic of the data. The feature vector is typically represented as a row in a dataset, where each column corresponds to a different feature. On the otherhand, The target vector, also known as the response vector or label, is the output variable that the model aims to predict. It represents the ground truth or actual values that correspond to the feature vectors. In our dataset, the target vector is `Class` and all other variables (features) are feature vector.  
+### Declaring Feature Vector and Target Vector
+
+     In machine learning, the terms "feature vector" and "target vector" are fundamental concepts. A feature vector is a collection of input variables (features) that are used to make predictions. Each feature represents a measurable property or characteristic of the data. The feature vector is typically represented as a row in a dataset, where each column corresponds to a different feature. On the otherhand, The target vector, also known as the response vector or label, is the output variable that the model aims to predict. It represents the ground truth or actual values that correspond to the feature vectors. In our dataset, the target vector is `Class` and all other variables (features) are feature vector.
 
 ```{python}
 #| warning: false
@@ -195,17 +186,17 @@ X = df.drop(['Class'], axis = 1)
 y = df["Class"]
 ```
 
-### Training and Testing Dataset 
+### Training and Testing Dataset
 
-     The training dataset is the portion of the data used to train the machine learning model. It contains input-output pairs where the input is the feature vector, and the output is the target vector. The model learns the relationship between the inputs and outputs during the training process. The testing dataset is the portion of the data used to evaluate the performance of the trained model. It contains input-output pairs that the model has not seen during training. The testing dataset helps assess how well the model generalizes to new, unseen data. 
+     The training dataset is the portion of the data used to train the machine learning model. It contains input-output pairs where the input is the feature vector, and the output is the target vector. The model learns the relationship between the inputs and outputs during the training process. The testing dataset is the portion of the data used to evaluate the performance of the trained model. It contains input-output pairs that the model has not seen during training. The testing dataset helps assess how well the model generalizes to new, unseen data.
 
-     Splitting the dataset into training and testing sets is a very important step in building and evaluating machine learning models. We need to split the dataset into training and testing for the following reasons. 
+     Splitting the dataset into training and testing sets is a very important step in building and evaluating machine learning models. We need to split the dataset into training and testing for the following reasons.
 
- * __Model Evaluation__: The testing dataset is used to evaluate the model's performance on new, unseen data. This helps determine how well the model generalizes to real-world scenarios. Overfitting occurs when a model performs well on the training data but poorly on new data. By evaluating the model on a separate testing set, we can detect and mitigate overfitting. If we use the same dataset for developing and evaluating model, then model performance will be overstated. 
+-   **Model Evaluation**: The testing dataset is used to evaluate the model's performance on new, unseen data. This helps determine how well the model generalizes to real-world scenarios. Overfitting occurs when a model performs well on the training data but poorly on new data. By evaluating the model on a separate testing set, we can detect and mitigate overfitting. If we use the same dataset for developing and evaluating model, then model performance will be overstated.
 
- * __Hyperparameter Tuning__: To optimize the performance of machine learning models, we need to identify the best parameters^[Sometimes, we are confused between parameters and hyperparameters. Parameters are learned from the training data, while hyperparameters are set (supplied) before training and are not learned from the data. For example, in linear regression, coefficients - betas ($\beta$) are parameters because they are learned from the data whereas in ridge regression - lambda ($\lambda$) is a hyperparameter, which controls the amount of regularization applied to the model and it is supplied from outside of the model.] for the model. Hyperparameter tuning is the process of identifying the best parameters for optimizing the performance of machine learning models. During the training process, hyperparameters (e.g., value of $k$ in KNN algorithm) are tuned to improve the model's performance. The testing set helps validate that these parameters are optimized for generalization, not just for the training data.  
+-   **Hyperparameter Tuning**: To optimize the performance of machine learning models, we need to identify the best parameters[^machine_learning-2] for the model. Hyperparameter tuning is the process of identifying the best parameters for optimizing the performance of machine learning models. During the training process, hyperparameters (e.g., value of $k$ in KNN algorithm) are tuned to improve the model's performance. The testing set helps validate that these parameters are optimized for generalization, not just for the training data.
 
- * __Bias-Variance Tradeoff__: Splitting the data helps in managing the bias-variance tradeoff. A model with high bias may underfit the data, while a model with high variance may overfit. Evaluating on a testing set helps find the right balance.  
+-   **Bias-Variance Tradeoff**: Splitting the data helps in managing the bias-variance tradeoff. A model with high bias may underfit the data, while a model with high variance may overfit. Evaluating on a testing set helps find the right balance.
 
 ```{python}
 #| warning: false
@@ -220,30 +211,25 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, rando
 X_train.shape, X_test.shape
 ```
 
-### Feature Engineering 
+### Feature Engineering
 
-     Feature engineering is the process of creating new features or modifying existing ones to improve the performance of a machine learning model. It involves transforming raw data into meaningful features that better represent the underlying patterns and relationships in the data. Effective feature engineering can significantly enhance the accuracy and efficiency of machine learning models. Key Steps in Feature Engineering - 
+     Feature engineering is the process of creating new features or modifying existing ones to improve the performance of a machine learning model. It involves transforming raw data into meaningful features that better represent the underlying patterns and relationships in the data. Effective feature engineering can significantly enhance the accuracy and efficiency of machine learning models. Key Steps in Feature Engineering -
 
-a) **Data Cleaning**:
-    * **Handling Missing Values**: Filling in or removing missing data points.
-    * **Removing Outliers**: Identifying and eliminating data points that deviate significantly from the rest of the data.
-
-b) **Feature Creation**:
-    * **Combining Features**: Creating new features by combining existing ones (e.g., creating a "total sales" feature by summing individual sales columns).
-    * **Extracting Features**: Deriving new features from existing data (e.g., extracting the day of the week from a date column).
-
-c) **Feature Transformation**:
-    * **Scaling**: Normalizing or standardizing features to ensure they have similar scales (e.g., using Min-Max scaling or Z-score normalization).
-    * **Encoding Categorical Variables**: Converting categorical variables into numerical representations (e.g., one-hot encoding or label encoding).
-
-d) **Feature Selection**:
-    * **Removing Redundant Features**: Eliminating features that provide little or no additional information.
-    * **Selecting Important Features**: Identifying and retaining the most relevant features using techniques like correlation analysis, mutual information, or feature importance scores from models.
-
-e) **Dimensionality Reduction**:
-    * **Principal Component Analysis (PCA)**: Reducing the number of features while preserving the most important information.
-    * **t-Distributed Stochastic Neighbor Embedding (t-SNE)**: Visualizing high-dimensional data in lower dimensions.
-
+a)  **Data Cleaning**:
+    -   **Handling Missing Values**: Filling in or removing missing data points.
+    -   **Removing Outliers**: Identifying and eliminating data points that deviate significantly from the rest of the data.
+b)  **Feature Creation**:
+    -   **Combining Features**: Creating new features by combining existing ones (e.g., creating a "total sales" feature by summing individual sales columns).
+    -   **Extracting Features**: Deriving new features from existing data (e.g., extracting the day of the week from a date column).
+c)  **Feature Transformation**:
+    -   **Scaling**: Normalizing or standardizing features to ensure they have similar scales (e.g., using Min-Max scaling or Z-score normalization).
+    -   **Encoding Categorical Variables**: Converting categorical variables into numerical representations (e.g., one-hot encoding or label encoding).
+d)  **Feature Selection**:
+    -   **Removing Redundant Features**: Eliminating features that provide little or no additional information.
+    -   **Selecting Important Features**: Identifying and retaining the most relevant features using techniques like correlation analysis, mutual information, or feature importance scores from models.
+e)  **Dimensionality Reduction**:
+    -   **Principal Component Analysis (PCA)**: Reducing the number of features while preserving the most important information.
+    -   **t-Distributed Stochastic Neighbor Embedding (t-SNE)**: Visualizing high-dimensional data in lower dimensions.
 
 ```{python}
 #| warning: false
@@ -251,13 +237,11 @@ e) **Dimensionality Reduction**:
 X_train.isnull().sum()
 ```
 
-
 ```{python}
 #| warning: false
 # check missing values in numerical variables in X_test
 X_test.isnull().sum()
 ```
-
 
 ```{python}
 #| warning: false
@@ -271,7 +255,6 @@ for col in X_train.columns:
 
      I will impute missing values with the appropriate statistical measures of the data, in this case median. Imputation should be done over the training set, and then propagated to the test set. It means that the statistical measures to be used to fill missing values both in train and test set, should be extracted from the train set only. This is to avoid overfitting.
 
-
 ```{python}
 #| warning: false
 # impute missing values in X_train and X_test with respective column median in X_train
@@ -281,13 +264,11 @@ for df in [X_train, X_test]:
         df[col].fillna(col_median, inplace=True)  
 ```
 
-
 ```{python}
 #| warning: false
 # check again missing values in numerical variables in X_train
 X_train.isnull().sum()
 ```
-
 
 ```{python}
 #| warning: false
@@ -295,7 +276,7 @@ X_train.isnull().sum()
 X_test.isnull().sum()
 ```
 
-     Now, we will perform feature selection. Feature selection involves identifying the features that have the greatest explanatory power to predict the target variables. Therere are many techniques that can be used for feature selection. When there are many variables, using feature selection is very much important. Otherwise, noises might be introduced in the model. 
+     Now, we will perform feature selection. Feature selection involves identifying the features that have the greatest explanatory power to predict the target variables. Therere are many techniques that can be used for feature selection. When there are many variables, using feature selection is very much important. Otherwise, noises might be introduced in the model.
 
 ```{python}
 #| warning: false
@@ -307,6 +288,7 @@ print ('Features: ', X_train.columns)
 ```
 
      
+
 ```{python}
 #| warning: false
 # feature selection using ANOVA 
@@ -317,8 +299,7 @@ print ('Features: ', X_train.columns)
 
      We can rank the features based on their scores. Higher scores indicate more relevant feature. Therefore, chi-square test above indicate that the four relevant features are - `Clump_thickness`, `Uniformity_Cell_Size`, `Uniformity_Cell_Shape`, and `Marginal_Adhesion`. Using ANOVA suggests the same results.
 
-     Now, we will perform feature scaling. Normalizing or standardizing features to ensure they have similar scales (e.g., using Min-Max scaling or Z-score normalization). Feature scaling is important because some algorimthms (such as KNN, Support Vector Machines) in ML are sensitive to the scale of features. Scaling ensures that all features contribute equally to the model's predictions. Moreover, if features are not scaled, features with larger values tend to dominate learning process in ML, thus leading to bias in results. Therefore, scaling ensures that each feature contributes equally to the model. Moreover, distance-based alogrithms perform better when features are scaled.   
-
+     Now, we will perform feature scaling. Normalizing or standardizing features to ensure they have similar scales (e.g., using Min-Max scaling or Z-score normalization). Feature scaling is important because some algorimthms (such as KNN, Support Vector Machines) in ML are sensitive to the scale of features. Scaling ensures that all features contribute equally to the model's predictions. Moreover, if features are not scaled, features with larger values tend to dominate learning process in ML, thus leading to bias in results. Therefore, scaling ensures that each feature contributes equally to the model. Moreover, distance-based alogrithms perform better when features are scaled.
 
 ```{python}
 #| warning: false
@@ -332,29 +313,30 @@ X_train = pd.DataFrame(X_train, columns=[cols])
 X_test = pd.DataFrame(X_test, columns=[cols])
 X_train.head()
 ```
-
-
 :::
 
+[^machine_learning-2]: Sometimes, we are confused between parameters and hyperparameters. Parameters are learned from the training data, while hyperparameters are set (supplied) before training and are not learned from the data. For example, in linear regression, coefficients - betas ($\beta$) are parameters because they are learned from the data whereas in ridge regression - lambda ($\lambda$) is a hyperparameter, which controls the amount of regularization applied to the model and it is supplied from outside of the model.
+
 ::: {style="text-align: justify"}
-## Machine Learning Algorithms 
-     Now, the data is ready to feed to a Machine Learning algorithm. An algorithm is a step-by-step procedure or set of rules designed to perform a specific task or solve a particular problem. It is a sequence of instructions that takes an input, processes it, and produces an output. Machine learning algorithms are the backbone of machine learning systems. They are used to build models that can learn from data and make predictions or decisions. Different algorthims learn different ways from the data. For different ML, different kinds of algorithms are used. For example, for classification supervised machine learning, we can use KNN algorithm, logistic regression, decision trees, and support vector machines. 
+## Machine Learning Algorithms
 
-### K Nearnest Neighbor (KNN) Algorithm 
-     KNN is a simple, yet powerful, machine learning supervised algorithm. KNN is an instance based ML algorithm because it uses similarity between data points to make a prediction. To measure the similarity between data points, KNN relies on distance metrics such as Euclidean distance, or Manhattan distance, or Minkowski distance. KNN is called *lazy learner* because all of its computation is done in prediction phase. The *K* in KNN represents the number of nearest neighbors to consider when making the prediction. For example, when K = 2, the number of neareast number that will be used is 2.  
+     Now, the data is ready to feed to a Machine Learning algorithm. An algorithm is a step-by-step procedure or set of rules designed to perform a specific task or solve a particular problem. It is a sequence of instructions that takes an input, processes it, and produces an output. Machine learning algorithms are the backbone of machine learning systems. They are used to build models that can learn from data and make predictions or decisions. Different algorthims learn different ways from the data. For different ML, different kinds of algorithms are used. For example, for classification supervised machine learning, we can use KNN algorithm, logistic regression, decision trees, and support vector machines.
 
-     Assume you are trying to build a model that will classify reptiles into one of three classes [@rhys2020machine]. The classes are - Adder, Grass Snake, and Slow worm. We have two features of the reptiles - length of it and how aggressive (aggressiveness) the reptile is - which we will use to classify the reptiles. Further assume that a reptile expert helps you manually classify the observations so far, but you decide to build a kNN classifier to help you quickly classify future specimens you come across. @fig-knnwork1 plots the data before classification. Each of the reptile is plotted against body length and aggressiveness and we have three new reptiles that need to be classified.   
+### K Nearnest Neighbor (KNN) Algorithm
+
+     KNN is a simple, yet powerful, machine learning supervised algorithm. KNN is an instance based ML algorithm because it uses similarity between data points to make a prediction. To measure the similarity between data points, KNN relies on distance metrics such as Euclidean distance, or Manhattan distance, or Minkowski distance. KNN is called *lazy learner* because all of its computation is done in prediction phase. The *K* in KNN represents the number of nearest neighbors to consider when making the prediction. For example, when K = 2, the number of neareast number that will be used is 2.
+
+     Assume you are trying to build a model that will classify reptiles into one of three classes [@rhys2020machine]. The classes are - Adder, Grass Snake, and Slow worm. We have two features of the reptiles - length of it and how aggressive (aggressiveness) the reptile is - which we will use to classify the reptiles. Further assume that a reptile expert helps you manually classify the observations so far, but you decide to build a kNN classifier to help you quickly classify future specimens you come across. @fig-knnwork1 plots the data before classification. Each of the reptile is plotted against body length and aggressiveness and we have three new reptiles that need to be classified.
 
 ![Reptile Characteristics](images/knn-work1.png){#fig-knnwork1}
 
-     To predict the classifiction of the new reptiles, KNN will use distance based metrics as mentioned above and calculate the distance between each new unlabelled cases and all the labeled cases. Then, for each new unlabelled case, the algorithm ranks the neighbors from the nearest (most similar) to the furthest (the least similar) [@rhys2020machine]. @fig-knnwork2 shows the ranking of the neighbors. The algorithm identifies *K*-labeled cases (neighbors) nearest to each unlabeled cas. We actually determine the value of *K*. Each of the K-nearest neighbor cases votes to which class the unlabeled case belongs. @fig-knnwork3 shows the membership of new cases based on the value of K.   
+     To predict the classifiction of the new reptiles, KNN will use distance based metrics as mentioned above and calculate the distance between each new unlabelled cases and all the labeled cases. Then, for each new unlabelled case, the algorithm ranks the neighbors from the nearest (most similar) to the furthest (the least similar) [@rhys2020machine]. @fig-knnwork2 shows the ranking of the neighbors. The algorithm identifies *K*-labeled cases (neighbors) nearest to each unlabeled cas. We actually determine the value of *K*. Each of the K-nearest neighbor cases votes to which class the unlabeled case belongs. @fig-knnwork3 shows the membership of new cases based on the value of K.
 
 ![Ranking the Neighbors](images/knn-work2.png){#fig-knnwork2}
 
 ![Different K Values](images/knn-work3.png){#fig-knnwork3}
 
-
-### Building First KNN Model 
+### Building First KNN Model
 
 ```{python}
 #| warning: false
@@ -365,7 +347,6 @@ knn = KNeighborsClassifier(n_neighbors=3)
 # fit the model to the training set
 knn.fit(X_train, y_train)
 ```
-
 
 ```{python}
 #| warning: false
@@ -382,13 +363,11 @@ y_pred
 knn.predict_proba(X_test)[0:11]
 ```
 
-
 ```{python}
 #| warning: false
 # probability of getting output as 2 - benign cancer
 knn.predict_proba(X_test)[:,0]
 ```
-
 
 ```{python}
 #| warning: false
@@ -404,13 +383,14 @@ from sklearn.metrics import accuracy_score
 print('Model accuracy score: {0:0.4f}'. format(accuracy_score(y_test, y_pred)))
 ```
 
-     So, the ML model predicts the outcome variable with 97.14% accuracy. 
+     So, the ML model predicts the outcome variable with 97.14% accuracy.
 
-### Overfitting and Underfitting 
+### Overfitting and Underfitting
 
-     Overfitting and underfitting are two important sources of error in machine learning model building. In underfitting, the model is too simple or there are few predictors, thus failing to adequately describe the relationships/patterns in data. In underfitting, the model performs poorly on both training and testing data and is *biased*. On the other hand, in overfitting, the model is too complex or there are many predictors on the model. Thus, in overfitting, we are modeling not only the patterns in the data, but also the *noise* present in the dataset. In underfitting, the model performs very well on the trained data set, but performs poor on the testing data set. The problem with underfitting and obverfitting is that they reduce the *generalizability* of the model. Therefore, during model building process, we need to trade off between overfitting and underfitting. @fig-overfitting shows the tradeoff between overfitting and underfitting. Splitting the dataset into *training* and *testing* is one of the ways to deal with overfitting and underfitting. Splitting the data is calso called *cross validation (CV)*, which is discussed further in @sec-crossvalidate.  
+     Overfitting and underfitting are two important sources of error in machine learning model building. In underfitting, the model is too simple or there are few predictors, thus failing to adequately describe the relationships/patterns in data. In underfitting, the model performs poorly on both training and testing data and is *biased*. On the other hand, in overfitting, the model is too complex or there are many predictors on the model. Thus, in overfitting, we are modeling not only the patterns in the data, but also the *noise* present in the dataset. In underfitting, the model performs very well on the trained data set, but performs poor on the testing data set. The problem with underfitting and obverfitting is that they reduce the *generalizability* of the model. Therefore, during model building process, we need to trade off between overfitting and underfitting. @fig-overfitting shows the tradeoff between overfitting and underfitting. Splitting the dataset into *training* and *testing* is one of the ways to deal with overfitting and underfitting. Splitting the data is calso called *cross validation (CV)*, which is discussed further in @sec-crossvalidate.
 
 ![Overfitting vs Underfitting](images/overfitting-underfitting.png){#fig-overfitting}
+
 ```{python}
 #| warning: false
 y_pred_train = knn.predict(X_train)
@@ -423,7 +403,7 @@ print('Test set score: {:.4f}'.format(knn.score(X_test, y_test)))
 
 ### Comparing Model Accuracy with Null Accuracy
 
-     Null accuracy is a baseline measure used to evaluate the performance of a machine learning classification model. It represents the accuracy that could be achieved by always predicting the most frequent class in the dataset. Null accuracy is particularly useful for understanding how well a model performs compared to a simple, naive approach. If the model's accuracy is *lower than or equal to the null accuracy*, it indicates that *the model is not performing better* than a naive approach of always predicting the most frequent class. In such cases, we may need to improve our model by feature engineering, or hyperparameter tuning, or using different algorithms. We can see that the occurences of most frequent class is 85. So, we can calculate null accuracy by dividing 85 by total number of occurences. We can see that our model accuracy score is 0.9714 but null accuracy score is 0.6071. So, we can conclude that our K Nearest Neighbors model is doing a very good job in predicting the class labels. 
+     Null accuracy is a baseline measure used to evaluate the performance of a machine learning classification model. It represents the accuracy that could be achieved by always predicting the most frequent class in the dataset. Null accuracy is particularly useful for understanding how well a model performs compared to a simple, naive approach. If the model's accuracy is *lower than or equal to the null accuracy*, it indicates that *the model is not performing better* than a naive approach of always predicting the most frequent class. In such cases, we may need to improve our model by feature engineering, or hyperparameter tuning, or using different algorithms. We can see that the occurences of most frequent class is 85. So, we can calculate null accuracy by dividing 85 by total number of occurences. We can see that our model accuracy score is 0.9714 but null accuracy score is 0.6071. So, we can conclude that our K Nearest Neighbors model is doing a very good job in predicting the class labels.
 
 ```{python}
 #| warning: false
@@ -431,14 +411,12 @@ print('Test set score: {:.4f}'.format(knn.score(X_test, y_test)))
 y_test.value_counts()
 ```
 
-
 ```{python}
 #| warning: false
 # check null accuracy score
 null_accuracy = (85/(85+55))
 print('Null accuracy score: {0:0.4f}'. format(null_accuracy))
 ```
-
 
 ### Rebuild KNN Classification Model Using Different Values of K
 
@@ -453,6 +431,7 @@ print('Model accuracy score with k=5 : {0:0.4f}'. format(accuracy_score(y_test, 
 ```
 
 #### Rebuild KNN Classification Model Using K=6
+
 ```{python}
 # instantiate the model with k=6
 knn_6 = KNeighborsClassifier(n_neighbors=6)
@@ -463,7 +442,7 @@ y_pred_6 = knn_6.predict(X_test)
 print('Model accuracy score with k=6 : {0:0.4f}'. format(accuracy_score(y_test, y_pred_6)))
 ```
 
-#### Rebuild KNN Classification Model Using K=7 
+#### Rebuild KNN Classification Model Using K=7
 
 ```{python}
 # instantiate the model with k=7
@@ -475,7 +454,7 @@ y_pred_7 = knn_7.predict(X_test)
 print('Model accuracy score with k=7 : {0:0.4f}'. format(accuracy_score(y_test, y_pred_7)))
 ```
 
-#### Rebuild KNN Classification Model Using K=8 
+#### Rebuild KNN Classification Model Using K=8
 
 ```{python}
 # instantiate the model with k=8
@@ -501,7 +480,6 @@ print('Model accuracy score with k=9 : {0:0.4f}'. format(accuracy_score(y_test, 
 
      Our original model accuracy score with k=3 is 0.9714. Now, we can see that we get same accuracy score of 0.9714 with k=5. But, if we increase the value of k further, this would result in enhanced accuracy. With k=6,7,8 we get accuracy score of 0.9786. So, it results in performance improvement. If we increase k to 9, then accuracy decreases again to 0.9714. Now, based on the above analysis we can conclude that our classification model accuracy is very good. Our model is doing a very good job in terms of predicting the class labels. But, it does not give the underlying distribution of values. Also, it does not tell anything about the type of errors our classifer is making.
 
-
 ```{python}
 
 ```
@@ -509,8 +487,6 @@ print('Model accuracy score with k=9 : {0:0.4f}'. format(accuracy_score(y_test, 
 ```{python}
 
 ```
-
-
 
 ### Automating the Calculation of Value `K`
 
@@ -538,28 +514,25 @@ plt.title('Accuracy vs. Number of Neighbors')
 plt.show()
 ```
 
-
-### Hyperparameter Tuning 
+### Hyperparameter Tuning
 
      A hyperparameter is a parameter of the model that is set before the start of learning process. Different machine learning models have different hyperparameters. You can find out more about the different hyperparameters of k-NN in [scikit-learn](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html). For example, `weights` argument has two options - "uniform" or "distance"; `p` argument selects the either manhattn distance or euclidean distance.
 
-     *Grid search* and *random search* are two popular methods for hyperparameter tuning in machine learning. Both methods aim to find the best combination of hyperparameters that optimize the performance of a model. **Grid search** is an exhaustive search method that evaluates all possible combinations of hyperparameters from a predefined grid. It systematically explores the hyperparameter space by creating a grid of hyperparameter values and evaluating the model for each combination. One advantage of grid search is that it evaluates all possible combinations, ensuring that the best hyperparameters are found within the predefined grid. On the other hand, **random search** randomly samples hyperparameter combinations from a predefined distribution. It evaluates a fixed number of random combinations, rather than exhaustively searching the entire grid. One of the disadvantages of grid search is that it may miss the optimal combination of hyperparameters, as it does not evaluate all possible combinations. 
+     *Grid search* and *random search* are two popular methods for hyperparameter tuning in machine learning. Both methods aim to find the best combination of hyperparameters that optimize the performance of a model. **Grid search** is an exhaustive search method that evaluates all possible combinations of hyperparameters from a predefined grid. It systematically explores the hyperparameter space by creating a grid of hyperparameter values and evaluating the model for each combination. One advantage of grid search is that it evaluates all possible combinations, ensuring that the best hyperparameters are found within the predefined grid. On the other hand, **random search** randomly samples hyperparameter combinations from a predefined distribution. It evaluates a fixed number of random combinations, rather than exhaustively searching the entire grid. One of the disadvantages of grid search is that it may miss the optimal combination of hyperparameters, as it does not evaluate all possible combinations.
 
-     We will use the  Grid Search technique for hyperparameter optimization. An exhaustive grid search takes in as many hyperparameters as you would like, and tries every single possible combination of the hyperparameters as well as as many cross-validations as you would like it to perform. An exhaustive grid search is a good way to determine the best hyperparameter values to use, but it can quickly become time consuming with every additional parameter value and cross-validation that you add. Specifically, we will use three hyperparamters- n-neighbors, weights and metric.
+     We will use the Grid Search technique for hyperparameter optimization. An exhaustive grid search takes in as many hyperparameters as you would like, and tries every single possible combination of the hyperparameters as well as as many cross-validations as you would like it to perform. An exhaustive grid search is a good way to determine the best hyperparameter values to use, but it can quickly become time consuming with every additional parameter value and cross-validation that you add. Specifically, we will use three hyperparamters- n-neighbors, weights and metric.
 
-1. **n_neighbors**: Decide the best k based on the values we have computed earlier.
+1.  **n_neighbors**: Decide the best k based on the values we have computed earlier.
 
-2. **weights**: Check whether adding weights to the data points is beneficial to the model or not. ‘uniform’ assigns no weight, while ‘distance’ weighs points by the inverse of their distances meaning nearer points will have more weight than the farther points.
+2.  **weights**: Check whether adding weights to the data points is beneficial to the model or not. ‘uniform’ assigns no weight, while ‘distance’ weighs points by the inverse of their distances meaning nearer points will have more weight than the farther points.
 
-3. **metric**: The distance metric to be used will calculating the similarity. 
-
+3.  **metric**: The distance metric to be used will calculating the similarity.
 
 ```{python}
 from sklearn.model_selection import GridSearchCV
 ```
 
      Since we have provided the class validation score as 3( cv= 3), Grid Search will evaluate the model `10 x 2 x 3 x 3 = 180` times with different hyperparameters.
-
 
 ```{python}
 grid_params = { 'n_neighbors' : [3,4,5,6,7,8,9,10,11,12],
@@ -618,6 +591,7 @@ print('Test set accuracy: ', metrics.accuracy_score(y_test, y_knn))
 `False Negatives (FN)` – False Negatives occur when we predict an observation does not belong to a certain class but the observation actually belongs to that class. This is a very serious error and it is called Type II error.
 
 These four outcomes are summarized in a confusion matrix given below.
+
 ```{python}
 # Print the Confusion Matrix with k =3 and slice it into four pieces
 from sklearn.metrics import confusion_matrix
@@ -629,11 +603,7 @@ print('\nFalse Positives(FP) = ', cm[0,1])
 print('\nFalse Negatives(FN) = ', cm[1,0])
 ```
 
-     The confusion matrix shows 83 + 53 = 136 correct predictions & 2 + 2 = 4 incorrect predictions. In this case, we have - 
-True Positives (Actual Positive:1 and Predict Positive:1) - 83
-True Negatives (Actual Negative:0 and Predict Negative:0) - 53
-False Positives (Actual Negative:0 but Predict Positive:1) - 2 (Type I error)
-False Negatives (Actual Positive:1 but Predict Negative:0) - 2 (Type II error)
+     The confusion matrix shows 83 + 53 = 136 correct predictions & 2 + 2 = 4 incorrect predictions. In this case, we have - True Positives (Actual Positive:1 and Predict Positive:1) - 83 True Negatives (Actual Negative:0 and Predict Negative:0) - 53 False Positives (Actual Negative:0 but Predict Positive:1) - 2 (Type I error) False Negatives (Actual Positive:1 but Predict Negative:0) - 2 (Type II error)
 
 ```{python}
 # Print the Confusion Matrix with k =7 and slice it into four pieces
@@ -645,7 +615,6 @@ print('\nFalse Positives(FP) = ', cm_7[0,1])
 print('\nFalse Negatives(FN) = ', cm_7[1,0])
 ```
 
-
 ```{python}
 # visualize confusion matrix with seaborn heatmap
 plt.figure(figsize=(6,4))
@@ -654,10 +623,10 @@ cm_matrix = pd.DataFrame(data=cm_7, columns=['Actual Positive:1', 'Actual Negati
 sns.heatmap(cm_matrix, annot=True, fmt='d', cmap='OrRd')
 ```
 
+### Classification Matrices
 
-### Classification Matrices 
+#### Classification Report
 
-#### Classification Report 
      Classification report is another way to evaluate the classification model performance. It displays the precision, recall, f1 and support scores for the model. I have described these terms in later. We can print a classification report as follows
 
 ```{python}
@@ -665,7 +634,8 @@ from sklearn.metrics import classification_report
 print(classification_report(y_test, y_pred_7))
 ```
 
-#### Classification Accuracy 
+#### Classification Accuracy
+
 ```{python}
 TP = cm_7[0,0]
 TN = cm_7[1,1]
@@ -673,7 +643,7 @@ FP = cm_7[0,1]
 FN = cm_7[1,0]
 ```
 
-#### Classification Error 
+#### Classification Error
 
 ```{python}
 # print classification error
@@ -681,10 +651,9 @@ classification_error = (FP + FN) / float(TP + TN + FP + FN)
 print('Classification error : {0:0.4f}'.format(classification_error))
 ```
 
+#### Precision
 
-#### Precision 
      Precision can be defined as the percentage of correctly predicted positive outcomes out of all the predicted positive outcomes. It can be given as the ratio of true positives (TP) to the sum of true and false positives (TP + FP). Precision is a metric that tells us about the quality of positive predictions. So, Precision identifies the proportion of correctly predicted positive outcome. It is more concerned with the positive class than the negative class. Precision is a useful metric in cases where False Positive is a higher concern than False Negatives. Precision is important in music or video recommendation systems, e-commerce websites, etc. Wrong results could lead to customer churn and be harmful to the business. Mathematically, precision can be defined as the ratio of TP to (TP + FP).
-
 
 ```{python}
 # print precision score
@@ -692,16 +661,17 @@ precision = TP / float(TP + FP)
 print('Precision : {0:0.4f}'.format(precision))
 ```
 
-#### Recall 
-     Recall can be defined as the percentage of correctly predicted positive outcomes out of all the actual positive outcomes. It can be given as the ratio of true positives (TP) to the sum of true positives and false negatives (TP + FN). Recall tells us about how well the model identifies true positives. Recall is also called Sensitivity. Recall identifies the proportion of correctly predicted actual positives. Mathematically, recall can be given as the ratio of TP to (TP + FN). Recall is a useful metric in cases where False Negative triumphs over False Positive. Recall is important in medical cases where it doesn’t matter whether we raise a false alarm, but the actual positive cases should not go undetected!
+#### Recall
 
+     Recall can be defined as the percentage of correctly predicted positive outcomes out of all the actual positive outcomes. It can be given as the ratio of true positives (TP) to the sum of true positives and false negatives (TP + FN). Recall tells us about how well the model identifies true positives. Recall is also called Sensitivity. Recall identifies the proportion of correctly predicted actual positives. Mathematically, recall can be given as the ratio of TP to (TP + FN). Recall is a useful metric in cases where False Negative triumphs over False Positive. Recall is important in medical cases where it doesn’t matter whether we raise a false alarm, but the actual positive cases should not go undetected!
 
 ```{python}
 recall = TP / float(TP + FN)
 print('Recall or Sensitivity : {0:0.4f}'.format(recall))
 ```
 
-#### Precision vs Recall 
+#### Precision vs Recall
+
      Data scientists optimize their model to have higher precision or recall depending on the circumstances. A model with higher recall than precision often makes more positive predictions. A model like this comes with higher false positives and low false negatives. In scenarios like disease prediction, models should always be optimized for recall. False positives are better than false negatives in the healthcare industry.
 
      On the other hand, a model with higher precision will have fewer false positives and more false negatives. If you were to build a bot detection machine learning model for an online store, you may want to optimize for higher precision, since banning legitimate users from the website will lead to a decline in sales.
@@ -710,23 +680,26 @@ print('Recall or Sensitivity : {0:0.4f}'.format(recall))
 
      In practice, when we try to increase the precision of our model, the recall goes down, and vice-versa. The F1-score captures both the trends in a single value:
 
-        $f1-score = 2/((1/Recall) + (1/Precision))$
+```         
+    $f1-score = 2/((1/Recall) + (1/Precision))$
+```
 
      f1-score is the weighted harmonic mean of precision and recall, and so it gives a combined idea about these two metrics. It is maximum when Precision is equal to Recall. The best possible f1-score would be 1.0 and the worst would be 0.0. f1-score is the harmonic mean of precision and recall. So, f1-score is always lower than accuracy measures as they embed precision and recall into their computation. The weighted average of f1-score should be used to compare classifier models, not global accuracy.
 
-#### Support 
+#### Support
 
      Support is the actual number of occurrences of the class in our dataset.
 
-#### True Positive Rate 
+#### True Positive Rate
 
      True Positive Rate is synonymous with Recall.
+
 ```{python}
 true_positive_rate = TP / float(TP + FN)
 print('True Positive Rate : {0:0.4f}'.format(true_positive_rate))
 ```
 
-#### False Positive Rate 
+#### False Positive Rate
 
 ```{python}
 false_positive_rate = FP / float(FP + TN)
@@ -734,6 +707,7 @@ print('False Positive Rate : {0:0.4f}'.format(false_positive_rate))
 ```
 
 #### Specificity (True Negative Rate)
+
 ```{python}
 specificity = TN / (TN + FP)
 print('Specificity : {0:0.4f}'.format(specificity))
@@ -757,20 +731,19 @@ Importance of predicted probabilities
 
 We can rank the observations by probability of benign or malignant cancer.
 
-* `predict_proba` process
+-   `predict_proba` process
 
-   * Predicts the probabilities
+    -   Predicts the probabilities
 
-   * Choose the class with the highest probability
-* Classification threshold level
+    -   Choose the class with the highest probability
 
-   * There is a classification threshold level of 0.5.
+-   Classification threshold level
 
-   * Class 4 - probability of malignant cancer is predicted if probability > 0.5.
+    -   There is a classification threshold level of 0.5.
 
-   * Class 2 - probability of benign cancer is predicted if probability < 0.5.
+    -   Class 4 - probability of malignant cancer is predicted if probability \> 0.5.
 
-
+    -   Class 2 - probability of benign cancer is predicted if probability \< 0.5.
 
 ```{python}
 y_pred_prob_df = pd.DataFrame(data=y_pred_prob, \
@@ -823,14 +796,13 @@ plt.ylabel('Frequency')
 
 ### ROC (Receiver Operating Characteristics) - AUC (Area Under ROC Curve) Curve
 
-#### ROC Curve 
+#### ROC Curve
 
      Another tool to measure the classification model performance visually is ROC Curve. ROC Curve stands for Receiver Operating Characteristic Curve. An ROC Curve is a plot which shows the performance of a classification model at various classification threshold levels.
 
      The ROC Curve plots the True Positive Rate (TPR) against the False Positive Rate (FPR) at various threshold levels. True Positive Rate (TPR) is also called Recall. It is defined as the ratio of TP to (TP + FN). False Positive Rate (FPR) is defined as the ratio of FP to (FP + TN).
 
      In the ROC Curve, we will focus on the TPR (True Positive Rate) and FPR (False Positive Rate) of a single point. This will give us the general performance of the ROC curve which consists of the TPR and FPR at various threshold levels. So, an ROC Curve plots TPR vs FPR at different classification threshold levels. If we lower the threshold levels, it may result in more items being classified as positive. It will increase both True Positives (TP) and False Positives (FP).
-
 
 ```{python}
 # plot ROC Curve
@@ -849,7 +821,7 @@ plt.show()
 
      ROC curve help us to choose a threshold level that balances sensitivity and specificity for a particular context.
 
-#### ROC AUC 
+#### ROC AUC
 
      ROC AUC stands for Receiver Operating Characteristic - Area Under Curve. It is a technique to compare classifier performance. In this technique, we measure the area under the curve (AUC). A perfect classifier will have a ROC AUC equal to 1, whereas a purely random classifier will have a ROC AUC equal to 0.5. So, ROC AUC is the percentage of the ROC plot that is underneath the curve.
 
@@ -862,11 +834,11 @@ print('ROC AUC : {:.4f}'.format(ROC_AUC))
 
 **Interpretation**:
 
-    * ROC AUC is a single number summary of classifier performance. The higher the value, the better the classifier.
+```         
+* ROC AUC is a single number summary of classifier performance. The higher the value, the better the classifier.
 
-    * ROC AUC of our model approaches towards 1. So, we can conclude that our classifier does a good job in predicting whether it is benign or malignant cancer.
-
-
+* ROC AUC of our model approaches towards 1. So, we can conclude that our classifier does a good job in predicting whether it is benign or malignant cancer.
+```
 
 ```{python}
 from sklearn.model_selection import cross_val_score
@@ -875,34 +847,31 @@ cross_val_score(knn_7, X_train, y_train, cv=5,scoring='roc_auc').mean()
 print('Cross validated ROC AUC : {:.4f}'.format(Cross_validated_ROC_AUC))
 ```
 
-**Interpretation**: 
+**Interpretation**:
 
      Our Cross Validated ROC AUC is very close to 1. So, we can conclude that, the KNN classifier is indeed a very good model.
 
+### Cross Validation {#sec-crossvalidate}
 
+     Cross-validation involves splitting the dataset into multiple subsets, training the model on some subsets, and validating it on the remaining subsets. This process is repeated several times, and the results are averaged to obtain a more reliable estimate of the model's performance. There are three common cross validation approaches - Holdout cross valiation, K-fold cross validation, and Leave-one-out (LOO) cross validation.
 
+#### Holdout Cross Validation
 
-### Cross Validation {#sec-crossvalidate} 
-     Cross-validation involves splitting the dataset into multiple subsets, training the model on some subsets, and validating it on the remaining subsets. This process is repeated several times, and the results are averaged to obtain a more reliable estimate of the model's performance. There are three common cross validation approaches - Holdout cross valiation, K-fold cross validation, and Leave-one-out (LOO) cross validation. 
-
-#### Holdout Cross Validation 
-     Holdout CV is the simplest of all cross validation approaches. In holdout CV, we "hold out" a random proportion of our dataset as *test* data set and train the model on remaining dataset called *training* data set. Next, we pass the test data set through the model and calculate performance metrics. @fig-hlodout shows the process of holdout cross validation. A common rule of thumb for the training and testing split is 80-20.  
-
+     Holdout CV is the simplest of all cross validation approaches. In holdout CV, we "hold out" a random proportion of our dataset as *test* data set and train the model on remaining dataset called *training* data set. Next, we pass the test data set through the model and calculate performance metrics. @fig-hlodout shows the process of holdout cross validation. A common rule of thumb for the training and testing split is 80-20.
 
 ![Holdout Cross Validation](images/holdoutcv.png){#fig-hlodout}
 
-#### K-fold Cross Validation 
-     In K-fold CV, the dataset is divided into $K$ equally sized folds. The model is trained on K-1 folds and validated on the remaining fold. The process is repeated K times, with each fold used ad the validation set once. @fig-kfoldcv shows the process of K-fold cv. There is a variation of K-fold cross validation, which is called stratified K-fold CV, which is similar to K-fold CV, but ensures that each fold has a similar distribution of the target variable. The stratified K-fold CV is useful for imbalanced dataset. 
+#### K-fold Cross Validation
 
+     In K-fold CV, the dataset is divided into $K$ equally sized folds. The model is trained on K-1 folds and validated on the remaining fold. The process is repeated K times, with each fold used ad the validation set once. @fig-kfoldcv shows the process of K-fold cv. There is a variation of K-fold cross validation, which is called stratified K-fold CV, which is similar to K-fold CV, but ensures that each fold has a similar distribution of the target variable. The stratified K-fold CV is useful for imbalanced dataset.
 
 ![K-fold Cross Validation](images/kfoldcv.png){#fig-kfoldcv}
 
-#### Leave-One-Out (LOO) Cross Validation 
-     In LOO, each data point is used as a test and the model is trained on the remaining data points. The process is repeated until all data point is used as a test data. For a data set of 1000 observations, LOO cv involves training the model 1000 times, each time using a different data point as the validation set. @fig-loocv shows the process of LOO cv.  
+#### Leave-One-Out (LOO) Cross Validation
+
+     In LOO, each data point is used as a test and the model is trained on the remaining data points. The process is repeated until all data point is used as a test data. For a data set of 1000 observations, LOO cv involves training the model 1000 times, each time using a different data point as the validation set. @fig-loocv shows the process of LOO cv.
 
 ![Leave-One-Out Cross Validation](images/loocv.png){#fig-loocv}
-
-
 
 ```{python}
 # Applying 10-Fold Cross Validation
@@ -918,13 +887,11 @@ print('Average cross-validation score: {:.4f}'.format(scores.mean()))
 
 **Interpretation**
 
-* Using the mean cross-validation, we can conclude that we expect the model to be around 96.46 % accurate on average.
+-   Using the mean cross-validation, we can conclude that we expect the model to be around 96.46 % accurate on average.
 
-* If we look at all the 10 scores produced by the 10-fold cross-validation, we can also conclude that there is a relatively high variance in the accuracy between folds, ranging from 100% accuracy to 87.72% accuracy. So, we can conclude that the model is very dependent on the particular folds used for training, but it also be the consequence of the small size of the dataset.
+-   If we look at all the 10 scores produced by the 10-fold cross-validation, we can also conclude that there is a relatively high variance in the accuracy between folds, ranging from 100% accuracy to 87.72% accuracy. So, we can conclude that the model is very dependent on the particular folds used for training, but it also be the consequence of the small size of the dataset.
 
-* We can see that 10-fold cross-validation accuracy does not result in performance improvement for this model.
-
-
+-   We can see that 10-fold cross-validation accuracy does not result in performance improvement for this model.
 
 ```{python}
 
@@ -932,14 +899,317 @@ print('Average cross-validation score: {:.4f}'.format(scores.mean()))
 
 ```{python}
 
+```
+:::
+
+## Logistic Regression - ML Algorithm for Classification
+
+::: {style="text-align: justify"}
+     Logistics regression is a machine learning algorithm for classification problem. Unlike linear regression, logistic regression predicts categorical outcomes. In other words, logistic regression predicts the probability of beloning to one group (one category), meaning that it calculates probabilites of group membership. One might wonder why we cannot use multiple linear regression to predict dichotomous outcomes. Using multiple linear regression to predict categorical variable suffers from different kinds of shortcomings. For example, *first*, linear regression is prone to outliers, which affect the best fit line; *second*, the predicted values might be out of range (the value of probabilities lie between 0 and 1, but using multiple regression might result in value either greater than 1 or less than 0); *finally*, using linear regression will lead to invalid statistical inferences or result in non-interpretable predictions. 
+:::
+
+### Logistic Function
+
+::: {style="text-align: justify"}
+     One might be wondering how logistic regression calcualtes the probabilities of outcome. The answer is logistic function. The logistic function is presented in @eq-logisticfunction. You can see @tip-derivelogisticfunction to learn more about how to generate logistic function.   
+
+$$ 
+p(y=1|x) = \frac{1}{1 + e^{-(\beta_0 + \beta_1x)}}
+ $$ {#eq-logisticfunction}
+
+:::
+
+
+::: {#tip-derivelogisticfunction .callout-tip title="Derivation of Logistic Function" collapse="true"}
+
+::: {style="text-align: justify"}
+The best fit line in linear regression is - 
+
+$$ 
+y = \beta_0 + \beta_1x
+$$ 
+
+But in logistic  regression, instead of $y$, we calculate probabilities ($p$). But the issue is that the value of $p$ will exceed 1 or go below 0; therefore, to overcome this problem, we take **odds** of $p$, which is - 
+
+$$
+\frac{p}{1-p}
+$$ 
+
+Where $p$ is probability of success and $1-p$ is the probability of failure. Therefore, our logistic equation is - 
+
+$$
+\frac{p}{1-p} = \beta_0 + \beta_1x
+$$
+
+However, we are not done yet. The range of odds is - $0, +\infty$. This characteristics of odds create issues. For example, odds ranging from 0 to infinity makes it difficult to establish a linear relationship; Moreover, odds are not as intuitive to interpret as probabilities (odds 10 means it is 10 times more likely to occur than not, but this is not as intuitive as probabilities like 0.80). To address these issues, logistic regression uses **log odds (logit)** transformation. Log odds has has range $-\infty,+\infty$. So, our equation now become - 
+
+$$
+log(\frac{p}{1-p}) = \beta_0 + \beta_1x
+$$
+
+Now, we want a function of $p$ because we want to predict probability (not log odds). To do so, we will multiply by **exponent** on both sides of the above equation and solve for $p$. 
+
+$$
+exp[log(\frac{p}{1-p})] = exp(\beta_0 + \beta_1x)
+$$
+
+$$
+e^{\ln\left(\frac{p}{1-p}\right)} = e^{(\beta_0 + \beta_1x)}
+$$
+
+$$
+\frac{p}{1-p} = e^{(\beta_0 + \beta_1x)}
+$$
+
+$$
+p = e^{(\beta_0 + \beta_1x)} - pe^{(\beta_0 + \beta_1x)}
+$$
+
+$$
+p = p[\frac{e^{(\beta_0 + \beta_1x)}}{p} - e^{(\beta_0 + \beta_1x)}]
+$$
+
+$$
+1 = \frac{e^{(\beta_0 + \beta_1x)}}{p} - e^{(\beta_0 + \beta_1x)}
+$$
+
+$$
+p[1+e^{(\beta_0 + \beta_1x)}]=  e^{(\beta_0 + \beta_1x)}
+$$
+
+$$
+p=  \frac{e^{(\beta_0 + \beta_1x)}}{1+e^{(\beta_0 + \beta_1x)}}
+$$
+
+Now dividing by $e^{(\beta_0 + \beta_1x)}$, we get 
+
+
+$$
+p = \frac{1}{1 + e^{-(\beta_0 + \beta_1x)}}
+$$
+
+The above equation is the logistic function, which is sometimes also called *sigmoid function*.
+:::
+
+:::
+
+
+::: {#tip-relationOddsLogoddsProbab .callout-tip title="Relation between Odds, Log Odds, and Probability" collapse="true"}
+
+
+::: {style="text-align: justify"}
+The relation between odds and log odds - 
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Generate odds data
+odds = np.linspace(0.1, 10, 100)  # Odds ranging from 0.1 to 10
+log_odds = np.log(odds)  # Calculate log odds
+probabilities = odds / (1 + odds) # calculate probabilities
+
+# Create the plot
+plt.figure(figsize=(8, 5))
+plt.plot(log_odds, odds, label='Log Odds vs Odds', color='orangered')
+plt.axhline(0, color='gray', linestyle='--', linewidth=0.5)
+plt.axvline(1, color='gray', linestyle='--', linewidth=0.5)
+plt.title('Relationship between Odds and Log Odds')
+plt.xlabel('Log Odds')
+plt.ylabel('Odds')
+plt.legend()
+plt.grid(alpha=0.3)
+plt.show()
+```
+
+The relation between probability and odds 
+
+```{python}
+# Create the plot
+plt.figure(figsize=(8, 5))
+plt.plot(odds, probabilities, label='Probability vs Odds', color='orangered')
+plt.axhline(0.5, color='gray', linestyle='--', linewidth=0.5, label='50% Probability')
+plt.axvline(1, color='gray', linestyle='--', linewidth=0.5, label='Odds = 1')
+plt.title('Relationship between Probability and Odds')
+plt.xlabel('Odds')
+plt.ylabel('Probability')
+plt.legend()
+plt.grid(alpha=0.3)
+plt.show()
+```
+
+The relation between probability and log odds - 
+
+```{python}
+# Create the plot
+plt.figure(figsize=(8, 5))
+plt.plot(log_odds, probabilities, label='Probability vs Log Odds', color='orangered')
+plt.axhline(0.5, color='gray', linestyle='--', linewidth=0.5, label='50% Probability')
+plt.axvline(0, color='gray', linestyle='--', linewidth=0.5, label='Log Odds = 0')
+plt.title('Relationship between Probability and Log Odds')
+plt.xlabel('Log Odds')
+plt.ylabel('Probability')
+plt.legend()
+plt.grid(alpha=0.3)
+plt.show()
 ```
 
 
 :::
 
+:::
 
 
-## Conclusion 
+::: {#tip-ExampleLogit .callout-tip title="Example of Logistic Regression" collapse="true"}
+
+::: {style="text-align: justify"}
+Here is an example of a data frame in which two dichotomous variable ( 2 by 2 crosstabulation) are associated. The outcome variable is whether students want to continue Full Time Education (FTE) after the age of 16. We are interested whether this outcome varies between boys and girls. 
+
+```{python}
+import pandas as pd
+
+# Define the data
+data = {
+    'Gender': ['Male', 'Female', 'Total'],
+    'No (0)': [1837, 1003, 2840],
+    'Yes (1)': [6015, 6576, 12591],
+    'Row Total': [7852, 7579, 15431]
+}
+
+# Calculate percentages based on grand total (15431)
+percentages_1 = {
+    'Gender': ['Male', 'Female', 'Total'],
+    'No (0)': [f"{round(1837 / 15431 * 100, 2)}%", f"{round(1003 / 15431 * 100, 2)}%", f"{round(2830 / 15431 * 100, 2)}%"],
+    'Yes (1)': [f"{round(6015 / 15431 * 100, 2)}%", f"{round(6576 / 15431 * 100, 2)}%", f"{round(12591 / 15431 * 100, 2)}%"],
+    'Row Total': [f"{round(7852 / 15431 * 100, 2)}%", f"{round(7579 / 15431 * 100, 2)}%", "100%"]
+}
+
+percentages_2 = {
+    'Gender': ['Male', 'Female', 'Total'],
+    'No (0)': [f"{round(1837 / 7852 * 100, 2)}%", f"{round(1003 / 7579 * 100, 2)}%", f"{round(2840 / 15431 * 100, 2)}%"],
+    'Yes (1)': [f"{round(6015 / 7852 * 100, 2)}%", f"{round(6576 / 7579 * 100, 2)}%", f"{round(12591 / 15431 * 100, 2)}%"],
+    'Row Total': [f"{round(7852 / 7852 * 100, 2)}%", f"{round(7579 / 7579 * 100, 2)}%", "100%"]
+}
+
+
+# Combine counts and percentages into a contingency table
+contingency_table = pd.DataFrame(data)
+contingency_table_percent_1 = pd.DataFrame(percentages_1)
+contingency_table_percent_2 = pd.DataFrame(percentages_2)
+# Display the tables
+print("Contingency Table with Counts:")
+print(contingency_table)
+
+print("\nContingency Table with Percentages:")
+print(contingency_table_percent_1)
+print("\n")
+print(contingency_table_percent_2)
+```
+
+We can see that the percentage of all students who aspire to continue FTE after age 16 is 81.6%, which is the probability of continuing FTE. 
+
+However, another way of thinking of this is in terms of the *odds*. Odds expresses the likelihood of an event occurring relative to the likelihood of an event not occurring. In the above sample of 15,431 students, 12,591 want to continue FTE while 2,840 do not; therefore, the odds of continuing FTE are $12,591/2,840 = 4.43:1$. Therefore, if we choose a student randomly, he is 4.43 times more likely to aspire to continue FTE than not to aspire to continue FTE. We can alternatively calculate the odds like this - 
+
+$$
+Odds = \frac{0.816}{1-0.816} = 4.43
+$$
+
+The above are *unconditional odds*. The odds of the above for boys and girs are *conditional odds*, which are as follows - 
+
+$$
+Odds (Boys) = \frac{0.766}{1-0.766} = 3.27
+$$
+
+$$
+Odds (Girls) = \frac{0.868}{1-0.868} = 6.56
+$$
+
+It is evident that the odds of girls wanting to contniue FTE are higher than that of boys. So, we can compare the odds by dividing one odds by the other, which is called **Odds Ratio**. In the above example, the odds ratio is $6.56/3.27 = 2.002$ (approximately 2). This indicates girls are twic as likely as boys to aspire to continue FTE. However, we can also calcuate the odds ratio like this - $3.27/6.56 = 0.50$, which indicates boys are half as likely to aspire as girls. Though the odds ratio are different, but they mean the same thing. So, here odds ratio 2 or 0.50 mean the same thing. Note that odds ratio from 0 to just below 1 indicate the event is *less likely* to happen than the base (reference) group. The odds ratio 1 indicate the event is *as likely* to occur in the two groups, while odds ratio greater than 1 to infinity indicate the event is *more likely* to occur than the base group. 
+
+However, there are issues in usring odds ratio in models as they are asymmetric. They are asymmetric because the odds ratio 2.00 indicates the same as odds ratio 0.50 (as shown above). Similarly, odds ratio 3.00 indicates the same as odds ratio 0.33. This asymmetry is unappealing becasue ideally the odds for males would be the opposite of the odds for females. 
+
+This asymmetery problem disappears if we take the `log` of the odds ratio^[The log of odds ratio is sometimes called `logit`.]. Taking the log of odds ratio 2 is $log(2) = 0.302$, but the log of odds ratio 0.5 is $log(0.5) = -0.302$. Therefore, the log of odds ratio makes the relationship *symmetric* around zero (0). Logits and odds ratio contain the same information, but the differences in mathematical properties make logit better building blocks for logistic regression. 
+
+An interesting fact can be seen if we look at the odds for boys and girls relative to odds ratio. 
+
+$$
+Odds Ratio of Boys (Base/Reference group) = 3.27 \times 1 = 3.27
+$$
+
+$$
+Odds Ratio of Girls = 3.27 \times 2.002 = 6.56
+$$
+
+So the other way to look at this relation is - 
+
+$$
+\frac{p}{1-p} = constant \times Odds Ratio (OR)
+$$
+
+Now if we take the log of each side of the above equation, 
+
+$$
+log[\frac{p}{1-p}] = constant + log (Odds Ratio)
+$$
+
+If the constant is $a$, and the $log (Odds Ratio)$ is $b$, and the variable gender ($x$) takes the value 0 for boys and 1 for girls, then - 
+
+$$
+log[\frac{p}{1-p}] = a + bx
+$$
+
+:::
+:::
+
+::: {style="text-align: justify"}
+     Now, we are going to use a dataset and run a logistic regression model. We will use well known `titanic` dataset and predict the probability of survival of a passenger using some variables of the passenger. 
+
+```{python}
+#| warning: false
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt 
+import seaborn as sns
+import statsmodels.api as sm
+import statsmodels.formula.api as smf 
+# titanic data frame 
+titanic_df = sns.load_dataset("titanic")
+```
+    
+
+```{python}
+#| warning: false
+
+logistic_reg = smf.logit("survived ~ sex + fare + age + alone + embark_town", data = titanic_df).fit()
+logistic_reg.summary()
+```
+
+     In logistic regression, it is difficult to interpret the coefficients; therefore, we covnert them to odds ratio because they are easy to interprent. We use `np.exp()` function to convert them into odds ratio. An odds ratio greater than 1 indicates that the odds of the outcome increase as the predictor increases; an odds ratio less than 1 indicates that the odds of the outcome decrease as the predictor increases and an odds ratio equal to 1 indicates there is no effect of the predictor on the odds of the outcome variable. 
+
+```{python}
+#| warning: false
+coeff_odds = pd.DataFrame(logistic_reg.params).reset_index().rename(columns = {"index":"variables", 0: "Coefficients"})
+coeff_odds["Odds_ratio"] = np.exp(coeff_odds["Coefficients"])
+coeff_odds
+```
+
+     The odds ratio for `sex[T.male]` is 0.089 or approximately 0.09, which indicates that male is `1-0.09 = 91%` less likely to survive compared to female. 
+
+     Below we generate the same results in a tabular format using `pyfixest` package of python. 
+
+```{python}
+#| warning: false
+import pyfixest as pf
+logistic_model = pf.feglm("survived ~ sex + fare + age + alone + embark_town", data = titanic_df, family = "logit")
+pf.etable([logistic_model],coef_fmt= 'b \n (t)'
+          ,signif_code= [0.01,0.05,0.10])
+```
+
+
+
+:::
+
+## Conclusion
+
 ::: {style="text-align: justify"}
 
 :::

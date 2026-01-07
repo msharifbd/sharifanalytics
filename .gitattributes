@@ -1,1 +1,2 @@
 *.pyd filter=lfs diff=lfs merge=lfs -text
+DATA/duckdb_df/duckdb.ddb filter=lfs diff=lfs merge=lfs -text

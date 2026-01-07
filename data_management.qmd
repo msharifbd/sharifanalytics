@@ -767,5 +767,228 @@ conn.disconnect()
 ```
 
 ## Online Analytical Processing (OLAP) Database Management System
+::: {style="text-align: justify"}
+     Online Analytical Processing (OLAP) Database Management Systems are designed to support fast complex **analytical queries over a large volume of historical data** rather than for **day-to-day transaction processing**. OLAP is optimized for read-heavy, aggregation-intensive workloads unlike Online Transaction Processing (OLTP)^[OLTP Database Management Systems are databases designed to handle a large number of short, fast, day-to-day transactions reliably and concurrently. They are the backbone of operational applications like banking systems, e-commerce platforms, reservation systems, and ERP software.] systems that focus on fast transactional updates.OLAP systems are used for business intelligence, reporting & dashboards, and forecasting & planning.
+
+     `DuckDB` is an OLAP database management system, which is designed for analytical processing and data science workflows rather than high‑concurrency transaction processing. It focuses on fast scans, joins, aggregations, and group‑bys over large datasets, aligning with the typical workload profile of OLAP systems. 
+
+     In `DuckDB`, Data are stored in a column‑oriented format, which enhances performance for analytical queries that read many rows but only a subset of columns. One should use `DuckDB` for single‑user or small‑team analytical workloads over files or local data, and `PostgreSQL` when one needs a multi‑user, networked database that also handles transactions or mixed OLTP/OLAP.
+
+:::
+
+
+## Using DuckDB Database in `R`
+
+```{r}
+#| warning: false
+# R version - 4.3.1
+library(duckdb)
+library(DBI)
+library(dbplyr)
+library(tidyverse)
+library(fs)
+library(arrow) # to read parquet file
+library(readxl) # to read excel file
+```
+
+```{r}
+#| warning: false
+#| eval: false
+# create a directory in which DuckDB database will be saved
+duckdb_dir <- path(here::here('DATA'), "duckdb_df")
+
+if (!dir.exists(duckdb_dir)) {
+  dir.create(duckdb_dir)}
+
+# Create Connection on DuckDB
+con_duckdb <- dbConnect(
+  drv = duckdb(),
+  dbdir = path(duckdb_dir, "duckdb.ddb"))
+```
+
+```{r}
+#| warning: false
+#| include: false
+con_duckdb = dbConnect(
+  drv = duckdb(), 
+  dbdir = "DATA/duckdb_df/duckdb.ddb"
+)
+```
+
+
+```{r}
+#| warning: false
+#| eval: false
+# import datasets and send them to the DuckDB database
+
+## import
+flights_df = arrow::read_parquet("https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2023-01.parquet")
+attractive_df = readxl::read_excel("C:/Users/mshar/Downloads/VA and Investment Mean Difference.xlsx")
+
+## Send 
+dbWriteTable(
+  con_duckdb, 
+  "flights" # name on DuckDB Database
+  ,flights_df
+  ,overwrite = TRUE
+)
+
+dbWriteTable(
+  con_duckdb, 
+  "attractive" # name on DuckDB Database
+  ,attractive_df
+  ,overwrite = TRUE
+)
+```
+
+```{r}
+#| warning: false
+# To see all tables in a DuckDB database
+DBI::dbListObjects(con_duckdb)
+```
+
+### EDA on DuckDB Database Tables
+```{r}
+#| warning: false
+con_duckdb |> 
+  tbl("attractive") |> 
+  select(Deception, VA, IR_Score)
+```
+
+```{r}
+#| warning: false
+con_duckdb |> 
+  tbl("attractive") |> 
+  collect() |> 
+  count(Deception)
+```
+
+
+
+```{r}
+#| warning: false
+# To disconnect the database 
+DBI::dbDisconnect(con_duckdb, shutdown = TRUE)
+```
+
+
+## Using DuckDB Database in `Python` 
+
+```{python}
+#| warning: false 
+#| eval: false
+import os
+import duckdb
+# pip install ibis 
+# pip install ibis-framework[duckdb]
+import ibis 
+import ibis.selector as s 
+from ibis import _
+```
+
+
+```{python}
+#| warning: false 
+#| eval: false
+
+##############################################
+# Step 1: Create and Connect to DuckDB Database
+##############################################
+
+# Specify folder and database file
+db_folder = "./DATA/duckdb_df_python"  # Change to your path
+os.makedirs(db_folder, exist_ok=True)
+db_path = os.path.join(db_folder, "my_database.duckdb")
+
+# Connect to persistent DuckDB (creates if not exists)
+con = ibis.duckdb.connect(db_path)
+print(f"Connected to: {db_path}")
+```
+
+
+```{python}
+#| warning: false
+#| eval: false
+####################################
+# Step 2: Load Data into Named Table
+#####################################
+# Read Parquet and create persistent table
+flights_df = con.read_parquet("https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2023-01.parquet")
+attractive_df = pd.read_excel("C:/Users/mshar/Downloads/VA and Investment Mean Difference.xlsx")
+
+# Save as named table (materializes data)
+con.create_table("flights", flights_df, overwrite=True)
+con.create_table("attractive_voice", attractive_df, overwrite = True)
+
+# Verify
+con.table("flights").columns 
+con.table("flights").count().execute()
+con.list_tables()
+
+```
+
+
+
+```{python}
+#| warning: false
+#| eval: false
+#############################################
+# Step 3: dplyr-Like Queries (DBI Equivalent)
+#############################################
+flights = con.table("flights")  # Like DBI dbReadTable or dbplyr tbl()
+flights.schema()
+flights.execute()
+# Filter, mutate, aggregate
+monthly_stats = (flights
+                 .filter(_.tpep_pickup_datetime >= "2023-01-01", _.passenger_count > 0)
+                 .mutate(month=_.tpep_pickup_datetime.month())
+                 .group_by(_.month)
+                 .aggregate(
+                     trips=_.VendorID.count(),
+                     avg_fare=_.total_amount.mean(),
+                     med_distance=_.trip_distance.median()
+                 )
+                 .order_by(_.month)
+                )
+monthly_stats.execute() # this will execute the code and produces the results
+
+result = con.sql("""
+    SELECT 
+        EXTRACT(MONTH FROM tpep_pickup_datetime) AS month,
+        COUNT(VendorID) AS trips,
+        AVG(total_amount) AS avg_fare,
+        MEDIAN(trip_distance) AS med_distance
+    FROM flights
+    WHERE tpep_pickup_datetime >= '2023-01-01' AND passenger_count > 0
+    GROUP BY month
+    ORDER BY month
+""")
+result.execute()
+```
+
+
+
+
+```{python}
+#| warning: false
+#| eval: false
+##################################
+# Step 3: Disconnect the database 
+##################################
+con.disconnect()
+```
 
 ## Conclusion
+
+::: {style="text-align: justify"}
+     It has shown that modern data work rarely depends on a single database technology; instead, it benefits from combining systems that are each optimized for specific tasks. By examining PostgreSQL and DuckDB side by side, the discussion emphasized how architectural choices such as row- versus column-oriented storage, client–server versus embedded deployment, and OLTP versus analytical optimization shape the kinds of workloads each system serves best.
+​
+
+     `PostgreSQL` emerged as a robust, general-purpose relational DBMS, ideal for multi-user, transactional applications that demand strong consistency, rich SQL features, and long-term operational stability. `DuckDB`, in contrast, demonstrated how an in-process, columnar engine can deliver interactive analytical performance on local files and data frames, lowering infrastructure overhead while integrating smoothly into data science workflows.
+​
+
+     Working through both systems underscored that the core relational concepts and SQL syntax remain portable, even as execution models, indexing strategies, and performance characteristics differ. This comparative perspective prepares readers to design data architectures in which an operational store such as `PostgreSQL` can be complemented by analytical accelerators like `DuckDB`, yielding pipelines that are both reliable and efficient.
+​
+
+     The central lesson is that database competency now extends beyond learning one “enterprise” system to understanding how specialized engines can be composed into a coherent ecosystem. Equipped with this foundation, readers are better positioned to evaluate new platforms, prototype solutions, and choose appropriate tools—or combinations of tools—for their own transactional and analytical requirements.
+:::

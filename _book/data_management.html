@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.4.551">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-
 <title>Analytics for Accounting Data - 6&nbsp; Data Management in Accounting</title>
 <style>
 code{white-space: pre-wrap;}
@@ -56,7 +53,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
-
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
@@ -74,8 +70,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -102,16 +97,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-
-
 </head>
-
 <body class="nav-sidebar floating">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
@@ -122,13 +112,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <i class="bi bi-search"></i>
       </button>
     </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Analytics for Accounting Data</a> 
         <div class="sidebar-tools-main tools-wide">
@@ -136,7 +122,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div class="dropdown">
       <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download"><i class="bi bi-download"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
-          <li>
+<li>
             <a class="dropdown-item sidebar-tools-main-item" href="./Analytics-for-Accounting-Data.pdf">
               <i class="bi bi-bi-file-pdf pe-1"></i>
             Download PDF
@@ -149,30 +135,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             </a>
           </li>
       </ul>
-    </div>
+</div>
     <div class="dropdown">
       <a href="" title="Share" id="quarto-navigation-tool-dropdown-1" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Share"><i class="bi bi-share"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-1">
-          <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
+<li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=%7Curl%7C">
               <i class="bi bi-bi-twitter pe-1"></i>
             Twitter
             </a>
           </li>
           <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="https://www.facebook.com/sharer/sharer.php?u=|url|">
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.facebook.com/sharer/sharer.php?u=%7Curl%7C">
               <i class="bi bi-bi-facebook pe-1"></i>
             Facebook
             </a>
           </li>
           <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="https://www.linkedin.com/sharing/share-offsite/?url=|url|">
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.linkedin.com/sharing/share-offsite/?url=%7Curl%7C">
               <i class="bi bi-bi-linkedin pe-1"></i>
             LinkedIn
             </a>
           </li>
       </ul>
-    </div>
+</div>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
@@ -188,7 +174,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Welcome</span></a>
@@ -202,8 +188,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./overview.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Overview of Accounting Analytics</span></span></a>
@@ -216,7 +202,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
@@ -225,8 +211,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./eda.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis (EDA)</span></span></a>
@@ -251,7 +237,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
@@ -260,8 +246,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./predictive.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Predictive Modeling - Linear Regression</span></span></a>
@@ -274,7 +260,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
@@ -283,8 +269,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./advanced_analytics.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Web Scraping and Textual Analytics</span></span></a>
@@ -315,7 +301,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
@@ -324,8 +310,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ethics.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Regulatory and Ethical Considerations</span></span></a>
@@ -338,7 +324,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
@@ -347,8 +333,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./python_basics.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">A Primer on Python</span></span></a>
@@ -379,50 +365,59 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-  </li>
+</li>
     </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#learning-objectives-of-the-chapter" id="toc-learning-objectives-of-the-chapter" class="nav-link active" data-scroll-target="#learning-objectives-of-the-chapter">Learning Objectives of the Chapter</a></li>
+<li><a href="#learning-objectives-of-the-chapter" id="toc-learning-objectives-of-the-chapter" class="nav-link active" data-scroll-target="#learning-objectives-of-the-chapter">Learning Objectives of the Chapter</a></li>
   <li><a href="#data-management" id="toc-data-management" class="nav-link" data-scroll-target="#data-management"><span class="header-section-number">6.1</span> Data Management</a></li>
   <li><a href="#relational-database" id="toc-relational-database" class="nav-link" data-scroll-target="#relational-database"><span class="header-section-number">6.2</span> Relational Database</a></li>
   <li><a href="#relational-database-management-systems-rdbms" id="toc-relational-database-management-systems-rdbms" class="nav-link" data-scroll-target="#relational-database-management-systems-rdbms"><span class="header-section-number">6.3</span> Relational Database Management Systems (RDBMS)</a></li>
-  <li><a href="#creating-a-relational-database-using-postgresql" id="toc-creating-a-relational-database-using-postgresql" class="nav-link" data-scroll-target="#creating-a-relational-database-using-postgresql"><span class="header-section-number">6.4</span> Creating a Relational Database Using <code>PostgreSQL</code></a>
+  <li>
+<a href="#creating-a-relational-database-using-postgresql" id="toc-creating-a-relational-database-using-postgresql" class="nav-link" data-scroll-target="#creating-a-relational-database-using-postgresql"><span class="header-section-number">6.4</span> Creating a Relational Database Using <code>PostgreSQL</code></a>
   <ul>
-  <li><a href="#sec-installPostgreSQL" id="toc-sec-installPostgreSQL" class="nav-link" data-scroll-target="#sec-installPostgreSQL"><span class="header-section-number">6.4.1</span> Installing PostgreSQL</a></li>
-  </ul></li>
-  <li><a href="#connecting-to-the-relational-database" id="toc-connecting-to-the-relational-database" class="nav-link" data-scroll-target="#connecting-to-the-relational-database"><span class="header-section-number">6.5</span> Connecting to the Relational Database</a>
+<li><a href="#sec-installPostgreSQL" id="toc-sec-installPostgreSQL" class="nav-link" data-scroll-target="#sec-installPostgreSQL"><span class="header-section-number">6.4.1</span> Installing PostgreSQL</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#connecting-to-the-relational-database" id="toc-connecting-to-the-relational-database" class="nav-link" data-scroll-target="#connecting-to-the-relational-database"><span class="header-section-number">6.5</span> Connecting to the Relational Database</a>
   <ul>
-  <li><a href="#connection-using-sql-shell-psql" id="toc-connection-using-sql-shell-psql" class="nav-link" data-scroll-target="#connection-using-sql-shell-psql"><span class="header-section-number">6.5.1</span> Connection using SQL Shell (<code>psql</code>)</a></li>
+<li><a href="#connection-using-sql-shell-psql" id="toc-connection-using-sql-shell-psql" class="nav-link" data-scroll-target="#connection-using-sql-shell-psql"><span class="header-section-number">6.5.1</span> Connection using SQL Shell (<code>psql</code>)</a></li>
   <li><a href="#sec-cmdconnection" id="toc-sec-cmdconnection" class="nav-link" data-scroll-target="#sec-cmdconnection"><span class="header-section-number">6.5.2</span> Connection using Command Shell (<code>cmd</code>)</a></li>
-  </ul></li>
-  <li><a href="#sec-dealdatabase" id="toc-sec-dealdatabase" class="nav-link" data-scroll-target="#sec-dealdatabase"><span class="header-section-number">6.6</span> Dealing with the Database</a>
+  </ul>
+</li>
+  <li>
+<a href="#sec-dealdatabase" id="toc-sec-dealdatabase" class="nav-link" data-scroll-target="#sec-dealdatabase"><span class="header-section-number">6.6</span> Dealing with the Database</a>
   <ul>
-  <li><a href="#sec-creatingdatabase" id="toc-sec-creatingdatabase" class="nav-link" data-scroll-target="#sec-creatingdatabase"><span class="header-section-number">6.6.1</span> Creating a Database and Tables inside the Database</a></li>
+<li><a href="#sec-creatingdatabase" id="toc-sec-creatingdatabase" class="nav-link" data-scroll-target="#sec-creatingdatabase"><span class="header-section-number">6.6.1</span> Creating a Database and Tables inside the Database</a></li>
   <li><a href="#querying-the-database" id="toc-querying-the-database" class="nav-link" data-scroll-target="#querying-the-database"><span class="header-section-number">6.6.2</span> Querying the Database</a></li>
   <li><a href="#saving-a-database-from-postgresql" id="toc-saving-a-database-from-postgresql" class="nav-link" data-scroll-target="#saving-a-database-from-postgresql"><span class="header-section-number">6.6.3</span> Saving a Database from PostgreSQL</a></li>
   <li><a href="#uploading-a-database-to-postgresql" id="toc-uploading-a-database-to-postgresql" class="nav-link" data-scroll-target="#uploading-a-database-to-postgresql"><span class="header-section-number">6.6.4</span> Uploading a Database to PostgreSQL</a></li>
-  </ul></li>
+  </ul>
+</li>
   <li><a href="#querying-postgresql-database-using-r" id="toc-querying-postgresql-database-using-r" class="nav-link" data-scroll-target="#querying-postgresql-database-using-r"><span class="header-section-number">6.7</span> Querying PostgreSQL Database Using <code>R</code></a></li>
   <li><a href="#querying-postgresql-database-using-python" id="toc-querying-postgresql-database-using-python" class="nav-link" data-scroll-target="#querying-postgresql-database-using-python"><span class="header-section-number">6.8</span> Querying PostgreSQL Database Using <code>Python</code></a></li>
   <li><a href="#online-analytical-processing-olap-database-management-system" id="toc-online-analytical-processing-olap-database-management-system" class="nav-link" data-scroll-target="#online-analytical-processing-olap-database-management-system"><span class="header-section-number">6.9</span> Online Analytical Processing (OLAP) Database Management System</a></li>
-  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">6.10</span> Conclusion</a></li>
+  <li>
+<a href="#using-duckdb-database-in-r" id="toc-using-duckdb-database-in-r" class="nav-link" data-scroll-target="#using-duckdb-database-in-r"><span class="header-section-number">6.10</span> Using DuckDB Database in <code>R</code></a>
+  <ul>
+<li><a href="#eda-on-duckdb-database-tables" id="toc-eda-on-duckdb-database-tables" class="nav-link" data-scroll-target="#eda-on-duckdb-database-tables"><span class="header-section-number">6.10.1</span> EDA on DuckDB Database Tables</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/msharifbd/sharifanalytics/edit/main/data_management.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/msharifbd/sharifanalytics/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/msharifbd/sharifanalytics/blob/main/data_management.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
+</li>
+  <li><a href="#using-duckdb-database-in-python" id="toc-using-duckdb-database-in-python" class="nav-link" data-scroll-target="#using-duckdb-database-in-python"><span class="header-section-number">6.11</span> Using DuckDB Database in <code>Python</code></a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">6.12</span> Conclusion</a></li>
+  </ul><div class="toc-actions"><ul><li><a href="https://github.com/msharifbd/sharifanalytics/edit/main/data_management.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/msharifbd/sharifanalytics/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/msharifbd/sharifanalytics/blob/main/data_management.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./eda.html">Data Exploration and Management</a></li><li class="breadcrumb-item"><a href="./data_management.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Data Management in Accounting</span></a></li></ol></nav>
-<div class="quarto-title">
-<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Data Management in Accounting</span></h1>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./eda.html">Data Exploration and Management</a></li><li class="breadcrumb-item"><a href="./data_management.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Data Management in Accounting</span></a></li></ol></nav><div class="quarto-title">
+<h1 class="title">
+<span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Data Management in Accounting</span>
+</h1>
 </div>
 
 
@@ -436,11 +431,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header>
-
-
-<section id="learning-objectives-of-the-chapter" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="learning-objectives-of-the-chapter">Learning Objectives of the Chapter</h3>
+</header><section id="learning-objectives-of-the-chapter" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="learning-objectives-of-the-chapter">Learning Objectives of the Chapter</h3>
 <div style="text-align: justify">
 <p>At the End of the Chapter, Students should be Able to -</p>
 <ul>
@@ -452,9 +443,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Create and Use OLAP DBMS</p></li>
 </ul>
 </div>
-</section>
-<section id="data-management" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="data-management"><span class="header-section-number">6.1</span> Data Management</h2>
+</section><section id="data-management" class="level2" data-number="6.1"><h2 data-number="6.1" class="anchored" data-anchor-id="data-management">
+<span class="header-section-number">6.1</span> Data Management</h2>
 <div style="text-align: justify">
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Data management is the practice of collecting, keeping, and using data securely, efficiently, and cost-effectively. Data management is important for a variety of data-driven use cases including end-to-end business process execution, regulatory compliance, accurate analytics and AI, data migration, and digital transformation.</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Managing digital data in an organization involves a broad range of tasks, policies, procedures, and practices. The work of data management has a wide scope, covering factors such as how to:</p>
@@ -468,16 +458,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Data management systems are built on data management platforms and can include databases, data lakes and data warehouses, big data management systems, data analytics, and more.</p>
 </div>
-</section>
-<section id="relational-database" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="relational-database"><span class="header-section-number">6.2</span> Relational Database</h2>
+</section><section id="relational-database" class="level2" data-number="6.2"><h2 data-number="6.2" class="anchored" data-anchor-id="relational-database">
+<span class="header-section-number">6.2</span> Relational Database</h2>
 <div style="text-align: justify">
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Relational databases organize data into rows and columns, which form a table and different tables are connected to each other usign either <strong>primary key</strong> or <strong>foreign key</strong>. Here’s a simple example of two tables a small business might use to process orders for its products. The first table is a <em>customer info table</em>, so each record includes a customer’s name, address, shipping and billing information, phone number, and other contact information. Each bit of information (each attribute) is in its own column, and the database assigns a unique ID (a key) to each row. In the second table—a <em>customer order</em> table—each record includes the ID of the customer that placed the order, the product ordered, the quantity, the selected size and color, and so on—but not the customer’s name or contact information.</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;These two tables have only one thing in common: the ID column (the key). But because of that common column, the relational database can create a relationship between the two tables. Then, when the company’s order processing application submits an order to the database, the database can go to the customer order table, pull the correct information about the product order, and use the customer ID from that table to look up the customer’s billing and shipping information in the customer info table. The warehouse can then pull the correct product, the customer can receive timely delivery of the order, and the company can get paid.</p>
 </div>
-</section>
-<section id="relational-database-management-systems-rdbms" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="relational-database-management-systems-rdbms"><span class="header-section-number">6.3</span> Relational Database Management Systems (RDBMS)</h2>
+</section><section id="relational-database-management-systems-rdbms" class="level2" data-number="6.3"><h2 data-number="6.3" class="anchored" data-anchor-id="relational-database-management-systems-rdbms">
+<span class="header-section-number">6.3</span> Relational Database Management Systems (RDBMS)</h2>
 <div style="text-align: justify">
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;While a relational database organizes data based off a relational data model, a relational database management system (RDBMS) is a more specific reference to the underlying database software that enables users to maintain it. These programs allow users to create, update, insert, or delete data in the system, and they provide:</p>
 <ul>
@@ -488,90 +476,68 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Examples of popular RDBMS systems include MySQL, PostgreSQL, and IBM DB2. Additionally, a relational database system differs from a basic database management system (DBMS) in that it stores data in tables while a DBMS stores information as files.</p>
 </div>
-</section>
-<section id="creating-a-relational-database-using-postgresql" class="level2" data-number="6.4">
-<h2 data-number="6.4" class="anchored" data-anchor-id="creating-a-relational-database-using-postgresql"><span class="header-section-number">6.4</span> Creating a Relational Database Using <code>PostgreSQL</code></h2>
+</section><section id="creating-a-relational-database-using-postgresql" class="level2" data-number="6.4"><h2 data-number="6.4" class="anchored" data-anchor-id="creating-a-relational-database-using-postgresql">
+<span class="header-section-number">6.4</span> Creating a Relational Database Using <code>PostgreSQL</code>
+</h2>
 <div style="text-align: justify">
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PostgreSQL is a widely used open-source Relational Database Management System (RDBMS). Since its release in 1996, PostgreSQL has carved a niche as one of the most robust and reliable database systems in the Tech industry. PostgreSQL is known for its rich feature set, reliability, scalability, and strong community support network.</p>
 </div>
-<section id="sec-installPostgreSQL" class="level3" data-number="6.4.1">
-<h3 data-number="6.4.1" class="anchored" data-anchor-id="sec-installPostgreSQL"><span class="header-section-number">6.4.1</span> Installing PostgreSQL</h3>
+<section id="sec-installPostgreSQL" class="level3" data-number="6.4.1"><h3 data-number="6.4.1" class="anchored" data-anchor-id="sec-installPostgreSQL">
+<span class="header-section-number">6.4.1</span> Installing PostgreSQL</h3>
 <div style="text-align: justify">
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To install PostgreSQL locally on your computer, visit the <a href="https://www.enterprisedb.com/downloads/postgres-postgresql-downloads">installer by EDB</a>, and download the newest version compatible with your operating system. To install PostgreSQL on Windows, you need to have administrator privileges. Below, we delineate the steps to install the PostgreSQL in windows.</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Step 01</strong>: When the downloading is complete, double click the downloaded file and an installation wizard will appear and guide you through multiple steps. Click “Next” to specify directory.</p>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/postgresql_install_image1.png" class="img-fluid figure-img"></p>
-<figcaption>Installation Wizard</figcaption>
-</figure>
+<figure class="figure"><p><img src="images/postgresql_install_image1.png" class="img-fluid figure-img"></p>
+<figcaption>Installation Wizard</figcaption></figure>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Step 02</strong>: You can specify the location of PostgreSQL, or go with the default choice</p>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/postgresql_install_image2.png" class="img-fluid figure-img"></p>
-<figcaption>Installation Directory</figcaption>
-</figure>
+<figure class="figure"><p><img src="images/postgresql_install_image2.png" class="img-fluid figure-img"></p>
+<figcaption>Installation Directory</figcaption></figure>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Step 03</strong>: To use PostgreSQL, you need to install PostgreSQL server. For our installation and uses purposes, we select the following servers - PostgreSQL Server, pgAdmin4, and Command Line Tools.</p>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/postgresql_install_image3.png" class="img-fluid figure-img"></p>
-<figcaption>Server Selection</figcaption>
-</figure>
+<figure class="figure"><p><img src="images/postgresql_install_image3.png" class="img-fluid figure-img"></p>
+<figcaption>Server Selection</figcaption></figure>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Step 04</strong>: Then, we need to choose the storage directory. Alternatively, we can go with the default directory.</p>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/postgresql_install_image4.png" class="img-fluid figure-img"></p>
-<figcaption>Storage Directory</figcaption>
-</figure>
+<figure class="figure"><p><img src="images/postgresql_install_image4.png" class="img-fluid figure-img"></p>
+<figcaption>Storage Directory</figcaption></figure>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Step 05</strong>: At this point, you need to choose your passowrd. It is important to note that the password will be used to connect to the database. Therefore, you must remember your password.</p>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/postgresql_install_image5.png" class="img-fluid figure-img"></p>
-<figcaption>Password Selection</figcaption>
-</figure>
+<figure class="figure"><p><img src="images/postgresql_install_image5.png" class="img-fluid figure-img"></p>
+<figcaption>Password Selection</figcaption></figure>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Step 06</strong>: Next you need to select the port. The default port number is 5432. If you change the port, you also need to remember the port number because like passowrd, you need to use the port number to connect to the database.</p>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/postgresql_install_image6.png" class="img-fluid figure-img"></p>
-<figcaption>Port Selection</figcaption>
-</figure>
+<figure class="figure"><p><img src="images/postgresql_install_image6.png" class="img-fluid figure-img"></p>
+<figcaption>Port Selection</figcaption></figure>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Step 07</strong>: We also need to select the geographical location of the database server. We can go with the default choice.</p>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/postgresql_install_image7.png" class="img-fluid figure-img"></p>
-<figcaption>Locale Selection</figcaption>
-</figure>
+<figure class="figure"><p><img src="images/postgresql_install_image7.png" class="img-fluid figure-img"></p>
+<figcaption>Locale Selection</figcaption></figure>
 </div>
 <p>Then if everything looks ok, you can move forward by clicking ‘Next’. However, it is recommended that you copy and save the information from the “Pre Installation Summary” in some safe place so that you can access them in future, if necessary.</p>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/postgresql_install_image8.png" class="img-fluid figure-img"></p>
-<figcaption>Pre Installation Summary</figcaption>
-</figure>
+<figure class="figure"><p><img src="images/postgresql_install_image8.png" class="img-fluid figure-img"></p>
+<figcaption>Pre Installation Summary</figcaption></figure>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Step 08</strong>: Then you can click “Next” in ‘Ready to Install’ windows and the installation process will start and it will take a while to finish the installation. Once the installing is done, please click ‘Finish’ button on ‘Complete the PostgreSQL Setup Wizard’ window.</p>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/postgresql_install_image9.png" class="img-fluid figure-img"></p>
-<figcaption>Ready to Install</figcaption>
-</figure>
+<figure class="figure"><p><img src="images/postgresql_install_image9.png" class="img-fluid figure-img"></p>
+<figcaption>Ready to Install</figcaption></figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/postgresql_install_image10.png" class="img-fluid figure-img"></p>
-<figcaption>Installing</figcaption>
-</figure>
+<figure class="figure"><p><img src="images/postgresql_install_image10.png" class="img-fluid figure-img"></p>
+<figcaption>Installing</figcaption></figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/postgresql_install_image11.png" class="img-fluid figure-img"></p>
-<figcaption>Complete the PostgreSQL Setup Wizard</figcaption>
-</figure>
+<figure class="figure"><p><img src="images/postgresql_install_image11.png" class="img-fluid figure-img"></p>
+<figcaption>Complete the PostgreSQL Setup Wizard</figcaption></figure>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -594,10 +560,8 @@ Tip
 </div>
 </div>
 </div>
-</section>
-</section>
-<section id="connecting-to-the-relational-database" class="level2" data-number="6.5">
-<h2 data-number="6.5" class="anchored" data-anchor-id="connecting-to-the-relational-database"><span class="header-section-number">6.5</span> Connecting to the Relational Database</h2>
+</section></section><section id="connecting-to-the-relational-database" class="level2" data-number="6.5"><h2 data-number="6.5" class="anchored" data-anchor-id="connecting-to-the-relational-database">
+<span class="header-section-number">6.5</span> Connecting to the Relational Database</h2>
 <div style="text-align: justify">
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In <a href="#sec-installPostgreSQL" class="quarto-xref"><span>Section 6.4.1</span></a>, we described the steps of installing PostgreSQL database; now, we will try to connect to that database. There are several ways to connect the database we created. These ways include -</p>
 <ul>
@@ -625,65 +589,50 @@ Tip
 </div>
 </div>
 </div>
-<section id="connection-using-sql-shell-psql" class="level3" data-number="6.5.1">
-<h3 data-number="6.5.1" class="anchored" data-anchor-id="connection-using-sql-shell-psql"><span class="header-section-number">6.5.1</span> Connection using SQL Shell (<code>psql</code>)</h3>
+<section id="connection-using-sql-shell-psql" class="level3" data-number="6.5.1"><h3 data-number="6.5.1" class="anchored" data-anchor-id="connection-using-sql-shell-psql">
+<span class="header-section-number">6.5.1</span> Connection using SQL Shell (<code>psql</code>)</h3>
 <div style="text-align: justify">
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; First, we will discuss SQL Shell (psql) method. Basically, SQL Shell (psql) is a terminal based program where you can write and execute SQL syntax in the command-line terminal. You will find the SQL Shell (psql) in the start menu under PostgreSQL. If you do not find it please search “psql” on windows search box.</p>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/postgresql_connect_image1.png" class="img-fluid figure-img"></p>
-<figcaption>SQL Shell on Start Menu</figcaption>
-</figure>
+<figure class="figure"><p><img src="images/postgresql_connect_image1.png" class="img-fluid figure-img"></p>
+<figcaption>SQL Shell on Start Menu</figcaption></figure>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Once the program is open, you should be able to see a window like below. Usually, the name of the server is localhost as shown below; however, if you choose a different server while installing the PostgreSQL, you must mention your server name. Then, click “enter” on your keyboard.</p>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/postgresql_connect_image2.png" class="img-fluid figure-img"></p>
-<figcaption>Server</figcaption>
-</figure>
+<figure class="figure"><p><img src="images/postgresql_connect_image2.png" class="img-fluid figure-img"></p>
+<figcaption>Server</figcaption></figure>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The default name of your database is <code>postgres</code> as shown below. If you choose a different name, please enter that name. Then, click “enter” on your keyboard.</p>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/postgresql_connect_image3.png" class="img-fluid figure-img"></p>
-<figcaption>Database</figcaption>
-</figure>
+<figure class="figure"><p><img src="images/postgresql_connect_image3.png" class="img-fluid figure-img"></p>
+<figcaption>Database</figcaption></figure>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The default port number is <code>5432</code>. If you use the default port number, then please click “enter” on your keyboard. Otherwise, use the port number that you used while installing PostgreSQL and click “enter” on your keyboard.</p>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/postgresql_connect_image4.png" class="img-fluid figure-img"></p>
-<figcaption>Port</figcaption>
-</figure>
+<figure class="figure"><p><img src="images/postgresql_connect_image4.png" class="img-fluid figure-img"></p>
+<figcaption>Port</figcaption></figure>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Similarly, the default user name is <code>postgres</code>. Please click “enter” on your keyboard if your default name is the same.</p>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/postgresql_connect_image5.png" class="img-fluid figure-img"></p>
-<figcaption>Username</figcaption>
-</figure>
+<figure class="figure"><p><img src="images/postgresql_connect_image5.png" class="img-fluid figure-img"></p>
+<figcaption>Username</figcaption></figure>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Next, you need to provide password that you set while installing the database.</p>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/postgresql_connect_image6.png" class="img-fluid figure-img"></p>
-<figcaption>Password</figcaption>
-</figure>
+<figure class="figure"><p><img src="images/postgresql_connect_image6.png" class="img-fluid figure-img"></p>
+<figcaption>Password</figcaption></figure>
 </div>
 </div>
-</section>
-<section id="sec-cmdconnection" class="level3" data-number="6.5.2">
-<h3 data-number="6.5.2" class="anchored" data-anchor-id="sec-cmdconnection"><span class="header-section-number">6.5.2</span> Connection using Command Shell (<code>cmd</code>)</h3>
+</section><section id="sec-cmdconnection" class="level3" data-number="6.5.2"><h3 data-number="6.5.2" class="anchored" data-anchor-id="sec-cmdconnection">
+<span class="header-section-number">6.5.2</span> Connection using Command Shell (<code>cmd</code>)</h3>
 <div style="text-align: justify">
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To use the command prompt (<code>cmd</code>) to connect to PostgreSQL database, you need to use the following steps -</p>
 <ul>
 <li>Step # 01 - Open command prompt by writing <code>cmd</code> in windows search bar as shown below. Then command prompt will open.</li>
 </ul>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/cmd_1.jpg" class="img-fluid figure-img"></p>
-<figcaption>Search Bar on Windows</figcaption>
-</figure>
+<figure class="figure"><p><img src="images/cmd_1.jpg" class="img-fluid figure-img"></p>
+<figcaption>Search Bar on Windows</figcaption></figure>
 </div>
 <ul>
 <li><p>Step # 02 - type <code>cd C:\Program Files\PostgreSQL\16\bin</code> on the command prompt and hit enter on the keyboard</p></li>
@@ -692,10 +641,8 @@ Tip
 </ul>
 <p>These steps should ensure that you are connected to the database.</p>
 </div>
-</section>
-</section>
-<section id="sec-dealdatabase" class="level2" data-number="6.6">
-<h2 data-number="6.6" class="anchored" data-anchor-id="sec-dealdatabase"><span class="header-section-number">6.6</span> Dealing with the Database</h2>
+</section></section><section id="sec-dealdatabase" class="level2" data-number="6.6"><h2 data-number="6.6" class="anchored" data-anchor-id="sec-dealdatabase">
+<span class="header-section-number">6.6</span> Dealing with the Database</h2>
 <div style="text-align: justify">
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Once the database is created, new tables can be created. Also, different kinds of data manipulation can be performed. For example, after being connected to the database, one should check the database available by running the following code -</p>
 <div class="cell">
@@ -714,8 +661,8 @@ Tip
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>\dt;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-<section id="sec-creatingdatabase" class="level3" data-number="6.6.1">
-<h3 data-number="6.6.1" class="anchored" data-anchor-id="sec-creatingdatabase"><span class="header-section-number">6.6.1</span> Creating a Database and Tables inside the Database</h3>
+<section id="sec-creatingdatabase" class="level3" data-number="6.6.1"><h3 data-number="6.6.1" class="anchored" data-anchor-id="sec-creatingdatabase">
+<span class="header-section-number">6.6.1</span> Creating a Database and Tables inside the Database</h3>
 <div style="text-align: justify">
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To create a database (e.g., <code>my_database</code>), one can run the following code -</p>
 <div class="cell">
@@ -864,9 +811,8 @@ Tip
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>\dt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-</section>
-<section id="querying-the-database" class="level3" data-number="6.6.2">
-<h3 data-number="6.6.2" class="anchored" data-anchor-id="querying-the-database"><span class="header-section-number">6.6.2</span> Querying the Database</h3>
+</section><section id="querying-the-database" class="level3" data-number="6.6.2"><h3 data-number="6.6.2" class="anchored" data-anchor-id="querying-the-database">
+<span class="header-section-number">6.6.2</span> Querying the Database</h3>
 <div style="text-align: justify">
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Once the database is created, we need to retrieve data from the database for which we need to write queries. For example, we want retireve <code>prodid</code>, <code>name</code>, and <code>city</code> from the table <em>products</em>. Then, we need to write the following query -</p>
 <div class="cell">
@@ -908,9 +854,8 @@ Tip
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>\q</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-</section>
-<section id="saving-a-database-from-postgresql" class="level3" data-number="6.6.3">
-<h3 data-number="6.6.3" class="anchored" data-anchor-id="saving-a-database-from-postgresql"><span class="header-section-number">6.6.3</span> Saving a Database from PostgreSQL</h3>
+</section><section id="saving-a-database-from-postgresql" class="level3" data-number="6.6.3"><h3 data-number="6.6.3" class="anchored" data-anchor-id="saving-a-database-from-postgresql">
+<span class="header-section-number">6.6.3</span> Saving a Database from PostgreSQL</h3>
 <div style="text-align: justify">
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In order to share a database with stakeholders, we need to save the a particular database. Therefore, knowing how to save the database is very important. We must use the Command Prompt (<code>cmd</code>) to save a database. First, we need to open a command prompt following step # 01 in <a href="#sec-cmdconnection" class="quarto-xref"><span>Section 6.5.2</span></a>. Then we need to write the following codes on command prompt -</p>
 <div class="cell">
@@ -942,9 +887,8 @@ Tip
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In the fourth line of code above - <code>pg_dump -h localhost -d name_of_your_database -U postgres -p 5433 -F tar &gt;K:\name_of_your_database.tar</code>- the “<code>name_of_your_database</code>” is the database name that you want to save to share and “<code>K:\\</code>” is the directory (folder) address (path) on which you want to save your database and “<code>name_of_your_database</code>” is the name of the database that you would like to assign to the saved database and “.tar” is the file extension. It is important to note that when you run the fourth line of code above, it might show the message - “<strong>Access is denied</strong>”. In such situation, you should change the path (address) of the directory in which you would like to save the database.</p>
 </div>
-</section>
-<section id="uploading-a-database-to-postgresql" class="level3" data-number="6.6.4">
-<h3 data-number="6.6.4" class="anchored" data-anchor-id="uploading-a-database-to-postgresql"><span class="header-section-number">6.6.4</span> Uploading a Database to PostgreSQL</h3>
+</section><section id="uploading-a-database-to-postgresql" class="level3" data-number="6.6.4"><h3 data-number="6.6.4" class="anchored" data-anchor-id="uploading-a-database-to-postgresql">
+<span class="header-section-number">6.6.4</span> Uploading a Database to PostgreSQL</h3>
 <div style="text-align: justify">
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sometimes, you might need to upload a database to PostgreSQL. Therefore, you should know how you can upload the database to PostgreSQL. First, you should create a database following the process as described in <a href="#sec-creatingdatabase" class="quarto-xref"><span>Section 6.6.1</span></a>. For example, we create a database called <code>my_database</code> in PostgreSQL. Assume that the database that we want to upload to PostgreSQL is in the path - <code>K:\</code> and the name of the database is <code>my_database_upload</code>. Therefore, the complete path of the database to be uploaded is - “<code>K:\my_database_upload.tar</code>”. Then, you should open a command prompt as described in <a href="#sec-cmdconnection" class="quarto-xref"><span>Section 6.5.2</span></a>. Then run the following code -</p>
 <div class="cell">
@@ -977,66 +921,65 @@ Tip
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In the fourth line of code above - <code>pg_restore -h localhost -p 5433 -d my_database -U postgres K:\my_database_upload.tar</code>- “<code>my_database</code>” is the name of the database that you created on the PostgreSQL and “<code>K:\my_database_upload.tar</code>” is the path of the database to be uploaded.</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Once you upload the database to the PostgreSQL , you can check whether the database is uploaded by following <a href="#sec-dealdatabase" class="quarto-xref"><span>Section 6.6</span></a>.</p>
 </div>
-</section>
-</section>
-<section id="querying-postgresql-database-using-r" class="level2" data-number="6.7">
-<h2 data-number="6.7" class="anchored" data-anchor-id="querying-postgresql-database-using-r"><span class="header-section-number">6.7</span> Querying PostgreSQL Database Using <code>R</code></h2>
+</section></section><section id="querying-postgresql-database-using-r" class="level2" data-number="6.7"><h2 data-number="6.7" class="anchored" data-anchor-id="querying-postgresql-database-using-r">
+<span class="header-section-number">6.7</span> Querying PostgreSQL Database Using <code>R</code>
+</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing Necessary Packages</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DBI)</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RPostgres)</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(askpass)</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Importing Necessary Packages</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dbi.r-dbi.org">DBI</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rpostgres.r-dbi.org">RPostgres</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r-lib/askpass">askpass</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In order to connect to the local postgreSQL database, you can run the following code. However, there is a problem that if you publish this connection code, your password will be shared; therefore, it is better not to share the password.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Connecting to PostgreSQL Database </span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>con <span class="ot">=</span> <span class="fu">dbConnect</span>(RPostgres<span class="sc">::</span><span class="fu">Postgres</span>()</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>                 , <span class="at">host=</span><span class="st">'localhost'</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>                 , <span class="at">port=</span><span class="st">'5433'</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>                 , <span class="at">dbname=</span><span class="st">'my_database'</span>,</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>                 , <span class="at">user=</span><span class="st">'postgres'</span></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>                 , <span class="at">password=</span><span class="st">"YourPassword"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Connecting to PostgreSQL Database </span></span>
+<span><span class="va">con</span> <span class="op">=</span> <span class="fu"><a href="https://dbi.r-dbi.org/reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RPostgres</span><span class="fu">::</span><span class="fu"><a href="https://rpostgres.r-dbi.org/reference/Postgres.html">Postgres</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>                 , host<span class="op">=</span><span class="st">'localhost'</span></span>
+<span>                 , port<span class="op">=</span><span class="st">'5433'</span></span>
+<span>                 , dbname<span class="op">=</span><span class="st">'my_database'</span>,</span>
+<span>                 , user<span class="op">=</span><span class="st">'postgres'</span></span>
+<span>                 , password<span class="op">=</span><span class="st">"YourPassword"</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For the below code, first we set the password in environment variable in R environment. Since I use IDE <code>Positron</code> (or VS Code), I get access to the environment by running the following code. Then, the password is stored by running the code - <code>POSTGRESS_PASSWORD="YOURPASSWORD"</code>. Replace, the word “YOURPASSWORD” with your own password and save the file.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(usethis)</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">edit_r_environ</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://usethis.r-lib.org">usethis</a></span><span class="op">)</span></span>
+<span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/edit.html">edit_r_environ</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Connecting to PostgreSQL Database </span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>con <span class="ot">=</span> <span class="fu">dbConnect</span>(RPostgres<span class="sc">::</span><span class="fu">Postgres</span>()</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>                 , <span class="at">host=</span><span class="st">'localhost'</span></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>                 , <span class="at">port=</span><span class="st">'5433'</span></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>                 , <span class="at">dbname=</span><span class="st">'my_database'</span>,</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>                 , <span class="at">user=</span><span class="st">'postgres'</span></span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>                 , <span class="at">password=</span> <span class="fu">Sys.getenv</span>(<span class="st">"POSTGRESS_PASSWORD"</span>)</span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>                 )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Connecting to PostgreSQL Database </span></span>
+<span><span class="va">con</span> <span class="op">=</span> <span class="fu"><a href="https://dbi.r-dbi.org/reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RPostgres</span><span class="fu">::</span><span class="fu"><a href="https://rpostgres.r-dbi.org/reference/Postgres.html">Postgres</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>                 , host<span class="op">=</span><span class="st">'localhost'</span></span>
+<span>                 , port<span class="op">=</span><span class="st">'5433'</span></span>
+<span>                 , dbname<span class="op">=</span><span class="st">'my_database'</span>,</span>
+<span>                 , user<span class="op">=</span><span class="st">'postgres'</span></span>
+<span>                 , password<span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv</a></span><span class="op">(</span><span class="st">"POSTGRESS_PASSWORD"</span><span class="op">)</span></span>
+<span>                 <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Alternatively, you can use <code>askpass</code> package to input your password without sharing your password with third party.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Connecting to PostgreSQL Database </span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>con <span class="ot">=</span> <span class="fu">dbConnect</span>(RPostgres<span class="sc">::</span><span class="fu">Postgres</span>()</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>                 , <span class="at">host=</span><span class="st">'localhost'</span></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>                 , <span class="at">port=</span><span class="st">'5433'</span></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>                 , <span class="at">dbname=</span><span class="st">'my_database'</span>,</span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>                 , <span class="at">user=</span><span class="st">'postgres'</span></span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>                 , <span class="at">password=</span>askpass<span class="sc">::</span><span class="fu">askpass</span>(<span class="st">"Enter your database password (R):"</span>)</span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>                 )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Connecting to PostgreSQL Database </span></span>
+<span><span class="va">con</span> <span class="op">=</span> <span class="fu"><a href="https://dbi.r-dbi.org/reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RPostgres</span><span class="fu">::</span><span class="fu"><a href="https://rpostgres.r-dbi.org/reference/Postgres.html">Postgres</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>                 , host<span class="op">=</span><span class="st">'localhost'</span></span>
+<span>                 , port<span class="op">=</span><span class="st">'5433'</span></span>
+<span>                 , dbname<span class="op">=</span><span class="st">'my_database'</span>,</span>
+<span>                 , user<span class="op">=</span><span class="st">'postgres'</span></span>
+<span>                 , password<span class="op">=</span><span class="fu">askpass</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/askpass/man/askpass.html">askpass</a></span><span class="op">(</span><span class="st">"Enter your database password (R):"</span><span class="op">)</span></span>
+<span>                 <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking all Tables in the Database </span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dbListTables</span>(con)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Checking all Tables in the Database </span></span>
+<span><span class="fu"><a href="https://dbi.r-dbi.org/reference/dbListTables.html">dbListTables</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "agents"    "customers" "orders"    "people"    "products" </code></pre>
+<pre><code>[1] "people"    "customers" "agents"    "orders"    "products" </code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># To see a table </span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>con <span class="sc">%&gt;%</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tbl</span> (<span class="st">'orders'</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># To see a table </span></span>
+<span><span class="va">con</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/tbl.html">tbl</a></span> <span class="op">(</span><span class="st">'orders'</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># Source:   table&lt;"orders"&gt; [?? x 7]
+<pre><code># Source:   table&lt;orders&gt; [?? x 7]
 # Database: postgres  [postgres@localhost:5433/my_database]
    ordernum dateordered custid agentid prodid quantityordered totalusd
       &lt;int&gt; &lt;date&gt;       &lt;int&gt;   &lt;int&gt; &lt;chr&gt;            &lt;int&gt;    &lt;dbl&gt;
@@ -1054,9 +997,9 @@ Tip
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>con <span class="sc">%&gt;%</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tbl</span> (<span class="st">'orders'</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">collect</span> ()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">con</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/tbl.html">tbl</a></span> <span class="op">(</span><span class="st">'orders'</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/compute.html">collect</a></span> <span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 14 × 7
    ordernum dateordered custid agentid prodid quantityordered totalusd
@@ -1078,10 +1021,10 @@ Tip
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Selecting some columns </span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>con <span class="sc">%&gt;%</span></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tbl</span> (<span class="st">'orders'</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span> (ordernum, dateordered, custid, agentid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Selecting some columns </span></span>
+<span><span class="va">con</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/tbl.html">tbl</a></span> <span class="op">(</span><span class="st">'orders'</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span> <span class="op">(</span><span class="va">ordernum</span>, <span class="va">dateordered</span>, <span class="va">custid</span>, <span class="va">agentid</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># Source:   SQL [?? x 4]
 # Database: postgres  [postgres@localhost:5433/my_database]
@@ -1101,10 +1044,10 @@ Tip
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtering some rows</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>con <span class="sc">%&gt;%</span> </span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tbl</span> (<span class="st">'products'</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span> (city <span class="sc">==</span> <span class="st">"Dallas"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Filtering some rows</span></span>
+<span><span class="va">con</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/tbl.html">tbl</a></span> <span class="op">(</span><span class="st">'products'</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span> <span class="op">(</span><span class="va">city</span> <span class="op">==</span> <span class="st">"Dallas"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># Source:   SQL [3 x 5]
 # Database: postgres  [postgres@localhost:5433/my_database]
@@ -1116,25 +1059,25 @@ Tip
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># showing the SQL query</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>con <span class="sc">%&gt;%</span> </span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tbl</span> (<span class="st">'products'</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span> (city <span class="sc">==</span> <span class="st">"Dallas"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">show_query</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># showing the SQL query</span></span>
+<span><span class="va">con</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/tbl.html">tbl</a></span> <span class="op">(</span><span class="st">'products'</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span> <span class="op">(</span><span class="va">city</span> <span class="op">==</span> <span class="st">"Dallas"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/explain.html">show_query</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;SQL&gt;
-SELECT "products".*
+SELECT *
 FROM "products"
 WHERE ("city" = 'Dallas')</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Disconnecting the database </span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>con <span class="sc">%&gt;%</span> <span class="fu">dbDisconnect</span> ()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Disconnecting the database </span></span>
+<span><span class="va">con</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dbi.r-dbi.org/reference/dbDisconnect.html">dbDisconnect</a></span> <span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="querying-postgresql-database-using-python" class="level2" data-number="6.8">
-<h2 data-number="6.8" class="anchored" data-anchor-id="querying-postgresql-database-using-python"><span class="header-section-number">6.8</span> Querying PostgreSQL Database Using <code>Python</code></h2>
+</section><section id="querying-postgresql-database-using-python" class="level2" data-number="6.8"><h2 data-number="6.8" class="anchored" data-anchor-id="querying-postgresql-database-using-python">
+<span class="header-section-number">6.8</span> Querying PostgreSQL Database Using <code>Python</code>
+</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing Necessary Python Packages </span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ibis</span>
@@ -1363,18 +1306,207 @@ WHERE ("city" = 'Dallas')</code></pre>
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># To disconnect the database </span></span>
 <span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>conn.disconnect()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="online-analytical-processing-olap-database-management-system" class="level2" data-number="6.9">
-<h2 data-number="6.9" class="anchored" data-anchor-id="online-analytical-processing-olap-database-management-system"><span class="header-section-number">6.9</span> Online Analytical Processing (OLAP) Database Management System</h2>
-</section>
-<section id="conclusion" class="level2" data-number="6.10">
-<h2 data-number="6.10" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">6.10</span> Conclusion</h2>
+</section><section id="online-analytical-processing-olap-database-management-system" class="level2" data-number="6.9"><h2 data-number="6.9" class="anchored" data-anchor-id="online-analytical-processing-olap-database-management-system">
+<span class="header-section-number">6.9</span> Online Analytical Processing (OLAP) Database Management System</h2>
+<div style="text-align: justify">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Online Analytical Processing (OLAP) Database Management Systems are designed to support fast complex <strong>analytical queries over a large volume of historical data</strong> rather than for <strong>day-to-day transaction processing</strong>. OLAP is optimized for read-heavy, aggregation-intensive workloads unlike Online Transaction Processing (OLTP)<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> systems that focus on fast transactional updates.OLAP systems are used for business intelligence, reporting &amp; dashboards, and forecasting &amp; planning.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>DuckDB</code> is an OLAP database management system, which is designed for analytical processing and data science workflows rather than high‑concurrency transaction processing. It focuses on fast scans, joins, aggregations, and group‑bys over large datasets, aligning with the typical workload profile of OLAP systems.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In <code>DuckDB</code>, Data are stored in a column‑oriented format, which enhances performance for analytical queries that read many rows but only a subset of columns. One should use <code>DuckDB</code> for single‑user or small‑team analytical workloads over files or local data, and <code>PostgreSQL</code> when one needs a multi‑user, networked database that also handles transactions or mixed OLTP/OLAP.</p>
+</div>
+</section><section id="using-duckdb-database-in-r" class="level2" data-number="6.10"><h2 data-number="6.10" class="anchored" data-anchor-id="using-duckdb-database-in-r">
+<span class="header-section-number">6.10</span> Using DuckDB Database in <code>R</code>
+</h2>
+<div class="cell">
+<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># R version - 4.3.1</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://duckdb.org/">duckdb</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dbi.r-dbi.org">DBI</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dbplyr.tidyverse.org/">dbplyr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://fs.r-lib.org">fs</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/apache/arrow/">arrow</a></span><span class="op">)</span> <span class="co"># to read parquet file</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readxl.tidyverse.org">readxl</a></span><span class="op">)</span> <span class="co"># to read excel file</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># create a directory in which DuckDB database will be saved</span></span>
+<span><span class="va">duckdb_dir</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://fs.r-lib.org/reference/path.html">path</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org/reference/here.html">here</a></span><span class="op">(</span><span class="st">'DATA'</span><span class="op">)</span>, <span class="st">"duckdb_df"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/files2.html">dir.exists</a></span><span class="op">(</span><span class="va">duckdb_dir</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/files2.html">dir.create</a></span><span class="op">(</span><span class="va">duckdb_dir</span><span class="op">)</span><span class="op">}</span></span>
+<span></span>
+<span><span class="co"># Create Connection on DuckDB</span></span>
+<span><span class="va">con_duckdb</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dbi.r-dbi.org/reference/dbConnect.html">dbConnect</a></span><span class="op">(</span></span>
+<span>  drv <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/duckdb/man/duckdb.html">duckdb</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  dbdir <span class="op">=</span> <span class="fu"><a href="https://fs.r-lib.org/reference/path.html">path</a></span><span class="op">(</span><span class="va">duckdb_dir</span>, <span class="st">"duckdb.ddb"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># import datasets and send them to the DuckDB database</span></span>
+<span></span>
+<span><span class="co">## import</span></span>
+<span><span class="va">flights_df</span> <span class="op">=</span> <span class="fu">arrow</span><span class="fu">::</span><span class="fu"><a href="https://arrow.apache.org/docs/r/reference/read_parquet.html">read_parquet</a></span><span class="op">(</span><span class="st">"https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2023-01.parquet"</span><span class="op">)</span></span>
+<span><span class="va">attractive_df</span> <span class="op">=</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"C:/Users/mshar/Downloads/VA and Investment Mean Difference.xlsx"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## Send </span></span>
+<span><span class="fu"><a href="https://dbi.r-dbi.org/reference/dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span></span>
+<span>  <span class="va">con_duckdb</span>, </span>
+<span>  <span class="st">"flights"</span> <span class="co"># name on DuckDB Database</span></span>
+<span>  ,<span class="va">flights_df</span></span>
+<span>  ,overwrite <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://dbi.r-dbi.org/reference/dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span></span>
+<span>  <span class="va">con_duckdb</span>, </span>
+<span>  <span class="st">"attractive"</span> <span class="co"># name on DuckDB Database</span></span>
+<span>  ,<span class="va">attractive_df</span></span>
+<span>  ,overwrite <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># To see all tables in a DuckDB database</span></span>
+<span><span class="fu">DBI</span><span class="fu">::</span><span class="fu"><a href="https://dbi.r-dbi.org/reference/dbListObjects.html">dbListObjects</a></span><span class="op">(</span><span class="va">con_duckdb</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                    table is_prefix
+1 &lt;Id&gt; table = attractive     FALSE
+2    &lt;Id&gt; table = flights     FALSE</code></pre>
+</div>
+</div>
+<section id="eda-on-duckdb-database-tables" class="level3" data-number="6.10.1"><h3 data-number="6.10.1" class="anchored" data-anchor-id="eda-on-duckdb-database-tables">
+<span class="header-section-number">6.10.1</span> EDA on DuckDB Database Tables</h3>
+<div class="cell">
+<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">con_duckdb</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/tbl.html">tbl</a></span><span class="op">(</span><span class="st">"attractive"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">Deception</span>, <span class="va">VA</span>, <span class="va">IR_Score</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># Source:   SQL [?? x 3]
+# Database: DuckDB v0.9.1 [mshar@Windows 10 x64:R 4.3.1/DATA/duckdb_df/duckdb.ddb]
+   Deception    VA IR_Score
+       &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;
+ 1         2     2       40
+ 2         1     2       40
+ 3         2     1       20
+ 4         2     1       40
+ 5         2     2      100
+ 6         1     3       40
+ 7         1     2       40
+ 8         2     3       60
+ 9         1     1        0
+10         2     3       80
+# ℹ more rows</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">con_duckdb</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/tbl.html">tbl</a></span><span class="op">(</span><span class="st">"attractive"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/compute.html">collect</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">Deception</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 2
+  Deception     n
+      &lt;dbl&gt; &lt;int&gt;
+1         1   158
+2         2   164</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># To disconnect the database </span></span>
+<span><span class="fu">DBI</span><span class="fu">::</span><span class="fu"><a href="https://dbi.r-dbi.org/reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con_duckdb</span>, shutdown <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section></section><section id="using-duckdb-database-in-python" class="level2" data-number="6.11"><h2 data-number="6.11" class="anchored" data-anchor-id="using-duckdb-database-in-python">
+<span class="header-section-number">6.11</span> Using DuckDB Database in <code>Python</code>
+</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> duckdb</span>
+<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a><span class="co"># pip install ibis </span></span>
+<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a><span class="co"># pip install ibis-framework[duckdb]</span></span>
+<span id="cb71-5"><a href="#cb71-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ibis </span>
+<span id="cb71-6"><a href="#cb71-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ibis.selector <span class="im">as</span> s </span>
+<span id="cb71-7"><a href="#cb71-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ibis <span class="im">import</span> _</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="co">##############################################</span></span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: Create and Connect to DuckDB Database</span></span>
+<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a><span class="co">##############################################</span></span>
+<span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-5"><a href="#cb72-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify folder and database file</span></span>
+<span id="cb72-6"><a href="#cb72-6" aria-hidden="true" tabindex="-1"></a>db_folder <span class="op">=</span> <span class="st">"./DATA/duckdb_df_python"</span>  <span class="co"># Change to your path</span></span>
+<span id="cb72-7"><a href="#cb72-7" aria-hidden="true" tabindex="-1"></a>os.makedirs(db_folder, exist_ok<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb72-8"><a href="#cb72-8" aria-hidden="true" tabindex="-1"></a>db_path <span class="op">=</span> os.path.join(db_folder, <span class="st">"my_database.duckdb"</span>)</span>
+<span id="cb72-9"><a href="#cb72-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-10"><a href="#cb72-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Connect to persistent DuckDB (creates if not exists)</span></span>
+<span id="cb72-11"><a href="#cb72-11" aria-hidden="true" tabindex="-1"></a>con <span class="op">=</span> ibis.duckdb.<span class="ex">connect</span>(db_path)</span>
+<span id="cb72-12"><a href="#cb72-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Connected to: </span><span class="sc">{</span>db_path<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co">####################################</span></span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2: Load Data into Named Table</span></span>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a><span class="co">#####################################</span></span>
+<span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read Parquet and create persistent table</span></span>
+<span id="cb73-5"><a href="#cb73-5" aria-hidden="true" tabindex="-1"></a>flights_df <span class="op">=</span> con.read_parquet(<span class="st">"https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2023-01.parquet"</span>)</span>
+<span id="cb73-6"><a href="#cb73-6" aria-hidden="true" tabindex="-1"></a>attractive_df <span class="op">=</span> pd.read_excel(<span class="st">"C:/Users/mshar/Downloads/VA and Investment Mean Difference.xlsx"</span>)</span>
+<span id="cb73-7"><a href="#cb73-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-8"><a href="#cb73-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Save as named table (materializes data)</span></span>
+<span id="cb73-9"><a href="#cb73-9" aria-hidden="true" tabindex="-1"></a>con.create_table(<span class="st">"flights"</span>, flights_df, overwrite<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb73-10"><a href="#cb73-10" aria-hidden="true" tabindex="-1"></a>con.create_table(<span class="st">"attractive_voice"</span>, attractive_df, overwrite <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb73-11"><a href="#cb73-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-12"><a href="#cb73-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Verify</span></span>
+<span id="cb73-13"><a href="#cb73-13" aria-hidden="true" tabindex="-1"></a>con.table(<span class="st">"flights"</span>).columns </span>
+<span id="cb73-14"><a href="#cb73-14" aria-hidden="true" tabindex="-1"></a>con.table(<span class="st">"flights"</span>).count().execute()</span>
+<span id="cb73-15"><a href="#cb73-15" aria-hidden="true" tabindex="-1"></a>con.list_tables()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co">#############################################</span></span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 3: dplyr-Like Queries (DBI Equivalent)</span></span>
+<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a><span class="co">#############################################</span></span>
+<span id="cb74-4"><a href="#cb74-4" aria-hidden="true" tabindex="-1"></a>flights <span class="op">=</span> con.table(<span class="st">"flights"</span>)  <span class="co"># Like DBI dbReadTable or dbplyr tbl()</span></span>
+<span id="cb74-5"><a href="#cb74-5" aria-hidden="true" tabindex="-1"></a>flights.schema()</span>
+<span id="cb74-6"><a href="#cb74-6" aria-hidden="true" tabindex="-1"></a>flights.execute()</span>
+<span id="cb74-7"><a href="#cb74-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter, mutate, aggregate</span></span>
+<span id="cb74-8"><a href="#cb74-8" aria-hidden="true" tabindex="-1"></a>monthly_stats <span class="op">=</span> (flights</span>
+<span id="cb74-9"><a href="#cb74-9" aria-hidden="true" tabindex="-1"></a>                 .<span class="bu">filter</span>(_.tpep_pickup_datetime <span class="op">&gt;=</span> <span class="st">"2023-01-01"</span>, _.passenger_count <span class="op">&gt;</span> <span class="dv">0</span>)</span>
+<span id="cb74-10"><a href="#cb74-10" aria-hidden="true" tabindex="-1"></a>                 .mutate(month<span class="op">=</span>_.tpep_pickup_datetime.month())</span>
+<span id="cb74-11"><a href="#cb74-11" aria-hidden="true" tabindex="-1"></a>                 .group_by(_.month)</span>
+<span id="cb74-12"><a href="#cb74-12" aria-hidden="true" tabindex="-1"></a>                 .aggregate(</span>
+<span id="cb74-13"><a href="#cb74-13" aria-hidden="true" tabindex="-1"></a>                     trips<span class="op">=</span>_.VendorID.count(),</span>
+<span id="cb74-14"><a href="#cb74-14" aria-hidden="true" tabindex="-1"></a>                     avg_fare<span class="op">=</span>_.total_amount.mean(),</span>
+<span id="cb74-15"><a href="#cb74-15" aria-hidden="true" tabindex="-1"></a>                     med_distance<span class="op">=</span>_.trip_distance.median()</span>
+<span id="cb74-16"><a href="#cb74-16" aria-hidden="true" tabindex="-1"></a>                 )</span>
+<span id="cb74-17"><a href="#cb74-17" aria-hidden="true" tabindex="-1"></a>                 .order_by(_.month)</span>
+<span id="cb74-18"><a href="#cb74-18" aria-hidden="true" tabindex="-1"></a>                )</span>
+<span id="cb74-19"><a href="#cb74-19" aria-hidden="true" tabindex="-1"></a>monthly_stats.execute() <span class="co"># this will execute the code and produces the results</span></span>
+<span id="cb74-20"><a href="#cb74-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb74-21"><a href="#cb74-21" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> con.sql(<span class="st">"""</span></span>
+<span id="cb74-22"><a href="#cb74-22" aria-hidden="true" tabindex="-1"></a><span class="st">    SELECT </span></span>
+<span id="cb74-23"><a href="#cb74-23" aria-hidden="true" tabindex="-1"></a><span class="st">        EXTRACT(MONTH FROM tpep_pickup_datetime) AS month,</span></span>
+<span id="cb74-24"><a href="#cb74-24" aria-hidden="true" tabindex="-1"></a><span class="st">        COUNT(VendorID) AS trips,</span></span>
+<span id="cb74-25"><a href="#cb74-25" aria-hidden="true" tabindex="-1"></a><span class="st">        AVG(total_amount) AS avg_fare,</span></span>
+<span id="cb74-26"><a href="#cb74-26" aria-hidden="true" tabindex="-1"></a><span class="st">        MEDIAN(trip_distance) AS med_distance</span></span>
+<span id="cb74-27"><a href="#cb74-27" aria-hidden="true" tabindex="-1"></a><span class="st">    FROM flights</span></span>
+<span id="cb74-28"><a href="#cb74-28" aria-hidden="true" tabindex="-1"></a><span class="st">    WHERE tpep_pickup_datetime &gt;= '2023-01-01' AND passenger_count &gt; 0</span></span>
+<span id="cb74-29"><a href="#cb74-29" aria-hidden="true" tabindex="-1"></a><span class="st">    GROUP BY month</span></span>
+<span id="cb74-30"><a href="#cb74-30" aria-hidden="true" tabindex="-1"></a><span class="st">    ORDER BY month</span></span>
+<span id="cb74-31"><a href="#cb74-31" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span>)</span>
+<span id="cb74-32"><a href="#cb74-32" aria-hidden="true" tabindex="-1"></a>result.execute()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="co">##################################</span></span>
+<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 3: Disconnect the database </span></span>
+<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a><span class="co">##################################</span></span>
+<span id="cb75-4"><a href="#cb75-4" aria-hidden="true" tabindex="-1"></a>con.disconnect()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="conclusion" class="level2" data-number="6.12"><h2 data-number="6.12" class="anchored" data-anchor-id="conclusion">
+<span class="header-section-number">6.12</span> Conclusion</h2>
+<div style="text-align: justify">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;It has shown that modern data work rarely depends on a single database technology; instead, it benefits from combining systems that are each optimized for specific tasks. By examining PostgreSQL and DuckDB side by side, the discussion emphasized how architectural choices such as row- versus column-oriented storage, client–server versus embedded deployment, and OLTP versus analytical optimization shape the kinds of workloads each system serves best. ​</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>PostgreSQL</code> emerged as a robust, general-purpose relational DBMS, ideal for multi-user, transactional applications that demand strong consistency, rich SQL features, and long-term operational stability. <code>DuckDB</code>, in contrast, demonstrated how an in-process, columnar engine can deliver interactive analytical performance on local files and data frames, lowering infrastructure overhead while integrating smoothly into data science workflows. ​</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Working through both systems underscored that the core relational concepts and SQL syntax remain portable, even as execution models, indexing strategies, and performance characteristics differ. This comparative perspective prepares readers to design data architectures in which an operational store such as PostgreSQL can be complemented by analytical accelerators like DuckDB, yielding pipelines that are both reliable and efficient. ​</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The central lesson is that database competency now extends beyond learning one “enterprise” system to understanding how specialized engines can be composed into a coherent ecosystem. Equipped with this foundation, readers are better positioned to evaluate new platforms, prototype solutions, and choose appropriate tools—or combinations of tools—for their own transactional and analytical requirements.</p>
+</div>
 
 
-</section>
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><hr>
+<ol>
+<li id="fn1"><p>OLTP Database Management Systems are databases designed to handle a large number of short, fast, day-to-day transactions reliably and concurrently. They are the backbone of operational applications like banking systems, e-commerce platforms, reservation systems, and ERP software.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -1782,9 +1914,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
+</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
       <a href="./dashboard.html" class="pagination-link" aria-label="Dashboard for Visualization">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Dashboard for Visualization</span></span>
       </a>          
@@ -1796,8 +1926,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
 </nav>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
+<footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
 <p>Copyright©Sharif Islam</p>
 </div>   
@@ -1809,8 +1938,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>
   </div>
 </footer>
-
-
 
 
 </body></html>

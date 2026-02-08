@@ -24,7 +24,9 @@ At the End of the Chapter, Students should be Able to -
 ## Introduction
 
 ::: {style="text-align: justify"}
-     In descriptive statistics, we summarize the data using different metrics such as mean, median, standard deviation, minimum value, maximum value, and percentile. Descriptive statisics is also called summary statistics.
+     Exploratory Data Analysis (EDA) is the initial process of examining a dataset to understand its main characteristics before applying formal statistical models or machine learning algorithms. It typically combines summary statistics with visual tools such as histograms, boxplots, and scatterplots to uncover patterns, spot anomalies, test assumptions, and check data quality. 
+
+     By revealing relationships among variables, distributions, and potential outliers, EDA helps refine research questions, choose appropriate modeling techniques, and prevent misleading conclusions. In this way, EDA acts as a bridge between raw data and rigorous analysis, ensuring that subsequent steps are grounded in an accurate and transparent understanding of the underlying information.
 :::
 
 ## Data Collection & Importing
@@ -70,6 +72,19 @@ import pandas as pd
 import janitor 
 from janitor import clean_names, remove_empty
 ```
+
+
+
+## polars 
+
+```{python}
+# loading the package 
+import polars as pl
+```
+
+
+
+
 :::
 
 ## Importing the Dataset
@@ -89,6 +104,15 @@ df = read_csv("https://raw.githubusercontent.com/msharifbd/DATA/main/Al-Bundy_ra
 # importing data frame 
 df_pd = pd.read_csv("https://raw.githubusercontent.com/msharifbd/DATA/main/Al-Bundy_raw-data.csv")
 ```
+
+## polars 
+
+```{python}
+# importing data frame 
+df_pl = pl.read_csv("https://raw.githubusercontent.com/msharifbd/DATA/main/Al-Bundy_raw-data.csv")
+```
+
+
 :::
 
 ## Meta Data
@@ -169,6 +193,25 @@ df_pd.dtypes
 ```{python}
 df_pd.sample(n=10)
 ```
+
+## polars 
+
+```{python}
+# metadata
+df_pl.shape # rows and columns
+df_pl.height # rows
+df_pl.width # columns 
+df_pl.columns
+len(df_pl.columns)
+df_pl.schema # column names and their types 
+
+df_pl.dtypes
+df_pl.head()
+df_pl.tail()
+df_pl.sample(n=10)
+df_pl.describe()
+```
+
 :::
 
 ## Cleaning the Dataset
@@ -228,6 +271,16 @@ df_pd.rename(columns=str.upper, inplace = True)
 df_pd.columns 
 
 ```
+
+## polars 
+
+```{python}
+# upper case column name
+df_pl.rename({col: col.upper() for col in df_pl.columns})
+df_pl.rename({col: col.strip().upper().replace(' ', '_') for col in df_pl.columns})
+```
+
+
 :::
 
 ### Changing the Types of Variables
@@ -276,6 +329,30 @@ df_pd.INVOICENO = df_pd.INVOICENO.astype(str)
 df_pd[['MONTH', 'PRODUCTID']] = df_pd[['MONTH', 'PRODUCTID']].astype(str)
 df_pd.info()
 ```
+
+## polars 
+
+
+```{python}
+# Change the type of columns 
+df_pl = df_pl.with_columns(
+    pl.col("Date").str.strptime(pl.Date, "%m/%d/%Y")
+)
+df_pl.head()
+df_pl.schema
+```
+
+```{python}
+# change to character variable
+df_pl = df_pl.with_columns(pl.col("InvoiceNo").cast(pl.Utf8))
+df_pl.schema
+df_pl = df_pl.with_columns(pl.col(["ProductID", "Month"]).cast(pl.Utf8))
+df_pl.schema
+```
+
+
+
+
 :::
 
 ## Some Other Useful Functions
@@ -306,25 +383,41 @@ df_pd['YEAR'].value_counts()
 ```{python}
 df_pd['YEAR'].unique()
 ```
+
+
+## polars 
+
+```{python}
+df_pl.select(pl.col("Year").value_counts())
+df_pl.select(pl.col("Year").value_counts()).unnest("Year")
+
+df_pl.select(pl.col("Gender").value_counts())
+df_pl.select(pl.col("Gender").value_counts()).unnest("Gender")
+
+df_pl.group_by("Gender").len()
+df_pl.group_by("Gender").len().rename({"len":"Total"})
+```
+
+
 :::
 
 ## Six Verbs for EDA
 
-     @tbl-compareDplyrPandas shows the comparable functions in both `dplyr` and `pandas` packages. These functions are very much important to perform exploratory data analysis in both `R` and `Python`. `group_by` (`groupby` in pandas) and `summarize ()`[^1] (`agg ()` in pandas) are often used together; therefore, they are in the same group in @tbl-compareDplyrPandas.
+     @tbl-compareDplyrPandas shows the comparable functions in both `dplyr` and `pandas` packages. These functions are very much important to perform exploratory data analysis in both `R` and `Python`. `group_by` (`groupby` in pandas) and `summarize ()`[^eda-1] (`agg ()` in pandas) are often used together; therefore, they are in the same group in @tbl-compareDplyrPandas.
 
-[^1]: You can also use British spelling - `summarise ()`
+[^eda-1]: You can also use British spelling - `summarise ()`
 
 ```{r}
 #| include: false
 tidyverse_pandas = tibble::tribble(
-  ~`Verb Number`,~`tidyverse`, ~ `pandas`, 
-  '1','filter ()', 'query () or loc () or iloc ()',
-  '2','arrange ()', 'sort_values ()',
-  '3','select ()', 'filter () or loc ()',
-  '4','rename ()', 'rename ()',
-  '5','mutate ()', 'assign ()',
-  '6','group_by ()', 'groupby ()',
-  '6','summarize ()', 'agg ()'
+  ~`Verb Number`,~`tidyverse`, ~ `pandas`, ~ `polars` ,
+  '1','filter ()', 'query () or loc () or iloc ()', 'filter ()',
+  '2','arrange ()', 'sort_values ()', 'sort ()',
+  '3','select ()', 'filter () or loc ()', 'select ()', 
+  '4','rename ()', 'rename ()', 'rename ()', 
+  '5','mutate ()', 'assign ()', 'with_columns ()', 
+  '6','group_by ()', 'groupby ()', 'group_by ()', 
+  '6','summarize ()', 'agg ()', 'agg ()'
 )
 
 ```
@@ -344,9 +437,9 @@ kbl(tidyverse_pandas, booktabs = TRUE
 
 ### 1st Verb - filter () Function
 
-     Filter functions are used to subset a data frame based on rows, meaning that retaining rows that satisfy given conditions. Filtering rows is also called slicing[^2] becasue we obtain a set of elements by filtering.
+     Filter functions are used to subset a data frame based on rows, meaning that retaining rows that satisfy given conditions. Filtering rows is also called slicing[^eda-2] becasue we obtain a set of elements by filtering.
 
-[^2]: Indexing involves obtaining individual elements.
+[^eda-2]: Indexing involves obtaining individual elements.
 
 ::: panel-tabset
 ## dplyr
@@ -423,6 +516,37 @@ df_pd.loc[
     df_pd['COUNTRY']=='United States',
     ['COUNTRY', "UNITPRICE", "SALEPRICE"]]
 ```
+
+## polars 
+
+```{python}
+df_pl.filter(pl.col("Year") == 2015)
+```
+
+```{python}
+df_pl.filter(pl.col("Country").is_in(["United States", "Canada"]))
+```
+
+```{python}
+df_pl.filter(
+    (pl.col("Country") == "United States") & (pl.col("Year") == 2015)
+    )
+```
+
+```{python}
+df_pl.filter(
+    (pl.col("Country") == "United States") & (pl.col("Year").is_in([2015, 2016]) )
+    )
+```
+
+```{python}
+df_pl.filter(
+    (pl.col("Country").is_in(["United States", "Canada"])) & (pl.col("Year")== 2014)
+)
+```
+
+
+
 :::
 
 ### 2nd Verb - arrange () Function
@@ -460,6 +584,19 @@ df_pd.sort_values(by =['DATE'], ascending = False)
 ```{python}
 df_pd.sort_values(by =['MONTH', 'SALEPRICE'])
 ```
+
+## polars 
+
+```{python}
+df_pl.sort("Date") # default asecending 
+```
+
+```{python}
+df_pl.sort(['Month', 'SalePrice'])
+df_pl.sort(['Month', 'SalePrice'], descending = [True, False])
+```
+
+
 :::
 
 ### 3rd Verb - select () Function
@@ -623,6 +760,49 @@ col_rest = df_pd.columns.difference(col_first, sort=False).to_list()
 df_pd2 = df_pd [col_first +col_rest]
 df_pd2.info()
 ```
+
+## polars 
+```{python}
+df_pl.select(["Date", 'UnitPrice', "Discount"])
+```
+
+```{python}
+col_to_select = [c for c in df_pl.columns if c.startswith("Size")]
+df_pl.select(pl.col(col_to_select))
+```
+
+```{python}
+col_to_select = [c for c in df_pl.columns if c.endswith("Price")]
+df_pl.select(pl.col(col_to_select))
+```
+
+```{python}
+col_to_select = [c for c in df_pl.columns if "_" in c]
+df_pl.select(pl.col(col_to_select))
+```
+
+```{python}
+col_to_select = [c for c in df_pl.columns if "Size" in c]
+df_pl.select(pl.col(col_to_select))
+```
+
+```{python}
+col_to_select = [c for c in df_pl.columns if c.startswith("S")]
+df_pl.select(pl.col(col_to_select))
+```
+
+```{python}
+df_pl.select(pl.col(pl.Utf8)) # all character columns
+df_pl.select(pl.col(pl.Int64)) # all numeric columns 
+```
+
+```{python}
+cols = ["Month", "Year"] + [c for c in df_pl.columns if c not in ["Month", "Year"]]
+df_pl.select(cols)
+```
+
+
+
 :::
 
 ### 4th Verb - rename () Function
@@ -645,6 +825,15 @@ df |>
      .pipe(lambda x: x.info())
 )
 ```
+
+## polars 
+
+
+```{python}
+df_pl = df_pl.rename({"ProductID": "PRODUCTID", "InvoiceNo":"INVOICE"})
+df_pl.schema
+```
+
 :::
 
 ### 5th Verb - mutate () Function
@@ -684,6 +873,18 @@ df_pd.info()
     .head(5)
 )
 ```
+
+## polars 
+
+```{python}
+df_pl.with_columns(
+    NEWCOLUMN = 5,
+    SALEPRICE2 = pl.col('UnitPrice')*(1-pl.col('Discount'))
+)
+```
+
+
+
 :::
 
 ### 6th Verbs - group_by () and summarize () Functions
@@ -795,6 +996,19 @@ agg_dict = {
 
 df_pd[['UNITPRICE', 'SALEPRICE']].agg(agg_dict)
 ```
+
+## polars 
+```{python}
+df_pl.group_by("Country").agg(pl.col("UnitPrice").mean().alias("AvgPrice"))
+```
+
+```{python}
+df_pl.group_by("Country").agg(
+    [pl.col("UnitPrice").mean().alias("Avgprice"),
+     pl.col("SalePrice").mean().alias("AvgSalePrice")]
+)
+```
+
 :::
 
 ## Reshaping Data
@@ -873,6 +1087,28 @@ penguins[["island", "bill_length_mm"]] \
     .pivot(columns = "island", values = "bill_length_mm") \
     .fillna(0)
 ```
+
+## polars 
+
+
+```{python}
+import palmerpenguins
+
+penguins = palmerpenguins.load_penguins()
+penguins.head()
+df_penguins = pl.DataFrame(penguins)
+```
+
+```{python}
+# Long to Wide (pivot)
+df_penguins.with_columns(
+    pl.arange(0,df_penguins.height).alias("row_num")
+).select(pl.col(["row_num", "island","bill_length_mm"])
+).pivot(values = "bill_length_mm", on = "island", index = "row_num") \
+    .fill_null (0)
+```
+
+
 :::
 
 ### Wide-to-Long Format
@@ -904,12 +1140,28 @@ penguins.melt(value_vars=["bill_length_mm", "bill_depth_mm","flipper_length_mm",
               id_vars = ['species', 'island', 'sex', 'year']
               )
 ```
+
+## polars 
+
+
+```{python}
+# Wide to Long (melt() but now polar calls it unpivot() )
+df_penguins.with_columns(
+    pl.arange(0,df_penguins.height).alias("row_num")
+).select(pl.col(["row_num", "island","bill_length_mm"])
+).pivot(values = "bill_length_mm", on = "island", index = "row_num") \
+    .unpivot(index = "row_num", value_name = "bill_length_mm")
+```
+
+
+
+
 :::
 
 ## Merging Datasets
 
 ::: {style="text-align: justify"}
-     Many times, for analysis purposes, we need to join two datasets. This process is also called merging[^3]. There are different types of joining. So, it is important to learn about those joining techniques. In @fig-joindatasets shows the joining technique and functions using `dplyr` in R. Below all of these joining functions are explained.
+     Many times, for analysis purposes, we need to join two datasets. This process is also called merging[^eda-3]. There are different types of joining. So, it is important to learn about those joining techniques. In @fig-joindatasets shows the joining technique and functions using `dplyr` in R. Below all of these joining functions are explained.
 
 -   `left_join()`: The merged dataset contains **all** observations fromthe **first** (or left) dataset and only **matched** observations from the **second** (or right) dataset
 
@@ -952,7 +1204,7 @@ kbl(df_join, booktabs = TRUE
 ```
 :::
 
-[^3]: In database context, it is "merging", but commonly it is called "joining".
+[^eda-3]: In database context, it is "merging", but commonly it is called "joining".
 
 ::: panel-tabset
 ## dplyr
@@ -1017,6 +1269,64 @@ semi_join = df1[df1['id'].isin(df2['id'])]
 # Anti join
 anti_join = df1[~df1['id'].isin(df2['id'])]
 ```
+
+## polars 
+
+```{python}
+dataset1 = pl.read_csv("https://raw.githubusercontent.com/msharifbd/DATA/refs/heads/main/DATA.csv")
+dataset2 = pl.read_csv("https://github.com/msharifbd/DATA/raw/refs/heads/main/DATA2.csv",encoding="latin-1")
+
+```
+
+```{python}
+dataset1.join(dataset2, on = ["ticker", 'year'], how = "left")
+```
+
+```{python}
+dataset1_drop = dataset1.unique(subset=['ticker', 'year'])
+dataset2_drop = dataset2.unique(subset=['ticker', 'year'])
+```
+
+```{python}
+dataset1_drop.join(dataset2_drop, on = ["ticker", 'year'], how = "left")
+```
+
+```{python}
+dataset1_drop.join(dataset2_drop, on = ["ticker", 'year'], how = "left").shape
+```
+
+```{python}
+df1 = pl.DataFrame({'id': [1, 2, 3], 'value': ['A', 'B', 'C']})
+df2 = pl.DataFrame({'id': [2, 3, 4], 'other_value': ['X', 'Y', 'Z']})
+```
+
+```{python}
+# Left join
+left_join = df1.join(df2, on='id', how='left')
+```
+
+```{python}
+# Inner join
+inner_join = df1.join(df2, on='id')
+```
+
+```{python}
+# Semi join
+semi_join = df1.join(df2, on="id", how="semi")
+```
+
+```{python}
+# Anti join
+anti_join = df1.join(df2, on="id", how="anti")
+```
+
 :::
 
 ## Conclusions
+
+::: {style="text-align: justify"}
+     Exploratory Data Analysis (EDA) is the crucial first phase of any data-focused project, turning raw data into meaningful insights that inform all later modeling and decision choices. By systematically applying descriptive statistics and visual techniques, EDA uncovers a dataset’s structure, trends, relationships, and irregularities, so that subsequent analyses rely on sound assumptions instead of guesswork. It enables analysts to spot errors and outliers, clarify what variables represent, and pinpoint the most important features, thereby strengthening model performance, interpretability, and the overall value of the conclusions drawn. 
+
+     Rather than a single step, EDA is an iterative, reflective process that refines research questions, tests the suitability of methods, and ensures that technical work stays aligned with practical goals. Ultimately, EDA is essential: skipping it leaves statistical analysis and machine learning vulnerable to being elaborate but misguided, while using it turns them into dependable, transparent, and practically useful tools.
+
+:::

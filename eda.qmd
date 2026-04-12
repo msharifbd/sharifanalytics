@@ -24,7 +24,7 @@ At the End of the Chapter, Students should be Able to -
 ## Introduction
 
 ::: {style="text-align: justify"}
-     Exploratory Data Analysis (EDA) is the initial process of examining a dataset to understand its main characteristics before applying formal statistical models or machine learning algorithms. It typically combines summary statistics with visual tools such as histograms, boxplots, and scatterplots to uncover patterns, spot anomalies, test assumptions, and check data quality. 
+     Exploratory Data Analysis (EDA) is the initial process of examining a dataset to understand its main characteristics before applying formal statistical models or machine learning algorithms. It typically combines summary statistics with visual tools such as histograms, boxplots, and scatterplots to uncover patterns, spot anomalies, test assumptions, and check data quality.
 
      By revealing relationships among variables, distributions, and potential outliers, EDA helps refine research questions, choose appropriate modeling techniques, and prevent misleading conclusions. In this way, EDA acts as a bridge between raw data and rigorous analysis, ensuring that subsequent steps are grounded in an accurate and transparent understanding of the underlying information.
 :::
@@ -73,18 +73,12 @@ import janitor
 from janitor import clean_names, remove_empty
 ```
 
-
-
-## polars 
+## polars
 
 ```{python}
 # loading the package 
 import polars as pl
 ```
-
-
-
-
 :::
 
 ## Importing the Dataset
@@ -105,14 +99,12 @@ df = read_csv("https://raw.githubusercontent.com/msharifbd/DATA/main/Al-Bundy_ra
 df_pd = pd.read_csv("https://raw.githubusercontent.com/msharifbd/DATA/main/Al-Bundy_raw-data.csv")
 ```
 
-## polars 
+## polars
 
 ```{python}
 # importing data frame 
 df_pl = pl.read_csv("https://raw.githubusercontent.com/msharifbd/DATA/main/Al-Bundy_raw-data.csv")
 ```
-
-
 :::
 
 ## Meta Data
@@ -194,7 +186,7 @@ df_pd.dtypes
 df_pd.sample(n=10)
 ```
 
-## polars 
+## polars
 
 ```{python}
 # metadata
@@ -211,7 +203,6 @@ df_pl.tail()
 df_pl.sample(n=10)
 df_pl.describe()
 ```
-
 :::
 
 ## Cleaning the Dataset
@@ -272,15 +263,13 @@ df_pd.columns
 
 ```
 
-## polars 
+## polars
 
 ```{python}
 # upper case column name
 df_pl.rename({col: col.upper() for col in df_pl.columns})
 df_pl.rename({col: col.strip().upper().replace(' ', '_') for col in df_pl.columns})
 ```
-
-
 :::
 
 ### Changing the Types of Variables
@@ -330,8 +319,7 @@ df_pd[['MONTH', 'PRODUCTID']] = df_pd[['MONTH', 'PRODUCTID']].astype(str)
 df_pd.info()
 ```
 
-## polars 
-
+## polars
 
 ```{python}
 # Change the type of columns 
@@ -349,10 +337,6 @@ df_pl.schema
 df_pl = df_pl.with_columns(pl.col(["ProductID", "Month"]).cast(pl.Utf8))
 df_pl.schema
 ```
-
-
-
-
 :::
 
 ## Some Other Useful Functions
@@ -384,8 +368,7 @@ df_pd['YEAR'].value_counts()
 df_pd['YEAR'].unique()
 ```
 
-
-## polars 
+## polars
 
 ```{python}
 df_pl.select(pl.col("Year").value_counts())
@@ -397,8 +380,6 @@ df_pl.select(pl.col("Gender").value_counts()).unnest("Gender")
 df_pl.group_by("Gender").len()
 df_pl.group_by("Gender").len().rename({"len":"Total"})
 ```
-
-
 :::
 
 ## Six Verbs for EDA
@@ -517,7 +498,7 @@ df_pd.loc[
     ['COUNTRY', "UNITPRICE", "SALEPRICE"]]
 ```
 
-## polars 
+## polars
 
 ```{python}
 df_pl.filter(pl.col("Year") == 2015)
@@ -544,9 +525,6 @@ df_pl.filter(
     (pl.col("Country").is_in(["United States", "Canada"])) & (pl.col("Year")== 2014)
 )
 ```
-
-
-
 :::
 
 ### 2nd Verb - arrange () Function
@@ -585,7 +563,7 @@ df_pd.sort_values(by =['DATE'], ascending = False)
 df_pd.sort_values(by =['MONTH', 'SALEPRICE'])
 ```
 
-## polars 
+## polars
 
 ```{python}
 df_pl.sort("Date") # default asecending 
@@ -595,8 +573,6 @@ df_pl.sort("Date") # default asecending
 df_pl.sort(['Month', 'SalePrice'])
 df_pl.sort(['Month', 'SalePrice'], descending = [True, False])
 ```
-
-
 :::
 
 ### 3rd Verb - select () Function
@@ -761,7 +737,8 @@ df_pd2 = df_pd [col_first +col_rest]
 df_pd2.info()
 ```
 
-## polars 
+## polars
+
 ```{python}
 df_pl.select(["Date", 'UnitPrice', "Discount"])
 ```
@@ -800,9 +777,6 @@ df_pl.select(pl.col(pl.Int64)) # all numeric columns
 cols = ["Month", "Year"] + [c for c in df_pl.columns if c not in ["Month", "Year"]]
 df_pl.select(cols)
 ```
-
-
-
 :::
 
 ### 4th Verb - rename () Function
@@ -826,14 +800,12 @@ df |>
 )
 ```
 
-## polars 
-
+## polars
 
 ```{python}
 df_pl = df_pl.rename({"ProductID": "PRODUCTID", "InvoiceNo":"INVOICE"})
 df_pl.schema
 ```
-
 :::
 
 ### 5th Verb - mutate () Function
@@ -874,7 +846,7 @@ df_pd.info()
 )
 ```
 
-## polars 
+## polars
 
 ```{python}
 df_pl.with_columns(
@@ -882,9 +854,6 @@ df_pl.with_columns(
     SALEPRICE2 = pl.col('UnitPrice')*(1-pl.col('Discount'))
 )
 ```
-
-
-
 :::
 
 ### 6th Verbs - group_by () and summarize () Functions
@@ -997,7 +966,8 @@ agg_dict = {
 df_pd[['UNITPRICE', 'SALEPRICE']].agg(agg_dict)
 ```
 
-## polars 
+## polars
+
 ```{python}
 df_pl.group_by("Country").agg(pl.col("UnitPrice").mean().alias("AvgPrice"))
 ```
@@ -1008,7 +978,6 @@ df_pl.group_by("Country").agg(
      pl.col("SalePrice").mean().alias("AvgSalePrice")]
 )
 ```
-
 :::
 
 ## Reshaping Data
@@ -1088,8 +1057,7 @@ penguins[["island", "bill_length_mm"]] \
     .fillna(0)
 ```
 
-## polars 
-
+## polars
 
 ```{python}
 import palmerpenguins
@@ -1107,8 +1075,6 @@ df_penguins.with_columns(
 ).pivot(values = "bill_length_mm", on = "island", index = "row_num") \
     .fill_null (0)
 ```
-
-
 :::
 
 ### Wide-to-Long Format
@@ -1141,8 +1107,7 @@ penguins.melt(value_vars=["bill_length_mm", "bill_depth_mm","flipper_length_mm",
               )
 ```
 
-## polars 
-
+## polars
 
 ```{python}
 # Wide to Long (melt() but now polar calls it unpivot() )
@@ -1152,10 +1117,6 @@ df_penguins.with_columns(
 ).pivot(values = "bill_length_mm", on = "island", index = "row_num") \
     .unpivot(index = "row_num", value_name = "bill_length_mm")
 ```
-
-
-
-
 :::
 
 ## Merging Datasets
@@ -1270,7 +1231,7 @@ semi_join = df1[df1['id'].isin(df2['id'])]
 anti_join = df1[~df1['id'].isin(df2['id'])]
 ```
 
-## polars 
+## polars
 
 ```{python}
 dataset1 = pl.read_csv("https://raw.githubusercontent.com/msharifbd/DATA/refs/heads/main/DATA.csv")
@@ -1319,14 +1280,12 @@ semi_join = df1.join(df2, on="id", how="semi")
 # Anti join
 anti_join = df1.join(df2, on="id", how="anti")
 ```
-
 :::
 
 ## Conclusions
 
 ::: {style="text-align: justify"}
-     Exploratory Data Analysis (EDA) is the crucial first phase of any data-focused project, turning raw data into meaningful insights that inform all later modeling and decision choices. By systematically applying descriptive statistics and visual techniques, EDA uncovers a dataset’s structure, trends, relationships, and irregularities, so that subsequent analyses rely on sound assumptions instead of guesswork. It enables analysts to spot errors and outliers, clarify what variables represent, and pinpoint the most important features, thereby strengthening model performance, interpretability, and the overall value of the conclusions drawn. 
+     Exploratory Data Analysis (EDA) is the crucial first phase of any data-focused project, turning raw data into meaningful insights that inform all later modeling and decision choices. By systematically applying descriptive statistics and visual techniques, EDA uncovers a dataset’s structure, trends, relationships, and irregularities, so that subsequent analyses rely on sound assumptions instead of guesswork. It enables analysts to spot errors and outliers, clarify what variables represent, and pinpoint the most important features, thereby strengthening model performance, interpretability, and the overall value of the conclusions drawn.
 
      Rather than a single step, EDA is an iterative, reflective process that refines research questions, tests the suitability of methods, and ensures that technical work stays aligned with practical goals. Ultimately, EDA is essential: skipping it leaves statistical analysis and machine learning vulnerable to being elaborate but misguided, while using it turns them into dependable, transparent, and practically useful tools.
-
 :::

@@ -169,8 +169,14 @@ To connect to PostgreSQL Database using pgAdmin 4, pleae use the following link 
 
 ### Connection using Command Shell (`cmd`) {#sec-cmdconnection}
 
+     Using terminal on Windows and Mac, we can connect to the database. On Windows, we use command prompt (`cmd`) and on Mac we use `Terminal App` to use terminal. 
+
+::: panel-tabset
+
+## Windows 
+
 ::: {style="text-align: justify"}
-     To use the command prompt (`cmd`) to connect to PostgreSQL database, you need to use the following steps -
+     To use the command prompt (`cmd`) on Windows to connect to PostgreSQL database, you need to use the following steps -
 
 -   Step \# 01 - Open command prompt by writing `cmd` in windows search bar as shown below. Then command prompt will open.
 
@@ -185,6 +191,26 @@ To connect to PostgreSQL Database using pgAdmin 4, pleae use the following link 
 These steps should ensure that you are connected to the database.
 :::
 
+## Mac
+
+::: {style="text-align: justify"}
+     To use the Terminal App on Mac to connect to PostgreSQL database, you need to use the following steps -
+
+-   Step \# 01 - Press `Command + Spacebar`, then type `Terminal` and hit Enter button.
+
+![Search Bar on Mac](images/terminal_mac.webp)
+
+-   Step \# 02 - type `cd /Library/PostgreSQL/16/bin` on the terminal and hit enter on the keyboard
+
+-   Step \# 03 - type `./psql -U postgres `
+
+-   Step \# 04 - Now provide the password that you set while installing PostgreSQL
+
+These steps should ensure that you are connected to the database.
+
+:::
+
+:::
 ## Dealing with the Database {#sec-dealdatabase}
 
 ::: {style="text-align: justify"}
@@ -471,8 +497,14 @@ You can watch the youtube video to learn more about how to save a database from 
 
 ### Uploading a Database to PostgreSQL
 
+     Sometimes, you might need to upload a database to PostgreSQL. Therefore, you should know how you can upload the database to PostgreSQL. It is showed below how to upload a database to PostgreSQL both in Windows and Mac.
+
+
+::: panel-tabset
+## Windows
+
 ::: {style="text-align: justify"}
-     Sometimes, you might need to upload a database to PostgreSQL. Therefore, you should know how you can upload the database to PostgreSQL. First, you should create a database following the process as described in @sec-creatingdatabase. For example, we create a database called `my_database` in PostgreSQL. Assume that the database that we want to upload to PostgreSQL is in the path - `K:\` and the name of the database is `my_database_upload`. Therefore, the complete path of the database to be uploaded is - "`K:\my_database_upload.tar`". Then, you should open a command prompt as described in @sec-cmdconnection. Then run the following code -
+     First, you should create a database following the process as described in @sec-creatingdatabase. For example, we create a database called `my_database` in PostgreSQL. Assume that the database that we want to upload to PostgreSQL is in the path - `K:\` and the name of the database is `my_database_upload`. Therefore, the complete path of the database to be uploaded is - "`K:\my_database_upload.tar`". Then, you should open a command prompt as described in @sec-cmdconnection. Then run the following code -
 
 ```{r}
 #| eval: false
@@ -507,6 +539,29 @@ pg_restore -h localhost -p 5433 -d my_database -U postgres K:\my_database_upload
      In the fourth line of code above - `pg_restore -h localhost -p 5433 -d my_database -U postgres K:\my_database_upload.tar`- "`my_database`" is the name of the database that you created on the PostgreSQL and "`K:\my_database_upload.tar`" is the path of the database to be uploaded.
 
      Once you upload the database to the PostgreSQL , you can check whether the database is uploaded by following @sec-dealdatabase.
+:::
+
+## Mac
+
+::: {style="text-align: justify"}
+     First, you should create a database following the process as described in @sec-creatingdatabase. For example, we create a database called `my_database` in PostgreSQL. Assume that the database that we want to upload to PostgreSQL is in the path - `K:\` and the name of the database is `my_database_upload`. Therefore, the complete path of the database to be uploaded is - "`K:\my_database_upload.tar`". Then, you should open a command prompt as described in @sec-cmdconnection. Then run the following code -
+
+```{r}
+#| eval: false
+###########################################################
+# First line of code and then hit enter on the Keyboard
+###########################################################
+
+/Library/PostgreSQL/16/bin/pg_restore -U postgres -d my_database  K:/my_database_upload.tar
+
+
+```
+
+     In the above line of code above - `/Library/PostgreSQL/16/bin/pg_restore -U postgres -d my_database  K:/my_database_upload.tar.tar`- "`my_database`" is the name of the database that you created on the PostgreSQL and "`K:/my_database_upload.tar`" is the path^[To get the path of a folder on Mac- first, select the folder and right click your mouse; then, click "Option" button on the keyboard and finally click "Copy ... as pathname"] of the database to be uploaded.
+
+     Once you upload the database to the PostgreSQL , you can check whether the database is uploaded by following @sec-dealdatabase.
+:::
+
 :::
 
 ## Querying PostgreSQL Database Using `R`
@@ -767,15 +822,16 @@ conn.disconnect()
 ```
 
 ## Online Analytical Processing (OLAP) Database Management System
-::: {style="text-align: justify"}
-     Online Analytical Processing (OLAP) Database Management Systems are designed to support fast complex **analytical queries over a large volume of historical data** rather than for **day-to-day transaction processing**. OLAP is optimized for read-heavy, aggregation-intensive workloads unlike Online Transaction Processing (OLTP)^[OLTP Database Management Systems are databases designed to handle a large number of short, fast, day-to-day transactions reliably and concurrently. They are the backbone of operational applications like banking systems, e-commerce platforms, reservation systems, and ERP software.] systems that focus on fast transactional updates.OLAP systems are used for business intelligence, reporting & dashboards, and forecasting & planning.
 
-     `DuckDB` is an OLAP database management system, which is designed for analytical processing and data science workflows rather than high‑concurrency transaction processing. It focuses on fast scans, joins, aggregations, and group‑bys over large datasets, aligning with the typical workload profile of OLAP systems. 
+::: {style="text-align: justify"}
+     Online Analytical Processing (OLAP) Database Management Systems are designed to support fast complex **analytical queries over a large volume of historical data** rather than for **day-to-day transaction processing**. OLAP is optimized for read-heavy, aggregation-intensive workloads unlike Online Transaction Processing (OLTP)[^data_management-1] systems that focus on fast transactional updates.OLAP systems are used for business intelligence, reporting & dashboards, and forecasting & planning.
+
+     `DuckDB` is an OLAP database management system, which is designed for analytical processing and data science workflows rather than high‑concurrency transaction processing. It focuses on fast scans, joins, aggregations, and group‑bys over large datasets, aligning with the typical workload profile of OLAP systems.
 
      In `DuckDB`, Data are stored in a column‑oriented format, which enhances performance for analytical queries that read many rows but only a subset of columns. One should use `DuckDB` for single‑user or small‑team analytical workloads over files or local data, and `PostgreSQL` when one needs a multi‑user, networked database that also handles transactions or mixed OLTP/OLAP.
-
 :::
 
+[^data_management-1]: OLTP Database Management Systems are databases designed to handle a large number of short, fast, day-to-day transactions reliably and concurrently. They are the backbone of operational applications like banking systems, e-commerce platforms, reservation systems, and ERP software.
 
 ## Using DuckDB Database in `R`
 
@@ -815,7 +871,6 @@ con_duckdb = dbConnect(
 )
 ```
 
-
 ```{r}
 #| warning: false
 #| eval: false
@@ -848,6 +903,7 @@ DBI::dbListObjects(con_duckdb)
 ```
 
 ### EDA on DuckDB Database Tables
+
 ```{r}
 #| warning: false
 con_duckdb |> 
@@ -863,16 +919,13 @@ con_duckdb |>
   count(Deception)
 ```
 
-
-
 ```{r}
 #| warning: false
 # To disconnect the database 
 DBI::dbDisconnect(con_duckdb, shutdown = TRUE)
 ```
 
-
-## Using DuckDB Database in `Python` 
+## Using DuckDB Database in `Python`
 
 ```{python}
 #| warning: false 
@@ -885,7 +938,6 @@ import ibis
 import ibis.selector as s 
 from ibis import _
 ```
-
 
 ```{python}
 #| warning: false 
@@ -904,7 +956,6 @@ db_path = os.path.join(db_folder, "my_database.duckdb")
 con = ibis.duckdb.connect(db_path)
 print(f"Connected to: {db_path}")
 ```
-
 
 ```{python}
 #| warning: false
@@ -926,8 +977,6 @@ con.table("flights").count().execute()
 con.list_tables()
 
 ```
-
-
 
 ```{python}
 #| warning: false
@@ -966,9 +1015,6 @@ result = con.sql("""
 result.execute()
 ```
 
-
-
-
 ```{python}
 #| warning: false
 #| eval: false
@@ -981,14 +1027,11 @@ con.disconnect()
 ## Conclusion
 
 ::: {style="text-align: justify"}
-     It has shown that modern data work rarely depends on a single database technology; instead, it benefits from combining systems that are each optimized for specific tasks. By examining PostgreSQL and DuckDB side by side, the discussion emphasized how architectural choices such as row- versus column-oriented storage, client–server versus embedded deployment, and OLTP versus analytical optimization shape the kinds of workloads each system serves best.
-​
+     It has shown that modern data work rarely depends on a single database technology; instead, it benefits from combining systems that are each optimized for specific tasks. By examining PostgreSQL and DuckDB side by side, the discussion emphasized how architectural choices such as row- versus column-oriented storage, client–server versus embedded deployment, and OLTP versus analytical optimization shape the kinds of workloads each system serves best. ​
 
-     `PostgreSQL` emerged as a robust, general-purpose relational DBMS, ideal for multi-user, transactional applications that demand strong consistency, rich SQL features, and long-term operational stability. `DuckDB`, in contrast, demonstrated how an in-process, columnar engine can deliver interactive analytical performance on local files and data frames, lowering infrastructure overhead while integrating smoothly into data science workflows.
-​
+     `PostgreSQL` emerged as a robust, general-purpose relational DBMS, ideal for multi-user, transactional applications that demand strong consistency, rich SQL features, and long-term operational stability. `DuckDB`, in contrast, demonstrated how an in-process, columnar engine can deliver interactive analytical performance on local files and data frames, lowering infrastructure overhead while integrating smoothly into data science workflows. ​
 
-     Working through both systems underscored that the core relational concepts and SQL syntax remain portable, even as execution models, indexing strategies, and performance characteristics differ. This comparative perspective prepares readers to design data architectures in which an operational store such as `PostgreSQL` can be complemented by analytical accelerators like `DuckDB`, yielding pipelines that are both reliable and efficient.
-​
+     Working through both systems underscored that the core relational concepts and SQL syntax remain portable, even as execution models, indexing strategies, and performance characteristics differ. This comparative perspective prepares readers to design data architectures in which an operational store such as `PostgreSQL` can be complemented by analytical accelerators like `DuckDB`, yielding pipelines that are both reliable and efficient. ​
 
      The central lesson is that database competency now extends beyond learning one “enterprise” system to understanding how specialized engines can be composed into a coherent ecosystem. Equipped with this foundation, readers are better positioned to evaluate new platforms, prototype solutions, and choose appropriate tools—or combinations of tools—for their own transactional and analytical requirements.
 :::

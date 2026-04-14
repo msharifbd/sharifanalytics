@@ -553,11 +553,9 @@ pg_restore -h localhost -p 5433 -d my_database -U postgres K:\my_database_upload
 ###########################################################
 
 /Library/PostgreSQL/16/bin/pg_restore -U postgres -d my_database  K:/my_database_upload.tar
-
-
 ```
 
-     In the above line of code above - `/Library/PostgreSQL/16/bin/pg_restore -U postgres -d my_database  K:/my_database_upload.tar.tar`- "`my_database`" is the name of the database that you created on the PostgreSQL and "`K:/my_database_upload.tar`" is the path^[To get the path of a folder on Mac- first, select the folder and right click your mouse; then, click "Option" button on the keyboard and finally click "Copy ... as pathname"] of the database to be uploaded.
+     In the above line of code above - `/Library/PostgreSQL/16/bin/pg_restore -U postgres -d my_database  K:/my_database_upload.tar`- "`my_database`" is the name of the database that you created on the PostgreSQL and "`K:/my_database_upload.tar`" is the path^[To get the path of a folder on Mac- first, select the folder and right click your mouse; then, click "Option" button on the keyboard and finally click "Copy ... as pathname"] of the database to be uploaded.
 
      Once you upload the database to the PostgreSQL , you can check whether the database is uploaded by following @sec-dealdatabase.
 :::

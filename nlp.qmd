@@ -246,7 +246,7 @@ plt.show()
 
 ### Bag of Words (BoW)
 
-    Bag of Words is the simplest text vectorization technique. BoW counts the frequency of words in text documents. BoW does not consider the order of the words or syntax. "Dog toy" or "toy dog" have equal importance in BoW. In BoW, each document is represented as a vector of word frequencies. Actually, BoW generates __document-term__ matrix, which is a `m×n` matrix, where `m` is the document and `n` is the term (word). So, the cell in the matrix contains raw count of the number of times the $j$-word appear in the $i%-th document.  
+    Bag of Words is the simplest text vectorization technique. BoW counts the frequency of words in text documents. BoW does not consider the order of the words or syntax. "Dog toy" or "toy dog" have equal importance in BoW. In BoW, each document is represented as a vector of word frequencies. Actually, BoW generates __document-term__ matrix, which is a `m×n` matrix, where `m` is the document and `n` is the term (word). So, the cell in the matrix contains raw count of the number of times the $j$-word appear in the $i$-th document.  
 
 
 
@@ -724,7 +724,7 @@ lda_model.log_perplexity(corpus)
 ::: {style="text-align: justify"}
     Sentiment analysis involves converting text into sentiments such as positive, neutral, and negative. Texts are widely used to express emotion, feelings, opinion and so on. Therefore, sometimes sentiment analysis is also called "Opinion Mining." Identifying sentiment from texts could provide valuable insights to make strategic decisions such as improving product features, launching new products, identifying strengths or weaknesses of product or service offerings. Before, we perform the sentiment analysis, we need to do the preprocessing as described in @sec-preprocessing first. 
 
-    Below we use `texblob` python module for seniment analysis of our text about Accounting. `texblob` is simple for sentiment analysis because the function accepts text as input and return sentiment score. There are two types of sentiment scores - polarity and subjectivity. Polarity score actually measures the sentiment of the text and it values are between -1 and +1, where -1 indicates high negative sentiment and +1 indicates very positive sentiment. On the other hand, subjectivity score measures whether the text contaiins factual information or personal opinion. Subjectivity scores range from 0 to 1, where 0 indicates factual information and 1 indicates personal opinion.   
+    Below we use `texblob` python module for seniment analysis of our text about Accounting. `texblob` is simple for sentiment analysis because the function accepts text as input and return sentiment score. There are two types of sentiment scores - polarity and subjectivity. Polarity score actually measures the sentiment of the text and it values are between -1 and +1, where -1 indicates high negative sentiment and +1 indicates very positive sentiment. On the other hand, subjectivity score measures whether the text contains factual information or personal opinion. Subjectivity scores range from 0 to 1, where 0 indicates factual information and 1 indicates personal opinion.   
 
 ```{python}
 from textblob import TextBlob

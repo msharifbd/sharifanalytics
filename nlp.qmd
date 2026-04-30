@@ -779,7 +779,9 @@ product1['subjectivity'] = product1['Text'].apply(lambda x: TextBlob(x).sentimen
 ```{python}
 #| warning: false
 # edgartools - my version is 3.13.0
+# edgartools - the version 5.16.0 and 5.30.2 also work (date 04/30/2026)
 # pip install edgartools # latest version on 03.12.2025 is 3.13.0
+# pip install edgartools # latest version on 04.30.2026 is 5.30.2
 # pip install edgartools==2.31.1 # to install a specific version
 # pip list - shows all packages with their versions 
 from edgar import *

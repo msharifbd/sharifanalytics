@@ -72,7 +72,9 @@ format:
   html:
     number-depth: 5
     toc-depth: 5
-    theme: flatly
+    theme: 
+      light: flatly
+      dark: darkly
     mainfont: Georgia, serif 
     code-link: true
     code-overflow: wrap 

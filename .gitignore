@@ -1,3 +1,10 @@
 /.quarto/
 .Renviron
 .Rprofile
+.env
+
+**/*.quarto_ipynb
+ccounting_analytics_book/
+
+_book/
+.quarto/

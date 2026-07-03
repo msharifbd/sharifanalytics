@@ -3,6 +3,23 @@ title: "Regulatory and Ethical Considerations"
 format: html
 ---
 
+### Learning Objectives of the Chapter {.unnumbered}
+
+::: {.callout-note title = "Learning Objectives" collapse = "true"}
+::: {style="text-align: justify"}
+At the End of the Chapter, Students should be Able to -
+
+- Gain an Understanding about the importance of Ethichs in Analytics 
+
+- Learn about different kinds of regulations that impact analytics 
+
+- Learn about how to deal with ethical dilemma when confronted 
+::: 
+
+
+::: 
+
+
 ## Compliance and Regulatory Requirements
 
 ## Ethichal Use of Data

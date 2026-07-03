@@ -3,6 +3,21 @@ title: "Future Directions in Accounting Analytics"
 format: html
 ---
 
+### Learning Objectives of the Chapter {.unnumbered}
+
+::: {.callout-note title = "Learning Objectives" collapse = "true"}
+::: {style="text-align: justify"}
+At the End of the Chapter, Students should be Able to -
+
+- Learn about the recent developments in data analytics 
+
+- Gain an understanding how those changes affect them and future of analytics 
+
+::: 
+
+::: 
+
+
 ## Emerging Technologies
 
 ## Trends & Predictions

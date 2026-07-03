@@ -5,6 +5,8 @@ format: html
 
 ### Learning Objectives of the Chapter {.unnumbered}
 
+::: {.callout-note title = "Learning Objectives" collapse = "true"}
+
 ::: {style="text-align: justify"}
 At the End of the Chapter, Students should be Able to -
 
@@ -15,6 +17,8 @@ At the End of the Chapter, Students should be Able to -
 -   Learn about Different R and Python Packages for Dashboard Creation
 
 -   Create Dashboard using `Quarto` and `Vizro`
+:::
+
 :::
 
 ## What is Dashboard?

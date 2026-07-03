@@ -5,6 +5,7 @@ format: html
 
 ### Learning Objectives of the Chapter {.unnumbered}
 
+::: {.callout-note title = "Learning Objectives" collapse = "true"}
 ::: {style="text-align: justify"}
 At the End of the Chapter, Students should be Able to -
 
@@ -18,6 +19,8 @@ At the End of the Chapter, Students should be Able to -
 
 -   Prepare Interactive Visualization
 :::
+
+::: 
 
 ## What is Visualization?
 
@@ -103,6 +106,8 @@ plt.style.use('ggplot')
 # Loading dataset
 tips = sns.load_dataset('tips')
 ```
+
+
 :::
 
 ## ggplot - Grammar of Graphics
@@ -867,6 +872,7 @@ ggplotly(p2)
 
 ```{python}
 #| warning: false
+#!pip install plotly
 import plotly.express as px
 ```
 

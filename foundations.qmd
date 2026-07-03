@@ -3,6 +3,28 @@ title: "Foundations of Accounting Data"
 format: html
 ---
 
+### Learning Objectives of the Chapter {.unnumbered}
+
+
+::: {.callout-note title = "Learning Objectives" collapse = "true"}
+
+::: {style="text-align: justify"}
+At the End of the Chapter, Students should be Able to -
+
+- Gain an understanding about the types of accounting data
+
+- Gain an understanding about the sources of accounting data
+
+- Gain an understanding how accounting data can be collected
+
+- Gain an understanding how accounting data are evolving
+
+- Collect some accounting data 
+
+:::
+
+::: 
+
 ## Types of Accounting Data
 
 ## Data Sources and Collection Methods

@@ -1,7 +1,24 @@
 ---
-title: "Fraud Detection and Risk Management"
+title: "Forensics Analytics & Accounting"
 format: html
 ---
+
+### Learning Objectives of the Chapter {.unnumbered}
+
+::: {.callout-note title = "Learning Objectives" collapse = "true"}
+::: {style="text-align: justify"}
+At the End of the Chapter, Students should be Able to -
+
+- Gain an understanding about the fraud and its implications 
+
+- Learn about different risk management techniques applied for fraud identification and detection
+
+- Learn different techniques of Fraud and Forensic Analytics 
+
+::: 
+
+::: 
+
 
 ## Techniques for Fraud Detection
 

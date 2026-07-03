@@ -3,6 +3,24 @@ title: "Prescriptive Analytics in Accounting"
 format: html
 ---
 
+### Learning Objectives of the Chapter {.unnumbered}
+
+::: {.callout-note title = "Learning Objectives" collapse = "true"}
+::: {style="text-align: justify"}
+At the End of the Chapter, Students should be Able to -
+
+- Gain an understanding about how prescriptive analytics works
+
+- Learn different tools of prescriptive analytics 
+
+- Apply some tools of prescriptive analytics on real data 
+
+:::
+
+
+:::
+
+
 ## Decision Analysis 
 
 

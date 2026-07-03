@@ -5,6 +5,8 @@ format: html
 
 ### Learning Objectives of the Chapter {.unnumbered}
 
+::: {.callout-note title = "Learning Objectives" collapse = "true"}
+
 ::: {style="text-align: justify"}
 At the End of the Chapter, Students should be Able to -
 
@@ -17,6 +19,7 @@ At the End of the Chapter, Students should be Able to -
 -   Perform Some NLP on Text Data 
 :::
 
+::: 
 
 ## Introduction 
 ::: {style="text-align: justify"}

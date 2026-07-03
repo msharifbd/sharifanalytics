@@ -3,6 +3,23 @@ title: "Performance Measurement and Management"
 format: html
 ---
 
+### Learning Objectives of the Chapter {.unnumbered}
+
+::: {.callout-note title = "Learning Objectives" collapse = "true"}
+::: {style="text-align: justify"}
+At the End of the Chapter, Students should be Able to -
+
+- Gain an understanding about the importance of Performance Measurement 
+
+- Learn different performance management techniques
+
+- Learn different tools and techniques for performance measurement and management 
+
+::: 
+
+:::
+
+
 ## Key Performance Indicators (KPIs)
 
 

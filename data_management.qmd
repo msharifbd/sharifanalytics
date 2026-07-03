@@ -5,6 +5,8 @@ format: html
 
 ### Learning Objectives of the Chapter {.unnumbered}
 
+::: {.callout-note title = "Learning Objectives" collapse = "true"}
+
 ::: {style="text-align: justify"}
 At the End of the Chapter, Students should be Able to -
 
@@ -20,6 +22,8 @@ At the End of the Chapter, Students should be Able to -
 
 -   Create and Use OLAP DBMS
 :::
+
+::: 
 
 ## Data Management
 
@@ -631,7 +635,6 @@ dbListTables(con)
 # To see a table 
 con %>%
   tbl ('orders') 
-
 ```
 
 ```{r}
@@ -672,13 +675,15 @@ con %>% dbDisconnect ()
 ```{r}
 #| include: false
 library(reticulate)
-Sys.setenv('RETICULATE_PYTHON' = 'C:\\Users\\mshar\\AppData\\Local\\Programs\\Python\\Python311\\python.exe')
+#Sys.setenv('RETICULATE_PYTHON' = 'C:\\Users\\mshar\\AppData\\Local\\Programs\\Python\\Python311\\python.exe')
+Sys.setenv('RETICULATE_PYTHON' = "C:/Users/mshar/OneDrive - Southern Illinois University/ANALYTICS_FOR_ACCOUNTING_DATA/accounting_analytics_book/Scripts/python.exe")
 ```
 
 ## Querying PostgreSQL Database Using `Python`
 
 ```{python}
 # Importing Necessary Python Packages 
+# installing ibis - pip install "ibis-framework[postgres]"
 import ibis
 import getpass
 import os 
@@ -719,7 +724,7 @@ conn = ibis.postgres.connect(
 
      If you do not know how to set the password in python environment, please follow these steps -
 
-1.  Crate a `.env` file in your working directory. You can create the `.env` file using notepad, but not that the extension of the file `.txt` must be deleted. Once the `.env` file is created, then save your password as you did in R enviornment. For example - save the line - `POSTGRESS_PASSWORD="YOURPASSWORD"`, where replace the word YOURPASSWORD with your own password.
+1.  Crate a `.env` file in your working directory. You can create the `.env` file using notepad, but note that the extension of the file `.txt` must be deleted. Once the `.env` file is created, then save your password as you did in R enviornment. For example - save the line - `POSTGRESS_PASSWORD="YOURPASSWORD"`, where replace the word YOURPASSWORD with your own password.
 
 2.  Then, if necessary, please install python package `python-dotenv` by running the code in terminal - `pip install python-dotenv`. Once the package is installed, please run the following code to get connected to your local postgreSQL database.
 

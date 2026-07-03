@@ -5,10 +5,4 @@
 
 **/*.quarto_ipynb
 accounting_analytics_book/
-
-_book/
-.quarto/
-accounting_analytics_book/
-.quarto/
-_book/
 *.quarto_ipynb_*

@@ -634,42 +634,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div style="text-align: justify">
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Data has different types. When dealing with data, we need to know the types of the data because different data types can do different things. There are six basic data types in python. They include - <code>int</code>, <code>float</code>, <code>complex</code>, <code>bool</code>, <code>str</code>, and <code>bytes</code>. We use <code>type ()</code> function to know the types of the data. However, most commmonly used data types are <code>int</code>, <code>float</code>, <code>str</code>, and <code>bool</code>.</p>
 </div>
-<div id="de24b5a6" class="cell" data-execution_count="1">
+<div id="cb7decda" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="st">"hello world"</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <pre><code>str</code></pre>
 </div>
 </div>
-<div id="b2606e60" class="cell" data-execution_count="2">
+<div id="62671dd0" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">25</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code>int</code></pre>
 </div>
 </div>
-<div id="7789b4bd" class="cell" data-execution_count="3">
+<div id="dabfd13c" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="fl">25.34</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>float</code></pre>
 </div>
 </div>
-<div id="a79b7695" class="cell" data-execution_count="4">
+<div id="d98060d6" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="va">True</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>bool</code></pre>
 </div>
 </div>
-<div id="119566bd" class="cell" data-execution_count="5">
+<div id="35d2ffa9" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span><span class="ot">7j</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>complex</code></pre>
 </div>
 </div>
-<div id="943d50b0" class="cell" data-execution_count="6">
+<div id="9a1d8dc6" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="st">b"Hello World"</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
@@ -700,27 +700,27 @@ Figure&nbsp;A.1: Data Structure in Python
 <div style="text-align: justify">
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List is used to store collection of ordered<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>data items. Lists are created using square brackets (<code>[]</code>). We can also create a list using <code>list ()</code> function. Lists can hold different types of data, including integers (<code>int</code>), floats (<code>float</code>), strings (<code>str</code>), and even other lists. We can use <code>len ()</code> function to know the number to elements in the list. Moreover, lists are <strong>mutable</strong>, meaning that their contents can be changed after the list has been created.</p>
 </div>
-<div id="1d529ad7" class="cell" data-execution_count="7">
+<div id="cff0b20c" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>colors <span class="op">=</span> [<span class="st">'red'</span>, <span class="st">'blue'</span>, <span class="st">'green'</span>]</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(colors)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>['red', 'blue', 'green']</code></pre>
 </div>
 </div>
-<div id="577a9404" class="cell" data-execution_count="8">
+<div id="f29f3ca6" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(colors)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>3</code></pre>
 </div>
 </div>
-<div id="9cab39e5" class="cell" data-execution_count="9">
+<div id="1d0d09ec" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> [<span class="dv">1</span>, <span class="st">'apple'</span>, <span class="fl">3.14</span>, [<span class="dv">5</span>, <span class="dv">6</span>]]</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1, 'apple', 3.14, [5, 6]]</code></pre>
 </div>
 </div>
-<div id="84ed8f55" class="cell" data-execution_count="10">
+<div id="1b902054" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="bu">list</span>((<span class="dv">1</span>, <span class="st">'apple'</span>, <span class="fl">3.14</span>, [<span class="dv">5</span>, <span class="dv">6</span>]))</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(b)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -730,7 +730,7 @@ Figure&nbsp;A.1: Data Structure in Python
 <section id="creating-a-list-with-repeated-elements" class="level4" data-number="A.4.1.1">
 <h4 data-number="A.4.1.1" class="anchored" data-anchor-id="creating-a-list-with-repeated-elements"><span class="header-section-number">A.4.1.1</span> Creating a List with Repeated Elements</h4>
 <p>A list with repeated elements can be created using the multiplication operator.</p>
-<div id="d8f1dec3" class="cell" data-execution_count="11">
+<div id="ef263f42" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="dv">2</span>] <span class="op">*</span> <span class="dv">5</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> [<span class="dv">0</span>] <span class="op">*</span> <span class="dv">7</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -757,13 +757,13 @@ Figure&nbsp;A.2: Index of List Elements
 </figcaption>
 </figure>
 </div>
-<div id="5d1946d2" class="cell" data-execution_count="12">
+<div id="3fc68fd9" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>colors[<span class="dv">0</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>'red'</code></pre>
 </div>
 </div>
-<div id="6666db6a" class="cell" data-execution_count="13">
+<div id="740bd43f" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>colors[<span class="op">-</span><span class="dv">1</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <pre><code>'green'</code></pre>
@@ -773,7 +773,7 @@ Figure&nbsp;A.2: Index of List Elements
 <section id="adding-elements-to-the-list" class="level4" data-number="A.4.1.3">
 <h4 data-number="A.4.1.3" class="anchored" data-anchor-id="adding-elements-to-the-list"><span class="header-section-number">A.4.1.3</span> Adding Elements to the List</h4>
 <p>We can add elements to the list using three methods - <code>append ()</code>, <code>insert ()</code>, and <code>extend ()</code>.</p>
-<div id="070c6bdd" class="cell" data-execution_count="14">
+<div id="9ff2b0e9" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize an empty list</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> []</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -798,7 +798,7 @@ After extend([60,70,80]): [40, 50, 60, 70, 80]</code></pre>
 <section id="updating-elements-to-the-list" class="level4" data-number="A.4.1.4">
 <h4 data-number="A.4.1.4" class="anchored" data-anchor-id="updating-elements-to-the-list"><span class="header-section-number">A.4.1.4</span> Updating Elements to the List</h4>
 <p>We can change the value of an element by accessing it using its index.</p>
-<div id="1580d4cf" class="cell" data-execution_count="15">
+<div id="f9c65b9b" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>]</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Change the second element</span></span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>p[<span class="dv">1</span>] <span class="op">=</span> <span class="dv">25</span> </span>
@@ -812,7 +812,7 @@ After extend([60,70,80]): [40, 50, 60, 70, 80]</code></pre>
 <section id="removing-elements-from-the-list" class="level4" data-number="A.4.1.5">
 <h4 data-number="A.4.1.5" class="anchored" data-anchor-id="removing-elements-from-the-list"><span class="header-section-number">A.4.1.5</span> Removing Elements from the List</h4>
 <p>We can remove elements from the list using three methods - <code>remove ()</code>, <code>pop ()</code>, and <code>del ()</code>.</p>
-<div id="21710593" class="cell" data-execution_count="16">
+<div id="a7c2d218" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> [<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>]</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Removes the first occurrence of 30</span></span>
@@ -841,7 +841,7 @@ After del a[0]: [40, 50]</code></pre>
 <div style="text-align: justify">
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dictionary data structure in python is used to store data in <strong>key</strong>:<strong>value</strong> format. Unlike list - which uses square brackets (<code>[]</code>) - dictionary uses curly brackets (<code>{}</code>). Like lists, dictionary is mutable. Dictionary items can be referred by using key name. We can use <code>len ()</code> function to know the total number of element of a dictionary and <code>type ()</code> to know the type.</p>
 </div>
-<div id="7ced3cfa" class="cell" data-execution_count="17">
+<div id="e15b8b98" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>my_car <span class="op">=</span> {</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"brand"</span>: <span class="st">"Ford"</span>,</span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"model"</span>: <span class="st">"Escape"</span>,</span>
@@ -852,14 +852,14 @@ After del a[0]: [40, 50]</code></pre>
 <pre><code>{'brand': 'Ford', 'model': 'Escape', 'year': 2017}</code></pre>
 </div>
 </div>
-<div id="1cc16e33" class="cell" data-execution_count="18">
+<div id="d72abc96" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(my_car[<span class="st">'model'</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Escape</code></pre>
 </div>
 </div>
 <p>The values in dictionary items can be of any data type</p>
-<div id="c6c964b9" class="cell" data-execution_count="19">
+<div id="ab69dfc8" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>car_features <span class="op">=</span> {</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"brand"</span>: <span class="st">"Ford"</span>, <span class="co"># string </span></span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"electric"</span>: <span class="va">False</span>, <span class="co"># boolean </span></span>
@@ -868,7 +868,7 @@ After del a[0]: [40, 50]</code></pre>
 <span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The function <code>dict ()</code> can also be used to construct dictionary.</p>
-<div id="acfbe23b" class="cell" data-execution_count="20">
+<div id="40175ab0" class="cell" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>my_friends <span class="op">=</span> <span class="bu">dict</span>(</span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>    name <span class="op">=</span> [<span class="st">"John"</span>, <span class="st">"Smith"</span>, <span class="st">"Mark"</span>], </span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>    age <span class="op">=</span> [<span class="dv">36</span>, <span class="dv">45</span>, <span class="dv">49</span>], </span>
@@ -883,7 +883,7 @@ After del a[0]: [40, 50]</code></pre>
 <ul>
 <li><code>dict.clear()</code> - removes all the elements from the dictionary</li>
 </ul>
-<div id="ac4af89b" class="cell" data-execution_count="21">
+<div id="7e4cb49a" class="cell" data-execution_count="21">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>employee <span class="op">=</span> {</span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'name'</span>: [<span class="st">"John"</span>, <span class="st">"Jessica"</span>, <span class="st">"Zack"</span>], </span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'age'</span>: [<span class="dv">18</span>, <span class="dv">19</span>, <span class="dv">20</span>]</span>
@@ -893,7 +893,7 @@ After del a[0]: [40, 50]</code></pre>
 <pre><code>{'name': ['John', 'Jessica', 'Zack'], 'age': [18, 19, 20]}</code></pre>
 </div>
 </div>
-<div id="08847424" class="cell" data-execution_count="22">
+<div id="3dd3278b" class="cell" data-execution_count="22">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>employee.clear()</span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(employee)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -913,14 +913,14 @@ After del a[0]: [40, 50]</code></pre>
 <div style="text-align: justify">
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In python, tuple is very similar to list, except one difference. List is mutable, but tuple is not. Once a tuple is created, its elements cannot be changed. Unlike lists, we cannot add, remove, or change elelment in tuple. Tuple is created by using parenthese (<code>()</code>). Also, the function <code>tuple ()</code> can also be used to create tuple. We can access the elements of tuple by indexing as we did for lists.</p>
 </div>
-<div id="2011115b" class="cell" data-execution_count="23">
+<div id="a1d33b57" class="cell" data-execution_count="23">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>my_tuple <span class="op">=</span> (<span class="st">'10'</span>, <span class="st">'20'</span>, <span class="st">'30'</span>, <span class="st">'hello'</span>, <span class="st">'world'</span>)</span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>my_tuple</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="23">
 <pre><code>('10', '20', '30', 'hello', 'world')</code></pre>
 </div>
 </div>
-<div id="42ea761b" class="cell" data-execution_count="24">
+<div id="f095362b" class="cell" data-execution_count="24">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>my_tuple[<span class="dv">3</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="24">
 <pre><code>'hello'</code></pre>
@@ -934,7 +934,7 @@ After del a[0]: [40, 50]</code></pre>
 <li><p>Repetition - creating a tuple of several times</p></li>
 </ul>
 </div>
-<div id="5fd07721" class="cell" data-execution_count="25">
+<div id="caa709ef" class="cell" data-execution_count="25">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>second_tuple <span class="op">=</span> (<span class="st">'10'</span>, <span class="st">'20'</span>, <span class="st">'SIU'</span>, <span class="st">"SOA"</span>, <span class="st">"Carbondale"</span>)</span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>second_tuple<span class="op">*</span><span class="dv">3</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="25">
@@ -958,7 +958,7 @@ After del a[0]: [40, 50]</code></pre>
 <ul>
 <li>Slicing - Dividing a given tuple into small tuples using indexing is slicing.</li>
 </ul>
-<div id="6f674c94" class="cell" data-execution_count="26">
+<div id="0da4204a" class="cell" data-execution_count="26">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>second_tuple[<span class="dv">1</span>:]</span>
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>second_tuple[<span class="dv">2</span>:<span class="dv">4</span>]</span>
 <span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>second_tuple[::<span class="op">-</span><span class="dv">1</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -979,20 +979,20 @@ After del a[0]: [40, 50]</code></pre>
 <div style="text-align: justify">
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A set in python is a collection of <em>unordered</em>, <em>unchangeable</em>, and <em>unindexed</em> items. Set items are unchangeable, but new items can be added to the set and old items can be deleted from the set. Another important characteristics of set is that it has no duplicate elements. Curly bracket (<code>{}</code>) is used to create a set. The function <code>difference ()</code> or minus operator (<code>-</code>) is used to calculate difference between two sets.</p>
 </div>
-<div id="c0afd9d4" class="cell" data-execution_count="27">
+<div id="423776b2" class="cell" data-execution_count="27">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>new_set <span class="op">=</span> {<span class="st">'Hello'</span>, <span class="st">'World'</span>, <span class="st">"World"</span>}</span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>new_set </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="27">
 <pre><code>{'Hello', 'World'}</code></pre>
 </div>
 </div>
-<div id="0efd0d43" class="cell" data-execution_count="28">
+<div id="cc625fed" class="cell" data-execution_count="28">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(new_set)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="28">
 <pre><code>set</code></pre>
 </div>
 </div>
-<div id="f99179dd" class="cell" data-execution_count="29">
+<div id="338da3a8" class="cell" data-execution_count="29">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>new_set[<span class="dv">0</span>] <span class="op">=</span> <span class="st">"Hi"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
@@ -1004,13 +1004,13 @@ After del a[0]: [40, 50]</code></pre>
 <div style="text-align: justify">
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>Numpy</code> is a library in python and it is one of the most important and essential libraries for data science becasue almost all of the libraries in python PyData ecosystem use numpy. Therefore, understanding numpy is important. Moreover, numpy arrays are very fast as they are implemented in C. In this section, we will learn some useful numpy methods.</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Before we start using the <code>numpy</code> module (library), we need to install it. We can run the following code to install numpy.</p>
-<div id="6dc4b668" class="cell" data-execution_count="30">
+<div id="6b417ef7" class="cell" data-execution_count="30">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>pip install numpy </span>
 <span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="co"># OR</span></span>
 <span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>conda install numpy </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Once the numpy is installed, we need to load (import) the library by running the following code -</p>
-<div id="8ffb2ef0" class="cell" data-execution_count="31">
+<div id="ffabdf58" class="cell" data-execution_count="31">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <section id="some-useful-numpy-functions-for-array" class="level3" data-number="A.5.2">
@@ -1019,7 +1019,7 @@ After del a[0]: [40, 50]</code></pre>
 <h4 data-number="A.5.2.1" class="anchored" data-anchor-id="array-creation"><span class="header-section-number">A.5.2.1</span> Array Creation</h4>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Array is a multi dimensional data structure, which describes a collection of “items” of the same type (homogenous). Arrays are powerful for performing different mathematical and scientific computation. There are many functions in numpy to create arrays. Below some those methods (functions) are described.</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* <code>np.array()</code> is used to create an array in numpy. The array object is also called ndarray. You can pass a list or tuple to the np.array () function. You can create zero, one, two, or three dimensional arrays in numpy. Using the <code>ndim()</code> you can check the dimension of an array.</p>
-<div id="e287c573" class="cell" data-execution_count="32">
+<div id="21873a58" class="cell" data-execution_count="32">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span> <span class="op">=</span> [<span class="dv">2025</span>, <span class="dv">2024</span>, <span class="dv">2023</span>, <span class="dv">2022</span>, <span class="dv">2021</span>, <span class="dv">2020</span>, <span class="dv">2019</span>]</span>
 <span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>np.array(<span class="bu">list</span>)</span>
 <span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>array <span class="op">=</span> np.array(<span class="bu">list</span>)</span>
@@ -1035,7 +1035,7 @@ After del a[0]: [40, 50]</code></pre>
 </div>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* <code>np.arange(start, stop, step)</code><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> function is used to create array with values starting from <code>start</code> up to, but not including, <code>stop</code> value, increasing by <code>step</code>.</p>
-<div id="67ae9865" class="cell" data-execution_count="33">
+<div id="6e227172" class="cell" data-execution_count="33">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>np.arange(<span class="dv">10</span>,<span class="dv">21</span>,<span class="dv">1</span>)</span>
 <span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>np.arange(<span class="dv">21</span>)</span>
 <span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>np.arange(<span class="dv">10</span>,<span class="dv">21</span>)</span>
@@ -1047,7 +1047,7 @@ After del a[0]: [40, 50]</code></pre>
 </div>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* <code>np.linspace(start, stop, n)</code> creates an array of n evenly spaced number between <code>start</code> and <code>stop</code>.</p>
-<div id="dfd2dac8" class="cell" data-execution_count="34">
+<div id="3c35afcf" class="cell" data-execution_count="34">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>np.linspace(<span class="dv">10</span>,<span class="dv">21</span>,<span class="dv">10</span>)</span>
 <span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>np.linspace(<span class="dv">1</span>,<span class="dv">100</span>, <span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="32">
@@ -1055,7 +1055,7 @@ After del a[0]: [40, 50]</code></pre>
 </div>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* <code>np.zeros()</code> is used to create an array with elements 0.</p>
-<div id="c1432103" class="cell" data-execution_count="35">
+<div id="98809b95" class="cell" data-execution_count="35">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>np.zeros(<span class="dv">5</span>)</span>
 <span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>np.zeros((<span class="dv">5</span>,<span class="dv">5</span>))</span>
 <span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>np.zeros([<span class="dv">5</span>,<span class="dv">5</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1068,7 +1068,7 @@ After del a[0]: [40, 50]</code></pre>
 </div>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* <code>np.ones()</code> is used to create an array with elements 1.</p>
-<div id="e4a6fe20" class="cell" data-execution_count="36">
+<div id="1a33d5d1" class="cell" data-execution_count="36">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>np.ones(<span class="dv">5</span>)</span>
 <span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>np.ones((<span class="dv">5</span>,<span class="dv">5</span>))</span>
 <span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>np.ones([<span class="dv">5</span>,<span class="dv">5</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1081,7 +1081,7 @@ After del a[0]: [40, 50]</code></pre>
 </div>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* <code>np.eye()</code> is used to create an identity matrix. The same can be done by using <code>np.identity()</code> function.</p>
-<div id="3d4bdd43" class="cell" data-execution_count="37">
+<div id="12b30bf6" class="cell" data-execution_count="37">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>np.eye(<span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="35">
 <pre><code>array([[1., 0., 0., 0., 0.],
@@ -1092,44 +1092,44 @@ After del a[0]: [40, 50]</code></pre>
 </div>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* <code>np.random.rand()</code> function generates an array of random numbers between 0 and 1 from a uniform distribution.</p>
-<div id="538868de" class="cell" data-execution_count="38">
+<div id="ce0a49b6" class="cell" data-execution_count="38">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>np.random.rand(<span class="dv">10</span>) <span class="co"># one dimensional </span></span>
 <span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>np.random.rand(<span class="dv">3</span>,<span class="dv">2</span>) <span class="co"># two dimensional </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="36">
-<pre><code>array([[0.91605476, 0.50413486],
-       [0.85007618, 0.01871458],
-       [0.63319004, 0.60244617]])</code></pre>
+<pre><code>array([[0.00923847, 0.6386103 ],
+       [0.49098259, 0.22666549],
+       [0.81189547, 0.15489828]])</code></pre>
 </div>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* <code>np.random.randn()</code> generates an array of random numbers between 0 and 1 from a standard normal distribution.</p>
-<div id="90577a13" class="cell" data-execution_count="39">
+<div id="eb2c1832" class="cell" data-execution_count="39">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>np.random.randn(<span class="dv">10</span>) <span class="co"># one dimensional </span></span>
 <span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>np.random.randn(<span class="dv">3</span>,<span class="dv">4</span>) <span class="co"># two dimensional </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="37">
-<pre><code>array([[ 1.39383075,  0.27759152,  0.12282714, -0.2406534 ],
-       [ 1.29222512, -0.03401603,  0.25286321,  0.1659899 ],
-       [ 0.43229629,  0.03381594, -0.6499058 , -0.30921983]])</code></pre>
+<pre><code>array([[-2.5563857 ,  0.81236771,  1.18650822, -0.17053247],
+       [-1.38852312,  0.90839013,  0.79032543, -2.03468696],
+       [-0.79803003,  0.41138992, -1.94804541,  0.85823852]])</code></pre>
 </div>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* <code>np.random.randint()</code> allows to generate random integer numbers given an interval of integers.</p>
-<div id="5791fe3c" class="cell" data-execution_count="40">
+<div id="7056582b" class="cell" data-execution_count="40">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb75"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>np.random.randint(low<span class="op">=</span><span class="dv">0</span>, high<span class="op">=</span><span class="dv">10</span>, size <span class="op">=</span> <span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="38">
-<pre><code>array([5, 2, 3, 7, 5])</code></pre>
+<pre><code>array([8, 1, 2, 9, 0])</code></pre>
 </div>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* <code>np.reshape()</code> allows to chgange the shape (rows and columns) without changing the data in the array.</p>
-<div id="fe36bec4" class="cell" data-execution_count="41">
+<div id="0abee88b" class="cell" data-execution_count="41">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb77"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>array <span class="op">=</span> np.random.randn(<span class="dv">3</span>,<span class="dv">4</span>) <span class="co"># two dimensional </span></span>
 <span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a>array</span>
 <span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a>array.reshape(<span class="dv">6</span>,<span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="39">
-<pre><code>array([[-0.15131934,  0.26048122],
-       [-0.29935673,  2.22086381],
-       [-0.97820911, -1.6330603 ],
-       [-0.94233416,  0.17048024],
-       [-2.10248733,  1.39851256],
-       [ 1.61611856,  1.28833812]])</code></pre>
+<pre><code>array([[-0.59980647, -0.24512255],
+       [-0.60493357,  0.05907801],
+       [ 0.34918973, -1.02903391],
+       [-0.14791259, -0.07628257],
+       [-2.48072707,  1.05892484],
+       [-1.64803903,  1.0717725 ]])</code></pre>
 </div>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Some other useful functions from numpy include - <code>np.shape</code>, <code>np.dtype</code>, <code>np.transpose</code>. Some useful functions related to linear algebra include - <code>np.linalg.inv()</code> - to compute inverse of a matrix, <code>np.linalg.det()</code> - to compute determinant of a matrix, <code>np.linalg.eig()</code> - to compute eigenvalues and eigenvectors of a matrix, <code>np.linalg.solve()</code> - to solve a system of linear equations.</p>
@@ -1137,7 +1137,7 @@ After del a[0]: [40, 50]</code></pre>
 <section id="array-indexing-and-selection" class="level4" data-number="A.5.2.2">
 <h4 data-number="A.5.2.2" class="anchored" data-anchor-id="array-indexing-and-selection"><span class="header-section-number">A.5.2.2</span> Array Indexing and Selection</h4>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Both indexing and slicing of arrays are important skill to learn. Indexing refers to obtaining individual elements from an array while slicing refers to obtaining a sequence of elements from the array. We use <code>array[start:end]</code> to index an array.</p>
-<div id="ca3e81f0" class="cell" data-execution_count="42">
+<div id="1a7997e0" class="cell" data-execution_count="42">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb79"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="co"># One Dimensional Array</span></span>
 <span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a>array <span class="op">=</span> np.random.randn(<span class="dv">10</span>)</span>
 <span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a>array</span>
@@ -1149,10 +1149,10 @@ After del a[0]: [40, 50]</code></pre>
 <span id="cb79-9"><a href="#cb79-9" aria-hidden="true" tabindex="-1"></a>array[:<span class="op">-</span><span class="dv">3</span>]</span>
 <span id="cb79-10"><a href="#cb79-10" aria-hidden="true" tabindex="-1"></a>array[array<span class="op">&gt;</span><span class="fl">0.50</span>] <span class="co"># conditional indexing </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="40">
-<pre><code>array([2.21244948, 0.88034147, 0.58532174, 1.61916773])</code></pre>
+<pre><code>array([1.14336015, 1.03981264, 1.53418477, 1.14811349])</code></pre>
 </div>
 </div>
-<div id="7383e7e5" class="cell" data-execution_count="43">
+<div id="f69f2ccc" class="cell" data-execution_count="43">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb81"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Two Dimensional Array </span></span>
 <span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a>array2D <span class="op">=</span> np.random.randn(<span class="dv">8</span>,<span class="dv">5</span>)</span>
 <span id="cb81-3"><a href="#cb81-3" aria-hidden="true" tabindex="-1"></a>array2D</span>
@@ -1165,21 +1165,21 @@ After del a[0]: [40, 50]</code></pre>
 <span id="cb81-10"><a href="#cb81-10" aria-hidden="true" tabindex="-1"></a>array2D[<span class="dv">2</span>:<span class="dv">4</span>] <span class="co"># Only rows </span></span>
 <span id="cb81-11"><a href="#cb81-11" aria-hidden="true" tabindex="-1"></a>array2D[:,<span class="dv">3</span>:]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="41">
-<pre><code>array([[ 0.43945653,  1.48260605],
-       [-1.06187147, -0.56840309],
-       [-0.8618078 ,  1.4315836 ],
-       [-0.1109508 ,  0.07052772],
-       [-0.75064814,  0.55145193],
-       [-0.28329004,  0.55427576],
-       [-0.32801344,  0.49746761],
-       [-0.96805944,  1.65433857]])</code></pre>
+<pre><code>array([[ 0.58018117, -0.84298491],
+       [-1.07428083, -0.6646234 ],
+       [ 0.37083029, -1.12263014],
+       [-0.88926476, -0.63019908],
+       [-0.78138247, -0.83350469],
+       [-0.5151432 ,  0.96342681],
+       [ 0.56083724, -2.32188525],
+       [-0.80715168,  0.60773163]])</code></pre>
 </div>
 </div>
 </section>
 <section id="array-operations" class="level4" data-number="A.5.2.3">
 <h4 data-number="A.5.2.3" class="anchored" data-anchor-id="array-operations"><span class="header-section-number">A.5.2.3</span> Array Operations</h4>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Array operations involve performing matematical operations on the array as a whole. They are not perfomed on the individual element of the array.</p>
-<div id="18c7116f" class="cell" data-execution_count="44">
+<div id="43746245" class="cell" data-execution_count="44">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb83"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a>array1 <span class="op">=</span> np.arange(<span class="dv">85</span>,<span class="dv">96</span>)</span>
 <span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a>array2 <span class="op">=</span> np.arange (<span class="dv">35</span>,<span class="dv">46</span>)</span>
 <span id="cb83-3"><a href="#cb83-3" aria-hidden="true" tabindex="-1"></a>array1 <span class="op">+</span> array2</span>
@@ -1192,7 +1192,7 @@ After del a[0]: [40, 50]</code></pre>
        2.11111111])</code></pre>
 </div>
 </div>
-<div id="106ee715" class="cell" data-execution_count="45">
+<div id="5ba00e38" class="cell" data-execution_count="45">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb85"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a>array1.mean()</span>
 <span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a>array2.std()</span>
 <span id="cb85-3"><a href="#cb85-3" aria-hidden="true" tabindex="-1"></a>np.mean(array1)</span>
@@ -1217,12 +1217,12 @@ After del a[0]: [40, 50]</code></pre>
 <section id="for-loop-function" class="level3" data-number="A.6.1">
 <h3 data-number="A.6.1" class="anchored" data-anchor-id="for-loop-function"><span class="header-section-number">A.6.1</span> <code>for</code> Loop Function</h3>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>for</code> loop function in python allows to iterate over iterable sequences such as list, tuple, string, or range and execuate codes for each elements in the sequence. <code>for</code> loop function helps to handle repititve tasks more efficiently and effectively. The syntax of a <code>for</code> loop function is -</p>
-<div id="fac70ca9" class="cell" data-execution_count="46">
+<div id="f646b747" class="cell" data-execution_count="46">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb87"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> element <span class="kw">in</span> sequence:</span>
 <span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Expected code to execute on each element of the sequence</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A basic example of a <code>for</code> loop function is -</p>
-<div id="11777927" class="cell" data-execution_count="47">
+<div id="9ab3dda8" class="cell" data-execution_count="47">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb88"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a>analytics_students <span class="op">=</span> [<span class="st">'Ashley'</span>, <span class="st">'Elijah'</span>, <span class="st">'John'</span>, <span class="st">'Jack'</span>, <span class="st">'Adams'</span>]</span>
 <span id="cb88-2"><a href="#cb88-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> student <span class="kw">in</span> analytics_students:</span>
 <span id="cb88-3"><a href="#cb88-3" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(student)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1235,7 +1235,7 @@ Adams</code></pre>
 </div>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Other examples of a <code>for</code> loop function is -</p>
-<div id="1c4b9d50" class="cell" data-execution_count="48">
+<div id="f29bbb06" class="cell" data-execution_count="48">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb90"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a>even_numbers <span class="op">=</span> [<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">8</span>,<span class="dv">10</span>]</span>
 <span id="cb90-2"><a href="#cb90-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> numbers <span class="kw">in</span> even_numbers:</span>
 <span id="cb90-3"><a href="#cb90-3" aria-hidden="true" tabindex="-1"></a>  square <span class="op">=</span> numbers<span class="op">**</span><span class="dv">2</span></span>
@@ -1248,7 +1248,7 @@ Adams</code></pre>
 100</code></pre>
 </div>
 </div>
-<div id="05ff0bf4" class="cell" data-execution_count="49">
+<div id="0b0ad692" class="cell" data-execution_count="49">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb92"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a>even_numbers <span class="op">=</span> [<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">8</span>,<span class="dv">10</span>]</span>
 <span id="cb92-2"><a href="#cb92-2" aria-hidden="true" tabindex="-1"></a>squares <span class="op">=</span> []</span>
 <span id="cb92-3"><a href="#cb92-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> numbers <span class="kw">in</span> even_numbers:</span>
@@ -1264,7 +1264,7 @@ Adams</code></pre>
 <section id="map-function" class="level3" data-number="A.6.2">
 <h3 data-number="A.6.2" class="anchored" data-anchor-id="map-function"><span class="header-section-number">A.6.2</span> <code>map()</code> Function</h3>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>map ()</code> function, like <code>for</code> loop function, allows to apply a function on each item in an iterable (list, tuple, or string) sequence. The syntax for <code>map ()</code> is - <code>map (function, iterable)</code>. Below is an example of <code>map ()</code> function -</p>
-<div id="71b366e0" class="cell" data-execution_count="50">
+<div id="fa9507dc" class="cell" data-execution_count="50">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb94"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a>var <span class="op">=</span> [<span class="dv">16</span>, <span class="dv">17</span>, <span class="dv">18</span>, <span class="dv">19</span>, <span class="dv">20</span>]</span>
 <span id="cb94-2"><a href="#cb94-2" aria-hidden="true" tabindex="-1"></a>var_log <span class="op">=</span> <span class="bu">map</span>(<span class="kw">lambda</span> x: np.log(x), var)</span>
 <span id="cb94-3"><a href="#cb94-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1283,7 +1283,7 @@ Adams</code></pre>
 <section id="user-defined-function-named-function" class="level3" data-number="A.6.3">
 <h3 data-number="A.6.3" class="anchored" data-anchor-id="user-defined-function-named-function"><span class="header-section-number">A.6.3</span> User Defined Function (Named Function)</h3>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In addition to predifend functions from different python modules, users can define their own functions, which are sometimes called named functions. The syntax for defining a user defined function in python -</p>
-<div id="2548933a" class="cell" data-execution_count="51">
+<div id="0e540fa0" class="cell" data-execution_count="51">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb96"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> deduct_num (a, b):</span>
 <span id="cb96-2"><a href="#cb96-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">"""</span></span>
 <span id="cb96-3"><a href="#cb96-3" aria-hidden="true" tabindex="-1"></a><span class="co">  The function will deduct two numbers</span></span>
@@ -1293,21 +1293,21 @@ Adams</code></pre>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In the above example, a user defined function is created. Then function name is <code>deduct_num</code> and it is created using <code>def</code> keyword. So, when we need to create a user defined function, we will start with <code>def</code> keyword followed by the name of the function. The <code>a</code> and <code>b</code> are the function’s arguments, which sometimes are also called parameters.</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The tripple quote <code>""" """</code> is used to create a docstring, which also explains the nature of the function or what it will do. The <code>return</code> statement in function will return a value.</p>
-<div id="5bb9b5ce" class="cell" data-execution_count="52">
+<div id="51556c89" class="cell" data-execution_count="52">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb97"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a>deduct_num(<span class="dv">15</span>, <span class="dv">100</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="49">
 <pre><code>-85</code></pre>
 </div>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Another example of user defined function -</p>
-<div id="c634ebf0" class="cell" data-execution_count="53">
+<div id="c41b9f0d" class="cell" data-execution_count="53">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb99"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> welcome (name):</span>
 <span id="cb99-2"><a href="#cb99-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">"""</span></span>
 <span id="cb99-3"><a href="#cb99-3" aria-hidden="true" tabindex="-1"></a><span class="co">  The function greets the person</span></span>
 <span id="cb99-4"><a href="#cb99-4" aria-hidden="true" tabindex="-1"></a><span class="co">  """</span></span>
 <span id="cb99-5"><a href="#cb99-5" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="ss">f"Welcome </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">! How are you doing?"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="da7c4b58" class="cell" data-execution_count="54">
+<div id="6b3431ff" class="cell" data-execution_count="54">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb100"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a>welcome(<span class="st">"John"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Welcome John! How are you doing?</code></pre>
@@ -1317,7 +1317,7 @@ Adams</code></pre>
 <section id="anonymous-lambda-function" class="level3" data-number="A.6.4">
 <h3 data-number="A.6.4" class="anchored" data-anchor-id="anonymous-lambda-function"><span class="header-section-number">A.6.4</span> Anonymous (Lambda) Function</h3>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Anonymous function is a function without a name. It is also called lambda function in python. The syntax for lambda function is - <code>lambda arguments: expression</code>. Below is an example of lambda function -</p>
-<div id="3baa4a62" class="cell" data-execution_count="55">
+<div id="1184f4cb" class="cell" data-execution_count="55">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb102"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a>sqr <span class="op">=</span> <span class="kw">lambda</span> x: x<span class="op">**</span><span class="dv">2</span></span>
 <span id="cb102-2"><a href="#cb102-2" aria-hidden="true" tabindex="-1"></a>sqr(<span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="52">
@@ -1361,7 +1361,7 @@ Adams</code></pre>
 <li><p>Create an array of 50 linearly spaced points between 0 and 1.</p></li>
 <li><p>Create an array of 20 linearly spaced points between 0 and 1.</p></li>
 </ol>
-<div id="3d457014" class="cell" data-execution_count="66">
+<div id="46eb5129" class="cell" data-execution_count="66">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb105"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a>mat <span class="op">=</span> np.arange(<span class="dv">1</span>,<span class="dv">26</span>).reshape(<span class="dv">5</span>,<span class="dv">5</span>)</span>
 <span id="cb105-2"><a href="#cb105-2" aria-hidden="true" tabindex="-1"></a>mat</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="63">

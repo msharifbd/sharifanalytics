@@ -1,65 +1,65 @@
 {
   "index.qmd": {
-    "index.html": "582452a9"
+    "index.html": "d206e464"
   },
   "overview.qmd": {
-    "overview.html": "33755ecc"
+    "overview.html": "22df4580"
   },
   "foundations.qmd": {
-    "foundations.html": "a4ad4cd5"
+    "foundations.html": "78e082fd"
   },
   "eda.qmd": {
-    "eda.html": "da031cfd"
+    "eda.html": "1611d557"
   },
   "visualization.qmd": {
-    "visualization.html": "f27b3429"
+    "visualization.html": "766aa644"
   },
   "dashboard.qmd": {
-    "dashboard.html": "4e27d824"
+    "dashboard.html": "5dcac202"
   },
   "data_management.qmd": {
-    "data_management.html": "b9a4c45d"
+    "data_management.html": "59748c63"
   },
   "predictive.qmd": {
-    "predictive.html": "bf6cd3e2"
+    "predictive.html": "dbf5d9d7"
   },
   "prescriptive.qmd": {
-    "prescriptive.html": "adbf8868"
+    "prescriptive.html": "8a2c2c78"
   },
   "advanced_analytics.qmd": {
-    "advanced_analytics.html": "f0a551d8"
-  },
-  "fraud.qmd": {
-    "fraud.html": "4319c05f"
-  },
-  "performance_measurement.qmd": {
-    "performance_measurement.html": "0fe48865"
-  },
-  "ethics.qmd": {
-    "ethics.html": "5c5d9b51"
-  },
-  "future.qmd": {
-    "future.html": "a9b2f16b"
-  },
-  "references.qmd": {
-    "references.html": "1d65163b"
-  },
-  "chapter1_solution.qmd": {
-    "chapter1_solution.html": "44ca7137"
-  },
-  "chapter2_solution.qmd": {
-    "chapter2_solution.html": "22c205d2"
-  },
-  "python_basics.qmd": {
-    "python_basics.html": "e0b6c51a"
-  },
-  "r_basics.qmd": {
-    "r_basics.html": "bed07baf"
+    "advanced_analytics.html": "b575a2bc"
   },
   "nlp.qmd": {
-    "nlp.html": "d2babc33"
+    "nlp.html": "02edd13e"
   },
   "machine_learning.qmd": {
-    "machine_learning.html": "454267c2"
+    "machine_learning.html": "22f1317e"
+  },
+  "fraud.qmd": {
+    "fraud.html": "9875e42a"
+  },
+  "performance_measurement.qmd": {
+    "performance_measurement.html": "0a2277b2"
+  },
+  "ethics.qmd": {
+    "ethics.html": "14140e57"
+  },
+  "future.qmd": {
+    "future.html": "34effc0f"
+  },
+  "python_basics.qmd": {
+    "python_basics.html": "9d7a6f14"
+  },
+  "r_basics.qmd": {
+    "r_basics.html": "861fed3f"
+  },
+  "chapter1_solution.qmd": {
+    "chapter1_solution.html": "ced91b8e"
+  },
+  "chapter2_solution.qmd": {
+    "chapter2_solution.html": "8dd19b03"
+  },
+  "references.qmd": {
+    "references.html": "caed9d06"
   }
 }

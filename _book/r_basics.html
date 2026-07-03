@@ -1063,31 +1063,31 @@ $age
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb110"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="co"># vector of 2 elements </span></span>
 <span id="cb110-2"><a href="#cb110-2" aria-hidden="true" tabindex="-1"></a><span class="fu">runif</span>(<span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.2298193 0.8485644</code></pre>
+<pre><code>[1] 0.5870566 0.2841485</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb112"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="co"># vector of 5 elements from 0 to 100</span></span>
 <span id="cb112-2"><a href="#cb112-2" aria-hidden="true" tabindex="-1"></a><span class="fu">runif</span>(<span class="dv">5</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">100</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 67.77074 49.66651 78.63621 65.32316 78.02554</code></pre>
+<pre><code>[1]  9.579302 15.154006  6.664290 27.582771 61.697458</code></pre>
 </div>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>rnorm()</code> function generates random numbers from normal distribution with mean 0 and standard deviation 1.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb114"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1]  1.10149994  0.92552988  0.04793636 -1.72338768 -0.02130319</code></pre>
+<pre><code>[1]  0.2151261 -0.1528280  0.4754032 -1.6037992  0.6588707</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb116"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">5</span>, <span class="at">mean =</span> <span class="dv">5</span>, <span class="at">sd=</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.348748 3.386323 6.788043 4.293115 7.130440</code></pre>
+<pre><code>[1] 5.380029 6.654673 3.405433 4.431995 6.559583</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb118"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">rnorm</span>(<span class="dv">500</span>, <span class="at">mean =</span> <span class="dv">5</span>, <span class="at">sd=</span> <span class="dv">2</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 5.182332</code></pre>
+<pre><code>[1] 4.975642</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb120"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb120-1"><a href="#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(<span class="fu">rnorm</span>(<span class="dv">500</span>, <span class="at">mean =</span> <span class="dv">5</span>, <span class="at">sd=</span> <span class="dv">2</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.990378</code></pre>
+<pre><code>[1] 2.197401</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb122"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb122-1"><a href="#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">rnorm</span>(<span class="dv">500</span>, <span class="at">mean =</span> <span class="dv">5</span>, <span class="at">sd=</span> <span class="dv">2</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
@@ -1105,45 +1105,45 @@ $age
 <span id="cb123-3"><a href="#cb123-3" aria-hidden="true" tabindex="-1"></a><span class="fu">as_tibble</span>(mat)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10 × 5
-         a       b      c      d       e
-     &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
- 1 -2.17   -0.616  -1.28   0.539 -0.740 
- 2 -1.14   -0.488  -0.602  1.12  -0.150 
- 3  0.161   0.0581  0.913 -0.984  0.271 
- 4  0.827  -0.839  -0.251  0.755  0.813 
- 5 -0.823   1.65    1.09  -1.07   0.116 
- 6 -1.01   -1.03   -1.55  -2.07   0.0251
- 7  0.521  -0.452   2.01  -0.243 -0.0867
- 8  0.441   0.590  -0.478 -0.900  1.88  
- 9  0.619   0.781   0.472 -0.883  1.26  
-10  0.0859  0.175   1.95  -1.83  -1.64  </code></pre>
+        a      b       c       d      e
+    &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;
+ 1 -0.547  2.11  -0.241  -0.775   0.560
+ 2 -0.266 -0.888  0.854  -1.83   -1.10 
+ 3 -1.50   1.69   0.979   0.261  -0.438
+ 4  0.992  1.50  -0.183   0.306   0.399
+ 5  1.47   0.103 -1.28    1.57   -0.149
+ 6 -0.889 -0.318  0.301  -1.05   -0.739
+ 7 -0.310  0.238  1.99    0.424  -0.300
+ 8 -0.619 -1.24   0.0327  0.0168 -0.611
+ 9  0.555  0.944 -0.0361  1.11    0.333
+10 -0.735 -1.06   0.202  -1.26    1.50 </code></pre>
 </div>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In additon to <code>runif()</code> and <code>rnorm()</code>, <code>sample()</code> function can be used to generate random numbers.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb125"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">100</span>,<span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1]  63 100   1  51  18</code></pre>
+<pre><code>[1]  5 27 17 37  1</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb127"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb127-1"><a href="#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">100</span>,<span class="dv">5</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 39 42 30 40 21</code></pre>
+<pre><code>[1] 83 87 54 54 63</code></pre>
 </div>
 </div>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb129"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb129-1"><a href="#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="fu">matrix</span>(<span class="fu">sample</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">50</span>,<span class="dv">50</span>), <span class="at">ncol =</span> <span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>      [,1] [,2] [,3] [,4] [,5]
- [1,]   37   49   30   29   50
- [2,]    9   41   18   38   26
- [3,]   42   48   47   44   20
- [4,]   24   34   36   45   40
- [5,]   11   31   16   21   33
- [6,]   46   32   13   28   43
- [7,]   39    6   17    1    8
- [8,]   15   22    5    7   35
- [9,]   10   23   19   27   25
-[10,]    2   12    0   14    3</code></pre>
+ [1,]    4   47   15   34   24
+ [2,]    7   50   25   13   41
+ [3,]    8   37   35    0   23
+ [4,]   44   32   43   38    3
+ [5,]   46   12   11   21   30
+ [6,]   49    1   14   39   28
+ [7,]    9   18   48   29    5
+ [8,]   19   22   20    6   45
+ [9,]   36   10   16   27   26
+[10,]    2   42   33   31   40</code></pre>
 </div>
 </div>
 </section>

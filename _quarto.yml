@@ -82,15 +82,13 @@ format:
     callout-appearance: default
     cover-image: images/titlepage_1_alt.webp
 
-  pdf:
-    documentclass: scrreprt
-    output-file: pdf-book
-    pdf-engine: xelatex
-    mainfont: "Times New Roman"
-    sansfont: "Arial"
-    monofont: "Courier New"
-    colorlinks: true
+#  pdf:
+#    documentclass: scrreprt
+#    output-file: pdf-book
+#    pdf-engine: xelatex
+#    mainfont: "Times New Roman"
+#    sansfont: "Arial"
+#    monofont: "Courier New"
+#    colorlinks: true
 
-    
-
-editor: visual
+editor: source 

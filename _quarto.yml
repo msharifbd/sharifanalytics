@@ -28,28 +28,28 @@ book:
       This book was built with <a href="https://quarto.org/">Quarto</a>.
   chapters:
     - index.qmd
-    - part: "Introduction to Accounting Analytics"
+    - part: "Part I: Introduction to Accounting Analytics"
       chapters:
         - overview.qmd
         - foundations.qmd
-    - part: "Data Exploration and Management"
+    - part: " Part II: Data Exploration and Management"
       chapters:
         - eda.qmd 
         - visualization.qmd 
         - dashboard.qmd
         - data_management.qmd
-    - part: "Predictive and Prescriptive Analytics"
+    - part: "Part III: Predictive and Prescriptive Analytics"
       chapters: 
         - predictive.qmd
         - prescriptive.qmd 
-    - part: "Advanced Techniques and Applications"
+    - part: "Part IV: Advanced Techniques and Applications"
       chapters:
         - advanced_analytics.qmd
         - nlp.qmd 
         - machine_learning.qmd
         - fraud.qmd
         - performance_measurement.qmd
-    - part: "Practical Considerations and Future Directions"
+    - part: "Part V: Practical Considerations and Future Directions"
       chapters: 
         - ethics.qmd
         - future.qmd

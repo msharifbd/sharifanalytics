@@ -8,7 +8,11 @@ book:
   reader-mode: true
   sidebar: 
     style: floating  
-    search: true 
+    search: true
+    tools:
+      - icon: cup-hot
+        href: https://www.buymeacoffee.com/msharifbd
+        text: "Buy Me a Coffee" 
   date: today
   date-format: long 
   author: 
@@ -75,7 +79,6 @@ format:
     theme: 
       light: flatly
       dark: darkly
-    mainfont: Georgia, serif 
     code-link: true
     code-overflow: wrap 
     fig-cap-location: bottom

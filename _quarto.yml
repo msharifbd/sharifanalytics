@@ -77,8 +77,8 @@ format:
     number-depth: 5
     toc-depth: 5
     theme: 
-      light: flatly
-      dark: darkly
+      light: cosmo
+      dark: slate
     code-link: true
     code-overflow: wrap 
     fig-cap-location: bottom

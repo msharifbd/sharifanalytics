@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.9.38">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-
 <title>Appendix B — A Primer on R – Analytics for Accounting Data</title>
 <style>
 /* Default styles provided by pandoc.
@@ -60,7 +57,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
-
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
@@ -81,10 +77,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-5167337c264de0ce5a1aab82bbc2c04f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-ea11cf0557d5565644d588b374cfb156.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-5167337c264de0ce5a1aab82bbc2c04f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-1c9137b7b1c0320e377730bf2be1742e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-5a8d804490c71623f0dc461ebb6c4a40.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-1c9137b7b1c0320e377730bf2be1742e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -111,10 +106,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-
-
 </head>
-
 <body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
@@ -280,9 +272,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
@@ -293,21 +283,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <i class="bi bi-search"></i>
       </button>
     </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Analytics for Accounting Data</a> 
         <div class="sidebar-tools-main tools-wide">
+    <a href="https://www.buymeacoffee.com/msharifbd" title="Buy Me a Coffee" class="quarto-navigation-tool px-1" aria-label="Buy Me a Coffee"><i class="bi bi-cup-hot"></i></a>
     <a href="https://github.com/msharifbd/sharifanalytics" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
     <div class="dropdown">
       <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Download"><i class="bi bi-download"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
-          <li>
+<li>
             <a class="dropdown-item sidebar-tools-main-item" href="./Analytics-for-Accounting-Data.pdf">
               <i class="bi bi-file-pdf pe-1"></i>
             Download PDF
@@ -320,11 +307,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             </a>
           </li>
       </ul>
-    </div>
+</div>
     <div class="dropdown">
       <a href="" title="Share" id="quarto-navigation-tool-dropdown-1" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Share"><i class="bi bi-share"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-1">
-          <li>
+<li>
             <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
               <i class="bi bi-twitter pe-1"></i>
             Twitter
@@ -343,7 +330,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             </a>
           </li>
       </ul>
-    </div>
+</div>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
@@ -360,7 +347,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Welcome</span></a>
@@ -369,13 +356,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Introduction to Accounting Analytics</span></a>
+ <span class="menu-text">Part I: Introduction to Accounting Analytics</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./overview.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Overview of Accounting Analytics</span></span></a>
@@ -388,17 +375,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Data Exploration and Management</span></a>
+ <span class="menu-text">Part II: Data Exploration and Management</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./eda.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis (EDA)</span></span></a>
@@ -423,17 +410,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Predictive and Prescriptive Analytics</span></a>
+ <span class="menu-text">Part III: Predictive and Prescriptive Analytics</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./predictive.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Predictive Modeling - Linear Regression</span></span></a>
@@ -446,17 +433,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">Advanced Techniques and Applications</span></a>
+ <span class="menu-text">Part IV: Advanced Techniques and Applications</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./advanced_analytics.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Web Scraping and Textual Analytics</span></span></a>
@@ -487,17 +474,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
- <span class="menu-text">Practical Considerations and Future Directions</span></a>
+ <span class="menu-text">Part V: Practical Considerations and Future Directions</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ethics.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Regulatory and Ethical Considerations</span></span></a>
@@ -510,7 +497,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
@@ -519,8 +506,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./python_basics.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">A Primer on Python</span></span></a>
@@ -551,18 +538,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-  </li>
+</li>
     </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#learning-objectives-of-the-appendix" id="toc-learning-objectives-of-the-appendix" class="nav-link active" data-scroll-target="#learning-objectives-of-the-appendix">Learning Objectives of the Appendix</a></li>
+<li><a href="#learning-objectives-of-the-appendix" id="toc-learning-objectives-of-the-appendix" class="nav-link active" data-scroll-target="#learning-objectives-of-the-appendix">Learning Objectives of the Appendix</a></li>
   <li><a href="#what-is-r" id="toc-what-is-r" class="nav-link" data-scroll-target="#what-is-r"><span class="header-section-number">B.1</span> What is R?</a></li>
   <li><a href="#packages-in-r" id="toc-packages-in-r" class="nav-link" data-scroll-target="#packages-in-r"><span class="header-section-number">B.2</span> Packages in R</a></li>
   <li><a href="#data-types" id="toc-data-types" class="nav-link" data-scroll-target="#data-types"><span class="header-section-number">B.3</span> Data Types</a></li>
@@ -570,15 +555,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions"><span class="header-section-number">B.7</span> Functions</a></li>
   <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions"><span class="header-section-number">B.8</span> Conclusions</a></li>
   <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a></li>
-  </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/msharifbd/sharifanalytics/edit/main/r_basics.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/msharifbd/sharifanalytics/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/msharifbd/sharifanalytics/blob/main/r_basics.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
+  </ul><div class="toc-actions"><ul><li><a href="https://github.com/msharifbd/sharifanalytics/edit/main/r_basics.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/msharifbd/sharifanalytics/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/msharifbd/sharifanalytics/blob/main/r_basics.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./python_basics.html">Appendices</a></li><li class="breadcrumb-item"><a href="./r_basics.html"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">A Primer on R</span></a></li></ol></nav>
-<div class="quarto-title">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./python_basics.html">Appendices</a></li><li class="breadcrumb-item"><a href="./r_basics.html"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">A Primer on R</span></a></li></ol></nav><div class="quarto-title">
 <h1 class="title">Appendix B — A Primer on R</h1>
 </div>
 
@@ -593,141 +573,129 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header>
-
-
-<section id="learning-objectives-of-the-appendix" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="learning-objectives-of-the-appendix">Learning Objectives of the Appendix</h2>
+</header><section id="learning-objectives-of-the-appendix" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="learning-objectives-of-the-appendix">Learning Objectives of the Appendix</h2>
 <p>At the End of the Appendix, Students should be Able to -</p>
 <ul>
 <li><p>Gain an Understanding about R</p></li>
 <li><p>Gain an Understanding about the Data Types and Data Structures in R</p></li>
 <li><p>Gain an Understanding about Indexing and Slicing of vectors and Data Frames, and Mathematical Operations on them</p></li>
 <li><p>Gain an Understanding about <code>for</code> Loop function, <code>map</code> function, and User Defined Function, and Anonymous Function in R</p></li>
-</ul>
-</section>
-<section id="what-is-r" class="level2" data-number="B.1">
-<h2 data-number="B.1" class="anchored" data-anchor-id="what-is-r"><span class="header-section-number">B.1</span> What is R?</h2>
+</ul></section><section id="what-is-r" class="level2" data-number="B.1"><h2 data-number="B.1" class="anchored" data-anchor-id="what-is-r">
+<span class="header-section-number">B.1</span> What is R?</h2>
 <div style="text-align: justify">
 <p>&nbsp;&nbsp;&nbsp;&nbsp;<code>R</code> is an object-oriented programming language. R was first developed by two statisticans - Ross Ihaka and Robert Gentleman<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> - in early 1990s<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. Though it was first designed for statistial purposes, nowadays, it is widely used in statistical analysis, visualization, finance, healthcare industry, and many more. Many companies in the world use R. For example, <a href="https://www.nytimes.com/2009/01/07/technology/business-computing/07program.html?pagewanted=1&amp;_r=1">The Newyork Times</a> and <a href="https://www.tandfonline.com/doi/full/10.1080/00031305.2017.1392362">Airbnb</a> use R for their day to day operations.</p>
 </div>
-</section>
-<section id="packages-in-r" class="level2" data-number="B.2">
-<h2 data-number="B.2" class="anchored" data-anchor-id="packages-in-r"><span class="header-section-number">B.2</span> Packages in R</h2>
+</section><section id="packages-in-r" class="level2" data-number="B.2"><h2 data-number="B.2" class="anchored" data-anchor-id="packages-in-r">
+<span class="header-section-number">B.2</span> Packages in R</h2>
 <div style="text-align: justify">
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Packages are collections of functions, data and so on. Packages enhance the functionalities of R. There are tons of packages for different purposes in R. The Comprehensive R Archive Network (CRAN) - <a href="https://cran.r-project.org/" class="uri">https://cran.r-project.org/</a>- is the primary repository of R packages. Some of the widely used R packages include - <code>dplyr</code>, <code>ggplot</code>, <code>lubridate</code>, and <code>shiny</code>. The function - <code>install.package('packagename')</code>- is used to install a package in R. Once the package is installed, one needs to load (import) package by running the code - <code>library (packagename)</code><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. Please note that you need to install the package only once, but you need to import (load) your package each time you start a new R session.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Packages are collections of functions, data and so on. Packages enhance the functionalities of R. There are tons of packages for different purposes in R. The Comprehensive R Archive Network (CRAN) - <a href="https://cran.r-project.org/" class="uri">https://cran.r-project.org/</a>- is the primary repository of R packages. Some of the widely used R packages include - <code>dplyr</code>, <code>ggplot</code>, <code>lubridate</code>, and <code>shiny</code>. The function - <code>install.package('packagename')</code>- is used to install a package in R. Once the package is installed, one needs to load (import) package by running the code - <code><a href="https://rdrr.io/r/base/library.html">library (packagename)</a></code><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. Please note that you need to install the package only once, but you need to import (load) your package each time you start a new R session.</p>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># installing tidyverse package </span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">'tidyverse'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># installing tidyverse package </span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">'tidyverse'</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Loading tidyverse package </span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Loading tidyverse package </span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</section>
-<section id="data-types" class="level2" data-number="B.3">
-<h2 data-number="B.3" class="anchored" data-anchor-id="data-types"><span class="header-section-number">B.3</span> Data Types</h2>
+</section><section id="data-types" class="level2" data-number="B.3"><h2 data-number="B.3" class="anchored" data-anchor-id="data-types">
+<span class="header-section-number">B.3</span> Data Types</h2>
 <div style="text-align: justify">
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Data<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> has different types. When dealing with data, we need to know the types of the data because different data types can do different things. There are five basic data types in <code>R</code>. They include - <code>double</code>, <code>integer</code>, <code>character</code>, <code>logical</code>, and <code>complex</code>. We use <code>typeof ()</code> or <code>class ()</code> functions to know the types of the vector and <code>length()</code> to know the size of the vector. However, most commmonly used data types are <code>double</code>, <code>integer</code>, <code>character</code>, and <code>logical</code>.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Data<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> has different types. When dealing with data, we need to know the types of the data because different data types can do different things. There are five basic data types in <code>R</code>. They include - <code>double</code>, <code>integer</code>, <code>character</code>, <code>logical</code>, and <code>complex</code>. We use <code><a href="https://rdrr.io/r/base/typeof.html">typeof ()</a></code> or <code><a href="https://rdrr.io/r/base/class.html">class ()</a></code> functions to know the types of the vector and <code><a href="https://rdrr.io/r/base/length.html">length()</a></code> to know the size of the vector. However, most commmonly used data types are <code>double</code>, <code>integer</code>, <code>character</code>, and <code>logical</code>.</p>
 </div>
-</section>
-<section id="data-structure" class="level2" data-number="B.4">
-<h2 data-number="B.4" class="anchored" data-anchor-id="data-structure"><span class="header-section-number">B.4</span> Data Structure</h2>
+</section><section id="data-structure" class="level2" data-number="B.4"><h2 data-number="B.4" class="anchored" data-anchor-id="data-structure">
+<span class="header-section-number">B.4</span> Data Structure</h2>
 <div style="text-align: justify">
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;There are several types of data structures in R. These structures include - vector, matrix, array, list, data frame, tibble, and facotrs. Of these data structures - vector, list, data frame and tibble are the most common.</p>
-<section id="vector" class="level3" data-number="B.4.1">
-<h3 data-number="B.4.1" class="anchored" data-anchor-id="vector"><span class="header-section-number">B.4.1</span> Vector</h3>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vector is one of the basic data structures in R. In most cases, vectors are created by using <code>c()</code> function, where “c” means concatenate. Sometimes vectors are classified into two groups - atomic vectors and lists. <a href="#fig-rvectors" class="quarto-xref">Figure&nbsp;<span>B.1</span></a> shows the classfication of the vectors. Atomic vectors include - double, integer, character, and logical vectors<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>. The double and integer vectors are collectively known as <em>numeric</em> vectors. Lists include dataframe or tibble. Lists are called recursive vectors because they can include other lists. <em>NULL</em><a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> is often used to represent the <strong>absence of a vector</strong>. NULL indicates that the vector length is 0.</p>
+<section id="vector" class="level3" data-number="B.4.1"><h3 data-number="B.4.1" class="anchored" data-anchor-id="vector">
+<span class="header-section-number">B.4.1</span> Vector</h3>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vector is one of the basic data structures in R. In most cases, vectors are created by using <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> function, where “c” means concatenate. Sometimes vectors are classified into two groups - atomic vectors and lists. <a href="#fig-rvectors" class="quarto-xref">Figure&nbsp;<span>B.1</span></a> shows the classfication of the vectors. Atomic vectors include - double, integer, character, and logical vectors<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>. The double and integer vectors are collectively known as <em>numeric</em> vectors. Lists include dataframe or tibble. Lists are called recursive vectors because they can include other lists. <em>NULL</em><a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> is often used to represent the <strong>absence of a vector</strong>. NULL indicates that the vector length is 0.</p>
 <div id="fig-rvectors" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-rvectors-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-rvectors-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="images/vector-atomic-list-tibble.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rvectors-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;B.1: Types of Vector
-</figcaption>
-</figure>
+</figcaption></figure>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># An example of a vector</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>students <span class="ot">=</span> <span class="fu">c</span> (<span class="st">"John"</span>, <span class="st">"Adam"</span>, <span class="st">"Alex"</span>, <span class="st">"Emily"</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(students)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># An example of a vector</span></span>
+<span><span class="va">students</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span> <span class="op">(</span><span class="st">"John"</span>, <span class="st">"Adam"</span>, <span class="st">"Alex"</span>, <span class="st">"Emily"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">students</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "John"  "Adam"  "Alex"  "Emily"</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(students)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">students</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "character"</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(students)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">students</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "character"</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(students)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">students</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 4</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Numeric vector </span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>numeric_vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.1</span>, <span class="fl">2.2</span>, <span class="fl">3.3</span>) </span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Integer vector </span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>integer_vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>L, <span class="dv">2</span>L, <span class="dv">3</span>L) </span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Character vector </span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>character_vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>) </span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Logical vector </span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>logical_vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Numeric vector </span></span>
+<span><span class="va">numeric_vector</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1.1</span>, <span class="fl">2.2</span>, <span class="fl">3.3</span><span class="op">)</span> </span>
+<span><span class="co"># Integer vector </span></span>
+<span><span class="va">integer_vector</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1L</span>, <span class="fl">2L</span>, <span class="fl">3L</span><span class="op">)</span> </span>
+<span><span class="co"># Character vector </span></span>
+<span><span class="va">character_vector</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span><span class="op">)</span> </span>
+<span><span class="co"># Logical vector </span></span>
+<span><span class="va">logical_vector</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Some vector operations </span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>numeric_vector <span class="sc">+</span> <span class="dv">5</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Some vector operations </span></span>
+<span><span class="va">numeric_vector</span> <span class="op">+</span> <span class="fl">5</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 6.1 7.2 8.3</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>numeric_vector <span class="sc">-</span> <span class="dv">5</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">numeric_vector</span> <span class="op">-</span> <span class="fl">5</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -3.9 -2.8 -1.7</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(numeric_vector)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">numeric_vector</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3.3</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(integer_vector)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">integer_vector</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(integer_vector)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">integer_vector</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 6</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(numeric_vector)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">numeric_vector</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.1</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Vectors as sequence of Numbers </span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>num_seq <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>num_seq</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Vectors as sequence of Numbers </span></span>
+<span><span class="va">num_seq</span> <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span></span>
+<span><span class="va">num_seq</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">15</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">15</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">40</span>, <span class="at">by =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">40</span>, by <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]  1  3  5  7  9 11 13 15 17 19 21 23 25 27 29 31 33 35 37 39</code></pre>
 </div>
 </div>
-</section>
-<section id="matrix" class="level3" data-number="B.4.2">
-<h3 data-number="B.4.2" class="anchored" data-anchor-id="matrix"><span class="header-section-number">B.4.2</span> Matrix</h3>
+</section><section id="matrix" class="level3" data-number="B.4.2"><h3 data-number="B.4.2" class="anchored" data-anchor-id="matrix">
+<span class="header-section-number">B.4.2</span> Matrix</h3>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Matrix is a special type of vector with dimensions, meaning that matrix has rows and columns. Matrix is constructed columnwise.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">matrix</span>(<span class="fu">seq</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>), <span class="at">nrow =</span> <span class="dv">4</span>, <span class="at">ncol =</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">12</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="fl">4</span>, ncol <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2] [,3]
 [1,]    1    5    9
@@ -735,9 +703,9 @@ Figure&nbsp;B.1: Types of Vector
 [3,]    3    7   11
 [4,]    4    8   12</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>m <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">12</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span> (m) <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">3</span>) <span class="co"># dimension added to the matrix </span></span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>m</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">m</span> <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">12</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span> <span class="op">(</span><span class="va">m</span><span class="op">)</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>,<span class="fl">3</span><span class="op">)</span> <span class="co"># dimension added to the matrix </span></span>
+<span><span class="va">m</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2] [,3]
 [1,]    1    5    9
@@ -746,12 +714,11 @@ Figure&nbsp;B.1: Types of Vector
 [4,]    4    8   12</code></pre>
 </div>
 </div>
-</section>
-<section id="arrays" class="level3" data-number="B.4.3">
-<h3 data-number="B.4.3" class="anchored" data-anchor-id="arrays"><span class="header-section-number">B.4.3</span> Arrays</h3>
+</section><section id="arrays" class="level3" data-number="B.4.3"><h3 data-number="B.4.3" class="anchored" data-anchor-id="arrays">
+<span class="header-section-number">B.4.3</span> Arrays</h3>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Arrays are very similar to matrix, but they have more than two dimensions.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">array</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">27</span>, <span class="at">dim =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/array.html">array</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">27</span>, dim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">3</span>,<span class="fl">3</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>, , 1
 
@@ -775,16 +742,15 @@ Figure&nbsp;B.1: Types of Vector
 [3,]   21   24   27</code></pre>
 </div>
 </div>
-</section>
-<section id="data-frames-tibble" class="level3" data-number="B.4.4">
-<h3 data-number="B.4.4" class="anchored" data-anchor-id="data-frames-tibble"><span class="header-section-number">B.4.4</span> Data Frames (tibble)</h3>
+</section><section id="data-frames-tibble" class="level3" data-number="B.4.4"><h3 data-number="B.4.4" class="anchored" data-anchor-id="data-frames-tibble">
+<span class="header-section-number">B.4.4</span> Data Frames (tibble)</h3>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Like matrix, data frames are two dimensional, having rows and columns. However, unlike matrix, they can contain different types of data. Data frames are widely used in data analytics. Tibble is an updated or modern type of data frame. It is recommended to use tibble.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(</span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,</span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="fu">c</span> (<span class="st">'A'</span>, <span class="st">"B"</span>, <span class="st">"C"</span>),</span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">age =</span> <span class="fu">c</span> (<span class="dv">18</span>, <span class="dv">21</span>, <span class="dv">23</span>)</span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb36"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
+<span>    id <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>,</span>
+<span>    name <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span> <span class="op">(</span><span class="st">'A'</span>, <span class="st">"B"</span>, <span class="st">"C"</span><span class="op">)</span>,</span>
+<span>    age <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span> <span class="op">(</span><span class="fl">18</span>, <span class="fl">21</span>, <span class="fl">23</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  id name age
 1  1    A  18
@@ -793,11 +759,11 @@ Figure&nbsp;B.1: Types of Vector
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(</span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>   <span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,</span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="fu">c</span> (<span class="st">'A'</span>, <span class="st">"B"</span>, <span class="st">"C"</span>),</span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">age =</span> <span class="fu">c</span> (<span class="dv">18</span>, <span class="dv">21</span>, <span class="dv">23</span>) </span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb38"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
+<span>   id <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>,</span>
+<span>    name <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span> <span class="op">(</span><span class="st">'A'</span>, <span class="st">"B"</span>, <span class="st">"C"</span><span class="op">)</span>,</span>
+<span>    age <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span> <span class="op">(</span><span class="fl">18</span>, <span class="fl">21</span>, <span class="fl">23</span><span class="op">)</span> </span>
+<span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 3
      id name    age
@@ -807,24 +773,23 @@ Figure&nbsp;B.1: Types of Vector
 3     3 C        23</code></pre>
 </div>
 </div>
-</section>
-<section id="lists" class="level3" data-number="B.4.5">
-<h3 data-number="B.4.5" class="anchored" data-anchor-id="lists"><span class="header-section-number">B.4.5</span> Lists</h3>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lists are very versatile in that it can contain different types of data. Unlike atomic vectors, which contain same type of data, lists can contain many types of data. Lists can also contain another list; therefore, it is sometimes called recursive vector. List is created by using function <code>list()</code>.</p>
+</section><section id="lists" class="level3" data-number="B.4.5"><h3 data-number="B.4.5" class="anchored" data-anchor-id="lists">
+<span class="header-section-number">B.4.5</span> Lists</h3>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lists are very versatile in that it can contain different types of data. Unlike atomic vectors, which contain same type of data, lists can contain many types of data. Lists can also contain another list; therefore, it is sometimes called recursive vector. List is created by using function <code><a href="https://rdrr.io/r/base/list.html">list()</a></code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>list_example <span class="ot">=</span> <span class="fu">list</span> (</span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">"Jessica"</span>,</span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">22</span>),</span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">cgpa =</span> <span class="fu">c</span>(<span class="fl">3.75</span>),</span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">student  =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">address =</span> <span class="fu">list</span>(</span>
-<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">street =</span> <span class="fu">c</span>(<span class="st">"5 W Main St"</span>),</span>
-<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">city =</span> <span class="fu">c</span>(<span class="st">"Carbondale"</span>),</span>
-<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">zip =</span> <span class="dv">62901</span></span>
-<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">hobbies =</span> <span class="fu">c</span> (<span class="st">"Fishing"</span>, <span class="st">"Hiking"</span>, <span class="st">"Cooking"</span>)</span>
-<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a>list_example</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb40"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">list_example</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span> <span class="op">(</span></span>
+<span>    name <span class="op">=</span> <span class="st">"Jessica"</span>,</span>
+<span>    age <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">22</span><span class="op">)</span>,</span>
+<span>    cgpa <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3.75</span><span class="op">)</span>,</span>
+<span>    student  <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>    address <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span></span>
+<span>        street <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"5 W Main St"</span><span class="op">)</span>,</span>
+<span>        city <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Carbondale"</span><span class="op">)</span>,</span>
+<span>        zip <span class="op">=</span> <span class="fl">62901</span></span>
+<span>    <span class="op">)</span>,</span>
+<span>    hobbies <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span> <span class="op">(</span><span class="st">"Fishing"</span>, <span class="st">"Hiking"</span>, <span class="st">"Cooking"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span><span class="va">list_example</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$name
 [1] "Jessica"
@@ -852,24 +817,24 @@ $address$zip
 $hobbies
 [1] "Fishing" "Hiking"  "Cooking"</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(list_example<span class="sc">$</span>name)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb42"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">list_example</span><span class="op">$</span><span class="va">name</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Jessica"</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(list_example<span class="sc">$</span>address<span class="sc">$</span>city) <span class="co"># nested list element</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb44"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">list_example</span><span class="op">$</span><span class="va">address</span><span class="op">$</span><span class="va">city</span><span class="op">)</span> <span class="co"># nested list element</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Carbondale"</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>list_example[<span class="dv">1</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb46"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">list_example</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$name
 [1] "Jessica"</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>list_example[[<span class="dv">1</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb48"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">list_example</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Jessica"</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>list_example[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb50"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">list_example</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$name
 [1] "Jessica"
@@ -878,117 +843,116 @@ $age
 [1] 22</code></pre>
 </div>
 </div>
-</section>
-<section id="indexing-and-slicing-vectors" class="level2" data-number="B.5">
-<h2 data-number="B.5" class="anchored" data-anchor-id="indexing-and-slicing-vectors"><span class="header-section-number">B.5</span> Indexing and Slicing Vectors</h2>
+</section><section id="indexing-and-slicing-vectors" class="level2" data-number="B.5"><h2 data-number="B.5" class="anchored" data-anchor-id="indexing-and-slicing-vectors">
+<span class="header-section-number">B.5</span> Indexing and Slicing Vectors</h2>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Using <code>[]</code>, one can access elements in a vector. Unlike python<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>, R uses 1 based indexing, meaning that first element has an index 1. For slicing, one can specify the range of index using <code>:</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>sample_vector <span class="ot">=</span> <span class="fu">c</span> (<span class="dv">10</span><span class="sc">:</span><span class="dv">25</span>)</span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>sample_vector[<span class="dv">5</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb52"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sample_vector</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span> <span class="op">(</span><span class="fl">10</span><span class="op">:</span><span class="fl">25</span><span class="op">)</span></span>
+<span><span class="va">sample_vector</span><span class="op">[</span><span class="fl">5</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 14</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>sample_vector[<span class="dv">5</span><span class="sc">:</span><span class="dv">6</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb54"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sample_vector</span><span class="op">[</span><span class="fl">5</span><span class="op">:</span><span class="fl">6</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 14 15</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>sample_vector[<span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">8</span>)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb56"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sample_vector</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5</span>,<span class="fl">8</span><span class="op">)</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 14 17</code></pre>
 </div>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Negative indexing, unlike python, excludes the element from the vector.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>sample_vector[<span class="sc">-</span><span class="dv">5</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb58"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sample_vector</span><span class="op">[</span><span class="op">-</span><span class="fl">5</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 10 11 12 13 15 16 17 18 19 20 21 22 23 24 25</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>sample_vector[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">8</span>)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb60"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sample_vector</span><span class="op">[</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5</span>,<span class="fl">8</span><span class="op">)</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 10 11 12 13 15 16 18 19 20 21 22 23 24 25</code></pre>
 </div>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Conditional or logical indexing can be done on the vector as well.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>sample_vector <span class="sc">&gt;</span> <span class="dv">13</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb62"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sample_vector</span> <span class="op">&gt;</span> <span class="fl">13</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
 [13]  TRUE  TRUE  TRUE  TRUE</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>sample_vector[sample_vector<span class="sc">&gt;</span><span class="dv">13</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb64"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sample_vector</span><span class="op">[</span><span class="va">sample_vector</span><span class="op">&gt;</span><span class="fl">13</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 14 15 16 17 18 19 20 21 22 23 24 25</code></pre>
 </div>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Additionally, different kinds of mathematical operatins can be applied on the vector.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(sample_vector)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb66"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">sample_vector</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 10</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(sample_vector)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb68"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">sample_vector</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 25</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(sample_vector)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb70"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">sample_vector</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 280</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(sample_vector)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb72"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">sample_vector</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 4.760952</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(sample_vector)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb74"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span><span class="op">(</span><span class="va">sample_vector</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 10 25</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(sample_vector)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb76"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">sample_vector</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 17.5</code></pre>
 </div>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For data frame or tibble, one can use <code>[row,column]</code> for indexing or slicing.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">data.frame</span>(</span>
-<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,</span>
-<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="fu">c</span> (<span class="st">'A'</span>, <span class="st">"B"</span>, <span class="st">"C"</span>),</span>
-<span id="cb78-4"><a href="#cb78-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">age =</span> <span class="fu">c</span> (<span class="dv">18</span>, <span class="dv">21</span>, <span class="dv">23</span>)</span>
-<span id="cb78-5"><a href="#cb78-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb78-6"><a href="#cb78-6" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'age'</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb78"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
+<span>    id <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>,</span>
+<span>    name <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span> <span class="op">(</span><span class="st">'A'</span>, <span class="st">"B"</span>, <span class="st">"C"</span><span class="op">)</span>,</span>
+<span>    age <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span> <span class="op">(</span><span class="fl">18</span>, <span class="fl">21</span>, <span class="fl">23</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span><span class="va">df</span><span class="op">[</span><span class="st">'age'</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  age
 1  18
 2  21
 3  23</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>age</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb80"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span><span class="op">$</span><span class="va">age</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 18 21 23</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>age[<span class="dv">1</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb82"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span><span class="op">$</span><span class="va">age</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 18</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'age'</span>][[<span class="dv">1</span>]][<span class="dv">1</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb84"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span><span class="op">[</span><span class="st">'age'</span><span class="op">]</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 18</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a>df[,]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb86"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span><span class="op">[</span>,<span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  id name age
 1  1    A  18
 2  2    B  21
 3  3    C  23</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a>df[<span class="dv">1</span>,<span class="st">'age'</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb88"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span><span class="op">[</span><span class="fl">1</span>,<span class="st">'age'</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 18</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb90"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a>df[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>,<span class="st">'age'</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb90"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span>,<span class="st">'age'</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 18 21</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb92"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a>df[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>,<span class="fu">c</span>(<span class="st">'age'</span>,<span class="st">'id'</span>)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb92"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'age'</span>,<span class="st">'id'</span><span class="op">)</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  age id
 1  18  1
@@ -996,12 +960,12 @@ $age
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb94"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">=</span> <span class="fu">tibble</span>(</span>
-<span id="cb94-2"><a href="#cb94-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,</span>
-<span id="cb94-3"><a href="#cb94-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="fu">c</span> (<span class="st">'A'</span>, <span class="st">"B"</span>, <span class="st">"C"</span>),</span>
-<span id="cb94-4"><a href="#cb94-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">age =</span> <span class="fu">c</span> (<span class="dv">18</span>, <span class="dv">21</span>, <span class="dv">23</span>)</span>
-<span id="cb94-5"><a href="#cb94-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb94-6"><a href="#cb94-6" aria-hidden="true" tabindex="-1"></a>df2[<span class="st">'age'</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb94"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df2</span> <span class="op">=</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
+<span>    id <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>,</span>
+<span>    name <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span> <span class="op">(</span><span class="st">'A'</span>, <span class="st">"B"</span>, <span class="st">"C"</span><span class="op">)</span>,</span>
+<span>    age <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span> <span class="op">(</span><span class="fl">18</span>, <span class="fl">21</span>, <span class="fl">23</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span><span class="va">df2</span><span class="op">[</span><span class="st">'age'</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 1
     age
@@ -1010,19 +974,19 @@ $age
 2    21
 3    23</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb96"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a>df2<span class="sc">$</span>age</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb96"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df2</span><span class="op">$</span><span class="va">age</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 18 21 23</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb98"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a>df2<span class="sc">$</span>age[<span class="dv">1</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb98"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df2</span><span class="op">$</span><span class="va">age</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 18</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb100"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a>df2[<span class="st">'age'</span>][[<span class="dv">1</span>]][<span class="dv">1</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb100"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df2</span><span class="op">[</span><span class="st">'age'</span><span class="op">]</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 18</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb102"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a>df2[,]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb102"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df2</span><span class="op">[</span>,<span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 3
      id name    age
@@ -1031,14 +995,14 @@ $age
 2     2 B        21
 3     3 C        23</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb104"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a>df2[<span class="dv">1</span>,<span class="st">'age'</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb104"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df2</span><span class="op">[</span><span class="fl">1</span>,<span class="st">'age'</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
     age
   &lt;dbl&gt;
 1    18</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb106"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a>df2[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>,<span class="st">'age'</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb106"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df2</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span>,<span class="st">'age'</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 1
     age
@@ -1046,7 +1010,7 @@ $age
 1    18
 2    21</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb108"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a>df2[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>,<span class="fu">c</span>(<span class="st">'age'</span>,<span class="st">'id'</span>)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb108"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df2</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'age'</span>,<span class="st">'id'</span><span class="op">)</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 2
     age    id
@@ -1055,117 +1019,114 @@ $age
 2    21     2</code></pre>
 </div>
 </div>
-</section>
-<section id="random-numbers" class="level2" data-number="B.6">
-<h2 data-number="B.6" class="anchored" data-anchor-id="random-numbers"><span class="header-section-number">B.6</span> Random Numbers</h2>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In R, two widely used functions to generate random numbers are - <code>runif()</code> and <code>rnorm()</code>. <code>runif()</code> is used to generate random numbers from uniform distribution. The range of numbers generated using <code>runif</code> is 0 to 1.</p>
+</section><section id="random-numbers" class="level2" data-number="B.6"><h2 data-number="B.6" class="anchored" data-anchor-id="random-numbers">
+<span class="header-section-number">B.6</span> Random Numbers</h2>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In R, two widely used functions to generate random numbers are - <code><a href="https://rdrr.io/r/stats/Uniform.html">runif()</a></code> and <code><a href="https://rdrr.io/r/stats/Normal.html">rnorm()</a></code>. <code><a href="https://rdrr.io/r/stats/Uniform.html">runif()</a></code> is used to generate random numbers from uniform distribution. The range of numbers generated using <code>runif</code> is 0 to 1.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb110"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="co"># vector of 2 elements </span></span>
-<span id="cb110-2"><a href="#cb110-2" aria-hidden="true" tabindex="-1"></a><span class="fu">runif</span>(<span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb110"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># vector of 2 elements </span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.6426220 0.7894248</code></pre>
+<pre><code>[1] 0.8971337 0.7170207</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb112"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="co"># vector of 5 elements from 0 to 100</span></span>
-<span id="cb112-2"><a href="#cb112-2" aria-hidden="true" tabindex="-1"></a><span class="fu">runif</span>(<span class="dv">5</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">100</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb112"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># vector of 5 elements from 0 to 100</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="fl">5</span>, min <span class="op">=</span> <span class="fl">0</span>, max <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 45.079332  4.204022  3.579997 75.175917 55.085417</code></pre>
+<pre><code>[1] 87.59328 68.42325 43.49764 43.03969 26.49442</code></pre>
 </div>
 </div>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>rnorm()</code> function generates random numbers from normal distribution with mean 0 and standard deviation 1.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code><a href="https://rdrr.io/r/stats/Normal.html">rnorm()</a></code> function generates random numbers from normal distribution with mean 0 and standard deviation 1.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb114"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb114"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -0.8544542  0.2125380 -0.3892735  1.2794183  0.9004233</code></pre>
+<pre><code>[1] -0.1692379 -0.8491149  0.7202685  0.4872278 -2.9144980</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb116"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">5</span>, <span class="at">mean =</span> <span class="dv">5</span>, <span class="at">sd=</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb116"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">5</span>, mean <span class="op">=</span> <span class="fl">5</span>, sd<span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 6.864097 3.720227 6.753215 3.506482 4.464719</code></pre>
+<pre><code>[1] 7.470467 7.057628 4.082014 3.726986 6.217933</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb118"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">rnorm</span>(<span class="dv">500</span>, <span class="at">mean =</span> <span class="dv">5</span>, <span class="at">sd=</span> <span class="dv">2</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb118"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">500</span>, mean <span class="op">=</span> <span class="fl">5</span>, sd<span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 5.053725</code></pre>
+<pre><code>[1] 5.054357</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb120"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb120-1"><a href="#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(<span class="fu">rnorm</span>(<span class="dv">500</span>, <span class="at">mean =</span> <span class="dv">5</span>, <span class="at">sd=</span> <span class="dv">2</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb120"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">500</span>, mean <span class="op">=</span> <span class="fl">5</span>, sd<span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.967177</code></pre>
+<pre><code>[1] 1.983242</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb122"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb122-1"><a href="#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">rnorm</span>(<span class="dv">500</span>, <span class="at">mean =</span> <span class="dv">5</span>, <span class="at">sd=</span> <span class="dv">2</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb122"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">500</span>, mean <span class="op">=</span> <span class="fl">5</span>, sd<span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure">
-<p><img src="r_basics_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure"><p><img src="r_basics_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Using <code>rnorm()</code>, we can create matrix and convert it into data frame or tibble.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Using <code><a href="https://rdrr.io/r/stats/Normal.html">rnorm()</a></code>, we can create matrix and convert it into data frame or tibble.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb123"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true" tabindex="-1"></a>mat <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">rnorm</span>(<span class="dv">50</span>), <span class="at">ncol =</span> <span class="dv">5</span>)</span>
-<span id="cb123-2"><a href="#cb123-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(mat) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>, <span class="st">"d"</span>, <span class="st">"e"</span>)</span>
-<span id="cb123-3"><a href="#cb123-3" aria-hidden="true" tabindex="-1"></a><span class="fu">as_tibble</span>(mat)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb123"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mat</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">50</span><span class="op">)</span>, ncol <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">mat</span><span class="op">)</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>, <span class="st">"d"</span>, <span class="st">"e"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="va">mat</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10 × 5
-        a      b      c      d      e
-    &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
- 1 -0.335 -1.17  -0.730  0.345  1.55 
- 2 -0.921  0.287  1.82   1.82   1.07 
- 3 -1.92   0.597  0.499 -0.711 -0.540
- 4  0.311  2.05  -0.247 -0.103  0.470
- 5 -0.710  0.734 -0.675  1.26  -0.895
- 6 -0.375  0.662  0.692 -0.893  0.945
- 7  0.693 -1.01   0.215  1.26  -0.980
- 8  2.15  -0.973 -0.451  0.419 -0.144
- 9 -1.44   0.781  0.507 -1.91   0.306
-10  0.626  1.14  -0.861 -0.207 -2.09 </code></pre>
+        a       b      c       d       e
+    &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+ 1 -0.426 -0.995  -1.87  -0.188   1.08  
+ 2 -0.716 -0.755  -1.57   0.910   0.835 
+ 3 -0.695 -1.19   -0.283  0.907   0.229 
+ 4 -0.682 -0.322   0.218  0.200  -0.331 
+ 5 -0.574 -1.19   -0.536 -0.314   0.0999
+ 6 -0.683  0.770   1.53  -1.25    1.39  
+ 7  0.226 -1.66    1.05  -1.18   -0.162 
+ 8 -1.06   0.0216  0.299  1.12   -0.852 
+ 9 -0.981  0.351  -0.763 -0.992  -0.685 
+10 -0.905  1.47    0.506 -0.0229 -0.925 </code></pre>
 </div>
 </div>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In additon to <code>runif()</code> and <code>rnorm()</code>, <code>sample()</code> function can be used to generate random numbers.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In additon to <code><a href="https://rdrr.io/r/stats/Uniform.html">runif()</a></code> and <code><a href="https://rdrr.io/r/stats/Normal.html">rnorm()</a></code>, <code><a href="https://rdrr.io/r/base/sample.html">sample()</a></code> function can be used to generate random numbers.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb125"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">100</span>,<span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb125"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">100</span>,<span class="fl">5</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 11 47 43 81 74</code></pre>
+<pre><code>[1] 15 70 39 46  3</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb127"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb127-1"><a href="#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">100</span>,<span class="dv">5</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb127"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">100</span>,<span class="fl">5</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 92 35 32 12 79</code></pre>
+<pre><code>[1] 39 83 90 50 22</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb129"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb129-1"><a href="#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="fu">matrix</span>(<span class="fu">sample</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">50</span>,<span class="dv">50</span>), <span class="at">ncol =</span> <span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb129"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">50</span>,<span class="fl">50</span><span class="op">)</span>, ncol <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>      [,1] [,2] [,3] [,4] [,5]
- [1,]   32   24   34   14   37
- [2,]   10   20    6   18    2
- [3,]   29    5   15    3   13
- [4,]    7   22   31   40   47
- [5,]   36    4   25   27   33
- [6,]   21   44   46   38   16
- [7,]   17   23   19    1   11
- [8,]   43   39    0   45   50
- [9,]   30   26    8    9   28
-[10,]   42   35   12   41   48</code></pre>
+ [1,]    5   21   28   49   42
+ [2,]   10   33   50   16   44
+ [3,]   14   29   20   36   25
+ [4,]   27   35   31    7    3
+ [5,]   24   22   32   13   45
+ [6,]   18   17   40   46   23
+ [7,]    8   34    6    9   38
+ [8,]   47   11   19   30   41
+ [9,]   15   48   26    2   39
+[10,]   43    0    4    1   37</code></pre>
 </div>
 </div>
 </section>
 </div>
-</section>
-<section id="functions" class="level2" data-number="B.7">
-<h2 data-number="B.7" class="anchored" data-anchor-id="functions"><span class="header-section-number">B.7</span> Functions</h2>
+</section><section id="functions" class="level2" data-number="B.7"><h2 data-number="B.7" class="anchored" data-anchor-id="functions">
+<span class="header-section-number">B.7</span> Functions</h2>
 <div style="text-align: justify">
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In R, there are some functions that we use very frequently. In this section, we will discuss some of those functions.</p>
-<section id="for-loop-function" class="level3" data-number="B.7.1">
-<h3 data-number="B.7.1" class="anchored" data-anchor-id="for-loop-function"><span class="header-section-number">B.7.1</span> <code>for</code> Loop Function</h3>
+<section id="for-loop-function" class="level3" data-number="B.7.1"><h3 data-number="B.7.1" class="anchored" data-anchor-id="for-loop-function">
+<span class="header-section-number">B.7.1</span> <code>for</code> Loop Function</h3>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>for</code> loop function in R is used to iterate over<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a> the elements of a vector, or a list, or a matrix, or a data frame, or a tibble and apply a set of instructions (operations) on each item of the object. <code>for</code> loop function is used to avoid unnecessary repeition of code, thus enhancing efficiency and effectiveness of code. The basic syntax of <code>for</code> loop function in R -</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb131"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb131-1"><a href="#cb131-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (item <span class="cf">in</span> object) {</span>
-<span id="cb131-2"><a href="#cb131-2" aria-hidden="true" tabindex="-1"></a>    Statement</span>
-<span id="cb131-3"><a href="#cb131-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb131"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw">for</span> <span class="op">(</span><span class="va">item</span> <span class="kw">in</span> <span class="va">object</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="va">Statement</span></span>
+<span><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Some examples of <code>for</code> loop function are -</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb132"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb132-1"><a href="#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (x <span class="cf">in</span> <span class="fu">seq</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)) {</span>
-<span id="cb132-2"><a href="#cb132-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(x<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb132-3"><a href="#cb132-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb132"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw">for</span> <span class="op">(</span><span class="va">x</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">x</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1
 [1] 4
@@ -1175,9 +1136,9 @@ $age
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb134"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb134-1"><a href="#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (x <span class="cf">in</span> <span class="fu">c</span>(<span class="st">'Adam'</span>, <span class="st">"Joseph"</span>, <span class="st">"John"</span>)) {</span>
-<span id="cb134-2"><a href="#cb134-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(x)</span>
-<span id="cb134-3"><a href="#cb134-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb134"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw">for</span> <span class="op">(</span><span class="va">x</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'Adam'</span>, <span class="st">"Joseph"</span>, <span class="st">"John"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Adam"
 [1] "Joseph"
@@ -1185,42 +1146,39 @@ $age
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb136"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb136-1"><a href="#cb136-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Vectors for numbers and names</span></span>
-<span id="cb136-2"><a href="#cb136-2" aria-hidden="true" tabindex="-1"></a>numbers <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span>
-<span id="cb136-3"><a href="#cb136-3" aria-hidden="true" tabindex="-1"></a>names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'Adam'</span>, <span class="st">'Joseph'</span>, <span class="st">'John'</span>)</span>
-<span id="cb136-4"><a href="#cb136-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb136-5"><a href="#cb136-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop through the vectors and print the desired output</span></span>
-<span id="cb136-6"><a href="#cb136-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(numbers)) {</span>
-<span id="cb136-7"><a href="#cb136-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(numbers[i], names[i], <span class="at">sep =</span> <span class="st">", "</span>))</span>
-<span id="cb136-8"><a href="#cb136-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb136"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Vectors for numbers and names</span></span>
+<span><span class="va">numbers</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span></span>
+<span><span class="va">names</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'Adam'</span>, <span class="st">'Joseph'</span>, <span class="st">'John'</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Loop through the vectors and print the desired output</span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">numbers</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">numbers</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>, <span class="va">names</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>, sep <span class="op">=</span> <span class="st">", "</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "1, Adam"
 [1] "2, Joseph"
 [1] "3, John"</code></pre>
 </div>
 </div>
-</section>
-<section id="map-function" class="level3" data-number="B.7.2">
-<h3 data-number="B.7.2" class="anchored" data-anchor-id="map-function"><span class="header-section-number">B.7.2</span> <code>map()</code> Function</h3>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; In <code>map()</code> function, the purpose is to apply a <strong>function</strong> on a <strong>vector or list</strong>, meaning that <code>map()</code> functions take a list/vector and a function as arguments. <a href="#fig-rmap" class="quarto-xref">Figure&nbsp;<span>B.2</span></a> sows the nature of <code>map()</code> function. The <code>map()</code> function then applies the function to each element of the <code>list/vector</code> and the result of this process is then combined into a <code>list</code>. For example, a list called sample_list is created. The <code>length()</code> function can be used to know the elements of the list. However, if you want to the element of each list, then <code>map()</code> function can be used. The other variation of map() functions that the package purrr include - <code>map_int()</code>, <code>map_dbl()</code>, <code>map_chr()</code>, and <code>map_lgl()</code><a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a>.</p>
+</section><section id="map-function" class="level3" data-number="B.7.2"><h3 data-number="B.7.2" class="anchored" data-anchor-id="map-function">
+<span class="header-section-number">B.7.2</span> <code>map()</code> Function</h3>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; In <code><a href="https://purrr.tidyverse.org/reference/map.html">map()</a></code> function, the purpose is to apply a <strong>function</strong> on a <strong>vector or list</strong>, meaning that <code><a href="https://purrr.tidyverse.org/reference/map.html">map()</a></code> functions take a list/vector and a function as arguments. <a href="#fig-rmap" class="quarto-xref">Figure&nbsp;<span>B.2</span></a> sows the nature of <code><a href="https://purrr.tidyverse.org/reference/map.html">map()</a></code> function. The <code><a href="https://purrr.tidyverse.org/reference/map.html">map()</a></code> function then applies the function to each element of the <code>list/vector</code> and the result of this process is then combined into a <code>list</code>. For example, a list called sample_list is created. The <code><a href="https://rdrr.io/r/base/length.html">length()</a></code> function can be used to know the elements of the list. However, if you want to the element of each list, then <code><a href="https://purrr.tidyverse.org/reference/map.html">map()</a></code> function can be used. The other variation of map() functions that the package purrr include - <code><a href="https://purrr.tidyverse.org/reference/map.html">map_int()</a></code>, <code><a href="https://purrr.tidyverse.org/reference/map.html">map_dbl()</a></code>, <code><a href="https://purrr.tidyverse.org/reference/map.html">map_chr()</a></code>, and <code><a href="https://purrr.tidyverse.org/reference/map.html">map_lgl()</a></code><a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a>.</p>
 <div id="fig-rmap" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-rmap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-rmap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="images/map-step-1.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rmap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;B.2: map() Function Argument
-</figcaption>
-</figure>
+</figcaption></figure>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb138"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb138-1"><a href="#cb138-1" aria-hidden="true" tabindex="-1"></a>sample_list <span class="ot">&lt;-</span> </span>
-<span id="cb138-2"><a href="#cb138-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">list</span>(</span>
-<span id="cb138-3"><a href="#cb138-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">x =</span> <span class="fl">1737.1</span>,</span>
-<span id="cb138-4"><a href="#cb138-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> <span class="fu">c</span>(<span class="fl">11.3</span>, <span class="fl">6.2</span>),</span>
-<span id="cb138-5"><a href="#cb138-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">z =</span> <span class="fu">c</span>(<span class="fl">60.4</span>, <span class="fl">81.4</span>, <span class="dv">156</span>, <span class="fl">174.8</span>, <span class="dv">194</span>, <span class="fl">34.8</span>, <span class="dv">420</span>, <span class="fl">2705.2</span>, <span class="dv">340</span>, <span class="dv">62</span>)</span>
-<span id="cb138-6"><a href="#cb138-6" aria-hidden="true" tabindex="-1"></a> )</span>
-<span id="cb138-7"><a href="#cb138-7" aria-hidden="true" tabindex="-1"></a>sample_list</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb138"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sample_list</span> <span class="op">&lt;-</span> </span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span></span>
+<span>        x <span class="op">=</span> <span class="fl">1737.1</span>,</span>
+<span>        y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">11.3</span>, <span class="fl">6.2</span><span class="op">)</span>,</span>
+<span>        z <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">60.4</span>, <span class="fl">81.4</span>, <span class="fl">156</span>, <span class="fl">174.8</span>, <span class="fl">194</span>, <span class="fl">34.8</span>, <span class="fl">420</span>, <span class="fl">2705.2</span>, <span class="fl">340</span>, <span class="fl">62</span><span class="op">)</span></span>
+<span> <span class="op">)</span></span>
+<span><span class="va">sample_list</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$x
 [1] 1737.1
@@ -1231,13 +1189,13 @@ $y
 $z
  [1]   60.4   81.4  156.0  174.8  194.0   34.8  420.0 2705.2  340.0   62.0</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb140"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb140-1"><a href="#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(sample_list)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb140"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">sample_list</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb142"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb142-1"><a href="#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(sample_list, length)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb142"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span><span class="va">sample_list</span>, <span class="va">length</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$x
 [1] 1
@@ -1249,36 +1207,34 @@ $z
 [1] 10</code></pre>
 </div>
 </div>
-<section id="map-functions-with-multiple-inputs" class="level4" data-number="B.7.2.1">
-<h4 data-number="B.7.2.1" class="anchored" data-anchor-id="map-functions-with-multiple-inputs"><span class="header-section-number">B.7.2.1</span> <code>map()</code> Functions with Multiple Inputs</h4>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The <code>map2()</code> functions are very similar to the <code>map()</code> functions, but they take two input vectors instead of one. Since the <code>map2()</code> functions iterate along the two vectors in parallel, they need to be of the same length. <a href="#fig-rmap2" class="quarto-xref">Figure&nbsp;<span>B.3</span></a> shows a <code>map2()</code> function.</p>
+<section id="map-functions-with-multiple-inputs" class="level4" data-number="B.7.2.1"><h4 data-number="B.7.2.1" class="anchored" data-anchor-id="map-functions-with-multiple-inputs">
+<span class="header-section-number">B.7.2.1</span> <code>map()</code> Functions with Multiple Inputs</h4>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The <code><a href="https://purrr.tidyverse.org/reference/map2.html">map2()</a></code> functions are very similar to the <code><a href="https://purrr.tidyverse.org/reference/map.html">map()</a></code> functions, but they take two input vectors instead of one. Since the <code><a href="https://purrr.tidyverse.org/reference/map2.html">map2()</a></code> functions iterate along the two vectors in parallel, they need to be of the same length. <a href="#fig-rmap2" class="quarto-xref">Figure&nbsp;<span>B.3</span></a> shows a <code><a href="https://purrr.tidyverse.org/reference/map2.html">map2()</a></code> function.</p>
 <div id="fig-rmap2" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-rmap2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-rmap2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="images/map2.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rmap2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;B.3: map2() Function
-</figcaption>
-</figure>
+</figcaption></figure>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb144"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb144-1"><a href="#cb144-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>)</span>
-<span id="cb144-2"><a href="#cb144-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">5</span>, <span class="dv">3</span>)</span>
-<span id="cb144-3"><a href="#cb144-3" aria-hidden="true" tabindex="-1"></a><span class="fu">map2_dbl</span>(x, y, min)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb144"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">4</span><span class="op">)</span></span>
+<span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">6</span>, <span class="fl">5</span>, <span class="fl">3</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map2.html">map2_dbl</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">min</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1 2 3</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb146"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb146-1"><a href="#cb146-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span></span>
-<span id="cb146-2"><a href="#cb146-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tibble</span>(</span>
-<span id="cb146-3"><a href="#cb146-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">a =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>),</span>
-<span id="cb146-4"><a href="#cb146-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">b =</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">5</span>, <span class="dv">3</span>)</span>
-<span id="cb146-5"><a href="#cb146-5" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb146-6"><a href="#cb146-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb146-7"><a href="#cb146-7" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
-<span id="cb146-8"><a href="#cb146-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">min =</span> <span class="fu">map2_dbl</span>(a, b, min))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb146"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span></span>
+<span>    <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
+<span>        a <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">4</span><span class="op">)</span>,</span>
+<span>        b <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">6</span>, <span class="fl">5</span>, <span class="fl">3</span><span class="op">)</span></span>
+<span>        <span class="op">)</span></span>
+<span></span>
+<span><span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>min <span class="op">=</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map2.html">map2_dbl</a></span><span class="op">(</span><span class="va">a</span>, <span class="va">b</span>, <span class="va">min</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 3
       a     b   min
@@ -1289,10 +1245,10 @@ Figure&nbsp;B.3: map2() Function
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb148"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb148-1"><a href="#cb148-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
-<span id="cb148-2"><a href="#cb148-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
-<span id="cb148-3"><a href="#cb148-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">min =</span> <span class="fu">min</span>(a,b)</span>
-<span id="cb148-4"><a href="#cb148-4" aria-hidden="true" tabindex="-1"></a>        )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb148"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
+<span>        min <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">a</span>,<span class="va">b</span><span class="op">)</span></span>
+<span>        <span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 3
       a     b   min
@@ -1302,12 +1258,12 @@ Figure&nbsp;B.3: map2() Function
 3     4     3     1</code></pre>
 </div>
 </div>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; By default <code>mutate()</code>, uses column-wise operations. <code>map2_dbl()</code> produces a column the same length at <code>a</code> and <code>b</code>. We can accomplish the same calculation using <code>row-wise</code> operations.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; By default <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code>, uses column-wise operations. <code><a href="https://purrr.tidyverse.org/reference/map2.html">map2_dbl()</a></code> produces a column the same length at <code>a</code> and <code>b</code>. We can accomplish the same calculation using <code>row-wise</code> operations.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb150"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb150-1"><a href="#cb150-1" aria-hidden="true" tabindex="-1"></a> df <span class="sc">%&gt;%</span></span>
-<span id="cb150-2"><a href="#cb150-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb150-3"><a href="#cb150-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">min =</span> <span class="fu">min</span>(a, b)) <span class="sc">%&gt;%</span></span>
-<span id="cb150-4"><a href="#cb150-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb150"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span> <span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rowwise.html">rowwise</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>min <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">a</span>, <span class="va">b</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 3
       a     b   min
@@ -1317,56 +1273,49 @@ Figure&nbsp;B.3: map2() Function
 3     4     3     3</code></pre>
 </div>
 </div>
-</section>
-<section id="pmap-functions" class="level4" data-number="B.7.2.2">
-<h4 data-number="B.7.2.2" class="anchored" data-anchor-id="pmap-functions"><span class="header-section-number">B.7.2.2</span> <code>pmap()</code> Functions</h4>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; There are no <code>map3()</code> or <code>map4()</code> functions. Instead, you can use a <code>pmap()</code> (<em>p</em> for <em>parallel</em>) function to map over more than two vectors. The <code>pmap()</code> functions work slightly differently than the <code>map()</code> and <code>map2()</code> functions. In <code>map()</code> and <code>map2()</code> functions, you specify the <code>vector(s)</code> to supply to the function. In <code>pmap()</code> functions, you specify a single <code>list</code> that contains all the vectors (or lists) that you want to supply to your function. <a href="#fig-rpmap" class="quarto-xref">Figure&nbsp;<span>B.4</span></a> shows a <code>pmap()</code> function.</p>
+</section><section id="pmap-functions" class="level4" data-number="B.7.2.2"><h4 data-number="B.7.2.2" class="anchored" data-anchor-id="pmap-functions">
+<span class="header-section-number">B.7.2.2</span> <code>pmap()</code> Functions</h4>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; There are no <code>map3()</code> or <code>map4()</code> functions. Instead, you can use a <code><a href="https://purrr.tidyverse.org/reference/pmap.html">pmap()</a></code> (<em>p</em> for <em>parallel</em>) function to map over more than two vectors. The <code><a href="https://purrr.tidyverse.org/reference/pmap.html">pmap()</a></code> functions work slightly differently than the <code><a href="https://purrr.tidyverse.org/reference/map.html">map()</a></code> and <code><a href="https://purrr.tidyverse.org/reference/map2.html">map2()</a></code> functions. In <code><a href="https://purrr.tidyverse.org/reference/map.html">map()</a></code> and <code><a href="https://purrr.tidyverse.org/reference/map2.html">map2()</a></code> functions, you specify the <code>vector(s)</code> to supply to the function. In <code><a href="https://purrr.tidyverse.org/reference/pmap.html">pmap()</a></code> functions, you specify a single <code>list</code> that contains all the vectors (or lists) that you want to supply to your function. <a href="#fig-rpmap" class="quarto-xref">Figure&nbsp;<span>B.4</span></a> shows a <code><a href="https://purrr.tidyverse.org/reference/pmap.html">pmap()</a></code> function.</p>
 <div id="fig-rpmap" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-rpmap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-rpmap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="images/pmap-list.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rpmap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;B.4: pmap() Function (List)
-</figcaption>
-</figure>
+</figcaption></figure>
 </div>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Flipping the list diagram makes it easier to see that <code>pmap()</code> is basically just a generalized version of <code>map2()</code> (See <a href="#fig-rpmapfilip" class="quarto-xref">Figure&nbsp;<span>B.5</span></a>).</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Flipping the list diagram makes it easier to see that <code><a href="https://purrr.tidyverse.org/reference/pmap.html">pmap()</a></code> is basically just a generalized version of <code><a href="https://purrr.tidyverse.org/reference/map2.html">map2()</a></code> (See <a href="#fig-rpmapfilip" class="quarto-xref">Figure&nbsp;<span>B.5</span></a>).</p>
 <div id="fig-rpmapfilip" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-rpmapfilip-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-rpmapfilip-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="images/pmap-flipped.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rpmapfilip-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;B.5: pmap() Function (Flipped)
-</figcaption>
-</figure>
+</figcaption></figure>
 </div>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The only difference is that <code>map2()</code> lets you specify each vector as a separate argument. In <code>pmap()</code>, you have to store all your input vectors in a single list. This functionality allows <code>pmap()</code> to handle any number of input vectors.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The only difference is that <code><a href="https://purrr.tidyverse.org/reference/map2.html">map2()</a></code> lets you specify each vector as a separate argument. In <code><a href="https://purrr.tidyverse.org/reference/pmap.html">pmap()</a></code>, you have to store all your input vectors in a single list. This functionality allows <code><a href="https://purrr.tidyverse.org/reference/pmap.html">pmap()</a></code> to handle any number of input vectors.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb152"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb152-1"><a href="#cb152-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>)</span>
-<span id="cb152-2"><a href="#cb152-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">5</span>, <span class="dv">3</span>)</span>
-<span id="cb152-3"><a href="#cb152-3" aria-hidden="true" tabindex="-1"></a><span class="fu">map2_dbl</span>(x, y, min)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb152"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">4</span><span class="op">)</span></span>
+<span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">6</span>, <span class="fl">5</span>, <span class="fl">3</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map2.html">map2_dbl</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">min</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1 2 3</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb154"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb154-1"><a href="#cb154-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pmap_dbl</span>(<span class="fu">list</span>(x, y), min)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb154"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pmap.html">pmap_dbl</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span>, <span class="va">min</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1 2 3</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb156"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb156-1"><a href="#cb156-1" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">15</span>, <span class="dv">1</span>)</span>
-<span id="cb156-2"><a href="#cb156-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pmap_dbl</span>(<span class="fu">list</span>(x, y, z), max)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb156"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">z</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">15</span>, <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pmap.html">pmap_dbl</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">z</span><span class="op">)</span>, <span class="va">max</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 100  15   4</code></pre>
 </div>
 </div>
-</section>
-</section>
-<section id="user-defined-functions" class="level3" data-number="B.7.3">
-<h3 data-number="B.7.3" class="anchored" data-anchor-id="user-defined-functions"><span class="header-section-number">B.7.3</span> User Defined Functions</h3>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; User defined functions are also called named functions because they are assigned a name and expected to be called frequently. The goal of user defined functions is to optimize program, avoid or minimize the reptition of the code, prevent errors, and make the code more readable. In R, to declare a user defined function, we use the keywoard <code>function()</code>. The syntax of user defined function is given below. It is clear that there are three components of an R function - <strong>function name</strong>, <strong>function parameters (arguments)</strong>, and <strong>function body (expression)</strong>. We can drop curly braces (<code>{}</code>) from the function if the function body contains a single statement. Moreover, the function must be called with the correct number of arguments.</p>
+</section></section><section id="user-defined-functions" class="level3" data-number="B.7.3"><h3 data-number="B.7.3" class="anchored" data-anchor-id="user-defined-functions">
+<span class="header-section-number">B.7.3</span> User Defined Functions</h3>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; User defined functions are also called named functions because they are assigned a name and expected to be called frequently. The goal of user defined functions is to optimize program, avoid or minimize the reptition of the code, prevent errors, and make the code more readable. In R, to declare a user defined function, we use the keywoard <code>function()</code>. The syntax of user defined function is given below. It is clear that there are three components of an R function - <strong>function name</strong>, <strong>function parameters (arguments)</strong>, and <strong>function body (expression)</strong>. We can drop curly braces (<code><a href="https://rdrr.io/r/base/Paren.html">{}</a></code>) from the function if the function body contains a single statement. Moreover, the function must be called with the correct number of arguments.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb158"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb158-1"><a href="#cb158-1" aria-hidden="true" tabindex="-1"></a>functionname <span class="ot">=</span> <span class="cf">function</span> (arguments) {</span>
 <span id="cb158-2"><a href="#cb158-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">function</span> body </span>
@@ -1374,77 +1323,67 @@ Figure&nbsp;B.5: pmap() Function (Flipped)
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Below are examples of some user defined functions.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb159"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb159-1"><a href="#cb159-1" aria-hidden="true" tabindex="-1"></a>add_numbers <span class="ot">=</span> <span class="cf">function</span> (x,y){</span>
-<span id="cb159-2"><a href="#cb159-2" aria-hidden="true" tabindex="-1"></a>    sum <span class="ot">=</span> x <span class="sc">+</span> y </span>
-<span id="cb159-3"><a href="#cb159-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(sum)</span>
-<span id="cb159-4"><a href="#cb159-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb159-5"><a href="#cb159-5" aria-hidden="true" tabindex="-1"></a><span class="fu">add_numbers</span>(<span class="dv">5</span>,<span class="sc">-</span><span class="dv">25</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb159"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">add_numbers</span> <span class="op">=</span> <span class="kw">function</span> <span class="op">(</span><span class="va">x</span>,<span class="va">y</span><span class="op">)</span><span class="op">{</span></span>
+<span>    <span class="va">sum</span> <span class="op">=</span> <span class="va">x</span> <span class="op">+</span> <span class="va">y</span> </span>
+<span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">sum</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span><span class="fu">add_numbers</span><span class="op">(</span><span class="fl">5</span>,<span class="op">-</span><span class="fl">25</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -20</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb161"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb161-1"><a href="#cb161-1" aria-hidden="true" tabindex="-1"></a>greetings <span class="ot">=</span> <span class="cf">function</span> (name, <span class="at">greeting =</span> <span class="st">"Welcome"</span>, <span class="at">sign =</span> <span class="st">"!"</span>){</span>
-<span id="cb161-2"><a href="#cb161-2" aria-hidden="true" tabindex="-1"></a>    greetingtogether <span class="ot">=</span> <span class="fu">paste</span>(name, sign, <span class="at">sep =</span> <span class="st">""</span>)</span>
-<span id="cb161-3"><a href="#cb161-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(greeting, greetingtogether))</span>
-<span id="cb161-4"><a href="#cb161-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb161-5"><a href="#cb161-5" aria-hidden="true" tabindex="-1"></a><span class="fu">greetings</span>(<span class="st">"Nicole"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb161"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">greetings</span> <span class="op">=</span> <span class="kw">function</span> <span class="op">(</span><span class="va">name</span>, <span class="va">greeting</span> <span class="op">=</span> <span class="st">"Welcome"</span>, <span class="va">sign</span> <span class="op">=</span> <span class="st">"!"</span><span class="op">)</span><span class="op">{</span></span>
+<span>    <span class="va">greetingtogether</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">name</span>, <span class="va">sign</span>, sep <span class="op">=</span> <span class="st">""</span><span class="op">)</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">greeting</span>, <span class="va">greetingtogether</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span><span class="fu">greetings</span><span class="op">(</span><span class="st">"Nicole"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Welcome Nicole!"</code></pre>
 </div>
 </div>
-</section>
-<section id="anonymous-functions" class="level3" data-number="B.7.4">
-<h3 data-number="B.7.4" class="anchored" data-anchor-id="anonymous-functions"><span class="header-section-number">B.7.4</span> Anonymous Functions</h3>
+</section><section id="anonymous-functions" class="level3" data-number="B.7.4"><h3 data-number="B.7.4" class="anchored" data-anchor-id="anonymous-functions">
+<span class="header-section-number">B.7.4</span> Anonymous Functions</h3>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Anonymous functions are functions that are not named, meaning that unlike normal functions, they do not have any name. Anonymous functions are useful when we do not plan to use them again and again. In most cases, we use anonymous function as an argument to other functions. In R, the synax of anonymous function is very much similar to named function. The syntax of anonymous function is - <code>function (x) expression</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb163"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb163-1"><a href="#cb163-1" aria-hidden="true" tabindex="-1"></a>vec <span class="ot">=</span> <span class="fu">c</span> (<span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">6</span>)</span>
-<span id="cb163-2"><a href="#cb163-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(vec, <span class="cf">function</span>(x) x<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb163"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">vec</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span> <span class="op">(</span><span class="fl">1</span>,<span class="fl">5</span>,<span class="fl">6</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="va">vec</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="va">x</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  1 25 36</code></pre>
 </div>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sometimes, using <code>purrr</code>, we can create anonymous function by one sided formula. In the below example, <code>~.x**2</code> works like <code>function (x) x**2</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb165"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb165-1"><a href="#cb165-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map_int</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="sc">~</span>.x<span class="sc">**</span><span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb165"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map_int</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="op">~</span><span class="va">.x</span><span class="op">**</span><span class="fl">2</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  1  4  9 16 25</code></pre>
 </div>
 </div>
 </section>
 </div>
-</section>
-<section id="conclusions" class="level2" data-number="B.8">
-<h2 data-number="B.8" class="anchored" data-anchor-id="conclusions"><span class="header-section-number">B.8</span> Conclusions</h2>
+</section><section id="conclusions" class="level2" data-number="B.8"><h2 data-number="B.8" class="anchored" data-anchor-id="conclusions">
+<span class="header-section-number">B.8</span> Conclusions</h2>
 <div style="text-align: justify">
 
 </div>
-</section>
-<section id="exercises" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="exercises">Exercises</h2>
+</section><section id="exercises" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="exercises">Exercises</h2>
 <div style="text-align: justify">
 
 </div>
 
 
-</section>
-<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
-<hr>
+</section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><hr>
 <ol>
 <li id="fn1"><p>R got its name from the first letters of its creators. Both of their names start with letter R.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>1996 is the year when R was introduced.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>Please note that in <code>install.package()</code>, you need to use quote (either single or double), but in <code>library()</code>, you do not need to use quote.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Please note that in <code>install.package()</code>, you need to use quote (either single or double), but in <code><a href="https://rdrr.io/r/base/library.html">library()</a></code>, you do not need to use quote.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn4"><p>The word “data” sometimes is considered plural because there is a singular word for “data”, which is “datum”. In this book, both words are used interchangeably. Therefore, the word “data” is used as both singular and plural.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn5"><p>The other two atomic vectors include - complex and raw.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn6"><p>As opposed to <code>NULL</code>,<code>NA</code> refers to the <strong>absence of value</strong>.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn7"><p>Python uses 0 based indexing.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn8"><p>Iteration (also called looping) is the process of repeating the same operation on different columns, or on different datasets. There are two important iteration paradigms: <code>imperative programming</code> and <code>functional programming</code>. On the imperative side, one has tools like <code>for ()</code> loops and <code>while ()</code> loops, which are a great place to start because they make iteration very explicit, so it is obvious what is happening. However, <code>for ()</code> loops are quite verbose, and require quite a bit of bookkeeping code that is duplicated for every for loop. One the other hand <code>Functional programming (FP)</code> offers tools to extract out this dupli cated code, so each common <code>for</code> loop pattern gets its own function. Once one masters the vocabulary of FP, one can solve many common iteration problems with <em>less code</em>, <em>more ease</em>, and <em>fewer errors</em>. The <code>apply ()</code> family functions in base R are equivalent to <code>for ()</code> loop. The <code>apply ()</code> family functions include the following functions for looping- <code>apply ()</code>; <code>lapply ()</code>; <code>sapply ()</code>, <code>tapply ()</code>, <code>vapply ()</code>, and <code>mapply ()</code>. The <code>purrr</code> package in tidyverse offers <code>map ()</code> family functions for functional programming, which we will be using for the loop operations.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn9"><p>The output of <code>map()</code> function is always list. These variations help to get the desired output. To learn more about map functions, please visit - <a href="https://adv-r.hadley.nz/functionals.html" class="uri">https://adv-r.hadley.nz/functionals.html</a>.<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section>
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+<li id="fn8"><p>Iteration (also called looping) is the process of repeating the same operation on different columns, or on different datasets. There are two important iteration paradigms: <code>imperative programming</code> and <code>functional programming</code>. On the imperative side, one has tools like <code>for ()</code> loops and <code>while ()</code> loops, which are a great place to start because they make iteration very explicit, so it is obvious what is happening. However, <code>for ()</code> loops are quite verbose, and require quite a bit of bookkeeping code that is duplicated for every for loop. One the other hand <code>Functional programming (FP)</code> offers tools to extract out this dupli cated code, so each common <code>for</code> loop pattern gets its own function. Once one masters the vocabulary of FP, one can solve many common iteration problems with <em>less code</em>, <em>more ease</em>, and <em>fewer errors</em>. The <code><a href="https://rdrr.io/r/base/apply.html">apply ()</a></code> family functions in base R are equivalent to <code>for ()</code> loop. The <code><a href="https://rdrr.io/r/base/apply.html">apply ()</a></code> family functions include the following functions for looping- <code><a href="https://rdrr.io/r/base/apply.html">apply ()</a></code>; <code><a href="https://rdrr.io/r/base/lapply.html">lapply ()</a></code>; <code><a href="https://rdrr.io/r/base/lapply.html">sapply ()</a></code>, <code><a href="https://rdrr.io/r/base/tapply.html">tapply ()</a></code>, <code><a href="https://rdrr.io/r/base/lapply.html">vapply ()</a></code>, and <code><a href="https://rdrr.io/r/base/mapply.html">mapply ()</a></code>. The <code>purrr</code> package in tidyverse offers <code><a href="https://purrr.tidyverse.org/reference/map.html">map ()</a></code> family functions for functional programming, which we will be using for the loop operations.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p>The output of <code><a href="https://purrr.tidyverse.org/reference/map.html">map()</a></code> function is always list. These variations help to get the desired output. To learn more about map functions, please visit - <a href="https://adv-r.hadley.nz/functionals.html" class="uri">https://adv-r.hadley.nz/functionals.html</a>.<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
     if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -1856,9 +1795,7 @@ Figure&nbsp;B.5: pmap() Function (Flipped)
       }
     }
   });
-  </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
+  </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
       <a href="./python_basics.html" class="pagination-link" aria-label="A Primer on Python">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">A Primer on Python</span></span>
       </a>          
@@ -1870,8 +1807,7 @@ Figure&nbsp;B.5: pmap() Function (Flipped)
   </div>
 </nav>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
+<footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
 <p>Copyright©Sharif Islam</p>
 </div>   
@@ -1883,8 +1819,6 @@ Figure&nbsp;B.5: pmap() Function (Flipped)
 </div>
   </div>
 </footer>
-
-
 
 
 </body></html>

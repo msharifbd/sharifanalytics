@@ -868,6 +868,89 @@ for stat, value in zip(label_ks, ks_test[:2]):
 
 ```{r}
 #| warning: false
+# Define the rquery.cormat function
+
+rquery.cormat <- function(x, type = c('lower', 'upper', 'full', 'flatten'),
+                          graph = TRUE, graphType = c("correlogram", "heatmap"),
+                          col = NULL, ...) {
+  
+  library(corrplot)
+  library(Hmisc)
+  
+  # 1. Helper function to compute the matrix of correlation p-values
+  cor.pmat <- function(x, ...) {
+    mat <- as.matrix(x)
+    res <- rcorr(mat, ...)
+    return(res$P)
+  }
+  
+  # 2. Helper function to print upper/lower triangles or full matrix
+  clean.cormat <- function(cormat, type = c('lower', 'upper', 'full')) {
+    type <- match.arg(type)
+    cormat <- round(cormat, 2)
+    if (type == "lower") {
+      cormat[upper.tri(cormat)] <- ""
+      cormat <- as.data.frame(cormat)
+    } else if (type == "upper") {
+      cormat[lower.tri(cormat)] <- ""
+      cormat <- as.data.frame(cormat)
+    }
+    return(cormat)
+  }
+  
+  # 3. Helper function to flatten the matrix
+  flattenCorrMatrix <- function(cormat, pmat) {
+    ut <- upper.tri(cormat)
+    data.frame(
+      row = rownames(cormat)[row(cormat)[ut]],
+      column = colnames(cormat)[col(cormat)[ut]],
+      cor  = (cormat)[ut],
+      p    = pmat[ut]
+    )
+  }
+  
+  # Check arguments
+  type <- match.arg(type)
+  graphType <- match.arg(graphType)
+  
+  # Compute correlation coefficients and p-values
+  mat <- as.matrix(x)
+  res <- rcorr(mat, ...)
+  cormat <- res$r
+  pmat <- res$P
+  
+  # Generate graphics if requested
+  if (graph) {
+    # Default colors if none are provided
+    if (is.null(col)) {
+      if (graphType == "correlogram") {
+        col <- colorRampPalette(c("#BB4444", "#EE9999", "#FFFFFF", "#77AADD", "#4477AA"))(200)
+      } else if (graphType == "heatmap") {
+        col <- colorRampPalette(c("blue", "white", "red"))(200)
+      }
+    }
+    
+    if (graphType == "correlogram") {
+      corrplot(cormat, type = ifelse(type == "flatten", "full", type),
+               tl.col = "black", tl.srt = 45, col = col,
+               p.mat = pmat, sig.level = 0.05, insig = "blank", ...)
+    } else if (graphType == "heatmap") {
+      heatmap(cormat, col = col, symm = TRUE)
+    }
+  }
+  
+  # Format and return the final matrix/table
+  if (type == "flatten") {
+    return(flattenCorrMatrix(cormat, pmat))
+  } else {
+    return(clean.cormat(cormat, type))
+  }
+}
+
+```
+
+```{r}
+#| warning: false
 #| label: fig-r-corplot
 #| fig-cap: Correlation Plot 
 
@@ -877,8 +960,8 @@ library(car)
 vif(lm(tip ~ total_bill+size, data = tips))
 
 ## Correlation Matrix and Correlation Plot 
-# to get the function 
-source("http://www.sthda.com/upload/rquery_cormat.r")
+# to get the function (also defined above)
+# source("http://www.sthda.com/upload/rquery_cormat.r")
 rquery.cormat(tips|> select(tip, total_bill,size), type = c("lower"), graph = TRUE)$r
 
 ```

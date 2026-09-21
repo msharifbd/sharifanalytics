@@ -150,6 +150,12 @@ Common unsupervised tasks include:
      Since data rarely come into the form ready to feed into an ML system, preprocessing is an important step before feeding the data into an ML system. Preprocessing invloves getting the data ready into shape so that data become ready to feed into an ML system. Based on the condition or circumstances of the data, we need to decide what kinds of preprocessing we will perform on the dataset. Usually, in preprocessing, we clean and transform the dataset. Some of the cleaning includes - fixing the name of the fixtures, removing missing rows, changing the types of the features and so on.
 
 ```{python}
+#| include: false
+import os
+os.environ["LOKY_MAX_CPU_COUNT"] = str(os.cpu_count())
+```
+
+```{python}
 #| warning: false
 # importing necessary python packages 
 import numpy as np # linear algebra
@@ -608,6 +614,7 @@ from sklearn.model_selection import GridSearchCV
      Since we have provided the class validation score as 3( cv= 3), Grid Search will evaluate the model `10 x 2 x 3 x 3 = 180` times with different hyperparameters.
 
 ```{python}
+#| warning: false 
 grid_params = { 'n_neighbors' : [3,4,5,6,7,8,9,10,11,12],
                'weights' : ['uniform','distance'],
                'metric' : ['minkowski','euclidean','manhattan']}
@@ -637,6 +644,7 @@ knn.fit(X_train, y_train)
 ```
 
 ```{python}
+#| warning: false
 # get a prediction
 y_hat = knn.predict(X_train)
 y_knn = knn.predict(X_test)

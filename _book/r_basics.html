@@ -574,13 +574,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 </header><section id="learning-objectives-of-the-appendix" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="learning-objectives-of-the-appendix">Learning Objectives of the Appendix</h2>
+<div class="callout callout-style-default callout-note callout-titled" title="Learning Objectives">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Learning Objectives
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<div style="text-align: justify">
 <p>At the End of the Appendix, Students should be Able to -</p>
 <ul>
 <li><p>Gain an Understanding about R</p></li>
 <li><p>Gain an Understanding about the Data Types and Data Structures in R</p></li>
 <li><p>Gain an Understanding about Indexing and Slicing of vectors and Data Frames, and Mathematical Operations on them</p></li>
 <li><p>Gain an Understanding about <code>for</code> Loop function, <code>map</code> function, and User Defined Function, and Anonymous Function in R</p></li>
-</ul></section><section id="what-is-r" class="level2" data-number="B.1"><h2 data-number="B.1" class="anchored" data-anchor-id="what-is-r">
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section><section id="what-is-r" class="level2" data-number="B.1"><h2 data-number="B.1" class="anchored" data-anchor-id="what-is-r">
 <span class="header-section-number">B.1</span> What is R?</h2>
 <div style="text-align: justify">
 <p>&nbsp;&nbsp;&nbsp;&nbsp;<code>R</code> is an object-oriented programming language. R was first developed by two statisticans - Ross Ihaka and Robert Gentleman<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> - in early 1990s<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. Though it was first designed for statistial purposes, nowadays, it is widely used in statistical analysis, visualization, finance, healthcare industry, and many more. Many companies in the world use R. For example, <a href="https://www.nytimes.com/2009/01/07/technology/business-computing/07program.html?pagewanted=1&amp;_r=1">The Newyork Times</a> and <a href="https://www.tandfonline.com/doi/full/10.1080/00031305.2017.1392362">Airbnb</a> use R for their day to day operations.</p>
@@ -1026,31 +1044,31 @@ $age
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb110"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># vector of 2 elements </span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.8971337 0.7170207</code></pre>
+<pre><code>[1] 0.2984712 0.1904608</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb112"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># vector of 5 elements from 0 to 100</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="fl">5</span>, min <span class="op">=</span> <span class="fl">0</span>, max <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 87.59328 68.42325 43.49764 43.03969 26.49442</code></pre>
+<pre><code>[1] 60.08150 83.23209 77.84835 78.57483 54.34289</code></pre>
 </div>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code><a href="https://rdrr.io/r/stats/Normal.html">rnorm()</a></code> function generates random numbers from normal distribution with mean 0 and standard deviation 1.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb114"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -0.1692379 -0.8491149  0.7202685  0.4872278 -2.9144980</code></pre>
+<pre><code>[1] -2.0303566 -1.5737087  0.1881100  0.7046536 -1.1445475</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb116"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">5</span>, mean <span class="op">=</span> <span class="fl">5</span>, sd<span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 7.470467 7.057628 4.082014 3.726986 6.217933</code></pre>
+<pre><code>[1] 6.300960 5.581603 3.186385 6.762304 6.566516</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb118"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">500</span>, mean <span class="op">=</span> <span class="fl">5</span>, sd<span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 5.054357</code></pre>
+<pre><code>[1] 4.911045</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb120"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">500</span>, mean <span class="op">=</span> <span class="fl">5</span>, sd<span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.983242</code></pre>
+<pre><code>[1] 2.15513</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb122"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">500</span>, mean <span class="op">=</span> <span class="fl">5</span>, sd<span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
@@ -1067,45 +1085,45 @@ $age
 <span><span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="va">mat</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10 × 5
-        a       b      c       d       e
-    &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
- 1 -0.426 -0.995  -1.87  -0.188   1.08  
- 2 -0.716 -0.755  -1.57   0.910   0.835 
- 3 -0.695 -1.19   -0.283  0.907   0.229 
- 4 -0.682 -0.322   0.218  0.200  -0.331 
- 5 -0.574 -1.19   -0.536 -0.314   0.0999
- 6 -0.683  0.770   1.53  -1.25    1.39  
- 7  0.226 -1.66    1.05  -1.18   -0.162 
- 8 -1.06   0.0216  0.299  1.12   -0.852 
- 9 -0.981  0.351  -0.763 -0.992  -0.685 
-10 -0.905  1.47    0.506 -0.0229 -0.925 </code></pre>
+        a         b       c        d      e
+    &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;
+ 1 -0.569 -0.604     0.192  -0.706    0.903
+ 2 -1.96  -0.0390    0.0854 -1.08    -1.29 
+ 3  0.398 -1.04      0.246   0.00865  0.323
+ 4  2.58  -0.292     1.30    0.958    0.844
+ 5 -0.940  0.000197 -1.10   -1.23     0.312
+ 6 -1.38   0.720     0.311   0.882   -0.573
+ 7 -0.641  1.09     -0.549  -0.550   -1.52 
+ 8 -0.407 -1.11     -0.353  -0.231    0.841
+ 9 -2.32  -1.51      0.775  -0.384   -1.29 
+10  1.13   0.296    -0.609  -0.0411   0.109</code></pre>
 </div>
 </div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In additon to <code><a href="https://rdrr.io/r/stats/Uniform.html">runif()</a></code> and <code><a href="https://rdrr.io/r/stats/Normal.html">rnorm()</a></code>, <code><a href="https://rdrr.io/r/base/sample.html">sample()</a></code> function can be used to generate random numbers.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb125"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">100</span>,<span class="fl">5</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 15 70 39 46  3</code></pre>
+<pre><code>[1] 29 93 17 72 18</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb127"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">100</span>,<span class="fl">5</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 39 83 90 50 22</code></pre>
+<pre><code>[1] 94 93 31 82 19</code></pre>
 </div>
 </div>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb129"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">50</span>,<span class="fl">50</span><span class="op">)</span>, ncol <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>      [,1] [,2] [,3] [,4] [,5]
- [1,]    5   21   28   49   42
- [2,]   10   33   50   16   44
- [3,]   14   29   20   36   25
- [4,]   27   35   31    7    3
- [5,]   24   22   32   13   45
- [6,]   18   17   40   46   23
- [7,]    8   34    6    9   38
- [8,]   47   11   19   30   41
- [9,]   15   48   26    2   39
-[10,]   43    0    4    1   37</code></pre>
+ [1,]   41   30   39    4   47
+ [2,]   31   32   29   45   20
+ [3,]   35   42   44    1    9
+ [4,]   17    3   23   16   27
+ [5,]   19   28    5    2   38
+ [6,]   18   11   15   24   12
+ [7,]   48   21    7   13   43
+ [8,]   34   50   25   14   37
+ [9,]   22   10   26    6   40
+[10,]   46    0   49    8   33</code></pre>
 </div>
 </div>
 </section>

@@ -829,16 +829,16 @@ $ SalePrice       &lt;int&gt; 0</code></pre>
 <pre><code># A tibble: 10 × 14
    InvoiceNo Date     Country ProductID Shop  Gender `Size (US)` `Size (Europe)`
        &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;        &lt;dbl&gt; &lt;chr&gt;          
- 1     55824 4/21/20… United…      2232 US2   Male           9.5 42-43          
- 2     59821 2/9/2016 Canada       2152 CAN5  Female         9.5 40             
- 3     56391 6/10/20… United…      2188 US3   Female         9.5 40             
- 4     58888 12/9/20… Germany      2225 GER1  Male           9   42             
- 5     54492 11/22/2… United…      2234 US15  Male          10   43             
- 6     56690 7/1/2015 United…      2225 UK3   Male           9.5 42-43          
- 7     55265 2/24/20… United…      2198 US13  Male          11   44             
- 8     60178 3/1/2016 United…      2161 US13  Male          10.5 43-44          
- 9     60255 3/6/2016 United…      2231 UK3   Female         7.5 38             
-10     57041 7/27/20… Germany      2174 GER1  Male           9.5 42-43          
+ 1     52678 2/17/20… United…      2208 US15  Female         8   38-39          
+ 2     53915 8/28/20… United…      2214 US15  Male          11.5 44-45          
+ 3     53642 7/18/20… Germany      2204 GER2  Female         7   37-38          
+ 4     59530 1/22/20… Canada       2212 CAN2  Female         7.5 38             
+ 5     55623 4/2/2015 Canada       2190 CAN3  Female         8.5 39             
+ 6     55666 4/6/2015 Germany      2182 GER2  Female         9   39-40          
+ 7     63335 8/17/20… Canada       2196 CAN3  Male          10.5 43-44          
+ 8     63992 9/18/20… Canada       2228 CAN2  Female         7   37-38          
+ 9     58470 11/9/20… Germany      2203 GER1  Female         9   39-40          
+10     62733 7/18/20… United…      2185 US1   Female         9.5 40             
 # ℹ 6 more variables: `Size (UK)` &lt;dbl&gt;, UnitPrice &lt;dbl&gt;, Discount &lt;dbl&gt;,
 #   Year &lt;dbl&gt;, Month &lt;dbl&gt;, SalePrice &lt;dbl&gt;</code></pre>
 </div>
@@ -970,16 +970,16 @@ dtype: object</code></pre>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>df_pd.sample(n<span class="op">=</span><span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       InvoiceNo        Date         Country  ...  Year Month SalePrice
-2524       54525  11/29/2014   United States  ...  2014    11     159.0
-8237       59761    2/5/2016   United States  ...  2016     2     119.2
-377        52704   2/22/2014  United Kingdom  ...  2014     2     125.3
-5353       57126    8/2/2015  United Kingdom  ...  2015     8     134.1
-13314      64279   10/2/2016          Canada  ...  2016    10      89.5
-5039       56841   7/11/2015         Germany  ...  2015     7     159.0
-14504      65351   12/1/2016   United States  ...  2016    12     129.0
-3556       55472   3/18/2015         Germany  ...  2015     3     111.3
-3121       55074    2/5/2015  United Kingdom  ...  2015     2     179.0
-8076       59621   1/28/2016   United States  ...  2016     1     169.0
+4541       56378   6/10/2015   United States  ...  2015     6     103.2
+11846      62973   7/30/2016   United States  ...  2016     7     139.0
+14412      65262  11/24/2016   United States  ...  2016    11     149.0
+8204       59734    2/4/2016   United States  ...  2016     2     179.0
+8140       59681    2/1/2016   United States  ...  2016     2     129.0
+14394      65244  11/23/2016   United States  ...  2016    11     189.0
+1571       53724   7/30/2014          Canada  ...  2014     7     125.3
+13206      64184   9/28/2016  United Kingdom  ...  2016     9     199.0
+4313       56169   5/24/2015   United States  ...  2015     5     161.1
+1566       53719   7/30/2014         Germany  ...  2014     7     169.0
 
 [10 rows x 14 columns]</code></pre>
 </div>
@@ -1326,164 +1326,164 @@ dtype: object</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td>55897</td>
-<td>"4/29/2015"</td>
-<td>"Germany"</td>
-<td>2162</td>
-<td>"GER2"</td>
-<td>"Female"</td>
-<td>9.0</td>
-<td>"39-40"</td>
-<td>7.0</td>
-<td>179</td>
-<td>0.3</td>
-<td>2015</td>
-<td>4</td>
-<td>125.3</td>
-</tr>
-<tr class="even">
-<td>63945</td>
-<td>"9/16/2016"</td>
+<td>62530</td>
+<td>"7/8/2016"</td>
 <td>"United States"</td>
-<td>2177</td>
-<td>"US13"</td>
-<td>"Female"</td>
-<td>9.0</td>
-<td>"39-40"</td>
-<td>7.0</td>
-<td>139</td>
-<td>0.0</td>
-<td>2016</td>
-<td>9</td>
-<td>139.0</td>
-</tr>
-<tr class="odd">
-<td>53378</td>
-<td>"6/5/2014"</td>
-<td>"United States"</td>
-<td>2148</td>
-<td>"US6"</td>
+<td>2226</td>
+<td>"US12"</td>
 <td>"Male"</td>
-<td>10.0</td>
-<td>"43"</td>
-<td>9.5</td>
-<td>159</td>
-<td>0.0</td>
-<td>2014</td>
-<td>6</td>
-<td>159.0</td>
-</tr>
-<tr class="even">
-<td>62475</td>
-<td>"7/6/2016"</td>
-<td>"Germany"</td>
-<td>2212</td>
-<td>"GER2"</td>
-<td>"Male"</td>
-<td>10.0</td>
-<td>"43"</td>
-<td>9.5</td>
-<td>159</td>
-<td>0.3</td>
-<td>2016</td>
-<td>7</td>
-<td>111.3</td>
-</tr>
-<tr class="odd">
-<td>60064</td>
-<td>"2/24/2016"</td>
-<td>"Germany"</td>
-<td>2195</td>
-<td>"GER3"</td>
-<td>"Male"</td>
-<td>9.0</td>
-<td>"42"</td>
-<td>8.5</td>
-<td>139</td>
-<td>0.0</td>
-<td>2016</td>
-<td>2</td>
-<td>139.0</td>
-</tr>
-<tr class="even">
-<td>52956</td>
-<td>"4/3/2014"</td>
-<td>"Germany"</td>
-<td>2218</td>
-<td>"GER3"</td>
-<td>"Female"</td>
-<td>9.0</td>
-<td>"39-40"</td>
-<td>7.0</td>
-<td>149</td>
-<td>0.0</td>
-<td>2014</td>
-<td>4</td>
-<td>149.0</td>
-</tr>
-<tr class="odd">
-<td>60783</td>
-<td>"4/8/2016"</td>
-<td>"United States"</td>
-<td>2177</td>
-<td>"US14"</td>
-<td>"Male"</td>
-<td>11.0</td>
-<td>"44"</td>
 <td>10.5</td>
-<td>199</td>
+<td>"43-44"</td>
+<td>10.0</td>
+<td>179</td>
 <td>0.5</td>
 <td>2016</td>
-<td>4</td>
-<td>99.5</td>
+<td>7</td>
+<td>89.5</td>
 </tr>
 <tr class="even">
-<td>64052</td>
-<td>"9/21/2016"</td>
-<td>"Canada"</td>
-<td>2189</td>
-<td>"CAN6"</td>
-<td>"Male"</td>
-<td>10.0</td>
-<td>"43"</td>
-<td>9.5</td>
-<td>149</td>
-<td>0.3</td>
+<td>63141</td>
+<td>"8/7/2016"</td>
+<td>"Germany"</td>
+<td>2202</td>
+<td>"GER2"</td>
+<td>"Female"</td>
+<td>8.5</td>
+<td>"39"</td>
+<td>6.5</td>
+<td>169</td>
+<td>0.5</td>
 <td>2016</td>
-<td>9</td>
-<td>104.3</td>
+<td>8</td>
+<td>84.5</td>
 </tr>
 <tr class="odd">
-<td>64807</td>
-<td>"10/28/2016"</td>
+<td>61539</td>
+<td>"5/20/2016"</td>
 <td>"United States"</td>
-<td>2174</td>
-<td>"US15"</td>
-<td>"Male"</td>
-<td>9.5</td>
-<td>"42-43"</td>
-<td>9.0</td>
-<td>149</td>
-<td>0.3</td>
+<td>2232</td>
+<td>"US12"</td>
+<td>"Female"</td>
+<td>8.0</td>
+<td>"38-39"</td>
+<td>6.0</td>
+<td>199</td>
+<td>0.0</td>
 <td>2016</td>
-<td>10</td>
-<td>104.3</td>
+<td>5</td>
+<td>199.0</td>
 </tr>
 <tr class="even">
-<td>59782</td>
-<td>"2/6/2016"</td>
-<td>"Germany"</td>
-<td>2189</td>
-<td>"GER3"</td>
+<td>53548</td>
+<td>"7/3/2014"</td>
+<td>"United States"</td>
+<td>2186</td>
+<td>"US8"</td>
+<td>"Male"</td>
+<td>11.5</td>
+<td>"44-45"</td>
+<td>11.0</td>
+<td>169</td>
+<td>0.0</td>
+<td>2014</td>
+<td>7</td>
+<td>169.0</td>
+</tr>
+<tr class="odd">
+<td>58819</td>
+<td>"12/4/2015"</td>
+<td>"United States"</td>
+<td>2212</td>
+<td>"US15"</td>
+<td>"Female"</td>
+<td>4.5</td>
+<td>"35"</td>
+<td>2.5</td>
+<td>169</td>
+<td>0.3</td>
+<td>2015</td>
+<td>12</td>
+<td>118.3</td>
+</tr>
+<tr class="even">
+<td>64385</td>
+<td>"10/8/2016"</td>
+<td>"United States"</td>
+<td>2187</td>
+<td>"US14"</td>
+<td>"Female"</td>
+<td>7.5</td>
+<td>"38"</td>
+<td>5.5</td>
+<td>169</td>
+<td>0.0</td>
+<td>2016</td>
+<td>10</td>
+<td>169.0</td>
+</tr>
+<tr class="odd">
+<td>61784</td>
+<td>"6/3/2016"</td>
+<td>"United States"</td>
+<td>2195</td>
+<td>"US15"</td>
+<td>"Female"</td>
+<td>9.0</td>
+<td>"39-40"</td>
+<td>7.0</td>
+<td>159</td>
+<td>0.1</td>
+<td>2016</td>
+<td>6</td>
+<td>143.1</td>
+</tr>
+<tr class="even">
+<td>56074</td>
+<td>"5/15/2015"</td>
+<td>"United Kingdom"</td>
+<td>2202</td>
+<td>"UK1"</td>
+<td>"Female"</td>
+<td>10.5</td>
+<td>"41"</td>
+<td>8.5</td>
+<td>159</td>
+<td>0.2</td>
+<td>2015</td>
+<td>5</td>
+<td>127.2</td>
+</tr>
+<tr class="odd">
+<td>65229</td>
+<td>"11/22/2016"</td>
+<td>"United States"</td>
+<td>2181</td>
+<td>"US13"</td>
 <td>"Male"</td>
 <td>10.0</td>
 <td>"43"</td>
 <td>9.5</td>
-<td>189</td>
-<td>0.0</td>
+<td>169</td>
+<td>0.5</td>
 <td>2016</td>
-<td>2</td>
-<td>189.0</td>
+<td>11</td>
+<td>84.5</td>
+</tr>
+<tr class="even">
+<td>56175</td>
+<td>"5/25/2015"</td>
+<td>"United Kingdom"</td>
+<td>2170</td>
+<td>"UK1"</td>
+<td>"Male"</td>
+<td>8.5</td>
+<td>"41-42"</td>
+<td>8.0</td>
+<td>179</td>
+<td>0.0</td>
+<td>2015</td>
+<td>5</td>
+<td>179.0</td>
 </tr>
 </tbody>
 </table>
@@ -2693,13 +2693,13 @@ Name: count, dtype: int64</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td>{2014,2753}</td>
-</tr>
-<tr class="even">
 <td>{2015,4848}</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>{2016,7366}</td>
+</tr>
+<tr class="odd">
+<td>{2014,2753}</td>
 </tr>
 </tbody>
 </table>
@@ -2729,16 +2729,16 @@ Name: count, dtype: int64</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td>2015</td>
-<td>4848</td>
+<td>2014</td>
+<td>2753</td>
 </tr>
 <tr class="even">
 <td>2016</td>
 <td>7366</td>
 </tr>
 <tr class="odd">
-<td>2014</td>
-<td>2753</td>
+<td>2015</td>
+<td>4848</td>
 </tr>
 </tbody>
 </table>
@@ -2834,12 +2834,12 @@ Name: count, dtype: int64</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td>"Male"</td>
-<td>8919</td>
-</tr>
-<tr class="even">
 <td>"Female"</td>
 <td>6048</td>
+</tr>
+<tr class="even">
+<td>"Male"</td>
+<td>8919</td>
 </tr>
 </tbody>
 </table>
@@ -7510,20 +7510,20 @@ United States      163.490316     143.727421    5886      5886</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td>"Germany"</td>
-<td>164.163934</td>
+<td>"United Kingdom"</td>
+<td>165.614853</td>
 </tr>
 <tr class="even">
 <td>"United States"</td>
 <td>163.490316</td>
 </tr>
 <tr class="odd">
-<td>"Canada"</td>
-<td>164.691057</td>
+<td>"Germany"</td>
+<td>164.163934</td>
 </tr>
 <tr class="even">
-<td>"United Kingdom"</td>
-<td>165.614853</td>
+<td>"Canada"</td>
+<td>164.691057</td>
 </tr>
 </tbody>
 </table>
@@ -7560,9 +7560,9 @@ United States      163.490316     143.727421    5886      5886</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td>"United Kingdom"</td>
-<td>165.614853</td>
-<td>145.505872</td>
+<td>"United States"</td>
+<td>163.490316</td>
+<td>143.727421</td>
 </tr>
 <tr class="even">
 <td>"Germany"</td>
@@ -7575,9 +7575,9 @@ United States      163.490316     143.727421    5886      5886</code></pre>
 <td>144.228963</td>
 </tr>
 <tr class="even">
-<td>"United States"</td>
-<td>163.490316</td>
-<td>143.727421</td>
+<td>"United Kingdom"</td>
+<td>165.614853</td>
+<td>145.505872</td>
 </tr>
 </tbody>
 </table>
@@ -8804,74 +8804,128 @@ $ big4                      &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 </thead>
 <tbody>
 <tr class="odd">
-<td>"DHI GROUP INC"</td>
+<td>"ICONIX BRAND GROUP INC"</td>
 <td>"DE"</td>
-<td>"DHX"</td>
-<td>2013</td>
-<td>7361</td>
-<td>420.641</td>
-<td>23.429</td>
-<td>16.246</td>
-<td>213.482</td>
-<td>31.1</td>
-<td>127.365</td>
-<td>396.0965</td>
-<td>167.812</td>
-<td>252.829</td>
-<td>1393883</td>
-<td>"Deloitte &amp; Touche LLP"</td>
+<td>"ICON"</td>
+<td>2011</td>
+<td>6794</td>
+<td>2161.303</td>
+<td>0.0</td>
+<td>126.105</td>
+<td>369.845</td>
+<td>23.5</td>
+<td>131.641</td>
+<td>1184.0387</td>
+<td>1189.053</td>
+<td>867.727</td>
+<td>857737</td>
+<td>"BDO USA LLP"</td>
 <td>"Yes"</td>
-<td>"2013-12-31"</td>
-<td>"2013-12-31"</td>
-<td>2013</td>
-<td>"2014-02-14"</td>
+<td>"2011-12-31"</td>
+<td>"2011-12-31"</td>
+<td>2011</td>
+<td>"2012-02-29"</td>
 <td>0</td>
-<td>"425000"</td>
-<td>"17800"</td>
-<td>1</td>
+<td>"785000"</td>
+<td>"128000"</td>
+<td>0</td>
 </tr>
 <tr class="even">
-<td>"FOSSIL GROUP INC"</td>
-<td>"DE"</td>
-<td>"FOSL"</td>
-<td>2017</td>
-<td>3873</td>
-<td>1658.372</td>
-<td>1348.351</td>
-<td>-478.172</td>
-<td>2788.163</td>
-<td>207.1</td>
-<td>1327.816</td>
-<td>377.9561</td>
-<td>576.133</td>
-<td>1077.425</td>
-<td>883569</td>
+<td>"OSHKOSH CORP"</td>
+<td>"WI"</td>
+<td>"OSK"</td>
+<td>2009</td>
+<td>3711</td>
+<td>4768.0</td>
+<td>4513.5</td>
+<td>-1098.8</td>
+<td>5295.2</td>
+<td>11.8</td>
+<td>435.8</td>
+<td>2766.1008</td>
+<td>514.1</td>
+<td>4251.7</td>
+<td>775158</td>
 <td>"Deloitte &amp; Touche LLP"</td>
 <td>"Yes"</td>
-<td>"2017-12-30"</td>
-<td>"2017-12-30"</td>
-<td>2017</td>
-<td>"2018-03-02"</td>
+<td>"2009-09-30"</td>
+<td>"2009-09-30"</td>
+<td>2009</td>
+<td>"2009-11-18"</td>
 <td>0</td>
-<td>"4045570"</td>
-<td>"381914"</td>
+<td>"3045700"</td>
+<td>"72000"</td>
 <td>1</td>
 </tr>
 <tr class="odd">
-<td>"COOPER TIRE &amp; RUBBER CO"</td>
+<td>"CONSOLIDATED COMM HLDGS INC"</td>
 <td>"DE"</td>
-<td>"CTB"</td>
+<td>"CNSL"</td>
 <td>2012</td>
-<td>3011</td>
-<td>2801.16</td>
-<td>3425.112</td>
-<td>220.371</td>
-<td>4200.836</td>
-<td>49.756</td>
-<td>257.306</td>
-<td>1601.7122</td>
-<td>757.624</td>
-<td>1892.744</td>
+<td>4813</td>
+<td>1794.828</td>
+<td>193.743</td>
+<td>5.64</td>
+<td>503.457</td>
+<td>5.1</td>
+<td>111.617</td>
+<td>634.459</td>
+<td>131.93</td>
+<td>1658.723</td>
+<td>1304421</td>
+<td>"Ernst &amp; Young LLP"</td>
+<td>"Yes"</td>
+<td>"2012-12-31"</td>
+<td>"2012-12-31"</td>
+<td>2012</td>
+<td>"2013-03-12"</td>
+<td>0</td>
+<td>"2000000"</td>
+<td>"1300000"</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>"AUTOZONE INC"</td>
+<td>"NV"</td>
+<td>"AZO"</td>
+<td>2011</td>
+<td>5531</td>
+<td>5869.602</td>
+<td>3757.301</td>
+<td>848.974</td>
+<td>8072.973</td>
+<td>94.7</td>
+<td>2624.66</td>
+<td>12313.463</td>
+<td>-1254.232</td>
+<td>7123.834</td>
+<td>866787</td>
+<td>"Ernst &amp; Young LLP"</td>
+<td>"Yes"</td>
+<td>"2011-08-27"</td>
+<td>"2011-08-27"</td>
+<td>2011</td>
+<td>"2011-10-24"</td>
+<td>0</td>
+<td>"1629000"</td>
+<td>"110571"</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>"COFFEE HOLDING CO INC"</td>
+<td>"NV"</td>
+<td>"JVA"</td>
+<td>2013</td>
+<td>5140</td>
+<td>32.399</td>
+<td>127.505</td>
+<td>-1.48</td>
+<td>133.981</td>
+<td>0.17</td>
+<td>7.522</td>
+<td>34.0265</td>
+<td>21.75</td>
+<td>10.315</td>
 <td>null</td>
 <td>null</td>
 <td>null</td>
@@ -8885,209 +8939,155 @@ $ big4                      &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 <td>null</td>
 </tr>
 <tr class="even">
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr class="odd">
+<td>"BALLANTYNE STRONG INC"</td>
+<td>"DE"</td>
+<td>"BTN"</td>
+<td>2011</td>
+<td>3861</td>
+<td>113.456</td>
+<td>152.72</td>
+<td>10.347</td>
+<td>184.433</td>
+<td>0.9</td>
+<td>15.041</td>
+<td>59.3541</td>
+<td>63.223</td>
+<td>50.233</td>
+<td>946454</td>
+<td>"KPMG LLP"</td>
+<td>"Yes"</td>
+<td>"2011-12-31"</td>
+<td>"2011-12-31"</td>
+<td>2011</td>
+<td>"2012-03-12"</td>
+<td>0</td>
+<td>"406594"</td>
+<td>"70753"</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>"KB HOME"</td>
+<td>"DE"</td>
+<td>"KBH"</td>
+<td>2009</td>
+<td>1531</td>
+<td>3435.989</td>
+<td>1744.676</td>
+<td>-101.784</td>
+<td>1824.85</td>
+<td>16.5</td>
+<td>306.275</td>
+<td>1041.2362</td>
+<td>707.224</td>
+<td>2728.765</td>
+<td>795266</td>
+<td>"Ernst &amp; Young LLP"</td>
+<td>"Yes"</td>
+<td>"2009-11-30"</td>
+<td>"2009-11-30"</td>
+<td>2009</td>
+<td>"2010-01-29"</td>
+<td>0</td>
+<td>"1005000"</td>
+<td>"92000"</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>"ALTRIA GROUP INC"</td>
+<td>"VA"</td>
+<td>"MO"</td>
+<td>2010</td>
+<td>2111</td>
+<td>37402.0</td>
+<td>7351.0</td>
+<td>3905.0</td>
+<td>16892.0</td>
+<td>5.0</td>
+<td>2884.0</td>
+<td>51424.7788</td>
+<td>5192.0</td>
+<td>32175.0</td>
+<td>764180</td>
+<td>"PricewaterhouseCoopers LLP"</td>
+<td>"Yes"</td>
+<td>"2010-12-31"</td>
+<td>"2010-12-31"</td>
+<td>2010</td>
+<td>"2011-01-27"</td>
+<td>0</td>
+<td>"5000000"</td>
+<td>"2000000"</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>"BUCKLE INC"</td>
+<td>"NE"</td>
+<td>"BKE"</td>
+<td>2010</td>
+<td>5651</td>
+<td>488.903</td>
+<td>472.533</td>
+<td>127.303</td>
+<td>898.287</td>
+<td>8.521</td>
+<td>201.157</td>
+<td>1407.1995</td>
+<td>354.259</td>
+<td>134.644</td>
+<td>885245</td>
+<td>"Deloitte &amp; Touche LLP"</td>
+<td>"Yes"</td>
+<td>"2010-01-30"</td>
+<td>"2010-01-30"</td>
+<td>2010</td>
+<td>"2010-03-31"</td>
+<td>0</td>
+<td>"371500"</td>
+<td>"48109"</td>
+<td>1</td>
+</tr>
+<tr class="odd">
 <td>"OLD COPPER CO INC"</td>
 <td>"DE"</td>
 <td>"CPPRQ"</td>
-<td>2010</td>
+<td>2009</td>
 <td>5311</td>
-<td>12581.0</td>
-<td>10646.0</td>
-<td>251.0</td>
-<td>17556.0</td>
-<td>1167.0</td>
-<td>5747.0</td>
-<td>5859.88</td>
-<td>4778.0</td>
-<td>7803.0</td>
-<td>null</td>
-<td>null</td>
-<td>null</td>
-<td>null</td>
-<td>null</td>
-<td>null</td>
-<td>null</td>
-<td>null</td>
-<td>null</td>
-<td>null</td>
-<td>null</td>
-</tr>
-<tr class="odd">
-<td>"ZEBRA TECHNOLOGIES CP&nbsp;&nbsp;-CL A"</td>
-<td>"DE"</td>
-<td>"ZBRA"</td>
-<td>2011</td>
-<td>3577</td>
-<td>899.006</td>
-<td>476.039</td>
-<td>174.643</td>
-<td>983.488</td>
-<td>8.07</td>
-<td>299.372</td>
-<td>1863.9591</td>
-<td>776.925</td>
-<td>122.081</td>
-<td>877212</td>
-<td>"Ernst &amp; Young LLP"</td>
-<td>"Yes"</td>
-<td>"2011-12-31"</td>
-<td>"2011-12-31"</td>
-<td>2011</td>
-<td>"2012-02-23"</td>
-<td>0</td>
-<td>"1143310"</td>
-<td>"651231"</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td>…</td>
-<td>…</td>
-<td>…</td>
-<td>…</td>
-<td>…</td>
-<td>…</td>
-<td>…</td>
-<td>…</td>
-<td>…</td>
-<td>…</td>
-<td>…</td>
-<td>…</td>
-<td>…</td>
-<td>…</td>
-<td>…</td>
-<td>…</td>
-<td>…</td>
-<td>…</td>
-<td>…</td>
-<td>…</td>
-<td>…</td>
-<td>…</td>
-<td>…</td>
-<td>…</td>
-<td>…</td>
-</tr>
-<tr class="odd">
-<td>"CHART INDUSTRIES INC"</td>
-<td>"DE"</td>
-<td>"GTLS"</td>
-<td>2016</td>
-<td>3443</td>
-<td>1233.082</td>
-<td>563.733</td>
-<td>28.237</td>
-<td>859.154</td>
-<td>4.702</td>
-<td>189.233</td>
-<td>1102.6803</td>
-<td>697.265</td>
-<td>534.405</td>
-<td>892553</td>
-<td>"Ernst &amp; Young LLP"</td>
-<td>"Yes"</td>
-<td>"2016-12-31"</td>
-<td>"2016-12-31"</td>
-<td>2016</td>
-<td>"2017-02-23"</td>
-<td>0</td>
-<td>"1798400"</td>
-<td>"144974"</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td>"ROGERS CORP"</td>
-<td>"MA"</td>
-<td>"ROG"</td>
-<td>2015</td>
-<td>3672</td>
-<td>932.458</td>
-<td>370.427</td>
-<td>46.32</td>
-<td>641.443</td>
-<td>3.2</td>
-<td>148.007</td>
-<td>926.0425</td>
-<td>584.582</td>
-<td>347.876</td>
-<td>84748</td>
-<td>"PricewaterhouseCoopers LLP"</td>
-<td>"Yes"</td>
-<td>"2015-12-31"</td>
-<td>"2015-12-31"</td>
-<td>2015</td>
-<td>"2016-02-23"</td>
-<td>0</td>
-<td>"1742000"</td>
-<td>"175972"</td>
-<td>1</td>
-</tr>
-<tr class="odd">
-<td>"BUILD-A-BEAR WORKSHOP INC"</td>
-<td>"DE"</td>
-<td>"BBW"</td>
-<td>2016</td>
-<td>5945</td>
-<td>199.595</td>
-<td>181.996</td>
-<td>1.377</td>
-<td>364.204</td>
-<td>20.7</td>
-<td>160.723</td>
-<td>218.0338</td>
-<td>99.112</td>
-<td>100.483</td>
-<td>1113809</td>
-<td>"Ernst &amp; Young LLP"</td>
-<td>"Yes"</td>
-<td>"2016-12-31"</td>
-<td>"2016-12-31"</td>
-<td>2016</td>
-<td>"2017-03-16"</td>
-<td>0</td>
-<td>"786400"</td>
-<td>"396600"</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td>"PINNACLE ENTERTAINMENT INC"</td>
-<td>"DE"</td>
-<td>"PNK"</td>
-<td>2014</td>
-<td>7990</td>
-<td>4833.682</td>
-<td>1218.26</td>
-<td>43.843</td>
-<td>2210.543</td>
-<td>30.6</td>
-<td>430.461</td>
-<td>1334.555</td>
-<td>277.979</td>
-<td>4544.3</td>
-<td>null</td>
-<td>null</td>
-<td>null</td>
-<td>null</td>
-<td>null</td>
-<td>null</td>
-<td>null</td>
-<td>null</td>
-<td>null</td>
-<td>null</td>
-<td>null</td>
-</tr>
-<tr class="odd">
-<td>"NETSOL TECHNOLOGIES INC"</td>
-<td>"NV"</td>
-<td>"NTWK"</td>
-<td>2015</td>
-<td>7372</td>
-<td>88.962</td>
-<td>24.685</td>
-<td>-5.549</td>
-<td>51.049</td>
-<td>0.251</td>
-<td>21.187</td>
-<td>52.9472</td>
-<td>59.8</td>
-<td>15.322</td>
+<td>12011.0</td>
+<td>11571.0</td>
+<td>572.0</td>
+<td>18486.0</td>
+<td>1314.0</td>
+<td>5336.0</td>
+<td>3718.5</td>
+<td>4155.0</td>
+<td>7856.0</td>
 <td>null</td>
 <td>null</td>
 <td>null</td>

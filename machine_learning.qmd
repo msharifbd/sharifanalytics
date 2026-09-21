@@ -6,7 +6,7 @@ editor: source
 
 ### Learning Objectives of the Chapter {.unnumbered}
 
-::: {.callout-note title = "Learning Objectives" collapse = "true"}
+::: {.callout-note title = "Learning Objectives" collapse = "false"}
 ::: {style="text-align: justify"}
 At the End of the Chapter, Students should be Able to -
 
@@ -53,15 +53,83 @@ At the End of the Chapter, Students should be Able to -
 ## Types of Machine Learning
 
 ::: {style="text-align: justify"}
-     Machine learning can be categorized into different types based on the the nature of learning process and the type of data it used. Usually, ML can be categorized into three types - supervised, unsupervised, and reinforcement learning. @fig-mltypes shows different types of machine learning.
+     Machine learning can be categorized into different types based on the the nature of learning process and the type of data it used. Usually, ML can be categorized into three types - supervised, unsupervised, and reinforcement learning. @fig-mltypes shows different types of machine learning. Which types of machine learning we use depends on the questions being asked, and on whether the data contains a known outcome to learn from.
 
 ![Machine Learning Types](images/ml-types.webp){#fig-mltypes}
 
 ### Supervised Machine Learning
+     In supervised learning, the algorithm learns from **labeled data**: each observation includes input variables (features) and a known outcome (the label or target). The algorithm searches for a relationship between the two, then uses it to predict the outcome for new observations where the label is unknown. The process resembles learning with an answer key. The model makes predictions, compares them with the known answers, and adjusts until its errors are acceptably small.
+
+Supervised problems fall into two families:
+
+**Classification** predicts a category. Examples include whether a financial statement is misstated, whether a firm will receive a going-concern opinion, whether a loan will default, or whether an invoice is a duplicate payment.
+
+**Regression** predicts a continuous number. Examples include next quarter's revenue, the required allowance for doubtful accounts, audit hours for an engagement, or a firm's future earnings.
+
+     Accounting has a long tradition of supervised prediction. *Bankruptcy prediction* models built from financial ratios, and earnings-manipulation models that flag firms whose accruals and ratios look unusual, are early examples. Modern methods such as regularized regression, decision trees, random forests, gradient boosting, and neural networks extend the same logic to larger datasets and more complex, nonlinear relationships.
+
+     The main practical constraint is the label. Supervised learning requires *historical cases* where the *outcome is known*, and in accounting these can be scarce or imperfect. Detected fraud is rare, so datasets are highly imbalanced, with far more clean observations than fraudulent ones. Labels also reflect only what was discovered: undetected fraud sits in the data marked "clean." A model trained on such labels may learn to predict what auditors and regulators have caught in the past rather than what actually occurred. Analysts must therefore think carefully about how labels were created, and evaluate models with measures suited to imbalanced data (precision, recall, and the area under the ROC curve) rather than overall accuracy alone.
+
 
 ### Unsupervised Machine Learning
+     In unsupervised learning, the data has **no labels**. There is no answer key, so the algorithm's task is to uncover structure in the data itself: groups, patterns, relationships, or unusual observations. The analyst does not tell the algorithm what to look for. The result must be interpreted and validated by a person with domain knowledge.
+
+Common unsupervised tasks include:
+
+**Clustering** groups similar observations together. An analyst might cluster vendors by payment behavior, customers by purchasing and payment patterns, or subsidiaries by their financial profiles.
+
+**Anomaly detection** identifies observations that differ markedly from the rest. Applied to a general ledger, it can surface unusual journal entries, such as those posted at odd times, by unusual users, or in unusual account combinations, without any prior examples of fraud.
+
+**Dimensionality reduction** compresses many correlated variables into a smaller number of components. Principal component analysis, for instance, can summarize dozens of financial ratios into a few underlying dimensions.
+
+**Text and topic modeling** discovers themes in unstructured documents, such as the risk-factor disclosures in annual reports, earnings-call transcripts, or contract language.
+
+**Association analysis** finds items or events that frequently occur together, such as combinations of accounts that regularly appear in the same transaction.
+
+     Unsupervised methods suit exploratory work and situations where labels do not exist or cannot be trusted. In auditing they are especially attractive because they can examine entire populations of transactions rather than samples. Their weakness is that "unusual" does not mean "wrong." An anomaly is a candidate for investigation, not a conclusion, and many flagged items will have legitimate explanations. Because there is no ground truth to score against, judging whether the output is useful takes more professional judgment than in supervised work.
+
 
 ### Reinforcement Learning
+
+     Reinforcement learning (RL) differs in kind from the first two. Here an **agent** learns by interacting with an **environment**. At each step the agent observes the current situation (the state), chooses an action, and receives a reward or penalty. The agent's goal is to learn a policy, a rule for choosing actions, that maximizes cumulative reward over time. There is no dataset of correct answers. The agent learns through trial and error, and actions taken now can affect rewards far in the future. @fig-reinforcementlearning shows a video of an example of reinforcement learning.
+
+![An Example of Reinforcement Learning](VIDEO/LEARNING SYSTEMS.mp4){#fig-reinforcementlearning fig-align="center"}
+
+
+
+     This makes RL a natural fit for sequential decision problems in which each choice changes the situation that follows. Potential accounting and finance applications include:
+
+**Dynamic audit planning**, where an agent decides how to allocate limited audit effort across accounts or locations as evidence accumulates, balancing the cost of testing against the risk of missing a misstatement.
+
+**Treasury and working-capital management**, such as deciding when to collect, pay, invest, or borrow to manage cash over time.
+
+**Pricing and credit-limit decisions**, where each decision affects future customer behavior.
+
+**Process automation**, where software agents learn to route, match, or approve transactions more efficiently.
+
+     RL should be introduced with a note of caution. It is the least mature of the three paradigms in accounting practice. Learning by trial and error is difficult when errors are costly, when actions carry regulatory or ethical consequences, or when the environment cannot be safely simulated. Reward design is also difficult: an agent optimizes precisely what it is rewarded for, and a poorly specified reward can produce behavior that technically scores well but is undesirable. For these reasons, most current accounting applications are experimental or rely on simulated environments. 
+
+### Comparison of the Three Types of Machine Learning
+
+@tbl-ml-types summarizes the key differences between supervised, unsupervised, and reinforcement learning.
+
+| Feature | Supervised | Unsupervised | Reinforcement |
+|:--------|:-----------|:-------------|:--------------|
+| **Data** | Labeled (inputs and known outcomes) | Unlabeled (inputs only) | Feedback from interaction (states, actions, rewards) |
+| **Goal** | Predict a known outcome | Discover structure or anomalies | Learn a policy that maximizes long-term reward |
+| **Typical tasks** | Classification, regression | Clustering, anomaly detection, dimensionality reduction | Sequential decision-making |
+| **Accounting example** | Predicting misstatement or going-concern risk | Flagging unusual journal entries | Adaptive allocation of audit effort |
+| **Key challenge** | Quality and availability of labels | Validating and interpreting results | Reward design and safe experimentation |
+
+: Comparison of the three types of machine learning {#tbl-ml-types}
+
+
+### Choosing an Approach 
+     In practice, the choice follows from the question and the data. If a reliable historical outcome exists and the goal is to predict it, use supervised learning. If the goal is to explore the data, segment it, or find outliers without labels, use unsupervised learning. If the problem involves a sequence of decisions whose consequences unfold over time, consider reinforcement learning.
+
+     The boundaries between the types are not rigid. Analysts often combine them. For example, they might use unsupervised clustering to create features or to select cases for expert labeling, then train a supervised model on the labeled results. Hybrid approaches such as semi-supervised learning, which uses a small amount of labeled data together with a large amount of unlabeled data, are especially relevant in accounting, where labels are expensive but transactions are plentiful.
+
+     Whichever type is used, the accountant's role stays the same. Algorithms produce predictions, groupings, or recommendations, and the accountant must judge whether they are reliable, explainable, and appropriate to the professional context.
 :::
 
 ## Roadmap for Building ML Systems

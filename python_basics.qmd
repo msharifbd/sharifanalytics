@@ -5,6 +5,10 @@ format: html
 
 ## Learning Objectives of the Appendix {.unnumbered}
 
+::: {.callout-note title = "Learning Objectives" collapse = "false"}
+
+::: {style="text-align: justify"}
+
 At the End of the Appendix, Students should be Able to -
 
 -   Gain an Understanding about Python
@@ -15,6 +19,9 @@ At the End of the Appendix, Students should be Able to -
 
 -   Gain an Understanding about `for` Loop function, `map` function, and User Defined Function in Python 
 
+:::
+
+::: 
 ## What is Python?
 
 ::: {style="text-align: justify"}

@@ -10,7 +10,7 @@ format: html
 ### Learning Objectives of the Chapter {.unnumbered}
 
 
-::: {.callout-note title = "Learning Objectives" collapse = "true"}
+::: {.callout-note title = "Learning Objectives" collapse = "false"}
 
 ::: {style="text-align: justify"}
 At the End of the Chapter, Students should be Able to -

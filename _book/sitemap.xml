@@ -1,60 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://analyticsforaccountingdata.netlify.app/index.html</loc>
-    <lastmod>2026-05-14T18:53:18.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://analyticsforaccountingdata.netlify.app/overview.html</loc>
-    <lastmod>2026-07-03T06:58:09.149Z</lastmod>
-  </url>
-  <url>
-    <loc>https://analyticsforaccountingdata.netlify.app/foundations.html</loc>
-    <lastmod>2026-07-01T04:19:10.350Z</lastmod>
-  </url>
-  <url>
-    <loc>https://analyticsforaccountingdata.netlify.app/eda.html</loc>
-    <lastmod>2026-07-01T04:25:08.984Z</lastmod>
-  </url>
-  <url>
     <loc>https://analyticsforaccountingdata.netlify.app/visualization.html</loc>
-    <lastmod>2026-07-02T00:17:02.623Z</lastmod>
+    <lastmod>2026-09-21T02:57:37.308Z</lastmod>
   </url>
   <url>
     <loc>https://analyticsforaccountingdata.netlify.app/dashboard.html</loc>
-    <lastmod>2026-07-01T18:45:40.601Z</lastmod>
+    <lastmod>2026-09-21T03:44:39.189Z</lastmod>
   </url>
   <url>
     <loc>https://analyticsforaccountingdata.netlify.app/data_management.html</loc>
-    <lastmod>2026-08-16T16:34:54.779Z</lastmod>
+    <lastmod>2026-09-21T03:54:05.637Z</lastmod>
   </url>
   <url>
     <loc>https://analyticsforaccountingdata.netlify.app/predictive.html</loc>
-    <lastmod>2026-08-16T17:18:26.464Z</lastmod>
+    <lastmod>2026-09-21T03:57:08.447Z</lastmod>
   </url>
   <url>
     <loc>https://analyticsforaccountingdata.netlify.app/prescriptive.html</loc>
-    <lastmod>2026-07-02T00:23:33.327Z</lastmod>
+    <lastmod>2026-09-21T03:59:51.535Z</lastmod>
   </url>
   <url>
     <loc>https://analyticsforaccountingdata.netlify.app/advanced_analytics.html</loc>
-    <lastmod>2026-07-02T00:24:06.084Z</lastmod>
+    <lastmod>2026-09-21T04:00:46.529Z</lastmod>
   </url>
   <url>
     <loc>https://analyticsforaccountingdata.netlify.app/nlp.html</loc>
-    <lastmod>2026-07-02T00:24:30.656Z</lastmod>
+    <lastmod>2026-09-21T04:02:44.861Z</lastmod>
   </url>
   <url>
     <loc>https://analyticsforaccountingdata.netlify.app/machine_learning.html</loc>
-    <lastmod>2026-07-02T00:24:54.815Z</lastmod>
+    <lastmod>2026-09-21T02:19:09.751Z</lastmod>
   </url>
   <url>
     <loc>https://analyticsforaccountingdata.netlify.app/fraud.html</loc>
-    <lastmod>2026-07-02T00:27:50.933Z</lastmod>
+    <lastmod>2026-09-21T04:05:47.810Z</lastmod>
   </url>
   <url>
     <loc>https://analyticsforaccountingdata.netlify.app/performance_measurement.html</loc>
-    <lastmod>2026-07-02T00:29:29.979Z</lastmod>
+    <lastmod>2026-09-21T04:07:27.800Z</lastmod>
   </url>
   <url>
     <loc>https://analyticsforaccountingdata.netlify.app/ethics.html</loc>
@@ -66,11 +50,11 @@
   </url>
   <url>
     <loc>https://analyticsforaccountingdata.netlify.app/python_basics.html</loc>
-    <lastmod>2024-12-13T18:33:45.000Z</lastmod>
+    <lastmod>2026-09-21T04:13:51.560Z</lastmod>
   </url>
   <url>
     <loc>https://analyticsforaccountingdata.netlify.app/r_basics.html</loc>
-    <lastmod>2024-12-14T02:15:14.000Z</lastmod>
+    <lastmod>2026-09-21T04:16:02.698Z</lastmod>
   </url>
   <url>
     <loc>https://analyticsforaccountingdata.netlify.app/chapter1_solution.html</loc>
@@ -83,5 +67,21 @@
   <url>
     <loc>https://analyticsforaccountingdata.netlify.app/references.html</loc>
     <lastmod>2025-01-19T19:09:40.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://analyticsforaccountingdata.netlify.app/overview.html</loc>
+    <lastmod>2026-09-21T04:12:27.149Z</lastmod>
+  </url>
+  <url>
+    <loc>https://analyticsforaccountingdata.netlify.app/index.html</loc>
+    <lastmod>2026-05-14T18:53:18.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://analyticsforaccountingdata.netlify.app/foundations.html</loc>
+    <lastmod>2026-07-01T04:19:10.350Z</lastmod>
+  </url>
+  <url>
+    <loc>https://analyticsforaccountingdata.netlify.app/eda.html</loc>
+    <lastmod>2026-07-01T04:25:08.984Z</lastmod>
   </url>
 </urlset>
